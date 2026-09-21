@@ -608,13 +608,6 @@ select option {
   color: var(--mute);
 }
 
-.kroner {
-  font-family: var(--font-tall);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--mute);
-}
-
 /* Satsens historikk – liten trappekurve med én setning */
 .historikk {
   display: flex;
@@ -636,9 +629,6 @@ select option {
   color: var(--mute);
 }
 
-.rad-verdi {
-  grid-template-columns: 76px auto minmax(0, 1fr);
-}
 
 /* Stempelet på vinneren – sitter som et klistremerke på rivekanten */
 .stempel {

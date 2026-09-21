@@ -2,7 +2,7 @@ name: Hent satser
 
 on:
   schedule:
-    - cron: '0 5 * * 1' # hver mandag 05:00 UTC
+    - cron: '0 4 * * *' # hver dag 04:00 UTC
   workflow_dispatch:
 
 permissions:

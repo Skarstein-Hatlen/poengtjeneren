@@ -16,6 +16,6 @@ describe('oversettelser', () => {
 
   it('fyller inn verdier', () => {
     expect(tekst('SE', 'alle', { n: 534 })).toBe('Alla 534 →');
-    expect(tekst('DK', 'konklusjonMer', { a: 'Klarna', n: '983', kr: '', b: 'SAS Shopping' })).toBe('Klarna giver 983 point mere end SAS Shopping.');
+    expect(tekst('DK', 'konklusjonMer', { a: 'Klarna', n: '983', b: 'SAS Shopping' })).toBe('Klarna giver 983 point mere end SAS Shopping.');
   });
 });

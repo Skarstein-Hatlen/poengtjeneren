@@ -1,7 +1,7 @@
 import type { Land, Maling, Program } from '../data/types';
 import { tekst } from '../i18n';
 import type { Resultat } from '../lib/calc';
-import { fmtDato, fmtKr, fmtPer100, fmtPoeng, fmtTall } from '../lib/format';
+import { fmtDato, fmtPer100, fmtPoeng, fmtTall } from '../lib/format';
 import Monogram from './Monogram';
 import Sparkline from './Sparkline';
 
@@ -20,8 +20,6 @@ interface Props {
   nivaNavn: string | null;
   onSats: (sats: string) => void;
   resultat: Resultat | null;
-  /** Anslått kroneverdi av poengene, eller null når poengverdi ikke er satt. */
-  kroner: number | null;
   /** Butikkens side hos programmet – der kjøpet må starte for å få satsen. */
   lenke: string | null;
   /** Satsens historikk for valgt butikk. */
@@ -46,7 +44,7 @@ function historikkTekst(land: Land, program: Program, malinger: Maling[]): strin
 }
 
 /** Én kolonne per program: logo, butikkens sats og resultat. */
-export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSats, resultat, kroner, lenke, historikk, idag, erBest, apen, onToggle }: Props) {
+export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSats, resultat, lenke, historikk, idag, erBest, apen, onToggle }: Props) {
   const satsId = `${program.id}-sats`;
 
   return (
@@ -81,7 +79,6 @@ export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSa
           {resultat?.status === 'uverifisert' && <sup>*</sup>}
         </span>
         <span className="per100">{resultat ? tekst(land, 'perHundre', { n: fmtPer100(resultat.per100) }) : ' '}</span>
-        {resultat && kroner !== null && <span className="kroner">≈ {fmtKr(kroner)}</span>}
       </button>
 
       {historikk && historikk.length > 0 && (

@@ -11,7 +11,7 @@ import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type Program
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
 
 const data = hentData();
-const NOKKEL = 'pointmaxing.v7';
+const NOKKEL = 'pointmaxing.v8';
 const INGEN = 'ingen';
 const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
@@ -24,8 +24,6 @@ interface Tilstand {
   butikkId: string | null;
   kortId: string;
   egenKortPoeng: string;
-  /** Anslått verdi av ett EuroBonus-poeng i øre. Tomt = ikke vis kroner. */
-  poengverdi: string;
   rader: Record<string, RadTilstand>;
 }
 
@@ -96,7 +94,7 @@ function standard(): Tilstand {
     const valgId = p.standardNiva ?? p.nivaer[0]?.id ?? p.konverteringer[0]?.id ?? '';
     rader[p.id] = { sats: feltVerdi(p, STANDARD_SATS[p.id] ?? null, nivaFor(p, valgId)), valgId };
   }
-  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', poengverdi: '5', rader };
+  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rader };
 }
 
 function les(): Tilstand {
@@ -115,7 +113,6 @@ function les(): Tilstand {
         butikkId: typeof p.butikkId === 'string' ? p.butikkId : null,
         kortId: typeof p.kortId === 'string' ? p.kortId : std.kortId,
         egenKortPoeng: typeof p.egenKortPoeng === 'string' ? p.egenKortPoeng : '',
-        poengverdi: typeof p.poengverdi === 'string' ? p.poengverdi : std.poengverdi,
         rader,
       };
     }
@@ -234,12 +231,6 @@ export default function App() {
 
   const belop = parseTall(t.belop);
   const butikk = t.butikkId ? (butikker.find((b) => b.id === t.butikkId) ?? null) : null;
-  const orePerPoeng = parseTall(t.poengverdi);
-  const kroner = (poeng: number): number | null => (orePerPoeng > 0 ? (poeng * orePerPoeng) / 100 : null);
-  const iKroner = (poeng: number): string => {
-    const kr = kroner(poeng);
-    return kr === null ? '' : ` (≈ ${fmtKr(kr)})`;
-  };
 
   const programKortListe = useMemo(
     () => programmer.map((p) => kortForProgram(p, t.rader[p.id].valgId)).filter((k): k is Kort => k !== null),
@@ -495,26 +486,6 @@ export default function App() {
                 </span>
               </div>
             ))}
-          <div className="valg-rad rad-verdi">
-            <label className="etikett" htmlFor="poengverdi">
-              {T('poengverdi')}
-            </label>
-            <span className="tall">
-              <input
-                id="poengverdi"
-                type="text"
-                inputMode="decimal"
-                autoComplete="off"
-                placeholder="–"
-                value={t.poengverdi}
-                onChange={(e) => {
-                  if (TILLATT.test(e.target.value)) setT((s) => ({ ...s, poengverdi: e.target.value }));
-                }}
-              />
-              <span className="enhet">{T('orePerPoeng')}</span>
-            </span>
-            <span />
-          </div>
         </section>
 
         <div className="perforering" aria-hidden="true" />
@@ -531,7 +502,6 @@ export default function App() {
                 nivaNavn={p.kort ? (nivaFor(p, t.rader[p.id].valgId)?.kanVeksle === false ? null : (nivaFor(p, t.rader[p.id].valgId)?.navn ?? null)) : null}
                 onSats={(sats) => setT((s) => endreRad(s, p, { sats }))}
                 resultat={r}
-                kroner={r ? kroner(r.total) : null}
                 lenke={butikk?.satser[p.id] ? (butikk.satser[p.id].lenke ?? butikk.satser[p.id].kilde) : null}
                 historikk={butikk ? (data.historikk[t.land]?.[butikk.id]?.[p.id] ?? null) : null}
                 idag={IDAG}
@@ -548,13 +518,13 @@ export default function App() {
         {belop > 0 && beste && nest && (
           <p className="konklusjon">
             {diff > 0
-              ? T('konklusjonMer', { a: beste.program.kortnavn, n: fmtPoeng(diff), kr: iKroner(diff), b: nest.program.kortnavn })
+              ? T('konklusjonMer', { a: beste.program.kortnavn, n: fmtPoeng(diff), b: nest.program.kortnavn })
               : T('konklusjonLikt', { a: beste.program.kortnavn, b: nest.program.kortnavn })}
           </p>
         )}
         {kortTips && (
           <p className="tips">
-            <span>{T('tips', { kort: kortTips.kort.navn, program: kortTips.program.kortnavn, n: fmtPoeng(kortTips.ekstra), kr: iKroner(kortTips.ekstra) })}</span>
+            <span>{T('tips', { kort: kortTips.kort.navn, program: kortTips.program.kortnavn, n: fmtPoeng(kortTips.ekstra) })}</span>
             <a href={kortLenke(kortTips.kort)!} target="_blank" rel={kortTips.kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
               {T('sokOmKortet')} <span aria-hidden="true">→</span>
             </a>
@@ -570,7 +540,6 @@ export default function App() {
           <p key={m}>{m}</p>
         ))}
         {butikk && <p>{T('satserHentet', { butikk: butikk.navn, dato: fmtDato(data.hentet) })}</p>}
-        {orePerPoeng > 0 && <p>{T('poengverdiForklaring', { ore: fmtTall(orePerPoeng) })}</p>}
         <p>{T('forbehold', { valuta: data.landInfo[t.land].valuta, dato: fmtDato(data.sistOppdatert) })}</p>
         {harAnnonse && <p>{T('annonseForklaring')}</p>}
         <p className="signatur">{T('signatur')}</p>

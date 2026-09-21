@@ -24,12 +24,10 @@ export const TEKSTER = {
   sokOm: { nb: 'Søk om {kort}', sv: 'Ansök om {kort}', da: 'Ansøg om {kort}' },
   sokOmKortet: { nb: 'Søk om kortet', sv: 'Ansök om kortet', da: 'Ansøg om kortet' },
   annonse: { nb: 'Annonse', sv: 'Annons', da: 'Annonce' },
-  poengverdi: { nb: 'Poengverdi', sv: 'Poängvärde', da: 'Pointværdi' },
-  orePerPoeng: { nb: 'øre/poeng', sv: 'öre/poäng', da: 'øre/point' },
   perHundre: { nb: '{n} per 100 kr', sv: '{n} per 100 kr', da: '{n} per 100 kr' },
   mestPoeng: { nb: 'Mest poeng', sv: 'Flest poäng', da: 'Flest point' },
   handleVia: { nb: 'Handle via {program}', sv: 'Handla via {program}', da: 'Køb via {program}' },
-  konklusjonMer: { nb: '{a} gir {n} poeng{kr} mer enn {b}.', sv: '{a} ger {n} poäng{kr} mer än {b}.', da: '{a} giver {n} point{kr} mere end {b}.' },
+  konklusjonMer: { nb: '{a} gir {n} poeng mer enn {b}.', sv: '{a} ger {n} poäng mer än {b}.', da: '{a} giver {n} point mere end {b}.' },
   konklusjonLikt: { nb: '{a} og {b} gir like mye.', sv: '{a} och {b} ger lika mycket.', da: '{a} og {b} giver lige meget.' },
   skrivBelop: { nb: 'Skriv inn en kjøpesum.', sv: 'Ange en köpesumma.', da: 'Indtast en købesum.' },
   skrivSats: {
@@ -37,7 +35,7 @@ export const TEKSTER = {
     sv: 'Ange satsen för minst ett program, eller sök upp en butik.',
     da: 'Indtast satsen for mindst ét program, eller søg en butik frem.',
   },
-  tips: { nb: 'Med {kort} hadde {program} gitt {n} poeng{kr} mer.', sv: 'Med {kort} hade {program} gett {n} poäng{kr} mer.', da: 'Med {kort} havde {program} givet {n} point{kr} mere.' },
+  tips: { nb: 'Med {kort} hadde {program} gitt {n} poeng mer.', sv: 'Med {kort} hade {program} gett {n} poäng mer.', da: 'Med {kort} havde {program} givet {n} point mere.' },
   satserHentet: {
     nb: 'Satser for {butikk} hentet {dato} fra programmenes egne sider.',
     sv: 'Satser för {butikk} hämtade {dato} från programmens egna sidor.',
@@ -47,11 +45,6 @@ export const TEKSTER = {
     nb: 'Beløp i {valuta}. Satser endres – sjekk hos programmet før du handler. Programsatser sist oppdatert {dato}.',
     sv: 'Belopp i {valuta}. Satser ändras – kontrollera hos programmet innan du handlar. Programsatser senast uppdaterade {dato}.',
     da: 'Beløb i {valuta}. Satser ændres – tjek hos programmet, før du handler. Programsatser senest opdateret {dato}.',
-  },
-  poengverdiForklaring: {
-    nb: 'Kroneverdien er et anslag: {ore} øre per poeng. Juster den i feltet «Poengverdi».',
-    sv: 'Kronvärdet är en uppskattning: {ore} öre per poäng. Justera det i fältet «Poängvärde».',
-    da: 'Kroneværdien er et skøn: {ore} øre per point. Juster det i feltet «Pointværdi».',
   },
   annonseForklaring: {
     nb: 'Lenker merket «Annonse» gir oss provisjon hvis du søker om kortet. Det påvirker ikke tallene.',
