@@ -161,5 +161,98 @@
     "status": "verifisert",
     "kilde": "https://www.lunar.app/no/privat/sas-eurobonus",
     "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "se-sas-amex-classic",
+    "land": [
+      "SE"
+    ],
+    "navn": "SAS Amex Classic",
+    "utsteder": "American Express",
+    "poengPer100": 10,
+    "pris": "0 kr/mnd (30 kr/mnd fra 01.11.2026)",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-classic/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "se-sas-amex-premium",
+    "land": [
+      "SE"
+    ],
+    "navn": "SAS Amex Premium",
+    "utsteder": "American Express",
+    "poengPer100": 15,
+    "pris": "150 kr/mnd",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "se-sas-amex-elite",
+    "land": [
+      "SE"
+    ],
+    "navn": "SAS Amex Elite",
+    "utsteder": "American Express",
+    "poengPer100": 20,
+    "pris": "575 kr/mnd",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "se-sas-mastercard-world",
+    "land": [
+      "SE"
+    ],
+    "navn": "SAS EuroBonus World Mastercard",
+    "utsteder": "SEB Kort",
+    "poengPer100": 10,
+    "pris": "515 kr/år (258 kr första året)",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.se/korten/mastercard/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år."
+  },
+  {
+    "id": "se-sas-mastercard-premium",
+    "land": [
+      "SE"
+    ],
+    "navn": "SAS EuroBonus Mastercard Premium",
+    "utsteder": "SEB Kort",
+    "poengPer100": 15,
+    "pris": "2 335 kr/år",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.se/korten/mastercard-premium/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "dk-sas-mastercard-world",
+    "land": [
+      "DK"
+    ],
+    "navn": "SAS EuroBonus World Mastercard",
+    "utsteder": "SEB Kort",
+    "poengPer100": 10,
+    "pris": "415 kr/år (208 kr første år)",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år."
+  },
+  {
+    "id": "dk-sas-mastercard-premium",
+    "land": [
+      "DK"
+    ],
+    "navn": "SAS EuroBonus Mastercard Premium",
+    "utsteder": "SEB Kort",
+    "poengPer100": 15,
+    "pris": "2 335 kr/år",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard-premium/",
+    "sistVerifisert": "2026-09-21"
   }
 ]
