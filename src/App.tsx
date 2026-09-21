@@ -268,9 +268,11 @@ export default function App() {
   // programmer der kortet gir poeng i tillegg (Trumf, SAS Shopping, Everyday).
   const besteKort = kortListe.filter(kortLenke).reduce<Kort | null>((b, k) => (b === null || k.poengPer100 > b.poengPer100 ? k : b), null);
   const medKortlag = belop > 0 ? resultater.find((r) => r.program.kortlag) : undefined;
+  const ekstraMedBesteKort = besteKort ? (belop / 100) * (besteKort.poengPer100 - (kort?.poengPer100 ?? 0)) : 0;
+  // Vises bare når forskjellen er verdt å nevne (minst 50 poeng).
   const kortTips =
-    besteKort && medKortlag && besteKort.poengPer100 > (kort?.poengPer100 ?? 0) && besteKort.id !== kort?.id
-      ? { kort: besteKort, program: medKortlag.program, ekstra: (belop / 100) * (besteKort.poengPer100 - (kort?.poengPer100 ?? 0)) }
+    besteKort && medKortlag && besteKort.id !== kort?.id && ekstraMedBesteKort >= 50
+      ? { kort: besteKort, program: medKortlag.program, ekstra: ekstraMedBesteKort }
       : null;
   const harAnnonse = kortListe.some((k) => k.annonse);
 
