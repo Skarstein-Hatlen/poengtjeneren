@@ -954,7 +954,8 @@
   "zoo": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "zooplus": {"sas-online-shopping-se":[["2026-09-21",10]],"klarna-se":[["2026-09-21",2]]},
   "zwilling": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3]]},
-  "onskefoto": {"sas-online-shopping-se":[["2026-09-21",50]],"klarna-se":[["2026-09-21",3.5]]}
+  "onskefoto": {"sas-online-shopping-se":[["2026-09-21",50]],"klarna-se":[["2026-09-21",3.5]]},
+  "layered": {"klarna-se":[["2026-09-21",3.5]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},

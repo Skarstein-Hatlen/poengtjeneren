@@ -113,6 +113,10 @@ export interface Butikk {
   navn: string;
   /** Logo slik programmet selv viser den (lenke til programmets bildeserver). */
   logo?: string;
+  /** Butikkens nettadresse uten www, f.eks. «kicks.no» (fra Klarna). Brukes av nettleserutvidelsen. */
+  domene?: string;
+  /** Våre kategori-id-er (mote, sport, elektronikk …). */
+  kategorier?: string[];
   satser: Record<string, ButikkSats>;
 }
 

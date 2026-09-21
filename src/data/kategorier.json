@@ -1,0 +1,13 @@
+{
+  "mote": { "nb": "Klær og mote", "sv": "Kläder och mode", "da": "Tøj og mode" },
+  "sport": { "nb": "Sport og fritid", "sv": "Sport och fritid", "da": "Sport og fritid" },
+  "elektronikk": { "nb": "Elektronikk", "sv": "Elektronik", "da": "Elektronik" },
+  "hjem": { "nb": "Hjem og interiør", "sv": "Hem och inredning", "da": "Hjem og bolig" },
+  "skjonnhet": { "nb": "Helse og skjønnhet", "sv": "Hälsa och skönhet", "da": "Sundhed og skønhed" },
+  "reise": { "nb": "Reise", "sv": "Resor", "da": "Rejser" },
+  "barn": { "nb": "Barn og baby", "sv": "Barn och baby", "da": "Børn og baby" },
+  "dyr": { "nb": "Dyr", "sv": "Djur", "da": "Dyr" },
+  "underholdning": { "nb": "Underholdning", "sv": "Underhållning", "da": "Underholdning" },
+  "mat": { "nb": "Mat og drikke", "sv": "Mat och dryck", "da": "Mad og drikke" },
+  "tjenester": { "nb": "Tjenester og annet", "sv": "Tjänster och annat", "da": "Tjenester og andet" }
+}

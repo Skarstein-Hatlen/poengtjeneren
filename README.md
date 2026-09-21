@@ -28,3 +28,10 @@ npm run dev
 - `src/data/history.json` fylles av `npm run hent` med `[dato, sats]` hver gang en sats endrer seg; kalkulatoren viser en liten kurve og «høyeste sats siden …» per program når en butikk er valgt.
 - Språk og tallformat følger flagget (norsk, svensk, dansk). Tekstene ligger i `src/i18n.ts`; svenske og danske programtekster ligger i `programs.json`.
 - Poengverdi (øre per poeng) kan justeres i kalkulatoren og gir «≈ kr» ved siden av poengene.
+
+## Sider, varsler og utvidelse
+
+- Sider per land: `/no` (kalkulator), `/no/kicks` (butikk), `/no/butikker` og `/no/butikker/elektronikk` (katalog med kategori), `/no/nytt` (kampanjer og satsendringer siste 30 dager) og `/no/kort` (kort som gir EuroBonus). Alle lages statisk av `scripts/bygg-butikksider.mjs`.
+- Kategorier og butikkdomener hentes av `npm run hent` (Trumf-kategorisider, SAS-kategorier, Klarnas `category` og `merchantUrl`). Kategorinavn ligger i `src/data/kategorier.json`.
+- Varsler: «Følg butikk» sender e-postadressen til Buttondown med butikken som tag. Sett `brukernavn` i `src/data/varsler.json` for å vise knappen, og legg API-nøkkelen som GitHub-secret `BUTTONDOWN_API_KEY`; `scripts/send-varsler.mjs` sender e-post hver natt til dem som følger butikker med ny sats.
+- Nettleserutvidelse (Chrome, Manifest V3) ligger i `extension/`. Den henter `https://pointmaxing.no/api/butikker.json` daglig og viser beste poeng per 100 kr som merke på ikonet når du er inne på en kjent butikk. Last inn via chrome://extensions → Utviklermodus → «Last inn upakket».

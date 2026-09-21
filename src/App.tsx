@@ -1,11 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Flagg from './components/Flagg';
+import Folg from './components/Folg';
+import Kortliste from './components/Kortliste';
+import Nytt from './components/Nytt';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import { hentData, LAND } from './data';
 import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
-import { SPRAK, tekst } from './i18n';
+import { SPRAK, tekst, type Nokkel } from './i18n';
 import { gjeldendeSats } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
@@ -16,6 +19,20 @@ const INGEN = 'ingen';
 const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
+
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort';
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort' };
+const NAV: { visning: Visning; nokkel: Nokkel }[] = [
+  { visning: 'kalk', nokkel: 'navKalkulator' },
+  { visning: 'butikker', nokkel: 'navButikker' },
+  { visning: 'nytt', nokkel: 'navNytt' },
+  { visning: 'kort', nokkel: 'navKort' },
+];
+
+interface Rute {
+  visning: Visning;
+  kategori: string | null;
+}
 
 interface Tilstand {
   land: Land;
@@ -41,18 +58,23 @@ const standardKort = (land: Land): string => {
   return p ? `${p.id}-kort` : INGEN;
 };
 
-/** Adressen /no/kicks ↔ land og butikk, så hver butikk kan deles og finnes av søkemotorer. */
-function lesSti(): { land?: Land; butikkId?: string } {
-  const [sti, butikkId] = window.location.pathname.split('/').filter(Boolean);
+/**
+ * Adressen styrer land, visning og butikk: /no (kalkulator), /no/kicks (butikk),
+ * /no/butikker/mote (katalog), /no/nytt, /no/kort. Da kan alt deles og finnes av søkemotorer.
+ */
+function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
+  const [sti, a, b] = window.location.pathname.split('/').filter(Boolean);
   const land = LAND.find((l) => SPRAK[l].sti === sti);
-  return land ? { land, butikkId } : {};
+  if (!land) return { rute: { visning: 'kalk', kategori: null } };
+  if (a && VISNINGER[a]) return { land, rute: { visning: VISNINGER[a], kategori: a === 'butikker' ? (b ?? null) : null } };
+  return { land, butikkId: a, rute: { visning: 'kalk', kategori: null } };
 }
 
-function skrivSti(land: Land, butikkId: string | null, erstatt = false) {
-  const ny = `/${SPRAK[land].sti}${butikkId ? `/${butikkId}` : ''}`;
-  if (window.location.pathname === ny) return;
-  if (erstatt) window.history.replaceState(null, '', ny);
-  else window.history.pushState(null, '', ny);
+function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
+  const s = `/${SPRAK[land].sti}`;
+  if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
+  if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
+  return `${s}/${rute.visning}`;
 }
 
 /**
@@ -189,12 +211,13 @@ function utregning(land: Land, r: Resultat, kort: Kort | null): string {
 
 export default function App() {
   const [t, setT] = useState<Tilstand>(les);
+  const [rute, setRute] = useState<Rute>(() => lesSti().rute);
   const [apen, setApen] = useState<string | null>(null);
-  const [visKatalog, setVisKatalog] = useState(false);
+  const forsteSti = useRef(true);
 
   // Språk og tallformat følger landet.
   settLocale(SPRAK[t.land].locale);
-  const T = (nokkel: Parameters<typeof tekst>[1], verdier?: Record<string, string | number>) => tekst(t.land, nokkel, verdier);
+  const T = (nokkel: Nokkel, verdier?: Record<string, string | number>) => tekst(t.land, nokkel, verdier);
 
   useEffect(() => {
     try {
@@ -204,19 +227,26 @@ export default function App() {
     }
   }, [t]);
 
-  // Adressen følger land og butikk, og tilbake-knappen i nettleseren virker.
+  // Adressen følger land, visning og butikk – og tilbake-knappen i nettleseren virker.
   useEffect(() => {
-    skrivSti(t.land, t.butikkId, true);
+    const ny = stiFor(t.land, rute, t.butikkId);
+    if (window.location.pathname !== ny) {
+      if (forsteSti.current) window.history.replaceState(null, '', ny);
+      else window.history.pushState(null, '', ny);
+    }
+    forsteSti.current = false;
     document.documentElement.lang = SPRAK[t.land].kode;
-  }, [t.land, t.butikkId]);
+    window.scrollTo(0, 0);
+  }, [t.land, t.butikkId, rute]);
 
   useEffect(() => {
     const tilbake = () => {
       const sti = lesSti();
+      setRute(sti.rute);
       setT((s) => {
         let n = sti.land && sti.land !== s.land ? medLand(s, sti.land) : s;
         const b = sti.butikkId ? data.butikker[n.land].find((x) => x.id === sti.butikkId) : undefined;
-        n = b ? medButikk(n, b) : { ...n, butikk: '', butikkId: null };
+        n = b ? medButikk(n, b) : sti.rute.visning === 'kalk' ? { ...n, butikk: '', butikkId: null } : n;
         return n;
       });
     };
@@ -270,8 +300,12 @@ export default function App() {
   const diff = beste && nest ? beste.total - nest.total : 0;
   const apent = resultater.find((r) => r.program.id === apen) ?? null;
 
-  const velgButikk = (b: Butikk) => setT((s) => medButikk(s, b));
+  const velgButikk = (b: Butikk) => {
+    setT((s) => medButikk(s, b));
+    setRute({ visning: 'kalk', kategori: null });
+  };
   const velgLand = (land: Land) => setT((s) => medLand(s, land));
+  const gaaTil = (visning: Visning) => setRute({ visning, kategori: null });
 
   /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
   const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
@@ -332,31 +366,49 @@ export default function App() {
   const harAnnonse = kortListe.some((k) => k.annonse);
 
   const topp = (
-    <header className="topp">
-      <div>
-        <span className="ordmerke">Pointmaxing</span>
-        <span className="slagord">{T('slagord')}</span>
-      </div>
-      <div className="flagg" role="radiogroup" aria-label={T('land')}>
-        {LAND.map((l) => (
-          <button
-            key={l}
-            type="button"
-            role="radio"
-            aria-checked={t.land === l}
-            aria-label={data.landInfo[l].navn}
-            title={data.landInfo[l].navn}
-            className={t.land === l ? 'aktiv' : undefined}
-            onClick={() => velgLand(l)}
+    <>
+      <header className="topp">
+        <div>
+          <span className="ordmerke">Pointmaxing</span>
+          <span className="slagord">{T('slagord')}</span>
+        </div>
+        <div className="flagg" role="radiogroup" aria-label={T('land')}>
+          {LAND.map((l) => (
+            <button
+              key={l}
+              type="button"
+              role="radio"
+              aria-checked={t.land === l}
+              aria-label={data.landInfo[l].navn}
+              title={data.landInfo[l].navn}
+              className={t.land === l ? 'aktiv' : undefined}
+              onClick={() => velgLand(l)}
+            >
+              <Flagg land={l} />
+            </button>
+          ))}
+        </div>
+      </header>
+      <nav className="nav" aria-label="Sider">
+        {NAV.map((n) => (
+          <a
+            key={n.visning}
+            href={stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null)}
+            className={rute.visning === n.visning ? 'aktiv' : undefined}
+            aria-current={rute.visning === n.visning ? 'page' : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              gaaTil(n.visning);
+            }}
           >
-            <Flagg land={l} />
-          </button>
+            {T(n.nokkel)}
+          </a>
         ))}
-      </div>
-    </header>
+      </nav>
+    </>
   );
 
-  if (visKatalog) {
+  if (rute.visning === 'butikker') {
     return (
       <div className="app">
         {topp}
@@ -367,13 +419,38 @@ export default function App() {
             programmer={programmer}
             idag={IDAG}
             per100={per100ForSats}
-            onVelg={(b) => {
-              velgButikk(b);
-              setVisKatalog(false);
-            }}
-            onLukk={() => setVisKatalog(false)}
+            kategori={rute.kategori}
+            onKategori={(kategori) => setRute({ visning: 'butikker', kategori })}
+            onVelg={velgButikk}
+            onLukk={() => gaaTil('kalk')}
           />
         </div>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'nytt') {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <Nytt land={t.land} butikker={butikker} programmer={programmer} historikk={data.historikk[t.land]} idag={IDAG} onVelg={velgButikk} />
+        </div>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'kort') {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <Kortliste land={t.land} kort={[...programKortListe.filter((k) => k.poengPer100 > 0), ...kortListe]} lenke={kortLenke} />
+        </div>
+        <footer>
+          {harAnnonse && <p>{T('annonseForklaring')}</p>}
+          <p className="signatur">{T('signatur')}</p>
+        </footer>
       </div>
     );
   }
@@ -416,7 +493,7 @@ export default function App() {
               valgt={butikk}
               placeholder={T('sokButikk')}
             />
-            <button type="button" className="lenke" onClick={() => setVisKatalog(true)}>
+            <button type="button" className="lenke" onClick={() => gaaTil('butikker')}>
               {T('alle', { n: butikker.length })}
             </button>
           </div>
@@ -533,6 +610,7 @@ export default function App() {
         )}
         {belop <= 0 && <p className="tom">{T('skrivBelop')}</p>}
         {belop > 0 && resultater.length === 0 && <p className="tom">{T('skrivSats')}</p>}
+        {butikk && <Folg land={t.land} butikk={butikk} />}
       </div>
 
       <footer>

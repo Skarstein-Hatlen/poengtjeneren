@@ -21,6 +21,10 @@ jobs:
       - run: npm ci
       - run: npm run hent
       - run: npm test
+      # E-post til dem som følger butikker som fikk ny sats i dag (krever BUTTONDOWN_API_KEY som secret).
+      - run: node scripts/send-varsler.mjs
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
       - name: Commit og push hvis satsene endret seg
         id: commit
         run: |

@@ -68,6 +68,34 @@ function pyntNavn(navn) {
   return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) : navn;
 }
 
+/**
+ * Våre kategorier (id → gjenkjennes på nøkkelord i kildenes egne kategorinavn).
+ * Ukjente kategorier havner i «tjenester».
+ */
+const KATEGORIER = {
+  mote: ['mote', 'fashion', 'klaer', 'kläder', 'toj', 'sko', 'shoes', 'clothing', 'apparel', 'smykker', 'jewel', 'ur', 'watch', 'accessor'],
+  sport: ['sport', 'fritid', 'outdoor', 'trening', 'fitness', 'friluft'],
+  elektronikk: ['elektronikk', 'elektronik', 'electronic', 'data', 'computer', 'tech', 'mobil', 'gaming', 'foto'],
+  hjem: ['hjem', 'hus', 'bolig', 'home', 'interior', 'interiør', 'mobler', 'möbler', 'hage', 'garden', 'gaver', 'blomster', 'gift'],
+  skjonnhet: ['helse', 'skjonhet', 'skjønnhet', 'skönhet', 'beauty', 'health', 'velvære', 'velvare', 'apotek', 'pharm', 'optik'],
+  reise: ['reise', 'resor', 'rejse', 'travel', 'hotel', 'fly', 'flight', 'leiebil', 'bil'],
+  barn: ['barn', 'baby', 'kids', 'child', 'lek', 'toy'],
+  dyr: ['dyr', 'djur', 'pet', 'kjæledyr'],
+  underholdning: ['underholdning', 'boker', 'bøker', 'böcker', 'film', 'musikk', 'musik', 'spill', 'spel', 'media', 'entertainment', 'book', 'streaming', 'game'],
+  mat: ['mat', 'drikke', 'dryck', 'food', 'drink', 'grocery', 'dagligvare', 'vin'],
+};
+
+function kategoriFor(tekst) {
+  const t = String(tekst ?? '')
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
+  for (const [id, ord] of Object.entries(KATEGORIER)) if (ord.some((o) => t.includes(o))) return id;
+  return 'tjenester';
+}
+
+const TRUMF_KATEGORIER = { reise: 'reise', mote: 'mote', sport: 'sport', elektronikk: 'elektronikk', bolig: 'hjem', 'velvære': 'skjonnhet', underholdning: 'underholdning', barn: 'barn', dyr: 'dyr', tjenester: 'tjenester' };
+
 /** «Opptil 6,2 %» → { verdi: 6.2, opptil: true }. Faste kronebeløp («270 kr») gir null. */
 function lesProsent(tekst) {
   const m = tekst.match(/(opptil)?\s*([\d.,]+)\s*%/i);
@@ -75,7 +103,22 @@ function lesProsent(tekst) {
   return { verdi: Number(m[2].replace(',', '.')), opptil: Boolean(m[1]) };
 }
 
+/** Trumf-butikker per kategori: navn → våre kategorier. */
+async function hentTrumfKategorier() {
+  const per = new Map();
+  for (const [trumfKat, vaar] of Object.entries(TRUMF_KATEGORIER)) {
+    for (let side = 0; side < 10; side++) {
+      const html = await (await hent(`https://trumfnetthandel.no/category/paged/${encodeURIComponent(trumfKat)}/60/${side}/popularity`)).text();
+      const navn = [...html.matchAll(/data-name="([^"]*)"/g)].map((m) => normaliser(dekod(m[1])));
+      for (const n of navn) (per.get(n) ?? per.set(n, new Set()).get(n)).add(vaar);
+      if (navn.length < 60) break;
+    }
+  }
+  return per;
+}
+
 async function hentTrumf() {
+  const kategorier = await hentTrumfKategorier();
   const ut = [];
   for (let side = 0; side < 30; side++) {
     const html = await (await hent(`https://trumfnetthandel.no/category/paged/all/60/${side}/popularity`)).text();
@@ -84,14 +127,24 @@ async function hentTrumf() {
     for (const m of html.matchAll(re)) {
       antall++;
       const sats = lesProsent(m[2]);
-      if (sats) ut.push({ navn: dekod(m[3]), ...sats, logo: m[4] || undefined, kilde: `https://trumfnetthandel.no${m[1]}` });
+      const navn = dekod(m[3]);
+      if (sats) ut.push({ navn, ...sats, logo: m[4] || undefined, kategorier: [...(kategorier.get(normaliser(navn)) ?? [])], kilde: `https://trumfnetthandel.no${m[1]}` });
     }
     if (antall < 60) break;
   }
   return ut;
 }
 
+let sasKategorier = null;
+async function hentSasKategorier() {
+  if (sasKategorier) return sasKategorier;
+  const { data } = await (await hent('https://onlineshopping.loyaltykey.com/api/v1/shops/categories?filter[language]=nb')).json();
+  sasKategorier = new Map(data.map((k) => [k.category_id, kategoriFor(`${k.slug} ${k.name}`)]));
+  return sasKategorier;
+}
+
 async function hentSas({ country, language, sti }) {
+  const kategorier = await hentSasKategorier();
   const url =
     'https://onlineshopping.loyaltykey.com/api/v1/shops' +
     `?filter[channel]=SAS&filter[language]=${language}&filter[country]=${country}&filter[amount]=5000`;
@@ -109,6 +162,7 @@ async function hentSas({ country, language, sti }) {
         opptil: false,
         kampanje,
         logo: s.logo || s.image_url || undefined,
+        kategorier: s.categoryId && kategorier.has(s.categoryId) ? [kategorier.get(s.categoryId)] : [],
         kilde: `https://onlineshopping.flysas.com/${sti}/${s.slug}/${s.uuid}`,
       };
     });
@@ -126,11 +180,15 @@ async function hentKlarna({ sti, country }) {
       const cb = s.cashbackDiscount;
       if (!cb || !s.displayName) continue;
       const logo = s.icons?.find((i) => i.type === 'X3')?.url ?? s.icons?.[0]?.url;
+      // Butikkens domene ligger i lenken til engangskortet (merchantUrl=kicks.no).
+      const domene = s.otcUrl?.match(/merchantUrl=([^&]+)/)?.[1]?.toLowerCase().replace(/^www\./, '');
       ut.push({
         navn: pyntNavn(dekod(s.displayName)),
         verdi: cb.discountPercentage / 100,
         opptil: Boolean(cb.showUpToPrefix),
         logo,
+        domene,
+        kategorier: s.category ? [kategoriFor(s.category)] : [],
         kilde: `https://www.klarna.com${s.storeUrl}`,
       });
     }
@@ -147,10 +205,12 @@ function slaSammen(kilder) {
     for (const rad of rader) {
       const id = normaliser(rad.navn);
       if (!id) continue;
-      const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, satser: {} };
+      const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, kategorier: [], satser: {} };
       if (eksisterende.navn === eksisterende.navn.toUpperCase() && rad.navn !== rad.navn.toUpperCase()) eksisterende.navn = rad.navn;
-      const { navn: _navn, logo, ...sats } = rad;
+      const { navn: _navn, logo, domene, kategorier, ...sats } = rad;
       if (logo && !eksisterende.logo) eksisterende.logo = logo;
+      if (domene && !eksisterende.domene) eksisterende.domene = domene;
+      for (const k of kategorier ?? []) if (!eksisterende.kategorier.includes(k)) eksisterende.kategorier.push(k);
       eksisterende.satser[programId] = sats;
       butikker.set(id, eksisterende);
     }

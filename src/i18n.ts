@@ -1,3 +1,4 @@
+import kategorierJson from './data/kategorier.json';
 import type { Land } from './data/types';
 import type { Locale } from './lib/format';
 
@@ -10,9 +11,16 @@ export const SPRAK: Record<Land, { locale: Locale; kode: 'nb' | 'sv' | 'da'; sti
 
 type Oversettelse = { nb: string; sv: string; da: string };
 
+/** Butikkategoriene, i samme rekkefølge som de vises. Id-ene settes av scripts/hent-butikker.mjs. */
+export const KATEGORIER = kategorierJson as Record<string, Oversettelse>;
+
 export const TEKSTER = {
   slagord: { nb: 'Hvor lønner kjøpet seg?', sv: 'Var lönar sig köpet?', da: 'Hvor kan købet bedst betale sig?' },
   land: { nb: 'Land', sv: 'Land', da: 'Land' },
+  navKalkulator: { nb: 'Kalkulator', sv: 'Kalkylator', da: 'Beregner' },
+  navButikker: { nb: 'Butikker', sv: 'Butiker', da: 'Butikker' },
+  navNytt: { nb: 'Nytt', sv: 'Nytt', da: 'Nyt' },
+  navKort: { nb: 'Kort', sv: 'Kort', da: 'Kort' },
   kjopesum: { nb: 'Kjøpesum', sv: 'Köpesumma', da: 'Købesum' },
   butikk: { nb: 'Butikk', sv: 'Butik', da: 'Butik' },
   sokButikk: { nb: 'Søk butikk', sv: 'Sök butik', da: 'Søg butik' },
@@ -86,11 +94,38 @@ export const TEKSTER = {
   flestPoeng: { nb: 'Flest poeng', sv: 'Flest poäng', da: 'Flest point' },
   sortering: { nb: 'Sortering', sv: 'Sortering', da: 'Sortering' },
   visButikkerHos: { nb: 'Vis butikker som finnes hos', sv: 'Visa butiker som finns hos', da: 'Vis butikker, der findes hos' },
+  kategori: { nb: 'Kategori', sv: 'Kategori', da: 'Kategori' },
+  alleKategorier: { nb: 'Alle kategorier', sv: 'Alla kategorier', da: 'Alle kategorier' },
   pPer100kr: { nb: 'p/100 kr', sv: 'p/100 kr', da: 'p/100 kr' },
   forsteMaling: { nb: 'Første måling {dato}', sv: 'Första mätningen {dato}', da: 'Første måling {dato}' },
   hoyesteSiden: { nb: 'Høyeste sats siden {dato}', sv: 'Högsta satsen sedan {dato}', da: 'Højeste sats siden {dato}' },
   lavereEnnTopp: { nb: 'Lavere enn toppen ({verdi})', sv: 'Lägre än toppen ({verdi})', da: 'Lavere end toppen ({verdi})' },
   historikk: { nb: 'Sats over tid', sv: 'Sats över tid', da: 'Sats over tid' },
+  // Nytt
+  kampanjerNaa: { nb: 'Kampanjer nå', sv: 'Kampanjer just nu', da: 'Kampagner lige nu' },
+  gikkOpp: { nb: 'Gikk opp siste 30 dager', sv: 'Gick upp senaste 30 dagarna', da: 'Steg de seneste 30 dage' },
+  gikkNed: { nb: 'Gikk ned siste 30 dager', sv: 'Gick ner senaste 30 dagarna', da: 'Faldt de seneste 30 dage' },
+  ingenKampanjer: { nb: 'Ingen kampanjer akkurat nå.', sv: 'Inga kampanjer just nu.', da: 'Ingen kampagner lige nu.' },
+  ingenEndringer: { nb: 'Ingen endringer ennå – satsene sjekkes hver natt.', sv: 'Inga ändringar ännu – satserna kontrolleras varje natt.', da: 'Ingen ændringer endnu – satserne tjekkes hver nat.' },
+  utloper: { nb: 'til {dato}', sv: 'till {dato}', da: 'til {dato}' },
+  normalt: { nb: 'normalt {sats}', sv: 'normalt {sats}', da: 'normalt {sats}' },
+  // Kort
+  kortTittel: { nb: 'Kort som gir EuroBonus-poeng', sv: 'Kort som ger EuroBonus-poäng', da: 'Kort, der giver EuroBonus-point' },
+  kortForklaring: {
+    nb: 'Poeng per 100 kr på vanlige kjøp. Kortpoengene kommer i tillegg til Trumf og SAS Shopping – ikke Klarna.',
+    sv: 'Poäng per 100 kr på vanliga köp. Kortpoängen kommer utöver SAS Shopping – inte Klarna.',
+    da: 'Point per 100 kr på almindelige køb. Kortpointene kommer oven i SAS Shopping – ikke Klarna.',
+  },
+  pris: { nb: 'Pris', sv: 'Pris', da: 'Pris' },
+  // Følg
+  folg: { nb: 'Følg {butikk}', sv: 'Följ {butikk}', da: 'Følg {butikk}' },
+  folgForklaring: {
+    nb: 'Få e-post når satsen hos {butikk} endrer seg eller en kampanje starter.',
+    sv: 'Få e-post när satsen hos {butikk} ändras eller en kampanj startar.',
+    da: 'Få e-mail, når satsen hos {butikk} ændrer sig, eller en kampagne starter.',
+  },
+  epost: { nb: 'E-post', sv: 'E-post', da: 'E-mail' },
+  folgKnapp: { nb: 'Følg', sv: 'Följ', da: 'Følg' },
 } satisfies Record<string, Oversettelse>;
 
 export type Nokkel = keyof typeof TEKSTER;
@@ -100,4 +135,9 @@ export function tekst(land: Land, nokkel: Nokkel, verdier: Record<string, string
   let s: string = TEKSTER[nokkel][SPRAK[land].kode];
   for (const [k, v] of Object.entries(verdier)) s = s.split(`{${k}}`).join(String(v));
   return s;
+}
+
+export function kategoriNavn(land: Land, id: string): string {
+  const k = KATEGORIER[id];
+  return k ? k[SPRAK[land].kode] : id;
 }

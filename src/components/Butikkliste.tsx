@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Butikk, ButikkSats, Land, Program } from '../data/types';
-import { tekst } from '../i18n';
+import { KATEGORIER, kategoriNavn, tekst } from '../i18n';
 import { gjeldendeSats, sokButikker } from '../lib/butikker';
 import { fmtPer100, fmtTall } from '../lib/format';
 
@@ -11,6 +11,9 @@ interface Props {
   idag: string;
   /** EuroBonus-poeng per 100 kr for en butikksats, med brukerens valg (abonnement o.l.). null = kan ikke veksles. */
   per100: (program: Program, sats: ButikkSats) => number | null;
+  /** Valgt kategori (styres av adressen: /no/butikker/mote). */
+  kategori: string | null;
+  onKategori: (kategori: string | null) => void;
   onVelg: (butikk: Butikk) => void;
   onLukk: () => void;
 }
@@ -34,7 +37,7 @@ export function ButikkLogo({ butikk }: { butikk: Butikk }) {
 }
 
 /** Alle butikkene vi har satser på, med logo og satsene per program. */
-export default function Butikkliste({ land, liste, programmer, idag, per100, onVelg, onLukk }: Props) {
+export default function Butikkliste({ land, liste, programmer, idag, per100, kategori, onKategori, onVelg, onLukk }: Props) {
   const [filter, setFilter] = useState('');
   const [sortering, setSortering] = useState<Sortering>('navn');
   // Avhukede programmer: butikken må finnes i alle dem (og kan i tillegg finnes i flere).
@@ -56,8 +59,12 @@ export default function Butikkliste({ land, liste, programmer, idag, per100, onV
     return topp;
   };
 
+  // Kategorier som faktisk finnes i landet, i fast rekkefølge.
+  const kategorier = Object.keys(KATEGORIER).filter((k) => liste.some((b) => b.kategorier?.includes(k)));
+
   const treff = (filter.trim() ? sokButikker(liste, filter, Infinity) : liste)
     .filter((b) => valgte.every((id) => b.satser[id]))
+    .filter((b) => !kategori || b.kategorier?.includes(kategori))
     .map((b) => ({ b, beste: beste(b) }));
   if (sortering === 'poeng') treff.sort((x, y) => (y.beste?.per100 ?? -1) - (x.beste?.per100 ?? -1));
 
@@ -80,8 +87,18 @@ export default function Butikkliste({ land, liste, programmer, idag, per100, onV
           );
         })}
       </div>
+      <div className="programfilter kategorifilter" role="group" aria-label={tekst(land, 'kategori')}>
+        <button type="button" className={`programknapp${kategori === null ? ' aktiv' : ''}`} aria-pressed={kategori === null} onClick={() => onKategori(null)}>
+          {tekst(land, 'alleKategorier')}
+        </button>
+        {kategorier.map((k) => (
+          <button key={k} type="button" className={`programknapp${kategori === k ? ' aktiv' : ''}`} aria-pressed={kategori === k} onClick={() => onKategori(k)}>
+            {kategoriNavn(land, k)}
+          </button>
+        ))}
+      </div>
       <div className="katalog-verktoy">
-        <input type="search" placeholder={tekst(land, 'filtrer')} autoComplete="off" autoFocus value={filter} onChange={(e) => setFilter(e.target.value)} />
+        <input type="search" placeholder={tekst(land, 'filtrer')} autoComplete="off" value={filter} onChange={(e) => setFilter(e.target.value)} />
         <div className="sortering" role="group" aria-label={tekst(land, 'sortering')}>
           <button type="button" className={`lenke${sortering === 'navn' ? ' aktiv' : ''}`} aria-pressed={sortering === 'navn'} onClick={() => setSortering('navn')}>
             {tekst(land, 'alfabetisk')}
