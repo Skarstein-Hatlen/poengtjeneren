@@ -1,0 +1,43 @@
+name: Hent satser
+
+on:
+  schedule:
+    - cron: '0 5 * * 1' # hver mandag 05:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run hent
+      - run: npm test
+      - name: Commit og push hvis satsene endret seg
+        id: commit
+        run: |
+          if git diff --quiet -- src/data/stores.json; then
+            echo "Ingen endringer."
+            echo "endret=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/stores.json
+          git commit -m "Oppdaterte butikksatser $(date -u +%d.%m.%Y)"
+          git push
+          echo "endret=true" >> "$GITHUB_OUTPUT"
+      # Push med GITHUB_TOKEN starter ikke deploy-workflowen av seg selv, så vi starter den her.
+      - name: Deploy
+        if: steps.commit.outputs.endret == 'true'
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

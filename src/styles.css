@@ -278,21 +278,54 @@ input::placeholder {
   outline-offset: 2px;
 }
 
-.katalog > input {
-  width: 100%;
-  border: 0;
+.katalog-verktoy {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
   border-bottom: 1px solid var(--line);
+}
+
+.katalog-verktoy:focus-within {
+  border-color: var(--fg);
+}
+
+.katalog-verktoy input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
   background: none;
   font-size: 16px;
   padding: 12px 0;
-  margin-top: 8px;
   outline: none;
   -webkit-appearance: none;
   appearance: none;
 }
 
-.katalog > input:focus {
-  border-color: var(--fg);
+.sortering {
+  display: flex;
+  gap: 14px;
+  white-space: nowrap;
+}
+
+.sortering .lenke.aktiv {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.flis-beste {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.flis-beste i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
 }
 
 .fliser {
@@ -309,7 +342,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 6px;
   padding: 0;
   border: 0;
   background: none;

@@ -5,7 +5,7 @@ import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import { hentData } from './data';
 import type { Butikk, ButikkSats, Kort, Niva, Program } from './data/types';
 import { gjeldendeSats } from './lib/butikker';
-import { beregnAlle, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
+import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall } from './lib/format';
 
 const data = hentData();
@@ -217,6 +217,20 @@ export default function App() {
     ...data.kort.map((k) => ({ tittel: k.navn, url: k.kilde })),
   ];
 
+  /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
+  const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
+    const valgId = t.rader[p.id].valgId;
+    if (nivaFor(p, valgId)?.kanVeksle === false) return null;
+    const valg: ProgramValg = {
+      programId: p.id,
+      aktiv: true,
+      sats: gjeldendeSats(sats, IDAG).verdi,
+      nivaId: p.nivaer.length > 0 ? valgId : undefined,
+      konverteringId: p.nivaer.length === 0 ? valgId : undefined,
+    };
+    return beregnProgram(p, valg, 100, null).total;
+  };
+
   if (visKatalog) {
     return (
       <div className="app">
@@ -227,6 +241,7 @@ export default function App() {
           liste={data.butikker.butikker}
           programmer={data.programmer}
           idag={IDAG}
+          per100={per100ForSats}
           onVelg={(b) => {
             velgButikk(b);
             setVisKatalog(false);
