@@ -258,6 +258,22 @@ export default function App() {
     ...kortListe.map((k) => ({ tittel: k.navn, url: k.kilde })),
   ];
 
+  /** Søknadslenken til et kort (affiliate når vi har det, ellers utstederens side). */
+  const kortLenke = (k: Kort): string | null => {
+    const url = k.lenke ?? k.kilde;
+    return url.startsWith('http') ? url : null;
+  };
+
+  // Kortet som hadde gitt mest på dette kjøpet, til én diskret tipslinje. Gjelder bare
+  // programmer der kortet gir poeng i tillegg (Trumf, SAS Shopping, Everyday).
+  const besteKort = kortListe.filter(kortLenke).reduce<Kort | null>((b, k) => (b === null || k.poengPer100 > b.poengPer100 ? k : b), null);
+  const medKortlag = belop > 0 ? resultater.find((r) => r.program.kortlag) : undefined;
+  const kortTips =
+    besteKort && medKortlag && besteKort.poengPer100 > (kort?.poengPer100 ?? 0) && besteKort.id !== kort?.id
+      ? { kort: besteKort, program: medKortlag.program, ekstra: (belop / 100) * (besteKort.poengPer100 - (kort?.poengPer100 ?? 0)) }
+      : null;
+  const harAnnonse = kortListe.some((k) => k.annonse);
+
   const topp = (
     <header className="topp">
       <span className="ordmerke">Poengtjeneren</span>
@@ -370,6 +386,15 @@ export default function App() {
             </select>
           </span>
         </div>
+        {kort && kort.id !== ANNET && kortLenke(kort) && (
+          <p className="kortlenke">
+            <a href={kortLenke(kort)!} target="_blank" rel={kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
+              Søk om {kort.navn} ↗
+            </a>
+            {kort.annonse && <span className="annonse">Annonse</span>}
+            {kort.pris && <span className="muted"> · {kort.pris}</span>}
+          </p>
+        )}
         {programmer
           .filter((p) => p.nivaer.length > 0)
           .map((p) => (
@@ -417,6 +442,15 @@ export default function App() {
             : `${beste.program.kortnavn} og ${nest.program.kortnavn} gir like mye.`}
         </p>
       )}
+      {kortTips && (
+        <p className="tips">
+          Med {kortTips.kort.navn} hadde {kortTips.program.kortnavn} gitt {fmtPoeng(kortTips.ekstra)} poeng mer.{' '}
+          <a href={kortLenke(kortTips.kort)!} target="_blank" rel={kortTips.kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
+            Søk om kortet ↗
+          </a>
+          {kortTips.kort.annonse && <span className="annonse">Annonse</span>}
+        </p>
+      )}
       {belop <= 0 && <p className="tom">Skriv inn en kjøpesum.</p>}
       {belop > 0 && resultater.length === 0 && <p className="tom">Skriv inn satsen for minst ett program, eller søk opp en butikk.</p>}
 
@@ -433,6 +467,7 @@ export default function App() {
           Beløp i {data.landInfo[t.land].valuta}. Satser endres – sjekk hos programmet før du handler. Programsatser sist oppdatert{' '}
           {fmtDato(data.sistOppdatert)}.
         </p>
+        {harAnnonse && <p>Lenker merket «Annonse» gir oss provisjon hvis du søker om kortet. Det påvirker ikke tallene.</p>}
         <details>
           <summary>Kilder</summary>
           <ul>

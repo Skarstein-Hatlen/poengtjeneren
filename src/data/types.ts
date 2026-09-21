@@ -89,6 +89,10 @@ export interface Kort {
   kilde: string;
   sistVerifisert: string;
   merknad?: string;
+  /** Søknadsside for kortet. Uten lenke brukes kilde. Bytt til affiliate-lenke og sett annonse: true. */
+  lenke?: string;
+  /** true = lenken gir oss provisjon og må merkes «Annonse». */
+  annonse?: boolean;
 }
 
 /** Én butikks sats i ett program, hentet automatisk av scripts/hent-butikker.mjs. */

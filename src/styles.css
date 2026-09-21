@@ -518,6 +518,45 @@ select option {
   text-decoration: underline;
 }
 
+/* Kortlenke og tips */
+.kortlenke {
+  margin: 0;
+  padding: 10px 0 0 76px;
+  font-size: 13px;
+}
+
+.kortlenke a,
+.tips a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.annonse {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  vertical-align: 1px;
+}
+
+.tips {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+@media (max-width: 479px) {
+  .kortlenke {
+    padding-left: 0;
+  }
+}
+
 /* Kolonner – ett program hver, side om side */
 .kolonner {
   display: grid;
