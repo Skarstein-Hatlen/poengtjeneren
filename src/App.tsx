@@ -249,7 +249,9 @@ export default function App() {
     }
   }
   if (kort?.id === ANNET) merknader.push('* Satsen på eget kort er ikke sjekket.');
-  if (kort && kort.status === 'uverifisert' && kort.merknad && programKortListe.some((k) => k.id === kort.id)) merknader.push(`* ${kort.merknad}`);
+  if (kort && kort.status === 'uverifisert' && kort.merknad && kort.poengPer100 > 0 && programKortListe.some((k) => k.id === kort.id)) {
+    merknader.push(`* ${kort.merknad}`);
+  }
 
   const kilder = [
     ...programmer.flatMap((p) => p.kilder.map((k) => ({ tittel: `${p.kortnavn}: ${k.tittel}`, url: k.url }))),
