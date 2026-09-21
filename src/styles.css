@@ -63,6 +63,22 @@ input::placeholder {
   padding: 28px 20px 72px;
 }
 
+.topp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topp .velg select {
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.topp .velg select:hover,
+.topp .velg select:focus {
+  color: var(--fg);
+}
+
 .ordmerke {
   font-size: 12px;
   letter-spacing: 0.14em;

@@ -2,7 +2,9 @@ import programmerJson from './programs.json';
 import kortJson from './cards.json';
 import butikkerJson from './stores.json';
 import partnereJson from './partners.json';
-import type { Butikk, Butikkliste, Datasett, Kort, Program } from './types';
+import type { Butikk, Butikkfil, Datasett, Kort, Land, LandInfo, Program } from './types';
+
+export const LAND: Land[] = ['NO', 'SE', 'DK'];
 
 /** Slår butikklistene sammen på id; satser fra begge, logo fra den første som har. */
 function slaSammen(...lister: Butikk[][]): Butikk[] {
@@ -26,12 +28,16 @@ function slaSammen(...lister: Butikk[][]): Butikk[] {
 // stores.json fylles av `npm run hent`; partners.json vedlikeholdes for hånd
 // (partnere uten åpen liste, f.eks. Wolt).
 export function hentData(): Datasett {
-  const hentet = butikkerJson.hentet;
-  const partnere = partnereJson as Butikkliste;
+  const hentet = butikkerJson as Butikkfil;
+  const partnere = partnereJson as Butikkfil;
+  const butikker = {} as Record<Land, Butikk[]>;
+  for (const land of LAND) butikker[land] = slaSammen(hentet.land[land] ?? [], partnere.land[land] ?? []);
   return {
     sistOppdatert: programmerJson.sistOppdatert,
+    hentet: hentet.hentet,
+    landInfo: programmerJson.land as Record<Land, LandInfo>,
     programmer: programmerJson.programmer as Program[],
     kort: kortJson as Kort[],
-    butikker: { hentet, butikker: slaSammen((butikkerJson as Butikkliste).butikker, partnere.butikker) },
+    butikker,
   };
 }

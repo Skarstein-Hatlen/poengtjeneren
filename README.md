@@ -1,6 +1,6 @@
 # Poengtjeneren
 
-Kalkulator som viser hvor mange SAS EuroBonus-poeng et kjøp gir via Trumf Netthandel, Klarna og SAS Online Shopping, og hvilket program som lønner seg. Brukeren skriver inn kjøpesum og butikkens sats i hvert program, velger betalingskort og Klarna-abonnement, og får en rangert sammenligning.
+Kalkulator som viser hvor mange SAS EuroBonus-poeng et kjøp gir via Trumf Netthandel, Klarna, SAS Online Shopping og EuroBonus Everyday, og hvilket program som lønner seg. Landvalg: Norge, Sverige og Danmark (Trumf bare i Norge; programmer, satser og butikker ligger per land i datafilene). Brukeren skriver inn kjøpesum og butikkens sats i hvert program, velger betalingskort og Klarna-abonnement, og får en rangert sammenligning.
 
 ## Kjøre
 

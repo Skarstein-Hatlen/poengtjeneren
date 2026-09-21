@@ -1,6 +1,9 @@
 [
   {
     "id": "sas-amex-classic",
+    "land": [
+      "NO"
+    ],
     "navn": "SAS Amex Classic",
     "utsteder": "American Express",
     "poengPer100": 10,
@@ -11,6 +14,9 @@
   },
   {
     "id": "sas-amex-premium",
+    "land": [
+      "NO"
+    ],
     "navn": "SAS Amex Premium",
     "utsteder": "American Express",
     "poengPer100": 15,
@@ -21,6 +27,9 @@
   },
   {
     "id": "sas-amex-elite",
+    "land": [
+      "NO"
+    ],
     "navn": "SAS Amex Elite",
     "utsteder": "American Express",
     "poengPer100": 20,
@@ -31,6 +40,9 @@
   },
   {
     "id": "sas-mastercard-world",
+    "land": [
+      "NO"
+    ],
     "navn": "SAS EuroBonus World Mastercard",
     "utsteder": "SEB Kort",
     "poengPer100": 10,
@@ -42,6 +54,9 @@
   },
   {
     "id": "sas-mastercard-premium",
+    "land": [
+      "NO"
+    ],
     "navn": "SAS EuroBonus Mastercard Premium",
     "utsteder": "SEB Kort",
     "poengPer100": 15,
@@ -52,6 +67,9 @@
   },
   {
     "id": "amex-poeng",
+    "land": [
+      "NO"
+    ],
     "navn": "Amex Green / Gold / Platinum (Amex-poeng)",
     "utsteder": "American Express",
     "poengPer100": 5,
@@ -63,6 +81,9 @@
   },
   {
     "id": "amex-platinum-points-plus",
+    "land": [
+      "NO"
+    ],
     "navn": "Amex Platinum Points Plus",
     "utsteder": "American Express",
     "poengPer100": 20,
@@ -74,6 +95,9 @@
   },
   {
     "id": "revolut-standard",
+    "land": [
+      "NO"
+    ],
     "navn": "Revolut Standard / Plus (RevPoints)",
     "utsteder": "Revolut",
     "poengPer100": 0.67,
@@ -85,6 +109,9 @@
   },
   {
     "id": "revolut-premium",
+    "land": [
+      "NO"
+    ],
     "navn": "Revolut Premium (RevPoints)",
     "utsteder": "Revolut",
     "poengPer100": 2.5,
@@ -96,6 +123,9 @@
   },
   {
     "id": "revolut-metal",
+    "land": [
+      "NO"
+    ],
     "navn": "Revolut Metal (RevPoints)",
     "utsteder": "Revolut",
     "poengPer100": 4,
@@ -107,6 +137,9 @@
   },
   {
     "id": "revolut-ultra",
+    "land": [
+      "NO"
+    ],
     "navn": "Revolut Ultra (RevPoints)",
     "utsteder": "Revolut",
     "poengPer100": 10,
@@ -118,6 +151,9 @@
   },
   {
     "id": "lunar",
+    "land": [
+      "NO"
+    ],
     "navn": "Lunar SAS EuroBonus (debetkort)",
     "utsteder": "Lunar",
     "poengPer100": 8,

@@ -1,17 +1,34 @@
-// Henter butikksatser fra Trumf Netthandel, SAS Online Shopping og Klarna
-// og skriver dem til src/data/stores.json.
+// Henter butikksatser fra Trumf Netthandel, SAS Online Shopping og Klarna for
+// Norge, Sverige og Danmark, og skriver dem til src/data/stores.json.
 //
 //   node scripts/hent-butikker.mjs
 //
 // Kilder:
-// - Trumf: HTML-fragmentene siden selv laster («/category/paged/all/60/<side>/popularity»).
-// - SAS: JSON-API-et portalen bruker (onlineshopping.loyaltykey.com).
-// - Klarna: katalog-API-et bak klarna.com/no/store/?type=CASHBACK (alle butikker med cashback).
+// - Trumf (bare Norge): HTML-fragmentene siden selv laster («/category/paged/all/60/<side>/popularity»).
+// - SAS: JSON-API-et portalen bruker (onlineshopping.loyaltykey.com), per land.
+// - Klarna: katalog-API-et bak klarna.com/<land>/store/?type=CASHBACK (alle butikker med cashback).
 
 import { writeFile } from 'node:fs/promises';
 
 const HODER = { 'user-agent': 'Mozilla/5.0 (Poengtjeneren; henter offentlige satser)', accept: 'application/json, text/html' };
 const UT = new URL('../src/data/stores.json', import.meta.url);
+
+/** Per land: hvilke programmer (id-er fra programs.json) og hvordan kildene adresseres. */
+const LAND = {
+  NO: {
+    trumf: 'trumf',
+    sas: { programId: 'sas-online-shopping', country: 'NO', language: 'nb', sti: 'nb-NO/butikker' },
+    klarna: { programId: 'klarna', sti: 'no', country: 'NO' },
+  },
+  SE: {
+    sas: { programId: 'sas-online-shopping-se', country: 'SE', language: 'sv', sti: 'sv-SE/butiker' },
+    klarna: { programId: 'klarna-se', sti: 'se', country: 'SE' },
+  },
+  DK: {
+    sas: { programId: 'sas-online-shopping-dk', country: 'DK', language: 'da', sti: 'da-DK/butikker' },
+    klarna: { programId: 'klarna-dk', sti: 'dk', country: 'DK' },
+  },
+};
 
 const hent = async (url) => {
   const svar = await fetch(url, { headers: HODER });
@@ -31,12 +48,18 @@ const dekod = (s) =>
 export function normaliser(navn) {
   return navn
     .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/ø/gi, 'o')
     .replace(/æ/gi, 'ae')
     .toLowerCase()
-    .replace(/\b(no|com|norge|nettbutikk)\b/g, '')
+    .replace(/\b(no|se|dk|com|norge|sverige|danmark|nettbutikk)\b/g, '')
     .replace(/[^a-z0-9]/g, '');
+}
+
+/** «kicks.no» → «Kicks»; andre domener (hotels.com) beholdes som de er. */
+function pyntNavn(navn) {
+  const m = navn.match(/^([a-z0-9-]+)\.(no|se|dk)$/i);
+  return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) : navn;
 }
 
 /** «Opptil 6,2 %» → { verdi: 6.2, opptil: true }. Faste kronebeløp («270 kr») gir null. */
@@ -62,9 +85,10 @@ async function hentTrumf() {
   return ut;
 }
 
-async function hentSas() {
+async function hentSas({ country, language, sti }) {
   const url =
-    'https://onlineshopping.loyaltykey.com/api/v1/shops?filter[channel]=SAS&filter[language]=nb&filter[country]=NO&filter[amount]=5000';
+    'https://onlineshopping.loyaltykey.com/api/v1/shops' +
+    `?filter[channel]=SAS&filter[language]=${language}&filter[country]=${country}&filter[amount]=5000`;
   const { data } = await (await hent(url)).json();
   return data
     .filter((s) => s.commission_type === 'variable' && s.points > 0)
@@ -79,23 +103,17 @@ async function hentSas() {
         opptil: false,
         kampanje,
         logo: s.logo || s.image_url || undefined,
-        kilde: `https://onlineshopping.flysas.com/nb-NO/butikker/${s.slug}/${s.uuid}`,
+        kilde: `https://onlineshopping.flysas.com/${sti}/${s.slug}/${s.uuid}`,
       };
     });
 }
 
-/** «kicks.no» → «Kicks»; andre domener (hotels.com) beholdes som de er. */
-function pyntNavn(navn) {
-  const m = navn.match(/^([a-z0-9-]+)\.no$/i);
-  return m ? m[1].charAt(0).toUpperCase() + m[1].slice(1) : navn;
-}
-
-async function hentKlarna() {
-  // Butikkatalogen på klarna.com/no/store/?type=CASHBACK henter fra dette API-et (maks 99 per side).
+async function hentKlarna({ sti, country }) {
+  // Butikkatalogen på klarna.com/<land>/store/?type=CASHBACK henter fra dette API-et (maks 99 per side).
   const ut = [];
   for (let offset = 0; ; offset += 99) {
     const url =
-      'https://www.klarna.com/no/api/store-edge-rest/public/stores/directory/search/NO' +
+      `https://www.klarna.com/${sti}/api/store-edge-rest/public/stores/directory/search/${country}` +
       `?sort=RANK&cashback=true&categories=&klarnaIntegrated=false&applePay=false&googlePay=false&goodOnYouRating=false&inStore=false&q=&otcEnabled=false&offset=${offset}&size=99`;
     const { stores, totalHits } = await (await hent(url)).json();
     for (const s of stores) {
@@ -116,24 +134,35 @@ async function hentKlarna() {
   return ut;
 }
 
-const butikker = new Map();
-function leggTil(programId, rad) {
-  const id = normaliser(rad.navn);
-  if (!id) return;
-  const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, satser: {} };
-  if (eksisterende.navn === eksisterende.navn.toUpperCase() && rad.navn !== rad.navn.toUpperCase()) eksisterende.navn = rad.navn;
-  const { navn: _navn, logo, ...sats } = rad;
-  if (logo && !eksisterende.logo) eksisterende.logo = logo;
-  eksisterende.satser[programId] = sats;
-  butikker.set(id, eksisterende);
+/** Slår rader fra flere programmer sammen til én butikk per navn. */
+function slaSammen(kilder) {
+  const butikker = new Map();
+  for (const [programId, rader] of kilder) {
+    for (const rad of rader) {
+      const id = normaliser(rad.navn);
+      if (!id) continue;
+      const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, satser: {} };
+      if (eksisterende.navn === eksisterende.navn.toUpperCase() && rad.navn !== rad.navn.toUpperCase()) eksisterende.navn = rad.navn;
+      const { navn: _navn, logo, ...sats } = rad;
+      if (logo && !eksisterende.logo) eksisterende.logo = logo;
+      eksisterende.satser[programId] = sats;
+      butikker.set(id, eksisterende);
+    }
+  }
+  return [...butikker.values()].sort((a, b) => a.navn.localeCompare(b.navn, 'nb'));
 }
 
-// Rekkefølgen avgjør hvilken logo som brukes når flere programmer har butikken.
-const [trumf, sas, klarna] = await Promise.all([hentTrumf(), hentSas(), hentKlarna()]);
-trumf.forEach((r) => leggTil('trumf', r));
-sas.forEach((r) => leggTil('sas-online-shopping', r));
-klarna.forEach((r) => leggTil('klarna', r));
+const resultat = {};
+const logg = [];
+for (const [land, oppsett] of Object.entries(LAND)) {
+  // Rekkefølgen avgjør hvilken logo som brukes når flere programmer har butikken.
+  const kilder = [];
+  if (oppsett.trumf) kilder.push([oppsett.trumf, await hentTrumf()]);
+  kilder.push([oppsett.sas.programId, await hentSas(oppsett.sas)]);
+  kilder.push([oppsett.klarna.programId, await hentKlarna(oppsett.klarna)]);
+  resultat[land] = slaSammen(kilder);
+  logg.push(`${land}: ${kilder.map(([id, rader]) => `${id} ${rader.length}`).join(', ')} → ${resultat[land].length} butikker`);
+}
 
-const liste = [...butikker.values()].sort((a, b) => a.navn.localeCompare(b.navn, 'nb'));
-await writeFile(UT, JSON.stringify({ hentet: new Date().toISOString().slice(0, 10), butikker: liste }, null, 2) + '\n');
-console.log(`Trumf ${trumf.length}, Klarna ${klarna.length}, SAS ${sas.length} → ${liste.length} butikker skrevet til ${UT.pathname}`);
+await writeFile(UT, JSON.stringify({ hentet: new Date().toISOString().slice(0, 10), land: resultat }, null, 2) + '\n');
+console.log(logg.join('\n'));

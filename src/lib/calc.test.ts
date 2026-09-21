@@ -4,6 +4,7 @@ import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type Program
 import { parseTall } from './format';
 
 const data = hentData();
+const norske = data.programmer.filter((p) => p.land === 'NO');
 const trumf = data.programmer.find((p) => p.id === 'trumf')!;
 const klarna = data.programmer.find((p) => p.id === 'klarna')!;
 const sasOs = data.programmer.find((p) => p.id === 'sas-online-shopping')!;
@@ -92,7 +93,7 @@ describe('beregnAlle', () => {
       { programId: 'klarna', aktiv: true, sats: 12, nivaId: 'max' },
       { programId: 'sas-online-shopping', aktiv: false, sats: 25 },
     ];
-    const res = beregnAlle(data.programmer, valg, 1000, null);
+    const res = beregnAlle(norske, valg, 1000, null);
     expect(res.map((r) => r.program.id)).toEqual(['klarna', 'trumf']);
   });
 });

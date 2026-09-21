@@ -2,20 +2,21 @@ import { useEffect, useMemo, useState } from 'react';
 import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
-import { hentData } from './data';
-import type { Butikk, ButikkSats, Kort, Niva, Program } from './data/types';
+import { hentData, LAND } from './data';
+import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
 import { gjeldendeSats } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall } from './lib/format';
 
 const data = hentData();
-const NOKKEL = 'poengtjeneren.v5';
+const NOKKEL = 'poengtjeneren.v6';
 const INGEN = 'ingen';
 const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
 interface Tilstand {
+  land: Land;
   belop: string;
   butikk: string;
   butikkId: string | null;
@@ -25,12 +26,18 @@ interface Tilstand {
 }
 
 /** Butikkens grunnsats som feltet starter med. */
-const STANDARD_SATS: Record<string, number> = { trumf: 5, klarna: 3 };
+const STANDARD_SATS: Record<string, number> = { trumf: 5, klarna: 3, 'klarna-se': 3, 'klarna-dk': 3 };
 
 const nivaFor = (p: Program, valgId: string): Niva | undefined => p.nivaer.find((n) => n.id === valgId);
 
 /** Tall til feltet: «13,5», uten tusenskille. */
 const tilFelt = (n: number): string => fmtTall(n).replace(/\s/g, '');
+
+/** Standardkortet i et land: programmets eget kort (Klarna-kortet) hvis det finnes. */
+const standardKort = (land: Land): string => {
+  const p = data.programmer.find((x) => x.land === land && x.kort);
+  return p ? `${p.id}-kort` : INGEN;
+};
 
 /**
  * Programmets eget kort (Klarna-kortet): nivåets tillegg på alle kjøp, vekslet med
@@ -40,12 +47,13 @@ function kortForProgram(p: Program, valgId: string): Kort | null {
   const konv = p.konverteringer[0];
   const niva = nivaFor(p, valgId);
   if (!p.kort || !konv || !niva) return null;
-  const aktivt = niva.kanVeksle !== false;
+  const aktivt = niva.kanVeksle !== false && konv.poengPerKrone !== null;
   return {
     id: `${p.id}-kort`,
+    land: [p.land],
     navn: p.kort.navn,
     utsteder: p.navn,
-    poengPer100: aktivt ? niva.ekstraProsent * konv.poengPerKrone : 0,
+    poengPer100: aktivt ? niva.ekstraProsent * (konv.poengPerKrone ?? 0) : 0,
     pris: aktivt ? `${niva.prisPerMnd} kr/mnd` : '',
     status: konv.status,
     kilde: p.kort.kilde,
@@ -70,9 +78,29 @@ function standard(): Tilstand {
     const valgId = p.standardNiva ?? p.nivaer[0]?.id ?? p.konverteringer[0]?.id ?? '';
     rader[p.id] = { sats: feltVerdi(p, STANDARD_SATS[p.id] ?? null, nivaFor(p, valgId)), valgId };
   }
-  // Standardkortet er programkortet (Klarna-kortet) hvis et program har det.
-  const kortProgram = data.programmer.find((p) => p.kort);
-  return { belop: '1000', butikk: '', butikkId: null, kortId: kortProgram ? `${kortProgram.id}-kort` : INGEN, egenKortPoeng: '', rader };
+  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rader };
+}
+
+function les(): Tilstand {
+  const std = standard();
+  try {
+    const lagret = localStorage.getItem(NOKKEL);
+    if (!lagret) return std;
+    const p = JSON.parse(lagret) as Partial<Tilstand>;
+    const rader: Record<string, RadTilstand> = {};
+    for (const id of Object.keys(std.rader)) rader[id] = { ...std.rader[id], ...(p.rader?.[id] ?? {}) };
+    return {
+      land: LAND.includes(p.land as Land) ? (p.land as Land) : std.land,
+      belop: typeof p.belop === 'string' ? p.belop : std.belop,
+      butikk: typeof p.butikk === 'string' ? p.butikk : '',
+      butikkId: typeof p.butikkId === 'string' ? p.butikkId : null,
+      kortId: typeof p.kortId === 'string' ? p.kortId : std.kortId,
+      egenKortPoeng: typeof p.egenKortPoeng === 'string' ? p.egenKortPoeng : '',
+      rader,
+    };
+  } catch {
+    return std;
+  }
 }
 
 /** Ny tilstand med endret sats og/eller nivå for ett program; feltet regnes om når nivået byttes. */
@@ -86,27 +114,6 @@ function endreRad(s: Tilstand, p: Program, endring: Partial<RadTilstand>): Tilst
     sats = feltVerdi(p, grunn, til);
   }
   return { ...s, rader: { ...s.rader, [p.id]: { ...rad, ...endring, sats } } };
-}
-
-function les(): Tilstand {
-  const std = standard();
-  try {
-    const lagret = localStorage.getItem(NOKKEL);
-    if (!lagret) return std;
-    const p = JSON.parse(lagret) as Partial<Tilstand>;
-    const rader: Record<string, RadTilstand> = {};
-    for (const id of Object.keys(std.rader)) rader[id] = { ...std.rader[id], ...(p.rader?.[id] ?? {}) };
-    return {
-      belop: typeof p.belop === 'string' ? p.belop : std.belop,
-      butikk: typeof p.butikk === 'string' ? p.butikk : '',
-      butikkId: typeof p.butikkId === 'string' ? p.butikkId : null,
-      kortId: typeof p.kortId === 'string' ? p.kortId : std.kortId,
-      egenKortPoeng: typeof p.egenKortPoeng === 'string' ? p.egenKortPoeng : '',
-      rader,
-    };
-  } catch {
-    return std;
-  }
 }
 
 /** Én setning som viser hvordan tallet ble til. */
@@ -148,40 +155,46 @@ export default function App() {
     }
   }, [t]);
 
+  // Alt under gjelder valgt land.
+  const programmer = useMemo(() => data.programmer.filter((p) => p.land === t.land), [t.land]);
+  const kortListe = useMemo(() => data.kort.filter((k) => k.land.includes(t.land)), [t.land]);
+  const butikker = data.butikker[t.land];
+
   const belop = parseTall(t.belop);
-  const butikk = t.butikkId ? data.butikker.butikker.find((b) => b.id === t.butikkId) ?? null : null;
+  const butikk = t.butikkId ? (butikker.find((b) => b.id === t.butikkId) ?? null) : null;
 
   const programKortListe = useMemo(
-    () => data.programmer.map((p) => kortForProgram(p, t.rader[p.id].valgId)).filter((k): k is Kort => k !== null),
-    [t.rader],
+    () => programmer.map((p) => kortForProgram(p, t.rader[p.id].valgId)).filter((k): k is Kort => k !== null),
+    [programmer, t.rader],
   );
 
   const kort: Kort | null = useMemo(() => {
     if (t.kortId === INGEN) return null;
     if (t.kortId === ANNET) {
-      return { id: ANNET, navn: 'eget kort', utsteder: '', poengPer100: parseTall(t.egenKortPoeng), pris: '', status: 'uverifisert', kilde: '', sistVerifisert: '' };
+      return { id: ANNET, land: LAND, navn: 'eget kort', utsteder: '', poengPer100: parseTall(t.egenKortPoeng), pris: '', status: 'uverifisert', kilde: '', sistVerifisert: '' };
     }
-    return data.kort.find((k) => k.id === t.kortId) ?? programKortListe.find((k) => k.id === t.kortId) ?? null;
-  }, [t.kortId, t.egenKortPoeng, programKortListe]);
+    return kortListe.find((k) => k.id === t.kortId) ?? programKortListe.find((k) => k.id === t.kortId) ?? null;
+  }, [t.kortId, t.egenKortPoeng, kortListe, programKortListe]);
 
   const resultater = useMemo(() => {
-    const valg: ProgramValg[] = data.programmer.map((p) => {
+    const valg: ProgramValg[] = programmer.map((p) => {
       const rad = t.rader[p.id];
       const niva = nivaFor(p, rad.valgId);
       // Feltet viser satsen ferdig regnet med nivået. Tomt felt med Klarna Max gir likevel 1,5 %.
       const harNiva = niva !== undefined && niva.kanVeksle !== false;
       const sats = rad.sats.trim() === '' && harNiva ? niva.ekstraProsent : parseTall(rad.sats);
+      const satsKjent = p.konverteringer.length === 0 || p.konverteringer.some((k) => k.poengPerKrone !== null);
       return {
         programId: p.id,
-        aktiv: niva?.kanVeksle !== false && sats > 0,
+        aktiv: niva?.kanVeksle !== false && satsKjent && sats > 0,
         sats,
         satsErEffektiv: harNiva,
         nivaId: p.nivaer.length > 0 ? rad.valgId : undefined,
         konverteringId: p.nivaer.length === 0 ? rad.valgId : undefined,
       };
     });
-    return beregnAlle(data.programmer, valg, belop, kort);
-  }, [t.rader, belop, kort]);
+    return beregnAlle(programmer, valg, belop, kort);
+  }, [programmer, t.rader, belop, kort]);
 
   const [beste, nest] = belop > 0 ? resultater : [];
   const diff = beste && nest ? beste.total - nest.total : 0;
@@ -193,13 +206,39 @@ export default function App() {
   const velgButikk = (b: Butikk) => {
     setT((s) => {
       const rader = { ...s.rader };
-      for (const p of data.programmer) rader[p.id] = { ...rader[p.id], sats: feltForButikk(p, b.satser[p.id], rader[p.id].valgId) };
+      for (const p of programmer) rader[p.id] = { ...rader[p.id], sats: feltForButikk(p, b.satser[p.id], rader[p.id].valgId) };
       return { ...s, butikk: b.navn, butikkId: b.id, rader };
     });
   };
 
+  /** Bytter land: nullstiller butikk, og kort som ikke finnes i det nye landet. */
+  const velgLand = (land: Land) =>
+    setT((s) => {
+      const finnes = s.kortId === INGEN || s.kortId === ANNET || data.kort.some((k) => k.id === s.kortId && k.land.includes(land));
+      return { ...s, land, butikk: '', butikkId: null, kortId: finnes ? s.kortId : standardKort(land) };
+    });
+
+  /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
+  const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
+    const valgId = t.rader[p.id].valgId;
+    if (nivaFor(p, valgId)?.kanVeksle === false) return null;
+    if (p.konverteringer.length > 0 && p.konverteringer.every((k) => k.poengPerKrone === null)) return null;
+    const valg: ProgramValg = {
+      programId: p.id,
+      aktiv: true,
+      sats: gjeldendeSats(sats, IDAG).verdi,
+      nivaId: p.nivaer.length > 0 ? valgId : undefined,
+      konverteringId: p.nivaer.length === 0 ? valgId : undefined,
+    };
+    return beregnProgram(p, valg, 100, null).total;
+  };
+
   // Små merknader under tallene: uverifiserte satser, kampanjer og «opptil».
   const merknader: string[] = [];
+  for (const p of programmer) {
+    const konv = p.konverteringer.find((k) => k.id === t.rader[p.id].valgId) ?? p.konverteringer[0];
+    if (konv && konv.poengPerKrone === null && konv.merknad) merknader.push(`${p.kortnavn}: ${konv.merknad}`);
+  }
   for (const r of resultater) {
     if (r.konvertering?.status === 'uverifisert' && r.konvertering.merknad) merknader.push(`* ${r.konvertering.merknad}`);
     const sats = butikk?.satser[r.program.id];
@@ -213,33 +252,32 @@ export default function App() {
   if (kort && kort.status === 'uverifisert' && kort.merknad && programKortListe.some((k) => k.id === kort.id)) merknader.push(`* ${kort.merknad}`);
 
   const kilder = [
-    ...data.programmer.flatMap((p) => p.kilder.map((k) => ({ tittel: `${p.kortnavn}: ${k.tittel}`, url: k.url }))),
-    ...data.kort.map((k) => ({ tittel: k.navn, url: k.kilde })),
+    ...programmer.flatMap((p) => p.kilder.map((k) => ({ tittel: `${p.kortnavn}: ${k.tittel}`, url: k.url }))),
+    ...kortListe.map((k) => ({ tittel: k.navn, url: k.kilde })),
   ];
 
-  /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
-  const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
-    const valgId = t.rader[p.id].valgId;
-    if (nivaFor(p, valgId)?.kanVeksle === false) return null;
-    const valg: ProgramValg = {
-      programId: p.id,
-      aktiv: true,
-      sats: gjeldendeSats(sats, IDAG).verdi,
-      nivaId: p.nivaer.length > 0 ? valgId : undefined,
-      konverteringId: p.nivaer.length === 0 ? valgId : undefined,
-    };
-    return beregnProgram(p, valg, 100, null).total;
-  };
+  const topp = (
+    <header className="topp">
+      <span className="ordmerke">Poengtjeneren</span>
+      <span className="velg">
+        <select aria-label="Land" value={t.land} onChange={(e) => velgLand(e.target.value as Land)}>
+          {LAND.map((l) => (
+            <option key={l} value={l}>
+              {data.landInfo[l].navn}
+            </option>
+          ))}
+        </select>
+      </span>
+    </header>
+  );
 
   if (visKatalog) {
     return (
       <div className="app">
-        <header>
-          <span className="ordmerke">Poengtjeneren</span>
-        </header>
+        {topp}
         <Butikkliste
-          liste={data.butikker.butikker}
-          programmer={data.programmer}
+          liste={butikker}
+          programmer={programmer}
           idag={IDAG}
           per100={per100ForSats}
           onVelg={(b) => {
@@ -254,9 +292,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <header>
-        <span className="ordmerke">Poengtjeneren</span>
-      </header>
+      {topp}
 
       <section className="belop">
         <label className="etikett" htmlFor="belop">
@@ -284,37 +320,21 @@ export default function App() {
             Butikk
           </label>
           <ButikkSok
-            liste={data.butikker.butikker}
+            liste={butikker}
             verdi={t.butikk}
             onChange={(tekst) => setT((s) => ({ ...s, butikk: tekst, butikkId: tekst.trim() ? s.butikkId : null }))}
             onVelg={velgButikk}
             valgt={butikk}
           />
           <button type="button" className="lenke" onClick={() => setVisKatalog(true)}>
-            Alle {data.butikker.butikker.length} →
+            Alle {butikker.length} →
           </button>
         </div>
         <div className="valg-rad rad-kort">
           <label className="etikett" htmlFor="kort">
             Kort
           </label>
-          <span className="velg">
-            <select id="kort" value={t.kortId} onChange={(e) => setT((s) => ({ ...s, kortId: e.target.value }))}>
-              <option value={INGEN}>Ingen</option>
-              {programKortListe.map((k) => (
-                <option key={k.id} value={k.id}>
-                  {k.navn}
-                </option>
-              ))}
-              {data.kort.map((k) => (
-                <option key={k.id} value={k.id}>
-                  {k.navn}
-                </option>
-              ))}
-              <option value={ANNET}>Annet</option>
-            </select>
-          </span>
-          {t.kortId === ANNET && (
+          {t.kortId === ANNET ? (
             <span className="tall">
               <input
                 aria-label="Poeng per 100 kr på eget kort"
@@ -328,9 +348,27 @@ export default function App() {
               />
               <span className="enhet">p/100</span>
             </span>
+          ) : (
+            <span />
           )}
+          <span className="velg">
+            <select id="kort" value={t.kortId} onChange={(e) => setT((s) => ({ ...s, kortId: e.target.value }))}>
+              <option value={INGEN}>Ingen</option>
+              {programKortListe.map((k) => (
+                <option key={k.id} value={k.id}>
+                  {k.navn}
+                </option>
+              ))}
+              {kortListe.map((k) => (
+                <option key={k.id} value={k.id}>
+                  {k.navn}
+                </option>
+              ))}
+              <option value={ANNET}>Annet</option>
+            </select>
+          </span>
         </div>
-        {data.programmer
+        {programmer
           .filter((p) => p.nivaer.length > 0)
           .map((p) => (
             <div className="valg-rad rad-kort" key={p.id}>
@@ -352,7 +390,7 @@ export default function App() {
       </section>
 
       <section className="kolonner" aria-live="polite">
-        {data.programmer.map((p) => (
+        {programmer.map((p) => (
           <ProgramKolonne
             key={p.id}
             program={p}
@@ -386,10 +424,13 @@ export default function App() {
         ))}
         {butikk && (
           <p>
-            Satser for {butikk.navn} hentet {fmtDato(data.butikker.hentet)} fra programmenes egne sider.
+            Satser for {butikk.navn} hentet {fmtDato(data.hentet)} fra programmenes egne sider.
           </p>
         )}
-        <p>Satser endres – sjekk hos programmet før du handler. Programsatser sist oppdatert {fmtDato(data.sistOppdatert)}.</p>
+        <p>
+          Beløp i {data.landInfo[t.land].valuta}. Satser endres – sjekk hos programmet før du handler. Programsatser sist oppdatert{' '}
+          {fmtDato(data.sistOppdatert)}.
+        </p>
         <details>
           <summary>Kilder</summary>
           <ul>
@@ -408,7 +449,7 @@ export default function App() {
               Object.entries(butikk.satser).map(([pid, s]) => (
                 <li key={pid}>
                   <a href={s.kilde} target="_blank" rel="noreferrer">
-                    {butikk.navn} hos {data.programmer.find((p) => p.id === pid)?.kortnavn}
+                    {butikk.navn} hos {programmer.find((p) => p.id === pid)?.kortnavn}
                   </a>
                 </li>
               ))}

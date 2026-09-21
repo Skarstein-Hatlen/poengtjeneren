@@ -3,6 +3,13 @@
 
 export type Status = 'verifisert' | 'uverifisert' | 'kampanje';
 
+export type Land = 'NO' | 'SE' | 'DK';
+
+export interface LandInfo {
+  navn: string;
+  valuta: string;
+}
+
 export interface Kilde {
   tittel: string;
   url: string;
@@ -13,7 +20,8 @@ export interface Kilde {
 export interface Konvertering {
   id: string;
   navn: string;
-  poengPerKrone: number;
+  /** null = satsen er ikke kjent; programmet kan da ikke regnes ut. */
+  poengPerKrone: number | null;
   status: Status;
   kilde: string;
   sistVerifisert: string;
@@ -37,6 +45,7 @@ export interface Niva {
 
 export interface Program {
   id: string;
+  land: Land;
   navn: string;
   /** Kort navn til bruk i lister og rader. */
   kortnavn: string;
@@ -71,6 +80,7 @@ export interface Program {
 
 export interface Kort {
   id: string;
+  land: Land[];
   navn: string;
   utsteder: string;
   poengPer100: number;
@@ -102,14 +112,19 @@ export interface Butikk {
   satser: Record<string, ButikkSats>;
 }
 
-export interface Butikkliste {
+/** Butikklister per land, slik stores.json og partners.json er lagret. */
+export interface Butikkfil {
   hentet: string;
-  butikker: Butikk[];
+  land: Partial<Record<Land, Butikk[]>>;
 }
 
 export interface Datasett {
   sistOppdatert: string;
+  /** Når butikksatsene sist ble hentet. */
+  hentet: string;
+  landInfo: Record<Land, LandInfo>;
+  /** Alle programmer i alle land; filtrer på `land`. */
   programmer: Program[];
   kort: Kort[];
-  butikker: Butikkliste;
+  butikker: Record<Land, Butikk[]>;
 }
