@@ -55,6 +55,7 @@ export default function ProgramKolonne({ program, tilstand, nivaNavn, onSats, re
         <span className="enhet">{program.satsEnhet === 'prosent' ? '%' : 'p/100'}</span>
       </span>
 
+      {erBest && <span className="stempel">Mest poeng</span>}
       <button type="button" className="resultat" onClick={onToggle} aria-expanded={apen} disabled={!resultat}>
         <span className="poeng">
           {resultat ? fmtPoeng(resultat.total) : '–'}

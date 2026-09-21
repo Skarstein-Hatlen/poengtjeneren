@@ -278,8 +278,11 @@ export default function App() {
 
   const topp = (
     <header className="topp">
-      <span className="ordmerke">Pointmaxing</span>
-      <span className="velg">
+      <div>
+        <span className="ordmerke">Pointmaxing</span>
+        <span className="slagord">Hvor lønner kjøpet seg?</span>
+      </div>
+      <span className="velg velg-lys">
         <select aria-label="Land" value={t.land} onChange={(e) => velgLand(e.target.value as Land)}>
           {LAND.map((l) => (
             <option key={l} value={l}>
@@ -295,7 +298,8 @@ export default function App() {
     return (
       <div className="app">
         {topp}
-        <Butikkliste
+        <div className="billett">
+          <Butikkliste
           liste={butikker}
           programmer={programmer}
           idag={IDAG}
@@ -304,8 +308,9 @@ export default function App() {
             velgButikk(b);
             setVisKatalog(false);
           }}
-          onLukk={() => setVisKatalog(false)}
-        />
+            onLukk={() => setVisKatalog(false)}
+          />
+        </div>
       </div>
     );
   }
@@ -314,6 +319,7 @@ export default function App() {
     <div className="app">
       {topp}
 
+      <div className="billett">
       <section className="belop">
         <label className="etikett" htmlFor="belop">
           Kjøpesum
@@ -418,6 +424,8 @@ export default function App() {
           ))}
       </section>
 
+      <div className="perforering" aria-hidden="true" />
+
       <section className="kolonner" aria-live="polite">
         {programmer.map((p) => (
           <ProgramKolonne
@@ -457,6 +465,7 @@ export default function App() {
       )}
       {belop <= 0 && <p className="tom">Skriv inn en kjøpesum.</p>}
       {belop > 0 && resultater.length === 0 && <p className="tom">Skriv inn satsen for minst ett program, eller søk opp en butikk.</p>}
+      </div>
 
       <footer>
         {[...new Set(merknader)].map((m) => (
@@ -472,6 +481,7 @@ export default function App() {
           {fmtDato(data.sistOppdatert)}.
         </p>
         {harAnnonse && <p>Lenker merket «Annonse» gir oss provisjon hvis du søker om kortet. Det påvirker ikke tallene.</p>}
+        <p className="signatur">Laget i Norge av Kjetil, som selv jakter EuroBonus-poeng. Pointmaxing er ikke tilknyttet SAS, Trumf eller Klarna.</p>
         <details>
           <summary>Kilder</summary>
           <ul>
