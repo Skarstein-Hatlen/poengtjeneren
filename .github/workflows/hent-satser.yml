@@ -24,14 +24,15 @@ jobs:
       - name: Commit og push hvis satsene endret seg
         id: commit
         run: |
-          if git diff --quiet -- src/data/stores.json; then
+          git add -N public/logos
+          if git diff --quiet -- src/data/stores.json public/logos; then
             echo "Ingen endringer."
             echo "endret=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/stores.json
+          git add src/data/stores.json public/logos
           git commit -m "Oppdaterte butikksatser $(date -u +%d.%m.%Y)"
           git push
           echo "endret=true" >> "$GITHUB_OUTPUT"
