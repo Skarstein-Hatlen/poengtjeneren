@@ -101,21 +101,42 @@ input::placeholder {
   color: var(--page-mute);
 }
 
-.velg-lys select {
-  color: var(--page-mute);
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+/* Landvalg – tre flagg */
+.flagg {
+  display: flex;
+  gap: 6px;
+  padding-bottom: 4px;
 }
 
-.velg-lys select:hover,
-.velg-lys select:focus {
-  color: var(--page-fg);
-  border-bottom-color: var(--page-fg);
+.flagg button {
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 1.5px solid transparent;
+  border-radius: 7px;
+  background: none;
+  cursor: pointer;
+  opacity: 0.45;
+  transition:
+    opacity 0.15s,
+    border-color 0.15s;
 }
 
-.velg-lys::after {
-  border-color: var(--page-mute);
+.flagg button svg {
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25);
+}
+
+.flagg button:hover,
+.flagg button:focus-visible {
+  opacity: 0.85;
+  outline: none;
+}
+
+.flagg button.aktiv {
+  opacity: 1;
+  border-color: var(--page-fg);
 }
 
 /* Billetten */
@@ -395,13 +416,13 @@ select option {
 .tips a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 15px;
+  gap: 5px;
+  padding: 5px 11px;
   border: 1px solid var(--navy);
   border-radius: 999px;
   background: var(--navy);
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
+import Flagg from './components/Flagg';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import { hentData, LAND } from './data';
 import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
@@ -282,15 +283,22 @@ export default function App() {
         <span className="ordmerke">Pointmaxing</span>
         <span className="slagord">Hvor lønner kjøpet seg?</span>
       </div>
-      <span className="velg velg-lys">
-        <select aria-label="Land" value={t.land} onChange={(e) => velgLand(e.target.value as Land)}>
-          {LAND.map((l) => (
-            <option key={l} value={l}>
-              {data.landInfo[l].navn}
-            </option>
-          ))}
-        </select>
-      </span>
+      <div className="flagg" role="radiogroup" aria-label="Land">
+        {LAND.map((l) => (
+          <button
+            key={l}
+            type="button"
+            role="radio"
+            aria-checked={t.land === l}
+            aria-label={data.landInfo[l].navn}
+            title={data.landInfo[l].navn}
+            className={t.land === l ? 'aktiv' : undefined}
+            onClick={() => velgLand(l)}
+          >
+            <Flagg land={l} />
+          </button>
+        ))}
+      </div>
     </header>
   );
 
