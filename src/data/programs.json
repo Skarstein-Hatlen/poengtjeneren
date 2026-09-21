@@ -1,0 +1,184 @@
+{
+  "sistOppdatert": "2026-09-21",
+  "programmer": [
+    {
+      "id": "trumf",
+      "navn": "Trumf Netthandel",
+      "kortnavn": "Trumf",
+      "farge": "#1b3f8f",
+      "beskrivelse": "Du får Trumf-bonus i kroner (en prosent av kjøpesummen) og overfører bonusen til EuroBonus.",
+      "satsEnhet": "prosent",
+      "satsEtikett": "Trumf-bonus hos butikken",
+      "satsHjelp": "Prosenten som står på trumfnetthandel.no for butikken.",
+      "standardSats": 5,
+      "konverteringer": [
+        {
+          "id": "automatisk",
+          "navn": "Automatisk",
+          "poengPerKrone": 13.5,
+          "status": "verifisert",
+          "kilde": "https://www.trumf.no/fordeler/sas-eurobonus",
+          "sistVerifisert": "2026-09-21",
+          "merknad": "Bonusen overføres når Trumf-saldoen når 50, 100 eller 200 kr. Saldoen må være under 200 kr når du slår det på."
+        },
+        {
+          "id": "engangs",
+          "navn": "Engangs",
+          "poengPerKrone": 10,
+          "status": "verifisert",
+          "kilde": "https://www.trumf.no/fordeler/sas-eurobonus",
+          "sistVerifisert": "2026-09-21",
+          "merknad": "Du velger selv beløp, og poengene kommer med en gang."
+        }
+      ],
+      "nivaer": [],
+      "kortlag": true,
+      "vilkar": [
+        "Start kjøpet fra trumfnetthandel.no, logget inn og med tom handlekurv.",
+        "Ingen bonus ved rabattkoder utenfra, gavekort, click & collect eller kjøp i butikkens app.",
+        "Noen butikker gir bonus av prisen uten mva og frakt.",
+        "Bonusen vises innen 7 dager og overføres til Trumf etter at kjøpet er bekreftet (vanligvis innen 90 dager).",
+        "Bonus som er overført til EuroBonus kan ikke flyttes tilbake."
+      ],
+      "kilder": [
+        { "tittel": "Trumf: Overfør Trumf-bonus til SAS EuroBonus", "url": "https://www.trumf.no/fordeler/sas-eurobonus", "dato": "2026-09-21" },
+        { "tittel": "Trumf Netthandel: Slik fungerer det", "url": "https://trumfnetthandel.no/about", "dato": "2026-09-21" },
+        { "tittel": "Trumf Netthandel: Spørsmål og svar", "url": "https://trumfnetthandel.no/faq", "dato": "2026-09-21" }
+      ]
+    },
+    {
+      "id": "klarna",
+      "navn": "Klarna",
+      "kortnavn": "Klarna",
+      "farge": "#ffa8cd",
+      "beskrivelse": "Du får Klarna-poeng (100 poeng per krone cashback): butikkens cashback i Klarna-appen pluss medlemscashback fra abonnementet. Poengene veksles til EuroBonus i appen.",
+      "internPoeng": { "navn": "Klarna-poeng", "perKrone": 100 },
+      "satsEnhet": "prosent",
+      "satsEtikett": "Cashback hos butikken i Klarna-appen",
+      "satsHjelp": "Prosenten Klarna-appen viser for butikken. Medlemscashback fra abonnementet legges til automatisk.",
+      "standardSats": 12,
+      "konverteringer": [
+        {
+          "id": "app",
+          "navn": "Veksling i Klarna-appen",
+          "poengPerKrone": 12.28,
+          "status": "uverifisert",
+          "kilde": "Lest i Klarna-appen",
+          "sistVerifisert": "2026-09-21",
+          "merknad": "Klarna publiserer ikke vekslingssatsen. 100 Klarna-poeng (= 1 kr cashback) ga 12,28 EuroBonus-poeng i appen 21.09.2026. Satsen kan endres."
+        }
+      ],
+      "nivaer": [
+        {
+          "id": "ingen",
+          "navn": "Ingen",
+          "ekstraProsent": 0,
+          "butikkFaktor": 1,
+          "kanVeksle": false,
+          "prisPerMnd": 0,
+          "status": "verifisert",
+          "kilde": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "plus",
+          "navn": "Plus",
+          "ekstraProsent": 0.5,
+          "butikkFaktor": 2,
+          "prisPerMnd": 99,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "premium",
+          "navn": "Premium",
+          "ekstraProsent": 1,
+          "butikkFaktor": 3,
+          "prisPerMnd": 199,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "max",
+          "navn": "Max",
+          "ekstraProsent": 1.5,
+          "butikkFaktor": 4,
+          "prisPerMnd": 499,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/cashback/",
+          "sistVerifisert": "2026-09-21"
+        }
+      ],
+      "nivaEtikett": "Klarna-abonnement",
+      "standardNiva": "max",
+      "kort": {
+        "navn": "Klarna-kortet",
+        "kilde": "https://www.klarna.com/no/medlemskap/",
+        "merknad": "Medlemscashbacken (0,5 / 1 / 1,5 %) gis på alle kjøp med Klarna-kortet og veksles til EuroBonus. Butikkens app-cashback og 2x/3x/4x gjelder bare kjøp i Klarna-appen."
+      },
+      "kortlag": false,
+      "kortlagMerknad": "Kjøpet betales gjennom Klarna, så betalingskortet gir ikke EuroBonus-poeng her. Å betale Klarna-fakturaen med et SAS-kort gir heller ikke poeng.",
+      "vilkar": [
+        "Abonnementet ganger butikkens cashback i appen: Plus 2x, Premium 3x, Max 4x (3 % blir 12 % med Max). I tillegg får du 0,5 / 1 / 1,5 % på alle Klarna-kjøp – også i butikker uten cashback-avtale. Klarna oppgir selv «opptil 4 ganger så mye cashback» for medlemmer.",
+        "Du må betale med Klarna (Klarna-kort eller Klarna-saldo) for å få cashback.",
+        "Cashback regnes av beløpet uten avgifter og frakt.",
+        "Veksling til EuroBonus krever aktivt Klarna-medlemskap og kan ikke angres.",
+        "Cashbacken bekreftes innen 30 dager for medlemmer.",
+        "Klarna skriver at medlemmer får «opptil 4x så mye cashback i appen» – bruk prosenten appen viser deg."
+      ],
+      "kilder": [
+        { "tittel": "Klarna: Medlemskap", "url": "https://www.klarna.com/no/medlemskap/", "dato": "2026-09-21" },
+        { "tittel": "Klarna: Cashback", "url": "https://www.klarna.com/no/cashback/", "dato": "2026-09-21" },
+        { "tittel": "Klarna: Vilkår for cashback", "url": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback", "dato": "2026-09-21" },
+        { "tittel": "Klarna: EuroBonus-poeng", "url": "https://www.klarna.com/no/medlemskap/unlock-sas-eurobonus-points/", "dato": "2026-09-21" }
+      ]
+    },
+    {
+      "id": "sas-online-shopping",
+      "navn": "SAS Online Shopping",
+      "kortnavn": "SAS Shopping",
+      "farge": "#001b4d",
+      "beskrivelse": "SAS sin egen nettbutikk-portal. Gir EuroBonus-poeng direkte, oppgitt som poeng per 100 kr.",
+      "satsEnhet": "poengPer100",
+      "satsEtikett": "Poeng per 100 kr hos butikken",
+      "satsHjelp": "Tallet som står på onlineshopping.flysas.com for butikken.",
+      "standardSats": 25,
+      "konverteringer": [],
+      "nivaer": [],
+      "kortlag": true,
+      "vilkar": [
+        "Logg inn med EuroBonus-nummeret og gå til butikken via portalen.",
+        "Poengene kommer 4–12 uker etter kjøpet og trekkes tilbake ved retur.",
+        "Satser merket «Doble poeng» er kampanjer som kan forsvinne."
+      ],
+      "kilder": [
+        { "tittel": "SAS Online Shopping", "url": "https://onlineshopping.flysas.com/nb-NO/", "dato": "2026-09-21" },
+        { "tittel": "SAS Online Shopping: Vilkår", "url": "https://onlineshopping.flysas.com/nb-NO/vilkaar-og-betingelser", "dato": "2026-09-21" }
+      ]
+    },
+    {
+      "id": "eurobonus-everyday",
+      "navn": "SAS EuroBonus Everyday",
+      "kortnavn": "Everyday",
+      "farge": "#3b6fd6",
+      "beskrivelse": "Registrer betalingskortet ditt på EuroBonus-profilen og få poeng direkte hos partnere som Wolt – ingen portal, bare betal med det registrerte kortet.",
+      "satsEnhet": "poengPer100",
+      "satsEtikett": "Poeng per 100 kr hos partneren",
+      "satsHjelp": "Satsen partneren oppgir, f.eks. 10 hos Wolt.",
+      "standardSats": 10,
+      "konverteringer": [],
+      "nivaer": [],
+      "kortlag": true,
+      "vilkar": [
+        "Kortet du betaler med (Visa eller Mastercard) må være registrert på EuroBonus-profilen din.",
+        "Poengene kommer 3–5 virkedager etter betalingen.",
+        "Betaler du med et SAS-kort, får du kortpoengene i tillegg."
+      ],
+      "kilder": [
+        { "tittel": "Wolt: Tjen EuroBonus Bonuspoeng med Wolt", "url": "https://wolt.com/en/nor/oslo/article/eurobonus-norway", "dato": "2026-09-21" }
+      ]
+    }
+  ]
+}

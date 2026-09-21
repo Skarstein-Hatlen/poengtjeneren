@@ -1,0 +1,16 @@
+{
+  "hentet": "2026-09-21",
+  "butikker": [
+    {
+      "id": "wolt",
+      "navn": "Wolt",
+      "satser": {
+        "eurobonus-everyday": {
+          "verdi": 10,
+          "kilde": "https://wolt.com/en/nor/oslo/article/eurobonus-norway",
+          "lenke": "https://wolt.com/nb/nor"
+        }
+      }
+    }
+  ]
+}

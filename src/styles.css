@@ -1,0 +1,637 @@
+:root {
+  --bg: #fbfbf9;
+  --fg: #141413;
+  --mute: #8a8a85;
+  --line: #e4e4df;
+  --accent: #e4572e;
+  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light dark;
+}
+
+/* Mørkt tema: systemvalg (med mindre siden er låst til lyst) eller eksplisitt valg */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0d0d0c;
+    --fg: #f1f1ed;
+    --mute: #86867f;
+    --line: #262624;
+    --accent: #ff7a50;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d0d0c;
+  --fg: #f1f1ed;
+  --mute: #86867f;
+  --line: #262624;
+  --accent: #ff7a50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input::placeholder {
+  color: var(--mute);
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 20px 72px;
+}
+
+.ordmerke {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.etikett {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.muted {
+  color: var(--mute);
+}
+
+/* Kjøpesum */
+.belop {
+  margin-top: 44px;
+}
+
+.belop .etikett {
+  margin-bottom: 8px;
+}
+
+.belop-felt {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.belop-felt input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  padding: 0 0 10px;
+  outline: none;
+}
+
+.belop-felt:focus-within {
+  border-color: var(--fg);
+}
+
+.belop-felt > span {
+  font-size: 20px;
+  color: var(--mute);
+}
+
+/* Butikk og kort */
+.valg {
+  margin-top: 28px;
+}
+
+.valg-rad {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Kort-raden: eventuelt eget-sats-felt til venstre, nedtrekket tar resten uten å sprenge bredden */
+.rad-kort {
+  grid-template-columns: 64px auto minmax(0, 1fr);
+}
+
+.rad-kort .velg {
+  width: 100%;
+  min-width: 0;
+}
+
+.rad-kort select {
+  width: 100%;
+}
+
+.butikk {
+  position: relative;
+  min-width: 0;
+}
+
+.lenke {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 13px;
+  color: var(--mute);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lenke:hover,
+.lenke:focus-visible {
+  color: var(--fg);
+  outline: none;
+}
+
+
+.butikk input {
+  width: 100%;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 12px 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.butikk input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.treff {
+  position: absolute;
+  z-index: 5;
+  left: -8px;
+  right: -8px;
+  top: 100%;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.treff button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.treff button:hover,
+.treff button:focus {
+  background: var(--line);
+  outline: none;
+}
+
+.treff .flis-logo {
+  width: 44px;
+  height: 26px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+/* Butikkatalog */
+.katalog {
+  margin-top: 36px;
+}
+
+.katalog-topp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.programfilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.programknapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  font-size: 14px;
+  color: var(--mute);
+  cursor: pointer;
+}
+
+.programknapp i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.programknapp.aktiv {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.programknapp.aktiv i {
+  opacity: 1;
+}
+
+.programknapp:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.katalog > input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  font-size: 16px;
+  padding: 12px 0;
+  margin-top: 8px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.katalog > input:focus {
+  border-color: var(--fg);
+}
+
+.fliser {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px 14px;
+}
+
+.fliser button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.fliser button:hover .flis-logo,
+.fliser button:focus-visible .flis-logo {
+  border-color: var(--fg);
+}
+
+.fliser button:focus-visible {
+  outline: none;
+}
+
+.flis-logo {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 5 / 2;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #141413;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.flis-logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+  background: #fff;
+}
+
+.flis-navn {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 11px;
+  color: var(--mute);
+}
+
+.chip i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: 1px;
+}
+
+/* Inndata */
+.tall {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.tall input {
+  width: 4ch;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  font-size: 18px;
+  text-align: right;
+  padding: 2px 0;
+  outline: none;
+}
+
+.tall input:focus {
+  border-color: var(--fg);
+}
+
+.enhet {
+  font-size: 12px;
+  color: var(--mute);
+  white-space: nowrap;
+}
+
+.velg {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.velg select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--fg);
+  font-size: 15px;
+  padding: 4px 18px 4px 0;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  outline: none;
+}
+
+.velg select:hover,
+.velg select:focus {
+  border-bottom-color: var(--fg);
+}
+
+/* Nedtrekkslisten: tydelig tekst på tydelig bakgrunn i begge temaer */
+select option {
+  color: #141413;
+  background: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) select option {
+    color: #f1f1ed;
+    background: #1c1c1b;
+  }
+}
+
+:root[data-theme='dark'] select option {
+  color: #f1f1ed;
+  background: #1c1c1b;
+}
+
+.velg::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--fg);
+  border-bottom: 1.5px solid var(--fg);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.kolonne-lenke {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.kolonne-lenke:hover {
+  text-decoration: underline;
+}
+
+/* Kolonner – ett program hver, side om side */
+.kolonner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px 12px;
+  margin-top: 40px;
+}
+
+.kolonne {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+
+.kolonne.best {
+  border-top-color: var(--accent);
+}
+
+.kolonne.inaktiv .kolonne-topp {
+  opacity: 0.55;
+}
+
+.kolonne-topp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.kolonne-topp > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monogram,
+.logo {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  object-fit: contain;
+}
+
+.kolonne-topp .niva {
+  font-weight: 400;
+  color: var(--mute);
+}
+
+.kolonne .resultat {
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.kolonne .resultat:disabled {
+  cursor: default;
+}
+
+.poeng {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.kolonne.best .poeng {
+  color: var(--accent);
+}
+
+.kolonne.inaktiv .poeng {
+  color: var(--line);
+}
+
+.poeng sup {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mute);
+  margin-left: 1px;
+}
+
+.per100 {
+  font-size: 11px;
+  color: var(--mute);
+}
+
+@media (max-width: 479px) {
+  .kolonne .tall input {
+    width: 3.5ch;
+    font-size: 17px;
+  }
+  .kolonne .velg select {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 480px) {
+  .kolonner {
+    gap: 24px;
+  }
+  .poeng {
+    font-size: 38px;
+  }
+  .per100 {
+    font-size: 12px;
+  }
+  .kolonne-topp {
+    font-size: 15px;
+  }
+}
+
+.detaljer {
+  margin: 20px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+.konklusjon {
+  margin: 28px 0 0;
+  font-size: 17px;
+}
+
+.tom {
+  margin: 28px 0 0;
+  color: var(--mute);
+}
+
+/* Bunn */
+footer {
+  margin-top: 56px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--mute);
+}
+
+footer p {
+  margin: 0 0 6px;
+}
+
+footer summary {
+  cursor: pointer;
+}
+
+footer ul {
+  margin: 6px 0 0;
+  padding-left: 16px;
+}

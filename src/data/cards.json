@@ -1,0 +1,129 @@
+[
+  {
+    "id": "sas-amex-classic",
+    "navn": "SAS Amex Classic",
+    "utsteder": "American Express",
+    "poengPer100": 10,
+    "pris": "0 kr/mnd (30 kr/mnd fra 01.11.2026)",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-classic/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "sas-amex-premium",
+    "navn": "SAS Amex Premium",
+    "utsteder": "American Express",
+    "poengPer100": 15,
+    "pris": "150 kr/mnd",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "sas-amex-elite",
+    "navn": "SAS Amex Elite",
+    "utsteder": "American Express",
+    "poengPer100": 20,
+    "pris": "575 kr/mnd",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "sas-mastercard-world",
+    "navn": "SAS EuroBonus World Mastercard",
+    "utsteder": "SEB Kort",
+    "poengPer100": 10,
+    "pris": "588 kr/år (294 kr første år)",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.no/kortene/mastercard/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år."
+  },
+  {
+    "id": "sas-mastercard-premium",
+    "navn": "SAS EuroBonus Mastercard Premium",
+    "utsteder": "SEB Kort",
+    "poengPer100": 15,
+    "pris": "3 348 kr/år",
+    "status": "verifisert",
+    "kilde": "https://saseurobonusmastercard.no/kortene/mastercard-premium/",
+    "sistVerifisert": "2026-09-21"
+  },
+  {
+    "id": "amex-poeng",
+    "navn": "Amex Green / Gold / Platinum (Amex-poeng)",
+    "utsteder": "American Express",
+    "poengPer100": 5,
+    "pris": "Årsavgift etter kort",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/fordeler/oppdag-fordelene/poeng/membership-rewards/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "1 Amex-poeng per krone; 20 Amex-poeng = 1 EuroBonus-poeng. Må veksles manuelt."
+  },
+  {
+    "id": "amex-platinum-points-plus",
+    "navn": "Amex Platinum Points Plus",
+    "utsteder": "American Express",
+    "poengPer100": 20,
+    "pris": "750 kr/mnd i tillegg til Platinum",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/fordeler/oppdag-fordelene/poeng/membership-rewards/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "4 Amex-poeng per krone = 20 EuroBonus-poeng per 100 kr. Poengene overføres to ganger i året."
+  },
+  {
+    "id": "revolut-standard",
+    "navn": "Revolut Standard / Plus (RevPoints)",
+    "utsteder": "Revolut",
+    "poengPer100": 0.67,
+    "pris": "0 kr / 45,99 kr per mnd",
+    "status": "uverifisert",
+    "kilde": "https://www.revolut.com/en-NO/our-pricing-plans/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "1 RevPoint per 150 kr (revolut.com). Veksles 1:1 til EuroBonus ifølge lanseringen nov. 2025 – vekslingen står ikke på revolut.com."
+  },
+  {
+    "id": "revolut-premium",
+    "navn": "Revolut Premium (RevPoints)",
+    "utsteder": "Revolut",
+    "poengPer100": 2.5,
+    "pris": "94,99 kr/mnd",
+    "status": "uverifisert",
+    "kilde": "https://sparelosen.no/fordel/eurobonus/kredittkort-eurobonus-opptjening/",
+    "sistVerifisert": "2026-09-12",
+    "merknad": "1 RevPoint per 40 kr (tredjepart). Veksles 1:1 til EuroBonus."
+  },
+  {
+    "id": "revolut-metal",
+    "navn": "Revolut Metal (RevPoints)",
+    "utsteder": "Revolut",
+    "poengPer100": 4,
+    "pris": "169,99 kr/mnd",
+    "status": "uverifisert",
+    "kilde": "https://sparelosen.no/fordel/eurobonus/kredittkort-eurobonus-opptjening/",
+    "sistVerifisert": "2026-09-12",
+    "merknad": "1 RevPoint per 25 kr (tredjepart). Veksles 1:1 til EuroBonus."
+  },
+  {
+    "id": "revolut-ultra",
+    "navn": "Revolut Ultra (RevPoints)",
+    "utsteder": "Revolut",
+    "poengPer100": 10,
+    "pris": "700 kr/mnd",
+    "status": "uverifisert",
+    "kilde": "https://www.revolut.com/en-NO/rev-points/",
+    "sistVerifisert": "2026-09-21",
+    "merknad": "1 RevPoint per 10 kr (revolut.com). Veksles 1:1 til EuroBonus ifølge lanseringen nov. 2025."
+  },
+  {
+    "id": "lunar",
+    "navn": "Lunar SAS EuroBonus (debetkort)",
+    "utsteder": "Lunar",
+    "poengPer100": 8,
+    "pris": "49 kr/mnd (inkludert i Lunar Unlimited)",
+    "status": "verifisert",
+    "kilde": "https://www.lunar.app/no/privat/sas-eurobonus",
+    "sistVerifisert": "2026-09-21"
+  }
+]
