@@ -31,7 +31,14 @@ export function ButikkLogo({ butikk }: { butikk: Butikk }) {
   return (
     <span className="flis-logo" aria-hidden="true">
       {butikk.navn.charAt(0)}
-      {butikk.logo && <img src={butikk.logo} alt="" loading="lazy" onError={(e) => (e.currentTarget.style.display = 'none')} />}
+      {butikk.logo && (
+        <img
+          src={butikk.logo.startsWith('http') || butikk.logo.startsWith('/') ? butikk.logo : `/${butikk.logo}`}
+          alt=""
+          loading="lazy"
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
+      )}
     </span>
   );
 }

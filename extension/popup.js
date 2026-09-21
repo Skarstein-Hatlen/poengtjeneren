@@ -30,12 +30,37 @@ function finnButikk(perDomene, domene) {
 
 const escape = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+async function hentDirekte() {
+  for (const kilde of ['https://pointmaxing.no/api/butikker.json', 'http://pointmaxing.no/api/butikker.json']) {
+    try {
+      const svar = await fetch(kilde, { cache: 'no-store' });
+      if (!svar.ok) continue;
+      const data = await svar.json();
+      const perDomene = {};
+      const sti = { NO: 'no', SE: 'se', DK: 'dk' };
+      for (const [land, butikker] of Object.entries(data.land)) {
+        for (const b of butikker) if (b.domene && !perDomene[b.domene]) perDomene[b.domene] = { land, sti: sti[land], id: b.id, navn: b.navn, satser: b.satser };
+      }
+      await chrome.storage.local.set({ perDomene, hentet: data.hentet, oppdatert: Date.now() });
+      return { perDomene, hentet: data.hentet };
+    } catch {
+      /* prøv neste */
+    }
+  }
+  return {};
+}
+
 async function vis() {
   const el = document.getElementById('innhold');
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const { perDomene, hentet } = await chrome.storage.local.get(['perDomene', 'hentet']);
+  let { perDomene, hentet } = await chrome.storage.local.get(['perDomene', 'hentet']);
+  if (!perDomene) ({ perDomene, hentet } = await hentDirekte());
   const butikk = finnButikk(perDomene, domeneFor(tab?.url));
 
+  if (!perDomene) {
+    el.innerHTML = `<p class="tom">Fikk ikke hentet butikklisten fra pointmaxing.no. Prøv igjen om litt.</p>`;
+    return;
+  }
   if (!butikk) {
     el.innerHTML = `<p class="tom">Ingen poengavtale funnet for denne siden.</p><a class="knapp" href="https://pointmaxing.no/" target="_blank" rel="noreferrer">Åpne Pointmaxing →</a>`;
     return;

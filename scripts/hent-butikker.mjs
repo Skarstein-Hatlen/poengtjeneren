@@ -227,7 +227,7 @@ const finnes = (url) => access(url).then(() => true, () => false);
 async function lagLogo(kildeUrl, land, id, manifest) {
   const nokkel = `${land}/${id}`;
   const fil = new URL(`${nokkel}.webp`, LOGO_MAPPE);
-  if (manifest[nokkel] === kildeUrl && (await finnes(fil))) return `logos/${nokkel}.webp`;
+  if (manifest[nokkel] === kildeUrl && (await finnes(fil))) return `/logos/${nokkel}.webp`;
   try {
     const svar = await fetch(kildeUrl, { headers: HODER });
     if (!svar.ok) return null;
@@ -246,7 +246,7 @@ async function lagLogo(kildeUrl, land, id, manifest) {
     await mkdir(new URL(`${land}/`, LOGO_MAPPE), { recursive: true });
     await writeFile(fil, ut);
     manifest[nokkel] = kildeUrl;
-    return `logos/${nokkel}.webp`;
+    return `/logos/${nokkel}.webp`;
   } catch {
     return null;
   }

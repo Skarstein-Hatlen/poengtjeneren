@@ -441,11 +441,19 @@ export default function App() {
   }
 
   if (rute.visning === 'kort') {
+    // På kortsiden vises Klarna Plus, Premium og Max hver for seg – de gir ulik opptjening.
+    const klarnaKort = programmer.flatMap((p) =>
+      p.nivaer
+        .filter((n) => n.kanVeksle !== false && n.ekstraProsent > 0)
+        .map((n) => kortForProgram(p, n.id))
+        .filter((k): k is Kort => k !== null && k.poengPer100 > 0)
+        .map((k, i) => ({ ...k, id: `${k.id}-${p.nivaer.filter((n) => n.kanVeksle !== false && n.ekstraProsent > 0)[i].id}`, navn: `${p.kortnavn} ${p.nivaer.filter((n) => n.kanVeksle !== false && n.ekstraProsent > 0)[i].navn}` })),
+    );
     return (
       <div className="app">
         {topp}
         <div className="billett">
-          <Kortliste land={t.land} kort={[...programKortListe.filter((k) => k.poengPer100 > 0), ...kortListe]} lenke={kortLenke} />
+          <Kortliste land={t.land} kort={[...klarnaKort, ...kortListe]} lenke={kortLenke} />
         </div>
         <footer>
           {harAnnonse && <p>{T('annonseForklaring')}</p>}
