@@ -391,10 +391,10 @@ export default function App() {
         {kort && kort.id !== ANNET && kortLenke(kort) && (
           <p className="kortlenke">
             <a href={kortLenke(kort)!} target="_blank" rel={kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
-              Søk om {kort.navn} ↗
+              Søk om {kort.navn} <span aria-hidden="true">→</span>
             </a>
             {kort.annonse && <span className="annonse">Annonse</span>}
-            {kort.pris && <span className="muted"> · {kort.pris}</span>}
+            {kort.pris && <span className="muted">{kort.pris}</span>}
           </p>
         )}
         {programmer
@@ -446,9 +446,11 @@ export default function App() {
       )}
       {kortTips && (
         <p className="tips">
-          Med {kortTips.kort.navn} hadde {kortTips.program.kortnavn} gitt {fmtPoeng(kortTips.ekstra)} poeng mer.{' '}
+          <span>
+            Med {kortTips.kort.navn} hadde {kortTips.program.kortnavn} gitt {fmtPoeng(kortTips.ekstra)} poeng mer.
+          </span>
           <a href={kortLenke(kortTips.kort)!} target="_blank" rel={kortTips.kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
-            Søk om kortet ↗
+            Søk om kortet <span aria-hidden="true">→</span>
           </a>
           {kortTips.kort.annonse && <span className="annonse">Annonse</span>}
         </p>

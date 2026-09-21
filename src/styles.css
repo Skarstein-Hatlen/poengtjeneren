@@ -521,15 +521,47 @@ select option {
 /* Kortlenke og tips */
 .kortlenke {
   margin: 0;
-  padding: 10px 0 0 76px;
+  padding: 12px 0 2px 76px;
   font-size: 13px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
 }
 
 .kortlenke a,
 .tips a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--fg);
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.kortlenke a:hover,
+.tips a:hover,
+.kortlenke a:focus-visible,
+.tips a:focus-visible {
+  background: transparent;
   color: var(--fg);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  outline: none;
+}
+
+.tips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
 }
 
 .annonse {
@@ -546,7 +578,7 @@ select option {
 }
 
 .tips {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   font-size: 14px;
   color: var(--mute);
 }
