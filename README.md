@@ -1,4 +1,4 @@
-# Poengtjeneren
+# Pointmaxing
 
 Kalkulator som viser hvor mange SAS EuroBonus-poeng et kjøp gir via Trumf Netthandel, Klarna, SAS Online Shopping og EuroBonus Everyday, og hvilket program som lønner seg. Landvalg: Norge, Sverige og Danmark (Trumf bare i Norge; programmer, satser og butikker ligger per land i datafilene). Brukeren skriver inn kjøpesum og butikkens sats i hvert program, velger betalingskort og Klarna-abonnement, og får en rangert sammenligning.
 
@@ -11,7 +11,7 @@ npm run dev
 
 `npm test` kjører regnetestene, `npm run build` bygger til `dist/`.
 
-`npm run hent` henter butikksatser på nytt fra Trumf Netthandel (paginert liste), SAS Online Shopping (JSON-API) og Klarna (katalog-API-et bak klarna.com/no/store/?type=CASHBACK) og skriver `src/data/stores.json`. `npm run build:enkeltfil` pakker bygget til én HTML-fil (`dist/poengtjeneren.html`).
+`npm run hent` henter butikksatser på nytt fra Trumf Netthandel (paginert liste), SAS Online Shopping (JSON-API) og Klarna (katalog-API-et bak klarna.com/no/store/?type=CASHBACK) og skriver `src/data/stores.json`. `npm run build:enkeltfil` pakker bygget til én HTML-fil (`dist/pointmaxing.html`).
 
 ## Struktur
 

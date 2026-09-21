@@ -10,7 +10,7 @@
 
 import { writeFile } from 'node:fs/promises';
 
-const HODER = { 'user-agent': 'Mozilla/5.0 (Poengtjeneren; henter offentlige satser)', accept: 'application/json, text/html' };
+const HODER = { 'user-agent': 'Mozilla/5.0 (Pointmaxing; henter offentlige satser)', accept: 'application/json, text/html' };
 const UT = new URL('../src/data/stores.json', import.meta.url);
 
 /** Per land: hvilke programmer (id-er fra programs.json) og hvordan kildene adresseres. */

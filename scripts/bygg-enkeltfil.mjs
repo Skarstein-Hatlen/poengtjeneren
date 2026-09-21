@@ -1,4 +1,4 @@
-// Pakker Vite-bygget (dist/) til én HTML-fil med CSS og JS inline: dist/poengtjeneren.html.
+// Pakker Vite-bygget (dist/) til én HTML-fil med CSS og JS inline: dist/pointmaxing.html.
 // Brukes til å publisere som artifact eller sende som én fil. Kjør etter `npm run build`.
 
 import { readFile, writeFile } from 'node:fs/promises';
@@ -13,7 +13,7 @@ if (!css || !js) throw new Error('Fant ikke CSS/JS i dist/index.html – kjør n
 const stil = await readFile(new URL(css, dist), 'utf8');
 // «</script>» inne i JS-en ville avsluttet script-taggen for tidlig.
 const kode = (await readFile(new URL(js, dist), 'utf8')).replace(/<\/script/gi, '<\\/script');
-const tittel = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? 'Poengtjeneren';
+const tittel = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? 'Pointmaxing';
 
 const ut = `<title>${tittel}</title>
 <style>
@@ -24,5 +24,5 @@ ${stil}
 ${kode}
 </script>
 `;
-await writeFile(new URL('poengtjeneren.html', dist), ut);
-console.log(`Skrev dist/poengtjeneren.html (${Math.round(ut.length / 1024)} kB)`);
+await writeFile(new URL('pointmaxing.html', dist), ut);
+console.log(`Skrev dist/pointmaxing.html (${Math.round(ut.length / 1024)} kB)`);

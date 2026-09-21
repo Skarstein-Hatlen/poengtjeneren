@@ -9,7 +9,7 @@ import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type Program
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall } from './lib/format';
 
 const data = hentData();
-const NOKKEL = 'poengtjeneren.v6';
+const NOKKEL = 'pointmaxing.v6';
 const INGEN = 'ingen';
 const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
@@ -278,7 +278,7 @@ export default function App() {
 
   const topp = (
     <header className="topp">
-      <span className="ordmerke">Poengtjeneren</span>
+      <span className="ordmerke">Pointmaxing</span>
       <span className="velg">
         <select aria-label="Land" value={t.land} onChange={(e) => velgLand(e.target.value as Land)}>
           {LAND.map((l) => (
