@@ -233,6 +233,37 @@ await parallelt(
 );
 await writeFile(LOGO_MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
 
-await writeFile(UT, JSON.stringify({ hentet: new Date().toISOString().slice(0, 10), land: resultat }, null, 2) + '\n');
+const idag = new Date().toISOString().slice(0, 10);
+
+// Historikk: én linje per butikk med [dato, sats] hver gang satsen endrer seg.
+// Kampanjesats teller som gjeldende sats mens den varer.
+const HIST = new URL('../src/data/history.json', import.meta.url);
+const historikk = (await finnes(HIST)) ? JSON.parse(await readFile(HIST, 'utf8')) : {};
+let nyeMalinger = 0;
+for (const [land, butikker] of Object.entries(resultat)) {
+  const h = (historikk[land] ??= {});
+  for (const b of butikker) {
+    const hb = (h[b.id] ??= {});
+    for (const [programId, sats] of Object.entries(b.satser)) {
+      const verdi = sats.kampanje && sats.kampanje.slutt >= idag ? sats.kampanje.verdi : sats.verdi;
+      const serie = (hb[programId] ??= []);
+      if (serie.length === 0 || serie[serie.length - 1][1] !== verdi) {
+        serie.push([idag, verdi]);
+        nyeMalinger++;
+      }
+    }
+  }
+}
+const histLinjer = ['{'];
+Object.entries(historikk).forEach(([land, butikker], li, alleLand) => {
+  histLinjer.push(` ${JSON.stringify(land)}: {`);
+  const rader = Object.entries(butikker);
+  rader.forEach(([id, serier], i) => histLinjer.push(`  ${JSON.stringify(id)}: ${JSON.stringify(serier)}${i < rader.length - 1 ? ',' : ''}`));
+  histLinjer.push(` }${li < alleLand.length - 1 ? ',' : ''}`);
+});
+histLinjer.push('}', '');
+await writeFile(HIST, histLinjer.join('\n'));
+
+await writeFile(UT, JSON.stringify({ hentet: idag, land: resultat }, null, 2) + '\n');
 console.log(logg.join('\n'));
-console.log(`Logoer: ${lokale} lokale`);
+console.log(`Logoer: ${lokale} lokale. Historikk: ${nyeMalinger} nye målinger.`);

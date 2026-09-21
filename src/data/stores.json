@@ -9363,18 +9363,6 @@
         "logo": "logos/SE/lastminute.webp"
       },
       {
-        "id": "layered",
-        "navn": "Layered",
-        "satser": {
-          "klarna-se": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/1478ac21-1ac5-4ab3-b42c-106ec9b4e211/layered/pay-with-klarna/"
-          }
-        },
-        "logo": "logos/SE/layered.webp"
-      },
-      {
         "id": "lego",
         "navn": "Lego",
         "satser": {

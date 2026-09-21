@@ -608,6 +608,38 @@ select option {
   color: var(--mute);
 }
 
+.kroner {
+  font-family: var(--font-tall);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mute);
+}
+
+/* Satsens historikk – liten trappekurve med én setning */
+.historikk {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--ink);
+}
+
+.sparkline {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 0.8;
+}
+
+.historikk-tekst {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.rad-verdi {
+  grid-template-columns: 76px auto minmax(0, 1fr);
+}
+
 /* Stempelet på vinneren – sitter som et klistremerke på rivekanten */
 .stempel {
   position: absolute;

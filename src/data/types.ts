@@ -122,6 +122,10 @@ export interface Butikkfil {
   land: Partial<Record<Land, Butikk[]>>;
 }
 
+/** Satsens historikk: [dato, verdi] hver gang satsen endret seg. Fylles av hentescriptet. */
+export type Maling = [string, number];
+export type Historikk = Partial<Record<Land, Record<string, Record<string, Maling[]>>>>;
+
 export interface Datasett {
   sistOppdatert: string;
   /** Når butikksatsene sist ble hentet. */
@@ -131,4 +135,5 @@ export interface Datasett {
   programmer: Program[];
   kort: Kort[];
   butikker: Record<Land, Butikk[]>;
+  historikk: Historikk;
 }

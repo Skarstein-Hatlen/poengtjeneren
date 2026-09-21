@@ -231,18 +231,18 @@
       "konverteringer": [
         {
           "id": "app",
-          "navn": "Veksling i Klarna-appen",
+          "navn": "Växling i Klarna-appen",
           "poengPerKrone": 11.76,
           "status": "uverifisert",
           "kilde": "https://eurobonusguiden.se/2025/11/klarna-och-eurobonus-vaxlingskurs-lanserad/",
           "sistVerifisert": "2025-11-19",
-          "merknad": "Klarna publiserer ikke vekslingssatsen. 100 Klarna-poäng (= 1 SEK cashback) ga 11,76 EuroBonus-poeng ifølge eurobonusguiden.se (nov. 2025). Sjekk appen – satsen kan endres."
+          "merknad": "Klarna publicerar inte växlingskursen. 100 Klarna-poäng (= 1 kr cashback) gav 11,76 EuroBonus-poäng enligt eurobonusguiden.se (nov. 2025). Kontrollera i appen – kursen kan ändras."
         }
       ],
       "nivaer": [
         {
           "id": "ingen",
-          "navn": "Ingen",
+          "navn": "Inget",
           "ekstraProsent": 0,
           "butikkFaktor": 1,
           "kanVeksle": false,
@@ -287,14 +287,14 @@
       "kort": {
         "navn": "Klarna-kortet",
         "kilde": "https://www.klarna.com/se/medlemskap/",
-        "merknad": "Medlemscashbacken (0,5 / 1 / 1,5 %) gis på alle kjøp med Klarna-kortet og veksles til EuroBonus. Butikkens app-cashback og 2x/3x/4x gjelder bare kjøp i Klarna-appen."
+        "merknad": "Medlemscashbacken (0,5 / 1 / 1,5 %) ges på alla köp med Klarna-kortet och växlas till EuroBonus. Butikens app-cashback och 2x/3x/4x gäller bara köp i Klarna-appen."
       },
       "kortlag": false,
-      "kortlagMerknad": "Kjøpet betales gjennom Klarna, så betalingskortet gir ikke EuroBonus-poeng her.",
+      "kortlagMerknad": "Köpet betalas via Klarna, så betalkortet ger inga EuroBonus-poäng här.",
       "vilkar": [
-        "Abonnementet ganger butikkens cashback i appen: Plus 2x, Premium 3x, Max 4x («2x/3x/4x cashback hos utvalda butiker»). I tillegg 0,5 / 1 / 1,5 % på alle Klarna-kjøp.",
-        "Du må betale med Klarna for å få cashback.",
-        "Veksling til EuroBonus krever aktivt Klarna-medlemskap og kan ikke angres."
+        "Abonnemanget multiplicerar butikens cashback i appen: Plus 2x, Premium 3x, Max 4x (3 % blir 12 % med Max). Dessutom får du 0,5 / 1 / 1,5 % på alla Klarna-köp.",
+        "Du måste betala med Klarna för att få cashback.",
+        "Växling till EuroBonus kräver aktivt Klarna-medlemskap och kan inte ångras."
       ],
       "kilder": [
         {
@@ -324,9 +324,9 @@
       "nivaer": [],
       "kortlag": true,
       "vilkar": [
-        "Logg inn med EuroBonus-nummeret og gå til butikken via portalen.",
-        "Poengene kommer 4–12 uker etter kjøpet og trekkes tilbake ved retur.",
-        "Satser merket «Dubbla poäng» er kampanjer som kan forsvinne."
+        "Logga in med EuroBonus-numret och gå till butiken via portalen.",
+        "Poängen kommer 4–12 veckor efter köpet och dras tillbaka vid retur.",
+        "Satser märkta «Dubbla poäng» är kampanjer som kan försvinna."
       ],
       "kilder": [
         {
@@ -359,7 +359,7 @@
           "status": "uverifisert",
           "kilde": "https://www.klarna.com/dk/medlemskab/",
           "sistVerifisert": "2026-09-21",
-          "merknad": "Vekslingssatsen for DKK er ikke funnet i noen kilde. Sjekk hvor mange EuroBonus-poeng 100 Klarna-point gir i appen, og legg tallet inn som poengPerKrone i programs.json."
+          "merknad": "Vekslingskursen for DKK er ikke fundet i nogen kilde. Tjek, hvor mange EuroBonus-point 100 Klarna-point giver i appen, og indsæt tallet som poengPerKrone i programs.json."
         }
       ],
       "nivaer": [
@@ -410,14 +410,14 @@
       "kort": {
         "navn": "Klarna-kortet",
         "kilde": "https://www.klarna.com/dk/medlemskab/",
-        "merknad": "Medlemscashbacken (0,5 / 1 / 1,5 %) gis på alle kjøp med Klarna-kortet og veksles til EuroBonus."
+        "merknad": "Medlemscashbacken (0,5 / 1 / 1,5 %) gives på alle køb med Klarna-kortet og veksles til EuroBonus."
       },
       "kortlag": false,
-      "kortlagMerknad": "Kjøpet betales gjennom Klarna, så betalingskortet gir ikke EuroBonus-poeng her.",
+      "kortlagMerknad": "Købet betales via Klarna, så betalingskortet giver ikke EuroBonus-point her.",
       "vilkar": [
-        "Abonnementet ganger butikkens cashback i appen: Plus 2x («Dobbelt cashback»), Premium 3x, Max 4x. I tillegg 0,5 / 1 / 1,5 % på alle Klarna-kjøp.",
-        "Du må betale med Klarna for å få cashback.",
-        "Veksling til EuroBonus krever aktivt Klarna-medlemskap og kan ikke angres."
+        "Abonnementet ganger butikkens cashback i appen: Plus 2x («Dobbelt cashback»), Premium 3x, Max 4x. Derudover får du 0,5 / 1 / 1,5 % på alle Klarna-køb.",
+        "Du skal betale med Klarna for at få cashback.",
+        "Veksling til EuroBonus kræver aktivt Klarna-medlemskab og kan ikke fortrydes."
       ],
       "kilder": [
         {
@@ -442,9 +442,9 @@
       "nivaer": [],
       "kortlag": true,
       "vilkar": [
-        "Logg inn med EuroBonus-nummeret og gå til butikken via portalen.",
-        "Poengene kommer 4–12 uker etter kjøpet og trekkes tilbake ved retur.",
-        "Satser merket «Dobbelt point» er kampanjer som kan forsvinne."
+        "Log ind med EuroBonus-nummeret og gå til butikken via portalen.",
+        "Pointene kommer 4–12 uger efter købet og trækkes tilbage ved returnering.",
+        "Satser markeret «Dobbelt point» er kampagner, der kan forsvinde."
       ],
       "kilder": [
         {

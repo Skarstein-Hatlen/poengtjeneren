@@ -21,3 +21,10 @@ npm run dev
 - `src/lib/calc.ts` – ren regnemodul (testet i `calc.test.ts`).
 - `src/components/` – skjema og resultatvisning.
 - `docs/research.md` – researchen satsene bygger på.
+
+## Butikksider, historikk og språk
+
+- `npm run build` lager i tillegg én statisk side per butikk (`dist/no/kicks/index.html` osv.), landsider, `404.html`, `sitemap.xml` og `robots.txt` via `scripts/bygg-butikksider.mjs`. Adressen `/se/kicks` åpner Kicks i Sverige direkte.
+- `src/data/history.json` fylles av `npm run hent` med `[dato, sats]` hver gang en sats endrer seg; kalkulatoren viser en liten kurve og «høyeste sats siden …» per program når en butikk er valgt.
+- Språk og tallformat følger flagget (norsk, svensk, dansk). Tekstene ligger i `src/i18n.ts`; svenske og danske programtekster ligger i `programs.json`.
+- Poengverdi (øre per poeng) kan justeres i kalkulatoren og gir «≈ kr» ved siden av poengene.

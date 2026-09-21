@@ -10,10 +10,11 @@ interface Props {
   onVelg: (butikk: Butikk) => void;
   /** Butikken som allerede er valgt – da trengs ingen forslag for samme navn. */
   valgt: Butikk | null;
+  placeholder: string;
 }
 
 /** Søkefelt som fyller inn satsene for en butikk vi har hentet data på. */
-export default function ButikkSok({ liste, verdi, onChange, onVelg, valgt }: Props) {
+export default function ButikkSok({ liste, verdi, onChange, onVelg, valgt, placeholder }: Props) {
   const [fokus, setFokus] = useState(false);
   const treff = fokus ? sokButikker(liste, verdi) : [];
   const eksakt = valgt !== null && verdi === valgt.navn;
@@ -24,7 +25,7 @@ export default function ButikkSok({ liste, verdi, onChange, onVelg, valgt }: Pro
         id="butikk"
         type="search"
         autoComplete="off"
-        placeholder="Søk butikk"
+        placeholder={placeholder}
         value={verdi}
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFokus(true)}

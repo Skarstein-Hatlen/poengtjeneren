@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import type { Butikk, ButikkSats, Program } from '../data/types';
+import type { Butikk, ButikkSats, Land, Program } from '../data/types';
+import { tekst } from '../i18n';
 import { gjeldendeSats, sokButikker } from '../lib/butikker';
 import { fmtPer100, fmtTall } from '../lib/format';
 
 interface Props {
+  land: Land;
   liste: Butikk[];
   programmer: Program[];
   idag: string;
@@ -32,7 +34,7 @@ export function ButikkLogo({ butikk }: { butikk: Butikk }) {
 }
 
 /** Alle butikkene vi har satser på, med logo og satsene per program. */
-export default function Butikkliste({ liste, programmer, idag, per100, onVelg, onLukk }: Props) {
+export default function Butikkliste({ land, liste, programmer, idag, per100, onVelg, onLukk }: Props) {
   const [filter, setFilter] = useState('');
   const [sortering, setSortering] = useState<Sortering>('navn');
   // Avhukede programmer: butikken må finnes i alle dem (og kan i tillegg finnes i flere).
@@ -63,11 +65,11 @@ export default function Butikkliste({ liste, programmer, idag, per100, onVelg, o
     <section className="katalog">
       <div className="katalog-topp">
         <button type="button" className="lenke" onClick={onLukk}>
-          ← Tilbake
+          {tekst(land, 'tilbake')}
         </button>
-        <span className="etikett">{treff.length} butikker</span>
+        <span className="etikett">{tekst(land, 'antallButikker', { n: treff.length })}</span>
       </div>
-      <div className="programfilter" role="group" aria-label="Vis butikker som finnes hos">
+      <div className="programfilter" role="group" aria-label={tekst(land, 'visButikkerHos')}>
         {programmer.map((p) => {
           const aktiv = valgte.includes(p.id);
           return (
@@ -79,13 +81,13 @@ export default function Butikkliste({ liste, programmer, idag, per100, onVelg, o
         })}
       </div>
       <div className="katalog-verktoy">
-        <input type="search" placeholder="Filtrer" autoComplete="off" autoFocus value={filter} onChange={(e) => setFilter(e.target.value)} />
-        <div className="sortering" role="group" aria-label="Sortering">
+        <input type="search" placeholder={tekst(land, 'filtrer')} autoComplete="off" autoFocus value={filter} onChange={(e) => setFilter(e.target.value)} />
+        <div className="sortering" role="group" aria-label={tekst(land, 'sortering')}>
           <button type="button" className={`lenke${sortering === 'navn' ? ' aktiv' : ''}`} aria-pressed={sortering === 'navn'} onClick={() => setSortering('navn')}>
-            A–Å
+            {tekst(land, 'alfabetisk')}
           </button>
           <button type="button" className={`lenke${sortering === 'poeng' ? ' aktiv' : ''}`} aria-pressed={sortering === 'poeng'} onClick={() => setSortering('poeng')}>
-            Flest poeng
+            {tekst(land, 'flestPoeng')}
           </button>
         </div>
       </div>
@@ -98,7 +100,7 @@ export default function Butikkliste({ liste, programmer, idag, per100, onVelg, o
               {beste && (
                 <span className="flis-beste">
                   <i style={{ background: beste.program.farge }} />
-                  {fmtPer100(beste.per100)} p/100 kr
+                  {fmtPer100(beste.per100)} {tekst(land, 'pPer100kr')}
                 </span>
               )}
               <span className="chips">

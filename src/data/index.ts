@@ -2,7 +2,8 @@ import programmerJson from './programs.json';
 import kortJson from './cards.json';
 import butikkerJson from './stores.json';
 import partnereJson from './partners.json';
-import type { Butikk, Butikkfil, Datasett, Kort, Land, LandInfo, Program } from './types';
+import historikkJson from './history.json';
+import type { Butikk, Butikkfil, Datasett, Historikk, Kort, Land, LandInfo, Program } from './types';
 
 export const LAND: Land[] = ['NO', 'SE', 'DK'];
 
@@ -25,8 +26,7 @@ function slaSammen(...lister: Butikk[][]): Butikk[] {
 
 // Eneste stedet som vet hvor satsene kommer fra. Skal data hentes fra et API
 // eller en database senere, er det bare denne funksjonen som må byttes ut.
-// stores.json fylles av `npm run hent`; partners.json vedlikeholdes for hånd
-// (partnere uten åpen liste, f.eks. Wolt).
+// stores.json og history.json fylles av `npm run hent`; partners.json vedlikeholdes for hånd.
 export function hentData(): Datasett {
   const hentet = butikkerJson as Butikkfil;
   const partnere = partnereJson as Butikkfil;
@@ -39,5 +39,6 @@ export function hentData(): Datasett {
     programmer: programmerJson.programmer as Program[],
     kort: kortJson as Kort[],
     butikker,
+    historikk: historikkJson as unknown as Historikk,
   };
 }
