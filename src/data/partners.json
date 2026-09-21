@@ -1,32 +1,8 @@
 {
-  "hentet": "2026-09-21",
+  "hentet": "2026-09-22",
   "land": {
-    "NO": [
-      {
-        "id": "wolt",
-        "navn": "Wolt",
-        "satser": {
-          "eurobonus-everyday": {
-            "verdi": 10,
-            "kilde": "https://wolt.com/en/nor/oslo/article/eurobonus-norway",
-            "lenke": "https://wolt.com/nb/nor"
-          }
-        }
-      }
-    ],
-    "SE": [
-      {
-        "id": "wolt",
-        "navn": "Wolt",
-        "satser": {
-          "eurobonus-everyday-se": {
-            "verdi": 10,
-            "kilde": "https://wolt.com/en/swe/norrkoping/article/sas_eurobonus_x_wolt_partnership_article",
-            "lenke": "https://wolt.com/sv/swe"
-          }
-        }
-      }
-    ],
+    "NO": [],
+    "SE": [],
     "DK": []
   }
 }

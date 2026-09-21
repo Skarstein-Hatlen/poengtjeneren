@@ -1,9 +1,18 @@
 {
   "sistOppdatert": "2026-09-21",
   "land": {
-    "NO": { "navn": "Norge", "valuta": "NOK" },
-    "SE": { "navn": "Sverige", "valuta": "SEK" },
-    "DK": { "navn": "Danmark", "valuta": "DKK" }
+    "NO": {
+      "navn": "Norge",
+      "valuta": "NOK"
+    },
+    "SE": {
+      "navn": "Sverige",
+      "valuta": "SEK"
+    },
+    "DK": {
+      "navn": "Danmark",
+      "valuta": "DKK"
+    }
   },
   "programmer": [
     {
@@ -47,9 +56,21 @@
         "Bonus som er overført til EuroBonus kan ikke flyttes tilbake."
       ],
       "kilder": [
-        { "tittel": "Trumf: Overfør Trumf-bonus til SAS EuroBonus", "url": "https://www.trumf.no/fordeler/sas-eurobonus", "dato": "2026-09-21" },
-        { "tittel": "Trumf Netthandel: Slik fungerer det", "url": "https://trumfnetthandel.no/about", "dato": "2026-09-21" },
-        { "tittel": "Trumf Netthandel: Spørsmål og svar", "url": "https://trumfnetthandel.no/faq", "dato": "2026-09-21" }
+        {
+          "tittel": "Trumf: Overfør Trumf-bonus til SAS EuroBonus",
+          "url": "https://www.trumf.no/fordeler/sas-eurobonus",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Trumf Netthandel: Slik fungerer det",
+          "url": "https://trumfnetthandel.no/about",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Trumf Netthandel: Spørsmål og svar",
+          "url": "https://trumfnetthandel.no/faq",
+          "dato": "2026-09-21"
+        }
       ]
     },
     {
@@ -59,7 +80,10 @@
       "kortnavn": "Klarna",
       "farge": "#ffa8cd",
       "beskrivelse": "Du får Klarna-poeng (100 poeng per krone cashback): butikkens cashback i Klarna-appen pluss medlemscashback fra abonnementet. Poengene veksles til EuroBonus i appen.",
-      "internPoeng": { "navn": "Klarna-poeng", "perKrone": 100 },
+      "internPoeng": {
+        "navn": "Klarna-poeng",
+        "perKrone": 100
+      },
       "satsEnhet": "prosent",
       "satsEtikett": "Cashback hos butikken i Klarna-appen",
       "satsHjelp": "Prosenten Klarna-appen viser for butikken. Medlemscashback fra abonnementet legges til automatisk.",
@@ -76,10 +100,47 @@
         }
       ],
       "nivaer": [
-        { "id": "ingen", "navn": "Ingen", "ekstraProsent": 0, "butikkFaktor": 1, "kanVeksle": false, "prisPerMnd": 0, "status": "verifisert", "kilde": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback", "sistVerifisert": "2026-09-21" },
-        { "id": "plus", "navn": "Plus", "ekstraProsent": 0.5, "butikkFaktor": 2, "prisPerMnd": 99, "status": "verifisert", "kilde": "https://www.klarna.com/no/medlemskap/", "sistVerifisert": "2026-09-21" },
-        { "id": "premium", "navn": "Premium", "ekstraProsent": 1, "butikkFaktor": 3, "prisPerMnd": 199, "status": "verifisert", "kilde": "https://www.klarna.com/no/medlemskap/", "sistVerifisert": "2026-09-21" },
-        { "id": "max", "navn": "Max", "ekstraProsent": 1.5, "butikkFaktor": 4, "prisPerMnd": 499, "status": "verifisert", "kilde": "https://www.klarna.com/no/cashback/", "sistVerifisert": "2026-09-21" }
+        {
+          "id": "ingen",
+          "navn": "Ingen",
+          "ekstraProsent": 0,
+          "butikkFaktor": 1,
+          "kanVeksle": false,
+          "prisPerMnd": 0,
+          "status": "verifisert",
+          "kilde": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "plus",
+          "navn": "Plus",
+          "ekstraProsent": 0.5,
+          "butikkFaktor": 2,
+          "prisPerMnd": 99,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "premium",
+          "navn": "Premium",
+          "ekstraProsent": 1,
+          "butikkFaktor": 3,
+          "prisPerMnd": 199,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "max",
+          "navn": "Max",
+          "ekstraProsent": 1.5,
+          "butikkFaktor": 4,
+          "prisPerMnd": 499,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/cashback/",
+          "sistVerifisert": "2026-09-21"
+        }
       ],
       "nivaEtikett": "Klarna-abonnement",
       "standardNiva": "max",
@@ -98,10 +159,26 @@
         "Cashbacken bekreftes innen 30 dager for medlemmer."
       ],
       "kilder": [
-        { "tittel": "Klarna: Medlemskap", "url": "https://www.klarna.com/no/medlemskap/", "dato": "2026-09-21" },
-        { "tittel": "Klarna: Cashback", "url": "https://www.klarna.com/no/cashback/", "dato": "2026-09-21" },
-        { "tittel": "Klarna: Vilkår for cashback", "url": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback", "dato": "2026-09-21" },
-        { "tittel": "Klarna: EuroBonus-poeng", "url": "https://www.klarna.com/no/medlemskap/unlock-sas-eurobonus-points/", "dato": "2026-09-21" }
+        {
+          "tittel": "Klarna: Medlemskap",
+          "url": "https://www.klarna.com/no/medlemskap/",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Klarna: Cashback",
+          "url": "https://www.klarna.com/no/cashback/",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Klarna: Vilkår for cashback",
+          "url": "https://cdn.klarna.com/1.0/shared/content/legal/terms/nb-NO/cashback",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Klarna: EuroBonus-poeng",
+          "url": "https://www.klarna.com/no/medlemskap/unlock-sas-eurobonus-points/",
+          "dato": "2026-09-21"
+        }
       ]
     },
     {
@@ -124,34 +201,18 @@
         "Satser merket «Doble poeng» er kampanjer som kan forsvinne."
       ],
       "kilder": [
-        { "tittel": "SAS Online Shopping", "url": "https://onlineshopping.flysas.com/nb-NO/", "dato": "2026-09-21" },
-        { "tittel": "SAS Online Shopping: Vilkår", "url": "https://onlineshopping.flysas.com/nb-NO/vilkaar-og-betingelser", "dato": "2026-09-21" }
+        {
+          "tittel": "SAS Online Shopping",
+          "url": "https://onlineshopping.flysas.com/nb-NO/",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "SAS Online Shopping: Vilkår",
+          "url": "https://onlineshopping.flysas.com/nb-NO/vilkaar-og-betingelser",
+          "dato": "2026-09-21"
+        }
       ]
     },
-    {
-      "id": "eurobonus-everyday",
-      "land": "NO",
-      "navn": "SAS EuroBonus Everyday",
-      "kortnavn": "Everyday",
-      "farge": "#3b6fd6",
-      "beskrivelse": "Registrer betalingskortet ditt på EuroBonus-profilen og få poeng direkte hos partnere som Wolt – ingen portal, bare betal med det registrerte kortet.",
-      "satsEnhet": "poengPer100",
-      "satsEtikett": "Poeng per 100 kr hos partneren",
-      "satsHjelp": "Satsen partneren oppgir, f.eks. 10 hos Wolt.",
-      "standardSats": 10,
-      "konverteringer": [],
-      "nivaer": [],
-      "kortlag": true,
-      "vilkar": [
-        "Kortet du betaler med (Visa eller Mastercard) må være registrert på EuroBonus-profilen din.",
-        "Poengene kommer 3–5 virkedager etter betalingen.",
-        "Betaler du med et SAS-kort, får du kortpoengene i tillegg."
-      ],
-      "kilder": [
-        { "tittel": "Wolt: Tjen EuroBonus Bonuspoeng med Wolt", "url": "https://wolt.com/en/nor/oslo/article/eurobonus-norway", "dato": "2026-09-21" }
-      ]
-    },
-
     {
       "id": "klarna-se",
       "land": "SE",
@@ -159,7 +220,10 @@
       "kortnavn": "Klarna",
       "farge": "#ffa8cd",
       "beskrivelse": "Du får Klarna-poäng (100 poäng per krona cashback): butikkens cashback i Klarna-appen pluss medlemscashback fra abonnementet. Poengene veksles til EuroBonus i appen.",
-      "internPoeng": { "navn": "Klarna-poäng", "perKrone": 100 },
+      "internPoeng": {
+        "navn": "Klarna-poäng",
+        "perKrone": 100
+      },
       "satsEnhet": "prosent",
       "satsEtikett": "Cashback hos butikken i Klarna-appen",
       "satsHjelp": "Prosenten Klarna-appen viser for butikken.",
@@ -176,10 +240,47 @@
         }
       ],
       "nivaer": [
-        { "id": "ingen", "navn": "Ingen", "ekstraProsent": 0, "butikkFaktor": 1, "kanVeksle": false, "prisPerMnd": 0, "status": "verifisert", "kilde": "https://www.klarna.com/se/medlemskap/", "sistVerifisert": "2026-09-21" },
-        { "id": "plus", "navn": "Plus", "ekstraProsent": 0.5, "butikkFaktor": 2, "prisPerMnd": 99, "status": "verifisert", "kilde": "https://www.klarna.com/se/medlemskap/", "sistVerifisert": "2026-09-21" },
-        { "id": "premium", "navn": "Premium", "ekstraProsent": 1, "butikkFaktor": 3, "prisPerMnd": 199, "status": "verifisert", "kilde": "https://www.klarna.com/se/medlemskap/", "sistVerifisert": "2026-09-21" },
-        { "id": "max", "navn": "Max", "ekstraProsent": 1.5, "butikkFaktor": 4, "prisPerMnd": 549, "status": "verifisert", "kilde": "https://www.klarna.com/se/medlemskap/", "sistVerifisert": "2026-09-21" }
+        {
+          "id": "ingen",
+          "navn": "Ingen",
+          "ekstraProsent": 0,
+          "butikkFaktor": 1,
+          "kanVeksle": false,
+          "prisPerMnd": 0,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/se/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "plus",
+          "navn": "Plus",
+          "ekstraProsent": 0.5,
+          "butikkFaktor": 2,
+          "prisPerMnd": 99,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/se/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "premium",
+          "navn": "Premium",
+          "ekstraProsent": 1,
+          "butikkFaktor": 3,
+          "prisPerMnd": 199,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/se/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "max",
+          "navn": "Max",
+          "ekstraProsent": 1.5,
+          "butikkFaktor": 4,
+          "prisPerMnd": 549,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/se/medlemskap/",
+          "sistVerifisert": "2026-09-21"
+        }
       ],
       "nivaEtikett": "Klarna-abonnement",
       "standardNiva": "max",
@@ -196,8 +297,16 @@
         "Veksling til EuroBonus krever aktivt Klarna-medlemskap og kan ikke angres."
       ],
       "kilder": [
-        { "tittel": "Klarna: Medlemskap (Sverige)", "url": "https://www.klarna.com/se/medlemskap/", "dato": "2026-09-21" },
-        { "tittel": "Eurobonusguiden.se: Klarna och EuroBonus – växlingskurs", "url": "https://eurobonusguiden.se/2025/11/klarna-och-eurobonus-vaxlingskurs-lanserad/", "dato": "2025-11-19" }
+        {
+          "tittel": "Klarna: Medlemskap (Sverige)",
+          "url": "https://www.klarna.com/se/medlemskap/",
+          "dato": "2026-09-21"
+        },
+        {
+          "tittel": "Eurobonusguiden.se: Klarna och EuroBonus – växlingskurs",
+          "url": "https://eurobonusguiden.se/2025/11/klarna-och-eurobonus-vaxlingskurs-lanserad/",
+          "dato": "2025-11-19"
+        }
       ]
     },
     {
@@ -220,32 +329,13 @@
         "Satser merket «Dubbla poäng» er kampanjer som kan forsvinne."
       ],
       "kilder": [
-        { "tittel": "SAS Online Shopping (Sverige)", "url": "https://onlineshopping.flysas.com/sv-SE/", "dato": "2026-09-21" }
+        {
+          "tittel": "SAS Online Shopping (Sverige)",
+          "url": "https://onlineshopping.flysas.com/sv-SE/",
+          "dato": "2026-09-21"
+        }
       ]
     },
-    {
-      "id": "eurobonus-everyday-se",
-      "land": "SE",
-      "navn": "SAS EuroBonus Everyday",
-      "kortnavn": "Everyday",
-      "farge": "#3b6fd6",
-      "beskrivelse": "Registrer betalingskortet ditt på EuroBonus-profilen og få poeng direkte hos partnere som Wolt.",
-      "satsEnhet": "poengPer100",
-      "satsEtikett": "Poeng per 100 kr hos partneren",
-      "satsHjelp": "Satsen partneren oppgir, f.eks. 10 hos Wolt.",
-      "standardSats": 10,
-      "konverteringer": [],
-      "nivaer": [],
-      "kortlag": true,
-      "vilkar": [
-        "Kortet du betaler med må være registrert på EuroBonus-profilen din.",
-        "Betaler du med et SAS-kort, får du kortpoengene i tillegg."
-      ],
-      "kilder": [
-        { "tittel": "Wolt: Tjäna EuroBonus-poäng med Wolt", "url": "https://wolt.com/en/swe/norrkoping/article/sas_eurobonus_x_wolt_partnership_article", "dato": "2026-09-21" }
-      ]
-    },
-
     {
       "id": "klarna-dk",
       "land": "DK",
@@ -253,7 +343,10 @@
       "kortnavn": "Klarna",
       "farge": "#ffa8cd",
       "beskrivelse": "Du får Klarna-point (100 point per krone cashback): butikkens cashback i Klarna-appen pluss medlemscashback fra abonnementet. Poengene veksles til EuroBonus i appen.",
-      "internPoeng": { "navn": "Klarna-point", "perKrone": 100 },
+      "internPoeng": {
+        "navn": "Klarna-point",
+        "perKrone": 100
+      },
       "satsEnhet": "prosent",
       "satsEtikett": "Cashback hos butikken i Klarna-appen",
       "satsHjelp": "Prosenten Klarna-appen viser for butikken.",
@@ -270,10 +363,47 @@
         }
       ],
       "nivaer": [
-        { "id": "ingen", "navn": "Ingen", "ekstraProsent": 0, "butikkFaktor": 1, "kanVeksle": false, "prisPerMnd": 0, "status": "verifisert", "kilde": "https://www.klarna.com/dk/medlemskab/", "sistVerifisert": "2026-09-21" },
-        { "id": "plus", "navn": "Plus", "ekstraProsent": 0.5, "butikkFaktor": 2, "prisPerMnd": 79, "status": "verifisert", "kilde": "https://www.klarna.com/dk/medlemskab/", "sistVerifisert": "2026-09-21" },
-        { "id": "premium", "navn": "Premium", "ekstraProsent": 1, "butikkFaktor": 3, "prisPerMnd": 149, "status": "verifisert", "kilde": "https://www.klarna.com/dk/medlemskab/", "sistVerifisert": "2026-09-21" },
-        { "id": "max", "navn": "Max", "ekstraProsent": 1.5, "butikkFaktor": 4, "prisPerMnd": 349, "status": "verifisert", "kilde": "https://www.klarna.com/dk/medlemskab/", "sistVerifisert": "2026-09-21" }
+        {
+          "id": "ingen",
+          "navn": "Ingen",
+          "ekstraProsent": 0,
+          "butikkFaktor": 1,
+          "kanVeksle": false,
+          "prisPerMnd": 0,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/dk/medlemskab/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "plus",
+          "navn": "Plus",
+          "ekstraProsent": 0.5,
+          "butikkFaktor": 2,
+          "prisPerMnd": 79,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/dk/medlemskab/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "premium",
+          "navn": "Premium",
+          "ekstraProsent": 1,
+          "butikkFaktor": 3,
+          "prisPerMnd": 149,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/dk/medlemskab/",
+          "sistVerifisert": "2026-09-21"
+        },
+        {
+          "id": "max",
+          "navn": "Max",
+          "ekstraProsent": 1.5,
+          "butikkFaktor": 4,
+          "prisPerMnd": 349,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/dk/medlemskab/",
+          "sistVerifisert": "2026-09-21"
+        }
       ],
       "nivaEtikett": "Klarna-abonnement",
       "standardNiva": "max",
@@ -290,7 +420,11 @@
         "Veksling til EuroBonus krever aktivt Klarna-medlemskap og kan ikke angres."
       ],
       "kilder": [
-        { "tittel": "Klarna: Medlemskab (Danmark)", "url": "https://www.klarna.com/dk/medlemskab/", "dato": "2026-09-21" }
+        {
+          "tittel": "Klarna: Medlemskab (Danmark)",
+          "url": "https://www.klarna.com/dk/medlemskab/",
+          "dato": "2026-09-21"
+        }
       ]
     },
     {
@@ -313,7 +447,11 @@
         "Satser merket «Dobbelt point» er kampanjer som kan forsvinne."
       ],
       "kilder": [
-        { "tittel": "SAS Online Shopping (Danmark)", "url": "https://onlineshopping.flysas.com/da-DK/", "dato": "2026-09-21" }
+        {
+          "tittel": "SAS Online Shopping (Danmark)",
+          "url": "https://onlineshopping.flysas.com/da-DK/",
+          "dato": "2026-09-21"
+        }
       ]
     }
   ]
