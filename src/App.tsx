@@ -3,6 +3,7 @@ import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Flagg from './components/Flagg';
 import Folg from './components/Folg';
+import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
 import Nytt from './components/Nytt';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
@@ -20,7 +21,7 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna';
 const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
@@ -61,9 +62,11 @@ const standardKort = (land: Land): string => {
 /**
  * Adressen styrer land, visning og butikk: /no (kalkulator), /no/kicks (butikk),
  * /no/butikker/mote (katalog), /no/nytt, /no/kort. Da kan alt deles og finnes av søkemotorer.
+ * /klarna er partnersiden til Klarna (norske tall).
  */
 function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
   const [sti, a, b] = window.location.pathname.split('/').filter(Boolean);
+  if (sti === 'klarna') return { land: 'NO', rute: { visning: 'klarna', kategori: null } };
   const land = LAND.find((l) => SPRAK[l].sti === sti);
   if (!land) return { rute: { visning: 'kalk', kategori: null } };
   if (a && VISNINGER[a]) return { land, rute: { visning: VISNINGER[a], kategori: a === 'butikker' ? (b ?? null) : null } };
@@ -71,6 +74,7 @@ function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
 }
 
 function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
+  if (rute.visning === 'klarna') return '/klarna';
   const s = `/${SPRAK[land].sti}`;
   if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
   if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
@@ -407,6 +411,8 @@ export default function App() {
       </nav>
     </>
   );
+
+  if (rute.visning === 'klarna') return <KlarnaSide data={data} idag={IDAG} />;
 
   if (rute.visning === 'butikker') {
     return (

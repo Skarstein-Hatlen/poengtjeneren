@@ -91,14 +91,14 @@ function per100(program, sats) {
   return effektiv * konv.poengPerKrone;
 }
 
-function side({ lang, tittel, beskrivelse, url, kropp }) {
+function side({ lang, tittel, beskrivelse, url, kropp, noindex = false }) {
   return mal
     .replace(/<html lang="[^"]*">/, `<html lang="${lang}">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${escape(tittel)}</title>`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escape(beskrivelse)}" />`)
     .replace(
       '</head>',
-      `    <link rel="canonical" href="${url}" />\n    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n  </head>`,
+      `    <link rel="canonical" href="${url}" />\n${noindex ? '    <meta name="robots" content="noindex" />\n' : ''}    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n  </head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${kropp}</div>`);
 }
@@ -182,6 +182,19 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
     antall++;
   }
 }
+
+// Partnersiden til Klarna: norske tall, ikke i sitemap og ikke indeksert.
+await skriv(
+  'klarna',
+  side({
+    lang: 'nb',
+    tittel: 'Pointmaxing for Klarna',
+    beskrivelse: 'Slik viser Pointmaxing Klarna Plus, Premium og Max i hver butikk, på kortsiden og i Google-søk.',
+    url: `${DOMENE}/klarna`,
+    noindex: true,
+    kropp: '<main><h1>Pointmaxing for Klarna</h1><p>Partnerforslag: Max-effekten i hver butikk, kortsiden og utvidelsen i Google-søk.</p></main>',
+  }),
+);
 
 // Ukjente adresser laster appen likevel (GitHub Pages serverer 404.html).
 await copyFile(new URL('index.html', dist), new URL('404.html', dist));

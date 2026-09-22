@@ -1178,3 +1178,477 @@ footer ul {
     grid-template-columns: 64px auto minmax(0, 1fr);
   }
 }
+
+/* Partnerside for Klarna (/klarna) */
+.klarna .ordmerke {
+  text-decoration: none;
+}
+
+.klarna h1 {
+  margin: 8px 0 0;
+  font-family: var(--font-tall);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+}
+
+.klarna h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.klarna .ingress {
+  max-width: 58ch;
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+.klarna .perforering {
+  margin-top: 30px;
+  margin-bottom: 26px;
+}
+
+.klarna .fotnote {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.klarna .fotnote a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.klarna .fotnote a:hover {
+  text-decoration: underline;
+}
+
+.nokkeltall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px 14px;
+  margin-top: 24px;
+}
+
+.nokkeltall > div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.nokkeltall .poeng,
+.nokkeltall .per100 {
+  display: block;
+}
+
+.nokkeltall .poeng sup {
+  font-family: var(--font-tall);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nokkeltall .per100 {
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
+/* Fire nivåer side om side: sats med nivået og poengene */
+.trinn {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.trinn > div {
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.trinn .max {
+  border-top: 2px solid var(--gold-fill);
+  padding-top: 7px;
+}
+
+.trinn .sats {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-tall);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.trinn .max .sats {
+  color: var(--gold);
+}
+
+.trinn .sats small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.trinn .per100 {
+  display: block;
+  margin-top: 6px;
+}
+
+/* Butikker der Max vinner */
+.butikkrader {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+
+.butikkrader li {
+  border-top: 1px solid var(--line);
+}
+
+.butikkrader a {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.butikkrader a:hover .rad-navn {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.butikkrader .flis-logo {
+  width: 64px;
+  height: 34px;
+  font-size: 13px;
+  border-radius: 7px;
+}
+
+.rad-tekst {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rad-navn {
+  font-weight: 600;
+}
+
+.rad-under {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.rad-under i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  vertical-align: 1px;
+}
+
+.rad-poeng {
+  font-family: var(--font-tall);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.rad-poeng small {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.klarna .liste-etikett {
+  margin-top: 26px;
+}
+
+.klarna .butikkrader {
+  margin-top: 8px;
+}
+
+.klarna .kortliste {
+  margin-top: 14px;
+}
+
+.klarna .kortliste li {
+  grid-template-columns: 84px minmax(0, 1fr);
+}
+
+.klarna .kortliste-poeng small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.klarna .kortliste li:first-child {
+  border-top: 0;
+}
+
+/* Slik utvidelsen ser ut i Google-søk – en tegning i Googles farger */
+.google-demo {
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: #202124;
+  font-family: arial, system-ui, sans-serif;
+  font-size: 13px;
+}
+
+.gd-stripe {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 44px;
+  padding: 0 14px;
+  border-bottom: 1px solid #dadce0;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.gd-merke {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  flex: none;
+}
+
+.gd-p {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: #0b1f4b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  flex: none;
+}
+
+.gd-butikk {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent);
+}
+
+.gd-sats {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.gd-sats i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.gd-sats.gd-best {
+  background: rgba(11, 31, 75, 0.08);
+  color: #0b1f4b;
+  font-weight: 600;
+}
+
+.gd-sats small {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.gd-sats small::before {
+  content: '·';
+  margin-right: 5px;
+}
+
+.gd-regn {
+  color: #0b1f4b;
+  font-weight: 600;
+  flex: none;
+}
+
+.gd-lukk {
+  color: #5f6368;
+  font-size: 18px;
+  flex: none;
+}
+
+.gd-treff {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px 20px;
+}
+
+.gd-site {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.gd-fav {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f1f3f4;
+  color: #202124;
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+}
+
+.gd-site span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.gd-site small {
+  font-size: 12px;
+  color: #4d5156;
+}
+
+.gd-tittel {
+  font-size: 20px;
+  color: #1a0dab;
+  line-height: 1.3;
+}
+
+.gd-linje {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: #5f6368;
+}
+
+.gd-linje .gd-p {
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+}
+
+.gd-linje .gd-sats {
+  padding: 0;
+  background: none;
+  font-size: 13px;
+  color: inherit;
+}
+
+.gd-linje .gd-sats.gd-best {
+  color: #202124;
+}
+
+.gd-linje .gd-sats + .gd-sats::before {
+  content: '·';
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.gd-snipp {
+  display: block;
+  height: 10px;
+  margin-top: 6px;
+  border-radius: 5px;
+  background: #eceef1;
+}
+
+.gd-snipp.kort {
+  width: 60%;
+  margin-top: 0;
+}
+
+/* Forslaget og kontakt */
+.forslag {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.forslag li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.kontakt {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 22px 0 0;
+  font-size: 13px;
+}
+
+.kontakt .knapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.kontakt .knapp:hover,
+.kontakt .knapp:focus-visible {
+  background: var(--gold-fill);
+  border-color: var(--gold-fill);
+  color: var(--ink);
+  outline: none;
+}
+
+@media (max-width: 479px) {
+  .klarna h1 {
+    font-size: 32px;
+  }
+  .trinn {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gd-stripe {
+    gap: 12px;
+    padding: 0 12px;
+  }
+}
