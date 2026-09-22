@@ -119,13 +119,19 @@ export const TEKSTER = {
   pris: { nb: 'Pris', sv: 'Pris', da: 'Pris' },
   // Følg
   folg: { nb: 'Følg {butikk}', sv: 'Följ {butikk}', da: 'Følg {butikk}' },
+  folger: { nb: 'Følger {butikk}', sv: 'Följer {butikk}', da: 'Følger {butikk}' },
   folgForklaring: {
-    nb: 'Få e-post når satsen hos {butikk} endrer seg eller en kampanje starter.',
-    sv: 'Få e-post när satsen hos {butikk} ändras eller en kampanj startar.',
-    da: 'Få e-mail, når satsen hos {butikk} ændrer sig, eller en kampagne starter.',
+    nb: 'varsel i utvidelsen når satsen går opp',
+    sv: 'avisering i tillägget när satsen går upp',
+    da: 'besked i udvidelsen, når satsen går op',
   },
-  epost: { nb: 'E-post', sv: 'E-post', da: 'E-mail' },
-  folgKnapp: { nb: 'Følg', sv: 'Följ', da: 'Følg' },
+  dineButikker: { nb: 'Dine butikker', sv: 'Dina butiker', da: 'Dine butikker' },
+  // Ukens beste
+  ukensBeste: { nb: 'Ukens beste', sv: 'Veckans bästa', da: 'Ugens bedste' },
+  ukensLenke: { nb: 'Ukens beste →', sv: 'Veckans bästa →', da: 'Ugens bedste →' },
+  toppNaa: { nb: 'Flest poeng nå', sv: 'Flest poäng just nu', da: 'Flest point lige nu' },
+  oktSiste7: { nb: 'Gikk opp siste 7 dager', sv: 'Gick upp senaste 7 dagarna', da: 'Steg de seneste 7 dage' },
+  utloperInnen7: { nb: 'Utløper innen 7 dager', sv: 'Går ut inom 7 dagar', da: 'Udløber inden for 7 dage' },
   // Mitt oppsett, nivå, deling, kampanjer og rabattkode
   regnetMed: { nb: 'Regnet med {oppsett}', sv: 'Beräknat med {oppsett}', da: 'Beregnet med {oppsett}' },
   endre: { nb: 'endre', sv: 'ändra', da: 'ændr' },

@@ -8,11 +8,13 @@ import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
 import Nytt from './components/Nytt';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
+import Ukens from './components/Ukens';
 import { hentData, LAND } from './data';
 import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
 import { SPRAK, tekst, type Nokkel } from './i18n';
 import { gjeldendeSats } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
+import { lesFolger, skrivFolger, vekslFolg, type Folger } from './lib/folger';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
 
 const data = hentData();
@@ -22,8 +24,8 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna';
-const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort' };
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna' | 'ukens';
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
   { visning: 'butikker', nokkel: 'navButikker' },
@@ -232,6 +234,7 @@ export default function App() {
   const [rute, setRute] = useState<Rute>(() => lesSti().rute);
   const [apen, setApen] = useState<string | null>(null);
   const [visRabatt, setVisRabatt] = useState(false);
+  const [folger, setFolger] = useState<Folger>(lesFolger);
   const forsteSti = useRef(true);
 
   // Språk og tallformat følger landet.
@@ -325,6 +328,13 @@ export default function App() {
   };
   const velgLand = (land: Land) => setT((s) => medLand(s, land));
   const gaaTil = (visning: Visning) => setRute({ visning, kategori: null });
+  const folgerHer = folger[t.land] ?? [];
+  const toggleFolg = (id: string) =>
+    setFolger((f) => {
+      const ny = vekslFolg(f, t.land, id);
+      skrivFolger(ny);
+      return ny;
+    });
 
   /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
   const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
@@ -517,7 +527,29 @@ export default function App() {
         {topp}
         {oppsett}
         <div className="billett">
-          <Nytt land={t.land} butikker={butikker} programmer={programmer} historikk={data.historikk[t.land]} idag={IDAG} onVelg={velgButikk} />
+          <Nytt
+            land={t.land}
+            butikker={butikker}
+            programmer={programmer}
+            historikk={data.historikk[t.land]}
+            idag={IDAG}
+            folger={folgerHer}
+            per100={per100ForSats}
+            onVelg={velgButikk}
+            onUkens={() => gaaTil('ukens')}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'ukens') {
+    return (
+      <div className="app">
+        {topp}
+        {oppsett}
+        <div className="billett">
+          <Ukens land={t.land} butikker={butikker} programmer={programmer} historikk={data.historikk[t.land]} idag={IDAG} per100={per100ForSats} onVelg={velgButikk} />
         </div>
       </div>
     );
@@ -750,7 +782,7 @@ export default function App() {
         )}
         {belop <= 0 && <p className="tom">{T('skrivBelop')}</p>}
         {belop > 0 && resultater.length === 0 && <p className="tom">{T('skrivSats')}</p>}
-        {butikk && <Folg land={t.land} butikk={butikk} />}
+        {butikk && <Folg land={t.land} butikk={butikk} folger={folgerHer.includes(butikk.id)} onToggle={() => toggleFolg(butikk.id)} />}
       </div>
 
       <footer>

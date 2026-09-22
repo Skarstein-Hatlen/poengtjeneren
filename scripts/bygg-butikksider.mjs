@@ -15,6 +15,7 @@ const stores = await les('../src/data/stores.json');
 const partnere = await les('../src/data/partners.json');
 const kategorier = await les('../src/data/kategorier.json');
 const kort = await les('../src/data/cards.json');
+const historikk = await les('../src/data/history.json');
 
 const SPRAK = {
   NO: {
@@ -35,6 +36,21 @@ const SPRAK = {
     kortTittel: 'Kort som gir EuroBonus-poeng | Pointmaxing',
     kortTekst: 'Alle betalingskort i Norge som gir SAS EuroBonus-poeng, med poeng per 100 kr og pris.',
     kampanjerNaa: 'Kampanjer nå',
+    per1000Tittel: (navn, n) => `${navn}: opptil ${n} EuroBonus-poeng per 1 000 kr | Pointmaxing`,
+    per1000Tekst: (navn, n, prog) => `Hos ${navn} får du opptil ${n} SAS EuroBonus-poeng per 1 000 kr via ${prog}. Satsene hos Trumf, Klarna og SAS Online Shopping side om side, oppdatert hver natt.`,
+    belop: 'Beløp',
+    slikFar: (prog) => `Slik får du poengene via ${prog}`,
+    faqSporsmal: (prog, navn) => `Hvordan får jeg EuroBonus-poeng via ${prog} hos ${navn}?`,
+    hentet: (dato) => `Satser hentet ${dato} fra programmenes egne sider. Klarna regnet med Max, Trumf med automatisk overføring.`,
+    ukensTittel: 'Ukens beste EuroBonus-satser | Pointmaxing',
+    ukensTekst: 'Butikkene som gir flest EuroBonus-poeng nå, satser som gikk opp siste 7 dager og kampanjer som snart utløper.',
+    toppNaa: 'Flest poeng nå',
+    okninger: 'Gikk opp siste 7 dager',
+    utloper: 'Utløper innen 7 dager',
+    feedTittel: (navn) => `${navn} – EuroBonus-satser`,
+    endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
+    forsteMaling: (prog, sats) => `${prog}: ${sats} (første måling)`,
+    landFeed: 'Satsendringer siste 30 dager',
   },
   SE: {
     sti: 'se',
@@ -54,6 +70,21 @@ const SPRAK = {
     kortTittel: 'Kort som ger EuroBonus-poäng | Pointmaxing',
     kortTekst: 'Alla betalkort i Sverige som ger SAS EuroBonus-poäng, med poäng per 100 kr och pris.',
     kampanjerNaa: 'Kampanjer just nu',
+    per1000Tittel: (navn, n) => `${navn}: upp till ${n} EuroBonus-poäng per 1 000 kr | Pointmaxing`,
+    per1000Tekst: (navn, n, prog) => `Hos ${navn} får du upp till ${n} SAS EuroBonus-poäng per 1 000 kr via ${prog}. Satserna hos Klarna och SAS Online Shopping sida vid sida, uppdaterade varje natt.`,
+    belop: 'Belopp',
+    slikFar: (prog) => `Så får du poängen via ${prog}`,
+    faqSporsmal: (prog, navn) => `Hur får jag EuroBonus-poäng via ${prog} hos ${navn}?`,
+    hentet: (dato) => `Satser hämtade ${dato} från programmens egna sidor. Klarna räknat med Max.`,
+    ukensTittel: 'Veckans bästa EuroBonus-satser | Pointmaxing',
+    ukensTekst: 'Butikerna som ger flest EuroBonus-poäng just nu, satser som gick upp senaste 7 dagarna och kampanjer som snart går ut.',
+    toppNaa: 'Flest poäng just nu',
+    okninger: 'Gick upp senaste 7 dagarna',
+    utloper: 'Går ut inom 7 dagar',
+    feedTittel: (navn) => `${navn} – EuroBonus-satser`,
+    endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
+    forsteMaling: (prog, sats) => `${prog}: ${sats} (första mätningen)`,
+    landFeed: 'Ändrade satser senaste 30 dagarna',
   },
   DK: {
     sti: 'dk',
@@ -73,6 +104,21 @@ const SPRAK = {
     kortTittel: 'Kort, der giver EuroBonus-point | Pointmaxing',
     kortTekst: 'Alle betalingskort i Danmark, der giver SAS EuroBonus-point, med point per 100 kr og pris.',
     kampanjerNaa: 'Kampagner lige nu',
+    per1000Tittel: (navn, n) => `${navn}: op til ${n} EuroBonus-point per 1 000 kr | Pointmaxing`,
+    per1000Tekst: (navn, n, prog) => `Hos ${navn} får du op til ${n} SAS EuroBonus-point per 1 000 kr via ${prog}. Satserne hos Klarna og SAS Online Shopping side om side, opdateret hver nat.`,
+    belop: 'Beløb',
+    slikFar: (prog) => `Sådan får du pointene via ${prog}`,
+    faqSporsmal: (prog, navn) => `Hvordan får jeg EuroBonus-point via ${prog} hos ${navn}?`,
+    hentet: (dato) => `Satser hentet ${dato} fra programmernes egne sider. Klarna regnet med Max.`,
+    ukensTittel: 'Ugens bedste EuroBonus-satser | Pointmaxing',
+    ukensTekst: 'Butikkerne, der giver flest EuroBonus-point lige nu, satser, der steg de seneste 7 dage, og kampagner, der snart udløber.',
+    toppNaa: 'Flest point lige nu',
+    okninger: 'Steg de seneste 7 dage',
+    utloper: 'Udløber inden for 7 dage',
+    feedTittel: (navn) => `${navn} – EuroBonus-satser`,
+    endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
+    forsteMaling: (prog, sats) => `${prog}: ${sats} (første måling)`,
+    landFeed: 'Satsændringer de seneste 30 dage',
   },
 };
 
@@ -91,14 +137,39 @@ function per100(program, sats) {
   return effektiv * konv.poengPerKrone;
 }
 
-function side({ lang, tittel, beskrivelse, url, kropp, noindex = false }) {
+/** Atom-strøm: satsendringer for én butikk eller et helt land. */
+function atom({ tittel, url, self, oppdatert, innslag }) {
+  const dato = (d) => `${d}T00:00:00Z`;
+  return `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>${escape(tittel)}</title>
+  <link href="${url}"/>
+  <link rel="self" href="${self}"/>
+  <id>${self}</id>
+  <updated>${dato(oppdatert)}</updated>
+${innslag
+  .map(
+    (i) => `  <entry>
+    <title>${escape(i.tittel)}</title>
+    <link href="${i.url}"/>
+    <id>${i.url}#${i.id}</id>
+    <updated>${dato(i.dato)}</updated>
+    <summary>${escape(i.tekst)}</summary>
+  </entry>`,
+  )
+  .join('\n')}
+</feed>
+`;
+}
+
+function side({ lang, tittel, beskrivelse, url, kropp, noindex = false, feed = null, jsonld = null }) {
   return mal
     .replace(/<html lang="[^"]*">/, `<html lang="${lang}">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${escape(tittel)}</title>`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escape(beskrivelse)}" />`)
     .replace(
       '</head>',
-      `    <link rel="canonical" href="${url}" />\n${noindex ? '    <meta name="robots" content="noindex" />\n' : ''}    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n  </head>`,
+      `    <link rel="canonical" href="${url}" />\n${noindex ? '    <meta name="robots" content="noindex" />\n' : ''}${feed ? `    <link rel="alternate" type="application/atom+xml" title="${escape(feed.tittel)}" href="${feed.url}" />\n` : ''}${jsonld ? `    <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n  </head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${kropp}</div>`);
 }
@@ -111,7 +182,8 @@ async function skriv(sti, innhold) {
 const urler = [`${DOMENE}/`];
 // Til utvidelsen: butikker med grunnsats, og programmene med det som trengs for å regne
 // poeng med brukerens nivå (Klarna Plus/Premium/Max).
-const api = { hentet: stores.hentet, land: {}, programmer: {} };
+const api = { hentet: stores.hentet, land: {}, programmer: {}, ukens: {} };
+const dagerMellom = (fra, til) => (new Date(til).getTime() - new Date(fra).getTime()) / 86_400_000;
 for (const p of programmer) {
   api.programmer[p.id] = {
     id: p.id,
@@ -170,6 +242,69 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${escape(k.pris)}</li>`).join('')}</ul></main>` }));
   urler.push(kortUrl);
 
+  // Ukens beste: flest poeng nå, økninger siste 7 dager, kampanjer som utløper innen 7 dager.
+  const hist = historikk[land] ?? {};
+  const besteFor = (b) => {
+    let topp = null;
+    for (const p of prog) {
+      const s = b.satser[p.id];
+      if (!s) continue;
+      const v = per100(p, s);
+      if (v !== null && (topp === null || v > topp.per100)) topp = { b, p, per100: v };
+    }
+    return topp;
+  };
+  const topp10 = liste.map(besteFor).filter(Boolean).sort((a, b) => b.per100 - a.per100).slice(0, 10);
+  const okninger = [];
+  const endringer30 = [];
+  for (const [bid, serier] of Object.entries(hist)) {
+    const b = butikker.get(bid);
+    if (!b) continue;
+    for (const [pid, m] of Object.entries(serier)) {
+      const p = prog.find((x) => x.id === pid);
+      if (!p || m.length < 2) continue;
+      const [dato, til] = m[m.length - 1];
+      const fra = m[m.length - 2][1];
+      if (dagerMellom(dato, idag) <= 30) endringer30.push({ b, p, fra, til, dato });
+      if (til > fra && dagerMellom(dato, idag) <= 7) okninger.push({ b, p, fra, til, dato });
+    }
+  }
+  okninger.sort((a, b) => b.til / b.fra - a.til / a.fra);
+  endringer30.sort((a, b) => b.dato.localeCompare(a.dato));
+  const utloper = kampanjer
+    .filter(({ b, p }) => dagerMellom(idag, b.satser[p.id].kampanje.slutt) <= 7)
+    .sort((x, y) => x.b.satser[x.p.id].kampanje.slutt.localeCompare(y.b.satser[y.p.id].kampanje.slutt));
+  api.ukens[land] = {
+    topp: topp10.map(({ b, p, per100: v }) => ({ id: b.id, navn: b.navn, sti: sprak.sti, program: p.kortnavn, sats: satsTekst(p, b.satser[p.id]), per100: Math.round(v * 10) / 10 })),
+    okninger: okninger.map(({ b, p, fra, til, dato }) => ({ id: b.id, navn: b.navn, sti: sprak.sti, program: p.kortnavn, fra, til, dato })),
+    utloper: utloper.map(({ b, p }) => ({ id: b.id, navn: b.navn, sti: sprak.sti, program: p.kortnavn, sats: satsTekst(p, b.satser[p.id]), slutt: b.satser[p.id].kampanje.slutt })),
+  };
+  const ukensUrl = `${DOMENE}/${sprak.sti}/ukens`;
+  const rad = (b, tekst) => `<li><a href="${lenkeTil(b)}">${escape(b.navn)}</a>: ${escape(tekst)}</li>`;
+  await skriv(
+    `${sprak.sti}/ukens`,
+    side({
+      lang: sprak.lang,
+      tittel: sprak.ukensTittel,
+      beskrivelse: sprak.ukensTekst,
+      url: ukensUrl,
+      kropp: `<main><h1>${escape(sprak.ukensTittel.split(' | ')[0])}</h1><h2>${escape(sprak.toppNaa)}</h2><ul>${topp10.map(({ b, p, per100: v }) => rad(b, `${p.kortnavn} ${satsTekst(p, b.satser[p.id])} = ${fmt.format(v)} ${sprak.poeng}/100 kr`)).join('')}</ul><h2>${escape(sprak.okninger)}</h2><ul>${okninger.map(({ b, p, fra, til }) => rad(b, sprak.endring(p.kortnavn, fmt.format(fra), fmt.format(til)))).join('')}</ul><h2>${escape(sprak.utloper)}</h2><ul>${utloper.map(({ b, p }) => rad(b, `${p.kortnavn} ${satsTekst(p, b.satser[p.id])} – ${b.satser[p.id].kampanje.slutt}`)).join('')}</ul></main>`,
+    }),
+  );
+  urler.push(ukensUrl);
+
+  // Atom-strøm for landet: alle satsendringer siste 30 dager.
+  await writeFile(
+    new URL(`${sprak.sti}/feed.xml`, dist),
+    atom({
+      tittel: `Pointmaxing – ${sprak.landFeed}`,
+      url: landUrl,
+      self: `${DOMENE}/${sprak.sti}/feed.xml`,
+      oppdatert: stores.hentet,
+      innslag: endringer30.slice(0, 100).map(({ b, p, fra, til, dato }) => ({ id: `${p.id}-${dato}`, dato, url: `${DOMENE}${lenkeTil(b)}`, tittel: `${b.navn} – ${sprak.endring(p.kortnavn, fmt.format(fra), fmt.format(til))}`, tekst: sprak.endring(p.kortnavn, fmt.format(fra), fmt.format(til)) })),
+    }),
+  );
+
   // Butikksider
   api.land[land] = [];
   for (const b of liste) {
@@ -188,9 +323,44 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
     }
     api.land[land].push({ id: b.id, navn: b.navn, domene: b.domene ?? null, satser: apiSatser });
     const url = `${DOMENE}${lenkeTil(b)}`;
-    const tittel = sprak.tittel(b.navn, prog.filter((p) => b.satser[p.id]).map((p) => p.kortnavn).join(', '));
-    const beskrivelse = `${sprak.intro(b.navn)} ${deler.join(' · ')}.`;
-    await skriv(`${sprak.sti}/${b.id}`, side({ lang: sprak.lang, tittel, beskrivelse, url, kropp: `<main><h1>${escape(b.navn)}</h1><p>${escape(sprak.intro(b.navn))}</p><ul>${linjer.join('')}</ul><p><a href="/${sprak.sti}/butikker">${escape(sprak.alleButikker)}</a></p></main>` }));
+    const best = besteFor(b);
+    const medSats = prog.filter((p) => b.satser[p.id]);
+    const tittel = best ? sprak.per1000Tittel(b.navn, fmt.format(Math.round(best.per100 * 10))) : sprak.tittel(b.navn, medSats.map((p) => p.kortnavn).join(', '));
+    const beskrivelse = best ? sprak.per1000Tekst(b.navn, fmt.format(Math.round(best.per100 * 10)), best.p.kortnavn) : `${sprak.intro(b.navn)} ${deler.join(' · ')}.`;
+    // Tabell: poeng ved 500, 1 000 og 5 000 kr per program – det folk faktisk søker etter.
+    const belopene = [500, 1000, 5000];
+    const tabell = `<table><thead><tr><th>${escape(sprak.belop)}</th>${medSats.map((p) => `<th>${escape(p.kortnavn)}</th>`).join('')}</tr></thead><tbody>${belopene
+      .map((kr) => `<tr><td>${fmt.format(kr)} kr</td>${medSats.map((p) => { const v = per100(p, b.satser[p.id]); return `<td>${v === null ? '–' : fmt.format(Math.round((v * kr) / 100))}</td>`; }).join('')}</tr>`)
+      .join('')}</tbody></table>`;
+    const faq = medSats.map((p) => ({ '@type': 'Question', name: sprak.faqSporsmal(p.kortnavn, b.navn), acceptedAnswer: { '@type': 'Answer', text: `${p.kortnavn}: ${satsTekst(p, b.satser[p.id])}. ${p.vilkar.join(' ')}` } }));
+    const jsonld = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq };
+    const feed = { tittel: sprak.feedTittel(b.navn), url: `${url}/feed.xml` };
+    await skriv(
+      `${sprak.sti}/${b.id}`,
+      side({
+        lang: sprak.lang,
+        tittel,
+        beskrivelse,
+        url,
+        feed,
+        jsonld,
+        kropp: `<main><h1>${escape(b.navn)}</h1><p>${escape(sprak.intro(b.navn))}</p><ul>${linjer.join('')}</ul>${tabell}${medSats.map((p) => `<h2>${escape(sprak.slikFar(p.kortnavn))}</h2><ol>${p.vilkar.map((v) => `<li>${escape(v)}</li>`).join('')}</ol>`).join('')}<p>${escape(sprak.hentet(stores.hentet))}</p><p><a href="/${sprak.sti}/butikker">${escape(sprak.alleButikker)}</a> · <a href="${feed.url}">RSS</a></p></main>`,
+      }),
+    );
+    // Atom-strøm for butikken: hver satsendring, ellers første måling.
+    const innslag = [];
+    for (const p of medSats) {
+      const m = hist[b.id]?.[p.id] ?? [];
+      if (m.length === 0) continue;
+      const sats = (v) => (p.satsEnhet === 'prosent' ? `${fmt.format(v)} %` : `${fmt.format(v)} ${sprak.poeng}/100 kr`);
+      if (m.length === 1) innslag.push({ id: `${p.id}-${m[0][0]}`, dato: m[0][0], url, tittel: sprak.forsteMaling(p.kortnavn, sats(m[0][1])), tekst: sprak.forsteMaling(p.kortnavn, sats(m[0][1])) });
+      for (let i = 1; i < m.length; i++) {
+        const tekst = sprak.endring(p.kortnavn, sats(m[i - 1][1]), sats(m[i][1]));
+        innslag.push({ id: `${p.id}-${m[i][0]}`, dato: m[i][0], url, tittel: tekst, tekst });
+      }
+    }
+    innslag.sort((a, c) => c.dato.localeCompare(a.dato));
+    await writeFile(new URL(`${sprak.sti}/${b.id}/feed.xml`, dist), atom({ tittel: `${sprak.feedTittel(b.navn)} | Pointmaxing`, url, self: feed.url, oppdatert: innslag[0]?.dato ?? stores.hentet, innslag }));
     urler.push(url);
     antall++;
   }
@@ -212,7 +382,8 @@ await skriv(
 // Ukjente adresser laster appen likevel (GitHub Pages serverer 404.html).
 await copyFile(new URL('index.html', dist), new URL('404.html', dist));
 await mkdir(new URL('api/', dist), { recursive: true });
-await writeFile(new URL('api/butikker.json', dist), JSON.stringify(api));
+await writeFile(new URL('api/butikker.json', dist), JSON.stringify({ hentet: api.hentet, land: api.land, programmer: api.programmer }));
+await writeFile(new URL('api/ukens.json', dist), JSON.stringify({ hentet: api.hentet, land: api.ukens }));
 await writeFile(
   new URL('sitemap.xml', dist),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urler
