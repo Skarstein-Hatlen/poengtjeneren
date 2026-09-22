@@ -1,0 +1,79 @@
+/* Stripe øverst på Google-søk */
+#pmx-stripe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 40px;
+  padding: 0 16px;
+  background: #0b1f4b;
+  border-bottom: 3px solid #f0c14b;
+  color: #f4f7fc;
+  font: 600 13px/1 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+body.pmx-med-stripe {
+  padding-top: 40px !important;
+}
+
+#pmx-stripe .pmx-merke {
+  color: #f0c14b;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+#pmx-stripe .pmx-butikker {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#pmx-stripe .pmx-butikker a {
+  color: #0b1f4b;
+  background: #faf7f0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#pmx-stripe .pmx-butikker a:hover {
+  background: #f0c14b;
+}
+
+#pmx-stripe .pmx-lukk {
+  border: 0;
+  background: none;
+  color: #f4f7fc;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+/* Linje under et søketreff */
+.pmx-linje {
+  display: inline-block;
+  margin: 4px 0 8px;
+  padding: 3px 10px;
+  border: 1px solid #f0c14b;
+  border-radius: 999px;
+  background: #faf7f0;
+  color: #0b1f4b !important;
+  font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  text-decoration: none !important;
+}
+
+.pmx-linje:hover {
+  background: #f0c14b;
+}

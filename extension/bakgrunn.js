@@ -72,6 +72,13 @@ async function oppdaterMerke(tabId, url) {
   }
 }
 
+// Søkesiden ber om butikklisten når lageret er tomt.
+chrome.runtime.onMessage.addListener((melding, _avsender, svar) => {
+  if (melding?.type !== 'hent') return false;
+  butikker().then((perDomene) => svar({ perDomene }));
+  return true;
+});
+
 chrome.runtime.onInstalled.addListener(() => {
   hentButikker();
   chrome.alarms.create('hent', { periodInMinutes: 60 * 24 });
