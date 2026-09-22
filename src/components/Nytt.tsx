@@ -1,7 +1,7 @@
 import type { Butikk, Land, Maling, Program } from '../data/types';
-import { tekst } from '../i18n';
+import { dagerTekst, tekst } from '../i18n';
 import { fmtDato, fmtTall } from '../lib/format';
-import { finnEndringer, finnKampanjer } from '../lib/nytt';
+import { dagerIgjen, finnEndringer, finnKampanjer } from '../lib/nytt';
 import { ButikkLogo } from './Butikkliste';
 
 interface Props {
@@ -46,7 +46,7 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, onVe
       ) : (
         <ul className="nytt-liste">
           {kampanjer.map((k) =>
-            rad(`k-${k.butikk.id}-${k.program.id}`, k.butikk, k.program, sats(k.program, k.naa), `${tekst(land, 'normalt', { sats: sats(k.program, k.normalt) })} · ${tekst(land, 'utloper', { dato: fmtDato(k.slutt) })}`, true),
+            rad(`k-${k.butikk.id}-${k.program.id}`, k.butikk, k.program, sats(k.program, k.naa), `${tekst(land, 'normalt', { sats: sats(k.program, k.normalt) })} · ${dagerTekst(land, dagerIgjen(idag, k.slutt))}`, true),
           )}
         </ul>
       )}

@@ -35,6 +35,9 @@ export function finnKampanjer(butikker: Butikk[], programmer: Program[], idag: s
 /** Dager mellom to ISO-datoer. */
 const dager = (fra: string, til: string) => (new Date(til).getTime() - new Date(fra).getTime()) / 86_400_000;
 
+/** Hele dager igjen til en sluttdato (0 = siste dag). */
+export const dagerIgjen = (idag: string, slutt: string): number => Math.max(0, Math.ceil(dager(idag, slutt)));
+
 /**
  * Satser som endret seg de siste `antallDager` dagene. Første måling av en serie er ikke en endring.
  * Nyeste først, deretter største endring.

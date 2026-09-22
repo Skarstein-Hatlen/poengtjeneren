@@ -126,6 +126,38 @@ export const TEKSTER = {
   },
   epost: { nb: 'E-post', sv: 'E-post', da: 'E-mail' },
   folgKnapp: { nb: 'Følg', sv: 'Följ', da: 'Følg' },
+  // Mitt oppsett, nivå, deling, kampanjer og rabattkode
+  regnetMed: { nb: 'Regnet med {oppsett}', sv: 'Beräknat med {oppsett}', da: 'Beregnet med {oppsett}' },
+  endre: { nb: 'endre', sv: 'ändra', da: 'ændr' },
+  slikFar: { nb: 'Slik får du poengene hos {program}', sv: 'Så får du poängen hos {program}', da: 'Sådan får du pointene hos {program}' },
+  nivaOpp: {
+    nb: '{niva} hadde gitt {n} poeng mer på dette kjøpet, for {kr} kr mer i måneden.',
+    sv: '{niva} hade gett {n} poäng mer på det här köpet, för {kr} kr mer i månaden.',
+    da: '{niva} havde givet {n} point mere på dette køb, for {kr} kr mere om måneden.',
+  },
+  nivaNed: {
+    nb: '{niva} hadde gitt {n} poeng mindre på dette kjøpet, og spart deg {kr} kr i måneden.',
+    sv: '{niva} hade gett {n} poäng mindre på det här köpet, och sparat dig {kr} kr i månaden.',
+    da: '{niva} havde givet {n} point mindre på dette køb og sparet dig {kr} kr om måneden.',
+  },
+  nivaFraIngen: {
+    nb: 'Med {niva} hadde Klarna gitt {n} poeng her, for {kr} kr i måneden.',
+    sv: 'Med {niva} hade Klarna gett {n} poäng här, för {kr} kr i månaden.',
+    da: 'Med {niva} havde Klarna givet {n} point her, for {kr} kr om måneden.',
+  },
+  kopier: { nb: 'Kopier', sv: 'Kopiera', da: 'Kopiér' },
+  kopiert: { nb: 'Kopiert', sv: 'Kopierat', da: 'Kopieret' },
+  dagerIgjen: { nb: '{n} dager igjen', sv: '{n} dagar kvar', da: '{n} dage tilbage' },
+  enDagIgjen: { nb: '1 dag igjen', sv: '1 dag kvar', da: '1 dag tilbage' },
+  sisteDag: { nb: 'Siste dag', sv: 'Sista dagen', da: 'Sidste dag' },
+  rabattkode: { nb: 'Rabattkode', sv: 'Rabattkod', da: 'Rabatkode' },
+  leggTilRabatt: { nb: '+ Rabattkode', sv: '+ Rabattkod', da: '+ Rabatkode' },
+  rabattSparer: { nb: 'Koden sparer {kr} · {program} gir {n} poeng.', sv: 'Koden sparar {kr} · {program} ger {n} poäng.', da: 'Koden sparer {kr} · {program} giver {n} point.' },
+  rabattTrumf: {
+    nb: 'Trumf gir ingen bonus når du bruker rabattkoder utenfra – velg koden eller poengene.',
+    sv: 'Trumf ger ingen bonus när du använder rabattkoder utifrån – välj koden eller poängen.',
+    da: 'Trumf giver ingen bonus, når du bruger rabatkoder udefra – vælg koden eller pointene.',
+  },
 } satisfies Record<string, Oversettelse>;
 
 export type Nokkel = keyof typeof TEKSTER;
@@ -135,6 +167,13 @@ export function tekst(land: Land, nokkel: Nokkel, verdier: Record<string, string
   let s: string = TEKSTER[nokkel][SPRAK[land].kode];
   for (const [k, v] of Object.entries(verdier)) s = s.split(`{${k}}`).join(String(v));
   return s;
+}
+
+/** «3 dager igjen», «1 dag igjen» eller «Siste dag». */
+export function dagerTekst(land: Land, n: number): string {
+  if (n <= 0) return tekst(land, 'sisteDag');
+  if (n === 1) return tekst(land, 'enDagIgjen');
+  return tekst(land, 'dagerIgjen', { n });
 }
 
 export function kategoriNavn(land: Land, id: string): string {

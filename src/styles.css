@@ -1652,3 +1652,66 @@ footer ul {
     padding: 0 12px;
   }
 }
+
+/* Mitt oppsett – én linje over katalogen og Nytt */
+.oppsett {
+  margin: -4px 4px 14px;
+  font-size: 13px;
+  color: var(--page-mute);
+}
+
+.oppsett .lenke {
+  color: var(--page-mute);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.oppsett .lenke:hover {
+  color: var(--page-fg);
+}
+
+/* Rabattkode legges til ved behov */
+.legg-til {
+  margin: 8px 0 0;
+}
+
+/* Under konklusjonen: kopier, nivå, rabattkode og «slik får du poengene» */
+.handlinger {
+  margin: 8px 0 0;
+}
+
+.nivalinje {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+.slik {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.slik summary {
+  cursor: pointer;
+}
+
+.slik ol {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  line-height: 1.5;
+}
+
+.slik li {
+  margin: 3px 0;
+}
+
+/* Kampanjens sluttdato som dager igjen */
+.igjen {
+  font-family: var(--font-tall);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+}
