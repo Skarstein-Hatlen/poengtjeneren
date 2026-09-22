@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Pointmaxing",
-  "description": "Viser hvor mange EuroBonus-poeng nettbutikken du er inne på gir via Trumf, Klarna og SAS Online Shopping.",
-  "version": "0.3.0",
+  "description": "Viser hvor mange EuroBonus-poeng nettbutikken du er inne på gir via Trumf, Klarna og SAS Online Shopping – med ditt Klarna-nivå.",
+  "version": "0.4.0",
   "icons": {
     "16": "ikon16.png",
     "48": "ikon48.png",
@@ -38,10 +38,20 @@
         "https://www.google.dk/search*"
       ],
       "js": [
+        "felles.js",
         "sok.js"
       ],
       "css": [
         "sok.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://pointmaxing.no/*"
+      ],
+      "js": [
+        "synk.js"
       ],
       "run_at": "document_idle"
     }

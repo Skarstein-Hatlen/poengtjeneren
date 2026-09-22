@@ -1,53 +1,23 @@
 // Kjører på Google-søk: viser en rolig stripe øverst med programmene side om side for
-// butikkene i treffene, og en linje under hvert treff vi kjenner.
+// butikkene i treffene, og en linje under hvert treff vi kjenner – regnet med brukerens nivå.
 
 (async () => {
-  const PROGRAM = {
-    trumf: { navn: 'Trumf', farge: '#1b3f8f' },
-    klarna: { navn: 'Klarna', farge: '#ffa8cd' },
-    'sas-online-shopping': { navn: 'SAS Shopping', farge: '#001b4d' },
-    'klarna-se': { navn: 'Klarna', farge: '#ffa8cd' },
-    'sas-online-shopping-se': { navn: 'SAS Shopping', farge: '#001b4d' },
-    'klarna-dk': { navn: 'Klarna', farge: '#ffa8cd' },
-    'sas-online-shopping-dk': { navn: 'SAS Shopping', farge: '#001b4d' },
-  };
   const TEKST = {
     NO: { flest: 'flest poeng', regn: 'Regn ut poengene →', regnKort: 'Regn ut →', per100: 'EuroBonus-poeng per 100 kr', lukk: 'Lukk' },
     SE: { flest: 'flest poäng', regn: 'Räkna ut poängen →', regnKort: 'Räkna ut →', per100: 'EuroBonus-poäng per 100 kr', lukk: 'Stäng' },
     DK: { flest: 'flest point', regn: 'Regn pointene ud →', regnKort: 'Regn ud →', per100: 'EuroBonus-point per 100 kr', lukk: 'Luk' },
   };
 
-  let { perDomene } = await chrome.storage.local.get('perDomene');
-  if (!perDomene) {
-    perDomene = await new Promise((r) => chrome.runtime.sendMessage({ type: 'hent' }, (svar) => r(svar?.perDomene ?? null)));
-  }
+  let d = await chrome.storage.local.get(['perDomene', 'programmer', 'oppsett']);
+  if (!d.perDomene) d = (await new Promise((r) => chrome.runtime.sendMessage({ type: 'hent' }, (svar) => r(svar ?? null)))) ?? {};
+  const perDomene = d.perDomene;
   if (!perDomene) return;
+  const programmer = d.programmer ?? {};
+  const oppsett = d.oppsett ?? {};
 
-  const domeneFor = (url) => {
-    try {
-      return new URL(url).hostname.toLowerCase().replace(/^www\./, '');
-    } catch {
-      return null;
-    }
-  };
-  const finnButikk = (domene) => {
-    if (!domene) return null;
-    const deler = domene.split('.');
-    for (let i = 0; i < deler.length - 1; i++) {
-      const b = perDomene[deler.slice(i).join('.')];
-      if (b) return b;
-    }
-    return null;
-  };
-  const tall = (n) => String(Math.round(n * 10) / 10).replace('.', ',');
   const tekster = (butikk) => TEKST[butikk.land] ?? TEKST.NO;
   const lenke = (butikk) => `https://pointmaxing.no/${butikk.sti}/${butikk.id}`;
-  // «50 poeng/100 kr» blir «50 p/100 kr», slik nettsiden skriver det.
-  const kort = (tekst) => tekst.replace(/(poeng|poäng|point)\/100 kr/, 'p/100 kr');
-  const satser = (butikk) =>
-    Object.entries(butikk.satser)
-      .map(([id, s]) => ({ ...(PROGRAM[id] ?? { navn: id, farge: '#888' }), tekst: kort(s.tekst), per100: s.per100 }))
-      .sort((a, b) => (b.per100 ?? -1) - (a.per100 ?? -1));
+  const satser = (butikk) => PMX.rader(butikk, programmer, oppsett);
 
   // Google kan vise siden mørk uansett hva systemet sier – les bakgrunnen.
   const morkt = (() => {
@@ -60,7 +30,7 @@
   function satsElement(sats, best, t) {
     const el = document.createElement('span');
     el.className = `pmx-sats${best ? ' pmx-best' : ''}`;
-    if (sats.per100 != null) el.title = `≈ ${tall(sats.per100)} ${t.per100}`;
+    if (sats.per100 != null) el.title = `≈ ${PMX.tall(sats.per100)} ${t.per100}`;
     const prikk = document.createElement('i');
     prikk.style.background = sats.farge;
     el.append(prikk, `${sats.navn} ${sats.tekst}`);
@@ -152,7 +122,7 @@
       const a = h3.closest('a');
       if (!a || a.dataset.pmx) continue;
       a.dataset.pmx = '1';
-      const butikk = finnButikk(domeneFor(a.href));
+      const butikk = PMX.finnButikk(perDomene, PMX.domeneFor(a.href));
       if (!butikk || funnet.has(butikk.id)) continue;
       funnet.set(butikk.id, butikk);
       const t = tekster(butikk);

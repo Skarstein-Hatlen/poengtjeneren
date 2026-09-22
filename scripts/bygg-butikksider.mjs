@@ -109,7 +109,20 @@ async function skriv(sti, innhold) {
 }
 
 const urler = [`${DOMENE}/`];
-const api = { hentet: stores.hentet, land: {} };
+// Til utvidelsen: butikker med grunnsats, og programmene med det som trengs for å regne
+// poeng med brukerens nivå (Klarna Plus/Premium/Max).
+const api = { hentet: stores.hentet, land: {}, programmer: {} };
+for (const p of programmer) {
+  api.programmer[p.id] = {
+    id: p.id,
+    navn: p.kortnavn,
+    farge: p.farge,
+    satsEnhet: p.satsEnhet,
+    poengPerKrone: p.konverteringer[0]?.poengPerKrone ?? null,
+    standardNiva: p.standardNiva ?? null,
+    nivaer: p.nivaer.map((n) => ({ id: n.id, navn: n.navn, butikkFaktor: n.butikkFaktor, ekstraProsent: n.ekstraProsent, kanVeksle: n.kanVeksle !== false })),
+  };
+}
 let antall = 0;
 
 for (const [land, sprak] of Object.entries(SPRAK)) {
@@ -171,7 +184,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
       const ebTekst = eb === null ? '' : ` (${fmt.format(eb)} ${sprak.poeng}${p.nivaer.length ? ` ${sprak.med}` : ''})`;
       deler.push(`${p.kortnavn} ${rå}${ebTekst}`);
       linjer.push(`<li><strong>${escape(p.kortnavn)}</strong>: ${escape(rå)}${escape(ebTekst)}</li>`);
-      apiSatser[p.id] = { tekst: rå, per100: eb === null ? null : Math.round(eb * 10) / 10 };
+      apiSatser[p.id] = { tekst: rå, verdi: gjeldende(sats), per100: eb === null ? null : Math.round(eb * 10) / 10 };
     }
     api.land[land].push({ id: b.id, navn: b.navn, domene: b.domene ?? null, satser: apiSatser });
     const url = `${DOMENE}${lenkeTil(b)}`;
