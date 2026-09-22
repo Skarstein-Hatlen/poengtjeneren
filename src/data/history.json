@@ -419,7 +419,8 @@
   "yoursurprise": {"trumf":[["2026-09-21",6.2]]},
   "youwish": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",50]]},
   "zoo": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",50]]},
-  "zooplus": {"trumf":[["2026-09-21",6.2]],"klarna":[["2026-09-21",2]]}
+  "zooplus": {"trumf":[["2026-09-21",6.2]],"klarna":[["2026-09-21",2]]},
+  "devold": {"trumf":[["2026-09-22",6.2]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},

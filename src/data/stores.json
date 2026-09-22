@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-21",
+  "hentet": "2026-09-22",
   "land": {
     "NO": [
       {
@@ -1465,6 +1465,21 @@
           }
         },
         "logo": "/logos/NO/detailshop.webp"
+      },
+      {
+        "id": "devold",
+        "navn": "Devold",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/devold-trumf"
+          }
+        },
+        "logo": "/logos/NO/devold.webp"
       },
       {
         "id": "directferries",
@@ -3477,21 +3492,6 @@
           }
         },
         "logo": "/logos/NO/kokkeglede.webp"
-      },
-      {
-        "id": "komplett",
-        "navn": "Komplett",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 15,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/komplett-1/01896310-4cf5-73e3-ba30-14f26f67ddb9"
-          }
-        },
-        "logo": "/logos/NO/komplett.webp"
       },
       {
         "id": "kondomeriet",
@@ -7628,22 +7628,6 @@
         "logo": "/logos/SE/animigo.webp"
       },
       {
-        "id": "antonioli",
-        "navn": "ANTONIOLI",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a046aa86-433f-4a40-b934-695f2b3ed114/antonioli/pay-with-klarna/"
-          }
-        },
-        "logo": "/logos/SE/antonioli.webp",
-        "domene": "antonioli.eu"
-      },
-      {
         "id": "apohem",
         "navn": "Apohem",
         "kategorier": [
@@ -11312,11 +11296,6 @@
           "elektronikk"
         ],
         "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 15,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/komplett-1/01896310-4cf5-73e3-ba30-14f26f67ddb9"
-          },
           "klarna-se": {
             "verdi": 1.5,
             "opptil": false,
@@ -18437,21 +18416,6 @@
           }
         },
         "logo": "/logos/DK/klaedeskabet.webp"
-      },
-      {
-        "id": "komplett",
-        "navn": "Komplett",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 15,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/komplett-1/01896310-4cf5-73e3-ba30-14f26f67ddb9"
-          }
-        },
-        "logo": "/logos/DK/komplett.webp"
       },
       {
         "id": "kvalitetskokkenet",
