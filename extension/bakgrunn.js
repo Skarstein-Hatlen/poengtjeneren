@@ -63,8 +63,8 @@ async function oppdaterMerke(tabId, url) {
       return;
     }
     const beste = Math.max(0, ...Object.values(butikk.satser).map((s) => s.per100 ?? 0));
-    await chrome.action.setBadgeBackgroundColor({ tabId, color: '#f0c14b' });
-    if (chrome.action.setBadgeTextColor) await chrome.action.setBadgeTextColor({ tabId, color: '#13203d' });
+    await chrome.action.setBadgeBackgroundColor({ tabId, color: '#0b1f4b' });
+    if (chrome.action.setBadgeTextColor) await chrome.action.setBadgeTextColor({ tabId, color: '#ffffff' });
     await chrome.action.setBadgeText({ tabId, text: beste > 0 ? String(Math.round(beste)) : '•' });
     await chrome.action.setTitle({ tabId, title: `${butikk.navn}: opptil ${Math.round(beste)} EuroBonus-poeng per 100 kr` });
   } catch {

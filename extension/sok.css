@@ -1,79 +1,230 @@
-/* Stripe øverst på Google-søk */
-#pmx-stripe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2147483647;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  height: 40px;
-  padding: 0 16px;
-  background: #0b1f4b;
-  border-bottom: 3px solid #f0c14b;
-  color: #f4f7fc;
-  font: 600 13px/1 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+/* Pointmaxing på Google-søk: en rolig stripe øverst og en linje under treff vi kjenner.
+   Fargene følger Googles egen lyse og mørke drakt; .pmx-morkt settes fra sok.js. */
+
+#pmx-stripe,
+.pmx-linje {
+  --pmx-navy: #0b1f4b;
+  --pmx-flate: #fff;
+  --pmx-kant: #dadce0;
+  --pmx-tekst: #202124;
+  --pmx-dempet: #5f6368;
+  --pmx-lenke: #0b1f4b;
+  --pmx-best-flate: rgba(11, 31, 75, 0.08);
+  --pmx-best-tekst: #0b1f4b;
+  --pmx-merke-flate: #0b1f4b;
+  --pmx-merke-tekst: #fff;
+  --pmx-ring: transparent;
+  font-family: 'Google Sans', Roboto, system-ui, -apple-system, 'Segoe UI', arial, sans-serif;
+  font-variant-numeric: tabular-nums;
   box-sizing: border-box;
 }
 
-body.pmx-med-stripe {
-  padding-top: 40px !important;
+#pmx-stripe.pmx-morkt,
+.pmx-linje.pmx-morkt {
+  --pmx-flate: #303134;
+  --pmx-kant: #3c4043;
+  --pmx-tekst: #e8eaed;
+  --pmx-dempet: #9aa0a6;
+  --pmx-lenke: #a8c7fa;
+  --pmx-best-flate: rgba(232, 234, 237, 0.12);
+  --pmx-best-tekst: #e8eaed;
+  --pmx-merke-flate: #e8eaed;
+  --pmx-merke-tekst: #0b1f4b;
+  --pmx-ring: rgba(255, 255, 255, 0.35);
 }
 
-#pmx-stripe .pmx-merke {
-  color: #f0c14b;
+#pmx-stripe *,
+.pmx-linje * {
+  box-sizing: border-box;
+}
+
+/* ---------- Stripe øverst ---------- */
+
+#pmx-stripe {
+  position: relative;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 46px;
+  padding: 0 20px;
+  background: var(--pmx-flate);
+  border-bottom: 1px solid var(--pmx-kant);
+  color: var(--pmx-tekst);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.pmx-merke {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pmx-tekst);
   text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   white-space: nowrap;
+  flex: none;
+}
+
+.pmx-merke:hover {
+  color: var(--pmx-tekst);
+  text-decoration: none;
+}
+
+.pmx-p {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--pmx-merke-flate);
+  color: var(--pmx-merke-tekst);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pmx-linje .pmx-p {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  font-size: 10px;
+  flex: none;
 }
 
 #pmx-stripe .pmx-butikker {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 20px;
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
 }
 
-#pmx-stripe .pmx-butikker a {
-  color: #0b1f4b;
-  background: #faf7f0;
-  border-radius: 999px;
-  padding: 5px 12px;
-  text-decoration: none;
+.pmx-butikk {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   white-space: nowrap;
 }
 
-#pmx-stripe .pmx-butikker a:hover {
-  background: #f0c14b;
+.pmx-butikk + .pmx-butikk {
+  padding-left: 20px;
+  border-left: 1px solid var(--pmx-kant);
 }
 
-#pmx-stripe .pmx-lukk {
+.pmx-navn {
+  font-weight: 600;
+}
+
+.pmx-sats {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--pmx-tekst);
+  font-size: 12.5px;
+  cursor: default;
+}
+
+.pmx-sats i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  box-shadow: 0 0 0 1px var(--pmx-ring);
+}
+
+.pmx-sats.pmx-best {
+  background: var(--pmx-best-flate);
+  color: var(--pmx-best-tekst);
+  font-weight: 600;
+}
+
+.pmx-sats small {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.pmx-sats small::before {
+  content: '·';
+  margin-right: 6px;
+}
+
+#pmx-stripe .pmx-regn,
+.pmx-linje .pmx-regn {
+  color: var(--pmx-lenke);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#pmx-stripe .pmx-regn:hover,
+.pmx-linje .pmx-regn:hover {
+  text-decoration: underline;
+}
+
+#pmx-stripe .pmx-regn {
+  flex: none;
+}
+
+.pmx-lukk {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin-right: -6px;
   border: 0;
+  border-radius: 50%;
   background: none;
-  color: #f4f7fc;
-  font-size: 20px;
+  color: var(--pmx-dempet);
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 6px;
+  padding: 0;
 }
 
-/* Linje under et søketreff */
+.pmx-lukk:hover {
+  background: var(--pmx-best-flate);
+  color: var(--pmx-tekst);
+}
+
+/* ---------- Linje under et treff ---------- */
+
 .pmx-linje {
-  display: inline-block;
-  margin: 4px 0 8px;
-  padding: 3px 10px;
-  border: 1px solid #f0c14b;
-  border-radius: 999px;
-  background: #faf7f0;
-  color: #0b1f4b !important;
-  font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 6px 0 8px;
+  color: var(--pmx-dempet);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 20px;
 }
 
-.pmx-linje:hover {
-  background: #f0c14b;
+.pmx-linje .pmx-sats {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 13px;
+  color: inherit;
+}
+
+.pmx-linje .pmx-sats.pmx-best {
+  color: var(--pmx-tekst);
+}
+
+.pmx-linje .pmx-sats + .pmx-sats::before {
+  content: '·';
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+.pmx-linje .pmx-regn {
+  margin-left: 6px;
 }
