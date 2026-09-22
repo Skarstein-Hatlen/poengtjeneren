@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "hent": "node scripts/hent-butikker.mjs",
+    "utvidelse": "node scripts/bygg-utvidelse.mjs",
     "build:enkeltfil": "npm run build && node scripts/bygg-enkeltfil.mjs"
   },
   "dependencies": {

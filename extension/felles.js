@@ -16,16 +16,20 @@ const PMX = (() => {
         const data = await svar.json();
         // Domene → butikk. Norge først, så svensk og dansk – samme butikk kan finnes i flere land.
         const perDomene = {};
+        const alle = {};
         for (const [land, butikker] of Object.entries(data.land)) {
+          alle[land] = {};
           for (const b of butikker) {
+            const oppslag = { land, sti: LAND_STI[land], id: b.id, navn: b.navn, satser: b.satser };
+            alle[land][b.id] = oppslag;
             if (!b.domene || perDomene[b.domene]) continue;
-            perDomene[b.domene] = { land, sti: LAND_STI[land], id: b.id, navn: b.navn, satser: b.satser };
+            perDomene[b.domene] = oppslag;
           }
         }
         const programmer = data.programmer ?? {};
         for (const [id, p] of Object.entries(programmer)) p.id ??= id;
-        await chrome.storage.local.set({ perDomene, programmer, hentet: data.hentet, oppdatert: Date.now() });
-        return { perDomene, programmer, hentet: data.hentet };
+        await chrome.storage.local.set({ perDomene, alle, programmer, hentet: data.hentet, oppdatert: Date.now() });
+        return { perDomene, alle, programmer, hentet: data.hentet };
       } catch {
         /* prøv neste kilde */
       }

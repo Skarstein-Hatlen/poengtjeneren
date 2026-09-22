@@ -11,7 +11,12 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-classic/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 0,
+    "arsavgiftFra": {
+      "dato": "2026-11-01",
+      "kr": 360
+    }
   },
   {
     "id": "sas-amex-premium",
@@ -25,7 +30,13 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 1800,
+    "velkomst": {
+      "poeng": 5000,
+      "krav": 60000,
+      "mnd": 9
+    }
   },
   {
     "id": "sas-amex-elite",
@@ -39,7 +50,13 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 6900,
+    "velkomst": {
+      "poeng": 15000,
+      "krav": 90000,
+      "mnd": 9
+    }
   },
   {
     "id": "sas-mastercard-world",
@@ -54,7 +71,10 @@
     "kilde": "https://saseurobonusmastercard.no/kortene/mastercard/",
     "sistVerifisert": "2026-09-21",
     "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 588,
+    "arsavgiftForsteAr": 294,
+    "tak": 200000
   },
   {
     "id": "sas-mastercard-premium",
@@ -68,7 +88,8 @@
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.no/kortene/mastercard-premium/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 3348
   },
   {
     "id": "amex-poeng",
@@ -132,7 +153,8 @@
     "sistVerifisert": "2026-09-12",
     "merknad": "1 RevPoint per 40 kr (tredjepart). Veksles 1:1 til EuroBonus.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 1140
   },
   {
     "id": "revolut-metal",
@@ -148,7 +170,8 @@
     "sistVerifisert": "2026-09-12",
     "merknad": "1 RevPoint per 25 kr (tredjepart). Veksles 1:1 til EuroBonus.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 2040
   },
   {
     "id": "revolut-ultra",
@@ -164,7 +187,8 @@
     "sistVerifisert": "2026-09-21",
     "merknad": "1 RevPoint per 10 kr (revolut.com). Veksles 1:1 til EuroBonus ifølge lanseringen nov. 2025.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 8400
   },
   {
     "id": "lunar",
@@ -178,7 +202,8 @@
     "status": "verifisert",
     "kilde": "https://www.lunar.app/no/privat/sas-eurobonus",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 588
   },
   {
     "id": "se-sas-amex-classic",
@@ -192,7 +217,12 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-classic/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 0,
+    "arsavgiftFra": {
+      "dato": "2026-11-01",
+      "kr": 360
+    }
   },
   {
     "id": "se-sas-amex-premium",
@@ -206,7 +236,8 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 1800
   },
   {
     "id": "se-sas-amex-elite",
@@ -220,7 +251,8 @@
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 6900
   },
   {
     "id": "se-sas-mastercard-world",
@@ -235,7 +267,10 @@
     "kilde": "https://saseurobonusmastercard.se/korten/mastercard/",
     "sistVerifisert": "2026-09-21",
     "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 515,
+    "arsavgiftForsteAr": 258,
+    "tak": 200000
   },
   {
     "id": "se-sas-mastercard-premium",
@@ -249,7 +284,8 @@
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.se/korten/mastercard-premium/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 2335
   },
   {
     "id": "dk-sas-mastercard-world",
@@ -264,7 +300,10 @@
     "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard/",
     "sistVerifisert": "2026-09-21",
     "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 415,
+    "arsavgiftForsteAr": 208,
+    "tak": 200000
   },
   {
     "id": "dk-sas-mastercard-premium",
@@ -278,6 +317,7 @@
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard-premium/",
     "sistVerifisert": "2026-09-21",
-    "annonse": false
+    "annonse": false,
+    "arsavgift": 2335
   }
 ]

@@ -1,0 +1,29 @@
+{
+  "NO": {
+    "program": "trumf",
+    "kilde": "https://www.trumf.no/slik-sparer-du-trumf-bonus/bonus-med-trumf-pay",
+    "sistVerifisert": "2026-09-23",
+    "rader": [
+      {
+        "id": "dagligvare",
+        "navn": "Dagligvare",
+        "hvor": "MENY, KIWI, SPAR, Joker, CC Mat, Jacob's, Nærbutikken og Lerøy Mat",
+        "prosent": 1,
+        "medTrumfPay": 2,
+        "merknad": "Trippel-Trumf-torsdag gir 2 % i tillegg."
+      },
+      {
+        "id": "strom",
+        "navn": "Strøm",
+        "hvor": "Fjordkraft",
+        "prosent": 1
+      },
+      {
+        "id": "mobil",
+        "navn": "Mobil",
+        "hvor": "Talkmore",
+        "prosent": 4
+      }
+    ]
+  }
+}

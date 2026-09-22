@@ -319,7 +319,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
       const ebTekst = eb === null ? '' : ` (${fmt.format(eb)} ${sprak.poeng}${p.nivaer.length ? ` ${sprak.med}` : ''})`;
       deler.push(`${p.kortnavn} ${rå}${ebTekst}`);
       linjer.push(`<li><strong>${escape(p.kortnavn)}</strong>: ${escape(rå)}${escape(ebTekst)}</li>`);
-      apiSatser[p.id] = { tekst: rå, verdi: gjeldende(sats), per100: eb === null ? null : Math.round(eb * 10) / 10 };
+      apiSatser[p.id] = { tekst: rå, verdi: gjeldende(sats), per100: eb === null ? null : Math.round(eb * 10) / 10, lenke: sats.lenke ?? sats.kilde ?? null };
     }
     api.land[land].push({ id: b.id, navn: b.navn, domene: b.domene ?? null, satser: apiSatser });
     const url = `${DOMENE}${lenkeTil(b)}`;

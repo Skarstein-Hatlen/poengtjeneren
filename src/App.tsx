@@ -4,6 +4,7 @@ import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
 import Flagg from './components/Flagg';
 import Folg from './components/Folg';
+import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
 import Nytt from './components/Nytt';
@@ -47,6 +48,9 @@ interface Tilstand {
   egenKortPoeng: string;
   /** Rabattkode utenfra i prosent – tom når ingen. */
   rabatt: string;
+  /** Kortforbruk per år og mat per måned – til Kort-siden. */
+  kortbruk: string;
+  matPerMnd: string;
   rader: Record<string, RadTilstand>;
 }
 
@@ -125,7 +129,7 @@ function standard(): Tilstand {
     const valgId = p.standardNiva ?? p.nivaer[0]?.id ?? p.konverteringer[0]?.id ?? '';
     rader[p.id] = { sats: feltVerdi(p, STANDARD_SATS[p.id] ?? null, nivaFor(p, valgId)), valgId };
   }
-  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rabatt: '', rader };
+  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rabatt: '', kortbruk: '100000', matPerMnd: '5000', rader };
 }
 
 function les(): Tilstand {
@@ -145,6 +149,8 @@ function les(): Tilstand {
         kortId: typeof p.kortId === 'string' ? p.kortId : std.kortId,
         egenKortPoeng: typeof p.egenKortPoeng === 'string' ? p.egenKortPoeng : '',
         rabatt: typeof p.rabatt === 'string' ? p.rabatt : '',
+        kortbruk: typeof p.kortbruk === 'string' ? p.kortbruk : std.kortbruk,
+        matPerMnd: typeof p.matPerMnd === 'string' ? p.matPerMnd : std.matPerMnd,
         rader,
       };
     }
@@ -568,7 +574,15 @@ export default function App() {
       <div className="app">
         {topp}
         <div className="billett">
-          <Kortliste land={t.land} kort={[...klarnaKort, ...kortListe]} lenke={kortLenke} />
+          <Kortliste
+            land={t.land}
+            kort={[...klarnaKort, ...kortListe]}
+            lenke={kortLenke}
+            kortbruk={t.kortbruk}
+            onKortbruk={(kortbruk) => setT((s) => ({ ...s, kortbruk }))}
+            idag={IDAG}
+          />
+          <Hverdag land={t.land} programmer={programmer} kort={kort && kort.id !== ANNET ? kort : null} matPerMnd={t.matPerMnd} onMatPerMnd={(matPerMnd) => setT((s) => ({ ...s, matPerMnd }))} />
         </div>
         <footer>
           {harAnnonse && <p>{T('annonseForklaring')}</p>}

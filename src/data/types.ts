@@ -93,6 +93,16 @@ export interface Kort {
   lenke?: string;
   /** true = lenken gir oss provisjon og må merkes «Annonse». */
   annonse?: boolean;
+  /** Årsavgift i kr. Uten verdi vises ikke kostnad per poeng. */
+  arsavgift?: number;
+  /** Lavere avgift første året (SAS Mastercard). */
+  arsavgiftForsteAr?: number;
+  /** Ny avgift fra en dato (Amex Classic blir 30 kr/mnd fra 01.11.2026). */
+  arsavgiftFra?: { dato: string; kr: number };
+  /** Velkomstbonus fra utstederen selv: poeng når du handler for `krav` kr innen `mnd` måneder. */
+  velkomst?: { poeng: number; krav: number; mnd: number };
+  /** Kortforbruk per år som gir poeng (SAS Mastercard World: 200 000 kr). */
+  tak?: number;
 }
 
 /** Én butikks sats i ett program, hentet automatisk av scripts/hent-butikker.mjs. */

@@ -1740,3 +1740,56 @@ footer ul {
 .ukens-lenke {
   margin: 0 0 16px;
 }
+
+/* Kort-siden: kortforbruk, kostnad per poeng og hverdag */
+.kortbruk {
+  margin: 4px 0 6px;
+}
+
+.kortliste-netto {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.hverdag {
+  margin-top: 30px;
+}
+
+.hverdag-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hverdag-liste li {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.hverdag-liste .kortliste-poeng small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.hverdag .fotnote {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.hverdag .fotnote a {
+  color: inherit;
+}
+
+.kortbruk .tall input {
+  width: 7ch;
+}

@@ -1,17 +1,22 @@
-// Kjører på pointmaxing.no: leser oppsettet brukeren har valgt der (kort og Klarna-nivå)
-// og gir det til utvidelsen, så merket, popupen og Google-stripen regner med det samme.
+// Kjører på pointmaxing.no: leser det brukeren har valgt der (kort, Klarna-nivå og fulgte
+// butikker) og gir det til utvidelsen, så merket, popupen, butikkortet og Google-stripen
+// regner med det samme – og varslene gjelder de samme butikkene.
 
 (() => {
-  const NOKKEL = 'pointmaxing.v8';
+  const OPPSETT = 'pointmaxing.v8';
+  const FOLGER = 'pointmaxing.folger';
   let sist = null;
 
   function les() {
     try {
-      const t = JSON.parse(localStorage.getItem(NOKKEL) ?? 'null');
-      if (!t || typeof t !== 'object') return null;
+      const t = JSON.parse(localStorage.getItem(OPPSETT) ?? 'null');
+      const f = JSON.parse(localStorage.getItem(FOLGER) ?? 'null');
+      if ((!t || typeof t !== 'object') && (!f || typeof f !== 'object')) return null;
       const niva = {};
-      for (const [id, rad] of Object.entries(t.rader ?? {})) if (rad && typeof rad.valgId === 'string') niva[id] = rad.valgId;
-      return { niva, kortId: typeof t.kortId === 'string' ? t.kortId : null };
+      for (const [id, rad] of Object.entries(t?.rader ?? {})) if (rad && typeof rad.valgId === 'string') niva[id] = rad.valgId;
+      const folger = {};
+      for (const [land, liste] of Object.entries(f ?? {})) if (Array.isArray(liste)) folger[land] = liste.filter((x) => typeof x === 'string');
+      return { niva, kortId: typeof t?.kortId === 'string' ? t.kortId : null, folger };
     } catch {
       return null;
     }
