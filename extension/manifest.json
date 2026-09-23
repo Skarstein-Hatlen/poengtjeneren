@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Pointmaxing",
-  "description": "Viser hvor mange EuroBonus-poeng nettbutikken du er inne på gir via Trumf, Klarna og SAS Online Shopping – med ditt Klarna-nivå, og varsler når butikker du følger går opp.",
+  "description": "Se hvor mange SAS EuroBonus-poeng nettbutikken gir via Trumf, Klarna og SAS Online Shopping – i Google-søk og i butikken.",
   "version": "0.5.0",
   "icons": {
     "16": "ikon16.png",
