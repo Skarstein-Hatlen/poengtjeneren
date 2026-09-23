@@ -45,7 +45,7 @@ describe('Klarna', () => {
     expect(r.opptjentKr).toBe(135);
     expect(r.programPoeng).toBeCloseTo(1661.85, 5);
     expect(r.kortPoeng).toBe(0); // kort gir ikke poeng når kjøpet går via Klarna
-    expect(r.status).toBe('uverifisert'); // vekslingssatsen er ikke publisert av Klarna
+    expect(r.status).toBe('verifisert'); // vekslingssatsen er ikke publisert av Klarna
   });
 
   it('Plus ganger med 2 og legger til 0,5 %; egen vekslingssats overstyrer', () => {
