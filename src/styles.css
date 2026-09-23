@@ -1793,3 +1793,25 @@ footer ul {
 .kortbruk .tall input {
   width: 7ch;
 }
+
+/* Merket: flyet ved siden av ordmerket */
+.merke-rad {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--page-fg);
+  text-decoration: none;
+}
+
+.merke-rad .ordmerke {
+  display: inline;
+}
+
+.logo-merke {
+  display: block;
+  flex: none;
+}
+
+.klarna .merke-rad .ordmerke {
+  text-decoration: none;
+}

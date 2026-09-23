@@ -4,6 +4,7 @@ import { gjeldendeSats } from '../lib/butikker';
 import { beregnProgram, effektivProsent } from '../lib/calc';
 import { fmtDato, fmtPer100, fmtTall } from '../lib/format';
 import { ButikkLogo } from './Butikkliste';
+import Logo from './Logo';
 
 interface Props {
   data: Datasett;
@@ -105,8 +106,9 @@ export default function KlarnaSide({ data, idag }: Props) {
     <div className="app klarna">
       <header className="topp">
         <div>
-          <a className="ordmerke" href="/no">
-            Pointmaxing
+          <a className="merke-rad" href="/no">
+            <Logo />
+            <span className="ordmerke">Pointmaxing</span>
           </a>
           <span className="slagord">Partnerforslag til Klarna · {fmtDato(data.hentet)}</span>
         </div>

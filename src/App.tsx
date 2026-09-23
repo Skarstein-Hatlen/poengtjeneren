@@ -7,6 +7,7 @@ import Folg from './components/Folg';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
+import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
@@ -464,7 +465,10 @@ export default function App() {
     <>
       <header className="topp">
         <div>
-          <span className="ordmerke">Pointmaxing</span>
+          <span className="merke-rad">
+            <Logo />
+            <span className="ordmerke">Pointmaxing</span>
+          </span>
           <span className="slagord">{T('slagord')}</span>
         </div>
         <div className="flagg" role="radiogroup" aria-label={T('land')}>
