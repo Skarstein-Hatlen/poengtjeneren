@@ -2137,3 +2137,9 @@ footer .bunnlenker {
 .treff .flis-logo img {
   padding: 3px 5px;
 }
+
+/* Nedtrekket er så bredt som det lengste kortnavnet – teksten ligger inntil pilen til høyre */
+.nav .velg select {
+  text-align: right;
+  text-align-last: right;
+}
