@@ -86,20 +86,22 @@ export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSa
         <span className="per100">{resultat ? tekst(land, 'perHundre', { n: fmtPer100(resultat.per100) }) : ' '}</span>
       </button>
 
-      {resultat && nivaapoeng > 0 && <span className="nivaa">{tekst(land, 'nivaapoengLinje', { n: fmtPoeng(nivaapoeng) })}</span>}
-      {kampanjeSlutt && <span className="igjen">{dagerTekst(land, dagerIgjen(idag, kampanjeSlutt))}</span>}
-
-      {historikk && historikk.length > 0 && (
-        <div className="historikk" title={tekst(land, 'historikk')}>
-          <Sparkline malinger={historikk} idag={idag} farge="currentColor" />
-          <span className="historikk-tekst">{historikkTekst(land, program, historikk)}</span>
+      {(nivaapoeng > 0 || kampanjeSlutt || (historikk && historikk.length > 0) || lenke) && (
+        <div className="kolonne-ekstra">
+          {resultat && nivaapoeng > 0 && <span className="nivaa">{tekst(land, 'nivaapoengLinje', { n: fmtPoeng(nivaapoeng) })}</span>}
+          {kampanjeSlutt && <span className="igjen">{dagerTekst(land, dagerIgjen(idag, kampanjeSlutt))}</span>}
+          {historikk && historikk.length > 0 && (
+            <div className="historikk" title={tekst(land, 'historikk')}>
+              <Sparkline malinger={historikk} idag={idag} farge="currentColor" />
+              <span className="historikk-tekst">{historikkTekst(land, program, historikk)}</span>
+            </div>
+          )}
+          {lenke && (
+            <a className="lenke kolonne-lenke" href={lenke} target="_blank" rel="noreferrer">
+              {tekst(land, 'handleVia', { program: program.kortnavn })} ↗
+            </a>
+          )}
         </div>
-      )}
-
-      {lenke && (
-        <a className="lenke kolonne-lenke" href={lenke} target="_blank" rel="noreferrer">
-          {tekst(land, 'handleVia', { program: program.kortnavn })} ↗
-        </a>
       )}
     </div>
   );

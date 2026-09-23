@@ -135,6 +135,7 @@ export const TEKSTER = {
     da: 'SAS Shopping giver 20 niveaupoint per 100 bonuspoint til {dato}. Niveaupoint tæller mod medlemsniveau, ikke til rejser.',
   },
   personvern: { nb: 'Personvern', sv: 'Integritet', da: 'Privatliv' },
+  omTallene: { nb: 'Om tallene', sv: 'Om siffrorna', da: 'Om tallene' },
   utvidelseLenke: { nb: 'Chrome-utvidelse', sv: 'Chrome-tillägg', da: 'Chrome-udvidelse' },
   utvidelseCta: {
     nb: 'Chrome-utvidelsen viser poengene rett i Google-søk og i nettbutikken.',

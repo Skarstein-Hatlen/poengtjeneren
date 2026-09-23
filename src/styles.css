@@ -332,49 +332,6 @@ input::placeholder {
   }
 }
 
-/* Følg butikk */
-.folg {
-  margin-top: 22px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-}
-
-.folg p {
-  margin: 0 0 8px;
-  font-size: 13px;
-}
-
-.folg-felt {
-  display: flex;
-  gap: 8px;
-}
-
-.folg-felt input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff;
-  padding: 7px 12px;
-  font-size: 14px;
-  outline: none;
-}
-
-.folg-felt input:focus {
-  border-color: var(--ink);
-}
-
-.folg-felt button {
-  padding: 7px 14px;
-  border: 1px solid var(--navy);
-  border-radius: 999px;
-  background: var(--navy);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 .kategorifilter {
   margin-top: 10px;
 }
@@ -649,7 +606,7 @@ select option {
 /* Kortlenke og tips */
 .kortlenke {
   margin: 0;
-  padding: 12px 0 2px 88px;
+  padding: 8px 0 2px 88px;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -659,32 +616,20 @@ select option {
 
 .kortlenke a,
 .tips a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 11px;
-  border: 1px solid var(--navy);
-  border-radius: 999px;
-  background: var(--navy);
-  color: #fff;
-  font-size: 12px;
+  color: var(--ink);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.02em;
   text-decoration: none;
+  border-bottom: 1px solid var(--line);
   white-space: nowrap;
-  transition:
-    background 0.15s,
-    color 0.15s,
-    border-color 0.15s;
+  transition: border-color 0.15s;
 }
 
 .kortlenke a:hover,
 .tips a:hover,
 .kortlenke a:focus-visible,
 .tips a:focus-visible {
-  background: var(--gold-fill);
-  border-color: var(--gold-fill);
-  color: var(--ink);
+  border-bottom-color: var(--ink);
   outline: none;
 }
 
@@ -1716,25 +1661,12 @@ footer ul {
   color: var(--gold);
 }
 
-/* Følg butikk: stjerne, forklaring og RSS */
 .folg {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 2px 0;
   font-size: 13px;
-}
-
-.folg-knapp.aktiv {
-  color: var(--gold);
-}
-
-.folg a {
-  color: var(--mute);
-}
-
-.folg a:hover {
-  color: var(--ink);
 }
 
 .ukens-lenke {
@@ -1824,35 +1756,6 @@ footer ul {
 }
 
 /* Utvidelsen: én linje under billetten, bare på skjermer som kan ha den */
-.utvidelse-linje {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin: 18px 4px 0;
-  font-size: 13px;
-  color: var(--page-mute);
-}
-
-.utvidelse-linje .logo-merke {
-  color: var(--page-fg);
-}
-
-.utvidelse-linje a {
-  color: var(--page-fg);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.utvidelse-linje a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 640px) {
-  .utvidelse-linje {
-    display: none;
-  }
-}
 
 footer .bunnlenker a {
   color: var(--page-mute);
@@ -1924,4 +1827,223 @@ footer .bunnlenker a:hover {
 
 .utvidelse .fotnote a {
   color: var(--ink);
+}
+
+/* Toppen: Chrome-knapp ved flaggene */
+.topp-hoyre {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.knapp-chrome {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--gold-fill);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.knapp-chrome:hover,
+.knapp-chrome:focus-visible {
+  background: #ffd35e;
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .knapp-chrome {
+    display: none;
+  }
+}
+
+/* Stjernen ved butikksøket */
+.rad-hoyre {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stjerne {
+  border: 0;
+  background: none;
+  padding: 0 2px;
+  font-size: 19px;
+  line-height: 1;
+  color: var(--mute);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.stjerne:hover,
+.stjerne:focus-visible,
+.stjerne.aktiv {
+  color: var(--gold);
+  outline: none;
+}
+
+/* Under konklusjonen: én rad med handlinger, og vilkårene når de bes om */
+.handlinger {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+.handlinger .skille {
+  color: var(--line);
+}
+
+ol.slik {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+/* Kolonnens småting (nivåpoeng, dager igjen, historikk, lenke) */
+.kolonne-ekstra {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Bunnen: alt om tallene bak én pil */
+footer details.om summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--page-mute);
+}
+
+footer details.om summary::-webkit-details-marker {
+  display: none;
+}
+
+footer details.om summary::before {
+  content: '▸';
+  display: inline-block;
+  width: 14px;
+}
+
+footer details.om[open] summary::before {
+  content: '▾';
+}
+
+footer details.om > p,
+footer details.om > ul {
+  margin: 8px 0 0;
+}
+
+footer details.om > ul {
+  padding-left: 16px;
+}
+
+footer .kilder-tittel {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--page-fg);
+  opacity: 0.85;
+}
+
+footer .bunnlenker {
+  margin-top: 14px;
+}
+
+/* Mobil: programmene som rader i billetten, ikke kolonner som brytes */
+@media (max-width: 559px) {
+  .kolonner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+  }
+
+  .kolonne {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'topp poeng'
+      'tall poeng'
+      'ekstra ekstra';
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 4px;
+    padding: 14px 0 12px;
+  }
+
+  .kolonne.best {
+    padding-top: 13px;
+  }
+
+  .kolonne .kolonne-topp {
+    grid-area: topp;
+    font-size: 15px;
+  }
+
+  .kolonne .tall {
+    grid-area: tall;
+  }
+
+  .kolonne .tall input {
+    width: 4ch;
+    font-size: 20px;
+  }
+
+  .kolonne .resultat {
+    grid-area: poeng;
+    align-items: flex-end;
+    text-align: right;
+    margin-top: 0;
+  }
+
+  .kolonne .poeng {
+    font-size: 34px;
+  }
+
+  .kolonne .kolonne-ekstra {
+    grid-area: ekstra;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 14px;
+    margin-top: 2px;
+  }
+
+  .kolonne .historikk .sparkline {
+    display: none;
+  }
+
+  .kolonne .stempel {
+    top: -9px;
+    left: 0;
+    right: auto;
+    transform: rotate(-3deg);
+  }
+}
+
+@media (max-width: 559px) {
+  /* Ingen dobbel strek under rivekanten, og historikken venter til stor skjerm */
+  .kolonne:first-child:not(.best) {
+    border-top-color: transparent;
+  }
+
+  .kolonne .historikk {
+    display: none;
+  }
 }

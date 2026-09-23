@@ -3,7 +3,6 @@ import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
 import Flagg from './components/Flagg';
-import Folg from './components/Folg';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
@@ -262,6 +261,7 @@ export default function App() {
   const [rute, setRute] = useState<Rute>(() => lesSti().rute);
   const [apen, setApen] = useState<string | null>(null);
   const [visRabatt, setVisRabatt] = useState(false);
+  const [visSlik, setVisSlik] = useState(false);
   const [folger, setFolger] = useState<Folger>(lesFolger);
   const forsteSti = useRef(true);
 
@@ -517,21 +517,37 @@ export default function App() {
           </span>
           <span className="slagord">{T('slagord')}</span>
         </div>
-        <div className="flagg" role="radiogroup" aria-label={T('land')}>
-          {LAND.map((l) => (
-            <button
-              key={l}
-              type="button"
-              role="radio"
-              aria-checked={t.land === l}
-              aria-label={data.landInfo[l].navn}
-              title={data.landInfo[l].navn}
-              className={t.land === l ? 'aktiv' : undefined}
-              onClick={() => velgLand(l)}
-            >
-              <Flagg land={l} />
-            </button>
-          ))}
+        <div className="topp-hoyre">
+          <a
+            className="knapp-chrome"
+            href={utvidelseInfo.chromeWebStoreUrl || '/utvidelse'}
+            target={utvidelseInfo.chromeWebStoreUrl ? '_blank' : undefined}
+            rel={utvidelseInfo.chromeWebStoreUrl ? 'noreferrer' : undefined}
+            onClick={(e) => {
+              if (!utvidelseInfo.chromeWebStoreUrl) {
+                e.preventDefault();
+                gaaTil('utvidelse');
+              }
+            }}
+          >
+            {T('leggTil')}
+          </a>
+          <div className="flagg" role="radiogroup" aria-label={T('land')}>
+            {LAND.map((l) => (
+              <button
+                key={l}
+                type="button"
+                role="radio"
+                aria-checked={t.land === l}
+                aria-label={data.landInfo[l].navn}
+                title={data.landInfo[l].navn}
+                className={t.land === l ? 'aktiv' : undefined}
+                onClick={() => velgLand(l)}
+              >
+                <Flagg land={l} />
+              </button>
+            ))}
+          </div>
         </div>
       </header>
       <nav className="nav" aria-label="Sider">
@@ -694,9 +710,23 @@ export default function App() {
               valgt={butikk}
               placeholder={T('sokButikk')}
             />
-            <button type="button" className="lenke" onClick={() => gaaTil('butikker')}>
-              {T('alle', { n: butikker.length })}
-            </button>
+            <span className="rad-hoyre">
+              {butikk && (
+                <button
+                  type="button"
+                  className={`stjerne${folgerHer.includes(butikk.id) ? ' aktiv' : ''}`}
+                  aria-pressed={folgerHer.includes(butikk.id)}
+                  title={T(folgerHer.includes(butikk.id) ? 'folger' : 'folg', { butikk: butikk.navn })}
+                  aria-label={T(folgerHer.includes(butikk.id) ? 'folger' : 'folg', { butikk: butikk.navn })}
+                  onClick={() => toggleFolg(butikk.id)}
+                >
+                  {folgerHer.includes(butikk.id) ? '★' : '☆'}
+                </button>
+              )}
+              <button type="button" className="lenke" onClick={() => gaaTil('butikker')}>
+                {T('alle', { n: butikker.length })}
+              </button>
+            </span>
           </div>
           <div className="valg-rad rad-kort">
             <label className="etikett" htmlFor="kort">
@@ -836,20 +866,27 @@ export default function App() {
         {belop > 0 && resultater.length > 0 && (
           <p className="handlinger">
             <Del land={t.land} lag={delTekst} />
+            {beste && (
+              <>
+                <span className="skille" aria-hidden="true">
+                  ·
+                </span>
+                <button type="button" className="lenke" aria-expanded={visSlik} onClick={() => setVisSlik((v) => !v)}>
+                  {T('slikFar', { program: beste.program.kortnavn })} {visSlik ? '▾' : '▸'}
+                </button>
+              </>
+            )}
           </p>
+        )}
+        {visSlik && belop > 0 && beste && (
+          <ol className="slik">
+            {beste.program.vilkar.map((v) => (
+              <li key={v}>{v}</li>
+            ))}
+          </ol>
         )}
         {nivaLinje && <p className="nivalinje">{nivaLinje}</p>}
         {rabattLinje && <p className="nivalinje">{rabattLinje}</p>}
-        {belop > 0 && beste && (
-          <details className="slik">
-            <summary>{T('slikFar', { program: beste.program.kortnavn })}</summary>
-            <ol>
-              {beste.program.vilkar.map((v) => (
-                <li key={v}>{v}</li>
-              ))}
-            </ol>
-          </details>
-        )}
         {kortTips && (
           <p className="tips">
             <span>{T('tips', { kort: kortTips.kort.navn, program: kortTips.program.kortnavn, n: fmtPoeng(kortTips.ekstra) })}</span>
@@ -861,38 +898,19 @@ export default function App() {
         )}
         {belop <= 0 && <p className="tom">{T('skrivBelop')}</p>}
         {belop > 0 && resultater.length === 0 && <p className="tom">{T('skrivSats')}</p>}
-        {butikk && <Folg land={t.land} butikk={butikk} folger={folgerHer.includes(butikk.id)} onToggle={() => toggleFolg(butikk.id)} />}
       </div>
 
-      <p className="utvidelse-linje">
-        <Logo storrelse={16} />
-        <span>{T('utvidelseCta')}</span>
-        <a
-          href={utvidelseInfo.chromeWebStoreUrl || '/utvidelse'}
-          target={utvidelseInfo.chromeWebStoreUrl ? '_blank' : undefined}
-          rel={utvidelseInfo.chromeWebStoreUrl ? 'noreferrer' : undefined}
-          onClick={(e) => {
-            if (!utvidelseInfo.chromeWebStoreUrl) {
-              e.preventDefault();
-              gaaTil('utvidelse');
-            }
-          }}
-        >
-          {T('leggTil')} →
-        </a>
-      </p>
-
       <footer>
-        {[...new Set(merknader)].map((m) => (
-          <p key={m}>{m}</p>
-        ))}
-        {butikk && <p>{T('satserHentet', { butikk: butikk.navn, dato: fmtDato(data.hentet) })}</p>}
-        <p>{T('forbehold', { valuta: data.landInfo[t.land].valuta, dato: fmtDato(data.sistOppdatert) })}</p>
-        {harAnnonse && <p>{T('annonseForklaring')}</p>}
-        {bunnlenker}
-        <p className="signatur">{T('signatur')}</p>
-        <details>
-          <summary>{T('kilder')}</summary>
+        <details className="om">
+          <summary>{T('omTallene')}</summary>
+          {[...new Set(merknader)].map((m) => (
+            <p key={m}>{m}</p>
+          ))}
+          {butikk && <p>{T('satserHentet', { butikk: butikk.navn, dato: fmtDato(data.hentet) })}</p>}
+          <p>{T('forbehold', { valuta: data.landInfo[t.land].valuta, dato: fmtDato(data.sistOppdatert) })}</p>
+          {harAnnonse && <p>{T('annonseForklaring')}</p>}
+          <p className="signatur">{T('signatur')}</p>
+          <p className="kilder-tittel">{T('kilder')}</p>
           <ul>
             {kilder.map((k) => (
               <li key={k.tittel}>
@@ -915,6 +933,7 @@ export default function App() {
               ))}
           </ul>
         </details>
+        {bunnlenker}
       </footer>
     </div>
   );

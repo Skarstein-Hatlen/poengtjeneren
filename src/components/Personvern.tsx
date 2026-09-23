@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import analyse from '../data/analyse.json';
 
 const KONTAKT = 'kjetil.skarstein-hatlen@hotmail.no';
 const DATO = '24.09.2026';
@@ -19,6 +20,9 @@ export default function Personvern() {
         <li>Ingen informasjonskapsler, ingen sporing, ingen analyseverktøy.</li>
         <li>Valgene dine (beløp, kort, Klarna-nivå, butikker du følger) lagres bare i nettleseren din (localStorage) og sendes ingen steder.</li>
         <li>Siden ligger på GitHub Pages og henter skrifttyper fra Google Fonts. Disse tjenestene ser IP-adressen din når siden lastes, slik alle nettsider gjør.</li>
+        {analyse.cloudflareToken && (
+          <li>Besøkstall telles uten informasjonskapsler med Cloudflare Web Analytics: antall besøk og hvilke sider, ingen personopplysninger.</li>
+        )}
       </ul>
 
       <h3>Nettleserutvidelsen</h3>
