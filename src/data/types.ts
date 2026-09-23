@@ -147,6 +147,8 @@ export interface Partnerkampanje {
   enhet: 'kr' | '%' | 'poeng';
   slutt: string | null;
   url: string;
+  /** Partnerens logo under /public/logos/kampanjer, når scriptet fikk hentet den. */
+  logo?: string;
 }
 
 /** Butikklister per land, slik stores.json og partners.json er lagret. */

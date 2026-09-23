@@ -3,7 +3,9 @@
 // Trumf-partnere (Talkmore, Fjordkraft) og Amex' velkomsttilbud. Teksten siteres fra siden – ingenting
 // gjettes – og en kampanje forsvinner den dagen teksten er borte. Kjøres av den daglige jobben.
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
 const FIL = new URL('../src/data/kampanjer.json', import.meta.url);
 const idag = new Date().toISOString().slice(0, 10);
@@ -39,6 +41,40 @@ async function hent(url) {
   return svar.text();
 }
 
+// Partnerlogoer, hentet én gang og lagret som 240×96 webp under public/logos/kampanjer (som butikklogoene).
+const LOGO_MAPPE = new URL('../public/logos/kampanjer/', import.meta.url);
+const LOGOER = {
+  talkmore: 'https://talkmore.no/-/media/logoer/talkmore-logo/talkmore_logo.svg?la=en&h=2084&w=2750&hash=04D4B02DC546B75394CA9E4948671724',
+  fjordkraft: ['https://www.fjordkraft.no/favicons/apple-icon-180x180.png', 'https://www.fjordkraft.no/favicons/apple-icon-152x152.png', 'https://www.fjordkraft.no/favicons/apple-icon-72x72.png'],
+  amex: 'https://www.aexp-static.com/cdaas/one/statics/axp-static-assets/1.8.0/package/dist/img/logos/dls-logo-bluebox-solid.svg',
+  klarna: ['https://www.klarna.com/apple-touch-icon.png', 'https://www.klarna.com/favicon-32x32.png'],
+};
+async function hentLogo(nokkel, kilder) {
+  if (!kilder) return null;
+  const fil = new URL(`${nokkel}.webp`, LOGO_MAPPE);
+  const sti = `/logos/kampanjer/${nokkel}.webp`;
+  try {
+    await access(fil);
+    return sti;
+  } catch {
+    /* ikke hentet ennå */
+  }
+  await mkdir(LOGO_MAPPE, { recursive: true });
+  for (const url of [kilder].flat()) {
+    try {
+      const svar = await fetch(url, { headers: HODER });
+      if (!svar.ok) continue;
+      const original = Buffer.from(await svar.arrayBuffer());
+      const bilde = await sharp(original, { density: 300 }).ensureAlpha().trim({ threshold: 12 }).toBuffer();
+      await sharp(bilde).resize(240, 96, { fit: 'inside', withoutEnlargement: false }).webp({ quality: 88 }).toFile(fileURLToPath(fil));
+      return sti;
+    } catch (e) {
+      console.error(`logo ${nokkel}: ${url} – ${e.message}`);
+    }
+  }
+  return null;
+}
+
 /** Setningen rundt et treff, som sitat. */
 const setning = (tekst, i) => {
   const start = tekst.lastIndexOf('. ', i) + 2;
@@ -53,6 +89,7 @@ const KILDER = [
     land: 'NO',
     program: 'trumf',
     partner: 'Talkmore',
+    logo: 'talkmore',
     url: 'https://talkmore.no/privat/abonnement/partner/trumf',
     finn(tekst) {
       const m = tekst.match(/få (\d[\d .]*),?-? i Trumf-velkomstgave/i) ?? tekst.match(/(\d[\d .]*) (?:kr|kroner) i Trumf-(?:bonus|velkomstgave)/i);
@@ -67,6 +104,7 @@ const KILDER = [
     land: 'NO',
     program: 'trumf',
     partner: 'Fjordkraft',
+    logo: 'fjordkraft',
     url: 'https://www.fjordkraft.no/trumf/',
     finn(tekst) {
       const m = tekst.match(/(\d[\d .]*) (?:kr|kroner|,-) i (?:Trumf-)?velkomst(?:bonus|gave)/i) ?? tekst.match(/velkomst(?:bonus|gave) på (\d[\d .]*) (?:kr|kroner)/i) ?? tekst.match(/få (\d[\d .]*) (?:kr|kroner)[^.]{0,40}Trumf/i);
@@ -89,6 +127,7 @@ const KILDER = [
     land,
     program: kort,
     partner: navn,
+    logo: 'amex',
     url,
     raa: true,
     finn(html) {
@@ -116,6 +155,7 @@ const KILDER = [
       land,
       program,
       partner: `Klarna ${niva[0].toUpperCase()}${niva.slice(1)}`,
+      logo: 'klarna',
       url: `${base}${niva}/`,
       finn(tekst) {
         const m = tekst.match(/(?:få|get|opptil|op til|upp till|tjen|tjäna)\s[^.]{0,50}?(\d[\d .]{3,7})\s*(?:SAS\s+)?EuroBonus[- ]?(?:bonus)?(?:poeng|poäng|point)\b(?![^.]*per 100)/i);
@@ -133,7 +173,8 @@ for (const k of KILDER) {
     const funn = k.finn(k.raa ? html : tekstAv(html));
     if (!funn) continue;
     const slutt = sluttDato(k.raa ? tekstAv(html) : funn.tekst) ?? sluttDato(k.raa ? '' : tekstAv(html));
-    ut.push({ id: k.id, land: k.land, program: k.program, partner: k.partner, ...funn, slutt, url: k.url });
+    const logo = k.logo ? await hentLogo(k.logo, LOGOER[k.logo]) : null;
+    ut.push({ id: k.id, land: k.land, program: k.program, partner: k.partner, ...funn, slutt, url: k.url, ...(logo ? { logo } : {}) });
   } catch (e) {
     console.error(`${k.id}: ${e.message}`);
   }
@@ -147,8 +188,11 @@ for (const [program, land, sti] of [['klarna', 'NO', 'no'], ['klarna-se', 'SE', 
       for (const s of j.stores ?? []) {
         if (!s.campaignLabel && !s.campaignUrl) continue;
         const sats = s.cashbackDiscount?.discountLabel?.body ?? '';
+        const id = `${program}-butikk-${s.merchantId ?? s.displayName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+        const ikon = (s.icons ?? []).find((i) => i.type === 'X3')?.url ?? s.icons?.[0]?.url;
+        const logo = await hentLogo(id, ikon);
         ut.push({
-          id: `${program}-butikk-${s.merchantId ?? s.displayName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+          id,
           land,
           program,
           partner: s.displayName,
@@ -158,6 +202,7 @@ for (const [program, land, sti] of [['klarna', 'NO', 'no'], ['klarna-se', 'SE', 
           enhet: '%',
           slutt: null,
           url: s.campaignUrl ? `https://www.klarna.com${s.campaignUrl}` : `https://www.klarna.com${s.storeUrl}`,
+          ...(logo ? { logo } : {}),
         });
       }
       if ((j.stores ?? []).length < 99) break;

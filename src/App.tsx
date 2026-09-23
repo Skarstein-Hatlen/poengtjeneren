@@ -6,6 +6,7 @@ import Flagg from './components/Flagg';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste, { prisPerMnd } from './components/Kortliste';
+import Kortvelger from './components/Kortvelger';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import Personvern from './components/Personvern';
@@ -447,24 +448,6 @@ export default function App() {
     </p>
   );
 
-  // Brukerens oppsett, slik det ligger til grunn for tallene i katalogen og på Nytt.
-  const oppsettTekst = [
-    ...programmer
-      .filter((p) => p.nivaer.length > 0)
-      .map((p) => {
-        const n = nivaFor(p, t.rader[p.id].valgId);
-        return !n ? p.kortnavn : n.kanVeksle === false ? `${p.kortnavn}: ${n.navn.toLowerCase()}` : `${p.kortnavn} ${n.navn}`;
-      }),
-    ...(kort && kort.id !== ANNET ? [kort.navn] : []),
-  ].join(' · ');
-  const oppsett = oppsettTekst ? (
-    <p className="oppsett">
-      {T('regnetMed', { oppsett: oppsettTekst })} ·{' '}
-      <button type="button" className="lenke" onClick={() => gaaTil('kalk')}>
-        {T('endre')}
-      </button>
-    </p>
-  ) : null;
 
   // Lønner nivået seg? Samme kjøp regnet med nivået over (eller under, for det høyeste).
   const nivaLinje = (() => {
@@ -565,23 +548,16 @@ export default function App() {
             {T(n.nokkel)}
           </a>
         ))}
-        {/* Kortet kan byttes herfra på alle sider – alle tall følger med. */}
-        <span className="velg nav-velg">
-          <select aria-label={T('kort')} value={t.kortId} onChange={(e) => setT((s) => ({ ...s, kortId: e.target.value }))}>
-            <option value={INGEN}>{T('ingen')}</option>
-            {programKortListe.map((k) => (
-              <option key={k.id} value={k.id}>
-                {k.navn}
-              </option>
-            ))}
-            {kortListe.map((k) => (
-              <option key={k.id} value={k.id}>
-                {k.navn}
-              </option>
-            ))}
-            {t.kortId === ANNET && <option value={ANNET}>{T('annet')}</option>}
-          </select>
-        </span>
+        {/* Kortet og Klarna-nivået kan byttes herfra på alle sider – alle tall følger med. */}
+        <Kortvelger
+          land={t.land}
+          kortId={t.kortId}
+          kortListe={kortListe}
+          programmer={programmer}
+          nivaFor={(p) => t.rader[p.id].valgId}
+          onKort={(id) => setT((s) => ({ ...s, kortId: id }))}
+          onNiva={(p, valgId) => setT((s) => endreRad({ ...s, kortId: `${p.id}-kort` }, p, { valgId }))}
+        />
       </nav>
     </>
   );
@@ -605,7 +581,6 @@ export default function App() {
     return (
       <div className="app">
         {topp}
-        {oppsett}
         <div className="billett">
           <Butikkliste
             land={t.land}
@@ -627,7 +602,6 @@ export default function App() {
     return (
       <div className="app">
         {topp}
-        {oppsett}
         <div className="billett">
           <Nytt
             land={t.land}
@@ -650,7 +624,6 @@ export default function App() {
     return (
       <div className="app">
         {topp}
-        {oppsett}
         <div className="billett">
           <Ukens land={t.land} butikker={butikker} programmer={programmer} historikk={data.historikk[t.land]} idag={IDAG} per100={per100ForSats} onVelg={velgButikk} />
         </div>

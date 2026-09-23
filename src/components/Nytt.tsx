@@ -99,9 +99,13 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
             {partnerkampanjer.map((k) => (
               <li key={k.id}>
                 <a className="nytt-lenke" href={k.url} target="_blank" rel="noreferrer">
-                  <span className="flis-logo flis-bokstav" aria-hidden="true">
-                    {k.partner.charAt(0)}
-                  </span>
+                  {k.logo ? (
+                    <ButikkLogo butikk={{ id: k.id, navn: k.partner, logo: k.logo, satser: {} }} />
+                  ) : (
+                    <span className="flis-logo flis-bokstav" aria-hidden="true">
+                      {k.partner.charAt(0)}
+                    </span>
+                  )}
                   <span className="nytt-tekst">
                     <span className="nytt-navn">{k.tittel}</span>
                     <span className="nytt-under">

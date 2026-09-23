@@ -117,6 +117,8 @@ export const TEKSTER = {
   kortbrukPerAr: { nb: 'Kortbruk per år', sv: 'Kortköp per år', da: 'Kortforbrug per år' },
   krPerMnd: { nb: '{n} kr/mnd', sv: '{n} kr/mån', da: '{n} kr/md.' },
   orePoengSort: { nb: 'Øre/poeng', sv: 'Öre/poäng', da: 'Øre/point' },
+  ingenKort: { nb: 'Ingen kort', sv: 'Inget kort', da: 'Intet kort' },
+  velgKort: { nb: 'Velg kort', sv: 'Välj kort', da: 'Vælg kort' },
   poengPerAr: { nb: '{n} poeng/år', sv: '{n} poäng/år', da: '{n} point/år' },
   orePerPoeng: { nb: '{n} øre/poeng', sv: '{n} öre/poäng', da: '{n} øre/point' },
   ingenArsavgift: { nb: 'ingen årsavgift', sv: 'ingen årsavgift', da: 'ingen årsafgift' },

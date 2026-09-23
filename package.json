@@ -11,6 +11,7 @@
     "hent": "node scripts/hent-butikker.mjs",
     "utvidelse": "node scripts/bygg-utvidelse.mjs",
     "ikoner": "node scripts/lag-ikoner.mjs",
+    "kortbilder": "node scripts/hent-kortbilder.mjs",
     "build:enkeltfil": "npm run build && node scripts/bygg-enkeltfil.mjs"
   },
   "dependencies": {

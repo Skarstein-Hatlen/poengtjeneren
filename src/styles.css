@@ -2102,32 +2102,6 @@ footer .bunnlenker {
   margin-left: auto;
 }
 
-.nav .velg select {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--page-mute);
-  padding: 0 16px 4px 0;
-  border-bottom-color: transparent;
-}
-
-.nav .velg select:hover,
-.nav .velg select:focus {
-  color: var(--page-fg);
-  border-bottom-color: var(--page-mute);
-}
-
-.nav .velg::after {
-  border-color: var(--page-mute);
-  transform: translateY(-80%) rotate(45deg);
-}
-
-.nav .velg select option {
-  text-transform: none;
-  letter-spacing: 0;
-}
-
 /* Logoene fyller de små flisene (Nytt, Ukens, søk, Klarna-siden) */
 .nytt-liste .flis-logo img,
 .butikkrader .flis-logo img {
@@ -2138,11 +2112,6 @@ footer .bunnlenker {
   padding: 3px 5px;
 }
 
-/* Nedtrekket er så bredt som det lengste kortnavnet – teksten ligger inntil pilen til høyre */
-.nav .velg select {
-  text-align: right;
-  text-align-last: right;
-}
 
 /* Andre kampanjer: rad som lenke, bokstavflis der vi ikke har logo */
 .nytt-liste .nytt-lenke {
@@ -2166,4 +2135,149 @@ footer .bunnlenker {
 .flis-bokstav {
   font-family: var(--font-tall);
   font-size: 18px;
+}
+
+/* Kortvelgeren i sideraden: knapp med bilde og navn, liste som legger seg under */
+.kortvelger {
+  position: relative;
+  margin-left: auto;
+}
+
+.kortvelger-knapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--page-mute);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.kortvelger-knapp:hover,
+.kortvelger-knapp:focus-visible,
+.kortvelger.apen .kortvelger-knapp {
+  color: var(--page-fg);
+  outline: none;
+}
+
+.kortvelger-pil {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px 3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.kv-bilde {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 23px;
+  border-radius: 3px;
+  overflow: hidden;
+  flex: none;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25);
+  background: #fff;
+}
+
+.kv-bilde img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.kv-bilde i {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-style: normal;
+  font-family: var(--font-tall);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.kortvelger-knapp .kv-bilde {
+  width: 24px;
+  height: 15px;
+  border-radius: 2px;
+}
+
+.kortvelger-knapp .kv-bilde i {
+  font-size: 9px;
+}
+
+.kortvelger-liste {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(320px, calc(100vw - 32px));
+  max-height: min(420px, 70vh);
+  overflow: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(4, 12, 40, 0.28);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.kortvelger-liste button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.kortvelger-liste button:hover,
+.kortvelger-liste button:focus-visible {
+  background: var(--paper-2);
+  outline: none;
+}
+
+.kortvelger-liste button.aktiv .kv-navn {
+  font-weight: 600;
+}
+
+.kv-tekst {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.kv-navn {
+  font-weight: 500;
+}
+
+.kv-under {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.kv-hake {
+  color: var(--gold);
+  font-weight: 700;
 }

@@ -11,7 +11,8 @@
       "verdi": 500,
       "enhet": "kr",
       "slutt": null,
-      "url": "https://www.fjordkraft.no/trumf/"
+      "url": "https://www.fjordkraft.no/trumf/",
+      "logo": "/logos/kampanjer/fjordkraft.webp"
     },
     {
       "id": "sas-amex-elite-velkomst",
@@ -23,7 +24,8 @@
       "verdi": 15000,
       "enhet": "poeng",
       "slutt": null,
-      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/"
+      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
+      "logo": "/logos/kampanjer/amex.webp"
     },
     {
       "id": "sas-amex-premium-velkomst",
@@ -35,7 +37,8 @@
       "verdi": 5000,
       "enhet": "poeng",
       "slutt": null,
-      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/"
+      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
+      "logo": "/logos/kampanjer/amex.webp"
     },
     {
       "id": "talkmore-trumf",
@@ -47,7 +50,8 @@
       "verdi": 500,
       "enhet": "kr",
       "slutt": null,
-      "url": "https://talkmore.no/privat/abonnement/partner/trumf"
+      "url": "https://talkmore.no/privat/abonnement/partner/trumf",
+      "logo": "/logos/kampanjer/talkmore.webp"
     },
     {
       "id": "se-sas-amex-elite-velkomst",
@@ -59,7 +63,8 @@
       "verdi": 15000,
       "enhet": "poeng",
       "slutt": null,
-      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/"
+      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
+      "logo": "/logos/kampanjer/amex.webp"
     },
     {
       "id": "se-sas-amex-premium-velkomst",
@@ -71,7 +76,8 @@
       "verdi": 5000,
       "enhet": "poeng",
       "slutt": null,
-      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/"
+      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
+      "logo": "/logos/kampanjer/amex.webp"
     }
   ]
 }
