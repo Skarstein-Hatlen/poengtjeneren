@@ -1,0 +1,42 @@
+name: Sjekk kortene
+
+on:
+  schedule:
+    - cron: '30 5 * * 1' # hver mandag 05:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sjekk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Sjekk priser og satser mot utstedernes sider
+        id: sjekk
+        run: |
+          set +e
+          node scripts/sjekk-kort.mjs > rapport.txt 2>&1
+          echo "kode=$?" >> "$GITHUB_OUTPUT"
+          cat rapport.txt
+      # Avvik blir et issue (ett åpent om gangen), så det er lett å se hva som må rettes i cards.json.
+      - name: Lag issue ved avvik
+        if: steps.sjekk.outputs.kode != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tittel="Kortsjekk: avvik $(date -u +%d.%m.%Y)"
+          eksisterende=$(gh issue list --label kortsjekk --state open --json number --jq '.[0].number')
+          if [ -n "$eksisterende" ]; then
+            gh issue comment "$eksisterende" --body-file rapport.txt
+          else
+            gh label create kortsjekk --color D4A017 --description "Ukentlig sjekk av kortpriser og satser" 2>/dev/null || true
+            gh issue create --title "$tittel" --label kortsjekk --body-file rapport.txt
+          fi

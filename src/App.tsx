@@ -5,7 +5,7 @@ import Del from './components/Del';
 import Flagg from './components/Flagg';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
-import Kortliste from './components/Kortliste';
+import Kortliste, { prisPerMnd } from './components/Kortliste';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import Personvern from './components/Personvern';
@@ -110,7 +110,7 @@ function kortForProgram(p: Program, valgId: string): Kort | null {
     navn: p.kort.navn,
     utsteder: p.navn,
     poengPer100: aktivt ? niva.ekstraProsent * (konv.poengPerKrone ?? 0) : 0,
-    pris: aktivt ? `${niva.prisPerMnd} kr/mnd` : '',
+    prisPerMnd: niva.prisPerMnd,
     status: konv.status,
     kilde: p.kort.kilde,
     sistVerifisert: konv.sistVerifisert,
@@ -320,7 +320,7 @@ export default function App() {
   const kort: Kort | null = useMemo(() => {
     if (t.kortId === INGEN) return null;
     if (t.kortId === ANNET) {
-      return { id: ANNET, land: LAND, navn: T('annet').toLowerCase(), utsteder: '', poengPer100: parseTall(t.egenKortPoeng), pris: '', status: 'uverifisert', kilde: '', sistVerifisert: '' };
+      return { id: ANNET, land: LAND, navn: T('annet').toLowerCase(), utsteder: '', poengPer100: parseTall(t.egenKortPoeng), prisPerMnd: 0, status: 'uverifisert', kilde: '', sistVerifisert: '' };
     }
     return kortListe.find((k) => k.id === t.kortId) ?? programKortListe.find((k) => k.id === t.kortId) ?? null;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -772,7 +772,7 @@ export default function App() {
                 {T('sokOm', { kort: kort.navn })} <span aria-hidden="true">→</span>
               </a>
               {kort.annonse && <span className="annonse">{T('annonse')}</span>}
-              {kort.pris && <span className="muted">{kort.pris}</span>}
+              <span className="muted">{T('krPerMnd', { n: fmtTall(prisPerMnd(kort, IDAG)) })}</span>
             </p>
           )}
           {programmer

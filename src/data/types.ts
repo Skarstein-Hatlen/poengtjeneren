@@ -86,7 +86,10 @@ export interface Kort {
   navn: string;
   utsteder: string;
   poengPer100: number;
-  pris: string;
+  /** Det kortet koster i måneden (basispris, ingen kampanjer). Kort som prises per år er delt på tolv. */
+  prisPerMnd: number;
+  /** Ny månedspris fra en dato (Amex Classic: 30 kr fra 01.11.2026). */
+  prisPerMndFra?: { dato: string; kr: number };
   status: Status;
   kilde: string;
   sistVerifisert: string;
@@ -95,16 +98,10 @@ export interface Kort {
   lenke?: string;
   /** true = lenken gir oss provisjon og må merkes «Annonse». */
   annonse?: boolean;
-  /** Årsavgift i kr. Uten verdi vises ikke kostnad per poeng. */
-  arsavgift?: number;
-  /** Lavere avgift første året (SAS Mastercard). */
-  arsavgiftForsteAr?: number;
-  /** Ny avgift fra en dato (Amex Classic blir 30 kr/mnd fra 01.11.2026). */
-  arsavgiftFra?: { dato: string; kr: number };
-  /** Velkomstbonus fra utstederen selv: poeng når du handler for `krav` kr innen `mnd` måneder. */
-  velkomst?: { poeng: number; krav: number; mnd: number };
   /** Kortforbruk per år som gir poeng (SAS Mastercard World: 200 000 kr). */
   tak?: number;
+  /** Tekster den ukentlige sjekken (scripts/sjekk-kort.mjs) må finne på `kilde`-siden. null = kan ikke sjekkes automatisk. */
+  sjekk?: string[] | null;
   /** EuroBonus-nivåpoeng per 100 kr på kortet (SAS Amex Elite: 6). */
   nivaapoengPer100?: number;
   /** Nivåpoeng som andel av kortets bonuspoeng (SAS Mastercard Premium: 0,25). */

@@ -1839,22 +1839,28 @@ footer .bunnlenker a:hover {
 .knapp-chrome {
   display: inline-flex;
   align-items: center;
-  padding: 7px 14px;
+  padding: 5px 11px;
+  border: 1px solid var(--page-mute);
   border-radius: 999px;
-  background: var(--gold-fill);
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  color: var(--page-mute);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.15s;
+  opacity: 0.8;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    opacity 0.15s;
 }
 
 .knapp-chrome:hover,
 .knapp-chrome:focus-visible {
-  background: #ffd35e;
+  color: var(--page-fg);
+  border-color: var(--page-fg);
+  opacity: 1;
   outline: none;
 }
 
@@ -2045,5 +2051,25 @@ footer .bunnlenker {
 
   .kolonne .historikk {
     display: none;
+  }
+}
+
+/* Kortlisten: tallet med enhet under, bred nok kolonne til «p/100 kr» */
+.kortliste li {
+  grid-template-columns: 84px minmax(0, 1fr) auto;
+}
+
+.kortliste-poeng small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+@media (max-width: 479px) {
+  .kortliste li {
+    grid-template-columns: 72px minmax(0, 1fr);
   }
 }

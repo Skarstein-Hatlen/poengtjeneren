@@ -32,18 +32,18 @@ describe('Trumf', () => {
 });
 
 describe('Klarna', () => {
-  it('Klarna Max alene: 100 kr gir 150 Klarna-poeng = 18,42 EuroBonus-poeng', () => {
+  it('Klarna Max alene: 100 kr gir 150 Klarna-poeng = 18,465 EuroBonus-poeng', () => {
     const r = beregnProgram(klarna, { programId: 'klarna', aktiv: true, sats: 0, nivaId: 'max' }, 100, null);
     expect(r.opptjentKr).toBe(1.5); // 150 Klarna-poeng
-    expect(r.programPoeng).toBeCloseTo(18.42, 5);
+    expect(r.programPoeng).toBeCloseTo(18.465, 5);
   });
 
-  it('Kicks 3 % blir 12 % med Max, pluss 1,5 %: 135 kr cashback vekslet til 12,28 poeng per kr', () => {
+  it('Kicks 3 % blir 12 % med Max, pluss 1,5 %: 135 kr cashback vekslet til 12,31 poeng per kr', () => {
     const r = beregnProgram(klarna, { programId: 'klarna', aktiv: true, sats: 3, nivaId: 'max' }, 1000, amexClassic);
     expect(r.butikkFaktor).toBe(4);
     expect(r.effektivSats).toBe(13.5);
     expect(r.opptjentKr).toBe(135);
-    expect(r.programPoeng).toBeCloseTo(1657.8, 5);
+    expect(r.programPoeng).toBeCloseTo(1661.85, 5);
     expect(r.kortPoeng).toBe(0); // kort gir ikke poeng når kjøpet går via Klarna
     expect(r.status).toBe('uverifisert'); // vekslingssatsen er ikke publisert av Klarna
   });

@@ -7,16 +7,19 @@
     "navn": "SAS Amex Classic",
     "utsteder": "American Express",
     "poengPer100": 10,
-    "pris": "0 kr/mnd (30 kr/mnd fra 01.11.2026)",
+    "prisPerMnd": 0,
+    "prisPerMndFra": {
+      "dato": "2026-11-01",
+      "kr": 30
+    },
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-classic/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
     "annonse": false,
-    "arsavgift": 0,
-    "arsavgiftFra": {
-      "dato": "2026-11-01",
-      "kr": 360
-    }
+    "sjekk": [
+      "Medlemsavgift: 0 kr/mnd",
+      "10 Bonuspoeng per 100 kr"
+    ]
   },
   {
     "id": "sas-amex-premium",
@@ -26,17 +29,15 @@
     "navn": "SAS Amex Premium",
     "utsteder": "American Express",
     "poengPer100": 15,
-    "pris": "150 kr/mnd",
+    "prisPerMnd": 150,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
     "annonse": false,
-    "arsavgift": 1800,
-    "velkomst": {
-      "poeng": 5000,
-      "krav": 60000,
-      "mnd": 9
-    }
+    "sjekk": [
+      "Medlemsavgift: 150 kr/mnd",
+      "15 Bonuspoeng per 100 kr"
+    ]
   },
   {
     "id": "sas-amex-elite",
@@ -46,18 +47,17 @@
     "navn": "SAS Amex Elite",
     "utsteder": "American Express",
     "poengPer100": 20,
-    "pris": "575 kr/mnd",
+    "prisPerMnd": 575,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
+    "nivaapoengPer100": 6,
     "annonse": false,
-    "arsavgift": 6900,
-    "velkomst": {
-      "poeng": 15000,
-      "krav": 90000,
-      "mnd": 9
-    },
-    "nivaapoengPer100": 6
+    "sjekk": [
+      "Medlemsavgift: 575 kr/mnd",
+      "20 Bonuspoeng per 100 kr",
+      "6 EuroBonus Nivåpoeng per 100 NOK"
+    ]
   },
   {
     "id": "sas-mastercard-world",
@@ -67,15 +67,17 @@
     "navn": "SAS EuroBonus World Mastercard",
     "utsteder": "SEB Kort",
     "poengPer100": 10,
-    "pris": "588 kr/år (294 kr første år)",
+    "prisPerMnd": 49,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.no/kortene/mastercard/",
-    "sistVerifisert": "2026-09-21",
-    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "588 kr/år. Gir poeng på maks 200 000 kr kortforbruk per år.",
+    "tak": 200000,
     "annonse": false,
-    "arsavgift": 588,
-    "arsavgiftForsteAr": 294,
-    "tak": 200000
+    "sjekk": [
+      "588 kr",
+      "10 Bonuspoeng/100 kroner"
+    ]
   },
   {
     "id": "sas-mastercard-premium",
@@ -85,128 +87,183 @@
     "navn": "SAS EuroBonus Mastercard Premium",
     "utsteder": "SEB Kort",
     "poengPer100": 15,
-    "pris": "3 348 kr/år",
+    "prisPerMnd": 279,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.no/kortene/mastercard-premium/",
-    "sistVerifisert": "2026-09-21",
-    "annonse": false,
-    "arsavgift": 3348,
+    "sistVerifisert": "2026-09-24",
+    "merknad": "3 348 kr/år. Nivåpoeng: 25 % av månedens bonuspoeng, minst 500.",
     "nivaapoengAndel": 0.25,
-    "merknad": "Nivåpoeng: 25 % av månedens bonuspoeng på kortet, minst 500."
+    "annonse": false,
+    "sjekk": [
+      "3 348 kr/år",
+      "15 Bonuspo"
+    ]
   },
   {
-    "id": "amex-poeng",
+    "id": "amex-green",
     "land": [
       "NO"
     ],
-    "navn": "Amex Green / Gold / Platinum (Amex-poeng)",
+    "navn": "Amex Green Card",
     "utsteder": "American Express",
     "poengPer100": 5,
-    "pris": "Årsavgift etter kort",
+    "prisPerMnd": 50,
     "status": "verifisert",
-    "kilde": "https://www.americanexpress.com/nb-no/fordeler/oppdag-fordelene/poeng/membership-rewards/",
-    "sistVerifisert": "2026-09-21",
-    "merknad": "1 Amex-poeng per krone; 20 Amex-poeng = 1 EuroBonus-poeng. Må veksles manuelt.",
-    "lenke": "https://www.americanexpress.com/nb-no/kredittkort/",
-    "annonse": false
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/green-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poeng per krone; 20 Amex-poeng = 1 EuroBonus-poeng. Veksles manuelt.",
+    "annonse": false,
+    "sjekk": [
+      "Medlemsavgift: 50 kr/mnd"
+    ]
+  },
+  {
+    "id": "amex-gold",
+    "land": [
+      "NO"
+    ],
+    "navn": "Amex Gold Card",
+    "utsteder": "American Express",
+    "poengPer100": 5,
+    "prisPerMnd": 175,
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/gold-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poeng per krone; 20 Amex-poeng = 1 EuroBonus-poeng. Veksles manuelt.",
+    "annonse": false,
+    "sjekk": [
+      "Medlemsavgift: 175 kr/mnd"
+    ]
+  },
+  {
+    "id": "amex-platinum",
+    "land": [
+      "NO"
+    ],
+    "navn": "Amex Platinum",
+    "utsteder": "American Express",
+    "poengPer100": 5,
+    "prisPerMnd": 650,
+    "prisPerMndFra": {
+      "dato": "2026-11-01",
+      "kr": 750
+    },
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/platinum-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poeng per krone; 20 Amex-poeng = 1 EuroBonus-poeng. Veksles manuelt.",
+    "annonse": false,
+    "sjekk": [
+      "Medlemsavgift: 650 kr/mnd"
+    ]
   },
   {
     "id": "amex-platinum-points-plus",
     "land": [
       "NO"
     ],
-    "navn": "Amex Platinum Points Plus",
+    "navn": "Amex Platinum + Points Plus",
     "utsteder": "American Express",
     "poengPer100": 20,
-    "pris": "750 kr/mnd i tillegg til Platinum",
+    "prisPerMnd": 1400,
+    "prisPerMndFra": {
+      "dato": "2026-11-01",
+      "kr": 1500
+    },
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/fordeler/oppdag-fordelene/poeng/membership-rewards/",
-    "sistVerifisert": "2026-09-21",
-    "merknad": "4 Amex-poeng per krone = 20 EuroBonus-poeng per 100 kr. Poengene overføres to ganger i året.",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "Points Plus koster 750 kr/mnd i tillegg til Platinum (650 kr/mnd). 4 Amex-poeng per krone = 20 EuroBonus-poeng per 100 kr.",
     "lenke": "https://www.americanexpress.com/nb-no/kredittkort/",
-    "annonse": false
+    "annonse": false,
+    "sjekk": null
   },
   {
     "id": "revolut-standard",
     "land": [
       "NO"
     ],
-    "navn": "Revolut Standard / Plus (RevPoints)",
+    "navn": "Revolut Standard",
     "utsteder": "Revolut",
     "poengPer100": 0.67,
-    "pris": "0 kr / 45,99 kr per mnd",
+    "prisPerMnd": 0,
     "status": "uverifisert",
     "kilde": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "sistVerifisert": "2026-09-21",
     "merknad": "1 RevPoint per 150 kr (revolut.com). Veksles 1:1 til EuroBonus ifølge lanseringen nov. 2025 – vekslingen står ikke på revolut.com.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
-    "annonse": false
+    "annonse": false,
+    "sjekk": null
   },
   {
     "id": "revolut-premium",
     "land": [
       "NO"
     ],
-    "navn": "Revolut Premium (RevPoints)",
+    "navn": "Revolut Premium",
     "utsteder": "Revolut",
     "poengPer100": 2.5,
-    "pris": "94,99 kr/mnd",
+    "prisPerMnd": 94.99,
     "status": "uverifisert",
-    "kilde": "https://sparelosen.no/fordel/eurobonus/kredittkort-eurobonus-opptjening/",
+    "kilde": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "sistVerifisert": "2026-09-12",
     "merknad": "1 RevPoint per 40 kr (tredjepart). Veksles 1:1 til EuroBonus.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "annonse": false,
-    "arsavgift": 1140
+    "sjekk": null
   },
   {
     "id": "revolut-metal",
     "land": [
       "NO"
     ],
-    "navn": "Revolut Metal (RevPoints)",
+    "navn": "Revolut Metal",
     "utsteder": "Revolut",
     "poengPer100": 4,
-    "pris": "169,99 kr/mnd",
+    "prisPerMnd": 169.99,
     "status": "uverifisert",
-    "kilde": "https://sparelosen.no/fordel/eurobonus/kredittkort-eurobonus-opptjening/",
+    "kilde": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "sistVerifisert": "2026-09-12",
     "merknad": "1 RevPoint per 25 kr (tredjepart). Veksles 1:1 til EuroBonus.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "annonse": false,
-    "arsavgift": 2040
+    "sjekk": null
   },
   {
     "id": "revolut-ultra",
     "land": [
       "NO"
     ],
-    "navn": "Revolut Ultra (RevPoints)",
+    "navn": "Revolut Ultra",
     "utsteder": "Revolut",
     "poengPer100": 10,
-    "pris": "700 kr/mnd",
+    "prisPerMnd": 700,
     "status": "uverifisert",
     "kilde": "https://www.revolut.com/en-NO/rev-points/",
     "sistVerifisert": "2026-09-21",
-    "merknad": "1 RevPoint per 10 kr (revolut.com). Veksles 1:1 til EuroBonus ifølge lanseringen nov. 2025.",
+    "merknad": "1 RevPoint per 10 kr (revolut.com). Veksles 1:1 til EuroBonus.",
     "lenke": "https://www.revolut.com/en-NO/our-pricing-plans/",
     "annonse": false,
-    "arsavgift": 8400
+    "sjekk": null
   },
   {
     "id": "lunar",
     "land": [
       "NO"
     ],
-    "navn": "Lunar SAS EuroBonus (debetkort)",
+    "navn": "Lunar SAS EuroBonus",
     "utsteder": "Lunar",
     "poengPer100": 8,
-    "pris": "49 kr/mnd (inkludert i Lunar Unlimited)",
+    "prisPerMnd": 49,
     "status": "verifisert",
     "kilde": "https://www.lunar.app/no/privat/sas-eurobonus",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "Debetkort. 20 poeng per 100 kr ved kjøp direkte hos SAS.",
     "annonse": false,
-    "arsavgift": 588
+    "sjekk": [
+      "49 kr",
+      "8 poeng per 100 kr"
+    ]
   },
   {
     "id": "se-sas-amex-classic",
@@ -216,16 +273,19 @@
     "navn": "SAS Amex Classic",
     "utsteder": "American Express",
     "poengPer100": 10,
-    "pris": "0 kr/mnd (30 kr/mnd fra 01.11.2026)",
+    "prisPerMnd": 0,
+    "prisPerMndFra": {
+      "dato": "2026-11-01",
+      "kr": 30
+    },
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-classic/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
     "annonse": false,
-    "arsavgift": 0,
-    "arsavgiftFra": {
-      "dato": "2026-11-01",
-      "kr": 360
-    }
+    "sjekk": [
+      "Medlemsavgift: 0kr/månad",
+      "10 EuroBonus Bonuspoäng/100kr"
+    ]
   },
   {
     "id": "se-sas-amex-premium",
@@ -235,12 +295,15 @@
     "navn": "SAS Amex Premium",
     "utsteder": "American Express",
     "poengPer100": 15,
-    "pris": "150 kr/mnd",
+    "prisPerMnd": 150,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
     "annonse": false,
-    "arsavgift": 1800
+    "sjekk": [
+      "150 kr/mån",
+      "15 Bonuspoäng per 100 kr"
+    ]
   },
   {
     "id": "se-sas-amex-elite",
@@ -250,12 +313,15 @@
     "navn": "SAS Amex Elite",
     "utsteder": "American Express",
     "poengPer100": 20,
-    "pris": "575 kr/mnd",
+    "prisPerMnd": 575,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
     "annonse": false,
-    "arsavgift": 6900
+    "sjekk": [
+      "575 kr/mån",
+      "20 Bonuspoäng per 100 kr"
+    ]
   },
   {
     "id": "se-sas-mastercard-world",
@@ -265,15 +331,16 @@
     "navn": "SAS EuroBonus World Mastercard",
     "utsteder": "SEB Kort",
     "poengPer100": 10,
-    "pris": "515 kr/år (258 kr första året)",
+    "prisPerMnd": 43,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.se/korten/mastercard/",
-    "sistVerifisert": "2026-09-21",
-    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "515 kr/år. Ger poäng på max 200 000 kr kortköp per år.",
+    "tak": 200000,
     "annonse": false,
-    "arsavgift": 515,
-    "arsavgiftForsteAr": 258,
-    "tak": 200000
+    "sjekk": [
+      "515 kr/år"
+    ]
   },
   {
     "id": "se-sas-mastercard-premium",
@@ -283,12 +350,89 @@
     "navn": "SAS EuroBonus Mastercard Premium",
     "utsteder": "SEB Kort",
     "poengPer100": 15,
-    "pris": "2 335 kr/år",
+    "prisPerMnd": 195,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.se/korten/mastercard-premium/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "2 335 kr/år.",
     "annonse": false,
-    "arsavgift": 2335
+    "sjekk": null
+  },
+  {
+    "id": "se-amex-green",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Green Card",
+    "utsteder": "American Express",
+    "poengPer100": 3.45,
+    "prisPerMnd": 0,
+    "prisPerMndFra": {
+      "dato": "2026-11-01",
+      "kr": 30
+    },
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/green-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poäng per krona; 29 Amex-poäng = 1 EuroBonus-poäng. Växlas manuellt.",
+    "annonse": false,
+    "sjekk": [
+      "0 kr i medlemsavgift"
+    ]
+  },
+  {
+    "id": "se-amex-gold",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Gold Card",
+    "utsteder": "American Express",
+    "poengPer100": 3.45,
+    "prisPerMnd": 175,
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/gold-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poäng per krona; 29 Amex-poäng = 1 EuroBonus-poäng. Växlas manuellt.",
+    "annonse": false,
+    "sjekk": [
+      "175 kr/mån"
+    ]
+  },
+  {
+    "id": "se-amex-platinum",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Platinum",
+    "utsteder": "American Express",
+    "poengPer100": 3.45,
+    "prisPerMnd": 750,
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/platinum-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "1 Amex-poäng per krona; 29 Amex-poäng = 1 EuroBonus-poäng. Växlas manuellt.",
+    "annonse": false,
+    "sjekk": [
+      "750kr/mån"
+    ]
+  },
+  {
+    "id": "se-amex-gold-rewards",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Gold Rewards Card",
+    "utsteder": "American Express",
+    "poengPer100": 14,
+    "prisPerMnd": 100,
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/se/kreditkort/gold-rewards-card/",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "14 EuroBonus-poäng per 100 kr på de flesta köpställen i Sverige, 28 utomlands.",
+    "annonse": false,
+    "sjekk": [
+      "100 kr/mån"
+    ]
   },
   {
     "id": "dk-sas-mastercard-world",
@@ -298,15 +442,16 @@
     "navn": "SAS EuroBonus World Mastercard",
     "utsteder": "SEB Kort",
     "poengPer100": 10,
-    "pris": "415 kr/år (208 kr første år)",
+    "prisPerMnd": 35,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard/",
-    "sistVerifisert": "2026-09-21",
-    "merknad": "Gir poeng på maks 200 000 kr kortforbruk per år.",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "415 kr/år. Giver point på maks 200 000 kr kortforbrug per år.",
+    "tak": 200000,
     "annonse": false,
-    "arsavgift": 415,
-    "arsavgiftForsteAr": 208,
-    "tak": 200000
+    "sjekk": [
+      "415 kr"
+    ]
   },
   {
     "id": "dk-sas-mastercard-premium",
@@ -316,41 +461,12 @@
     "navn": "SAS EuroBonus Mastercard Premium",
     "utsteder": "SEB Kort",
     "poengPer100": 15,
-    "pris": "2 335 kr/år",
+    "prisPerMnd": 195,
     "status": "verifisert",
     "kilde": "https://saseurobonusmastercard.dk/kortene/mastercard-premium/",
-    "sistVerifisert": "2026-09-21",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "2 335 kr/år.",
     "annonse": false,
-    "arsavgift": 2335
-  },
-  {
-    "id": "se-amex-poeng",
-    "land": [
-      "SE"
-    ],
-    "navn": "Amex Green / Gold / Platinum (Amex-poäng)",
-    "utsteder": "American Express",
-    "poengPer100": 3.45,
-    "pris": "Årsavgift efter kort",
-    "status": "verifisert",
-    "kilde": "https://www.americanexpress.com/sv-se/rewards/membership-rewards/partner/SAS-EuroBonus/SAS-01",
-    "sistVerifisert": "2026-09-23",
-    "merknad": "1 Amex-poäng per krona; 29 Amex-poäng = 1 EuroBonus-poäng. Växlas manuellt.",
-    "annonse": false
-  },
-  {
-    "id": "se-amex-points-plus",
-    "land": [
-      "SE"
-    ],
-    "navn": "Amex Platinum Points Plus / Gold Rewards",
-    "utsteder": "American Express",
-    "poengPer100": 14,
-    "pris": "Årsavgift efter kort",
-    "status": "verifisert",
-    "kilde": "https://www.americanexpress.com/sv-se/formaner/upptack-formanerna/poang/",
-    "sistVerifisert": "2026-09-23",
-    "merknad": "14 EuroBonus-poäng per 100 kr på de flesta köpställen i Sverige, 28 utomlands.",
-    "annonse": false
+    "sjekk": null
   }
 ]

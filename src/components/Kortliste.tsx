@@ -6,7 +6,7 @@ interface Props {
   land: Land;
   kort: Kort[];
   lenke: (k: Kort) => string | null;
-  /** Kortforbruk per år som tekst – styrer poeng per år og kostnad per poeng. */
+  /** Kortforbruk per år som tekst – styrer poeng per år og øre per poeng. */
   kortbruk: string;
   onKortbruk: (verdi: string) => void;
   idag: string;
@@ -14,34 +14,26 @@ interface Props {
 
 const TILLATT = /^[\d\s.,]*$/;
 
-/** Årsavgiften som gjelder i dag. undefined = ukjent. */
-function avgift(k: Kort, idag: string): number | undefined {
-  if (k.arsavgiftFra && idag >= k.arsavgiftFra.dato) return k.arsavgiftFra.kr;
-  return k.arsavgift;
+/** Månedsprisen som gjelder i dag (kort som prises per år deles på tolv). */
+export function prisPerMnd(k: Kort, idag: string): number {
+  if (k.prisPerMndFra && idag >= k.prisPerMndFra.dato) return k.prisPerMndFra.kr;
+  return k.prisPerMnd;
 }
 
-/** Poeng per år, kostnad per poeng (øre) og det samme første året med velkomstbonus. */
+/** Poeng per år ved et kortforbruk, og hva de koster i øre per poeng. */
 function regn(k: Kort, kortbruk: number, idag: string) {
   const poengAr = (Math.min(kortbruk, k.tak ?? Infinity) * k.poengPer100) / 100;
-  const a = avgift(k, idag);
-  const ore = a === undefined || poengAr <= 0 ? null : (a / poengAr) * 100;
-  const velkomst = k.velkomst && (kortbruk * k.velkomst.mnd) / 12 >= k.velkomst.krav ? k.velkomst.poeng : 0;
-  const aForste = k.arsavgiftForsteAr ?? a;
-  const oreForste = aForste === undefined || poengAr + velkomst <= 0 || (velkomst === 0 && k.arsavgiftForsteAr === undefined) ? null : (aForste / (poengAr + velkomst)) * 100;
-  return { poengAr, ore, velkomst, oreForste };
+  const ore = poengAr > 0 ? (prisPerMnd(k, idag) * 12 * 100) / poengAr : null;
+  return { poengAr, ore };
 }
 
-/** Alle kort i landet som gir EuroBonus-poeng, med søknadslenke – og hva poengene koster. */
+/** Alle kort og medlemskap i landet som gir EuroBonus-poeng: samme tre tall for hvert, så de kan sammenlignes. */
 export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, idag }: Props) {
   const bruk = parseTall(kortbruk);
   const rader = kort.map((k) => ({ k, ...regn(k, bruk, idag) }));
-  // Med et kortforbruk sorteres det på hva poengene koster; kort uten kjent avgift sist.
+  // Med et kortforbruk sorteres det på hva poengene koster; ellers på poeng per 100 kr.
   rader.sort((a, b) => {
-    if (bruk > 0 && (a.ore !== null || b.ore !== null)) {
-      if (a.ore === null) return 1;
-      if (b.ore === null) return -1;
-      return a.ore - b.ore || b.k.poengPer100 - a.k.poengPer100;
-    }
+    if (bruk > 0 && a.ore !== null && b.ore !== null) return a.ore - b.ore || b.k.poengPer100 - a.k.poengPer100;
     return b.k.poengPer100 - a.k.poengPer100;
   });
 
@@ -70,26 +62,23 @@ export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, ida
         <span />
       </div>
       <ul>
-        {rader.map(({ k, poengAr, ore, velkomst, oreForste }) => {
+        {rader.map(({ k, poengAr, ore }) => {
           const url = lenke(k);
-          const a = avgift(k, idag);
+          const pris = prisPerMnd(k, idag);
           return (
             <li key={k.id}>
               <span className="kortliste-poeng">
                 {fmtTall(k.poengPer100)}
                 {k.status === 'uverifisert' && <sup>*</sup>}
+                <small>p/100 kr</small>
               </span>
               <span className="kortliste-tekst">
                 <span className="kortliste-navn">{k.navn}</span>
-                <span className="muted">
-                  {k.pris}
-                  {k.merknad ? ` · ${k.merknad}` : ''}
-                </span>
+                <span className="muted">{tekst(land, 'krPerMnd', { n: fmtTall(pris) })}</span>
                 {bruk > 0 && (
                   <span className="kortliste-netto">
                     {tekst(land, 'poengPerAr', { n: fmtPoeng(poengAr) })}
-                    {ore !== null && ` · ${a === 0 ? tekst(land, 'ingenArsavgift') : tekst(land, 'orePerPoeng', { n: fmtTall(ore) })}`}
-                    {oreForste !== null && oreForste !== ore && ` · ${velkomst > 0 ? tekst(land, 'forsteArMedVelkomst', { n: fmtTall(oreForste), v: fmtPoeng(velkomst) }) : tekst(land, 'forsteAr', { n: fmtTall(oreForste) })}`}
+                    {ore !== null && ` · ${tekst(land, 'orePerPoeng', { n: fmtTall(ore) })}`}
                   </span>
                 )}
               </span>

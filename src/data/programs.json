@@ -1,5 +1,5 @@
 {
-  "sistOppdatert": "2026-09-21",
+  "sistOppdatert": "2026-09-23",
   "land": {
     "NO": {
       "navn": "Norge",
@@ -92,11 +92,10 @@
         {
           "id": "app",
           "navn": "Veksling i Klarna-appen",
-          "poengPerKrone": 12.28,
-          "status": "uverifisert",
-          "kilde": "Lest i Klarna-appen",
-          "sistVerifisert": "2026-09-21",
-          "merknad": "Klarna publiserer ikke vekslingssatsen. 100 Klarna-poeng (= 1 kr cashback) ga 12,28 EuroBonus-poeng i appen 21.09.2026. Satsen kan endres."
+          "poengPerKrone": 12.31,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/no/medlemskap/plus/",
+          "sistVerifisert": "2026-09-23"
         }
       ],
       "nivaer": [
@@ -239,10 +238,9 @@
           "id": "app",
           "navn": "Växling i Klarna-appen",
           "poengPerKrone": 11.76,
-          "status": "uverifisert",
-          "kilde": "https://eurobonusguiden.se/2025/11/klarna-och-eurobonus-vaxlingskurs-lanserad/",
-          "sistVerifisert": "2025-11-19",
-          "merknad": "Klarna publicerar inte växlingskursen. 100 Klarna-poäng (= 1 kr cashback) gav 11,76 EuroBonus-poäng enligt eurobonusguiden.se (nov. 2025). Kontrollera i appen – kursen kan ändras."
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/se/medlemskap/plus/",
+          "sistVerifisert": "2026-09-23"
         }
       ],
       "nivaer": [
@@ -361,11 +359,10 @@
         {
           "id": "app",
           "navn": "Veksling i Klarna-appen",
-          "poengPerKrone": null,
-          "status": "uverifisert",
-          "kilde": "https://www.klarna.com/dk/medlemskab/",
-          "sistVerifisert": "2026-09-21",
-          "merknad": "Vekslingskursen for DKK er ikke fundet i nogen kilde. Tjek, hvor mange EuroBonus-point 100 Klarna-point giver i appen, og indsæt tallet som poengPerKrone i programs.json."
+          "poengPerKrone": 17.75,
+          "status": "verifisert",
+          "kilde": "https://www.klarna.com/dk/medlemskab/plus/",
+          "sistVerifisert": "2026-09-23"
         }
       ],
       "nivaer": [

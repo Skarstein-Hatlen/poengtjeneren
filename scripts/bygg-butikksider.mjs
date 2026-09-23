@@ -239,7 +239,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   urler.push(nyttUrl);
   const kortUrl = `${DOMENE}/${sprak.sti}/kort`;
   const kortILand = kort.filter((k) => k.land.includes(land));
-  await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${escape(k.pris)}</li>`).join('')}</ul></main>` }));
+  await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${fmt.format(k.prisPerMnd)} kr/${sprak.lang === 'sv' ? 'mån' : 'mnd'}</li>`).join('')}</ul></main>` }));
   urler.push(kortUrl);
 
   // Ukens beste: flest poeng nå, økninger siste 7 dager, kampanjer som utløper innen 7 dager.

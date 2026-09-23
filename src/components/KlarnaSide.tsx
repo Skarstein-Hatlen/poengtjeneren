@@ -303,8 +303,16 @@ export default function KlarnaSide({ data, idag }: Props) {
         <p>Satser hentet {fmtDato(data.hentet)} fra Klarna-appen, Trumf Netthandel og SAS Online Shopping. Trumf med automatisk overføring.</p>
         {konv && (
           <p>
-            * {fmtTall(konv.poengPerKrone ?? 0)} EuroBonus-poeng per 100 Klarna-poeng, {konv.kilde.toLowerCase()} {fmtDato(konv.sistVerifisert)}.{' '}
-            {konv.merknad}
+            {konv.status === 'uverifisert' ? '* ' : ''}
+            {fmtTall(konv.poengPerKrone ?? 0)} EuroBonus-poeng per 100 Klarna-poeng ifølge{' '}
+            {konv.kilde.startsWith('http') ? (
+              <a href={konv.kilde} target="_blank" rel="noreferrer">
+                klarna.com
+              </a>
+            ) : (
+              konv.kilde.toLowerCase()
+            )}
+            , sjekket {fmtDato(konv.sistVerifisert)}.{konv.merknad ? ` ${konv.merknad}` : ''}
           </p>
         )}
         <p className="signatur">Pointmaxing · pointmaxing.no</p>
