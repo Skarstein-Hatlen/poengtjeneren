@@ -134,7 +134,7 @@ function standard(): Tilstand {
     const valgId = p.standardNiva ?? p.nivaer[0]?.id ?? p.konverteringer[0]?.id ?? '';
     rader[p.id] = { sats: feltVerdi(p, STANDARD_SATS[p.id] ?? null, nivaFor(p, valgId)), valgId };
   }
-  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rabatt: '', kortbruk: '100000', matPerMnd: '5000', rader };
+  return { land: 'NO', belop: '1000', butikk: '', butikkId: null, kortId: standardKort('NO'), egenKortPoeng: '', rabatt: '', kortbruk: '0', matPerMnd: '5000', rader };
 }
 
 function les(): Tilstand {
@@ -565,6 +565,23 @@ export default function App() {
             {T(n.nokkel)}
           </a>
         ))}
+        {/* Kortet kan byttes herfra på alle sider – alle tall følger med. */}
+        <span className="velg nav-velg">
+          <select aria-label={T('kort')} value={t.kortId} onChange={(e) => setT((s) => ({ ...s, kortId: e.target.value }))}>
+            <option value={INGEN}>{T('ingen')}</option>
+            {programKortListe.map((k) => (
+              <option key={k.id} value={k.id}>
+                {k.navn}
+              </option>
+            ))}
+            {kortListe.map((k) => (
+              <option key={k.id} value={k.id}>
+                {k.navn}
+              </option>
+            ))}
+            {t.kortId === ANNET && <option value={ANNET}>{T('annet')}</option>}
+          </select>
+        </span>
       </nav>
     </>
   );

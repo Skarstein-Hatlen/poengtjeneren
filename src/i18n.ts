@@ -111,11 +111,6 @@ export const TEKSTER = {
   normalt: { nb: 'normalt {sats}', sv: 'normalt {sats}', da: 'normalt {sats}' },
   // Kort
   kortTittel: { nb: 'Kort som gir EuroBonus-poeng', sv: 'Kort som ger EuroBonus-poäng', da: 'Kort, der giver EuroBonus-point' },
-  kortForklaring: {
-    nb: 'Poeng per 100 kr på vanlige kjøp. Kortpoengene kommer i tillegg til Trumf og SAS Shopping – ikke Klarna.',
-    sv: 'Poäng per 100 kr på vanliga köp. Kortpoängen kommer utöver SAS Shopping – inte Klarna.',
-    da: 'Point per 100 kr på almindelige køb. Kortpointene kommer oven i SAS Shopping – ikke Klarna.',
-  },
   pris: { nb: 'Pris', sv: 'Pris', da: 'Pris' },
   kortbrukPerAr: { nb: 'Kortbruk per år', sv: 'Kortköp per år', da: 'Kortforbrug per år' },
   krPerMnd: { nb: '{n} kr/mnd', sv: '{n} kr/mån', da: '{n} kr/md.' },

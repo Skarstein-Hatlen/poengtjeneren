@@ -50,7 +50,6 @@ export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, ida
   return (
     <section className="kortliste">
       <h2 className="etikett">{tekst(land, 'kortTittel')}</h2>
-      <p className="muted kortliste-intro">{tekst(land, 'kortForklaring')}</p>
       <div className="valg-rad rad-kort kortbruk">
         <label className="etikett" htmlFor="kortbruk">
           {tekst(land, 'kortbrukPerAr')}

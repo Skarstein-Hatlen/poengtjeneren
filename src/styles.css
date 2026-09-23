@@ -2090,3 +2090,50 @@ footer .bunnlenker {
     padding-bottom: 8px;
   }
 }
+
+/* Kortvalg ytterst til høyre i sideraden */
+.nav {
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.nav-velg {
+  margin-left: auto;
+}
+
+.nav .velg select {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--page-mute);
+  padding: 0 16px 4px 0;
+  border-bottom-color: transparent;
+}
+
+.nav .velg select:hover,
+.nav .velg select:focus {
+  color: var(--page-fg);
+  border-bottom-color: var(--page-mute);
+}
+
+.nav .velg::after {
+  border-color: var(--page-mute);
+  transform: translateY(-80%) rotate(45deg);
+}
+
+.nav .velg select option {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Logoene fyller de små flisene (Nytt, Ukens, søk, Klarna-siden) */
+.nytt-liste .flis-logo img,
+.butikkrader .flis-logo img {
+  padding: 5px 8px;
+}
+
+.treff .flis-logo img {
+  padding: 3px 5px;
+}
