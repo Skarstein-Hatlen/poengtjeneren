@@ -2073,3 +2073,20 @@ footer .bunnlenker {
     grid-template-columns: 72px minmax(0, 1fr);
   }
 }
+
+/* Kortsiden: sortering i samme rad som kortbruket */
+.kortbruk .sortering {
+  justify-self: end;
+  font-size: 13px;
+}
+
+@media (max-width: 479px) {
+  .kortbruk {
+    grid-template-columns: 64px auto minmax(0, 1fr);
+  }
+  .kortbruk .sortering {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding-bottom: 8px;
+  }
+}

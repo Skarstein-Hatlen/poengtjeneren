@@ -2,7 +2,7 @@ name: Sjekk kortene
 
 on:
   schedule:
-    - cron: '30 5 * * 1' # hver mandag 05:30 UTC
+    - cron: '30 5 * * *' # hver dag 05:30 UTC
   workflow_dispatch:
 
 permissions:

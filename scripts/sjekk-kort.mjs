@@ -1,7 +1,7 @@
-// Ukentlig sjekk av kortene: henter utstedernes egne sider og ser at prisen og poengsatsen vi
+// Daglig sjekk av kortene: henter utstedernes egne sider og ser at prisen og poengsatsen vi
 // oppgir fortsatt står der (`sjekk`-tekstene i cards.json), og at Klarnas medlemskapspriser
 // fortsatt står på medlemskapssidene. Skriver et avvik per linje og avslutter med feilkode
-// hvis noe mangler – den ukentlige jobben lager da et issue.
+// hvis noe mangler – den daglige jobben lager da et issue.
 
 import { readFile } from 'node:fs/promises';
 

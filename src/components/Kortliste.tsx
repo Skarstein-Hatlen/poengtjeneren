@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Kort, Land } from '../data/types';
 import { tekst } from '../i18n';
 import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const TILLATT = /^[\d\s.,]*$/;
+type Sortering = 'poeng' | 'ore' | 'pris';
 
 /** Månedsprisen som gjelder i dag (kort som prises per år deles på tolv). */
 export function prisPerMnd(k: Kort, idag: string): number {
@@ -30,12 +32,20 @@ function regn(k: Kort, kortbruk: number, idag: string) {
 /** Alle kort og medlemskap i landet som gir EuroBonus-poeng: samme tre tall for hvert, så de kan sammenlignes. */
 export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, idag }: Props) {
   const bruk = parseTall(kortbruk);
+  const [sortering, setSortering] = useState<Sortering>('ore');
   const rader = kort.map((k) => ({ k, ...regn(k, bruk, idag) }));
-  // Med et kortforbruk sorteres det på hva poengene koster; ellers på poeng per 100 kr.
+  // Flest poeng uansett pris, billigste poeng (trenger et kortforbruk), eller billigste kort.
+  const poengForst = (a: (typeof rader)[number], b: (typeof rader)[number]) => b.k.poengPer100 - a.k.poengPer100 || prisPerMnd(a.k, idag) - prisPerMnd(b.k, idag);
   rader.sort((a, b) => {
-    if (bruk > 0 && a.ore !== null && b.ore !== null) return a.ore - b.ore || b.k.poengPer100 - a.k.poengPer100;
-    return b.k.poengPer100 - a.k.poengPer100;
+    if (sortering === 'pris') return prisPerMnd(a.k, idag) - prisPerMnd(b.k, idag) || b.k.poengPer100 - a.k.poengPer100;
+    if (sortering === 'ore' && bruk > 0 && a.ore !== null && b.ore !== null) return a.ore - b.ore || poengForst(a, b);
+    return poengForst(a, b);
   });
+  const valg: { id: Sortering; nokkel: 'flestPoeng' | 'orePoengSort' | 'pris' }[] = [
+    { id: 'poeng', nokkel: 'flestPoeng' },
+    { id: 'ore', nokkel: 'orePoengSort' },
+    { id: 'pris', nokkel: 'pris' },
+  ];
 
   return (
     <section className="kortliste">
@@ -59,7 +69,13 @@ export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, ida
           />
           <span className="enhet">kr</span>
         </span>
-        <span />
+        <div className="sortering" role="group" aria-label={tekst(land, 'sortering')}>
+          {valg.map((v) => (
+            <button key={v.id} type="button" className={`lenke${sortering === v.id ? ' aktiv' : ''}`} aria-pressed={sortering === v.id} onClick={() => setSortering(v.id)}>
+              {tekst(land, v.nokkel)}
+            </button>
+          ))}
+        </div>
       </div>
       <ul>
         {rader.map(({ k, poengAr, ore }) => {

@@ -100,7 +100,7 @@ export interface Kort {
   annonse?: boolean;
   /** Kortforbruk per år som gir poeng (SAS Mastercard World: 200 000 kr). */
   tak?: number;
-  /** Tekster den ukentlige sjekken (scripts/sjekk-kort.mjs) må finne på `kilde`-siden. null = kan ikke sjekkes automatisk. */
+  /** Tekster den daglige sjekken (scripts/sjekk-kort.mjs) må finne på `kilde`-siden. null = kan ikke sjekkes automatisk. */
   sjekk?: string[] | null;
   /** EuroBonus-nivåpoeng per 100 kr på kortet (SAS Amex Elite: 6). */
   nivaapoengPer100?: number;
