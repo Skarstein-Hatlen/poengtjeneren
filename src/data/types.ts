@@ -133,6 +133,22 @@ export interface Butikk {
   satser: Record<string, ButikkSats>;
 }
 
+/** Kampanje som ikke er en butikksats: partnerbonus, velkomsttilbud, medlemskapsbonus. Hentes av scripts/hent-kampanjer.mjs. */
+export interface Partnerkampanje {
+  id: string;
+  land: Land;
+  /** Program- eller kort-id kampanjen hører til (trumf, klarna, sas-amex-premium …). */
+  program: string;
+  partner: string;
+  tittel: string;
+  /** Sitat fra kilden. */
+  tekst: string;
+  verdi: number | null;
+  enhet: 'kr' | '%' | 'poeng';
+  slutt: string | null;
+  url: string;
+}
+
 /** Butikklister per land, slik stores.json og partners.json er lagret. */
 export interface Butikkfil {
   hentet: string;
@@ -153,4 +169,5 @@ export interface Datasett {
   kort: Kort[];
   butikker: Record<Land, Butikk[]>;
   historikk: Historikk;
+  kampanjer: Partnerkampanje[];
 }

@@ -1,0 +1,77 @@
+{
+  "hentet": "2026-09-23",
+  "kampanjer": [
+    {
+      "id": "fjordkraft-trumf",
+      "land": "NO",
+      "program": "trumf",
+      "partner": "Fjordkraft",
+      "tittel": "Fjordkraft: 500 kr i Trumf-bonus til nye kunder",
+      "tekst": "Bytt til Fjordkraft og få 500 kroner i Trumf-bonus som velkomstgave.",
+      "verdi": 500,
+      "enhet": "kr",
+      "slutt": null,
+      "url": "https://www.fjordkraft.no/trumf/"
+    },
+    {
+      "id": "sas-amex-elite-velkomst",
+      "land": "NO",
+      "program": "sas-amex-elite",
+      "partner": "SAS Amex Elite",
+      "tittel": "SAS Amex Elite: 15 000 EuroBonus-poeng i velkomstbonus",
+      "tekst": "15 000 poeng når du handler for minst 90 000 kr de første 9 månedene.",
+      "verdi": 15000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/"
+    },
+    {
+      "id": "sas-amex-premium-velkomst",
+      "land": "NO",
+      "program": "sas-amex-premium",
+      "partner": "SAS Amex Premium",
+      "tittel": "SAS Amex Premium: 5 000 EuroBonus-poeng i velkomstbonus",
+      "tekst": "5 000 poeng når du handler for minst 60 000 kr de første 9 månedene.",
+      "verdi": 5000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/"
+    },
+    {
+      "id": "talkmore-trumf",
+      "land": "NO",
+      "program": "trumf",
+      "partner": "Talkmore",
+      "tittel": "Talkmore: 500 kr i Trumf-velkomstgave",
+      "tekst": "Bli Talkmore-kunde og få 500,- i Trumf-velkomstgave.",
+      "verdi": 500,
+      "enhet": "kr",
+      "slutt": null,
+      "url": "https://talkmore.no/privat/abonnement/partner/trumf"
+    },
+    {
+      "id": "se-sas-amex-elite-velkomst",
+      "land": "SE",
+      "program": "se-sas-amex-elite",
+      "partner": "SAS Amex Elite",
+      "tittel": "SAS Amex Elite: 15 000 EuroBonus-poeng i velkomstbonus",
+      "tekst": "15 000 EuroBonus-poeng i velkomstbonus.",
+      "verdi": 15000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/"
+    },
+    {
+      "id": "se-sas-amex-premium-velkomst",
+      "land": "SE",
+      "program": "se-sas-amex-premium",
+      "partner": "SAS Amex Premium",
+      "tittel": "SAS Amex Premium: 5 000 EuroBonus-poeng i velkomstbonus",
+      "tekst": "5 000 EuroBonus-poeng i velkomstbonus.",
+      "verdi": 5000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/"
+    }
+  ]
+}

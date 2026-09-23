@@ -636,6 +636,7 @@ export default function App() {
             historikk={data.historikk[t.land]}
             idag={IDAG}
             folger={folgerHer}
+            partnerkampanjer={data.kampanjer.filter((k) => k.land === t.land && (!k.slutt || k.slutt >= IDAG))}
             per100={per100ForSats}
             onVelg={velgButikk}
             onUkens={() => gaaTil('ukens')}

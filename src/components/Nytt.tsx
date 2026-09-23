@@ -1,7 +1,7 @@
-import type { Butikk, ButikkSats, Land, Maling, Program } from '../data/types';
+import type { Butikk, ButikkSats, Land, Maling, Partnerkampanje, Program } from '../data/types';
 import { dagerTekst, tekst } from '../i18n';
 import { gjeldendeSats } from '../lib/butikker';
-import { fmtDato, fmtPer100, fmtTall } from '../lib/format';
+import { fmtDato, fmtPer100, fmtPoeng, fmtTall } from '../lib/format';
 import { dagerIgjen, finnEndringer, finnKampanjer } from '../lib/nytt';
 import { ButikkLogo } from './Butikkliste';
 
@@ -13,6 +13,8 @@ interface Props {
   idag: string;
   /** Butikk-id-ene brukeren følger (stjernen). */
   folger: string[];
+  /** Partner-, kort- og medlemskapskampanjer for landet (kampanjer.json). */
+  partnerkampanjer: Partnerkampanje[];
   per100: (program: Program, sats: ButikkSats) => number | null;
   onVelg: (butikk: Butikk) => void;
   onUkens: () => void;
@@ -21,7 +23,7 @@ interface Props {
 const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(v)} %` : `${fmtTall(v)} p`);
 
 /** Kampanjer som pågår og satser som nylig endret seg – grunnen til å komme tilbake. */
-export default function Nytt({ land, butikker, programmer, historikk, idag, folger, per100, onVelg, onUkens }: Props) {
+export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, onUkens }: Props) {
   const kampanjer = finnKampanjer(butikker, programmer, idag);
   const endringer = finnEndringer(butikker, programmer, historikk, idag);
   const opp = endringer.filter((e) => e.til > e.fra);
@@ -58,6 +60,17 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
     </li>
   );
 
+  // Kroner i Trumf-bonus vekslet til EuroBonus med programmets sats; poeng vises som de er.
+  const kampanjeTall = (k: Partnerkampanje): string => {
+    if (k.verdi === null) return '';
+    if (k.enhet === 'poeng') return `${fmtPoeng(k.verdi)} p`;
+    if (k.enhet === '%') return `${fmtTall(k.verdi)} %`;
+    const p = programmer.find((x) => x.id === k.program);
+    const kurs = p?.konverteringer[0]?.poengPerKrone;
+    return kurs ? `${fmtPoeng(k.verdi * kurs)} p` : `${fmtPoeng(k.verdi)} kr`;
+  };
+  const kampanjeFarge = (k: Partnerkampanje): string => programmer.find((x) => x.id === k.program)?.farge ?? 'var(--line)';
+
   return (
     <section className="nytt">
       <p className="ukens-lenke">
@@ -75,6 +88,32 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
                 ? rad(`d-${b.id}`, b, best.p, `${fmtPer100(best.per100)} p/100`, sats(best.p, gjeldendeSats(b.satser[best.p.id], idag).verdi))
                 : rad(`d-${b.id}`, b, programmer[0], '–', ''),
             )}
+          </ul>
+        </>
+      )}
+
+      {partnerkampanjer.length > 0 && (
+        <>
+          <h2 className="etikett">{tekst(land, 'andreKampanjer')}</h2>
+          <ul className="nytt-liste">
+            {partnerkampanjer.map((k) => (
+              <li key={k.id}>
+                <a className="nytt-lenke" href={k.url} target="_blank" rel="noreferrer">
+                  <span className="flis-logo flis-bokstav" aria-hidden="true">
+                    {k.partner.charAt(0)}
+                  </span>
+                  <span className="nytt-tekst">
+                    <span className="nytt-navn">{k.tittel}</span>
+                    <span className="nytt-under">
+                      <i style={{ background: kampanjeFarge(k) }} />
+                      {k.tekst}
+                      {k.slutt ? ` · ${dagerTekst(land, dagerIgjen(idag, k.slutt))}` : ''}
+                    </span>
+                  </span>
+                  <span className="nytt-sats opp">{kampanjeTall(k)}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </>
       )}

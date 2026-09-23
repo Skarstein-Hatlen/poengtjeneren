@@ -2143,3 +2143,27 @@ footer .bunnlenker {
   text-align: right;
   text-align-last: right;
 }
+
+/* Andre kampanjer: rad som lenke, bokstavflis der vi ikke har logo */
+.nytt-liste .nytt-lenke {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nytt-liste .nytt-lenke:hover .nytt-navn {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nytt-liste .nytt-lenke .nytt-navn {
+  white-space: normal;
+}
+
+.flis-bokstav {
+  font-family: var(--font-tall);
+  font-size: 18px;
+}

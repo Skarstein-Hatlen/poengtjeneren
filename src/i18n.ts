@@ -103,6 +103,8 @@ export const TEKSTER = {
   historikk: { nb: 'Sats over tid', sv: 'Sats över tid', da: 'Sats over tid' },
   // Nytt
   kampanjerNaa: { nb: 'Kampanjer nå', sv: 'Kampanjer just nu', da: 'Kampagner lige nu' },
+  andreKampanjer: { nb: 'Andre kampanjer', sv: 'Andra kampanjer', da: 'Andre kampagner' },
+  ingenSluttdato: { nb: 'ingen sluttdato oppgitt', sv: 'inget slutdatum angivet', da: 'ingen slutdato oplyst' },
   gikkOpp: { nb: 'Gikk opp siste 30 dager', sv: 'Gick upp senaste 30 dagarna', da: 'Steg de seneste 30 dage' },
   gikkNed: { nb: 'Gikk ned siste 30 dager', sv: 'Gick ner senaste 30 dagarna', da: 'Faldt de seneste 30 dage' },
   ingenKampanjer: { nb: 'Ingen kampanjer akkurat nå.', sv: 'Inga kampanjer just nu.', da: 'Ingen kampagner lige nu.' },

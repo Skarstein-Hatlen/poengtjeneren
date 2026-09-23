@@ -3,7 +3,8 @@ import kortJson from './cards.json';
 import butikkerJson from './stores.json';
 import partnereJson from './partners.json';
 import historikkJson from './history.json';
-import type { Butikk, Butikkfil, Datasett, Historikk, Kort, Land, LandInfo, Program } from './types';
+import kampanjerJson from './kampanjer.json';
+import type { Butikk, Butikkfil, Datasett, Historikk, Kort, Land, LandInfo, Partnerkampanje, Program } from './types';
 
 export const LAND: Land[] = ['NO', 'SE', 'DK'];
 
@@ -40,5 +41,6 @@ export function hentData(): Datasett {
     kort: kortJson as Kort[],
     butikker,
     historikk: historikkJson as unknown as Historikk,
+    kampanjer: (kampanjerJson as { kampanjer: Partnerkampanje[] }).kampanjer,
   };
 }

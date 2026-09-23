@@ -16,6 +16,7 @@ const partnere = await les('../src/data/partners.json');
 const kategorier = await les('../src/data/kategorier.json');
 const kort = await les('../src/data/cards.json');
 const historikk = await les('../src/data/history.json');
+const { kampanjer: partnerkampanjer } = await les('../src/data/kampanjer.json');
 
 const SPRAK = {
   NO: {
@@ -36,6 +37,7 @@ const SPRAK = {
     kortTittel: 'Kort som gir EuroBonus-poeng | Pointmaxing',
     kortTekst: 'Alle betalingskort i Norge som gir SAS EuroBonus-poeng, med poeng per 100 kr og pris.',
     kampanjerNaa: 'Kampanjer nå',
+    andreKampanjer: 'Andre kampanjer',
     per1000Tittel: (navn, n) => `${navn}: opptil ${n} EuroBonus-poeng per 1 000 kr | Pointmaxing`,
     per1000Tekst: (navn, n, prog) => `Hos ${navn} får du opptil ${n} SAS EuroBonus-poeng per 1 000 kr via ${prog}. Satsene hos Trumf, Klarna og SAS Online Shopping side om side, oppdatert hver natt.`,
     belop: 'Beløp',
@@ -70,6 +72,7 @@ const SPRAK = {
     kortTittel: 'Kort som ger EuroBonus-poäng | Pointmaxing',
     kortTekst: 'Alla betalkort i Sverige som ger SAS EuroBonus-poäng, med poäng per 100 kr och pris.',
     kampanjerNaa: 'Kampanjer just nu',
+    andreKampanjer: 'Andra kampanjer',
     per1000Tittel: (navn, n) => `${navn}: upp till ${n} EuroBonus-poäng per 1 000 kr | Pointmaxing`,
     per1000Tekst: (navn, n, prog) => `Hos ${navn} får du upp till ${n} SAS EuroBonus-poäng per 1 000 kr via ${prog}. Satserna hos Klarna och SAS Online Shopping sida vid sida, uppdaterade varje natt.`,
     belop: 'Belopp',
@@ -104,6 +107,7 @@ const SPRAK = {
     kortTittel: 'Kort, der giver EuroBonus-point | Pointmaxing',
     kortTekst: 'Alle betalingskort i Danmark, der giver SAS EuroBonus-point, med point per 100 kr og pris.',
     kampanjerNaa: 'Kampagner lige nu',
+    andreKampanjer: 'Andre kampagner',
     per1000Tittel: (navn, n) => `${navn}: op til ${n} EuroBonus-point per 1 000 kr | Pointmaxing`,
     per1000Tekst: (navn, n, prog) => `Hos ${navn} får du op til ${n} SAS EuroBonus-point per 1 000 kr via ${prog}. Satserne hos Klarna og SAS Online Shopping side om side, opdateret hver nat.`,
     belop: 'Beløb',
@@ -235,7 +239,8 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   // Nytt og Kort
   const kampanjer = liste.flatMap((b) => prog.filter((p) => b.satser[p.id]?.kampanje && b.satser[p.id].kampanje.slutt >= idag).map((p) => ({ b, p })));
   const nyttUrl = `${DOMENE}/${sprak.sti}/nytt`;
-  await skriv(`${sprak.sti}/nytt`, side({ lang: sprak.lang, tittel: sprak.nyttTittel, beskrivelse: sprak.nyttTekst, url: nyttUrl, kropp: `<main><h1>${escape(sprak.kampanjerNaa)}</h1><ul>${kampanjer.map(({ b, p }) => `<li><a href="${lenkeTil(b)}">${escape(b.navn)}</a>: ${escape(p.kortnavn)} ${escape(satsTekst(p, b.satser[p.id]))}</li>`).join('')}</ul></main>` }));
+  const andre = partnerkampanjer.filter((k) => k.land === land && (!k.slutt || k.slutt >= idag));
+  await skriv(`${sprak.sti}/nytt`, side({ lang: sprak.lang, tittel: sprak.nyttTittel, beskrivelse: sprak.nyttTekst, url: nyttUrl, kropp: `<main>${andre.length ? `<h2>${escape(sprak.andreKampanjer)}</h2><ul>${andre.map((k) => `<li><a href="${escape(k.url)}" rel="noreferrer">${escape(k.tittel)}</a> – ${escape(k.tekst)}</li>`).join('')}</ul>` : ''}<h1>${escape(sprak.kampanjerNaa)}</h1><ul>${kampanjer.map(({ b, p }) => `<li><a href="${lenkeTil(b)}">${escape(b.navn)}</a>: ${escape(p.kortnavn)} ${escape(satsTekst(p, b.satser[p.id]))}</li>`).join('')}</ul></main>` }));
   urler.push(nyttUrl);
   const kortUrl = `${DOMENE}/${sprak.sti}/kort`;
   const kortILand = kort.filter((k) => k.land.includes(land));
