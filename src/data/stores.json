@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-22",
+  "hentet": "2026-09-23",
   "land": {
     "NO": [
       {
@@ -2508,6 +2508,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-09-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/go-nordic-cruiseline/019ea65a-1842-727b-9ed2-0e4088e7259b"
           }
         },
@@ -2644,15 +2648,9 @@
         "id": "haglofs",
         "navn": "Haglöfs",
         "kategorier": [
-          "mote",
           "tjenester"
         ],
         "satser": {
-          "sas-online-shopping": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/haglofs/018f1a0b-1749-708d-bbec-9aa03594b3b0"
-          },
           "klarna": {
             "verdi": 3,
             "opptil": false,
@@ -3156,21 +3154,6 @@
         "logo": "/logos/NO/interoptik.webp"
       },
       {
-        "id": "inzpero",
-        "navn": "Inzpero",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 9.3,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/inzpero-trumf"
-          }
-        },
-        "logo": "/logos/NO/inzpero.webp"
-      },
-      {
         "id": "iphonehuset",
         "navn": "iPhonehuset",
         "kategorier": [
@@ -3250,15 +3233,9 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/jbl.com/01896309-4c40-7174-bd17-a3e09c581377"
-          },
-          "klarna": {
-            "verdi": 2.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/4095e4ed-bbe7-459c-8b10-08d6239769e1/jbl/pay-with-klarna/"
           }
         },
-        "logo": "/logos/NO/jbl.webp",
-        "domene": "jbl.com"
+        "logo": "/logos/NO/jbl.webp"
       },
       {
         "id": "jotex",
@@ -7628,6 +7605,22 @@
         "logo": "/logos/SE/animigo.webp"
       },
       {
+        "id": "antonioli",
+        "navn": "ANTONIOLI",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/a046aa86-433f-4a40-b934-695f2b3ed114/antonioli/pay-with-klarna/"
+          }
+        },
+        "logo": "/logos/SE/antonioli.webp",
+        "domene": "antonioli.eu"
+      },
+      {
         "id": "apohem",
         "navn": "Apohem",
         "kategorier": [
@@ -8788,7 +8781,7 @@
         ],
         "satser": {
           "sas-online-shopping-se": {
-            "verdi": 25,
+            "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/conrad/0189630d-326b-7293-9226-29b2931fc26f"
           }
@@ -16907,7 +16900,7 @@
         ],
         "satser": {
           "sas-online-shopping-dk": {
-            "verdi": 25,
+            "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/conrad/0189630d-326b-7293-9226-29b2931fc26f"
           }
