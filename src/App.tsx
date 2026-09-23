@@ -9,12 +9,15 @@ import KlarnaSide from './components/KlarnaSide';
 import Kortliste from './components/Kortliste';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
+import Personvern from './components/Personvern';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
+import Utvidelse from './components/Utvidelse';
 import { hentData, LAND } from './data';
+import utvidelseInfo from './data/utvidelse.json';
 import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
 import { SPRAK, tekst, type Nokkel } from './i18n';
-import { gjeldendeSats } from './lib/butikker';
+import { gjeldendeSats, sokButikker } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { lesFolger, skrivFolger, vekslFolg, type Folger } from './lib/folger';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
@@ -26,7 +29,9 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna' | 'ukens';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
+/** Sider uten land i adressen. */
+const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', personvern: 'personvern', utvidelse: 'utvidelse' };
 const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
@@ -76,7 +81,7 @@ const standardKort = (land: Land): string => {
  */
 function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
   const [sti, a, b] = window.location.pathname.split('/').filter(Boolean);
-  if (sti === 'klarna') return { land: 'NO', rute: { visning: 'klarna', kategori: null } };
+  if (sti && TOPPSIDER[sti]) return { land: 'NO', rute: { visning: TOPPSIDER[sti], kategori: null } };
   const land = LAND.find((l) => SPRAK[l].sti === sti);
   if (!land) return { rute: { visning: 'kalk', kategori: null } };
   if (a && VISNINGER[a]) return { land, rute: { visning: VISNINGER[a], kategori: a === 'butikker' ? (b ?? null) : null } };
@@ -84,7 +89,7 @@ function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
 }
 
 function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
-  if (rute.visning === 'klarna') return '/klarna';
+  if (rute.visning === 'klarna' || rute.visning === 'personvern' || rute.visning === 'utvidelse') return `/${rute.visning}`;
   const s = `/${SPRAK[land].sti}`;
   if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
   if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
@@ -175,6 +180,22 @@ function les(): Tilstand {
   }
   const nivaQ = q.get('niva');
   if (nivaQ) for (const p of data.programmer.filter((x) => x.land === t.land && x.nivaer.some((n) => n.id === nivaQ))) t = endreRad(t, p, { valgId: nivaQ });
+  // Delt til appen fra en annen app (share_target): finn butikken fra adressen eller teksten.
+  const delt = q.get('url') ?? q.get('tekst') ?? q.get('tittel');
+  if (delt && !sti.butikkId) {
+    let b: Butikk | undefined;
+    const m = delt.match(/https?:\/\/[^\s]+/);
+    if (m) {
+      try {
+        const vert = new URL(m[0]).hostname.toLowerCase().replace(/^www\./, '');
+        b = data.butikker[t.land].find((x) => x.domene && (vert === x.domene || vert.endsWith(`.${x.domene}`)));
+      } catch {
+        /* ikke en adresse */
+      }
+    }
+    b ??= sokButikker(data.butikker[t.land], delt.replace(/https?:\/\/\S+/g, ' ').trim(), 1)[0];
+    if (b) t = medButikk(t, b);
+  }
   return t;
 }
 
@@ -401,6 +422,31 @@ export default function App() {
       : null;
   const harAnnonse = kortListe.some((k) => k.annonse);
 
+  /** Nivåpoeng kjøpet gir: programmets (SAS Shopping) og kortets (Amex Elite, Mastercard Premium). */
+  const nivaapoengFor = (r: Resultat): number => {
+    let n = 0;
+    const np = r.program.nivaapoeng;
+    if (np && (!np.til || np.til >= IDAG)) n += r.programPoeng * np.perBonuspoeng;
+    if (kort && r.program.kortlag) {
+      if (kort.nivaapoengPer100) n += (belop / 100) * kort.nivaapoengPer100;
+      if (kort.nivaapoengAndel) n += r.kortPoeng * kort.nivaapoengAndel;
+    }
+    return n;
+  };
+  for (const p of programmer) {
+    if (p.nivaapoeng && (!p.nivaapoeng.til || p.nivaapoeng.til >= IDAG) && resultater.some((r) => r.program.id === p.id)) {
+      merknader.push(T('nivaapoengTil', { dato: p.nivaapoeng.til ? fmtDato(p.nivaapoeng.til) : '' }));
+    }
+  }
+
+  const bunnlenker = (
+    <p className="bunnlenker">
+      <a href="/utvidelse" onClick={(e) => { e.preventDefault(); gaaTil('utvidelse'); }}>{T('utvidelseLenke')}</a>
+      {' · '}
+      <a href="/personvern" onClick={(e) => { e.preventDefault(); gaaTil('personvern'); }}>{T('personvern')}</a>
+    </p>
+  );
+
   // Brukerens oppsett, slik det ligger til grunn for tallene i katalogen og på Nytt.
   const oppsettTekst = [
     ...programmer
@@ -509,6 +555,19 @@ export default function App() {
 
   if (rute.visning === 'klarna') return <KlarnaSide data={data} idag={IDAG} />;
 
+  if (rute.visning === 'personvern' || rute.visning === 'utvidelse') {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">{rute.visning === 'personvern' ? <Personvern /> : <Utvidelse />}</div>
+        <footer>
+          {bunnlenker}
+          <p className="signatur">{T('signatur')}</p>
+        </footer>
+      </div>
+    );
+  }
+
   if (rute.visning === 'butikker') {
     return (
       <div className="app">
@@ -590,6 +649,7 @@ export default function App() {
         </div>
         <footer>
           {harAnnonse && <p>{T('annonseForklaring')}</p>}
+          {bunnlenker}
           <p className="signatur">{T('signatur')}</p>
         </footer>
       </div>
@@ -754,6 +814,7 @@ export default function App() {
                   const s = butikk?.satser[p.id];
                   return s?.kampanje && gjeldendeSats(s, IDAG).kampanje ? s.kampanje.slutt : null;
                 })()}
+                nivaapoeng={r ? nivaapoengFor(r) : 0}
                 idag={IDAG}
                 erBest={beste?.program.id === p.id && resultater.length > 1}
                 apen={apen === p.id}
@@ -803,6 +864,24 @@ export default function App() {
         {butikk && <Folg land={t.land} butikk={butikk} folger={folgerHer.includes(butikk.id)} onToggle={() => toggleFolg(butikk.id)} />}
       </div>
 
+      <p className="utvidelse-linje">
+        <Logo storrelse={16} />
+        <span>{T('utvidelseCta')}</span>
+        <a
+          href={utvidelseInfo.chromeWebStoreUrl || '/utvidelse'}
+          target={utvidelseInfo.chromeWebStoreUrl ? '_blank' : undefined}
+          rel={utvidelseInfo.chromeWebStoreUrl ? 'noreferrer' : undefined}
+          onClick={(e) => {
+            if (!utvidelseInfo.chromeWebStoreUrl) {
+              e.preventDefault();
+              gaaTil('utvidelse');
+            }
+          }}
+        >
+          {T('leggTil')} →
+        </a>
+      </p>
+
       <footer>
         {[...new Set(merknader)].map((m) => (
           <p key={m}>{m}</p>
@@ -810,6 +889,7 @@ export default function App() {
         {butikk && <p>{T('satserHentet', { butikk: butikk.navn, dato: fmtDato(data.hentet) })}</p>}
         <p>{T('forbehold', { valuta: data.landInfo[t.land].valuta, dato: fmtDato(data.sistOppdatert) })}</p>
         {harAnnonse && <p>{T('annonseForklaring')}</p>}
+        {bunnlenker}
         <p className="signatur">{T('signatur')}</p>
         <details>
           <summary>{T('kilder')}</summary>

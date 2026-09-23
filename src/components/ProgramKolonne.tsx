@@ -27,6 +27,8 @@ interface Props {
   historikk: Maling[] | null;
   /** Sluttdato når satsen i feltet er en kampanjesats. */
   kampanjeSlutt: string | null;
+  /** Nivåpoeng kjøpet gir i tillegg (program og kort), 0 når ingen. */
+  nivaapoeng: number;
   idag: string;
   erBest: boolean;
   apen: boolean;
@@ -47,7 +49,7 @@ function historikkTekst(land: Land, program: Program, malinger: Maling[]): strin
 }
 
 /** Én kolonne per program: logo, butikkens sats og resultat. */
-export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSats, resultat, lenke, historikk, kampanjeSlutt, idag, erBest, apen, onToggle }: Props) {
+export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSats, resultat, lenke, historikk, kampanjeSlutt, nivaapoeng, idag, erBest, apen, onToggle }: Props) {
   const satsId = `${program.id}-sats`;
 
   return (
@@ -84,6 +86,7 @@ export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSa
         <span className="per100">{resultat ? tekst(land, 'perHundre', { n: fmtPer100(resultat.per100) }) : ' '}</span>
       </button>
 
+      {resultat && nivaapoeng > 0 && <span className="nivaa">{tekst(land, 'nivaapoengLinje', { n: fmtPoeng(nivaapoeng) })}</span>}
       {kampanjeSlutt && <span className="igjen">{dagerTekst(land, dagerIgjen(idag, kampanjeSlutt))}</span>}
 
       {historikk && historikk.length > 0 && (

@@ -56,7 +56,8 @@
       "poeng": 15000,
       "krav": 90000,
       "mnd": 9
-    }
+    },
+    "nivaapoengPer100": 6
   },
   {
     "id": "sas-mastercard-world",
@@ -89,7 +90,9 @@
     "kilde": "https://saseurobonusmastercard.no/kortene/mastercard-premium/",
     "sistVerifisert": "2026-09-21",
     "annonse": false,
-    "arsavgift": 3348
+    "arsavgift": 3348,
+    "nivaapoengAndel": 0.25,
+    "merknad": "Nivåpoeng: 25 % av månedens bonuspoeng på kortet, minst 500."
   },
   {
     "id": "amex-poeng",
@@ -319,5 +322,35 @@
     "sistVerifisert": "2026-09-21",
     "annonse": false,
     "arsavgift": 2335
+  },
+  {
+    "id": "se-amex-poeng",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Green / Gold / Platinum (Amex-poäng)",
+    "utsteder": "American Express",
+    "poengPer100": 3.45,
+    "pris": "Årsavgift efter kort",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/sv-se/rewards/membership-rewards/partner/SAS-EuroBonus/SAS-01",
+    "sistVerifisert": "2026-09-23",
+    "merknad": "1 Amex-poäng per krona; 29 Amex-poäng = 1 EuroBonus-poäng. Växlas manuellt.",
+    "annonse": false
+  },
+  {
+    "id": "se-amex-points-plus",
+    "land": [
+      "SE"
+    ],
+    "navn": "Amex Platinum Points Plus / Gold Rewards",
+    "utsteder": "American Express",
+    "poengPer100": 14,
+    "pris": "Årsavgift efter kort",
+    "status": "verifisert",
+    "kilde": "https://www.americanexpress.com/sv-se/formaner/upptack-formanerna/poang/",
+    "sistVerifisert": "2026-09-23",
+    "merknad": "14 EuroBonus-poäng per 100 kr på de flesta köpställen i Sverige, 28 utomlands.",
+    "annonse": false
   }
 ]

@@ -74,6 +74,8 @@ export interface Program {
   /** Om betalingskortet gir poeng i tillegg (kjøpet betales med eget kort). */
   kortlag: boolean;
   kortlagMerknad?: string;
+  /** Nivåpoeng programmet gir per bonuspoeng (SAS Online Shopping: 0,2 til 30.12.2026). */
+  nivaapoeng?: { perBonuspoeng: number; til?: string; kilde: string; sistVerifisert: string };
   vilkar: string[];
   kilder: Kilde[];
 }
@@ -103,6 +105,10 @@ export interface Kort {
   velkomst?: { poeng: number; krav: number; mnd: number };
   /** Kortforbruk per år som gir poeng (SAS Mastercard World: 200 000 kr). */
   tak?: number;
+  /** EuroBonus-nivåpoeng per 100 kr på kortet (SAS Amex Elite: 6). */
+  nivaapoengPer100?: number;
+  /** Nivåpoeng som andel av kortets bonuspoeng (SAS Mastercard Premium: 0,25). */
+  nivaapoengAndel?: number;
 }
 
 /** Én butikks sats i ett program, hentet automatisk av scripts/hent-butikker.mjs. */

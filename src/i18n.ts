@@ -127,6 +127,21 @@ export const TEKSTER = {
     sv: 'första året {n} öre/poäng med {v} välkomstpoäng',
     da: 'første år {n} øre/point med {v} velkomstpoint',
   },
+  // Nivåpoeng, personvern og utvidelse
+  nivaapoengLinje: { nb: '+ {n} nivåpoeng', sv: '+ {n} nivåpoäng', da: '+ {n} niveaupoint' },
+  nivaapoengTil: {
+    nb: 'SAS Shopping gir 20 nivåpoeng per 100 bonuspoeng til {dato}. Nivåpoeng teller mot medlemsnivå, ikke til reiser.',
+    sv: 'SAS Shopping ger 20 nivåpoäng per 100 bonuspoäng till {dato}. Nivåpoäng räknas mot medlemsnivå, inte till resor.',
+    da: 'SAS Shopping giver 20 niveaupoint per 100 bonuspoint til {dato}. Niveaupoint tæller mod medlemsniveau, ikke til rejser.',
+  },
+  personvern: { nb: 'Personvern', sv: 'Integritet', da: 'Privatliv' },
+  utvidelseLenke: { nb: 'Chrome-utvidelse', sv: 'Chrome-tillägg', da: 'Chrome-udvidelse' },
+  utvidelseCta: {
+    nb: 'Chrome-utvidelsen viser poengene rett i Google-søk og i nettbutikken.',
+    sv: 'Chrome-tillägget visar poängen direkt i Google-sökningen och i butiken.',
+    da: 'Chrome-udvidelsen viser pointene direkte i Google-søgningen og i butikken.',
+  },
+  leggTil: { nb: 'Legg til i Chrome', sv: 'Lägg till i Chrome', da: 'Føj til Chrome' },
   // Hverdag
   hverdag: { nb: 'Hverdag', sv: 'Vardag', da: 'Hverdag' },
   hverdagForklaring: {

@@ -1,0 +1,21 @@
+{
+  "name": "Pointmaxing – EuroBonus-kalkulator",
+  "short_name": "Pointmaxing",
+  "description": "Hvor gir kjøpet flest SAS EuroBonus-poeng: Trumf, Klarna eller SAS Online Shopping?",
+  "id": "/no",
+  "start_url": "/no",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1f4b",
+  "theme_color": "#0b1f4b",
+  "lang": "nb",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "share_target": {
+    "action": "/no",
+    "method": "GET",
+    "params": { "title": "tittel", "text": "tekst", "url": "url" }
+  }
+}

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && node scripts/bygg-butikksider.mjs",
+    "build": "tsc --noEmit && vite build && node scripts/bygg-butikksider.mjs && node scripts/pakk-utvidelse.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "hent": "node scripts/hent-butikker.mjs",

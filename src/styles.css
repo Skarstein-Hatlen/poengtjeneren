@@ -1815,3 +1815,113 @@ footer ul {
 .klarna .merke-rad .ordmerke {
   text-decoration: none;
 }
+
+/* Nivåpoeng under poengene */
+.nivaa {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+/* Utvidelsen: én linje under billetten, bare på skjermer som kan ha den */
+.utvidelse-linje {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 18px 4px 0;
+  font-size: 13px;
+  color: var(--page-mute);
+}
+
+.utvidelse-linje .logo-merke {
+  color: var(--page-fg);
+}
+
+.utvidelse-linje a {
+  color: var(--page-fg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.utvidelse-linje a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .utvidelse-linje {
+    display: none;
+  }
+}
+
+footer .bunnlenker a {
+  color: var(--page-mute);
+}
+
+footer .bunnlenker a:hover {
+  color: var(--page-fg);
+}
+
+/* Personvern og utvidelse: lesetekst */
+.personvern h3,
+.utvidelse h3 {
+  margin: 22px 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.personvern ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.personvern li {
+  margin: 4px 0;
+}
+
+.personvern p,
+.utvidelse p {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.personvern .ingress,
+.utvidelse .ingress {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: var(--mute);
+  max-width: 58ch;
+}
+
+.utvidelse .forslag {
+  margin-top: 14px;
+}
+
+.utvidelse .kontakt {
+  margin-top: 18px;
+}
+
+.steg {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.utvidelse code,
+.personvern code {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.utvidelse .fotnote {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.utvidelse .fotnote a {
+  color: var(--ink);
+}
