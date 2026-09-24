@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import kortbilder from '../data/kortbilder.json';
 import type { Kort, Land } from '../data/types';
 import { tekst } from '../i18n';
 import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const TILLATT = /^[\d\s.,]*$/;
+const BILDER = kortbilder as Record<string, string>;
 type Sortering = 'poeng' | 'ore' | 'pris';
 
 /** Månedsprisen som gjelder i dag (kort som prises per år deles på tolv). */
@@ -76,12 +78,15 @@ export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, ida
           ))}
         </div>
       </div>
-      <ul>
+      <ul className="med-bilde">
         {rader.map(({ k, poengAr, ore }) => {
           const url = lenke(k);
           const pris = prisPerMnd(k, idag);
           return (
             <li key={k.id}>
+              <span className="kortliste-bilde" aria-hidden="true">
+                {BILDER[k.id] && <img src={BILDER[k.id]} alt="" loading="lazy" />}
+              </span>
               <span className="kortliste-poeng">
                 {fmtTall(k.poengPer100)}
                 {k.status === 'uverifisert' && <sup>*</sup>}

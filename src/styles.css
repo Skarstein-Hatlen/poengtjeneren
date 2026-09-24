@@ -2285,3 +2285,41 @@ footer .bunnlenker {
   color: var(--gold);
   font-weight: 700;
 }
+
+/* Kortsiden: kortbildet først i hver rad (partnersiden /klarna bruker samme liste uten bilder) */
+.kortliste ul.med-bilde li {
+  grid-template-columns: 72px 80px minmax(0, 1fr) auto;
+}
+
+.kortliste-bilde {
+  display: block;
+  width: 72px;
+  aspect-ratio: 856 / 540;
+}
+
+.kortliste-bilde img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(4, 12, 40, 0.18));
+}
+
+@media (max-width: 479px) {
+  .kortliste ul.med-bilde li {
+    grid-template-columns: 48px 64px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .kortliste ul.med-bilde .kortliste-bilde {
+    width: 48px;
+  }
+
+  .kortliste ul.med-bilde .kortliste-poeng {
+    font-size: 26px;
+  }
+
+  .kortliste ul.med-bilde a {
+    grid-column: 3;
+  }
+}
