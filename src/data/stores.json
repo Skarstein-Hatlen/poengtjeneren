@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-23",
+  "hentet": "2026-09-24",
   "land": {
     "NO": [
       {
@@ -2401,6 +2401,20 @@
         "logo": "/logos/NO/gstar.webp"
       },
       {
+        "id": "gameseal",
+        "navn": "GameSeal",
+        "kategorier": [],
+        "satser": {
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/3b3d5377-131d-41f9-922f-eb8814a827d2/gameseal/pay-with-klarna/"
+          }
+        },
+        "logo": "/logos/NO/gameseal.webp",
+        "domene": "gameseal.com"
+      },
+      {
         "id": "gents",
         "navn": "Gents",
         "kategorier": [
@@ -2942,11 +2956,6 @@
           "hjem"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 5.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/husqvarna-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3152,6 +3161,21 @@
           }
         },
         "logo": "/logos/NO/interoptik.webp"
+      },
+      {
+        "id": "inzpero",
+        "navn": "Inzpero",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/inzpero-trumf"
+          }
+        },
+        "logo": "/logos/NO/inzpero.webp"
       },
       {
         "id": "iphonehuset",
@@ -9987,6 +10011,20 @@
         "domene": "gad.se"
       },
       {
+        "id": "gameseal",
+        "navn": "GameSeal",
+        "kategorier": [],
+        "satser": {
+          "klarna-se": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/38e6b498-a2ec-42bd-b0a7-b61f621725c1/gameseal/pay-with-klarna/"
+          }
+        },
+        "logo": "/logos/SE/gameseal.webp",
+        "domene": "gameseal.com"
+      },
+      {
         "id": "gant",
         "navn": "GANT",
         "kategorier": [
@@ -11290,7 +11328,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 1.5,
+            "verdi": 1,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/4a7a4406-73e1-4d7c-9786-716639a5c00f/komplett/pay-with-klarna/"
           }
@@ -11974,20 +12012,6 @@
           }
         },
         "logo": "/logos/SE/loparshop.webp"
-      },
-      {
-        "id": "mainlinemenswear",
-        "navn": "Mainline Menswear",
-        "kategorier": [],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a755058b-6fe8-488d-894a-70e17c8919ee/mainline-menswear/pay-with-klarna/"
-          }
-        },
-        "logo": "/logos/SE/mainlinemenswear.webp",
-        "domene": "mainlinemenswear.co.uk"
       },
       {
         "id": "makeupmekka",
@@ -14642,22 +14666,6 @@
         "logo": "/logos/SE/stronger.webp"
       },
       {
-        "id": "stuartweitzman",
-        "navn": "Stuart Weitzman",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/1fdc54b8-1935-4fe7-b2e3-a5600e2be1d9/stuart-weitzman/pay-with-klarna/"
-          }
-        },
-        "logo": "/logos/SE/stuartweitzman.webp",
-        "domene": "stuartweitzman.com"
-      },
-      {
         "id": "stutterheim",
         "navn": "Stutterheim",
         "kategorier": [
@@ -16064,20 +16072,6 @@
         },
         "logo": "/logos/DK/24mx.webp",
         "domene": "24mx.com"
-      },
-      {
-        "id": "24s",
-        "navn": "24S",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
-          }
-        },
-        "logo": "/logos/DK/24s.webp",
-        "domene": "24s.com"
       },
       {
         "id": "aretrotale",
@@ -17623,6 +17617,20 @@
           }
         },
         "logo": "/logos/DK/gstar.webp"
+      },
+      {
+        "id": "gameseal",
+        "navn": "GameSeal",
+        "kategorier": [],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.comnull"
+          }
+        },
+        "logo": "/logos/DK/gameseal.webp",
+        "domene": "gameseal.com"
       },
       {
         "id": "gant",
@@ -20752,22 +20760,6 @@
           }
         },
         "logo": "/logos/DK/stokvaerk.webp"
-      },
-      {
-        "id": "stuartweitzman",
-        "navn": "Stuart Weitzman",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/f5159ffb-b497-4c79-a634-847b4628822f/stuart-weitzman/pay-with-klarna/"
-          }
-        },
-        "logo": "/logos/DK/stuartweitzman.webp",
-        "domene": "stuartweitzman.com"
       },
       {
         "id": "stutterheim",

@@ -59,7 +59,6 @@
     {
       "matches": [
         "*://*.24mx.com/*",
-        "*://*.24s.com/*",
         "*://*.aarstiderne.com/*",
         "*://*.aboutyou.dk/*",
         "*://*.aboutyou.se/*",
@@ -167,6 +166,7 @@
         "*://*.frankbros.com/*",
         "*://*.g-star.com/*",
         "*://*.gad.se/*",
+        "*://*.gameseal.com/*",
         "*://*.getyourguide.com/*",
         "*://*.ginatricot.com/*",
         "*://*.gococo.se/*",
@@ -326,7 +326,6 @@
         "*://*.steelseries.com/*",
         "*://*.stories.com/*",
         "*://*.stormberg.com/*",
-        "*://*.stuartweitzman.com/*",
         "*://*.supsport.se/*",
         "*://*.swarovski.com/*",
         "*://*.synoptik.se/*",

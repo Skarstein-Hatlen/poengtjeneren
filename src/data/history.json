@@ -420,7 +420,8 @@
   "youwish": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",50]]},
   "zoo": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",50]]},
   "zooplus": {"trumf":[["2026-09-21",6.2]],"klarna":[["2026-09-21",2]]},
-  "devold": {"trumf":[["2026-09-22",6.2]]}
+  "devold": {"trumf":[["2026-09-22",6.2]]},
+  "gameseal": {"klarna":[["2026-09-24",2]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},
@@ -667,7 +668,7 @@
   "kjellcompany": {"sas-online-shopping-se":[["2026-09-21",10]],"klarna-se":[["2026-09-21",2]]},
   "klippkungen": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "kockumsjernverk": {"sas-online-shopping-se":[["2026-09-21",75]]},
-  "komplett": {"sas-online-shopping-se":[["2026-09-21",15]],"klarna-se":[["2026-09-21",1.5]]},
+  "komplett": {"sas-online-shopping-se":[["2026-09-21",15]],"klarna-se":[["2026-09-21",1.5],["2026-09-24",1]]},
   "kontorsjatten": {"klarna-se":[["2026-09-21",2]]},
   "kungsangen": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "kutts": {"sas-online-shopping-se":[["2026-09-21",50]]},
@@ -956,7 +957,8 @@
   "zooplus": {"sas-online-shopping-se":[["2026-09-21",10]],"klarna-se":[["2026-09-21",2]]},
   "zwilling": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3]]},
   "onskefoto": {"sas-online-shopping-se":[["2026-09-21",50]],"klarna-se":[["2026-09-21",3.5]]},
-  "layered": {"klarna-se":[["2026-09-21",3.5]]}
+  "layered": {"klarna-se":[["2026-09-21",3.5]]},
+  "gameseal": {"klarna-se":[["2026-09-24",2]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},
@@ -1309,6 +1311,7 @@
   "znore": {"sas-online-shopping-dk":[["2026-09-21",50]]},
   "zooplus": {"klarna-dk":[["2026-09-21",2]]},
   "zwilling": {"sas-online-shopping-dk":[["2026-09-21",25]],"klarna-dk":[["2026-09-21",3]]},
-  "aarstiderne": {"klarna-dk":[["2026-09-21",2.5]]}
+  "aarstiderne": {"klarna-dk":[["2026-09-21",2.5]]},
+  "gameseal": {"klarna-dk":[["2026-09-24",2]]}
  }
 }
