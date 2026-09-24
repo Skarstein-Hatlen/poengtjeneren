@@ -161,7 +161,7 @@ async function hentSas({ country, language, sti }) {
         verdi: s.points,
         opptil: false,
         kampanje,
-        logo: s.logo || s.image_url || undefined,
+        logo: s.logo || undefined,
         kategorier: s.categoryId && kategorier.has(s.categoryId) ? [kategorier.get(s.categoryId)] : [],
         kilde: `https://onlineshopping.flysas.com/${sti}/${s.slug}/${s.uuid}`,
       };
@@ -205,10 +205,10 @@ function slaSammen(kilder) {
     for (const rad of rader) {
       const id = normaliser(rad.navn);
       if (!id) continue;
-      const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, kategorier: [], satser: {} };
+      const eksisterende = butikker.get(id) ?? { id, navn: rad.navn, kategorier: [], satser: {}, logoer: [] };
       if (eksisterende.navn === eksisterende.navn.toUpperCase() && rad.navn !== rad.navn.toUpperCase()) eksisterende.navn = rad.navn;
       const { navn: _navn, logo, domene, kategorier, ...sats } = rad;
-      if (logo && !eksisterende.logo) eksisterende.logo = logo;
+      if (logo) eksisterende.logoer.push({ url: logo, program: programId });
       if (domene && !eksisterende.domene) eksisterende.domene = domene;
       for (const k of kategorier ?? []) if (!eksisterende.kategorier.includes(k)) eksisterende.kategorier.push(k);
       eksisterende.satser[programId] = sats;
@@ -220,18 +220,34 @@ function slaSammen(kilder) {
 
 const finnes = (url) => access(url).then(() => true, () => false);
 
+/** En ekte logo har gjennomsiktig bakgrunn. SAS-feedens logofelt er ofte en hvit flate eller et skjermbilde. */
+async function erEkteLogo(original) {
+  const { data } = await sharp(original).toColourspace('srgb').ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let gjennomsiktig = 0;
+  for (let i = 3; i < data.length; i += 4) if (data[i] < 128) gjennomsiktig++;
+  return gjennomsiktig / (data.length / 4) >= 0.4;
+}
+
 /**
  * Laster ned logoen, trimmer bort luft/hvit kant og legger den midt i en fast boks
  * (240×96, gjennomsiktig bakgrunn) som webp. Returnerer stien, eller null hvis det feiler.
+ * `ekte` (SAS-logoer) krever gjennomsiktig bakgrunn; dommen huskes i manifestet («sjekk:<url>»).
  */
-async function lagLogo(kildeUrl, land, id, manifest) {
+async function lagLogo(kildeUrl, land, id, manifest, { ekte = false } = {}) {
   const nokkel = `${land}/${id}`;
   const fil = new URL(`${nokkel}.webp`, LOGO_MAPPE);
-  if (manifest[nokkel] === kildeUrl && (await finnes(fil))) return `/logos/${nokkel}.webp`;
+  const dom = manifest[`sjekk:${kildeUrl}`];
+  if (ekte && dom === 'nei') return null;
+  if (manifest[nokkel] === kildeUrl && (!ekte || dom === 'ja') && (await finnes(fil))) return `/logos/${nokkel}.webp`;
   try {
     const svar = await fetch(kildeUrl, { headers: HODER });
     if (!svar.ok) return null;
     const original = Buffer.from(await svar.arrayBuffer());
+    if (ekte) {
+      const ok = await erEkteLogo(original).catch(() => false);
+      manifest[`sjekk:${kildeUrl}`] = ok ? 'ja' : 'nei';
+      if (!ok) return null;
+    }
     let bilde;
     try {
       bilde = await sharp(original).ensureAlpha().trim({ threshold: 12 }).toBuffer();
@@ -250,6 +266,44 @@ async function lagLogo(kildeUrl, land, id, manifest) {
   } catch {
     return null;
   }
+}
+
+const idagLogo = new Date().toISOString().slice(0, 10);
+let klarnaKo = Promise.resolve();
+/**
+ * Merkevarens ikon i Klarnas katalog når navnet er det samme – søket finner også merker uten cashback.
+ * Treff huskes i manifestet («sok:<land>/<id>»); uten treff prøves det igjen etter 30 dager.
+ */
+function klarnaIkon(land, butikk, manifest) {
+  const nokkel = `sok:${land}/${butikk.id}`;
+  const lagret = manifest[nokkel];
+  if (lagret && !lagret.startsWith('ingen:')) return Promise.resolve(lagret);
+  if (lagret && (Date.parse(idagLogo) - Date.parse(lagret.slice(6))) / 864e5 < 30) return Promise.resolve(null);
+  // Ett søk om gangen, litt spredt, så Klarna ikke får en storm av forespørsler.
+  const jobb = klarnaKo.then(async () => {
+    let ikon = null;
+    let feil = false;
+    for (const [l, sti] of [[land, land.toLowerCase()], ...['NO', 'SE', 'DK'].filter((x) => x !== land).map((x) => [x, x.toLowerCase()])]) {
+      for (let forsok = 0; forsok < 2; forsok++) {
+        try {
+          const { stores } = await (await hent(`https://www.klarna.com/${sti}/api/store-edge-rest/public/stores/directory/search/${l}?q=${encodeURIComponent(butikk.navn)}&offset=0&size=10`)).json();
+          const treff = (stores ?? []).find((s) => s.displayName && normaliser(pyntNavn(dekod(s.displayName))) === butikk.id);
+          ikon = treff ? (treff.icons?.find((i) => i.type === 'X3')?.url ?? treff.icons?.[0]?.url ?? null) : null;
+          break;
+        } catch {
+          if (forsok === 1) feil = true;
+          await vent(3000);
+        }
+      }
+      await vent(400);
+      if (ikon) break;
+    }
+    // Uten svar fra Klarna huskes ingenting – da prøves det igjen neste gang.
+    if (ikon || !feil) manifest[nokkel] = ikon ?? `ingen:${idagLogo}`;
+    return ikon;
+  });
+  klarnaKo = jobb.catch(() => null);
+  return jobb;
 }
 
 /** Kjører oppgavene med begrenset parallellitet. */
@@ -273,24 +327,51 @@ for (const [land, oppsett] of Object.entries(LAND)) {
   logg.push(`${land}: ${kilder.map(([id, rader]) => `${id} ${rader.length}`).join(', ')} → ${resultat[land].length} butikker`);
 }
 
-// Logoer: lokale, trimmede kopier. Beholder lenken til kilden hvis nedlastingen feiler.
+// Logoer: lokale, trimmede kopier. Rekkefølge: håndplukket offisiell logo (src/data/partnerlogoer.json) →
+// Trumf → Klarna → SAS (bare ekte logoer med gjennomsiktig bakgrunn) → merkevarens ikon i Klarnas katalog.
+// Uten treff får butikken ingen logo, og siden viser forbokstaven.
 await mkdir(LOGO_MAPPE, { recursive: true });
 const manifest = (await finnes(LOGO_MANIFEST)) ? JSON.parse(await readFile(LOGO_MANIFEST, 'utf8')) : {};
-let lokale = 0;
+const partnerlogoer = JSON.parse(await readFile(new URL('../src/data/partnerlogoer.json', import.meta.url), 'utf8'));
+const HANDPLUKKET = new Map(Object.values(partnerlogoer).flatMap((l) => l.navn.map((n) => [normaliser(n), l.fil])));
+const PRIORITET = (programId) => (programId === 'trumf' ? 0 : programId.startsWith('klarna') ? 1 : 2);
+const alle = Object.entries(resultat).flatMap(([land, butikker]) => butikker.map((b) => ({ land, b })));
+// 1. Kildenes egne logoer.
 await parallelt(
-  Object.entries(resultat).flatMap(([land, butikker]) =>
-    butikker
-      .filter((b) => b.logo)
-      .map((b) => async () => {
-        const sti = await lagLogo(b.logo, land, b.id, manifest);
-        if (sti) {
-          b.logo = sti;
-          lokale++;
-        }
-      }),
-  ),
+  alle.map(({ land, b }) => async () => {
+    const kandidater = b.logoer.sort((x, y) => PRIORITET(x.program) - PRIORITET(y.program));
+    delete b.logoer;
+    delete b.logo;
+    let sti = HANDPLUKKET.get(b.id) ?? null;
+    for (const k of kandidater) {
+      if (sti) break;
+      sti = await lagLogo(k.url, land, b.id, manifest, { ekte: k.program.startsWith('sas') });
+    }
+    if (sti) b.logo = sti;
+  }),
   8,
 );
+// 2. Samme butikk i et annet land har ofte logo (Trumf og Klarna i Norge dekker mange svenske og danske).
+const lanLogo = () => {
+  const perId = new Map();
+  for (const { b } of alle) if (b.logo && !perId.has(b.id)) perId.set(b.id, b.logo);
+  for (const { b } of alle) if (!b.logo && perId.has(b.id)) b.logo = perId.get(b.id);
+};
+lanLogo();
+// 3. Merkevarens ikon i Klarnas katalog for resten.
+await parallelt(
+  alle
+    .filter(({ b }) => !b.logo)
+    .map(({ land, b }) => async () => {
+      const ikon = await klarnaIkon(land, b, manifest);
+      const sti = ikon ? await lagLogo(ikon, land, b.id, manifest) : null;
+      if (sti) b.logo = sti;
+    }),
+  4,
+);
+lanLogo();
+const lokale = alle.filter(({ b }) => b.logo).length;
+const uten = alle.length - lokale;
 await writeFile(LOGO_MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
 
 const idag = new Date().toISOString().slice(0, 10);
@@ -326,4 +407,4 @@ await writeFile(HIST, histLinjer.join('\n'));
 
 await writeFile(UT, JSON.stringify({ hentet: idag, land: resultat }, null, 2) + '\n');
 console.log(logg.join('\n'));
-console.log(`Logoer: ${lokale} lokale. Historikk: ${nyeMalinger} nye målinger.`);
+console.log(`Logoer: ${lokale} lokale, ${uten} uten logo (forbokstav). Historikk: ${nyeMalinger} nye målinger.`);

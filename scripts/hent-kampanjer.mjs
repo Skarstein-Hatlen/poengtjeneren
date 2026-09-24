@@ -69,19 +69,19 @@ async function hent(url) {
 
 // Logoer. Håndplukkede, offisielle logoer ligger i public/logos/partnere (src/data/partnerlogoer.json, med kilde).
 // Andre hentes én gang og lagres i public/logos/kampanjer: SAS-feedens logo bare når den er en ekte logo (gjennomsiktig
-// bakgrunn – feeden har ellers hvite flater og skjermbilder av skjemaer), ellers butikklogoen vår (ikke de som kom fra
-// SAS) eller merkevarens ikon i Klarnas katalog med samme navn. Uten treff viser siden forbokstaven.
+// bakgrunn – feeden har ellers hvite flater og skjermbilder av skjemaer), ellers butikklogoen vår eller merkevarens
+// ikon i Klarnas katalog med samme navn. Uten treff viser siden forbokstaven.
 const LOGO_MAPPE = new URL('../public/logos/kampanjer/', import.meta.url);
 const norm = (s) => s.toLowerCase().replace(/&amp;/g, '&').replace(/\.(no|se|dk|com)\b/g, '').replace(/[^a-z0-9æøåäö+]+/g, '');
 const partnerlogoer = JSON.parse(await readFile(new URL('../src/data/partnerlogoer.json', import.meta.url), 'utf8'));
 const PARTNERLOGO = new Map(Object.values(partnerlogoer).flatMap((l) => l.navn.map((n) => [norm(n), l.fil])));
 const BUTIKKLOGO = new Map();
 {
+  // Butikklogoene er kontrollert av hent-butikker.mjs (SAS-logoer bare når de er ekte).
   const butikker = JSON.parse(await readFile(new URL('../src/data/stores.json', import.meta.url), 'utf8'));
-  const manifest = JSON.parse(await readFile(new URL('../public/logos/manifest.json', import.meta.url), 'utf8'));
   for (const [land, liste] of Object.entries(butikker.land)) {
     for (const b of liste) {
-      if (!b.logo?.startsWith('/logos/') || /loyaltykey/.test(manifest[`${land}/${b.id}`] ?? '')) continue;
+      if (!b.logo?.startsWith('/logos/')) continue;
       BUTIKKLOGO.set(`${land}:${norm(b.navn)}`, b.logo);
       if (!BUTIKKLOGO.has(`*:${norm(b.navn)}`)) BUTIKKLOGO.set(`*:${norm(b.navn)}`, b.logo);
     }

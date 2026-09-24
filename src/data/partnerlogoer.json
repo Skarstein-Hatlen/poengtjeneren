@@ -343,5 +343,219 @@
       "Petson"
     ],
     "kilde": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/dc15e1df-b157-4e0c-8f7b-d29276712ba6/da13222538cca86dfb369bb0520adf19"
+  },
+  "cruisedirect": {
+    "fil": "/logos/partnere/cruisedirect.webp",
+    "navn": [
+      "CruiseDirect"
+    ],
+    "kilde": "https://cruisedirect.com (nettstedets ikon)"
+  },
+  "cyberghost": {
+    "fil": "/logos/partnere/cyberghost.webp",
+    "navn": [
+      "CyberGhost VPN",
+      "CyberGhost"
+    ],
+    "kilde": "https://cyberghostvpn.com (nettstedets ikon)"
+  },
+  "dbjourney": {
+    "fil": "/logos/partnere/dbjourney.webp",
+    "navn": [
+      "Db Journey",
+      "Db"
+    ],
+    "kilde": "https://dbjourney.com (nettstedets ikon)"
+  },
+  "elektroimportoren": {
+    "fil": "/logos/partnere/elektroimportoren.webp",
+    "navn": [
+      "Elektroimportøren.no",
+      "Elektroimportøren"
+    ],
+    "kilde": "https://elektroimportoren.no (nettstedets ikon)"
+  },
+  "fjordline": {
+    "fil": "/logos/partnere/fjordline.webp",
+    "navn": [
+      "Fjordline",
+      "Fjord Line"
+    ],
+    "kilde": "https://fjordline.com (nettstedets ikon)"
+  },
+  "footshop": {
+    "fil": "/logos/partnere/footshop.webp",
+    "navn": [
+      "Footshop.eu",
+      "Footshop"
+    ],
+    "kilde": "https://footshop.eu (nettstedets ikon)"
+  },
+  "marshall": {
+    "fil": "/logos/partnere/marshall.webp",
+    "navn": [
+      "Marshall"
+    ],
+    "kilde": "https://marshall.com (nettstedets ikon)"
+  },
+  "vy": {
+    "fil": "/logos/partnere/vy.webp",
+    "navn": [
+      "Vy Buss",
+      "Vy Bus4you",
+      "Vy"
+    ],
+    "kilde": "https://vy.no (nettstedets ikon)"
+  },
+  "ag1": {
+    "fil": "/logos/partnere/ag1.webp",
+    "navn": [
+      "AG1"
+    ],
+    "kilde": "https://drinkag1.com (nettstedets ikon)"
+  },
+  "beijer": {
+    "fil": "/logos/partnere/beijer.webp",
+    "navn": [
+      "Beijer Byggmaterial"
+    ],
+    "kilde": "https://beijerbygg.se (nettstedets ikon)"
+  },
+  "drakenbergsjolin": {
+    "fil": "/logos/partnere/drakenbergsjolin.webp",
+    "navn": [
+      "Drakenberg Sjölin"
+    ],
+    "kilde": "https://drakenbergsjolin.com (nettstedets ikon)"
+  },
+  "estore": {
+    "fil": "/logos/partnere/estore.webp",
+    "navn": [
+      "Estore.nu"
+    ],
+    "kilde": "https://estore.nu (nettstedets ikon)"
+  },
+  "erv": {
+    "fil": "/logos/partnere/erv.webp",
+    "navn": [
+      "Europeiska ERV"
+    ],
+    "kilde": "https://erv.se (nettstedets ikon)"
+  },
+  "foderboxen": {
+    "fil": "/logos/partnere/foderboxen.webp",
+    "navn": [
+      "Foderboxen"
+    ],
+    "kilde": "https://foderboxen.se (nettstedets ikon)"
+  },
+  "greenfee365": {
+    "fil": "/logos/partnere/greenfee365.webp",
+    "navn": [
+      "Greenfee365"
+    ],
+    "kilde": "https://greenfee365.com (nettstedets ikon)"
+  },
+  "hp": {
+    "fil": "/logos/partnere/hp.webp",
+    "navn": [
+      "HP Online Store",
+      "HP"
+    ],
+    "kilde": "https://hp.com (nettstedets ikon)"
+  },
+  "jlab": {
+    "fil": "/logos/partnere/jlab.webp",
+    "navn": [
+      "Jlab",
+      "JLab"
+    ],
+    "kilde": "https://jlab.com (nettstedets ikon)"
+  },
+  "kattkompaniet": {
+    "fil": "/logos/partnere/kattkompaniet.webp",
+    "navn": [
+      "Kattkompaniet"
+    ],
+    "kilde": "https://kattkompaniet.se (nettstedets ikon)"
+  },
+  "kockums": {
+    "fil": "/logos/partnere/kockums.webp",
+    "navn": [
+      "Kockums Jernverk"
+    ],
+    "kilde": "https://kockumsjernverk.se (nettstedets ikon)"
+  },
+  "lloyd": {
+    "fil": "/logos/partnere/lloyd.webp",
+    "navn": [
+      "Lloyd shoes",
+      "Lloyd"
+    ],
+    "kilde": "https://lloyd.com (nettstedets ikon)"
+  },
+  "meds": {
+    "fil": "/logos/partnere/meds.webp",
+    "navn": [
+      "MEDS"
+    ],
+    "kilde": "https://meds.se (nettstedets ikon)"
+  },
+  "nk": {
+    "fil": "/logos/partnere/nk.webp",
+    "navn": [
+      "Nordiska Kompaniet",
+      "NK"
+    ],
+    "kilde": "https://nk.se (nettstedets ikon)"
+  },
+  "sharkgaming": {
+    "fil": "/logos/partnere/sharkgaming.webp",
+    "navn": [
+      "Shark Gaming"
+    ],
+    "kilde": "https://sharkgaming.se (nettstedets ikon)"
+  },
+  "smink": {
+    "fil": "/logos/partnere/smink.webp",
+    "navn": [
+      "Smink.se"
+    ],
+    "kilde": "https://smink.se (nettstedets ikon)"
+  },
+  "themobilestore": {
+    "fil": "/logos/partnere/themobilestore.webp",
+    "navn": [
+      "TheMobileStore.se"
+    ],
+    "kilde": "https://themobilestore.se (nettstedets ikon)"
+  },
+  "traningsmaskiner": {
+    "fil": "/logos/partnere/traningsmaskiner.webp",
+    "navn": [
+      "Träningsmaskiner.com"
+    ],
+    "kilde": "https://traningsmaskiner.com (nettstedets ikon)"
+  },
+  "vitaminer": {
+    "fil": "/logos/partnere/vitaminer.webp",
+    "navn": [
+      "Vitaminer.nu"
+    ],
+    "kilde": "https://vitaminer.nu (nettstedets ikon)"
+  },
+  "disneylandparis": {
+    "fil": "/logos/partnere/disneylandparis.webp",
+    "navn": [
+      "Disneyland Paris"
+    ],
+    "kilde": "https://disneylandparis.com (nettstedets ikon)"
+  },
+  "skorens": {
+    "fil": "/logos/partnere/skorens.webp",
+    "navn": [
+      "Skorens.dk"
+    ],
+    "kilde": "https://skorens.dk (nettstedets ikon)"
   }
 }

@@ -421,7 +421,9 @@
   "zoo": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",50]]},
   "zooplus": {"trumf":[["2026-09-21",6.2]],"klarna":[["2026-09-21",2]]},
   "devold": {"trumf":[["2026-09-22",6.2]]},
-  "gameseal": {"klarna":[["2026-09-24",2]]}
+  "gameseal": {"klarna":[["2026-09-24",2]]},
+  "steamery": {"sas-online-shopping":[["2026-09-24",50]]},
+  "aarke": {"sas-online-shopping":[["2026-09-24",50]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},
@@ -673,7 +675,7 @@
   "kungsangen": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "kutts": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "kopbarnvagn": {"sas-online-shopping-se":[["2026-09-21",25]]},
-  "lamp24": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3]]},
+  "lamp24": {"sas-online-shopping-se":[["2026-09-21",25],["2026-09-24",50]],"klarna-se":[["2026-09-21",3]]},
   "lampan": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "lampconcept": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "lampemesteren": {"sas-online-shopping-se":[["2026-09-21",25]]},
@@ -958,7 +960,9 @@
   "zwilling": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3]]},
   "onskefoto": {"sas-online-shopping-se":[["2026-09-21",50]],"klarna-se":[["2026-09-21",3.5]]},
   "layered": {"klarna-se":[["2026-09-21",3.5]]},
-  "gameseal": {"klarna-se":[["2026-09-24",2]]}
+  "gameseal": {"klarna-se":[["2026-09-24",2]]},
+  "steamery": {"sas-online-shopping-se":[["2026-09-24",50]]},
+  "aarke": {"sas-online-shopping-se":[["2026-09-24",50]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},
