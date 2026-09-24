@@ -12,8 +12,7 @@
     "utvidelse": "node scripts/bygg-utvidelse.mjs",
     "ikoner": "node scripts/lag-ikoner.mjs",
     "kortbilder": "node scripts/hent-kortbilder.mjs",
-    "build:enkeltfil": "npm run build && node scripts/bygg-enkeltfil.mjs",
-    "reiselogoer": "node scripts/hent-reiselogoer.mjs"
+    "build:enkeltfil": "npm run build && node scripts/bygg-enkeltfil.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

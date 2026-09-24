@@ -17,16 +17,10 @@ const kategorier = await les('../src/data/kategorier.json');
 const kort = await les('../src/data/cards.json');
 const historikk = await les('../src/data/history.json');
 const { kampanjer: partnerkampanjer } = await les('../src/data/kampanjer.json');
-const reise = await les('../src/data/reise.json');
 
 const SPRAK = {
   NO: {
     sti: 'no',
-    reiseTittel: 'EuroBonus-poeng på leiebil og erstatning for forsinket fly | Pointmaxing',
-    reiseTekst: 'Avis og Sixt gir fra 1 000 EuroBonus-poeng per leie. Over 3 timer forsinket fly kan gi 250–600 € i erstatning – krev selv hos SAS eller la en tjeneste gjøre det.',
-    leiebil: 'Leiebil',
-    forsinketFly: 'Forsinket fly',
-    perLeie: 'poeng per leie',
     lang: 'nb',
     locale: 'nb-NO',
     poeng: 'poeng',
@@ -62,11 +56,6 @@ const SPRAK = {
   },
   SE: {
     sti: 'se',
-    reiseTittel: 'EuroBonus-poäng på hyrbil och ersättning för försenat flyg | Pointmaxing',
-    reiseTekst: 'Avis och Sixt ger från 1 000 EuroBonus-poäng per hyra. Mer än 3 timmar försenat flyg kan ge 250–600 € i ersättning – kräv själv hos SAS eller låt en tjänst göra det.',
-    leiebil: 'Hyrbil',
-    forsinketFly: 'Försenat flyg',
-    perLeie: 'poäng per hyra',
     lang: 'sv',
     locale: 'sv-SE',
     poeng: 'poäng',
@@ -102,11 +91,6 @@ const SPRAK = {
   },
   DK: {
     sti: 'dk',
-    reiseTittel: 'EuroBonus-point på lejebil og erstatning for forsinket fly | Pointmaxing',
-    reiseTekst: 'Avis og Sixt giver fra 1.000 EuroBonus-point pr. leje. Mere end 3 timer forsinket fly kan give 250–600 € i erstatning – kræv selv hos SAS eller lad en tjeneste gøre det.',
-    leiebil: 'Lejebil',
-    forsinketFly: 'Forsinket fly',
-    perLeie: 'point pr. leje',
     lang: 'da',
     locale: 'da-DK',
     poeng: 'point',
@@ -262,20 +246,6 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   const kortILand = kort.filter((k) => k.land.includes(land));
   await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${fmt.format(k.prisPerMnd)} kr/${sprak.lang === 'sv' ? 'mån' : 'mnd'}</li>`).join('')}</ul></main>` }));
   urler.push(kortUrl);
-  const reiseUrl = `${DOMENE}/${sprak.sti}/reise`;
-  const fly = reise.flyforsinkelse;
-  const tjeneste = fly.tjeneste[land];
-  await skriv(
-    `${sprak.sti}/reise`,
-    side({
-      lang: sprak.lang,
-      tittel: sprak.reiseTittel,
-      beskrivelse: sprak.reiseTekst,
-      url: reiseUrl,
-      kropp: `<main><h1>${escape(sprak.reiseTittel.split(' | ')[0])}</h1><h2>${escape(sprak.leiebil)}</h2><ul>${reise.leiebil.map((p) => `<li><a href="${escape(p.lenke[land])}" rel="noreferrer">${escape(p.navn)}</a>: ${fmt.format(p.poeng)} ${escape(sprak.perLeie)}. ${escape(p.detaljer[land])}</li>`).join('')}</ul><h2>${escape(sprak.forsinketFly)}</h2><p>${escape(sprak.reiseTekst.split('. ')[1] ?? '')}</p><ul>${fly.belop.map((b) => `<li>${fmt.format(b.euro)} €</li>`).join('')}</ul><p><a href="${escape(fly.selv[land])}" rel="noreferrer">SAS</a>${tjeneste ? ` · <a href="${escape(tjeneste.lenke)}" rel="noreferrer">${escape(tjeneste.navn)}</a> (${tjeneste.honorar} %)` : ''}</p></main>`,
-    }),
-  );
-  urler.push(reiseUrl);
 
   // Ukens beste: flest poeng nå, økninger siste 7 dager, kampanjer som utløper innen 7 dager.
   const hist = historikk[land] ?? {};

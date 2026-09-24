@@ -172,39 +172,4 @@ export interface Datasett {
   butikker: Record<Land, Butikk[]>;
   historikk: Historikk;
   kampanjer: Partnerkampanje[];
-  reise: Reisedata;
-}
-
-/** Tekster som `scripts/sjekk-kort.mjs` ser etter hver dag, per side. */
-export type Sjekkliste = Record<string, string[]>;
-
-/** Leiebilselskap som gir EuroBonus-poeng per leie (src/data/reise.json). */
-export interface Reisepartner {
-  id: string;
-  navn: string;
-  logo: string;
-  /** Poeng per leie for vanlige medlemmer. */
-  poeng: number;
-  detaljer: Record<Land, string>;
-  lenke: Record<Land, string>;
-  kilde: string;
-  /** null når siden stenger for skript – da sjekkes den for hånd. */
-  sjekk: Sjekkliste | null;
-  annonse: boolean;
-}
-
-export interface Flyforsinkelse {
-  /** EU-forordning 261/2004: erstatning etter flydistanse; `id` er tekstnøkkelen for distansen. */
-  belop: { euro: number; id: 'flyKort' | 'flyMiddels' | 'flyLang' }[];
-  kilde: string;
-  /** SAS' eget skjema – gratis. */
-  selv: Record<Land, string>;
-  /** Tjeneste som fører saken mot et honorar i prosent av erstatningen. */
-  tjeneste: Record<Land, { navn: string; logo: string; lenke: string; honorar: number; kilde: string; sjekk: Sjekkliste | null; annonse: boolean }>;
-}
-
-export interface Reisedata {
-  sistVerifisert: string;
-  leiebil: Reisepartner[];
-  flyforsinkelse: Flyforsinkelse;
 }
