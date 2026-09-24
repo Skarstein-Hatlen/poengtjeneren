@@ -26,7 +26,7 @@ Pointmaxing er ikke tilknyttet SAS, Trumf eller Klarna.
 **Språk:** Norsk (bokmål)
 **Nettsted:** https://pointmaxing.no
 **Personvernerklæring:** https://pointmaxing.no/personvern
-**Støtte:** kjetil.skarstein-hatlen@hotmail.no
+**Støtte:** kjetil@inora.no
 
 ## Personvern-fanen i konsollen
 

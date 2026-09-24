@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import analyse from '../data/analyse.json';
 
-const KONTAKT = 'kjetil.skarstein-hatlen@hotmail.no';
+const KONTAKT = 'kjetil@inora.no';
 const DATO = '24.09.2026';
 
 /** Personvern for nettsiden og utvidelsen. Kort, fordi det er lite å fortelle: vi samler ikke inn noe. */

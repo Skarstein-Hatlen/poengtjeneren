@@ -12,7 +12,7 @@ interface Props {
 }
 
 const LAND: Land = 'NO';
-const KONTAKT = { navn: 'Kjetil Skarstein-Hatlen', epost: 'kjetil.skarstein-hatlen@hotmail.no' };
+const KONTAKT = { navn: 'Kjetil Skarstein-Hatlen', epost: 'kjetil@inora.no' };
 /** Butikksatsen eksemplene regner med – den Klarna-feltet starter med. */
 const EKSEMPEL_SATS = 3;
 
@@ -287,7 +287,6 @@ export default function KlarnaSide({ data, idag }: Props) {
         <ul className="forslag">
           <li>Fast beløp per aktivert Plus, Premium og Max via sporbar lenke.</li>
           <li>Lenkene står der valget tas: «Handle via Klarna» i hver butikk, søknadslenkene på Kort-siden og linjen i Google-søk.</li>
-          <li>Alternativt fast månedspris for plasseringen. Tall på besøk og klikk deler vi gjerne.</li>
         </ul>
         <p className="kontakt">
           <a className="knapp" href={`mailto:${KONTAKT.epost}?subject=Pointmaxing%20og%20Klarna`}>
