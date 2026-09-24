@@ -25,6 +25,7 @@ export const TEKSTER = {
   butikk: { nb: 'Butikk', sv: 'Butik', da: 'Butik' },
   sokButikk: { nb: 'Søk butikk', sv: 'Sök butik', da: 'Søg butik' },
   alle: { nb: 'Alle {n} →', sv: 'Alla {n} →', da: 'Alle {n} →' },
+  visFaerre: { nb: 'Vis færre', sv: 'Visa färre', da: 'Vis færre' },
   kort: { nb: 'Kort', sv: 'Kort', da: 'Kort' },
   ingen: { nb: 'Ingen', sv: 'Inget', da: 'Ingen' },
   annet: { nb: 'Annet', sv: 'Annat', da: 'Andet' },

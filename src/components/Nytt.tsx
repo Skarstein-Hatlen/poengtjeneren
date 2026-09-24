@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Butikk, ButikkSats, Land, Maling, Partnerkampanje, Program } from '../data/types';
 import { dagerTekst, tekst } from '../i18n';
 import { gjeldendeSats } from '../lib/butikker';
@@ -22,8 +23,12 @@ interface Props {
 
 const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(v)} %` : `${fmtTall(v)} p`);
 
+/** Så mange av «Andre kampanjer» vises før «Alle N →». */
+const ANDRE_SYNLIGE = 8;
+
 /** Kampanjer som pågår og satser som nylig endret seg – grunnen til å komme tilbake. */
 export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, onUkens }: Props) {
+  const [alleAndre, setAlleAndre] = useState(false);
   const kampanjer = finnKampanjer(butikker, programmer, idag);
   const endringer = finnEndringer(butikker, programmer, historikk, idag);
   const opp = endringer.filter((e) => e.til > e.fra);
@@ -61,15 +66,24 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
   );
 
   // Kroner i Trumf-bonus vekslet til EuroBonus med programmets sats; poeng vises som de er.
+  const kurs = (k: Partnerkampanje) => programmer.find((x) => x.id === k.program)?.konverteringer[0]?.poengPerKrone ?? null;
+  const kampanjePoeng = (k: Partnerkampanje): number => {
+    if (k.verdi === null || k.enhet === '%') return 0;
+    if (k.enhet === 'poeng') return k.verdi;
+    return k.verdi * (kurs(k) ?? 0);
+  };
   const kampanjeTall = (k: Partnerkampanje): string => {
     if (k.verdi === null) return '';
     if (k.enhet === 'poeng') return `${fmtPoeng(k.verdi)} p`;
     if (k.enhet === '%') return `${fmtTall(k.verdi)} %`;
-    const p = programmer.find((x) => x.id === k.program);
-    const kurs = p?.konverteringer[0]?.poengPerKrone;
-    return kurs ? `${fmtPoeng(k.verdi * kurs)} p` : `${fmtPoeng(k.verdi)} kr`;
+    const x = kurs(k);
+    return x ? `${fmtPoeng(k.verdi * x)} p` : `${fmtPoeng(k.verdi)} kr`;
   };
-  const kampanjeFarge = (k: Partnerkampanje): string => programmer.find((x) => x.id === k.program)?.farge ?? 'var(--line)';
+  // Partnere og kort utenfor programmene får SAS-blått.
+  const kampanjeFarge = (k: Partnerkampanje): string => programmer.find((x) => x.id === k.program)?.farge ?? 'var(--navy)';
+  // Flest poeng øverst; de største vises, resten bak «Alle N →».
+  const andre = [...partnerkampanjer].sort((a, b) => kampanjePoeng(b) - kampanjePoeng(a));
+  const andreSynlige = alleAndre ? andre : andre.slice(0, ANDRE_SYNLIGE);
 
   return (
     <section className="nytt">
@@ -92,11 +106,11 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
         </>
       )}
 
-      {partnerkampanjer.length > 0 && (
+      {andre.length > 0 && (
         <>
           <h2 className="etikett">{tekst(land, 'andreKampanjer')}</h2>
           <ul className="nytt-liste">
-            {partnerkampanjer.map((k) => (
+            {andreSynlige.map((k) => (
               <li key={k.id}>
                 <a className="nytt-lenke" href={k.url} target="_blank" rel="noreferrer">
                   {k.logo ? (
@@ -119,6 +133,13 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
               </li>
             ))}
           </ul>
+          {andre.length > ANDRE_SYNLIGE && (
+            <p className="nytt-mer">
+              <button type="button" className="lenke" onClick={() => setAlleAndre((v) => !v)} aria-expanded={alleAndre}>
+                {alleAndre ? tekst(land, 'visFaerre') : tekst(land, 'alle', { n: andre.length })}
+              </button>
+            </p>
+          )}
         </>
       )}
 

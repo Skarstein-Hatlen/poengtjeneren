@@ -239,8 +239,10 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   // Nytt og Kort
   const kampanjer = liste.flatMap((b) => prog.filter((p) => b.satser[p.id]?.kampanje && b.satser[p.id].kampanje.slutt >= idag).map((p) => ({ b, p })));
   const nyttUrl = `${DOMENE}/${sprak.sti}/nytt`;
-  const andre = partnerkampanjer.filter((k) => k.land === land && (!k.slutt || k.slutt >= idag));
-  await skriv(`${sprak.sti}/nytt`, side({ lang: sprak.lang, tittel: sprak.nyttTittel, beskrivelse: sprak.nyttTekst, url: nyttUrl, kropp: `<main>${andre.length ? `<h2>${escape(sprak.andreKampanjer)}</h2><ul>${andre.map((k) => `<li><a href="${escape(k.url)}" rel="noreferrer">${escape(k.tittel)}</a> – ${escape(k.tekst)}</li>`).join('')}</ul>` : ''}<h1>${escape(sprak.kampanjerNaa)}</h1><ul>${kampanjer.map(({ b, p }) => `<li><a href="${lenkeTil(b)}">${escape(b.navn)}</a>: ${escape(p.kortnavn)} ${escape(satsTekst(p, b.satser[p.id]))}</li>`).join('')}</ul></main>` }));
+  const andre = partnerkampanjer
+    .filter((k) => k.land === land && (!k.slutt || k.slutt >= idag))
+    .sort((a, b) => (b.enhet === 'poeng' ? b.verdi : 0) - (a.enhet === 'poeng' ? a.verdi : 0));
+  await skriv(`${sprak.sti}/nytt`, side({ lang: sprak.lang, tittel: sprak.nyttTittel, beskrivelse: sprak.nyttTekst, url: nyttUrl, kropp: `<main>${andre.length ? `<h2>${escape(sprak.andreKampanjer)}</h2><ul>${andre.map((k) => `<li><a href="${escape(k.url)}" rel="noreferrer">${escape(k.tittel)}</a>${k.enhet === 'poeng' && k.verdi ? `: ${fmt.format(k.verdi)} ${sprak.poeng}` : ''} – ${escape(k.tekst)}</li>`).join('')}</ul>` : ''}<h1>${escape(sprak.kampanjerNaa)}</h1><ul>${kampanjer.map(({ b, p }) => `<li><a href="${lenkeTil(b)}">${escape(b.navn)}</a>: ${escape(p.kortnavn)} ${escape(satsTekst(p, b.satser[p.id]))}</li>`).join('')}</ul></main>` }));
   urler.push(nyttUrl);
   const kortUrl = `${DOMENE}/${sprak.sti}/kort`;
   const kortILand = kort.filter((k) => k.land.includes(land));

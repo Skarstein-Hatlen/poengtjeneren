@@ -2323,3 +2323,9 @@ footer .bunnlenker {
     grid-column: 3;
   }
 }
+
+/* Nytt: «Alle N →» under Andre kampanjer */
+.nytt-mer {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
