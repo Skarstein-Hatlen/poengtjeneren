@@ -10,6 +10,7 @@ import Kortvelger from './components/Kortvelger';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import Personvern from './components/Personvern';
+import Reise from './components/Reise';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
 import Utvidelse from './components/Utvidelse';
@@ -29,15 +30,16 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'reise' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
 const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', personvern: 'personvern', utvidelse: 'utvidelse' };
-const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', ukens: 'ukens' };
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', reise: 'reise', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
   { visning: 'butikker', nokkel: 'navButikker' },
   { visning: 'nytt', nokkel: 'navNytt' },
   { visning: 'kort', nokkel: 'navKort' },
+  { visning: 'reise', nokkel: 'navReise' },
 ];
 
 interface Rute {
@@ -76,7 +78,7 @@ const standardKort = (land: Land): string => {
 
 /**
  * Adressen styrer land, visning og butikk: /no (kalkulator), /no/kicks (butikk),
- * /no/butikker/mote (katalog), /no/nytt, /no/kort. Da kan alt deles og finnes av søkemotorer.
+ * /no/butikker/mote (katalog), /no/nytt, /no/kort, /no/reise. Da kan alt deles og finnes av søkemotorer.
  * /klarna er partnersiden til Klarna (norske tall).
  */
 function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
@@ -616,6 +618,21 @@ export default function App() {
             onUkens={() => gaaTil('ukens')}
           />
         </div>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'reise') {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <Reise land={t.land} reise={data.reise} />
+        </div>
+        <footer>
+          {bunnlenker}
+          <p className="signatur">{T('signatur')}</p>
+        </footer>
       </div>
     );
   }

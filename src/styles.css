@@ -2323,3 +2323,102 @@ footer .bunnlenker {
     grid-column: 3;
   }
 }
+
+/* Reise: leiebil og forsinket fly – samme rader som kortlisten, med logo først */
+.reise .etikett.reise-fly {
+  margin-top: 30px;
+}
+
+.kortliste ul.med-logo li {
+  grid-template-columns: 88px 84px minmax(0, 1fr) auto;
+}
+
+.reise-logo {
+  display: flex;
+  align-items: center;
+  width: 88px;
+  height: 36px;
+}
+
+.reise-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.reise-belop {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 14px;
+}
+
+.reise-belop div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reise-belop dd {
+  margin: 0;
+  font-family: var(--font-tall);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.reise-belop dt {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.reise-forbehold {
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+
+.kortliste .reise-forbehold a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+}
+
+.kortliste .reise-forbehold a:hover {
+  background: none;
+  color: var(--ink);
+}
+
+@media (max-width: 479px) {
+  .kortliste ul.med-logo li {
+    grid-template-columns: 64px 72px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .kortliste ul.med-logo .reise-logo {
+    width: 64px;
+    height: 28px;
+  }
+
+  .kortliste ul.med-logo .kortliste-poeng {
+    font-size: 26px;
+  }
+
+  .kortliste ul.med-logo a {
+    grid-column: 3;
+  }
+
+  .reise-belop dd {
+    font-size: 26px;
+  }
+
+  .nav {
+    gap: 14px;
+  }
+}

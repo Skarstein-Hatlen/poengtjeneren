@@ -1,6 +1,7 @@
 // Daglig sjekk av kortene: henter utstedernes egne sider og ser at prisen og poengsatsen vi
 // oppgir fortsatt står der (`sjekk`-tekstene i cards.json), og at Klarnas medlemskapspriser
-// fortsatt står på medlemskapssidene. Skriver et avvik per linje og avslutter med feilkode
+// fortsatt står på medlemskapssidene. Reise-siden sjekkes på samme måte (`sjekk` i reise.json:
+// side → tekster), med leiebilpoengene og honoraret til flyforsinkelsestjenestene. Skriver et avvik per linje og avslutter med feilkode
 // hvis noe mangler – den daglige jobben lager da et issue.
 
 import { readFile } from 'node:fs/promises';
@@ -8,6 +9,7 @@ import { readFile } from 'node:fs/promises';
 const les = async (sti) => JSON.parse(await readFile(new URL(sti, import.meta.url), 'utf8'));
 const kort = await les('../src/data/cards.json');
 const { programmer } = await les('../src/data/programs.json');
+const reise = await les('../src/data/reise.json');
 
 // Hvert medlemskap har sin egen side hos Klarna: /no/medlemskap/plus/, /premium/, /max/ osv.
 const KLARNA_SIDER = { klarna: 'https://www.klarna.com/no/medlemskap/', 'klarna-se': 'https://www.klarna.com/se/medlemskap/', 'klarna-dk': 'https://www.klarna.com/dk/medlemskab/' };
@@ -23,12 +25,16 @@ const normaliser = (s) =>
     .replace(/\s+/g, ' ')
     .toLowerCase();
 
+// Noen sider (Avis) avviser ukjente nettlesere med 403 – da prøves det én gang til som vanlig Chrome.
+const CHROME = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36';
+const hentSide = async (url, ua) => fetch(url, { headers: { 'user-agent': ua, 'accept-language': 'nb-NO,sv-SE,da-DK' } });
 const sider = new Map();
 async function side(url) {
   if (!sider.has(url)) {
     sider.set(
       url,
-      fetch(url, { headers: { 'user-agent': 'Mozilla/5.0 (pointmaxing.no)', 'accept-language': 'nb-NO,sv-SE,da-DK' } })
+      hentSide(url, 'Mozilla/5.0 (pointmaxing.no)')
+        .then((svar) => (svar.status === 403 ? hentSide(url, CHROME) : svar))
         .then(async (svar) => (svar.ok ? normaliser(await svar.text()) : Promise.reject(new Error(`HTTP ${svar.status}`))))
         .catch((e) => ({ feil: e.message })),
     );
@@ -61,6 +67,22 @@ for (const [id, base] of Object.entries(KLARNA_SIDER)) {
     sjekket++;
     if (tekst.feil) avvik.push(`${id}: fikk ikke hentet ${url} (${tekst.feil})`);
     else if (!tekst.includes(`${n.prisPerMnd} kr`)) avvik.push(`${id}: fant ikke prisen «${n.prisPerMnd} kr» for ${n.navn} på ${url}`);
+  }
+}
+
+// Reise: leiebilselskapene og flyforsinkelsestjenestene.
+const reisesjekker = [...reise.leiebil.map((p) => [p.id, p.sjekk]), ...Object.entries(reise.flyforsinkelse.tjeneste).map(([land, t]) => [`${t.navn} (${land})`, t.sjekk])];
+for (const [id, sjekk] of reisesjekker) {
+  for (const [url, snutter] of Object.entries(sjekk ?? {})) {
+    const tekst = await side(url);
+    if (tekst.feil) {
+      avvik.push(`${id}: fikk ikke hentet ${url} (${tekst.feil})`);
+      continue;
+    }
+    for (const snutt of snutter) {
+      sjekket++;
+      if (!tekst.includes(normaliser(snutt))) avvik.push(`${id}: fant ikke «${snutt}» på ${url}`);
+    }
   }
 }
 
