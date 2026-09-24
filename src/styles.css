@@ -2181,11 +2181,14 @@ footer .bunnlenker {
   place-items: center;
   width: 36px;
   height: 23px;
-  border-radius: 3px;
-  overflow: hidden;
   flex: none;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25);
-  background: #fff;
+}
+
+/* «Ingen kort»: en tom kortramme */
+.kv-bilde.kv-tom {
+  border: 1px dashed currentColor;
+  border-radius: 3px;
+  opacity: 0.45;
 }
 
 .kv-bilde img {
@@ -2200,6 +2203,7 @@ footer .bunnlenker {
   height: 100%;
   display: grid;
   place-items: center;
+  border-radius: 3px;
   color: #fff;
   font-style: normal;
   font-family: var(--font-tall);

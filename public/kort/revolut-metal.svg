@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 856 540" width="856" height="540">
+<defs>
+<linearGradient id="flate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#55585e" stop-opacity="1"/><stop offset="0.4" stop-color="#303236" stop-opacity="1"/><stop offset="0.7" stop-color="#1f2124" stop-opacity="1"/><stop offset="1" stop-color="#44474c" stop-opacity="1"/></linearGradient>
+<linearGradient id="glans" x1="0" y1="0" x2="1" y2="0.55"><stop offset="0" stop-color="#fff" stop-opacity="0.16"/><stop offset="0.42" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0.07200000000000001"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="solv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f8f9" stop-opacity="1"/><stop offset="0.5" stop-color="#bfc3c8" stop-opacity="1"/><stop offset="1" stop-color="#eceef0" stop-opacity="1"/></linearGradient>
+<pattern id="borstet" width="8" height="4" patternUnits="userSpaceOnUse"><rect width="8" height="1" fill="#fff" opacity="0.07"/><rect y="2" width="8" height="1" fill="#000" opacity="0.025"/></pattern>
+<mask id="form"><rect width="856" height="540" rx="34" fill="#fff"/></mask>
+
+</defs>
+<g mask="url(#form)">
+<rect width="856" height="540" fill="url(#flate)"/>
+<rect width="856" height="540" fill="url(#borstet)"/>
+<text x="62" y="118" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="72" fill="#e7e8ea" text-anchor="start" letter-spacing="-1">Revolut</text><g transform="translate(62 200)"><rect width="106" height="82" rx="15" fill="url(#solv)" stroke="#000" stroke-opacity="0.18" stroke-width="2"/><path d="M0 28h36M0 54h36M70 28h36M70 54h36M36 0v82M70 0v82M36 41h34" fill="none" stroke="#000" stroke-opacity="0.28" stroke-width="3"/></g>
+<rect width="856" height="540" fill="url(#glans)"/>
+<rect x="1" y="1" width="854" height="538" rx="33" fill="none" stroke="#000" stroke-opacity="0.14" stroke-width="2"/>
+</g>
+</svg>

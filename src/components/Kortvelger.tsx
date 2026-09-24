@@ -10,6 +10,8 @@ interface Valg {
   under?: string;
   bilde?: string;
   farge?: string;
+  /** «Ingen kort»: tom kortramme i stedet for bilde. */
+  tom?: boolean;
   aktiv: boolean;
   velg: () => void;
 }
@@ -29,7 +31,8 @@ const BILDER = kortbilder as Record<string, string>;
 const INGEN = 'ingen';
 const ANNET = 'annet';
 
-function Bilde({ valg }: { valg: Pick<Valg, 'navn' | 'bilde' | 'farge'> }) {
+function Bilde({ valg }: { valg: Valg }) {
+  if (valg.tom) return <span className="kv-bilde kv-tom" aria-hidden="true" />;
   return (
     <span className="kv-bilde" aria-hidden="true">
       {valg.bilde ? <img src={valg.bilde} alt="" /> : <i style={{ background: valg.farge ?? 'var(--navy)' }}>{valg.navn.charAt(0)}</i>}
@@ -70,7 +73,7 @@ export default function Kortvelger({ land, kortId, kortListe, programmer, nivaFo
         id: `${p.id}-kort:${n.id}`,
         navn: `${p.kortnavn} ${n.navn}`,
         under: tekst(land, 'krPerMnd', { n: fmtTall(n.prisPerMnd) }),
-        bilde: BILDER[`${p.id}-kort`],
+        bilde: BILDER[`${p.id}-kort-${n.id}`] ?? BILDER[`${p.id}-kort`],
         farge: p.farge,
         aktiv: kortId === `${p.id}-kort` && nivaFor(p) === n.id,
         velg: () => onNiva(p, n.id),
@@ -80,15 +83,16 @@ export default function Kortvelger({ land, kortId, kortListe, programmer, nivaFo
   for (const k of kortListe) {
     valg.push({ id: k.id, navn: k.navn, under: `${fmtTall(k.poengPer100)} p/100 kr`, bilde: BILDER[k.id], aktiv: kortId === k.id, velg: () => onKort(k.id) });
   }
-  valg.push({ id: INGEN, navn: tekst(land, 'ingenKort'), aktiv: kortId === INGEN, velg: () => onKort(INGEN) });
+  valg.push({ id: INGEN, navn: tekst(land, 'ingenKort'), tom: true, aktiv: kortId === INGEN, velg: () => onKort(INGEN) });
 
-  const gjeldende = valg.find((v) => v.aktiv) ?? (kortId === ANNET ? { navn: tekst(land, 'annet') } : valg[valg.length - 1]);
+  const gjeldende = valg.find((v) => v.aktiv) ?? null;
+  const navn = gjeldende?.navn ?? (kortId === ANNET ? tekst(land, 'annet') : tekst(land, 'ingenKort'));
 
   return (
     <div className={`kortvelger${apen ? ' apen' : ''}`} ref={rot}>
       <button type="button" className="kortvelger-knapp" aria-haspopup="listbox" aria-expanded={apen} aria-label={tekst(land, 'velgKort')} onClick={() => setApen((v) => !v)}>
-        {'bilde' in gjeldende || 'farge' in gjeldende ? <Bilde valg={gjeldende as Valg} /> : null}
-        <span className="kortvelger-navn">{gjeldende.navn}</span>
+        {gjeldende && <Bilde valg={gjeldende} />}
+        <span className="kortvelger-navn">{navn}</span>
         <span className="kortvelger-pil" aria-hidden="true" />
       </button>
       {apen && (
