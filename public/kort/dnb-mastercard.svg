@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 856 540" width="856" height="540">
+<defs>
+<linearGradient id="flate" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="1"/><stop offset="1" stop-color="#e9ecec" stop-opacity="1"/></linearGradient>
+<linearGradient id="glans" x1="0" y1="0" x2="1" y2="0.55"><stop offset="0" stop-color="#fff" stop-opacity="0.14"/><stop offset="0.42" stop-color="#fff" stop-opacity="0"/><stop offset="0.7" stop-color="#fff" stop-opacity="0.06300000000000001"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="solv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f8f9" stop-opacity="1"/><stop offset="0.5" stop-color="#bfc3c8" stop-opacity="1"/><stop offset="1" stop-color="#eceef0" stop-opacity="1"/></linearGradient>
+<pattern id="borstet" width="8" height="4" patternUnits="userSpaceOnUse"><rect width="8" height="1" fill="#fff" opacity="0.07"/><rect y="2" width="8" height="1" fill="#000" opacity="0.025"/></pattern>
+<mask id="form"><rect width="856" height="540" rx="34" fill="#fff"/></mask>
+<pattern id="skra" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="1.4" height="14" fill="#2b2b2b" opacity="0.05"/></pattern>
+</defs>
+<g mask="url(#form)">
+<rect width="856" height="540" fill="url(#flate)"/>
+<rect width="856" height="540" fill="url(#borstet)"/>
+<rect width="856" height="540" fill="url(#skra)"/><text x="62" y="146" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="300" font-size="112" fill="#007272" text-anchor="start" letter-spacing="4">DNB</text><text x="794" y="100" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="500" font-size="34" fill="#2b2b2b" text-anchor="end">Credit</text><g transform="translate(66 262)"><rect width="106" height="82" rx="15" fill="url(#solv)" stroke="#000" stroke-opacity="0.18" stroke-width="2"/><path d="M0 28h36M0 54h36M70 28h36M70 54h36M36 0v82M70 0v82M36 41h34" fill="none" stroke="#000" stroke-opacity="0.28" stroke-width="3"/></g><g transform="translate(640 402)"><circle cx="44" cy="44" r="44" fill="#eb001b"/><circle cx="101.19999999999999" cy="44" r="44" fill="#f79e1b"/><path d="M72.6 10.6A44 44 0 0 1 72.6 77.4A44 44 0 0 1 72.6 10.6Z" fill="#ff5f00"/></g>
+<rect width="856" height="540" fill="url(#glans)"/>
+<rect x="1" y="1" width="854" height="538" rx="33" fill="none" stroke="#000" stroke-opacity="0.14" stroke-width="2"/>
+</g>
+</svg>

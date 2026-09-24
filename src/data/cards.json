@@ -266,6 +266,46 @@
     ]
   },
   {
+    "id": "dnb-mastercard-upgrade",
+    "land": [
+      "NO"
+    ],
+    "navn": "DNB Mastercard Upgrade",
+    "utsteder": "DNB",
+    "poengPer100": 10,
+    "prisPerMnd": 59,
+    "status": "verifisert",
+    "kilde": "https://www.dnb.no/kort/kredittkort/mastercard/upgrade",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "Tillegg til DNB Mastercard (også Pluss og Ung). 15 poeng per 100 kr i utenlandsk valuta, 3 000 velkomstpoeng. Poeng på maks 500 000 kr per år.",
+    "tak": 500000,
+    "annonse": false,
+    "sjekk": [
+      "Tjen 10 poeng i norsk valuta og 15 poeng i utenlandsk valuta per 100 brukte kroner",
+      "Pris per måned 59 kroner inkl. mva"
+    ]
+  },
+  {
+    "id": "dnb-saga-mastercard-upgrade",
+    "land": [
+      "NO"
+    ],
+    "navn": "DNB SAGA Mastercard Upgrade",
+    "utsteder": "DNB",
+    "poengPer100": 15,
+    "prisPerMnd": 169,
+    "status": "verifisert",
+    "kilde": "https://www.dnb.no/kort/kredittkort/mastercard/upgrade",
+    "sistVerifisert": "2026-09-24",
+    "merknad": "For SAGA-kunder i DNB. 20 poeng per 100 kr i utenlandsk valuta, 10 000 velkomstpoeng og inntil 30 000 nivåpoeng per år. Poeng på maks 700 000 kr per år.",
+    "tak": 700000,
+    "annonse": false,
+    "sjekk": [
+      "Tjen 15 poeng i norsk valuta og 20 poeng i utenlandsk valuta per 100 brukte kroner",
+      "Pris per måned 169 kroner inkl. mva"
+    ]
+  },
+  {
     "id": "se-sas-amex-classic",
     "land": [
       "SE"

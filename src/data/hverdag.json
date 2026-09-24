@@ -24,6 +24,23 @@
         "hvor": "Talkmore",
         "prosent": 4
       }
-    ]
+    ],
+    "kort": {
+      "navn": "Trumf Kredittkort",
+      "utsteder": "NorgesGruppen Finans",
+      "prisPerMnd": 0,
+      "dagligvare": 2,
+      "dagligvareMedTrumfPay": 3,
+      "mobil": 5,
+      "lenke": "https://www.trumf.no/trumf-kredittkort",
+      "kilde": "https://www.trumf.no/trumf-kredittkort/fordeler-med-trumf-kredittkort",
+      "sistVerifisert": "2026-09-24",
+      "sjekk": [
+        "2 % Trumf-bonus hos MENY, SPAR, KIWI",
+        "5 % Trumf-bonus på mobilregningen hos Talkmore",
+        "1 % ekstra Trumf-bonus når du betaler med Trumf Kredittkort i Trumf Pay",
+        "0,- i årsgebyr"
+      ]
+    }
   }
 }

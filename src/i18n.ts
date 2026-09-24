@@ -157,6 +157,12 @@ export const TEKSTER = {
   medTrumfPay: { nb: '{p} % med Trumf Pay = {n} p/100 kr', sv: '{p} % med Trumf Pay = {n} p/100 kr', da: '{p} % med Trumf Pay = {n} p/100 kr' },
   medTrumfPayAr: { nb: '{n} med Trumf Pay', sv: '{n} med Trumf Pay', da: '{n} med Trumf Pay' },
   plussKort: { nb: '+ {n} med {kort}', sv: '+ {n} med {kort}', da: '+ {n} med {kort}' },
+  trumfKortLinje: {
+    nb: '{p} % på dagligvare · {pay} % med Trumf Pay = {n} p/100 kr · {mobil} % hos Talkmore',
+    sv: '{p} % på dagligvaror · {pay} % med Trumf Pay = {n} p/100 kr · {mobil} % hos Talkmore',
+    da: '{p} % på dagligvarer · {pay} % med Trumf Pay = {n} p/100 kr · {mobil} % hos Talkmore',
+  },
+  ekstraMedKortet: { nb: '+{n} poeng/år mot uten kortet', sv: '+{n} poäng/år jämfört med utan kortet', da: '+{n} point/år i forhold til uden kortet' },
   hverdagKilde: { nb: 'Satser fra trumf.no, sjekket {dato}', sv: 'Satser från trumf.no, kontrollerade {dato}', da: 'Satser fra trumf.no, tjekket {dato}' },
   // Følg
   folg: { nb: 'Følg {butikk}', sv: 'Följ {butikk}', da: 'Følg {butikk}' },

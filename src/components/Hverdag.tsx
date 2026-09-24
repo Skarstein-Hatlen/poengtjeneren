@@ -12,11 +12,27 @@ interface Rad {
   merknad?: string;
 }
 
+/** Trumf Kredittkort: mer Trumf-bonus på dagligvare og Talkmore, ingen bonus på vanlige kjøp – derfor her og ikke i kortlisten. */
+interface Trumfkort {
+  navn: string;
+  prisPerMnd: number;
+  /** Trumf-bonus i prosent med kortet i NorgesGruppens butikker, og med kortet i Trumf Pay. */
+  dagligvare: number;
+  dagligvareMedTrumfPay: number;
+  /** Trumf-bonus på mobilregningen hos Talkmore med kortet. */
+  mobil: number;
+  lenke: string;
+  kilde: string;
+  sistVerifisert: string;
+  sjekk?: string[];
+}
+
 interface Hverdagsdata {
   program: string;
   kilde: string;
   sistVerifisert: string;
   rader: Rad[];
+  kort?: Trumfkort;
 }
 
 interface Props {
@@ -41,6 +57,9 @@ export default function Hverdag({ land, programmer, kort, matPerMnd, onMatPerMnd
   const per100 = (prosent: number) => prosent * perKrone;
   const mat = parseTall(matPerMnd);
   const kortPoeng = kort && kort.poengPer100 > 0 ? (mat * 12 * kort.poengPer100) / 100 : 0;
+  // Det Trumf Kredittkort gir i tillegg på maten i året, målt mot vanlig Trumf-bonus.
+  const basisMat = data.rader.find((r) => r.id === 'dagligvare')?.prosent ?? 0;
+  const ekstraMedKort = data.kort ? ((mat * 12 * (data.kort.dagligvare - basisMat)) / 100) * perKrone : 0;
 
   return (
     <section className="hverdag">
@@ -97,6 +116,31 @@ export default function Hverdag({ land, programmer, kort, matPerMnd, onMatPerMnd
             </li>
           );
         })}
+        {data.kort && (
+          <li key="trumf-kredittkort">
+            <span className="kortliste-poeng">
+              {fmtPer100(per100(data.kort.dagligvare))}
+              <small>p/100 kr</small>
+            </span>
+            <span className="kortliste-tekst">
+              <span className="kortliste-navn">
+                <a href={data.kort.lenke} target="_blank" rel="noreferrer">
+                  {data.kort.navn}
+                </a>{' '}
+                <span className="muted">· {tekst(land, 'krPerMnd', { n: fmtTall(data.kort.prisPerMnd) })}</span>
+              </span>
+              <span className="muted">
+                {tekst(land, 'trumfKortLinje', {
+                  p: fmtTall(data.kort.dagligvare),
+                  pay: fmtTall(data.kort.dagligvareMedTrumfPay),
+                  n: fmtPer100(per100(data.kort.dagligvareMedTrumfPay)),
+                  mobil: fmtTall(data.kort.mobil),
+                })}
+              </span>
+              {mat > 0 && ekstraMedKort > 0 && <span className="kortliste-netto">{tekst(land, 'ekstraMedKortet', { n: fmtPoeng(ekstraMedKort) })}</span>}
+            </span>
+          </li>
+        )}
       </ul>
       <p className="fotnote">
         <a href={data.kilde} target="_blank" rel="noreferrer">

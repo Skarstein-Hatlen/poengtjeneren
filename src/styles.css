@@ -2329,3 +2329,13 @@ footer .bunnlenker {
   margin: 8px 0 0;
   font-size: 13px;
 }
+
+/* Hverdag: Trumf Kredittkort – navnet lenker til søknaden */
+.hverdag-liste .kortliste-navn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hverdag-liste .kortliste-navn a:hover {
+  text-decoration: underline;
+}

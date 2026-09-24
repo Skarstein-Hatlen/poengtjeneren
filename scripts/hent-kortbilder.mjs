@@ -93,6 +93,24 @@ const sasMastercard = (flate, bue, lys) =>
 const revolut = (flate, farge, glans = 0.25) =>
   kort({ flate, glans, innhold: [tekst('Revolut', { x: 62, y: 118, storrelse: 72, farge, vekt: 700, sperring: -1 }), brikke(62, 200)].join('') });
 
+/** DNB Mastercard: DNB øverst til venstre, «Credit» til høyre, fine skrålinjer, brikke og Mastercard. Kortet er
+ * stående hos DNB – her lagt ned i samme format som de andre kortene. */
+const dnb = (flate, logo, credit, etikett = null) =>
+  kort({
+    flate,
+    retning: [0.6, 1],
+    glans: 0.14,
+    defs: `<pattern id="skra" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="1.4" height="14" fill="${credit}" opacity="0.05"/></pattern>`,
+    innhold: [
+      `<rect width="${B}" height="${H}" fill="url(#skra)"/>`,
+      tekst('DNB', { x: 62, y: 146, storrelse: 112, farge: logo, vekt: 300, sperring: 4 }),
+      tekst('Credit', { x: 794, y: 100, storrelse: 34, farge: credit, anker: 'end' }),
+      etikett ? tekst(etikett, { x: 66, y: 208, storrelse: 32, farge: logo, vekt: 500, sperring: 6 }) : '',
+      brikke(66, 262),
+      mastercard(640, 402, 44),
+    ].join(''),
+  });
+
 const TEGNET = {
   'klarna-max.svg': klarna([[0, '#f1d3c5'], [0.3, '#dcae9b'], [0.55, '#c99985'], [0.8, '#dcb2a0'], [1, '#efcfc1']], '#fbf3ef', 'rgba(120,66,48,0.32)', 0.28),
   'klarna-premium.svg': klarna([[0, '#f3f4f6'], [0.3, '#d3d6da'], [0.55, '#b9bec4'], [0.8, '#d0d3d8'], [1, '#eef0f2']], '#ffffff', 'rgba(60,66,75,0.3)', 0.3),
@@ -114,6 +132,8 @@ const TEGNET = {
   'revolut-premium.svg': revolut([[0, '#1c2466'], [0.55, '#2f3fa6'], [1, '#5a45c9']], '#ffffff', 0.2),
   'revolut-metal.svg': revolut([[0, '#55585e'], [0.4, '#303236'], [0.7, '#1f2124'], [1, '#44474c']], '#e7e8ea', 0.16),
   'revolut-ultra.svg': revolut([[0, '#f0f1f3'], [0.35, '#ced2d7'], [0.6, '#b3b8bf'], [1, '#e7e9ec']], '#23262b', 0.3),
+  'dnb-mastercard.svg': dnb([[0, '#ffffff'], [1, '#e9ecec']], '#007272', '#2b2b2b'),
+  'dnb-saga-gold.svg': dnb([[0, '#2c2b29'], [0.5, '#141413'], [1, '#2a2825']], '#c9a55a', '#e8e6e1', 'SAGA Gold'),
 };
 
 // ---------- Amex' egen kortkunst ----------
@@ -157,6 +177,8 @@ const KORT = {
   'revolut-premium': 'revolut-premium.svg',
   'revolut-metal': 'revolut-metal.svg',
   'revolut-ultra': 'revolut-ultra.svg',
+  'dnb-mastercard-upgrade': 'dnb-mastercard.svg',
+  'dnb-saga-mastercard-upgrade': 'dnb-saga-gold.svg',
 };
 // Klarna-kortet følger medlemskapet: «klarna-kort-max» osv. for hvert land.
 const { programmer } = JSON.parse(await readFile(new URL('src/data/programs.json', rot), 'utf8'));

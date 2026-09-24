@@ -8,6 +8,7 @@ import { readFile } from 'node:fs/promises';
 const les = async (sti) => JSON.parse(await readFile(new URL(sti, import.meta.url), 'utf8'));
 const kort = await les('../src/data/cards.json');
 const { programmer } = await les('../src/data/programs.json');
+const hverdag = await les('../src/data/hverdag.json');
 
 // Hvert medlemskap har sin egen side hos Klarna: /no/medlemskap/plus/, /premium/, /max/ osv.
 const KLARNA_SIDER = { klarna: 'https://www.klarna.com/no/medlemskap/', 'klarna-se': 'https://www.klarna.com/se/medlemskap/', 'klarna-dk': 'https://www.klarna.com/dk/medlemskab/' };
@@ -65,6 +66,21 @@ for (const [id, base] of Object.entries(KLARNA_SIDER)) {
     sjekket++;
     if (tekst.feil) avvik.push(`${id}: fikk ikke hentet ${url} (${tekst.feil})`);
     else if (!tekst.includes(`${n.prisPerMnd} kr`)) avvik.push(`${id}: fant ikke prisen «${n.prisPerMnd} kr» for ${n.navn} på ${url}`);
+  }
+}
+
+// Hverdag: Trumf Kredittkort (bonus på dagligvare og Talkmore, gratis).
+for (const h of Object.values(hverdag)) {
+  const k = h.kort;
+  if (!k?.sjekk?.length) continue;
+  const tekst = await side(k.kilde);
+  if (tekst.feil) {
+    avvik.push(`${k.navn}: fikk ikke hentet ${k.kilde} (${tekst.feil})`);
+    continue;
+  }
+  for (const snutt of k.sjekk) {
+    sjekket++;
+    if (!tekst.includes(normaliser(snutt))) avvik.push(`${k.navn}: fant ikke «${snutt}» på ${k.kilde}`);
   }
 }
 
