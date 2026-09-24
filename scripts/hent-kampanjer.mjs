@@ -24,7 +24,7 @@ const tekstAv = (html) =>
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
     .replace(/&([a-z]+);/gi, (m, navn) => ENTITETER[navn] ?? m)
-    .replace(/­/g, '')
+    .replace(/\u00ad/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -67,46 +67,82 @@ async function hent(url) {
   return svar.text();
 }
 
-// Partnerlogoer, hentet én gang og lagret som 240×96 webp under public/logos/kampanjer (som butikklogoene).
+// Logoer. Håndplukkede, offisielle logoer ligger i public/logos/partnere (src/data/partnerlogoer.json, med kilde).
+// Andre hentes én gang og lagres i public/logos/kampanjer: SAS-feedens logo bare når den er en ekte logo (gjennomsiktig
+// bakgrunn – feeden har ellers hvite flater og skjermbilder av skjemaer), ellers butikklogoen vår (ikke de som kom fra
+// SAS) eller merkevarens ikon i Klarnas katalog med samme navn. Uten treff viser siden forbokstaven.
 const LOGO_MAPPE = new URL('../public/logos/kampanjer/', import.meta.url);
-const LOGOER = {
-  talkmore: 'https://talkmore.no/-/media/logoer/talkmore-logo/talkmore_logo.svg?la=en&h=2084&w=2750&hash=04D4B02DC546B75394CA9E4948671724',
-  fjordkraft: ['https://www.fjordkraft.no/favicons/apple-icon-180x180.png', 'https://www.fjordkraft.no/favicons/apple-icon-152x152.png', 'https://www.fjordkraft.no/favicons/apple-icon-72x72.png'],
-  amex: 'https://www.aexp-static.com/cdaas/one/statics/axp-static-assets/1.8.0/package/dist/img/logos/dls-logo-bluebox-solid.svg',
-  klarna: ['https://www.klarna.com/apple-touch-icon.png', 'https://www.klarna.com/favicon-32x32.png'],
-  godtlevert: 'https://www.godtlevert.no/apple-touch-icon.png',
-  linas: 'https://www.linasmatkasse.se/apple-touch-icon.png',
-  retnemt: 'https://www.retnemt.dk/apple-touch-icon.png',
-  verisure: 'https://www.verisure.no/sites/no/files/flmngr/drupal/media/apple-touch-icon-logo.png',
-  tryg: 'https://tryg.dk/sites/default/files/tryg-fav-icon.png',
-  trygghansa: 'https://www.trygghansa.se/assets/trygghansa/favicons/apple-touch-icon.png',
-  lunar: 'https://www.lunar.app/apple-touch-icon.png',
-  fortum: 'https://www.fortum.com/se/el/icon.png?icon.2b5fqojlysho7.png',
-};
-async function hentLogo(nokkel, kilder) {
-  if (!kilder) return null;
-  const fil = new URL(`${nokkel}.webp`, LOGO_MAPPE);
-  const sti = `/logos/kampanjer/${nokkel}.webp`;
-  try {
-    await access(fil);
-    return sti;
-  } catch {
-    /* ikke hentet ennå */
-  }
-  await mkdir(LOGO_MAPPE, { recursive: true });
-  for (const url of [kilder].flat()) {
-    try {
-      const svar = await fetch(url, { headers: HODER, signal: AbortSignal.timeout(30000) });
-      if (!svar.ok) continue;
-      const original = Buffer.from(await svar.arrayBuffer());
-      const bilde = await sharp(original, { density: 300 }).ensureAlpha().trim({ threshold: 12 }).toBuffer();
-      await sharp(bilde).resize(240, 96, { fit: 'inside', withoutEnlargement: false }).webp({ quality: 88 }).toFile(fileURLToPath(fil));
-      return sti;
-    } catch (e) {
-      console.error(`logo ${nokkel}: ${url} – ${e.message}`);
+const norm = (s) => s.toLowerCase().replace(/&amp;/g, '&').replace(/\.(no|se|dk|com)\b/g, '').replace(/[^a-z0-9æøåäö+]+/g, '');
+const partnerlogoer = JSON.parse(await readFile(new URL('../src/data/partnerlogoer.json', import.meta.url), 'utf8'));
+const PARTNERLOGO = new Map(Object.values(partnerlogoer).flatMap((l) => l.navn.map((n) => [norm(n), l.fil])));
+const BUTIKKLOGO = new Map();
+{
+  const butikker = JSON.parse(await readFile(new URL('../src/data/stores.json', import.meta.url), 'utf8'));
+  const manifest = JSON.parse(await readFile(new URL('../public/logos/manifest.json', import.meta.url), 'utf8'));
+  for (const [land, liste] of Object.entries(butikker.land)) {
+    for (const b of liste) {
+      if (!b.logo?.startsWith('/logos/') || /loyaltykey/.test(manifest[`${land}/${b.id}`] ?? '')) continue;
+      BUTIKKLOGO.set(`${land}:${norm(b.navn)}`, b.logo);
+      if (!BUTIKKLOGO.has(`*:${norm(b.navn)}`)) BUTIKKLOGO.set(`*:${norm(b.navn)}`, b.logo);
     }
   }
-  return null;
+}
+const finnes = (url) => access(url).then(() => true, () => false);
+
+/** Laster ned, trimmer og lagrer som 240×96 webp. `ekte` krever gjennomsiktig bakgrunn (SAS-feedens logoer). */
+async function lagreLogo(id, url, { ekte = false } = {}) {
+  try {
+    const svar = await fetch(url, { headers: HODER, signal: AbortSignal.timeout(30000) });
+    if (!svar.ok) return null;
+    const original = Buffer.from(await svar.arrayBuffer());
+    if (ekte) {
+      const { data } = await sharp(original).toColourspace('srgb').ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      let gjennomsiktig = 0;
+      for (let i = 3; i < data.length; i += 4) if (data[i] < 128) gjennomsiktig++;
+      if (gjennomsiktig / (data.length / 4) < 0.4) return null;
+    }
+    await mkdir(LOGO_MAPPE, { recursive: true });
+    const bilde = await sharp(original, { density: 300 }).ensureAlpha().trim({ threshold: 12 }).toBuffer();
+    await sharp(bilde).resize(240, 96, { fit: 'inside' }).webp({ quality: 88 }).toFile(fileURLToPath(new URL(`${id}.webp`, LOGO_MAPPE)));
+    return `/logos/kampanjer/${id}.webp`;
+  } catch (e) {
+    console.error(`logo ${id}: ${url} – ${e.message}`);
+    return null;
+  }
+}
+
+const klarnaIkoner = new Map();
+/** Merkevarens ikon i Klarnas katalog når navnet er likt (søket finner også merker uten cashback). */
+async function klarnaIkon(land, navn) {
+  if (klarnaIkoner.has(navn)) return klarnaIkoner.get(navn);
+  let ikon = null;
+  for (const l of [land, ...['NO', 'SE', 'DK'].filter((x) => x !== land)]) {
+    try {
+      const j = JSON.parse(await hent(`https://www.klarna.com/${l.toLowerCase()}/api/store-edge-rest/public/stores/directory/search/${l}?q=${encodeURIComponent(navn)}&offset=0&size=10`));
+      const treff = (j.stores ?? []).find((s) => norm(s.displayName) === norm(navn));
+      ikon = treff ? ((treff.icons ?? []).find((i) => i.type === 'X3')?.url ?? treff.icons?.[0]?.url ?? null) : null;
+    } catch {
+      /* prøv neste land */
+    }
+    if (ikon) break;
+  }
+  klarnaIkoner.set(navn, ikon);
+  return ikon;
+}
+
+/** Riktig logo for et tilbud – se rekkefølgen over. */
+async function logoFor(id, land, partner, sasLogo = null) {
+  const fast = PARTNERLOGO.get(norm(partner));
+  if (fast) return fast;
+  if (await finnes(new URL(`${id}.webp`, LOGO_MAPPE))) return `/logos/kampanjer/${id}.webp`;
+  if (sasLogo) {
+    const logo = await lagreLogo(id, sasLogo, { ekte: true });
+    if (logo) return logo;
+  }
+  const butikk = BUTIKKLOGO.get(`${land}:${norm(partner)}`) ?? BUTIKKLOGO.get(`*:${norm(partner)}`);
+  if (butikk) return butikk;
+  const ikon = await klarnaIkon(land, partner);
+  return ikon ? lagreLogo(id, ikon) : null;
 }
 
 /** Setningen rundt et treff, som sitat. */
@@ -123,12 +159,11 @@ const N = String.raw`(\d[\d .]*\d|\d)`;
  * Tilbud på en partners egen EuroBonus-side. `re` finner poengtallet (første gruppe), `vilkar` er en kort
  * fast tekst på landets språk, og `må` er tekster som må stå på siden for at vilkårsteksten fortsatt stemmer.
  */
-const partnerside = ({ id, land, program = 'eurobonus', partner, logo, url, re, vilkar, må = [] }) => ({
+const partnerside = ({ id, land, program = 'eurobonus', partner, url, re, vilkar, må = [] }) => ({
   id,
   land,
   program,
   partner,
-  logo,
   url,
   finn(tekst) {
     const m = tekst.match(new RegExp(re, 'i'));
@@ -149,7 +184,6 @@ const KILDER = [
     land: 'NO',
     program: 'trumf',
     partner: 'Talkmore',
-    logo: 'talkmore',
     url: 'https://talkmore.no/privat/abonnement/partner/trumf',
     finn(tekst) {
       const m = tekst.match(/få (\d[\d .]*),?-? i Trumf-velkomstgave/i) ?? tekst.match(/(\d[\d .]*) (?:kr|kroner) i Trumf-(?:bonus|velkomstgave)/i);
@@ -163,7 +197,6 @@ const KILDER = [
     land: 'NO',
     program: 'trumf',
     partner: 'Fjordkraft',
-    logo: 'fjordkraft',
     url: 'https://www.fjordkraft.no/trumf/',
     finn(tekst) {
       const m = tekst.match(/(\d[\d .]*) (?:kr|kroner|,-) i (?:Trumf-)?velkomst(?:bonus|gave)/i) ?? tekst.match(/velkomst(?:bonus|gave) på (\d[\d .]*) (?:kr|kroner)/i) ?? tekst.match(/få (\d[\d .]*) (?:kr|kroner)[^.]{0,40}Trumf/i);
@@ -186,7 +219,6 @@ const KILDER = [
     land,
     program: kort,
     partner: navn,
-    logo: 'amex',
     url,
     raa: true,
     finn(html) {
@@ -216,7 +248,6 @@ const KILDER = [
       land,
       program,
       partner: `Klarna ${niva[0].toUpperCase()}${niva.slice(1)}`,
-      logo: 'klarna',
       url: `${base}${niva}/`,
       finn(tekst) {
         const m = tekst.match(/(?:få|get|opptil|op til|upp till|tjen|tjäna)\s[^.]{0,50}?(\d[\d .]{3,7})\s*(?:SAS\s+)?EuroBonus[- ]?(?:bonus)?(?:poeng|poäng|point)\b(?![^.]*per 100)/i);
@@ -229,51 +260,51 @@ const KILDER = [
   // Partnernes egne EuroBonus-sider. Verifisert 24.09.2026.
   // Matkasser (samme konsern i tre land): poeng etter fjerde levering, sluttdato står på siden.
   partnerside({
-    id: 'godtlevert-eurobonus', land: 'NO', partner: 'Godtlevert', logo: 'godtlevert',
+    id: 'godtlevert-eurobonus', land: 'NO', partner: 'Godtlevert',
     url: 'https://www.godtlevert.no/kampanje/eurobonus',
     re: `Få ${N} EuroBonus-poeng etter din fjerde levering`,
     vilkar: 'Nye kunder, etter fjerde levering. Deretter 250 poeng per matkasse.', må: [/deretter 250 poeng/i],
   }),
   partnerside({
-    id: 'linas-eurobonus', land: 'SE', partner: 'Linas Matkasse', logo: 'linas',
+    id: 'linas-eurobonus', land: 'SE', partner: 'Linas Matkasse',
     url: 'https://www.linasmatkasse.se/kampanj/eurobonus',
     re: `Få ${N} EuroBonus-poäng efter din fjärde leverans`,
     vilkar: 'Nya kunder, efter fjärde leveransen. Därefter 250 poäng per matkasse.', må: [/därefter 250 p/i],
   }),
   partnerside({
-    id: 'retnemt-eurobonus', land: 'DK', partner: 'Retnemt', logo: 'retnemt',
+    id: 'retnemt-eurobonus', land: 'DK', partner: 'Retnemt',
     url: 'https://www.retnemt.dk/kampagne/sas-eurobonus',
     re: `Få ${N} EuroBonus-point efter din fjerde levering`,
     vilkar: 'Nye kunder, efter fjerde levering. Derefter 250 point per måltidskasse.', må: [/derefter får du 250 point/i],
   }),
   // Boligalarm
   partnerside({
-    id: 'verisure-no-eurobonus', land: 'NO', partner: 'Verisure', logo: 'verisure',
+    id: 'verisure-no-eurobonus', land: 'NO', partner: 'Verisure',
     url: 'https://www.verisure.no/sas',
     re: `${N} EuroBonus-bonuspoeng`,
     vilkar: 'Når du bestiller boligalarm.', må: [/boligalarm/i],
   }),
   partnerside({
-    id: 'verisure-se-eurobonus', land: 'SE', partner: 'Verisure', logo: 'verisure',
+    id: 'verisure-se-eurobonus', land: 'SE', partner: 'Verisure',
     url: 'https://www.verisure.se/funnel/standalone/sas/',
     re: `få ${N} EuroBonus-poäng`,
     vilkar: 'Nya kunder som beställer hemlarm, plus 2 000 kr rabatt.', må: [/nya kunder/i, /\+ ?2 ?000 kr rabatt/i],
   }),
   partnerside({
-    id: 'verisure-dk-eurobonus', land: 'DK', partner: 'Verisure', logo: 'verisure',
+    id: 'verisure-dk-eurobonus', land: 'DK', partner: 'Verisure',
     url: 'https://www.verisure.dk/partner/SAS',
     re: `Optjen ${N} bonuspoint, når du bestiller`,
     vilkar: 'Nye alarmabonnementer med 24/7 eller Totalsikring.', må: [/24\/7/, /Totalsikring/i],
   }),
   // Forsikring
   partnerside({
-    id: 'tryg-no-eurobonus', land: 'NO', partner: 'Tryg', logo: 'tryg',
+    id: 'tryg-no-eurobonus', land: 'NO', partner: 'Tryg',
     url: 'https://www.tryg.no/partnere/sas-eurobonus',
     re: `kan få inntil ${N} EuroBonus-poeng`,
     vilkar: 'Nye kunder via rådgiver. Flere forsikringer gir flere poeng.', må: [/rådgiver/i],
   }),
   partnerside({
-    id: 'tryg-dk-eurobonus', land: 'DK', partner: 'Tryg', logo: 'tryg',
+    id: 'tryg-dk-eurobonus', land: 'DK', partner: 'Tryg',
     url: 'https://tryg.dk/partner/eurobonus',
     re: `op til ${N} EuroBonus-point`,
     vilkar: 'Nye kunder. Flere forsikringer giver flere point.', må: [/ny kunde/i],
@@ -283,7 +314,6 @@ const KILDER = [
     land: 'SE',
     program: 'eurobonus',
     partner: 'Trygg-Hansa',
-    logo: 'trygghansa',
     url: 'https://www.trygghansa.se/samarbeten/sas-eurobonus',
     finn(tekst) {
       // Poeng per forsikringstype, rett fra siden: «Villa 10 000 EuroBonus-poäng» osv.
@@ -300,19 +330,19 @@ const KILDER = [
   },
   // Kort
   partnerside({
-    id: 'lunar-no-eurobonus', land: 'NO', program: 'lunar', partner: 'Lunar', logo: 'lunar',
+    id: 'lunar-no-eurobonus', land: 'NO', program: 'lunar', partner: 'Lunar',
     url: 'https://www.lunar.app/no/privat/sas-eurobonus',
     re: `Velkomstbonus: Få ${N} Bonuspoeng`,
     vilkar: 'Nye Lunar-kunder. Behold kortet i 3 måneder og bruk minst 15 000 kr.', må: [/3 måneder/i, /15[ .]?000/],
   }),
   partnerside({
-    id: 'lunar-se-eurobonus', land: 'SE', program: 'lunar', partner: 'Lunar', logo: 'lunar',
+    id: 'lunar-se-eurobonus', land: 'SE', program: 'lunar', partner: 'Lunar',
     url: 'https://www.lunar.se/privat/sas-eurobonus',
     re: `Välkomstbonus: Få ${N} Bonuspoäng`,
     vilkar: 'Nya Lunar-kunder. Behåll kortet i 3 månader och handla för minst 15 000 kr.', må: [/3 månader/i, /15[ .]?000/],
   }),
   partnerside({
-    id: 'lunar-dk-eurobonus', land: 'DK', program: 'lunar', partner: 'Lunar', logo: 'lunar',
+    id: 'lunar-dk-eurobonus', land: 'DK', program: 'lunar', partner: 'Lunar',
     url: 'https://www.lunar.app/dk/privat/sas-eurobonus',
     re: `Velkomstbonus: Tilmeld dig og få ${N} Bonuspoint`,
     vilkar: 'Nye Lunar-kunder. Behold kortet i 3 måneder og brug mindst 15.000 kr.', må: [/3 måneder/i, /15[ .]?000/],
@@ -355,7 +385,7 @@ const KILDER = [
     vilkar: 'Når du køber et Fri Tale-abonnement.', må: [/Fri Tale/i],
   }),
   partnerside({
-    id: 'fortum-se-eurobonus', land: 'SE', partner: 'Fortum', logo: 'fortum',
+    id: 'fortum-se-eurobonus', land: 'SE', partner: 'Fortum',
     url: 'https://www.fortum.com/se/el/teckna-elavtal/kampanj/elavtal-med-extra-sas-eurobonus-poang',
     re: `Du får hela ${N} Eurobonus-poäng under första året`,
     vilkar: 'Första året med nytt elavtal. Därefter 250 poäng per månad.', må: [/250 EuroBonus-bonuspoäng per månad/i],
@@ -383,7 +413,7 @@ for (const k of KILDER) {
     const funn = k.finn(k.raa ? html : tekst);
     if (!funn) continue;
     const slutt = sluttDato(funn.tekst) ?? sluttDato(tekst);
-    const logo = k.logo ? await hentLogo(k.logo, LOGOER[k.logo]) : null;
+    const logo = await logoFor(k.id, k.land, k.partner);
     ut.push({ id: k.id, land: k.land, program: k.program, partner: k.partner, ...funn, slutt, url: k.url, ...(logo ? { logo } : {}) });
   } catch (e) {
     console.error(`${k.id}: ${e.message}`);
@@ -414,7 +444,7 @@ for (const [land, sprak, sti, program, nye] of SAS) {
       if (/\bny(?:e|a)?\s+kund/i.test(vilkar)) deler.push(nye);
       if (aktiv) deler.push(`normalt ${fmt(land, s.points)}`);
       const id = `sas-${land.toLowerCase()}-${s.slug}`;
-      const logo = await hentLogo(id, s.logo || s.image_url || null);
+      const logo = await logoFor(id, land, navn, s.logo);
       ut.push({
         id,
         land,
@@ -444,7 +474,7 @@ for (const [program, land, sti] of [['klarna', 'NO', 'no'], ['klarna-se', 'SE', 
         const sats = s.cashbackDiscount?.discountLabel?.body ?? '';
         const id = `${program}-butikk-${s.merchantId ?? s.displayName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         const ikon = (s.icons ?? []).find((i) => i.type === 'X3')?.url ?? s.icons?.[0]?.url;
-        const logo = await hentLogo(id, ikon);
+        const logo = PARTNERLOGO.get(norm(s.displayName)) ?? ((await finnes(new URL(`${id}.webp`, LOGO_MAPPE))) ? `/logos/kampanjer/${id}.webp` : ikon ? await lagreLogo(id, ikon) : null);
         ut.push({
           id,
           land,

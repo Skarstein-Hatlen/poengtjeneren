@@ -1,0 +1,347 @@
+{
+  "verisure": {
+    "fil": "/logos/partnere/verisure.webp",
+    "navn": [
+      "Verisure"
+    ],
+    "kilde": "https://www.verisure.no/sites/no/files/flmngr/drupal/media/apple-touch-icon-logo.png"
+  },
+  "tryg": {
+    "fil": "/logos/partnere/tryg.webp",
+    "navn": [
+      "Tryg"
+    ],
+    "kilde": "https://www.tryg.no/themes/custom/tryg/logo.svg"
+  },
+  "trygghansa": {
+    "fil": "/logos/partnere/trygghansa.webp",
+    "navn": [
+      "Trygg-Hansa"
+    ],
+    "kilde": "https://www.trygghansa.se/assets/trygghansa/favicons/apple-touch-icon.png"
+  },
+  "godtlevert": {
+    "fil": "/logos/partnere/godtlevert.webp",
+    "navn": [
+      "Godtlevert"
+    ],
+    "kilde": "https://www.godtlevert.no/"
+  },
+  "linas": {
+    "fil": "/logos/partnere/linas.webp",
+    "navn": [
+      "Linas Matkasse"
+    ],
+    "kilde": "https://www.linasmatkasse.se/"
+  },
+  "retnemt": {
+    "fil": "/logos/partnere/retnemt.webp",
+    "navn": [
+      "Retnemt"
+    ],
+    "kilde": "https://ggfrontendassets.azureedge.net/publicassets/retnemt/retnemt-logo-v2.svg"
+  },
+  "lunar": {
+    "fil": "/logos/partnere/lunar.webp",
+    "navn": [
+      "Lunar"
+    ],
+    "kilde": "https://www.lunar.app/apple-touch-icon.png"
+  },
+  "fortum": {
+    "fil": "/logos/partnere/fortum.webp",
+    "navn": [
+      "Fortum",
+      "Fortum Strøm"
+    ],
+    "kilde": "Klarna SE: Fortum"
+  },
+  "fjordkraft": {
+    "fil": "/logos/partnere/fjordkraft.webp",
+    "navn": [
+      "Fjordkraft"
+    ],
+    "kilde": "https://www.fjordkraft.no/"
+  },
+  "talkmore": {
+    "fil": "/logos/partnere/talkmore.webp",
+    "navn": [
+      "Talkmore"
+    ],
+    "kilde": "https://talkmore.no/-/media/logoer/talkmore-logo/talkmore_logo.svg?la=en&h=2084&w=2750&hash=04D4B02DC546B75394CA9E4948671724"
+  },
+  "amex": {
+    "fil": "/logos/partnere/amex.webp",
+    "navn": [
+      "SAS Amex Classic",
+      "SAS Amex Premium",
+      "SAS Amex Elite"
+    ],
+    "kilde": "https://www.aexp-static.com/cdaas/one/statics/axp-static-assets/1.8.0/package/dist/img/logos/dls-logo-bluebox-solid.svg"
+  },
+  "sas": {
+    "fil": "/logos/partnere/sas.webp",
+    "navn": [
+      "SAS EuroBonus Business",
+      "SAS EuroBonus World Mastercard",
+      "SAS EuroBonus Mastercard Premium"
+    ],
+    "kilde": "https://upload.wikimedia.org/wikipedia/commons/3/33/Scandinavian_Airlines_logo.svg"
+  },
+  "tre": {
+    "fil": "/logos/partnere/tre.webp",
+    "navn": [
+      "Tre",
+      "3",
+      "3 Internet"
+    ],
+    "kilde": "Klarna SE: Tre"
+  },
+  "cdon": {
+    "fil": "/logos/partnere/cdon.webp",
+    "navn": [
+      "CDON.COM",
+      "CDON"
+    ],
+    "kilde": "Klarna SE: CDON"
+  },
+  "bokus": {
+    "fil": "/logos/partnere/bokus.webp",
+    "navn": [
+      "Bokus Play",
+      "Bokus"
+    ],
+    "kilde": "Klarna SE: Bokus"
+  },
+  "fabel": {
+    "fil": "/logos/partnere/fabel.webp",
+    "navn": [
+      "Fabel"
+    ],
+    "kilde": "https://fabel.no/"
+  },
+  "boxer": {
+    "fil": "/logos/partnere/boxer.webp",
+    "navn": [
+      "Boxer"
+    ],
+    "kilde": "https://www.boxer.se/"
+  },
+  "zmarta": {
+    "fil": "/logos/partnere/zmarta.webp",
+    "navn": [
+      "Zmarta försäkring",
+      "Zmarta"
+    ],
+    "kilde": "https://www.zmarta.se/"
+  },
+  "sejfa": {
+    "fil": "/logos/partnere/sejfa.webp",
+    "navn": [
+      "Sejfa Hemförsäkring",
+      "Sejfa"
+    ],
+    "kilde": "https://sejfa.se/"
+  },
+  "oscar": {
+    "fil": "/logos/partnere/oscar.webp",
+    "navn": [
+      "Oscar Biludlejning"
+    ],
+    "kilde": "https://hejoscar.dk/"
+  },
+  "bookie": {
+    "fil": "/logos/partnere/bookie.webp",
+    "navn": [
+      "Bookie"
+    ],
+    "kilde": "https://www.bookie.nu/_ipx/_/bookie-logotype.svg"
+  },
+  "ishavskraft": {
+    "fil": "/logos/partnere/ishavskraft.webp",
+    "navn": [
+      "Ishavskraft strøm",
+      "Ishavskraft"
+    ],
+    "kilde": "https://www.ishavskraft.no/"
+  },
+  "dalakraft": {
+    "fil": "/logos/partnere/dalakraft.webp",
+    "navn": [
+      "Dalakraft"
+    ],
+    "kilde": "https://www.dalakraft.se/"
+  },
+  "memira": {
+    "fil": "/logos/partnere/memira.webp",
+    "navn": [
+      "Memira"
+    ],
+    "kilde": "memira.se (ikon)"
+  },
+  "dackskiftarna": {
+    "fil": "/logos/partnere/dackskiftarna.webp",
+    "navn": [
+      "Däckskiftarna"
+    ],
+    "kilde": "dackskiftarna.se (ikon)"
+  },
+  "baerumenergi": {
+    "fil": "/logos/partnere/baerumenergi.webp",
+    "navn": [
+      "Bærum Energi"
+    ],
+    "kilde": "https://baerumenergi.no/wp-content/uploads/2023/06/logo-6.png"
+  },
+  "calstop": {
+    "fil": "/logos/partnere/calstop.webp",
+    "navn": [
+      "Calstop"
+    ],
+    "kilde": "https://www.calstop.no/images/logo.svg?dpl=dpl_8DermsQWo5C8UjcNrNaqo5Rr41nP"
+  },
+  "ice": {
+    "fil": "/logos/partnere/ice.webp",
+    "navn": [
+      "ICE"
+    ],
+    "kilde": "https://www.ice.no/images/ice-logo.svg"
+  },
+  "kinoklubb": {
+    "fil": "/logos/partnere/kinoklubb.webp",
+    "navn": [
+      "Kinoklubb"
+    ],
+    "kilde": "https://www.kinoklubb.no/img/favicon/apple-touch-icon.png"
+  },
+  "maxulin": {
+    "fil": "/logos/partnere/maxulin.webp",
+    "navn": [
+      "Maxulin"
+    ],
+    "kilde": "https://www.maxulin.no/4920af/contentassets/cada3387b1b549eda35518c9b23ea6b0/maxulin-favicon.svg.svg"
+  },
+  "nitecaps": {
+    "fil": "/logos/partnere/nitecaps.webp",
+    "navn": [
+      "NiteCaps"
+    ],
+    "kilde": "https://www.nitecaps.no/icon.png?icon.3ebjoiicbb38f.png"
+  },
+  "plussmobil": {
+    "fil": "/logos/partnere/plussmobil.webp",
+    "navn": [
+      "PlussMobil"
+    ],
+    "kilde": "https://www.plussmobil.no/themes/custom/plussmobil/favicon.svg"
+  },
+  "strim": {
+    "fil": "/logos/partnere/strim.webp",
+    "navn": [
+      "Strim"
+    ],
+    "kilde": "https://www.strim.no/favicon-32x32.png"
+  },
+  "trivelia": {
+    "fil": "/logos/partnere/trivelia.webp",
+    "navn": [
+      "Trivelia"
+    ],
+    "kilde": "https://www.trivelia.no/apple-icon.png?apple-icon.3hxig-ezkt03c.png"
+  },
+  "trondermobil": {
+    "fil": "/logos/partnere/trondermobil.webp",
+    "navn": [
+      "Trøndermobil"
+    ],
+    "kilde": "https://www.xn--trndermobil-hgb.no/wp-content/uploads/2024/07/Logo_solid.png"
+  },
+  "bixia": {
+    "fil": "/logos/partnere/bixia.webp",
+    "navn": [
+      "Bixia"
+    ],
+    "kilde": "https://bixia.se/assets/logos/bixia.svg"
+  },
+  "di": {
+    "fil": "/logos/partnere/di.webp",
+    "navn": [
+      "Dagens Industri"
+    ],
+    "kilde": "https://static.bonniernews.se/gcs/di-dise/flamingo/apple-touch-icon-180x180.png"
+  },
+  "molndalenergi": {
+    "fil": "/logos/partnere/molndalenergi.webp",
+    "navn": [
+      "Mölndal Energi"
+    ],
+    "kilde": "https://www.molndalenergi.se/hubfs/Assets/img/logo-molndal-energi.svg"
+  },
+  "mymowo": {
+    "fil": "/logos/partnere/mymowo.webp",
+    "navn": [
+      "MyMOWO"
+    ],
+    "kilde": "https://cdn.mymowo.com/static/images/icons/favicon.png"
+  },
+  "telinet": {
+    "fil": "/logos/partnere/telinet.webp",
+    "navn": [
+      "Telinet"
+    ],
+    "kilde": "https://www.telinet.se/wp-content/uploads/2018/08/favicon.png"
+  },
+  "ase": {
+    "fil": "/logos/partnere/ase.webp",
+    "navn": [
+      "Ase a-kasse"
+    ],
+    "kilde": "https://www.ase.dk/assets/images/favicons/apple-touch-icon.png"
+  },
+  "dandomain": {
+    "fil": "/logos/partnere/dandomain.webp",
+    "navn": [
+      "DanDomain"
+    ],
+    "kilde": "https://dandomain.dk/assets/images/logos/dandomain.svg"
+  },
+  "skagenfood": {
+    "fil": "/logos/partnere/skagenfood.webp",
+    "navn": [
+      "Skagenfood"
+    ],
+    "kilde": "https://skagenfood.dk/_nuxt/icons/icon_512x512.1e4249.png"
+  },
+  "youtv": {
+    "fil": "/logos/partnere/youtv.webp",
+    "navn": [
+      "YouTV"
+    ],
+    "kilde": "https://www.youtv.dk/ (YouSee Play)"
+  },
+  "klarna": {
+    "fil": "/logos/partnere/klarna.webp",
+    "navn": [
+      "Klarna Plus",
+      "Klarna Premium",
+      "Klarna Max"
+    ],
+    "kilde": "https://www.klarna.com/no/ (logo i toppen)"
+  },
+  "saxo": {
+    "fil": "/logos/partnere/saxo.webp",
+    "navn": [
+      "Saxo Premium",
+      "Saxo"
+    ],
+    "kilde": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/ff7a88e2-7d31-4451-aa6e-bebdb897d685/62928c0991d7f87e5866fbb180a74fec"
+  },
+  "petson": {
+    "fil": "/logos/partnere/petson.webp",
+    "navn": [
+      "Petson djurförsäkring",
+      "Petson"
+    ],
+    "kilde": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/dc15e1df-b157-4e0c-8f7b-d29276712ba6/da13222538cca86dfb369bb0520adf19"
+  }
+}
