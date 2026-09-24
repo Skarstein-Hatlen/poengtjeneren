@@ -3,6 +3,7 @@ import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
 import Flagg from './components/Flagg';
+import Flyforsinkelse from './components/Flyforsinkelse';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste, { prisPerMnd } from './components/Kortliste';
@@ -29,15 +30,16 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'flyforsinkelse' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
 const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', personvern: 'personvern', utvidelse: 'utvidelse' };
-const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', ukens: 'ukens' };
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
   { visning: 'butikker', nokkel: 'navButikker' },
   { visning: 'nytt', nokkel: 'navNytt' },
   { visning: 'kort', nokkel: 'navKort' },
+  { visning: 'flyforsinkelse', nokkel: 'navFly' },
 ];
 
 interface Rute {
@@ -76,7 +78,7 @@ const standardKort = (land: Land): string => {
 
 /**
  * Adressen styrer land, visning og butikk: /no (kalkulator), /no/kicks (butikk),
- * /no/butikker/mote (katalog), /no/nytt, /no/kort. Da kan alt deles og finnes av søkemotorer.
+ * /no/butikker/mote (katalog), /no/nytt, /no/kort, /no/flyforsinkelse. Da kan alt deles og finnes av søkemotorer.
  * /klarna er partnersiden til Klarna (norske tall).
  */
 function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
@@ -534,7 +536,8 @@ export default function App() {
         </div>
       </header>
       <nav className="nav" aria-label="Sider">
-        {NAV.map((n) => (
+        {/* Forsinket fly vises bare i land der vi har en avtale med en tjeneste. */}
+        {NAV.filter((n) => n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]).map((n) => (
           <a
             key={n.visning}
             href={stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null)}
@@ -616,6 +619,22 @@ export default function App() {
             onUkens={() => gaaTil('ukens')}
           />
         </div>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'flyforsinkelse' && data.fly.tjeneste[t.land]) {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <Flyforsinkelse land={t.land} fly={data.fly} />
+        </div>
+        <footer>
+          <p>{T('annonseForklaring')}</p>
+          {bunnlenker}
+          <p className="signatur">{T('signatur')}</p>
+        </footer>
       </div>
     );
   }

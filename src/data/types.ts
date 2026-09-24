@@ -172,4 +172,15 @@ export interface Datasett {
   butikker: Record<Land, Butikk[]>;
   historikk: Historikk;
   kampanjer: Partnerkampanje[];
+  fly: Flyforsinkelse;
+}
+
+/** Erstatning for forsinket fly (EU 261/2004) og tjenesten som fører saken, per land (src/data/flyforsinkelse.json). */
+export interface Flyforsinkelse {
+  sistVerifisert: string;
+  kilde: string;
+  /** Erstatning etter flydistanse; `id` er tekstnøkkelen for distansen. */
+  belop: { euro: number; id: 'flyKort' | 'flyMiddels' | 'flyLang' }[];
+  /** Bare land der vi har en avtale – uten tjeneste vises ikke siden. */
+  tjeneste: Partial<Record<Land, { navn: string; logo: string; lenke: string; honorar: number; kilde: string; sjekk: string[] | null; annonse: boolean }>>;
 }

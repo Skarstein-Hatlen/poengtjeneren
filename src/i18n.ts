@@ -21,6 +21,7 @@ export const TEKSTER = {
   navButikker: { nb: 'Butikker', sv: 'Butiker', da: 'Butikker' },
   navNytt: { nb: 'Nytt', sv: 'Nytt', da: 'Nyt' },
   navKort: { nb: 'Kort', sv: 'Kort', da: 'Kort' },
+  navFly: { nb: 'Forsinket fly', sv: 'Försenat flyg', da: 'Forsinket fly' },
   kjopesum: { nb: 'Kjøpesum', sv: 'Köpesumma', da: 'Købesum' },
   butikk: { nb: 'Butikk', sv: 'Butik', da: 'Butik' },
   sokButikk: { nb: 'Søk butikk', sv: 'Sök butik', da: 'Søg butik' },
@@ -56,9 +57,9 @@ export const TEKSTER = {
     da: 'Beløb i {valuta}. Satser ændres – tjek hos programmet, før du handler. Programsatser senest opdateret {dato}.',
   },
   annonseForklaring: {
-    nb: 'Lenker merket «Annonse» gir oss provisjon hvis du søker om kortet. Det påvirker ikke tallene.',
-    sv: 'Länkar märkta «Annons» ger oss provision om du ansöker om kortet. Det påverkar inte siffrorna.',
-    da: 'Links markeret «Annonce» giver os provision, hvis du ansøger om kortet. Det påvirker ikke tallene.',
+    nb: 'Lenker merket «Annonse» gir oss provisjon. Det påvirker ikke tallene.',
+    sv: 'Länkar märkta «Annons» ger oss provision. Det påverkar inte siffrorna.',
+    da: 'Links markeret «Annonce» giver os provision. Det påvirker ikke tallene.',
   },
   signatur: {
     nb: 'Laget i Norge av Kjetil, som selv jakter EuroBonus-poeng. Pointmaxing er ikke tilknyttet SAS, Trumf eller Klarna.',
@@ -210,6 +211,27 @@ export const TEKSTER = {
     nb: 'Trumf gir ingen bonus når du bruker rabattkoder utenfra – velg koden eller poengene.',
     sv: 'Trumf ger ingen bonus när du använder rabattkoder utifrån – välj koden eller poängen.',
     da: 'Trumf giver ingen bonus, når du bruger rabatkoder udefra – vælg koden eller pointene.',
+  },
+  flyIntro: {
+    nb: 'Over 3 timer forsinket eller innstilt? Du kan ha krav på',
+    sv: 'Mer än 3 timmar försenat eller inställt? Du kan ha rätt till',
+    da: 'Mere end 3 timer forsinket eller aflyst? Du kan have krav på',
+  },
+  flyKort: { nb: 'Til og med 1 500 km', sv: 'Upp till 1 500 km', da: 'Op til 1.500 km' },
+  flyMiddels: { nb: '1 500–3 500 km', sv: '1 500–3 500 km', da: '1.500–3.500 km' },
+  flyLang: { nb: 'Over 3 500 km utenfor EU', sv: 'Över 3 500 km utanför EU', da: 'Over 3.500 km uden for EU' },
+  honorar: { nb: 'honorar', sv: 'arvode', da: 'gebyr' },
+  bareVedSeier: { nb: 'Bare hvis de vinner', sv: 'Bara om de vinner', da: 'Kun hvis de vinder' },
+  sendSaken: { nb: 'Send saken', sv: 'Skicka ärendet', da: 'Send sagen' },
+  kravSelvGratis: {
+    nb: 'Du kan også kreve erstatningen selv hos flyselskapet, gratis.',
+    sv: 'Du kan också kräva ersättningen själv hos flygbolaget, gratis.',
+    da: 'Du kan også selv kræve erstatningen hos flyselskabet, gratis.',
+  },
+  flyForbehold: {
+    nb: 'Gjelder ikke ved ekstraordinære omstendigheter, som dårlig vær.',
+    sv: 'Gäller inte vid extraordinära omständigheter, som dåligt väder.',
+    da: 'Gælder ikke ved usædvanlige omstændigheder, som dårligt vejr.',
   },
 } satisfies Record<string, Oversettelse>;
 

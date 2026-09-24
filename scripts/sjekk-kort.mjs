@@ -9,6 +9,7 @@ const les = async (sti) => JSON.parse(await readFile(new URL(sti, import.meta.ur
 const kort = await les('../src/data/cards.json');
 const { programmer } = await les('../src/data/programs.json');
 const hverdag = await les('../src/data/hverdag.json');
+const fly = await les('../src/data/flyforsinkelse.json');
 
 // Hvert medlemskap har sin egen side hos Klarna: /no/medlemskap/plus/, /premium/, /max/ osv.
 const KLARNA_SIDER = { klarna: 'https://www.klarna.com/no/medlemskap/', 'klarna-se': 'https://www.klarna.com/se/medlemskap/', 'klarna-dk': 'https://www.klarna.com/dk/medlemskab/' };
@@ -81,6 +82,20 @@ for (const h of Object.values(hverdag)) {
   for (const snutt of k.sjekk) {
     sjekket++;
     if (!tekst.includes(normaliser(snutt))) avvik.push(`${k.navn}: fant ikke «${snutt}» på ${k.kilde}`);
+  }
+}
+
+// Forsinket fly: honoraret til tjenesten vi lenker til.
+for (const t of Object.values(fly.tjeneste)) {
+  if (!t.sjekk?.length) continue;
+  const tekst = await side(t.kilde);
+  if (tekst.feil) {
+    avvik.push(`${t.navn}: fikk ikke hentet ${t.kilde} (${tekst.feil})`);
+    continue;
+  }
+  for (const snutt of t.sjekk) {
+    sjekket++;
+    if (!tekst.includes(normaliser(snutt))) avvik.push(`${t.navn}: fant ikke «${snutt}» på ${t.kilde}`);
   }
 }
 

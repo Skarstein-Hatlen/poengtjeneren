@@ -1,0 +1,20 @@
+{
+  "sistVerifisert": "2026-09-24",
+  "kilde": "https://europa.eu/youreurope/citizens/travel/passenger-rights/air/index_en.htm",
+  "belop": [
+    { "euro": 250, "id": "flyKort" },
+    { "euro": 400, "id": "flyMiddels" },
+    { "euro": 600, "id": "flyLang" }
+  ],
+  "tjeneste": {
+    "NO": {
+      "navn": "Flyforsinkelser.no",
+      "logo": "/logos/partnere/flyforsinkelser.webp",
+      "lenke": "https://www.partner-ads.com/no/klikbanner.php?partnerid=57589&bannerid=115910",
+      "honorar": 35,
+      "kilde": "https://flyforsinkelser.no/ofte-stilte-sporsmal",
+      "sjekk": ["Når vi vinner, tar vi 35% inkl"],
+      "annonse": true
+    }
+  }
+}

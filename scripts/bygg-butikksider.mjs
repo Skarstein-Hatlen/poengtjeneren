@@ -17,6 +17,7 @@ const kategorier = await les('../src/data/kategorier.json');
 const kort = await les('../src/data/cards.json');
 const historikk = await les('../src/data/history.json');
 const { kampanjer: partnerkampanjer } = await les('../src/data/kampanjer.json');
+const flyforsinkelse = await les('../src/data/flyforsinkelse.json');
 
 const SPRAK = {
   NO: {
@@ -35,6 +36,10 @@ const SPRAK = {
     nyttTittel: 'EuroBonus-kampanjer og satsendringer nå | Pointmaxing',
     nyttTekst: 'Aktive kampanjer og butikker som nettopp endret sats hos Trumf, Klarna og SAS Online Shopping. Oppdateres hver natt.',
     kortTittel: 'Kort som gir EuroBonus-poeng | Pointmaxing',
+    flyTittel: 'Forsinket fly? Du kan ha krav på opptil 600 € | Pointmaxing',
+    flyH1: 'Forsinket fly',
+    flyTekst: (navn, p) => `Over 3 timer forsinket eller innstilt fly kan gi 250–600 € i erstatning etter EU 261/2004. Krev selv hos flyselskapet, gratis, eller la ${navn} gjøre det – de tar ${p} % bare hvis de vinner.`,
+    flyAvstand: { flyKort: 'til og med 1 500 km', flyMiddels: '1 500–3 500 km', flyLang: 'over 3 500 km utenfor EU' },
     kortTekst: 'Alle betalingskort i Norge som gir SAS EuroBonus-poeng, med poeng per 100 kr og pris.',
     kampanjerNaa: 'Kampanjer nå',
     andreKampanjer: 'Andre kampanjer',
@@ -248,6 +253,23 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   const kortILand = kort.filter((k) => k.land.includes(land));
   await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${fmt.format(k.prisPerMnd)} kr/${sprak.lang === 'sv' ? 'mån' : 'mnd'}</li>`).join('')}</ul></main>` }));
   urler.push(kortUrl);
+  // Forsinket fly: bare i land der vi har en avtale med en tjeneste.
+  const fly = flyforsinkelse.tjeneste[land];
+  if (fly && sprak.flyTittel) {
+    const flyUrl = `${DOMENE}/${sprak.sti}/flyforsinkelse`;
+    const flyTekst = sprak.flyTekst(fly.navn, fly.honorar);
+    await skriv(
+      `${sprak.sti}/flyforsinkelse`,
+      side({
+        lang: sprak.lang,
+        tittel: sprak.flyTittel,
+        beskrivelse: flyTekst,
+        url: flyUrl,
+        kropp: `<main><h1>${escape(sprak.flyH1)}</h1><p>${escape(flyTekst)}</p><ul>${flyforsinkelse.belop.map((b) => `<li>${fmt.format(b.euro)} € – ${escape(sprak.flyAvstand[b.id])}</li>`).join('')}</ul><p><a href="${escape(fly.lenke)}" rel="sponsored noreferrer">${escape(fly.navn)}</a> (annonse)</p></main>`,
+      }),
+    );
+    urler.push(flyUrl);
+  }
 
   // Ukens beste: flest poeng nå, økninger siste 7 dager, kampanjer som utløper innen 7 dager.
   const hist = historikk[land] ?? {};
@@ -387,7 +409,7 @@ await skriv(
 );
 
 // Personvern og utvidelse: norske sider uten land i adressen.
-await skriv('personvern', side({ lang: 'nb', tittel: 'Personvern | Pointmaxing', beskrivelse: 'Pointmaxing samler ikke inn personopplysninger – verken nettsiden eller nettleserutvidelsen.', url: `${DOMENE}/personvern`, kropp: '<main><h1>Personvern</h1><p>Pointmaxing samler ikke inn personopplysninger. Nettsiden bruker ingen informasjonskapsler eller analyseverktøy; valgene dine lagres bare i nettleseren. Utvidelsen leser adressen til fanen lokalt for å kjenne igjen butikken, henter én offentlig satsfil fra pointmaxing.no daglig og sender ingenting videre.</p></main>' }));
+await skriv('personvern', side({ lang: 'nb', tittel: 'Personvern | Pointmaxing', beskrivelse: 'Pointmaxing samler ikke inn personopplysninger – verken nettsiden eller nettleserutvidelsen.', url: `${DOMENE}/personvern`, kropp: '<main><h1>Personvern</h1><p>Pointmaxing samler ikke inn personopplysninger. Nettsiden setter ingen informasjonskapsler og sporer deg ikke; valgene dine lagres bare i nettleseren. Lenker merket «Annonse» går via annonsenettverket Partner-ads, som kan sette informasjonskapsler for å registrere at du kom fra oss. Utvidelsen leser adressen til fanen lokalt for å kjenne igjen butikken, henter én offentlig satsfil fra pointmaxing.no daglig og sender ingenting videre.</p></main>' }));
 urler.push(`${DOMENE}/personvern`);
 await skriv('utvidelse', side({ lang: 'nb', tittel: 'Chrome-utvidelse | Pointmaxing', beskrivelse: 'Se EuroBonus-poengene rett i Google-søk og i nettbutikken, og få varsel når satsen går opp.', url: `${DOMENE}/utvidelse`, kropp: '<main><h1>Chrome-utvidelse</h1><p>Poengene i Google-søk, et kort med satsene i nettbutikken og varsel når butikker du følger går opp.</p><p><a href="/pointmaxing-utvidelse.zip">Last ned utvidelsen (zip)</a></p></main>' }));
 urler.push(`${DOMENE}/utvidelse`);

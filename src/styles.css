@@ -2339,3 +2339,100 @@ footer .bunnlenker {
 .hverdag-liste .kortliste-navn a:hover {
   text-decoration: underline;
 }
+
+/* Forsinket fly: beløpene etter distanse og tjenesten som fører saken – samme rader som kortlisten, med logo først */
+.kortliste ul.med-logo li {
+  grid-template-columns: 88px 84px minmax(0, 1fr) auto;
+}
+
+.fly-logo {
+  display: flex;
+  align-items: center;
+  width: 88px;
+  height: 40px;
+}
+
+.fly-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.fly-belop {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 14px;
+}
+
+.fly-belop div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fly-belop dd {
+  margin: 0;
+  font-family: var(--font-tall);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fly-belop dt {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.fly-forbehold {
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+
+.kortliste .fly-forbehold a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+}
+
+.kortliste .fly-forbehold a:hover {
+  background: none;
+  color: var(--ink);
+}
+
+@media (max-width: 479px) {
+  .kortliste ul.med-logo li {
+    grid-template-columns: 64px 72px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .kortliste ul.med-logo .fly-logo {
+    width: 64px;
+    height: 32px;
+  }
+
+  .kortliste ul.med-logo .kortliste-poeng {
+    font-size: 26px;
+  }
+
+  /* Knappen med annonsemerket trenger mer plass enn tekstkolonnen */
+  .kortliste ul.med-logo a {
+    grid-column: 2 / -1;
+    justify-self: start;
+  }
+
+  .fly-belop dd {
+    font-size: 26px;
+  }
+
+  .nav {
+    gap: 14px;
+  }
+}
