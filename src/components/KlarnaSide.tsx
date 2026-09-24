@@ -285,7 +285,7 @@ export default function KlarnaSide({ data, idag }: Props) {
 
         <span className="etikett">Det vi foreslår</span>
         <ul className="forslag">
-          <li>Fast beløp per aktivert Plus, Premium og Max via sporbar lenke eller kampanjekode. Første måned er gratis hos Klarna – vi regner aktivert når måned to er betalt.</li>
+          <li>Fast beløp per aktivert Plus, Premium og Max via sporbar lenke.</li>
           <li>Lenkene står der valget tas: «Handle via Klarna» i hver butikk, søknadslenkene på Kort-siden og linjen i Google-søk.</li>
           <li>Alternativt fast månedspris for plasseringen. Tall på besøk og klikk deler vi gjerne.</li>
         </ul>
