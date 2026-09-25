@@ -22,6 +22,7 @@ export const TEKSTER = {
   navNytt: { nb: 'Nytt', sv: 'Nytt', da: 'Nyt' },
   navKort: { nb: 'Kort', sv: 'Kort', da: 'Kort' },
   navFly: { nb: 'Forsinket fly', sv: 'Försenat flyg', da: 'Forsinket fly' },
+  meny: { nb: 'Meny', sv: 'Meny', da: 'Menu' },
   kjopesum: { nb: 'Kjøpesum', sv: 'Köpesumma', da: 'Købesum' },
   butikk: { nb: 'Butikk', sv: 'Butik', da: 'Butik' },
   sokButikk: { nb: 'Søk butikk', sv: 'Sök butik', da: 'Søg butik' },

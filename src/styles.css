@@ -2480,3 +2480,93 @@ footer .bunnlenker {
   font-weight: 600;
   border-bottom: 1px solid var(--line);
 }
+
+/* Sidemeny på mobil: sidene i en nedtrekksmeny til venstre, kortvelgeren til høyre – én rad som ikke brekker */
+.sidevelger {
+  display: none;
+  position: relative;
+}
+
+.sidevelger-knapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--page-fg);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sidevelger.har-aktiv .sidevelger-knapp {
+  border-bottom-color: var(--gold-fill);
+}
+
+.sidevelger-knapp:focus-visible {
+  outline: 2px solid var(--gold-fill);
+  outline-offset: 4px;
+}
+
+.sidevelger-liste {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(240px, calc(100vw - 32px));
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(4, 12, 40, 0.28);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.nav .sidevelger-liste a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav .sidevelger-liste a:hover,
+.nav .sidevelger-liste a:focus-visible {
+  background: var(--paper-2);
+  color: var(--ink);
+  outline: none;
+}
+
+.nav .sidevelger-liste a.aktiv {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: nowrap;
+  }
+
+  .nav > a {
+    display: none;
+  }
+
+  .sidevelger {
+    display: block;
+  }
+}

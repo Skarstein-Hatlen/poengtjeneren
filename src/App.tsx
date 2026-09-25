@@ -12,6 +12,7 @@ import Kortvelger from './components/Kortvelger';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import Personvern from './components/Personvern';
+import Sidevelger from './components/Sidevelger';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
 import Utvidelse from './components/Utvidelse';
@@ -445,6 +446,9 @@ export default function App() {
     }
   }
 
+  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste.
+  const navSider = NAV.filter((n) => n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]);
+
   const bunnlenker = (
     <p className="bunnlenker">
       <a href="/utvidelse" onClick={(e) => { e.preventDefault(); gaaTil('utvidelse'); }}>{T('utvidelseLenke')}</a>
@@ -539,8 +543,18 @@ export default function App() {
         </div>
       </header>
       <nav className="nav" aria-label="Sider">
-        {/* Forsinket fly vises bare i land der vi har en avtale med en tjeneste. */}
-        {NAV.filter((n) => n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]).map((n) => (
+        {/* På mobil ligger sidene i en nedtrekksmeny; lenkene under vises bare på større skjermer. */}
+        <Sidevelger
+          meny={T('meny')}
+          sider={navSider.map((n) => ({
+            id: n.visning,
+            tekst: T(n.nokkel),
+            href: stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null),
+            aktiv: rute.visning === n.visning,
+            velg: () => gaaTil(n.visning),
+          }))}
+        />
+        {navSider.map((n) => (
           <a
             key={n.visning}
             href={stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null)}
