@@ -18,6 +18,7 @@ const kort = await les('../src/data/cards.json');
 const historikk = await les('../src/data/history.json');
 const { kampanjer: partnerkampanjer } = await les('../src/data/kampanjer.json');
 const flyforsinkelse = await les('../src/data/flyforsinkelse.json');
+const utvidelseInfo = await les('../src/data/utvidelse.json');
 
 const SPRAK = {
   NO: {
@@ -425,7 +426,7 @@ await skriv(
 // Personvern og utvidelse: norske sider uten land i adressen.
 await skriv('personvern', side({ lang: 'nb', tittel: 'Personvern | Pointmaxing', beskrivelse: 'Pointmaxing samler ikke inn personopplysninger – verken nettsiden eller nettleserutvidelsen.', url: `${DOMENE}/personvern`, kropp: '<main><h1>Personvern</h1><p>Pointmaxing samler ikke inn personopplysninger. Nettsiden setter ingen informasjonskapsler og sporer deg ikke; valgene dine lagres bare i nettleseren. Lenker merket «Annonse» går via annonsenettverket Partner-ads, som kan sette informasjonskapsler for å registrere at du kom fra oss. Utvidelsen leser adressen til fanen lokalt for å kjenne igjen butikken, henter én offentlig satsfil fra pointmaxing.no daglig og sender ingenting videre.</p></main>' }));
 urler.push(`${DOMENE}/personvern`);
-await skriv('utvidelse', side({ lang: 'nb', tittel: 'Chrome-utvidelse | Pointmaxing', beskrivelse: 'Se EuroBonus-poengene rett i Google-søk og i nettbutikken, og få varsel når satsen går opp.', url: `${DOMENE}/utvidelse`, kropp: '<main><h1>Chrome-utvidelse</h1><p>Poengene i Google-søk, et kort med satsene i nettbutikken og varsel når butikker du følger går opp.</p><p><a href="/pointmaxing-utvidelse.zip">Last ned utvidelsen (zip)</a></p></main>' }));
+await skriv('utvidelse', side({ lang: 'nb', tittel: 'Chrome-utvidelse | Pointmaxing', beskrivelse: 'Se EuroBonus-poengene rett i Google-søk og i nettbutikken, og få varsel når satsen går opp.', url: `${DOMENE}/utvidelse`, kropp: `<main><h1>Chrome-utvidelse</h1><p>Poengene i Google-søk, et kort med satsene i nettbutikken og varsel når butikker du følger går opp.</p>${utvidelseInfo.chromeWebStoreUrl ? `<p><a href="${escape(utvidelseInfo.chromeWebStoreUrl)}">Legg til i Chrome</a></p>` : '<p><a href="/pointmaxing-utvidelse.zip">Last ned utvidelsen (zip)</a></p>'}</main>` }));
 urler.push(`${DOMENE}/utvidelse`);
 
 // Ukjente adresser laster appen likevel (GitHub Pages serverer 404.html).
