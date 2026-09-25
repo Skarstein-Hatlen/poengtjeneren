@@ -409,6 +409,19 @@ await skriv(
   }),
 );
 
+// One-pageren til FlyMedPoeng: samarbeidsforslag, ikke i sitemap og ikke indeksert.
+await skriv(
+  'flymedpoeng',
+  side({
+    lang: 'nb',
+    tittel: 'Pointmaxing × FlyMedPoeng',
+    beskrivelse: 'Samarbeidsforslag: Pointmaxing hjelper folk å tjene EuroBonus-poeng, FlyMedPoeng hjelper dem å bruke dem.',
+    url: `${DOMENE}/flymedpoeng`,
+    noindex: true,
+    kropp: '<main><h1>Pointmaxing × FlyMedPoeng</h1><p>Samarbeidsforslag: vi hjelper folk å tjene poengene, FlyMedPoeng hjelper dem å bruke dem.</p></main>',
+  }),
+);
+
 // Personvern og utvidelse: norske sider uten land i adressen.
 await skriv('personvern', side({ lang: 'nb', tittel: 'Personvern | Pointmaxing', beskrivelse: 'Pointmaxing samler ikke inn personopplysninger – verken nettsiden eller nettleserutvidelsen.', url: `${DOMENE}/personvern`, kropp: '<main><h1>Personvern</h1><p>Pointmaxing samler ikke inn personopplysninger. Nettsiden setter ingen informasjonskapsler og sporer deg ikke; valgene dine lagres bare i nettleseren. Lenker merket «Annonse» går via annonsenettverket Partner-ads, som kan sette informasjonskapsler for å registrere at du kom fra oss. Utvidelsen leser adressen til fanen lokalt for å kjenne igjen butikken, henter én offentlig satsfil fra pointmaxing.no daglig og sender ingenting videre.</p></main>' }));
 urler.push(`${DOMENE}/personvern`);

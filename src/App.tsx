@@ -3,6 +3,7 @@ import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
 import Flagg from './components/Flagg';
+import FlyMedPoengSide from './components/FlyMedPoengSide';
 import Flyforsinkelse from './components/Flyforsinkelse';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
@@ -30,9 +31,9 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'flyforsinkelse' | 'klarna' | 'ukens' | 'personvern' | 'utvidelse';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
-const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', personvern: 'personvern', utvidelse: 'utvidelse' };
+const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', flymedpoeng: 'flymedpoeng', personvern: 'personvern', utvidelse: 'utvidelse' };
 const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
@@ -91,7 +92,7 @@ function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
 }
 
 function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
-  if (rute.visning === 'klarna' || rute.visning === 'personvern' || rute.visning === 'utvidelse') return `/${rute.visning}`;
+  if (rute.visning === 'klarna' || rute.visning === 'flymedpoeng' || rute.visning === 'personvern' || rute.visning === 'utvidelse') return `/${rute.visning}`;
   const s = `/${SPRAK[land].sti}`;
   if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
   if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
@@ -425,7 +426,7 @@ export default function App() {
       : null;
   const harAnnonse = kortListe.some((k) => k.annonse);
   // Samarbeidspartneren (FlyMedPoeng) lenkes bare i landene avtalen gjelder.
-  const samarbeid = data.samarbeid.land.includes(t.land) ? data.samarbeid : null;
+  const samarbeid = data.samarbeid.aktiv && data.samarbeid.land.includes(t.land) ? data.samarbeid : null;
 
   /** Nivåpoeng kjøpet gir: programmets (SAS Shopping) og kortets (Amex Elite, Mastercard Premium). */
   const nivaapoengFor = (r: Resultat): number => {
@@ -568,6 +569,7 @@ export default function App() {
   );
 
   if (rute.visning === 'klarna') return <KlarnaSide data={data} idag={IDAG} />;
+  if (rute.visning === 'flymedpoeng') return <FlyMedPoengSide data={data} idag={IDAG} />;
 
   if (rute.visning === 'personvern' || rute.visning === 'utvidelse') {
     return (

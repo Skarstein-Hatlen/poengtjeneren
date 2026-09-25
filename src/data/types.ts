@@ -179,6 +179,8 @@ export interface Datasett {
 /** Samarbeidspartner med lenker på siden (src/data/samarbeid.json). Lenkene har UTM-parametre, så partneren ser trafikken. */
 export interface Samarbeidspartner {
   navn: string;
+  /** false = lenkene er skjult på siden (one-pageren på /flymedpoeng vises likevel). */
+  aktiv: boolean;
   land: Land[];
   /** Under resultatet i kalkulatoren: bruk poengene. */
   booking: string;

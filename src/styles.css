@@ -2461,3 +2461,22 @@ footer .bunnlenker {
 .kortliste + .samarbeid {
   margin: 18px 0 4px;
 }
+
+/* One-pageren til FlyMedPoeng: plasseringene vist som små utsnitt av billetten */
+.flymedpoeng .plassering {
+  margin: 10px 0 12px;
+  padding: 12px 16px 14px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.flymedpoeng .plassering .samarbeid {
+  margin: 6px 0 0;
+}
+
+.flymedpoeng .demo-lenke {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}

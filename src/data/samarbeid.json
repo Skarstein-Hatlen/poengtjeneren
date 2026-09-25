@@ -1,6 +1,9 @@
 {
   "navn": "FlyMedPoeng",
-  "land": ["NO"],
+  "aktiv": false,
+  "land": [
+    "NO"
+  ],
   "booking": "https://www.flymedpoeng.no/pages/booking?utm_source=pointmaxing&utm_medium=referral&utm_campaign=kalkulator",
   "kortveiledning": "https://www.flymedpoeng.no/products/skreddersydd-kredittkort-veiledning?utm_source=pointmaxing&utm_medium=referral&utm_campaign=kort"
 }
