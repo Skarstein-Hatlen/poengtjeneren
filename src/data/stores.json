@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-24",
+  "hentet": "2026-09-25",
   "land": {
     "NO": [
       {
@@ -122,6 +122,21 @@
           }
         },
         "logo": "/logos/NO/aeg.webp"
+      },
+      {
+        "id": "aegreservedelerogtilbeh248r",
+        "navn": "AEG Reservedeler og Tilbeh&#248;r",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/aeg-reservedeler-og-tilbehor-trumf"
+          }
+        },
+        "logo": "/logos/NO/aegreservedelerogtilbeh248r.webp"
       },
       {
         "id": "agoda",
@@ -902,7 +917,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/bonprix-trumf"
           }
@@ -1736,6 +1751,21 @@
         "logo": "/logos/NO/electrolux.webp"
       },
       {
+        "id": "electroluxreservedelerogtilbeh248r",
+        "navn": "Electrolux Reservedeler og Tilbeh&#248;r",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/electrolux-reservedeler-og-tilbehor-trumf"
+          }
+        },
+        "logo": "/logos/NO/electroluxreservedelerogtilbeh248r.webp"
+      },
+      {
         "id": "electroluxsparesaccessories",
         "navn": "Electrolux Spares & accessories",
         "kategorier": [
@@ -1812,6 +1842,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-11"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/ellos-3/0189630a-d108-712a-8856-644fdd60eedb"
           }
         },
@@ -2951,6 +2985,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/husqvarna-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3105,6 +3144,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/interflora/018abc10-e2a1-7029-a2d1-0df7f582fd1c"
           },
           "klarna": {
@@ -9420,6 +9463,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-11"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/ellos-3/0189630a-d108-712a-8856-644fdd60eedb"
           }
         },
@@ -10896,6 +10943,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/interflora/018abc10-e2a1-7029-a2d1-0df7f582fd1c"
           },
           "klarna-se": {
@@ -12528,21 +12579,6 @@
           }
         },
         "logo": "/logos/SE/nespresso.webp"
-      },
-      {
-        "id": "netlingeri",
-        "navn": "Netlingeri",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/netlingeri.se/0189630f-89bd-7203-a3f0-9226d1c65f54"
-          }
-        },
-        "logo": "/logos/SE/netlingeri.webp"
       },
       {
         "id": "newbalance",
@@ -16120,20 +16156,6 @@
         "logo": "/logos/DK/24mx.webp"
       },
       {
-        "id": "24s",
-        "navn": "24S",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
-          }
-        },
-        "domene": "24s.com",
-        "logo": "/logos/DK/24s.webp"
-      },
-      {
         "id": "aretrotale",
         "navn": "A Retro Tale",
         "kategorier": [],
@@ -17374,6 +17396,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-11"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/ellos-3/0189630a-d108-712a-8856-644fdd60eedb"
           }
         },
@@ -18280,6 +18306,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/interflora/0189630a-26b4-72dd-ac2d-920f3deae927"
           }
         },
