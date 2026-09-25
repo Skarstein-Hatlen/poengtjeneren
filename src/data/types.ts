@@ -173,6 +173,17 @@ export interface Datasett {
   historikk: Historikk;
   kampanjer: Partnerkampanje[];
   fly: Flyforsinkelse;
+  samarbeid: Samarbeidspartner;
+}
+
+/** Samarbeidspartner med lenker på siden (src/data/samarbeid.json). Lenkene har UTM-parametre, så partneren ser trafikken. */
+export interface Samarbeidspartner {
+  navn: string;
+  land: Land[];
+  /** Under resultatet i kalkulatoren: bruk poengene. */
+  booking: string;
+  /** På Kort-siden: hjelp til å velge kort. */
+  kortveiledning: string;
 }
 
 /** Erstatning for forsinket fly (EU 261/2004) og tjenesten som fører saken, per land (src/data/flyforsinkelse.json). */

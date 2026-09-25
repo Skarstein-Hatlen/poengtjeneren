@@ -424,6 +424,8 @@ export default function App() {
       ? { kort: besteKort, program: medKortlag.program, ekstra: ekstraMedBesteKort }
       : null;
   const harAnnonse = kortListe.some((k) => k.annonse);
+  // Samarbeidspartneren (FlyMedPoeng) lenkes bare i landene avtalen gjelder.
+  const samarbeid = data.samarbeid.land.includes(t.land) ? data.samarbeid : null;
 
   /** Nivåpoeng kjøpet gir: programmets (SAS Shopping) og kortets (Amex Elite, Mastercard Premium). */
   const nivaapoengFor = (r: Resultat): number => {
@@ -671,6 +673,13 @@ export default function App() {
             onKortbruk={(kortbruk) => setT((s) => ({ ...s, kortbruk }))}
             idag={IDAG}
           />
+          {samarbeid && (
+            <p className="samarbeid">
+              <a href={samarbeid.kortveiledning} target="_blank" rel="sponsored noopener">
+                {T('kortveiledning', { navn: samarbeid.navn })} <span aria-hidden="true">→</span>
+              </a>
+            </p>
+          )}
           <Hverdag land={t.land} programmer={programmer} kort={kort && kort.id !== ANNET ? kort : null} matPerMnd={t.matPerMnd} onMatPerMnd={(matPerMnd) => setT((s) => ({ ...s, matPerMnd }))} />
         </div>
         <footer>
@@ -904,6 +913,13 @@ export default function App() {
               {T('sokOmKortet')} <span aria-hidden="true">→</span>
             </a>
             {kortTips.kort.annonse && <span className="annonse">{T('annonse')}</span>}
+          </p>
+        )}
+        {samarbeid && belop > 0 && resultater.length > 0 && (
+          <p className="samarbeid">
+            <a href={samarbeid.booking} target="_blank" rel="sponsored noopener">
+              {T('brukPoengene', { navn: samarbeid.navn })} <span aria-hidden="true">→</span>
+            </a>
           </p>
         )}
         {belop <= 0 && <p className="tom">{T('skrivBelop')}</p>}

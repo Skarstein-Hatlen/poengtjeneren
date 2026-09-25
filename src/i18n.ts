@@ -228,6 +228,16 @@ export const TEKSTER = {
     sv: 'Vi får provision om du skickar ärendet via {navn}. Det påverkar inte siffrorna.',
     da: 'Vi får provision, hvis du sender sagen via {navn}. Det påvirker ikke tallene.',
   },
+  brukPoengene: {
+    nb: 'Har du poengene? Vår samarbeidspartner {navn} booker reisen for deg',
+    sv: 'Har du poängen? Vår samarbetspartner {navn} bokar resan åt dig',
+    da: 'Har du pointene? Vores samarbejdspartner {navn} booker rejsen for dig',
+  },
+  kortveiledning: {
+    nb: 'Usikker på kortet? Vår samarbeidspartner {navn} gir personlig kredittkortveiledning',
+    sv: 'Osäker på kortet? Vår samarbetspartner {navn} ger personlig kreditkortsrådgivning',
+    da: 'I tvivl om kortet? Vores samarbejdspartner {navn} giver personlig kreditkortrådgivning',
+  },
   kravSelvGratis: {
     nb: 'Du kan også kreve erstatningen selv hos flyselskapet, gratis.',
     sv: 'Du kan också kräva ersättningen själv hos flygbolaget, gratis.',

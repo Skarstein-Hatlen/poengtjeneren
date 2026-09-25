@@ -2436,3 +2436,28 @@ footer .bunnlenker {
     gap: 14px;
   }
 }
+
+/* Samarbeidspartner (FlyMedPoeng): én rolig tekstlenke, samme strek som tipslinjen */
+.samarbeid {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.samarbeid a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.15s;
+}
+
+.samarbeid a:hover,
+.samarbeid a:focus-visible {
+  border-bottom-color: var(--ink);
+  outline: none;
+}
+
+.kortliste + .samarbeid {
+  margin: 18px 0 4px;
+}
