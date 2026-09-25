@@ -38,6 +38,7 @@ const SPRAK = {
     kortTittel: 'Kort som gir EuroBonus-poeng | Pointmaxing',
     flyTittel: 'Forsinket fly? Du kan ha krav på opptil 600 € | Pointmaxing',
     flyH1: 'Forsinket fly',
+    flyProvisjon: (navn) => `Vi får provisjon hvis du sender saken via ${navn}. Det påvirker ikke tallene.`,
     flyTekst: (navn, p) => `Over 3 timer forsinket eller innstilt fly kan gi 250–600 € i erstatning etter EU 261/2004. Krev selv hos flyselskapet, gratis, eller la ${navn} gjøre det – de tar ${p} % bare hvis de vinner.`,
     flyAvstand: { flyKort: 'til og med 1 500 km', flyMiddels: '1 500–3 500 km', flyLang: 'over 3 500 km utenfor EU' },
     kortTekst: 'Alle betalingskort i Norge som gir SAS EuroBonus-poeng, med poeng per 100 kr og pris.',
@@ -265,7 +266,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
         tittel: sprak.flyTittel,
         beskrivelse: flyTekst,
         url: flyUrl,
-        kropp: `<main><h1>${escape(sprak.flyH1)}</h1><p>${escape(flyTekst)}</p><ul>${flyforsinkelse.belop.map((b) => `<li>${fmt.format(b.euro)} € – ${escape(sprak.flyAvstand[b.id])}</li>`).join('')}</ul><p><a href="${escape(fly.lenke)}" rel="sponsored noreferrer">${escape(fly.navn)}</a> (annonse)</p></main>`,
+        kropp: `<main><h1>${escape(sprak.flyH1)}</h1><p>${escape(flyTekst)}</p><ul>${flyforsinkelse.belop.map((b) => `<li>${fmt.format(b.euro)} € – ${escape(sprak.flyAvstand[b.id])}</li>`).join('')}</ul><p><a href="${escape(fly.lenke)}" rel="sponsored noreferrer">${escape(fly.navn)}</a></p><p>${escape(sprak.flyProvisjon(fly.navn))}</p></main>`,
       }),
     );
     urler.push(flyUrl);

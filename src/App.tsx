@@ -631,7 +631,7 @@ export default function App() {
           <Flyforsinkelse land={t.land} fly={data.fly} />
         </div>
         <footer>
-          <p>{T('annonseForklaring')}</p>
+          <p>{T('flyProvisjon', { navn: data.fly.tjeneste[t.land]?.navn ?? '' })}</p>
           {bunnlenker}
           <p className="signatur">{T('signatur')}</p>
         </footer>

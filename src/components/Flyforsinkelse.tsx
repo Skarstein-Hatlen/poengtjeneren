@@ -7,7 +7,7 @@ interface Props {
   fly: Flydata;
 }
 
-/** Forsinket fly: hva EU-forordningen gir, og tjenesten som fører saken for deg (annonselenke). */
+/** Forsinket fly: hva EU-forordningen gir, og tjenesten som fører saken for deg. Lenken gir oss provisjon – det står rett under siden. */
 export default function Flyforsinkelse({ land, fly }: Props) {
   const tjeneste = fly.tjeneste[land];
   if (!tjeneste) return null;
@@ -38,7 +38,6 @@ export default function Flyforsinkelse({ land, fly }: Props) {
           </span>
           <a href={tjeneste.lenke} target="_blank" rel={tjeneste.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
             {tekst(land, 'sendSaken')} <span aria-hidden="true">→</span>
-            {tjeneste.annonse && <span className="annonse">{tekst(land, 'annonse')}</span>}
           </a>
         </li>
       </ul>

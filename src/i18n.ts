@@ -223,6 +223,11 @@ export const TEKSTER = {
   honorar: { nb: 'honorar', sv: 'arvode', da: 'gebyr' },
   bareVedSeier: { nb: 'Bare hvis de vinner', sv: 'Bara om de vinner', da: 'Kun hvis de vinder' },
   sendSaken: { nb: 'Send saken', sv: 'Skicka ärendet', da: 'Send sagen' },
+  flyProvisjon: {
+    nb: 'Vi får provisjon hvis du sender saken via {navn}. Det påvirker ikke tallene.',
+    sv: 'Vi får provision om du skickar ärendet via {navn}. Det påverkar inte siffrorna.',
+    da: 'Vi får provision, hvis du sender sagen via {navn}. Det påvirker ikke tallene.',
+  },
   kravSelvGratis: {
     nb: 'Du kan også kreve erstatningen selv hos flyselskapet, gratis.',
     sv: 'Du kan också kräva ersättningen själv hos flygbolaget, gratis.',
