@@ -204,7 +204,7 @@
   "karcher": {"sas-online-shopping":[["2026-09-21",25]],"klarna":[["2026-09-21",3.5]]},
   "loccitane": {"trumf":[["2026-09-21",5.4]],"sas-online-shopping":[["2026-09-21",50]]},
   "l248peshop": {"trumf":[["2026-09-21",2.3]]},
-  "lampegiganten": {"trumf":[["2026-09-21",7.8]],"sas-online-shopping":[["2026-09-21",25]]},
+  "lampegiganten": {"trumf":[["2026-09-21",7.8]],"sas-online-shopping":[["2026-09-21",25],["2026-09-26",50]]},
   "lampemesteren": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",25]]},
   "lappeliten": {"trumf":[["2026-09-21",12.4]],"sas-online-shopping":[["2026-09-21",25]]},
   "lastminute": {"trumf":[["2026-09-21",3.9]]},
@@ -964,7 +964,8 @@
   "layered": {"klarna-se":[["2026-09-21",3.5]]},
   "gameseal": {"klarna-se":[["2026-09-24",2]]},
   "steamery": {"sas-online-shopping-se":[["2026-09-24",50]]},
-  "aarke": {"sas-online-shopping-se":[["2026-09-24",50]]}
+  "aarke": {"sas-online-shopping-se":[["2026-09-24",50]]},
+  "partykungen": {"sas-online-shopping-se":[["2026-09-26",25]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},
@@ -1122,7 +1123,7 @@
   "komplett": {"sas-online-shopping-dk":[["2026-09-21",15]]},
   "kvalitetskokkenet": {"sas-online-shopping-dk":[["2026-09-21",25]]},
   "kaereborn": {"sas-online-shopping-dk":[["2026-09-21",25]]},
-  "lampegiganten": {"sas-online-shopping-dk":[["2026-09-21",25]]},
+  "lampegiganten": {"sas-online-shopping-dk":[["2026-09-21",25],["2026-09-26",50]]},
   "lampemesteren": {"sas-online-shopping-dk":[["2026-09-21",25]],"klarna-dk":[["2026-09-21",3]]},
   "lastminute": {"klarna-dk":[["2026-09-21",1]]},
   "lauridsenvine": {"sas-online-shopping-dk":[["2026-09-21",100]]},
@@ -1318,6 +1319,7 @@
   "zooplus": {"klarna-dk":[["2026-09-21",2]]},
   "zwilling": {"sas-online-shopping-dk":[["2026-09-21",25]],"klarna-dk":[["2026-09-21",3]]},
   "aarstiderne": {"klarna-dk":[["2026-09-21",2.5]]},
-  "gameseal": {"klarna-dk":[["2026-09-24",2]]}
+  "gameseal": {"klarna-dk":[["2026-09-24",2]]},
+  "partyking": {"sas-online-shopping-dk":[["2026-09-26",25]]}
  }
 }

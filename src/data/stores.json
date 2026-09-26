@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-25",
+  "hentet": "2026-09-26",
   "land": {
     "NO": [
       {
@@ -3653,6 +3653,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lampegiganten/01896309-a6d3-70f0-b920-314a0de651aa"
           }
         },
@@ -12074,20 +12078,6 @@
         "logo": "/logos/SE/loparshop.webp"
       },
       {
-        "id": "mainlinemenswear",
-        "navn": "Mainline Menswear",
-        "kategorier": [],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a755058b-6fe8-488d-894a-70e17c8919ee/mainline-menswear/pay-with-klarna/"
-          }
-        },
-        "domene": "mainlinemenswear.co.uk",
-        "logo": "/logos/SE/mainlinemenswear.webp"
-      },
-      {
         "id": "makeupmekka",
         "navn": "Makeup Mekka",
         "kategorier": [
@@ -13189,6 +13179,21 @@
         },
         "domene": "parfumdreams.se",
         "logo": "/logos/SE/parfumdreams.webp"
+      },
+      {
+        "id": "partykungen",
+        "navn": "Partykungen",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/partykungen/019b11f5-2adc-72f3-96b1-3428a999ce72"
+          }
+        },
+        "logo": "/logos/SE/partykungen.webp"
       },
       {
         "id": "partyninja",
@@ -16156,6 +16161,20 @@
         "logo": "/logos/DK/24mx.webp"
       },
       {
+        "id": "24s",
+        "navn": "24S",
+        "kategorier": [],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
+          }
+        },
+        "domene": "24s.com",
+        "logo": "/logos/DK/24s.webp"
+      },
+      {
         "id": "aretrotale",
         "navn": "A Retro Tale",
         "kategorier": [],
@@ -18539,6 +18558,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/lampegiganten/01896309-a6d3-70f0-b920-314a0de651aa"
           }
         },
@@ -19774,6 +19797,21 @@
         },
         "domene": "parfumdreams.dk",
         "logo": "/logos/DK/parfumdreams.webp"
+      },
+      {
+        "id": "partyking",
+        "navn": "Partyking",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/partyking/019b11f5-2adc-72f3-96b1-3428a999ce72"
+          }
+        },
+        "logo": "/logos/DK/partyking.webp"
       },
       {
         "id": "patpat",

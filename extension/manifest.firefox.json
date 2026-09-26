@@ -62,6 +62,7 @@
     {
       "matches": [
         "*://*.24mx.com/*",
+        "*://*.24s.com/*",
         "*://*.aarstiderne.com/*",
         "*://*.aboutyou.dk/*",
         "*://*.aboutyou.se/*",
