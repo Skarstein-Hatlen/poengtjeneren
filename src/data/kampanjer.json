@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-28",
+  "hentet": "2026-09-29",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -873,19 +873,6 @@
       "logo": "/logos/kampanjer/sas-no-xplora.webp"
     },
     {
-      "id": "talkmore-trumf",
-      "land": "NO",
-      "program": "trumf",
-      "partner": "Talkmore",
-      "tittel": "Talkmore",
-      "tekst": "Bli Talkmore-kunde og få 500,- i Trumf-velkomstgave.",
-      "verdi": 500,
-      "enhet": "kr",
-      "slutt": null,
-      "url": "https://talkmore.no/privat/abonnement/partner/trumf",
-      "logo": "/logos/partnere/talkmore.webp"
-    },
-    {
       "id": "tryg-no-eurobonus",
       "land": "NO",
       "program": "eurobonus",
@@ -1313,19 +1300,6 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/ownit/0189630d-0aa3-71b1-8167-343488abb2ba",
       "logo": "/logos/kampanjer/sas-se-ownit.webp"
-    },
-    {
-      "id": "sas-se-petson",
-      "land": "SE",
-      "program": "sas-online-shopping-se",
-      "partner": "Petson djurförsäkring",
-      "tittel": "Petson djurförsäkring",
-      "tekst": "Via SAS Shopping · nya kunder",
-      "verdi": 2000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/petson/0192ddc6-4608-72b2-8929-5403ce7b51ad",
-      "logo": "/logos/partnere/petson.webp"
     },
     {
       "id": "sas-se-readly",

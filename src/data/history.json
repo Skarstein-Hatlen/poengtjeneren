@@ -104,7 +104,7 @@
   "elektroimport248ren": {"trumf":[["2026-09-21",3.9]]},
   "elektroimportoren": {"sas-online-shopping":[["2026-09-21",25]]},
   "elitehotelsofsweden": {"trumf":[["2026-09-21",3.9]]},
-  "ellos": {"trumf":[["2026-09-21",6.2],["2026-09-27",12]],"sas-online-shopping":[["2026-09-21",25],["2026-09-25",50]]},
+  "ellos": {"trumf":[["2026-09-21",6.2],["2026-09-27",12],["2026-09-29",6.2]],"sas-online-shopping":[["2026-09-21",25],["2026-09-25",50]]},
   "elon": {"trumf":[["2026-09-21",3.9]],"sas-online-shopping":[["2026-09-21",10]],"klarna":[["2026-09-21",2]]},
   "emiratesairlines": {"klarna":[["2026-09-21",1]]},
   "emp": {"trumf":[["2026-09-21",5.4]]},
@@ -425,7 +425,8 @@
   "steamery": {"sas-online-shopping":[["2026-09-24",50]]},
   "aarke": {"sas-online-shopping":[["2026-09-24",50]]},
   "aegreservedelerogtilbeh248r": {"trumf":[["2026-09-25",7.8]]},
-  "electroluxreservedelerogtilbeh248r": {"trumf":[["2026-09-25",7.8]]}
+  "electroluxreservedelerogtilbeh248r": {"trumf":[["2026-09-25",7.8]]},
+  "sharkgaming": {"sas-online-shopping":[["2026-09-29",20]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},

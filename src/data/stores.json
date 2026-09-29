@@ -1,23 +1,7 @@
 {
-  "hentet": "2026-09-28",
+  "hentet": "2026-09-29",
   "land": {
     "NO": [
-      {
-        "id": "otherstories",
-        "navn": "& Other Stories",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 2.5,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/e80bf510-29ee-4c43-8c38-ed106a9c879f/-other-stories/pay-with-klarna/"
-          }
-        },
-        "domene": "stories.com",
-        "logo": "/logos/NO/otherstories.webp"
-      },
       {
         "id": "24mx",
         "navn": "24mx",
@@ -1635,15 +1619,9 @@
         "id": "ewheels",
         "navn": "E-Wheels",
         "kategorier": [
-          "hjem",
           "elektronikk"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 2.3,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/e-wheels-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1843,7 +1821,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 12,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/ellos"
           },
@@ -2172,20 +2150,6 @@
           }
         },
         "logo": "/logos/partnere/fjordline.webp"
-      },
-      {
-        "id": "flixbus",
-        "navn": "FlixBus",
-        "kategorier": [],
-        "satser": {
-          "klarna": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/ce76d57e-8998-4d45-bcfd-2a9697edd98b/flixbus/pay-with-klarna/"
-          }
-        },
-        "domene": "flixbus.no",
-        "logo": "/logos/NO/flixbus.webp"
       },
       {
         "id": "flowlife",
@@ -2727,16 +2691,9 @@
         "id": "hamphi",
         "navn": "Hamphi",
         "kategorier": [
-          "hjem",
-          "underholdning",
           "sport"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 7.8,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/hamphi-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5721,6 +5678,21 @@
         }
       },
       {
+        "id": "sharkgaming",
+        "navn": "Shark Gaming",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 20,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/shark-gaming/01896310-6fe5-71d2-a915-4d9f58c8d27a"
+          }
+        },
+        "logo": "/logos/partnere/sharkgaming.webp"
+      },
+      {
         "id": "sharkninja",
         "navn": "SharkNinja",
         "kategorier": [
@@ -7328,22 +7300,6 @@
       }
     ],
     "SE": [
-      {
-        "id": "otherstories",
-        "navn": "& Other Stories",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2.5,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/fe585dee-8eac-44be-aaba-d65a8ad344ca/-other-stories/pay-with-klarna/"
-          }
-        },
-        "domene": "stories.com",
-        "logo": "/logos/SE/otherstories.webp"
-      },
       {
         "id": "24mx",
         "navn": "24MX",
@@ -9873,22 +9829,6 @@
         }
       },
       {
-        "id": "flixbus",
-        "navn": "FlixBus",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/36e36b84-1a21-42fb-9025-5e33d2be8d5b/flixbus/pay-with-klarna/"
-          }
-        },
-        "domene": "flixbus.se",
-        "logo": "/logos/SE/flixbus.webp"
-      },
-      {
         "id": "floristeri",
         "navn": "Florister i Sverige",
         "kategorier": [
@@ -10505,7 +10445,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/hamphi/0199c410-ed9b-72f0-ae61-3e87d9179fc8"
           }
         },
-        "logo": "/logos/NO/hamphi.webp"
+        "logo": "/logos/SE/hamphi.webp"
       },
       {
         "id": "hansenracing",
@@ -17152,21 +17092,6 @@
         "logo": "/logos/DK/dansk.webp"
       },
       {
-        "id": "densidsteflaske",
-        "navn": "Den sidste flaske",
-        "kategorier": [
-          "mat"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/den-sidste-flaske/0189630e-9cd3-73ca-b2d1-a6b5fb31abe6"
-          }
-        },
-        "logo": "/logos/DK/densidsteflaske.webp"
-      },
-      {
         "id": "dfds",
         "navn": "DFDS",
         "kategorier": [
@@ -17597,20 +17522,6 @@
           }
         },
         "logo": "/logos/DK/fitnessshoppen.webp"
-      },
-      {
-        "id": "flixbus",
-        "navn": "FlixBus",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/b9ea1558-ceb7-435e-866d-33c1dcec2ef7/flixbus/pay-with-klarna/"
-          }
-        },
-        "domene": "flixbus.dk",
-        "logo": "/logos/DK/flixbus.webp"
       },
       {
         "id": "flowlife",
