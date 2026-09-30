@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-29",
+  "hentet": "2026-09-30",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -98,10 +98,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Ase a-kasse",
       "tittel": "Ase a-kasse",
-      "tekst": "Via SAS Shopping",
-      "verdi": 3000,
+      "tekst": "Via SAS Shopping · normalt 3.000",
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-18",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/ase-a-kasse/01909142-1013-7009-832e-9bdf53f0b900",
       "logo": "/logos/partnere/ase.webp"
     },
@@ -228,10 +228,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "HelloFresh",
       "tittel": "HelloFresh",
-      "tekst": "Via SAS Shopping · nye kunder · normalt 1.000",
-      "verdi": 6000,
+      "tekst": "Via SAS Shopping · nye kunder",
+      "verdi": 1000,
       "enhet": "poeng",
-      "slutt": "2026-09-29",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/hellofresh/0189630e-0077-7365-979b-baa2f08a1bc7",
       "logo": "/logos/kampanjer/sas-dk-hellofresh.webp"
     },
@@ -631,10 +631,10 @@
       "program": "sas-online-shopping",
       "partner": "HelloFresh",
       "tittel": "HelloFresh",
-      "tekst": "Via SAS Shopping · nye kunder · normalt 500",
-      "verdi": 6000,
+      "tekst": "Via SAS Shopping · nye kunder",
+      "verdi": 500,
       "enhet": "poeng",
-      "slutt": "2026-09-29",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/hellofresh/0189630e-0077-7365-979b-baa2f08a1bc7",
       "logo": "/logos/kampanjer/sas-no-hellofresh.webp"
     },
@@ -1203,10 +1203,10 @@
       "program": "sas-online-shopping-se",
       "partner": "HelloFresh",
       "tittel": "HelloFresh",
-      "tekst": "Via SAS Shopping · nya kunder · normalt 1 000",
-      "verdi": 6000,
+      "tekst": "Via SAS Shopping · nya kunder",
+      "verdi": 1000,
       "enhet": "poeng",
-      "slutt": "2026-09-29",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/hellofresh/0189630e-0077-7365-979b-baa2f08a1bc7",
       "logo": "/logos/kampanjer/sas-se-hellofresh.webp"
     },
