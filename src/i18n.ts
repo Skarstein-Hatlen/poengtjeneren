@@ -19,7 +19,7 @@ export const TEKSTER = {
   land: { nb: 'Land', sv: 'Land', da: 'Land' },
   navKalkulator: { nb: 'Kalkulator', sv: 'Kalkylator', da: 'Beregner' },
   navButikker: { nb: 'Butikker', sv: 'Butiker', da: 'Butikker' },
-  navNytt: { nb: 'Nytt', sv: 'Nytt', da: 'Nyt' },
+  navNytt: { nb: 'Kampanjer', sv: 'Kampanjer', da: 'Kampagner' },
   navKort: { nb: 'Kort', sv: 'Kort', da: 'Kort' },
   navFly: { nb: 'Forsinket fly', sv: 'Försenat flyg', da: 'Forsinket fly' },
   meny: { nb: 'Meny', sv: 'Meny', da: 'Menu' },
