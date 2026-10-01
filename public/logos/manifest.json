@@ -44,7 +44,7 @@
   "NO/bildeler": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bildeler_large_16072024.png",
   "NO/bikbok": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bikbok_large_logo_19112025.png",
   "NO/bonprix": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bonprix_large_2_21032023.png",
-  "NO/bodystore": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/bOk1YepuNavjQKyYRKIZ6q6Vo4w6UuZv6m50e9us.png",
+  "NO/bodystore": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bodystore_large_logo.png",
   "NO/bj246rnborg": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bjornborg_trumf_large.png",
   "NO/bladkongen": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bladkongen_large_09022024.png",
   "NO/bokia": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bokia_large_logo_28082025.png",
@@ -2004,5 +2004,8 @@
   "sok:DK/partyking": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/592acf15-84a6-48b9-9f29-43872963e132/45f07f6732b09771debba544b4349850",
   "DK/partyking": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/592acf15-84a6-48b9-9f29-43872963e132/45f07f6732b09771debba544b4349850",
   "sok:NO/hamphi": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/17cc2abf-4792-4138-9ac3-08ab08e3f83c/f90c682057b82928f3180c07beef6987",
-  "sok:SE/hamphi": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/17cc2abf-4792-4138-9ac3-08ab08e3f83c/f90c682057b82928f3180c07beef6987"
+  "sok:SE/hamphi": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/17cc2abf-4792-4138-9ac3-08ab08e3f83c/f90c682057b82928f3180c07beef6987",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/8OLpeW3PMhVqXWr6Amxgfj1t72o8bGE2EFnl953b.png": "nei",
+  "sok:DK/bubliq": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/e4ae8a35-24f3-4a53-a161-7142a6552911/58a46070c74f0f6b5790cc9056d2bb3d",
+  "DK/bubliq": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/e4ae8a35-24f3-4a53-a161-7142a6552911/58a46070c74f0f6b5790cc9056d2bb3d"
 }

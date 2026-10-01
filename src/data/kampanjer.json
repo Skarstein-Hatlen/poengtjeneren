@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-09-30",
+  "hentet": "2026-10-01",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -202,10 +202,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Ewii",
       "tittel": "Ewii",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 1000,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 1.000",
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/ewii/018caabe-91fe-71c5-ae25-f8455fa39c8d",
       "logo": "/logos/kampanjer/sas-dk-ewii.webp"
     },
@@ -468,32 +468,6 @@
       "slutt": null,
       "url": "https://www.lunar.app/no/privat/sas-eurobonus",
       "logo": "/logos/partnere/lunar.webp"
-    },
-    {
-      "id": "sas-amex-elite-velkomst",
-      "land": "NO",
-      "program": "sas-amex-elite",
-      "partner": "SAS Amex Elite",
-      "tittel": "SAS Amex Elite",
-      "tekst": "Når du handler for minst 90 000 kr de første 9 månedene.",
-      "verdi": 15000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
-      "logo": "/logos/partnere/amex.webp"
-    },
-    {
-      "id": "sas-amex-premium-velkomst",
-      "land": "NO",
-      "program": "sas-amex-premium",
-      "partner": "SAS Amex Premium",
-      "tittel": "SAS Amex Premium",
-      "tekst": "Når du handler for minst 60 000 kr de første 9 månedene.",
-      "verdi": 5000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
-      "logo": "/logos/partnere/amex.webp"
     },
     {
       "id": "sas-business-no-velkomst",
@@ -1125,10 +1099,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Elskling",
       "tittel": "Elskling",
-      "tekst": "Via SAS Shopping · normalt 500",
-      "verdi": 2500,
+      "tekst": "Via SAS Shopping",
+      "verdi": 500,
       "enhet": "poeng",
-      "slutt": "2026-09-30",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/elskling.se/0189630f-5536-7329-883b-ceffb426d426",
       "logo": "/logos/kampanjer/sas-se-elskling.se.webp"
     },
@@ -1450,38 +1424,12 @@
       "program": "sas-online-shopping-se",
       "partner": "Zmarta försäkring",
       "tittel": "Zmarta försäkring",
-      "tekst": "Via SAS Shopping · nya kunder · normalt 1 500",
-      "verdi": 2500,
+      "tekst": "Via SAS Shopping · nya kunder",
+      "verdi": 1500,
       "enhet": "poeng",
-      "slutt": "2026-09-30",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/zmarta-forsakring/0198511f-cddd-705e-8f63-7df64aa4f3af",
       "logo": "/logos/partnere/zmarta.webp"
-    },
-    {
-      "id": "se-sas-amex-elite-velkomst",
-      "land": "SE",
-      "program": "se-sas-amex-elite",
-      "partner": "SAS Amex Elite",
-      "tittel": "SAS Amex Elite",
-      "tekst": "Välkomstbonus.",
-      "verdi": 15000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
-      "logo": "/logos/partnere/amex.webp"
-    },
-    {
-      "id": "se-sas-amex-premium-velkomst",
-      "land": "SE",
-      "program": "se-sas-amex-premium",
-      "partner": "SAS Amex Premium",
-      "tittel": "SAS Amex Premium",
-      "tekst": "Välkomstbonus.",
-      "verdi": 5000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
-      "logo": "/logos/partnere/amex.webp"
     },
     {
       "id": "se-sas-mastercard-premium-velkomst",
