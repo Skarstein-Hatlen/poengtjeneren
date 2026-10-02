@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-01",
+  "hentet": "2026-10-02",
   "land": {
     "NO": [
       {
@@ -429,7 +429,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 10.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/avis-trumf-1"
           }
@@ -1013,7 +1013,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 10.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/budget-trumf"
           }
@@ -1211,7 +1211,7 @@
           "klarna": {
             "verdi": 2,
             "opptil": true,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/no/store/2056a8f0-1867-421d-9185-cc853a38f8dc/click-boat/pay-with-klarna/"
           }
         },
         "domene": "clickandboat.com",
@@ -1343,7 +1343,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
           },
@@ -1669,7 +1669,7 @@
           "klarna": {
             "verdi": 2,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/no/store/f06d12bf-a2cb-40d0-ad73-642236fe1ddc/eastpak/pay-with-klarna/"
           }
         },
         "domene": "eastpak.com",
@@ -1968,7 +1968,7 @@
           "klarna": {
             "verdi": 2,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/no/store/9645a70a-7056-43b0-9956-5bbfe7b67888/estore/pay-with-klarna/"
           }
         },
         "domene": "estore.no",
@@ -2048,7 +2048,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfexpedia-eu"
           }
@@ -2472,7 +2472,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/getyourguide-trumf"
           },
@@ -2550,7 +2550,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.7,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/go-nordic-cruiseline-trumf"
           },
@@ -2898,7 +2898,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
           }
@@ -3595,7 +3595,7 @@
           "klarna": {
             "verdi": 3.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/no/store/fa6d888c-9f6e-4400-a944-f8ced15ef19d/kaercher/pay-with-klarna/"
           }
         },
         "domene": "karcher.com",
@@ -4958,7 +4958,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfoutnorth"
           },
@@ -5396,7 +5396,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfradissonhotels"
           }
@@ -5652,7 +5652,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/scandic-hotels-trumf"
           }
@@ -5699,7 +5699,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/sembo-trumf"
           }
@@ -7184,7 +7184,7 @@
           "klarna": {
             "verdi": 1.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/no/store/14e97321-eadb-4a02-8a0a-69fd3dc79fbe/weloveholidays/pay-with-klarna/"
           }
         },
         "domene": "loveholidays.com",
@@ -7677,7 +7677,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 9,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/5832b076-0249-47ed-bcc8-0fbd38fdc9cd/aliexpress/pay-with-klarna/"
           }
@@ -9697,7 +9697,7 @@
           "klarna-se": {
             "verdi": 2,
             "opptil": true,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/se/store/774cdbd5-3075-42ea-b460-fbbd4fa5f843/etsy/pay-with-klarna/"
           }
         },
         "domene": "etsy.com",
@@ -13136,7 +13136,7 @@
           "klarna-se": {
             "verdi": 3.5,
             "opptil": true,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/se/store/9f6268fb-4787-48de-9074-b2c15002767d/outnorth/pay-with-klarna/"
           }
         },
         "domene": "outnorth.com",
@@ -13224,21 +13224,6 @@
         },
         "domene": "parfumdreams.se",
         "logo": "/logos/SE/parfumdreams.webp"
-      },
-      {
-        "id": "partykungen",
-        "navn": "Partykungen",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/partykungen/019b11f5-2adc-72f3-96b1-3428a999ce72"
-          }
-        },
-        "logo": "/logos/SE/partykungen.webp"
       },
       {
         "id": "partyninja",
@@ -14147,7 +14132,7 @@
           "klarna-se": {
             "verdi": 3.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/se/store/4c141fa9-9cc0-48b1-bfb1-f4047d218c53/sharkninja/pay-with-klarna/"
           }
         },
         "domene": "sharkninja.se",
@@ -15680,7 +15665,7 @@
           "klarna-se": {
             "verdi": 3,
             "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/7e974073-5836-4622-8ccb-4ad7da84ca96/vistaprint/pay-with-klarna/"
+            "kilde": "https://www.klarna.comnull"
           }
         },
         "domene": "vistaprint.fr",
@@ -15859,7 +15844,7 @@
           "klarna-se": {
             "verdi": 1.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/se/store/0b35aa0e-b1b6-4950-957b-d4abc5424c13/weloveholidays/pay-with-klarna/"
           }
         },
         "domene": "loveholidays.com",
@@ -15973,7 +15958,7 @@
           "klarna-se": {
             "verdi": 2.5,
             "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/61897094-d3a0-4207-91f9-17f331daec7f/xlmoto/pay-with-klarna/"
+            "kilde": "https://www.klarna.comnull"
           }
         },
         "domene": "xlmoto.com",
@@ -16384,7 +16369,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 9,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/fe5c2390-80ac-4dee-8542-722d6c8aea85/aliexpress/pay-with-klarna/"
           }
@@ -17014,7 +16999,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": true,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/6cb6027c-1233-426c-9fcd-0b3f41feda4c/click-boat/pay-with-klarna/"
           }
         },
         "domene": "clickandboat.com",
@@ -17565,7 +17550,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": true,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/0be08912-04d9-4e0b-83e1-bc5dd8f74061/etsy/pay-with-klarna/"
           }
         },
         "domene": "etsy.com",
@@ -17804,7 +17789,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/0baa6e06-99d9-42fc-a811-4c5649920602/gameseal/pay-with-klarna/"
           }
         },
         "domene": "gameseal.com",
@@ -19900,21 +19885,6 @@
         "logo": "/logos/DK/parfumdreams.webp"
       },
       {
-        "id": "partyking",
-        "navn": "Partyking",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/partyking/019b11f5-2adc-72f3-96b1-3428a999ce72"
-          }
-        },
-        "logo": "/logos/DK/partyking.webp"
-      },
-      {
         "id": "patpat",
         "navn": "PatPat",
         "kategorier": [
@@ -20532,7 +20502,7 @@
           "klarna-dk": {
             "verdi": 3.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/2adb134b-fb87-4e69-a4fd-4716de65c125/shark/pay-with-klarna/"
           }
         },
         "domene": "sharkninja.dk",
@@ -21154,7 +21124,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/da4d3590-3e10-4d1d-b710-2ebffbd90313/timberland/pay-with-klarna/"
           }
         },
         "domene": "timberland.com",
@@ -21373,7 +21343,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/2e40d6fa-2f73-4b2d-8d44-574ed7c2da7c/vieve/pay-with-klarna/"
+            "kilde": "https://www.klarna.comnull"
           }
         },
         "domene": "vievebeauty.com",
@@ -21495,7 +21465,7 @@
           "klarna-dk": {
             "verdi": 1.5,
             "opptil": false,
-            "kilde": "https://www.klarna.comnull"
+            "kilde": "https://www.klarna.com/dk/store/eede900a-6155-4b05-9da1-e0344660d412/weloveholidays/pay-with-klarna/"
           }
         },
         "domene": "loveholidays.com",
