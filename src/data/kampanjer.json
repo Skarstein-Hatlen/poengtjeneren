@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-01",
+  "hentet": "2026-10-03",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -215,10 +215,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Factor",
       "tittel": "Factor",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 2000,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 2.000",
+      "verdi": 4000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-04",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/factor/01932560-06e4-7378-846c-17fc077c77eb",
       "logo": "/logos/SE/factor.webp"
     },
@@ -1138,10 +1138,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Factor",
       "tittel": "Factor",
-      "tekst": "Via SAS Shopping · nya kunder",
-      "verdi": 2000,
+      "tekst": "Via SAS Shopping · nya kunder · normalt 2 000",
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-11",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/factor/01932560-06e4-7378-846c-17fc077c77eb",
       "logo": "/logos/SE/factor.webp"
     },

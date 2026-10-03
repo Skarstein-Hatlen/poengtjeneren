@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-02",
+  "hentet": "2026-10-03",
   "land": {
     "NO": [
       {
@@ -2080,6 +2080,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-04"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/farmasiet/0189630e-f90a-731d-84b2-1094d26349be"
           },
           "klarna": {
@@ -2167,7 +2171,7 @@
       },
       {
         "id": "fjordline",
-        "navn": "Fjordline",
+        "navn": "Fjord Line",
         "kategorier": [
           "reise",
           "sport"
@@ -4966,8 +4970,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
+          },
+          "klarna": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/1f312e87-b927-4a0a-82ab-383d5d7aa939/outnorth/pay-with-klarna/"
           }
         },
+        "domene": "outnorth.com",
         "logo": "/logos/NO/outnorth.webp"
       },
       {
@@ -5228,15 +5238,9 @@
         "id": "polarnopyret",
         "navn": "Polarn O. Pyret",
         "kategorier": [
-          "mote",
           "barn"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 7.8,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/trumfpolarn-o-pyretno"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -9609,6 +9613,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/epic-travelgear/0199b95a-142f-73a9-90e9-d6dbaecdc935"
           }
         },
@@ -15563,7 +15571,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/vetzoo/01896309-eb6b-71bc-b887-5602e27dd701"
           },
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 1,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/9c41fa25-0674-45ef-bb76-367e8e758474/vetzoo/pay-with-klarna/"
           }
@@ -19799,8 +19807,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
+          },
+          "klarna-dk": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/043f8d82-8c7f-462d-b335-80f25fbd30bb/outnorth/pay-with-klarna/"
           }
         },
+        "domene": "outnorth.com",
         "logo": "/logos/DK/outnorth.webp"
       },
       {
