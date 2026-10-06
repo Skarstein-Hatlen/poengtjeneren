@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-05",
+  "hentet": "2026-10-06",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -606,7 +606,7 @@
       "partner": "HelloFresh",
       "tittel": "HelloFresh",
       "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 500,
+      "verdi": 1000,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/hellofresh/0189630e-0077-7365-979b-baa2f08a1bc7",
@@ -683,10 +683,10 @@
       "program": "sas-online-shopping",
       "partner": "Nextory",
       "tittel": "Nextory",
-      "tekst": "Via SAS Shopping",
-      "verdi": 250,
+      "tekst": "Via SAS Shopping · normalt 250",
+      "verdi": 500,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/nextory/0189630c-56c3-7074-8394-13e45ce5c745",
       "logo": "/logos/kampanjer/sas-no-nextory.webp"
     },
@@ -1255,10 +1255,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Nextory",
       "tittel": "Nextory",
-      "tekst": "Via SAS Shopping",
-      "verdi": 250,
+      "tekst": "Via SAS Shopping · normalt 250",
+      "verdi": 499,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/nextory/0189630c-56c3-7074-8394-13e45ce5c745",
       "logo": "/logos/kampanjer/sas-se-nextory.webp"
     },

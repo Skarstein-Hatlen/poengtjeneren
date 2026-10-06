@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-05",
+  "hentet": "2026-10-06",
   "land": {
     "NO": [
       {
@@ -1856,9 +1856,15 @@
         "id": "elon",
         "navn": "Elon",
         "kategorier": [
+          "elektronikk",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/elon-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -2880,7 +2886,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
           }
@@ -4715,6 +4721,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/norli/0189630a-a084-73fb-a865-8fda2d897a29"
           }
         },
@@ -4967,6 +4977,21 @@
         "logo": "/logos/NO/outnorth.webp"
       },
       {
+        "id": "plindberg",
+        "navn": "P.Lindberg",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/p-lindberg-trumf"
+          }
+        },
+        "logo": "/logos/NO/plindberg.webp"
+      },
+      {
         "id": "pace",
         "navn": "Pace",
         "kategorier": [
@@ -5071,6 +5096,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
           }
         },
@@ -5091,6 +5120,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/petxl/019c7b24-6555-7109-9f9b-b6675d9f3abb"
           }
         },
@@ -7664,6 +7697,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-07"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/amazon/018ead91-a62a-71c0-b877-9faf0d120af4"
           }
         },
@@ -11788,6 +11825,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lindskrog-parkering-arlanda/0199710b-f1ca-707f-b9b0-6e55f41c1f81"
           }
         }
@@ -12893,7 +12934,7 @@
         "kategorier": [],
         "satser": {
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 2,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/053b8e96-5803-40ee-bfce-0f00b9c14b70/nugnes/pay-with-klarna/"
           }
@@ -13253,6 +13294,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
           }
         },
@@ -14387,6 +14432,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-11"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/soffadirekt/0189630a-1be2-707b-8a6f-d198c40fe2d9"
           },
           "klarna-se": {
@@ -15035,20 +15084,6 @@
           }
         },
         "logo": "/logos/SE/tennisxpert.webp"
-      },
-      {
-        "id": "thedoublef",
-        "navn": "The Double F",
-        "kategorier": [],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/5f3d324b-ceb0-451d-a134-eb5c7e8d8b40/the-double-f/pay-with-klarna/"
-          }
-        },
-        "domene": "thedoublef.com",
-        "logo": "/logos/SE/thedoublef.webp"
       },
       {
         "id": "theperfumebrand",
@@ -16725,6 +16760,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bottle-hero/019a112d-87ab-730e-9bb7-101330a28267"
           }
         },
