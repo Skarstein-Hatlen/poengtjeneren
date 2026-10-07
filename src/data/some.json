@@ -1,0 +1,13 @@
+{
+  "startUke": 41,
+  "kortbruk": 200000,
+  "butikkduell": ["lyko", "ellos", "kicks", "lindex", "ginatricot", "kitchn", "vita", "lensway", "zooplus", "apotekhjem", "outnorth", "miinto", "sephora", "adidas", "stormberg"],
+  "kortduell": [
+    ["klarna-kort-max", "sas-amex-elite"],
+    ["sas-amex-premium", "dnb-saga-mastercard-upgrade"],
+    ["sas-mastercard-world", "dnb-mastercard-upgrade"],
+    ["klarna-kort-premium", "sas-amex-premium"],
+    ["sas-amex-classic", "sas-mastercard-world"],
+    ["klarna-kort-plus", "dnb-mastercard-upgrade"]
+  ]
+}

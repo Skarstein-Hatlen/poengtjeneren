@@ -1,5 +1,6 @@
-// Lager ferdige bilder til Instagram (4:5) og TikTok (9:16) fra ukens tall, med tekst til posten, og en enkel
-// side på /some der bildene kan lagres fra mobilen. Kjøres etter bygg-butikksider.mjs (leser dist/api/ukens.json).
+// Lager ukens poster til Instagram (4:5) og TikTok (9:16) fra dagens tall – ukens beste (karusell), butikkduellen og
+// kortduellen (roterer etter src/data/some.json) – med tekst til hver post, og en enkel side på /some der alt kan
+// lagres fra mobilen. Kjøres etter bygg-butikksider.mjs (leser dist/api/ukens.json).
 // Skriften er Barlow fra scripts/fonter (gjort om til vektorer med opentype.js), så bildene ser like ut overalt.
 
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -275,40 +276,275 @@ async function slutt(f) {
   return ramme(f, svg, { sveip: false });
 }
 
-// ---------- skriv ----------
+// ---------- dueller ----------
 
-await mkdir(UT, { recursive: true });
-const slides = [forside, flestPoeng, ...(opp.length ? [gikkOpp] : []), ...(bonuser.length ? [velkomst] : []), ...(ut.length ? [sisteSjanse] : []), slutt];
-const filer = { instagram: [], tiktok: [] };
-for (const [navn, f] of Object.entries(FORMATER)) {
-  for (let i = 0; i < slides.length; i++) {
-    const svg = await slides[i](f);
-    const fil = `${navn}-${i + 1}.png`;
-    await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toFile(fileURLToPath(new URL(fil, UT)));
-    filer[navn].push(fil);
-  }
+const oppsett = await les('src/data/some.json');
+const kortbilder = await les('src/data/kortbilder.json');
+const alleKort = await les('src/data/cards.json');
+const runde = (liste) => liste[(((uke - oppsett.startUke) % liste.length) + liste.length) % liste.length];
+const gjeldende = (s) => (s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
+const programNO = programmer.filter((p) => p.land === 'NO');
+
+/** EuroBonus-poeng per 100 kr i en butikk, Klarna med Max – samme regning som butikksidene. */
+function per100Butikk(p, sats) {
+  const v = gjeldende(sats);
+  if (p.satsEnhet === 'poengPer100') return v;
+  const kurs = p.konverteringer[0]?.poengPerKrone;
+  if (!kurs) return null;
+  const max = p.nivaer.find((n) => n.id === 'max');
+  return (max ? v * max.butikkFaktor + max.ekstraProsent : v) * kurs;
 }
 
-const t1 = topp[0];
-const o1 = opp[0];
-const b1 = bonuser[0];
-const v = (n, p) => (enhet(p) === '%' ? `${tall(n, 1)} %` : `${tall(n)} poeng/100 kr`);
-const tekstTilPost = [
-  `Ukens beste for EuroBonus-jegere ✈️ (uke ${uke})`,
-  '',
-  t1 ? `Flest poeng nå: ${t1.navn} gir ${per100Tekst(t1.per100)} poeng per 100 kr via ${programNavn(t1.program)}.` : '',
-  o1 ? `Gikk opp: ${o1.navn} hos ${o1.program}, fra ${v(o1.fra, o1.program)} til ${v(o1.til, o1.program)}.` : '',
-  b1 ? `Største velkomstbonus: ${b1.partner}, ${tall(Math.round(b1.poeng))} poeng.` : '',
-  '',
-  'Sveip for hele lista 👉 Sjekk din butikk på pointmaxing.no (lenke i bio)',
-  '',
-  '#eurobonus #saseurobonus #sas #trumf #klarna #bonuspoeng #flypoeng #reisemedpoeng #poengjakt #reisetips',
-]
-  .filter((l, i, a) => l !== '' || a[i - 1] !== '')
-  .join('\n');
-await writeFile(new URL('tekst.txt', UT), `${tekstTilPost}\n`);
+const kortBilder = new Map();
+async function kortbilde(id) {
+  const sti = kortbilder[id];
+  if (!sti) return null;
+  if (!kortBilder.has(id)) {
+    kortBilder.set(
+      id,
+      sharp(fileURLToPath(new URL(`public${sti}`, rot)), { density: 200 })
+        .resize(640)
+        .png()
+        .toBuffer()
+        .then((b) => `data:image/png;base64,${b.toString('base64')}`)
+        .catch(() => null),
+    );
+  }
+  return kortBilder.get(id);
+}
 
-const bilder = (navn) => filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="Bilde ${i + 1}" loading="lazy"></a>`).join('');
+/** Kortet i en duell: Klarna-nivåene regnes som kort (tillegget på alle kjøp), resten fra cards.json. */
+function kortFor(id) {
+  const klarna = id.match(/^klarna-kort-(plus|premium|max)$/);
+  if (klarna) {
+    const p = PROG.Klarna;
+    const n = p?.nivaer.find((x) => x.id === klarna[1]);
+    if (!p || !n) return null;
+    return { id, navn: `Klarna ${n.navn}`, per100: n.ekstraProsent * (p.konverteringer[0]?.poengPerKrone ?? 0), prisPerMnd: n.prisPerMnd, tak: null };
+  }
+  const k = alleKort.find((x) => x.id === id && x.land.includes('NO'));
+  if (!k) return null;
+  const pris = k.prisPerMndFra && idag >= k.prisPerMndFra.dato ? k.prisPerMndFra.kr : k.prisPerMnd;
+  return { id, navn: k.navn, per100: k.poengPer100, prisPerMnd: pris, tak: k.tak ?? null };
+}
+function regnKort(k) {
+  const poeng = (Math.min(oppsett.kortbruk, k.tak ?? Infinity) * k.per100) / 100;
+  const kostnad = k.prisPerMnd * 12;
+  return { ...k, poeng, kostnad, ore: poeng > 0 ? (kostnad * 100) / poeng : null };
+}
+
+// Ukens butikk: neste i rotasjonen som fortsatt finnes i minst to programmer.
+const butikkDuell = (() => {
+  const liste = oppsett.butikkduell.map((id) => butikker.find((b) => b.id === id)).filter((b) => b && Object.keys(b.satser).length >= 2);
+  if (!liste.length) return null;
+  const b = runde(liste);
+  const rader = programNO
+    .filter((p) => b.satser[p.id])
+    .map((p) => ({ p, navn: p.id === 'klarna' ? 'Klarna Max' : p.kortnavn, per100: per100Butikk(p, b.satser[p.id]) }))
+    .filter((r) => r.per100 !== null)
+    .sort((a, c) => c.per100 - a.per100);
+  return rader.length >= 2 ? { b, rader } : null;
+})();
+
+// Ukens kortpar.
+const kortDuell = (() => {
+  const par = runde(oppsett.kortduell).map(kortFor);
+  if (par.some((k) => !k)) return null;
+  const [a, c] = par.map(regnKort);
+  // Billigst per poeng vinner; koster begge null, vinner den med flest poeng.
+  const vinner = a.ore === c.ore ? (a.poeng >= c.poeng ? a : c) : (a.ore ?? Infinity) < (c.ore ?? Infinity) ? a : c;
+  return { a, c, vinner };
+})();
+
+async function butikkduell(f) {
+  const { b, rader: liste } = butikkDuell;
+  const x = f.kortX;
+  const y0 = f.kortY + 40;
+  let svg = etikett('Butikkduellen', x, y0, F.gullfyll);
+  svg += tekst('Handler du på', { x, y: y0 + 96, str: 84, font: S.smalFet, farge: F.krem });
+  const navnStr = mål(`${b.navn}?`, S.smalFet, 132) > f.kortB ? 100 : 132;
+  svg += tekst(`${b.navn}?`, { x, y: y0 + 96 + navnStr + 4, str: navnStr, font: S.smalFet, farge: F.gullfyll, maks: f.kortB });
+  const ky = y0 + 96 + navnStr + 60;
+  const rh = 150;
+  const kh = 140 + liste.length * rh + 150;
+  const x0 = x + 40;
+  const hoyre = x + f.kortB - 44;
+  const maxV = liste[0].per100;
+  let innhold = await flis(x0, ky + 40, 200, 92, await butikkLogo(b.id), b.navn);
+  innhold += tekst('Poeng per 100 kr', { x: hoyre, y: ky + 98, str: 28, font: S.medium, farge: F.dempet, anker: 'end' });
+  liste.forEach((r, i) => {
+    const y = ky + 170 + i * rh;
+    const tallTekst = per100Tekst(r.per100);
+    const tallB = mål(tallTekst, S.smalFet, 84);
+    const barMaks = hoyre - x0 - tallB - 36;
+    innhold += `<rect x="${x0}" y="${y - 20}" width="${hoyre - x0}" height="2" fill="${F.strek}"/>`;
+    innhold += `<circle cx="${x0 + 10}" cy="${y + 26}" r="10" fill="${farge(r.p.kortnavn)}"/>`;
+    innhold += tekst(r.navn, { x: x0 + 32, y: y + 40, str: 40, font: S.semibold, farge: F.blekk });
+    if (i === 0) innhold += tekst('FLEST POENG', { x: x0 + 40 + mål(r.navn, S.semibold, 40) + 18, y: y + 36, str: 22, font: S.semibold, farge: F.gull, sperring: 3 });
+    innhold += `<rect x="${x0}" y="${y + 62}" width="${Math.max(14, (r.per100 / maxV) * barMaks)}" height="22" rx="11" fill="${i === 0 ? F.gullfyll : farge(r.p.kortnavn)}"/>`;
+    innhold += tekst(tallTekst, { x: hoyre, y: y + 84, str: 84, font: S.smalFet, farge: i === 0 ? F.blekk : F.dempet, anker: 'end' });
+  });
+  const forskjell = Math.round((liste[0].per100 - liste[1].per100) * 10);
+  const linje = `1 000 kr gir ${tall(Math.round(liste[0].per100 * 10))} poeng med ${liste[0].navn} – ${tall(forskjell)} flere enn ${liste[1].navn}.`;
+  linjer(linje, S.medium, 34, f.kortB - 88).forEach((l, i) => (innhold += tekst(l, { x: x0, y: ky + 170 + liste.length * rh + 20 + i * 46, str: 34, font: S.medium, farge: F.blekk })));
+  svg += kort(f, 'bduell', innhold, ky, kh);
+  return ramme(f, svg, { sveip: false });
+}
+
+async function kortduell(f) {
+  const { a, c, vinner } = kortDuell;
+  const x = f.kortX;
+  const y0 = f.kortY + 40;
+  const hoy = f.H > 1500; // TikTok har plass til tittelen på to linjer
+  let svg = etikett('Kortduellen', x, y0, F.gullfyll);
+  let ty0;
+  if (hoy) {
+    svg += tekst('Hvilket kort gir', { x, y: y0 + 96, str: 92, font: S.smalFet, farge: F.krem });
+    svg += tekst('mest for pengene?', { x, y: y0 + 190, str: 92, font: S.smalFet, farge: F.gullfyll });
+    ty0 = y0 + 250;
+  } else {
+    svg += tekst('Mest for pengene?', { x, y: y0 + 96, str: 92, font: S.smalFet, farge: F.gullfyll });
+    ty0 = y0 + 152;
+  }
+  svg += tekst(`Ved ${tall(oppsett.kortbruk)} kr i kortbruk i året`, { x, y: ty0, str: 34, font: S.regular, farge: F.lys });
+  const ky = ty0 + 46;
+  const kh = Math.min(860, f.bunnY - 116 - ky);
+  const gap = 24;
+  const kolB = (f.kortB - 80 - gap) / 2;
+  const radH = hoy ? 96 : 84;
+  const verdiStr = hoy ? 54 : 48;
+  const navnStr = hoy ? 36 : 32;
+  // Kortbildet får plassen som er igjen når navn og fire tallrader er trukket fra.
+  const bildeH = Math.min((kolB - 20) * (540 / 856), kh - 56 - 46 - 2 * (navnStr + 8) - 12 - 4 * radH - 24);
+  const bildeB = bildeH * (856 / 540);
+  let innhold = '';
+  for (const [i, k] of [a, c].entries()) {
+    const kx = x + 40 + i * (kolB + gap);
+    const vant = k === vinner;
+    if (vant) innhold += `<rect x="${kx - 10}" y="${ky + 26}" width="${kolB + 20}" height="${kh - 52}" rx="22" fill="none" stroke="${F.gullfyll}" stroke-width="5"/>`;
+    const bilde = await kortbilde(k.id);
+    if (bilde) innhold += `<image href="${bilde}" x="${kx + (kolB - bildeB) / 2}" y="${ky + 56}" width="${bildeB}" height="${bildeH}" preserveAspectRatio="xMidYMid meet"/>`;
+    if (vant) innhold += tekst('BEST VERDI', { x: kx + kolB / 2, y: ky + 50, str: 20, font: S.semibold, farge: F.gull, anker: 'middle', sperring: 3 });
+    let ty = ky + 56 + bildeH + 46;
+    linjer(k.navn, S.semibold, navnStr, kolB - 20)
+      .slice(0, 2)
+      .forEach((l) => {
+        innhold += tekst(l, { x: kx + 10, y: ty, str: navnStr, font: S.semibold, farge: F.blekk, maks: kolB - 20 });
+        ty += navnStr + 8;
+      });
+    ty += 12;
+    const rad = (navn, verdi) => {
+      innhold += tekst(navn.toUpperCase(), { x: kx + 10, y: ty, str: 19, font: S.semibold, farge: F.dempet, sperring: 3 });
+      innhold += tekst(verdi, { x: kx + 10, y: ty + verdiStr, str: verdiStr, font: S.smalFet, farge: F.blekk, maks: kolB - 20 });
+      ty += radH;
+    };
+    rad('Poeng per 100 kr', tall(k.per100, 2));
+    rad('Pris', k.prisPerMnd ? `${tall(k.prisPerMnd)} kr/mnd` : 'Gratis');
+    rad('Poeng i året', tall(Math.round(k.poeng)));
+    rad('Pris per poeng', k.ore === null ? '–' : k.ore === 0 ? '0 øre' : `${tall(k.ore, 1)} øre`);
+  }
+  svg += kort(f, 'kduell', innhold, ky, kh);
+  svg += tekst('Bare poeng på vanlige kortkjøp. Priser fra utstederne.', { x, y: ky + kh + 46, str: 26, font: S.regular, farge: F.lys, maks: f.kortB });
+  return ramme(f, svg, { sveip: false });
+}
+
+// ---------- skriv ----------
+
+const EMNER = '#eurobonus #saseurobonus #sas #trumf #klarna #bonuspoeng #flypoeng #reisemedpoeng #poengjakt #reisetips';
+const v = (n, p) => (enhet(p) === '%' ? `${tall(n, 1)} %` : `${tall(n)} poeng/100 kr`);
+const avsnitt = (linjer) => linjer.filter((l, i, a) => l !== null && (l !== '' || a[i - 1] !== '')).join('\n');
+
+const poster = [];
+{
+  const t1 = topp[0];
+  const o1 = opp[0];
+  const b1 = bonuser[0];
+  poster.push({
+    id: 'ukens',
+    tittel: 'Ukens beste',
+    dag: 'mandag',
+    slides: [forside, flestPoeng, ...(opp.length ? [gikkOpp] : []), ...(bonuser.length ? [velkomst] : []), ...(ut.length ? [sisteSjanse] : []), slutt],
+    tekst: avsnitt([
+      `Ukens beste for EuroBonus-jegere ✈️ (uke ${uke})`,
+      '',
+      t1 ? `Flest poeng nå: ${t1.navn} gir ${per100Tekst(t1.per100)} poeng per 100 kr via ${programNavn(t1.program)}.` : null,
+      o1 ? `Gikk opp: ${o1.navn} hos ${o1.program}, fra ${v(o1.fra, o1.program)} til ${v(o1.til, o1.program)}.` : null,
+      b1 ? `Største velkomstbonus: ${b1.partner}, ${tall(Math.round(b1.poeng))} poeng.` : null,
+      '',
+      'Sveip for hele lista 👉 Sjekk din butikk på pointmaxing.no (lenke i bio)',
+      '',
+      EMNER,
+    ]),
+  });
+}
+if (butikkDuell) {
+  const { b, rader: liste } = butikkDuell;
+  const forskjell = Math.round((liste[0].per100 - liste[1].per100) * 10);
+  const emne = `#${b.navn.toLowerCase().replace(/[^a-z0-9æøå]+/g, '')}`;
+  poster.push({
+    id: 'butikkduell',
+    tittel: `Butikkduellen: ${b.navn}`,
+    dag: 'onsdag',
+    slides: [butikkduell],
+    tekst: avsnitt([
+      `Handler du på ${b.navn}? 🛍️`,
+      '',
+      'Så mange EuroBonus-poeng får du per 100 kr i dag:',
+      ...liste.map((r) => `${r.navn}: ${per100Tekst(r.per100)} poeng`),
+      '',
+      `På et kjøp på 1 000 kr er forskjellen ${tall(forskjell)} poeng. Sjekk favorittbutikken din på pointmaxing.no (lenke i bio)`,
+      '',
+      `${EMNER} ${emne}`,
+    ]),
+  });
+}
+if (kortDuell) {
+  const { a, c, vinner } = kortDuell;
+  const linje = (k) => `${k.navn}: ${tall(Math.round(k.poeng))} poeng i året, ${k.ore === null ? '–' : k.ore === 0 ? 'gratis' : `${tall(k.ore, 1)} øre per poeng`}`;
+  poster.push({
+    id: 'kortduell',
+    tittel: `Kortduellen: ${a.navn} mot ${c.navn}`,
+    dag: 'fredag',
+    slides: [kortduell],
+    tekst: avsnitt([
+      `Kortduellen: ${a.navn} mot ${c.navn} 💳`,
+      '',
+      `Ved ${tall(oppsett.kortbruk)} kr i kortbruk i året:`,
+      linje(a),
+      linje(c),
+      '',
+      `Mest for pengene: ${vinner.navn}. Hvilket kort bruker du? 👇`,
+      'Se alle kortene på pointmaxing.no (lenke i bio)',
+      '',
+      `${EMNER} #kredittkort #amex`,
+    ]),
+  });
+}
+
+await mkdir(UT, { recursive: true });
+for (const post of poster) {
+  post.filer = { instagram: [], tiktok: [] };
+  for (const [navn, f] of Object.entries(FORMATER)) {
+    for (let i = 0; i < post.slides.length; i++) {
+      const svg = await post.slides[i](f);
+      const fil = `${post.id}-${navn}-${i + 1}.png`;
+      await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toFile(fileURLToPath(new URL(fil, UT)));
+      post.filer[navn].push(fil);
+    }
+  }
+  await writeFile(new URL(`${post.id}.txt`, UT), `${post.tekst}\n`);
+}
+
+const bilder = (post, navn) => post.filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="${esc(post.tittel)} – bilde ${i + 1}" loading="lazy"></a>`).join('');
+const seksjon = (post, i) => `<section>
+<h2>${i + 1}. ${esc(post.tittel)} <span>· post på ${post.dag}</span></h2>
+<textarea id="tekst-${post.id}" readonly>${esc(post.tekst)}</textarea>
+<button type="button" onclick="navigator.clipboard.writeText(document.getElementById('tekst-${post.id}').value).then(()=>{this.textContent='Kopiert ✓'})">Kopier teksten</button>
+<h3>Instagram · 4:5</h3>
+<div class="rutenett">${bilder(post, 'instagram')}</div>
+<h3>TikTok · 9:16</h3>
+<div class="rutenett">${bilder(post, 'tiktok')}</div>
+</section>`;
 await writeFile(
   new URL('index.html', UT),
   `<!doctype html>
@@ -317,23 +553,20 @@ await writeFile(
 <style>
 :root{--navy:#0b1f4b;--krem:#faf7f0;--lys:#8ea0c4;--gull:#f0c14b}
 *{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--krem);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;padding:24px 16px 48px}
-main{max-width:980px;margin:0 auto}h1{font-size:22px;margin:0 0 4px}p{color:var(--lys);margin:0 0 20px}
-h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gull);margin:28px 0 10px}
+main{max-width:980px;margin:0 auto}h1{font-size:22px;margin:0 0 4px}p{color:var(--lys);margin:0 0 8px}
+section{margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15)}
+h2{font-size:18px;margin:0 0 10px}h2 span{color:var(--lys);font-weight:400;font-size:15px}
+h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gull);margin:22px 0 10px}
 .rutenett{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .rutenett img{width:100%;display:block;border-radius:10px}
-textarea{width:100%;min-height:220px;border-radius:10px;border:0;padding:12px;font:15px/1.5 system-ui,sans-serif;background:var(--krem);color:#13203d}
+textarea{width:100%;min-height:200px;border-radius:10px;border:0;padding:12px;font:15px/1.5 system-ui,sans-serif;background:var(--krem);color:#13203d}
 button{margin-top:8px;padding:10px 16px;border:0;border-radius:999px;background:var(--gull);color:#13203d;font-weight:700;font-size:15px;cursor:pointer}
 </style></head><body><main>
 <h1>Innhold til Instagram og TikTok · uke ${uke}</h1>
 <p>Laget ${idag} fra dagens tall. Trykk på et bilde og hold inne for å lagre det.</p>
-<h2>Tekst til posten</h2>
-<textarea id="tekst" readonly>${esc(tekstTilPost)}</textarea>
-<button type="button" onclick="navigator.clipboard.writeText(document.getElementById('tekst').value).then(()=>{this.textContent='Kopiert ✓'})">Kopier teksten</button>
-<h2>Instagram · 4:5</h2>
-<div class="rutenett">${bilder('instagram')}</div>
-<h2>TikTok · 9:16</h2>
-<div class="rutenett">${bilder('tiktok')}</div>
+<p>Forslag: ukens beste på mandag, butikkduellen på onsdag og kortduellen på fredag.</p>
+${poster.map(seksjon).join('\n')}
 </main></body></html>
 `,
 );
-console.log(`SoMe: ${slides.length} bilder per format (uke ${uke}) i dist/some`);
+console.log(`SoMe uke ${uke}: ${poster.map((p) => `${p.id} (${p.slides.length})`).join(', ')} i dist/some`);
