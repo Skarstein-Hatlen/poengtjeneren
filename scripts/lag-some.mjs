@@ -107,15 +107,14 @@ async function rader(f, overskrift, liste) {
 
 // ---------- slidene ----------
 
-async function forside(f) {
+/** Forside: etikett, tittel på to linjer, en undertekst og et kort med butikken som gir flest poeng. */
+async function forsideSlide(f, { etikettTekst, tittel, gullLinje2 = false, underTekst, t }) {
   const x = f.kortX;
   const y = f.H * (f.H > 1500 ? 0.27 : 0.25);
-  let svg = etikett(`Ukens beste · uke ${uke}`, x, y, F.gullfyll);
-  const tittel = ['Flest EuroBonus-', 'poeng denne uken'];
-  tittel.forEach((l, i) => (svg += tekst(l, { x, y: y + 150 + i * 138, str: 142, font: S.smalFet, farge: F.krem })));
-  const under = linjer('Trumf, Klarna eller SAS Shopping? Vi har regnet ut hvor du får mest.', S.regular, 42, f.kortB - 40);
+  let svg = etikett(etikettTekst, x, y, F.gullfyll);
+  tittel.forEach((l, i) => (svg += tekst(l, { x, y: y + 150 + i * 138, str: 142, font: S.smalFet, farge: gullLinje2 && i === 1 ? F.gullfyll : F.krem, maks: f.kortB })));
+  const under = linjer(underTekst, S.regular, 42, f.kortB - 40);
   under.forEach((l, i) => (svg += tekst(l, { x, y: y + 400 + i * 56, str: 42, font: S.regular, farge: F.lys })));
-  const t = topp[0];
   if (t) {
     const ky = y + 400 + under.length * 56 + 60;
     const innhold =
@@ -123,13 +122,15 @@ async function forside(f) {
       (await flis(x + 40, ky + 110, 150, 76, await butikkLogo(t.id), t.navn)) +
       tekst(t.navn, { x: x + 218, y: ky + 146, str: 44, font: S.semibold, farge: F.blekk, maks: f.kortB - 480 }) +
       `<circle cx="${x + 227}" cy="${ky + 176}" r="9" fill="${farge(t.program)}"/>` +
-      tekst(`via ${programNavn(t.program)}`, { x: x + 246, y: ky + 186, str: 30, font: S.regular, farge: F.dempet }) +
+      tekst(`via ${programNavn(t.program)}${t.opptil ? ' · opptil' : ''}`, { x: x + 246, y: ky + 186, str: 30, font: S.regular, farge: F.dempet }) +
       tekst(per100Tekst(t.per100), { x: x + f.kortB - 44, y: ky + 162, str: 84, font: S.smalFet, farge: F.blekk, anker: 'end' }) +
       tekst('poeng/100 kr', { x: x + f.kortB - 44, y: ky + 198, str: 26, font: S.medium, farge: F.dempet, anker: 'end' });
     svg += kort(f, 'forside', innhold, ky, 240);
   }
   return ramme(f, svg);
 }
+const forside = (f) =>
+  forsideSlide(f, { etikettTekst: `Ukens beste · uke ${uke}`, tittel: ['Flest EuroBonus-', 'poeng denne uken'], underTekst: 'Trumf, Klarna eller SAS Shopping? Vi har regnet ut hvor du får mest.', t: topp[0] });
 
 async function flestPoeng(f) {
   const liste = await Promise.all(
@@ -242,15 +243,19 @@ function regnKort(k) {
 }
 
 // Ukens butikk: neste i rotasjonen som fortsatt finnes i minst to programmer.
+/** Programmene i en butikk med poeng per 100 kr, flest først. */
+const raderFor = (b) =>
+  programNO
+    .filter((p) => b.satser[p.id])
+    .map((p) => ({ p, navn: p.id === 'klarna' ? 'Klarna Max' : p.kortnavn, per100: per100Butikk(p, b.satser[p.id]), opptil: Boolean(b.satser[p.id].opptil) }))
+    .filter((r) => r.per100 !== null)
+    .sort((a, c) => c.per100 - a.per100);
+
 const butikkDuell = (() => {
   const liste = oppsett.butikkduell.map((id) => butikker.find((b) => b.id === id)).filter((b) => b && Object.keys(b.satser).length >= 2);
   if (!liste.length) return null;
   const b = runde(liste);
-  const rader = programNO
-    .filter((p) => b.satser[p.id])
-    .map((p) => ({ p, navn: p.id === 'klarna' ? 'Klarna Max' : p.kortnavn, per100: per100Butikk(p, b.satser[p.id]) }))
-    .filter((r) => r.per100 !== null)
-    .sort((a, c) => c.per100 - a.per100);
+  const rader = raderFor(b);
   return rader.length >= 2 ? { b, rader } : null;
 })();
 
@@ -285,14 +290,14 @@ const amexDuell = (() => {
   return rader.length >= 2 ? { amex, rader, alle, amexSeire, klarnaSeire } : null;
 })();
 
-async function butikkduell(f) {
-  const { b, rader: liste } = butikkDuell;
+/** Én butikk, programmene side om side. Med beløp vises poengene for beløpet, ellers per 100 kr. */
+async function butikkSlide(f, { id, etikettTekst, linje1, linje2, b, liste, belop = null }) {
   const x = f.kortX;
   const y0 = f.kortY + 40;
-  let svg = etikett('Butikkduellen', x, y0, F.gullfyll);
-  svg += tekst('Handler du på', { x, y: y0 + 96, str: 84, font: S.smalFet, farge: F.krem });
-  const navnStr = mål(`${b.navn}?`, S.smalFet, 132) > f.kortB ? 100 : 132;
-  svg += tekst(`${b.navn}?`, { x, y: y0 + 96 + navnStr + 4, str: navnStr, font: S.smalFet, farge: F.gullfyll, maks: f.kortB });
+  let svg = etikett(etikettTekst, x, y0, F.gullfyll);
+  svg += tekst(linje1, { x, y: y0 + 96, str: 84, font: S.smalFet, farge: F.krem, maks: f.kortB });
+  const navnStr = mål(linje2, S.smalFet, 132) > f.kortB ? 100 : 132;
+  svg += tekst(linje2, { x, y: y0 + 96 + navnStr + 4, str: navnStr, font: S.smalFet, farge: F.gullfyll, maks: f.kortB });
   const ky = y0 + 96 + navnStr + 60;
   const rh = 150;
   const kh = 140 + liste.length * rh + 150;
@@ -300,10 +305,10 @@ async function butikkduell(f) {
   const hoyre = x + f.kortB - 44;
   const maxV = liste[0].per100;
   let innhold = await flis(x0, ky + 40, 200, 92, await butikkLogo(b.id), b.navn);
-  innhold += tekst('Poeng per 100 kr', { x: hoyre, y: ky + 98, str: 28, font: S.medium, farge: F.dempet, anker: 'end' });
+  innhold += tekst(belop ? `Poeng for ${tall(belop)} kr` : 'Poeng per 100 kr', { x: hoyre, y: ky + 98, str: 28, font: S.medium, farge: F.dempet, anker: 'end' });
   liste.forEach((r, i) => {
     const y = ky + 170 + i * rh;
-    const tallTekst = per100Tekst(r.per100);
+    const tallTekst = belop ? tall(Math.round((r.per100 * belop) / 100)) : per100Tekst(r.per100);
     const tallB = mål(tallTekst, S.smalFet, 84);
     const barMaks = hoyre - x0 - tallB - 36;
     innhold += `<rect x="${x0}" y="${y - 20}" width="${hoyre - x0}" height="2" fill="${F.strek}"/>`;
@@ -312,13 +317,16 @@ async function butikkduell(f) {
     if (i === 0) innhold += tekst('FLEST POENG', { x: x0 + 40 + mål(r.navn, S.semibold, 40) + 18, y: y + 36, str: 22, font: S.semibold, farge: F.gull, sperring: 3 });
     innhold += `<rect x="${x0}" y="${y + 62}" width="${Math.max(14, (r.per100 / maxV) * barMaks)}" height="22" rx="11" fill="${i === 0 ? F.gullfyll : farge(r.p.kortnavn)}"/>`;
     innhold += tekst(tallTekst, { x: hoyre, y: y + 84, str: 84, font: S.smalFet, farge: i === 0 ? F.blekk : F.dempet, anker: 'end' });
+    if (r.opptil) innhold += tekst('OPPTIL', { x: hoyre, y: y + 12, str: 18, font: S.semibold, farge: F.dempet, anker: 'end', sperring: 2 });
   });
-  const forskjell = Math.round((liste[0].per100 - liste[1].per100) * 10);
-  const linje = `1 000 kr gir ${tall(Math.round(liste[0].per100 * 10))} poeng med ${liste[0].navn} – ${tall(forskjell)} flere enn ${liste[1].navn}.`;
+  const sum = belop ?? 1000;
+  const linje = `${tall(sum)} kr gir ${liste[0].opptil ? 'opptil ' : ''}${tall(Math.round((liste[0].per100 * sum) / 100))} poeng med ${liste[0].navn} – ${tall(Math.round(((liste[0].per100 - liste[1].per100) * sum) / 100))} flere enn ${liste[1].navn}.`;
   linjer(linje, S.medium, 34, f.kortB - 88).forEach((l, i) => (innhold += tekst(l, { x: x0, y: ky + 170 + liste.length * rh + 20 + i * 46, str: 34, font: S.medium, farge: F.blekk })));
-  svg += kort(f, 'bduell', innhold, ky, kh);
+  svg += kort(f, id, innhold, ky, kh);
   return ramme(f, svg, { sveip: false });
 }
+const butikkduell = (f) =>
+  butikkSlide(f, { id: 'bduell', etikettTekst: 'Butikkduellen', linje1: 'Handler du på', linje2: `${butikkDuell.b.navn}?`, b: butikkDuell.b, liste: butikkDuell.rader });
 
 async function kortduell(f) {
   const { a, c, vinner } = kortDuell;
@@ -431,6 +439,103 @@ async function amexKlarna(f) {
   return ramme(f, svg, { sveip: false });
 }
 
+// ---------- Black Friday-serie ----------
+// Fem poster med egne datoer frem mot Black Friday og Cyber Monday (datoene i src/data/blackfriday.json). Bygges hver natt
+// frem til og med Cyber Monday, så tallene er ferske den dagen posten lagres.
+
+const bf = JSON.parse(await readFile(new URL('api/blackfriday.json', dist), 'utf8'));
+const bfKat = (bf.land.NO ?? []).filter((k) => k.butikker.length >= 3);
+const bfAktiv = idag <= bf.cyberMonday && bfKat.length > 0;
+const bfAr = bf.dato.slice(0, 4);
+const datoTekst = (iso) => new Intl.DateTimeFormat('nb-NO', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(iso));
+const MANEDER = ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des'];
+const kortDato = (iso) => `${Number(iso.slice(8, 10))}. ${MANEDER[Number(iso.slice(5, 7)) - 1]}`;
+const dagerFor = (n) => new Date(Date.parse(bf.dato) - n * 864e5).toISOString().slice(0, 10);
+const kortnavn = (program) => program.replace(/ Max$/, '');
+// De kjente butikkene, hver én gang, flest poeng først.
+const bfTopp = bfKat
+  .flatMap((k) => k.butikker)
+  .filter((b, i, a) => a.findIndex((x) => x.id === b.id) === i)
+  .sort((a, c) => c.per100 - a.per100);
+// Kampanjer der kampanjen er beste vei i butikken (alle norske butikker).
+const bfKampanjer = butikker
+  .map((b) => {
+    const r = raderFor(b)[0];
+    const sats = r && b.satser[r.p.id];
+    return sats?.kampanje && sats.kampanje.slutt >= idag ? { b, ...r, slutt: sats.kampanje.slutt } : null;
+  })
+  .filter(Boolean)
+  .sort((a, c) => c.per100 - a.per100);
+const klarnaNO = programNO.find((p) => p.nivaer.some((n) => n.id === 'max'));
+const maxNO = klarnaNO?.nivaer.find((n) => n.id === 'max');
+const medKortNO = programNO.filter((p) => p.kortlag).map((p) => p.kortnavn);
+const bfTips = [
+  'Satsene endres. Sjekk butikken rett før du handler.',
+  ...(maxNO ? [`${klarnaNO.kortnavn} Max: butikkens sats × ${tall(maxNO.butikkFaktor)} + ${tall(maxNO.ekstraProsent, 1)} %.`] : []),
+  ...(medKortNO.length ? [`Via ${medKortNO.join(' og ')} gir betalingskortet poeng i tillegg. Via Klarna gjør det ikke.`] : []),
+];
+// Regnestykket: første butikk i blackfriday.json (elektronikk først, i listens rekkefølge) med minst to programmer.
+const bfOppsett = await les('src/data/blackfriday.json');
+const bfRegning = (() => {
+  for (const ider of Object.values(bfOppsett.butikker.NO ?? {})) {
+    for (const id of ider) {
+      const b = butikker.find((y) => y.id === id);
+      const rader = b ? raderFor(b) : [];
+      if (rader.length >= 2) return { b, rader };
+    }
+  }
+  return null;
+})();
+const BF_BELOP = 5000;
+
+const bfForside = (f) =>
+  forsideSlide(f, {
+    etikettTekst: `Black Friday · ${datoTekst(bf.dato)}`,
+    tittel: ['Flest poeng på', 'Black Friday'],
+    gullLinje2: true,
+    underTekst: 'Vi har sjekket de kjente nettbutikkene. Sveip for topp 5 i hver kategori.',
+    t: bfTopp[0] && { id: bfTopp[0].id, navn: bfTopp[0].navn, program: kortnavn(bfTopp[0].program), per100: bfTopp[0].per100, opptil: bfTopp[0].opptil },
+  });
+
+const bfKategoriSlide = (k) => async (f) => {
+  const liste = await Promise.all(
+    k.butikker.slice(0, 5).map(async (b) => ({ navn: b.navn, logo: await butikkLogo(b.id), prikk: farge(kortnavn(b.program)), under: `via ${b.program}${b.opptil ? ' · opptil' : ''}`, tall: per100Tekst(b.per100), enhet: 'poeng/100 kr' })),
+  );
+  return ramme(f, kort(f, `bf-${k.id}`, await rader(f, `Black Friday · ${k.navn}`, liste)));
+};
+
+async function bfTipsSlide(f) {
+  const x = f.kortX;
+  const y = f.H * (f.H > 1500 ? 0.26 : 0.22);
+  let svg = etikett(`Black Friday · ${datoTekst(bf.dato)}`, x, y - 120, F.gullfyll);
+  svg += tekst('3 ting før', { x, y, str: 132, font: S.smalFet, farge: F.krem });
+  svg += tekst('Black Friday', { x, y: y + 132, str: 132, font: S.smalFet, farge: F.gullfyll });
+  const ky = y + 220;
+  let innhold = '';
+  let ty = ky + 100;
+  for (const t of bfTips) {
+    innhold += hake(x + 50, ty, 38, F.gull);
+    linjer(t, S.medium, 38, f.kortB - 150).forEach((l, i) => (innhold += tekst(l, { x: x + 100, y: ty + i * 50, str: 38, font: S.medium, farge: F.blekk })));
+    ty += linjer(t, S.medium, 38, f.kortB - 150).length * 50 + 44;
+  }
+  innhold += tekst('pointmaxing.no', { x: x + 48, y: ty + 40, str: 64, font: S.smalFet, farge: F.blekk });
+  svg += kort(f, 'bftips', innhold, ky, ty + 90 - ky);
+  return ramme(f, svg, { sveip: false });
+}
+
+const bfRegnestykke = (f) =>
+  butikkSlide(f, { id: 'bfregning', etikettTekst: `Black Friday · ${datoTekst(bf.dato)}`, linje1: `Handler du for ${tall(BF_BELOP)} kr`, linje2: `hos ${bfRegning.b.navn}?`, b: bfRegning.b, liste: bfRegning.rader, belop: BF_BELOP });
+
+/** Black Friday-dagen og Cyber Monday: kampanjene som er beste vei nå, ellers de kjente butikkene med flest poeng. */
+const bfListe = () =>
+  bfKampanjer.length >= 3
+    ? bfKampanjer.slice(0, 5).map((r) => ({ id: r.b.id, navn: r.b.navn, program: r.p.kortnavn, under: `${r.navn} · kampanje til ${kortDato(r.slutt)}`, per100: r.per100 }))
+    : bfTopp.slice(0, 5).map((b) => ({ id: b.id, navn: b.navn, program: kortnavn(b.program), under: `via ${b.program}`, per100: b.per100 }));
+const bfListeSlide = (overskrift) => async (f) => {
+  const liste = await Promise.all(bfListe().map(async (r) => ({ navn: r.navn, logo: await butikkLogo(r.id), prikk: farge(r.program), under: r.under, tall: per100Tekst(r.per100), enhet: 'poeng/100 kr' })));
+  return ramme(f, kort(f, 'bfliste', await rader(f, overskrift, liste)), { sveip: false });
+};
+
 // ---------- skriv ----------
 
 const EMNER = '#eurobonus #saseurobonus #sas #trumf #klarna #bonuspoeng #flypoeng #reisemedpoeng #poengjakt #reisetips';
@@ -531,6 +636,66 @@ if (amexDuell) {
   });
 }
 
+if (bfAktiv) {
+  const BF_EMNER = `${EMNER} #blackfriday #blackfriday${bfAr}`;
+  const linjeFor = (r) => `${r.navn}: ${per100Tekst(r.per100)} poeng/100 kr (${r.under})`;
+  const serie = [
+    {
+      id: 'bf-guide',
+      dato: dagerFor(22),
+      tittel: 'Black Friday: flest poeng i hver kategori',
+      slides: [bfForside, ...bfKat.slice(0, 5).map(bfKategoriSlide), slutt],
+      tekst: avsnitt([
+        `Black Friday er ${datoTekst(bf.dato)} 🛍️`,
+        '',
+        'Vi har sjekket de kjente nettbutikkene. Flest EuroBonus-poeng per 100 kr i dag:',
+        ...bfKat.slice(0, 5).map((k) => `${k.navn}: ${k.butikker[0].navn} ${k.butikker[0].opptil ? 'opptil ' : ''}${per100Tekst(k.butikker[0].per100)} (${k.butikker[0].program})`),
+        '',
+        'Sveip for topp 5 i hver kategori 👉 Hele guiden på pointmaxing.no (lenke i bio)',
+        '',
+        BF_EMNER,
+      ]),
+    },
+    bfRegning && {
+      id: 'bf-regnestykke',
+      dato: dagerFor(15),
+      tittel: `Black Friday: ${tall(BF_BELOP)} kr hos ${bfRegning.b.navn}`,
+      slides: [bfRegnestykke],
+      tekst: avsnitt([
+        `Handler du for ${tall(BF_BELOP)} kr hos ${bfRegning.b.navn} på Black Friday? 🧮`,
+        '',
+        ...bfRegning.rader.map((r) => `${r.navn}: ${r.opptil ? 'opptil ' : ''}${tall(Math.round((r.per100 * BF_BELOP) / 100))} poeng`),
+        '',
+        `Forskjellen er ${tall(Math.round(((bfRegning.rader[0].per100 - bfRegning.rader[1].per100) * BF_BELOP) / 100))} poeng på ett kjøp. Sjekk butikken din før du handler på pointmaxing.no (lenke i bio)`,
+        '',
+        BF_EMNER,
+      ]),
+    },
+    {
+      id: 'bf-tips',
+      dato: dagerFor(8),
+      tittel: '3 ting før Black Friday',
+      slides: [bfTipsSlide],
+      tekst: avsnitt(['3 ting du bør vite før Black Friday ✈️', '', ...bfTips.map((t, i) => `${i + 1}. ${t}`), '', 'Hele Black Friday-guiden på pointmaxing.no (lenke i bio)', '', BF_EMNER]),
+    },
+    {
+      id: 'bf-dagen',
+      dato: bf.dato,
+      tittel: 'Black Friday: flest poeng nå',
+      slides: [bfListeSlide('Black Friday · flest poeng nå')],
+      tekst: avsnitt(['Det er Black Friday! 🛍️', '', 'Flest EuroBonus-poeng akkurat nå:', ...bfListe().map(linjeFor), '', 'Sjekk din butikk på pointmaxing.no (lenke i bio)', '', BF_EMNER]),
+    },
+    {
+      id: 'bf-cybermonday',
+      dato: bf.cyberMonday,
+      tittel: 'Cyber Monday: siste sjanse',
+      slides: [bfListeSlide('Cyber Monday · siste sjanse')],
+      tekst: avsnitt(['Cyber Monday – siste sjanse ⏳', '', 'Flest EuroBonus-poeng akkurat nå:', ...bfListe().map(linjeFor), '', 'Sjekk din butikk på pointmaxing.no (lenke i bio)', '', `${EMNER} #cybermonday #blackfriday${bfAr}`]),
+    },
+  ].filter(Boolean);
+  for (const post of serie) poster.push({ ...post, dag: datoTekst(post.dato) });
+}
+
 await mkdir(UT, { recursive: true });
 for (const post of poster) {
   post.filer = { instagram: [], tiktok: [] };
@@ -552,7 +717,7 @@ for (const post of poster) {
 const DOMENE = 'https://pointmaxing.no';
 await writeFile(
   new URL('poster.json', UT),
-  JSON.stringify({ uke, laget: idag, poster: poster.map((p) => ({ id: p.id, dag: p.dag, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
+  JSON.stringify({ uke, laget: idag, poster: poster.map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
 );
 
 const bilder = (post, navn) => post.filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="${esc(post.tittel)} – bilde ${i + 1}" loading="lazy"></a>`).join('');
@@ -585,6 +750,7 @@ button{margin-top:8px;padding:10px 16px;border:0;border-radius:999px;background:
 <h1>Innhold til Instagram og TikTok · uke ${uke}</h1>
 <p>Laget ${idag} fra dagens tall. Trykk på et bilde og hold inne for å lagre det.</p>
 <p>Forslag: ukens beste på mandag, butikkduellen på onsdag, kortduellen på fredag og Amex eller Klarna Max på søndag.</p>
+${bfAktiv ? '<p>Black Friday-serien har egne datoer. Tallene oppdateres hver natt, så lagre bildene samme dag som du poster.</p>' : ''}
 ${poster.map(seksjon).join('\n')}
 </main></body></html>
 `,

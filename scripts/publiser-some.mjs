@@ -57,7 +57,8 @@ const svar = await fetch(`${POSTER}?t=${Date.now()}`);
 if (!svar.ok) throw new Error(`Fant ikke ${POSTER} (HTTP ${svar.status})`);
 const { laget, poster } = await svar.json();
 const valgt = process.env.POST_ID?.trim();
-const post = valgt ? poster.find((p) => p.id === valgt) : poster.find((p) => p.dag === iDag);
+// Poster med egen dato (Black Friday-serien) går foran ukedagen.
+const post = valgt ? poster.find((p) => p.id === valgt) : (poster.find((p) => p.dato === idag) ?? poster.find((p) => !p.dato && p.dag === iDag));
 if (!post) {
   console.log(valgt ? `Fant ingen post med id «${valgt}».` : `Ingen post på ${iDag}.`);
   process.exit(valgt ? 1 : 0);
