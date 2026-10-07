@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: write
 
 jobs:
   hent:
@@ -24,6 +25,19 @@ jobs:
       - run: node scripts/hent-klarna-kurs.mjs
       # Partner-, kort- og medlemskapskampanjer fra offisielle sider.
       - run: node scripts/hent-kampanjer.mjs
+      # Tilbud som ikke ble lest (endret ordlyd på en side) blir et issue, så de ikke forsvinner i stillhet.
+      - name: Varsle om kampanjer som ikke ble lest
+        if: hashFiles('kampanjesjekk.txt') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          eksisterende=$(gh issue list --label kampanjesjekk --state open --json number --jq '.[0].number')
+          if [ -n "$eksisterende" ]; then
+            gh issue comment "$eksisterende" --body-file kampanjesjekk.txt
+          else
+            gh label create kampanjesjekk --color 1D76DB --description "Kampanjer som ikke ble lest av hent-kampanjer" 2>/dev/null || true
+            gh issue create --title "Kampanjesjekk $(date -u +%d.%m.%Y)" --label kampanjesjekk --body-file kampanjesjekk.txt
+          fi
       - run: npm run utvidelse
       - run: npm test
       - name: Commit og push hvis satsene endret seg

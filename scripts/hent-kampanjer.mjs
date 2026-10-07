@@ -1,7 +1,7 @@
 // Henter kampanjer som ikke er butikksatser, fra offisielle sider, og skriver src/data/kampanjer.json:
 // - velkomsttilbud i SAS Online Shopping (tilbud med faste poeng i portalens eget API),
 // - partnernes egne EuroBonus-sider (Verisure, Tryg, Trygg-Hansa, matkasser, mobil, strøm, kort),
-// - Trumf-partnere (Talkmore, Fjordkraft) og Amex' velkomsttilbud,
+// - Trumf-partnernes velkomstgaver fra alle sidene under trumf.no/fordeler, og Amex' velkomsttilbud,
 // - EuroBonus-bonuser på Klarnas medlemskapssider og Klarna-butikker med kampanje.
 // Tallet leses fra kilden hver dag – ingenting gjettes – og en kampanje forsvinner den dagen tallet er
 // borte. Faste vilkårstekster har `må`: tekster som må stå på siden, ellers hoppes tilbudet over.
@@ -37,7 +37,7 @@ const MND = {
   juni: 6, jun: 6, juli: 7, jul: 7, august: 8, augusti: 8, aug: 8, september: 9, sep: 9, sept: 9, oktober: 10, okt: 10,
   november: 11, nov: 11, desember: 12, december: 12, des: 12, dec: 12,
 };
-const FORAN = String.raw`(?:innen|senest|til og med|t\.o\.m\.?|frem til|fram til|gjelder til|gäller till|gælder til|senast)`;
+const FORAN = String.raw`(?:innen|senest|til og med|till och med|t\.o\.m\.?|frem til|fram til|gyldig til|gjelder til|gäller till|gælder til|senast)`;
 const iso = (aar, mnd, dag) => `${aar}-${String(mnd).padStart(2, '0')}-${String(dag).padStart(2, '0')}`;
 
 /** «innen 11. august», «t.o.m. 31.12.2026», «t.o.m. 31 dec 2026» → ISO-dato (neste år hvis datoen uten år er passert). */
@@ -178,35 +178,8 @@ const partnerside = ({ id, land, program = 'eurobonus', partner, url, re, vilkar
 });
 
 const KILDER = [
-  // Trumf-partnere: velkomstgave i kroner (vises omregnet til poeng).
-  {
-    id: 'talkmore-trumf',
-    land: 'NO',
-    program: 'trumf',
-    partner: 'Talkmore',
-    url: 'https://talkmore.no/privat/abonnement/partner/trumf',
-    finn(tekst) {
-      const m = tekst.match(/få (\d[\d .]*),?-? i Trumf-velkomstgave/i) ?? tekst.match(/(\d[\d .]*) (?:kr|kroner) i Trumf-(?:bonus|velkomstgave)/i);
-      if (!m) return null;
-      const sitat = tekst.match(/Bli Talkmore-kunde og få [^.]{0,60}?velkomstgave/i)?.[0] ?? m[0];
-      return { tittel: 'Talkmore', tekst: `${sitat}.`, verdi: tall(m[1]), enhet: 'kr' };
-    },
-  },
-  {
-    id: 'fjordkraft-trumf',
-    land: 'NO',
-    program: 'trumf',
-    partner: 'Fjordkraft',
-    url: 'https://www.fjordkraft.no/trumf/',
-    finn(tekst) {
-      const m = tekst.match(/(\d[\d .]*) (?:kr|kroner|,-) i (?:Trumf-)?velkomst(?:bonus|gave)/i) ?? tekst.match(/velkomst(?:bonus|gave) på (\d[\d .]*) (?:kr|kroner)/i) ?? tekst.match(/få (\d[\d .]*) (?:kr|kroner)[^.]{0,40}Trumf/i);
-      if (!m) return null;
-      const sitat = tekst.match(/Bytt til Fjordkraft og få [^.]{0,80}?velkomstgave/i)?.[0] ?? m[0];
-      return { tittel: 'Fjordkraft', tekst: `${sitat}.`, verdi: tall(m[1]), enhet: 'kr' };
-    },
-  },
-
-  // Amex: velkomsttilbud i EuroBonus-poeng på kortsidene (JSON-feltet offerHeader).
+  // Amex: velkomsttilbud i EuroBonus-poeng på kortsidene («Akkurat nå: Få 30.000 EuroBonus Bonuspoeng»).
+  // Leses fra teksten, ikke fra et bestemt JSON-felt – Amex bytter feltnavn og legger til «Akkurat nå:» foran.
   ...[
     ['sas-amex-classic', 'NO', 'SAS Amex Classic', 'https://www.americanexpress.com/nb-no/kredittkort/sas-classic/'],
     ['sas-amex-premium', 'NO', 'SAS Amex Premium', 'https://www.americanexpress.com/nb-no/kredittkort/sas-premium/'],
@@ -220,11 +193,10 @@ const KILDER = [
     program: kort,
     partner: navn,
     url,
-    raa: true,
-    finn(html) {
-      const m = html.match(/"offerHeader":"(?:F[åa]|Get)\s+(\d[\d .]*)\s+EuroBonus\s+Bonuspo(?:eng|äng)[^"]*"/i);
+    finn(side) {
+      const m = side.match(/(?:F[åa]|Get)\s+(\d[\d .]*\d)\s+EuroBonus[- ]Bonuspo(?:eng|äng)/i);
       if (!m) return null;
-      const krav = tekstAv(html).match(/minst (\d[\d .]*) kr (?:i løpet av|under) medlemskapets f(?:ørste|örsta) (\d+) m(?:åneder|ånader)/i);
+      const krav = side.match(/minst (\d[\d .]*) kr (?:i løpet av|under) medlemskapets f(?:ørste|örsta) (\d+) m(?:åneder|ånader)/i);
       const kr = krav ? fmt(land, tall(krav[1])) : null;
       const tekst = krav
         ? land === 'SE'
@@ -405,19 +377,98 @@ const KILDER = [
   ),
 ];
 
+let gammel = { hentet: null, kampanjer: [] };
+try {
+  gammel = JSON.parse(await readFile(FIL, 'utf8'));
+} catch {
+  /* første kjøring */
+}
+const iGar = new Map(gammel.kampanjer.map((k) => [k.id, k]));
 const ut = [];
+const varsler = [];
+const beholdt = [];
+/** En kilde svarte ikke: behold gårsdagens tilbud derfra, så de ikke blinker bort for en dag. */
+function behold(passer) {
+  for (const k of gammel.kampanjer) {
+    if (passer(k) && (!k.slutt || k.slutt >= idag) && !ut.some((x) => x.id === k.id)) {
+      ut.push(k);
+      beholdt.push(k.id);
+    }
+  }
+}
+/** Siden svarte, men tilbudet ble ikke lest. Nevner siden fortsatt et tilbud, har trolig ordlyden endret seg. */
+const sporAvTilbud = (tekst) =>
+  tekst.match(/[^.!?]{0,90}(?:velkomst|välkomst|bonuspoeng|bonuspoäng|bonuspoint|EuroBonus-po(?:eng|äng|int))[^.!?]{0,90}/i)?.[0]?.trim() ?? null;
+
 for (const k of KILDER) {
+  let html;
   try {
-    const html = await hent(k.url);
-    const tekst = tekstAv(html);
-    const funn = k.finn(k.raa ? html : tekst);
-    if (!funn) continue;
-    const slutt = sluttDato(funn.tekst) ?? sluttDato(tekst);
-    const logo = await logoFor(k.id, k.land, k.partner);
-    ut.push({ id: k.id, land: k.land, program: k.program, partner: k.partner, ...funn, slutt, url: k.url, ...(logo ? { logo } : {}) });
+    html = await hent(k.url);
   } catch (e) {
     console.error(`${k.id}: ${e.message}`);
+    behold((g) => g.id === k.id);
+    continue;
   }
+  const tekst = tekstAv(html);
+  const funn = k.finn(k.raa ? html : tekst);
+  if (!funn) {
+    const spor = iGar.has(k.id) ? sporAvTilbud(tekst) : null;
+    if (spor) varsler.push(`${k.partner} (${k.land}): tilbudet fra i går ble ikke lest på ${k.url} – siden nevner fortsatt «${spor}»`);
+    continue;
+  }
+  const slutt = sluttDato(funn.tekst) ?? sluttDato(tekst);
+  const logo = await logoFor(k.id, k.land, k.partner);
+  ut.push({ id: k.id, land: k.land, program: k.program, partner: k.partner, ...funn, slutt, url: k.url, ...(logo ? { logo } : {}) });
+}
+
+// Trumf-partnere: alle sidene under trumf.no/fordeler. Velkomstgaver står i fast ordlyd der («Få 1500 kr i
+// Trumf-bonus som velkomstgave», «Bytt til Talkmore innen 13. oktober»), så nye partnere kommer med av seg selv.
+const TRUMF_NAVN = {
+  kiwi: 'KIWI', 'scandic-friends': 'Scandic Friends', norli: 'Norli', meny: 'MENY', fjordkraft: 'Fjordkraft', talkmore: 'Talkmore', spar: 'SPAR',
+  joker: 'Joker', 'mester-gronn': 'Mester Grønn', narbutikken: 'Nærbutikken', 'cc-mat': 'CC Mat', gigaboks: 'Gigaboks', jacobs: "Jacob's",
+  parkering: 'Trumf Parkering', 'leroy-mat': 'Lerøy Mat', esso: 'Esso',
+};
+const VELKOMST = /(\d[\d .]*\d|\d)\s*(?:kr|kroner|,-|,–)\s+i\s+(?:Trumf-?bonus|Trumf-?velkomstgave|velkomstgave|velkomstbonus)/gi;
+try {
+  const forside = await hent('https://www.trumf.no/fordeler');
+  const slugs = [...new Set([...forside.matchAll(/href="\/fordeler\/([a-z0-9-]+)"/g)].map((m) => m[1]))].filter((x) => x !== 'sas-eurobonus');
+  for (const slug of slugs) {
+    const id = `${slug}-trumf`;
+    const url = `https://www.trumf.no/fordeler/${slug}`;
+    const partner = TRUMF_NAVN[slug] ?? slug.split('-').map((o) => o.charAt(0).toUpperCase() + o.slice(1)).join(' ');
+    let tekst;
+    try {
+      tekst = tekstAv(await hent(url));
+    } catch (e) {
+      console.error(`${id}: ${e.message}`);
+      behold((g) => g.id === id);
+      continue;
+    }
+    // Første kronebeløp i en setning som handler om velkomstgave.
+    const treff = [...tekst.matchAll(VELKOMST)].find((m) => /velkomst/i.test(tekst.slice(Math.max(0, m.index - 120), m.index + m[0].length + 60)));
+    if (!treff) {
+      if (/velkomst(?:gave|bonus)/i.test(tekst) && /\d\s*(?:kr|kroner|,-)/i.test(tekst)) varsler.push(`${partner}: trumf.no nevner en velkomstgave, men beløpet ble ikke lest – ${url}`);
+      continue;
+    }
+    const kr = tall(treff[1]);
+    const logo = await logoFor(id, 'NO', partner);
+    ut.push({
+      id,
+      land: 'NO',
+      program: 'trumf',
+      partner,
+      tittel: partner,
+      tekst: `Velkomstgave til nye kunder: ${fmt('NO', kr)} kr i Trumf-bonus.`,
+      verdi: kr,
+      enhet: 'kr',
+      slutt: sluttDato(tekst),
+      url,
+      ...(logo ? { logo } : {}),
+    });
+  }
+} catch (e) {
+  console.error(`trumf.no/fordeler: ${e.message}`);
+  behold((g) => g.program === 'trumf');
 }
 
 // SAS Online Shopping: tilbud med faste poeng (velkomsttilbud hos strøm, mobil, matkasser, forsikring …).
@@ -461,6 +512,7 @@ for (const [land, sprak, sti, program, nye] of SAS) {
     }
   } catch (e) {
     console.error(`${program}: ${e.message}`);
+    behold((g) => g.id.startsWith(`sas-${land.toLowerCase()}-`));
   }
 }
 
@@ -493,6 +545,7 @@ for (const [program, land, sti] of [['klarna', 'NO', 'no'], ['klarna-se', 'SE', 
     }
   } catch (e) {
     console.error(`${program}: ${e.message}`);
+    behold((g) => g.id.startsWith(`${program}-butikk-`));
   }
 }
 
@@ -507,12 +560,6 @@ try {
 }
 
 ut.sort((a, b) => a.land.localeCompare(b.land) || a.id.localeCompare(b.id));
-let gammel = { hentet: null, kampanjer: [] };
-try {
-  gammel = JSON.parse(await readFile(FIL, 'utf8'));
-} catch {
-  /* første kjøring */
-}
 if (JSON.stringify(gammel.kampanjer) !== JSON.stringify(ut)) {
   await writeFile(FIL, JSON.stringify({ hentet: idag, kampanjer: ut }, null, 2) + '\n');
   console.log(`Kampanjer: ${ut.length} (endret, skrevet)`);
@@ -520,3 +567,13 @@ if (JSON.stringify(gammel.kampanjer) !== JSON.stringify(ut)) {
   console.log(`Kampanjer: ${ut.length} (uendret)`);
 }
 for (const land of ['NO', 'SE', 'DK']) console.log(`- ${land}: ${ut.filter((k) => k.land === land).length}`);
+if (beholdt.length) console.log(`Beholdt fra i går fordi kilden ikke svarte: ${beholdt.join(', ')}`);
+
+// Kampanjer vi ikke klarte å lese: den daglige jobben gjør fila om til et issue (etiketten «kampanjesjekk»).
+const SJEKK = new URL('../kampanjesjekk.txt', import.meta.url);
+if (varsler.length) {
+  await writeFile(SJEKK, `Kampanjesjekk ${idag}: tilbud som ikke ble lest – sjekk ordlyden og rett mønsteret i scripts/hent-kampanjer.mjs.\n\n${varsler.map((v) => `- ${v}`).join('\n')}\n`);
+  console.log(`Varsler (${varsler.length}):\n${varsler.map((v) => `- ${v}`).join('\n')}`);
+} else {
+  await unlink(SJEKK).catch(() => {});
+}
