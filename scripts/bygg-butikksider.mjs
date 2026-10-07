@@ -440,5 +440,5 @@ await writeFile(
     .map((u) => `  <url><loc>${u}</loc><lastmod>${stores.hentet}</lastmod></url>`)
     .join('\n')}\n</urlset>\n`,
 );
-await writeFile(new URL('robots.txt', dist), `User-agent: *\nAllow: /\nSitemap: ${DOMENE}/sitemap.xml\n`);
+await writeFile(new URL('robots.txt', dist), `User-agent: *\nAllow: /\nDisallow: /some/\nSitemap: ${DOMENE}/sitemap.xml\n`);
 console.log(`Butikksider: ${antall}, sitemap med ${urler.length} adresser, api/butikker.json`);
