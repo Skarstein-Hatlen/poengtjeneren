@@ -1,5 +1,5 @@
-// Lager ukens poster til Instagram (4:5) og TikTok (9:16) fra dagens tall – ukens beste (karusell), butikkduellen og
-// kortduellen (roterer etter src/data/some.json) – med tekst til hver post, og en enkel side på /some der alt kan
+// Lager ukens poster til Instagram (4:5) og TikTok (9:16) fra dagens tall – ukens beste (karusell), butikkduellen, kortduellen
+// og Amex eller Klarna Max (roterer etter src/data/some.json) – med tekst til hver post, og en enkel side på /some der alt kan
 // lagres fra mobilen. Kjøres etter bygg-butikksider.mjs (leser dist/api/ukens.json).
 // Skriften er Barlow fra scripts/fonter (gjort om til vektorer med opentype.js), så bildene ser like ut overalt.
 
@@ -356,6 +356,27 @@ const kortDuell = (() => {
   return { a, c, vinner };
 })();
 
+// Amex eller Klarna Max: Trumf + Amex-kortet mot Klarna Max i butikker der begge gir fast prosent ("opptil" er utelatt).
+const amexDuell = (() => {
+  const amex = kortFor(oppsett.amexduell.kort);
+  const trumf = PROG.Trumf;
+  const klarna = PROG.Klarna;
+  if (!amex || !trumf || !klarna) return null;
+  const alle = butikker
+    .filter((b) => b.satser[trumf.id] && b.satser[klarna.id] && !b.satser[trumf.id].opptil && !b.satser[klarna.id].opptil)
+    .map((b) => ({ b, amex: per100Butikk(trumf, b.satser[trumf.id]) + amex.per100, klarna: per100Butikk(klarna, b.satser[klarna.id]) }))
+    .filter((r) => r.klarna !== null);
+  const amexSeire = alle.filter((r) => r.amex > r.klarna).sort((a, c) => c.amex - c.klarna - (a.amex - a.klarna));
+  const klarnaSeire = alle.filter((r) => r.klarna > r.amex).sort((a, c) => c.klarna - c.amex - (a.klarna - a.amex));
+  // Det sjeldne utfallet kommer alltid med, så bildet viser at svaret avhenger av butikken.
+  const unntak = (amexSeire.length <= klarnaSeire.length ? amexSeire : klarnaSeire)[0];
+  const liste = oppsett.amexduell.butikker.map((id) => alle.find((r) => r.b.id === id)).filter((r) => r && r !== unntak);
+  const antall = Math.min(unntak ? 3 : 4, liste.length);
+  const start = liste.length ? ((((uke - oppsett.startUke) * antall) % liste.length) + liste.length) % liste.length : 0;
+  const rader = [...Array.from({ length: antall }, (_, i) => liste[(start + i) % liste.length]), ...(unntak ? [unntak] : [])];
+  return rader.length >= 2 ? { amex, rader, alle, amexSeire, klarnaSeire } : null;
+})();
+
 async function butikkduell(f) {
   const { b, rader: liste } = butikkDuell;
   const x = f.kortX;
@@ -448,6 +469,60 @@ async function kortduell(f) {
   return ramme(f, svg, { sveip: false });
 }
 
+async function amexKlarna(f) {
+  const { amex, rader: liste, alle, amexSeire, klarnaSeire } = amexDuell;
+  const x = f.kortX;
+  const y0 = f.kortY + 40;
+  let svg = etikett('Kortet i butikken', x, y0, F.gullfyll);
+  let ty0;
+  if (f.H > 1500) {
+    svg += tekst('Amex eller', { x, y: y0 + 96, str: 92, font: S.smalFet, farge: F.krem });
+    svg += tekst('Klarna Max?', { x, y: y0 + 190, str: 92, font: S.smalFet, farge: F.gullfyll });
+    ty0 = y0 + 250;
+  } else {
+    svg += tekst('Amex eller', { x, y: y0 + 96, str: 92, font: S.smalFet, farge: F.krem });
+    svg += tekst('Klarna Max?', { x: x + mål('Amex eller ', S.smalFet, 92), y: y0 + 96, str: 92, font: S.smalFet, farge: F.gullfyll });
+    ty0 = y0 + 152;
+  }
+  svg += tekst('Poeng per 100 kr i samme butikk', { x, y: ty0, str: 34, font: S.regular, farge: F.lys });
+  const ky = ty0 + 46;
+  const kh = f.bunnY - 100 - ky;
+  const x0 = x + 40;
+  const hoyre = x + f.kortB - 44;
+  const amexNavn = `Trumf + ${amex.navn}`;
+  let innhold = `<circle cx="${x0 + 10}" cy="${ky + 62}" r="10" fill="${farge('Trumf')}"/>`;
+  innhold += tekst(amexNavn, { x: x0 + 30, y: ky + 72, str: 28, font: S.semibold, farge: F.blekk });
+  const x2 = x0 + 30 + mål(amexNavn, S.semibold, 28) + 40;
+  innhold += `<circle cx="${x2 + 10}" cy="${ky + 62}" r="10" fill="${farge('Klarna')}"/>`;
+  innhold += tekst('Klarna Max', { x: x2 + 30, y: ky + 72, str: 28, font: S.semibold, farge: F.blekk });
+  const flest = amexSeire.length > klarnaSeire.length ? amexNavn : 'Klarna Max';
+  const oppsum = linjer(`${flest} gir flest poeng i ${Math.max(amexSeire.length, klarnaSeire.length)} av ${alle.length} butikker der både Trumf og Klarna gir fast prosent.`, S.medium, 30, hoyre - x0);
+  const radTopp = ky + 104;
+  const rh = (kh - 104 - 64 - oppsum.length * 42) / liste.length;
+  const maxV = Math.max(...liste.flatMap((r) => [r.amex, r.klarna]));
+  const tallB = Math.max(...liste.flatMap((r) => [r.amex, r.klarna].map((v) => mål(per100Tekst(v), S.smalFet, 38))));
+  const tx = x0 + 128 + 24;
+  const barMaks = hoyre - tx - tallB - 20;
+  const stolpe = (verdi, fyll, vant, topp) =>
+    `<rect x="${tx}" y="${topp}" width="${Math.max(12, (verdi / maxV) * barMaks)}" height="18" rx="9" fill="${fyll}"/>` +
+    tekst(per100Tekst(verdi), { x: hoyre, y: topp + 17, str: 38, font: S.smalFet, farge: vant ? F.blekk : F.dempet, anker: 'end' });
+  for (const [i, r] of liste.entries()) {
+    const y = radTopp + i * rh;
+    const midt = y + rh / 2;
+    innhold += `<rect x="${x0}" y="${y}" width="${hoyre - x0}" height="2" fill="${F.strek}"/>`;
+    innhold += await flis(x0, midt - 32, 128, 64, await butikkLogo(r.b.id), r.b.navn);
+    innhold += tekst(r.b.navn, { x: tx, y: midt - 22, str: 34, font: S.semibold, farge: F.blekk, maks: hoyre - tx });
+    innhold += stolpe(r.amex, farge('Trumf'), r.amex > r.klarna, midt - 2);
+    innhold += stolpe(r.klarna, farge('Klarna'), r.klarna > r.amex, midt + 38);
+  }
+  const sy = radTopp + liste.length * rh;
+  innhold += `<rect x="${x0}" y="${sy}" width="${hoyre - x0}" height="2" fill="${F.strek}"/>`;
+  oppsum.forEach((l, i) => (innhold += tekst(l, { x: x0, y: sy + 56 + i * 42, str: 30, font: S.medium, farge: F.blekk })));
+  svg += kort(f, 'amexklarna', innhold, ky, kh);
+  svg += tekst('Forutsetter at butikken tar Amex. Månedspris er ikke regnet med.', { x, y: ky + kh + 46, str: 26, font: S.regular, farge: F.lys, maks: f.kortB });
+  return ramme(f, svg, { sveip: false });
+}
+
 // ---------- skriv ----------
 
 const EMNER = '#eurobonus #saseurobonus #sas #trumf #klarna #bonuspoeng #flypoeng #reisemedpoeng #poengjakt #reisetips';
@@ -520,6 +595,33 @@ if (kortDuell) {
     ]),
   });
 }
+if (amexDuell) {
+  const { amex, rader: liste, alle, amexSeire, klarnaSeire } = amexDuell;
+  const klarnaFlest = klarnaSeire.length >= amexSeire.length;
+  const unntak = (klarnaFlest ? amexSeire : klarnaSeire).map((r) => r.b.navn);
+  const opplisting = (l) => (l.length === 1 ? l[0] : `${l.slice(0, -1).join(', ')} og ${l.at(-1)}`);
+  poster.push({
+    id: 'amexklarna',
+    tittel: 'Amex eller Klarna Max?',
+    dag: 'søndag',
+    slides: [amexKlarna],
+    tekst: avsnitt([
+      'Amex eller Klarna Max? 💳',
+      '',
+      `Med ${amex.navn} kan du handle via Trumf og få poeng to steder. ${klarnaFlest ? 'Klarna Max gir likevel flere poeng i de fleste butikker.' : 'I de fleste butikker slår det Klarna Max.'}`,
+      '',
+      'Poeng per 100 kr i dag:',
+      ...liste.map((r) => `${r.b.navn}: Trumf + Amex ${per100Tekst(r.amex)} · Klarna Max ${per100Tekst(r.klarna)}`),
+      '',
+      `${klarnaFlest ? 'Klarna Max' : `Trumf + ${amex.navn}`} vinner i ${Math.max(amexSeire.length, klarnaSeire.length)} av ${alle.length} butikker der både Trumf og Klarna gir fast prosent.${unntak.length && unntak.length <= 3 ? ` ${unntak.length === 1 ? 'Unntaket' : 'Unntakene'}: ${opplisting(unntak)}.` : ''}`,
+      'Sjekk din butikk på pointmaxing.no (lenke i bio)',
+      '',
+      'Trumf + Amex forutsetter at butikken tar Amex. Månedspris er ikke regnet med.',
+      '',
+      `${EMNER} #amex #klarnamax`,
+    ]),
+  });
+}
 
 await mkdir(UT, { recursive: true });
 for (const post of poster) {
@@ -564,7 +666,7 @@ button{margin-top:8px;padding:10px 16px;border:0;border-radius:999px;background:
 </style></head><body><main>
 <h1>Innhold til Instagram og TikTok · uke ${uke}</h1>
 <p>Laget ${idag} fra dagens tall. Trykk på et bilde og hold inne for å lagre det.</p>
-<p>Forslag: ukens beste på mandag, butikkduellen på onsdag og kortduellen på fredag.</p>
+<p>Forslag: ukens beste på mandag, butikkduellen på onsdag, kortduellen på fredag og Amex eller Klarna Max på søndag.</p>
 ${poster.map(seksjon).join('\n')}
 </main></body></html>
 `,
