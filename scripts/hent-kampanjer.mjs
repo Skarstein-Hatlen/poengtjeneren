@@ -209,6 +209,26 @@ const KILDER = [
     },
   })),
 
+  // Amex: velkomstbonus via invitasjon fra en venn som er kunde (f.eks. Members Month: Elite 90 000 mot 30 000 uten).
+  // Bare den nye kunden får poeng i Norge, og invitasjonen kan bare komme fra noen du kjenner (Amex' vilkår) – derfor
+  // vises den som et tips uten vervelenke. Den svenske siden lages med JavaScript og kan ikke leses herfra.
+  ...[
+    ['sas-amex-elite', 'SAS Amex Elite', 'SAS Amex Elite'],
+    ['sas-amex-premium', 'SAS Amex Premium', 'SAS Amex Premium'],
+    ['sas-amex-classic', 'SAS Amex Classic', 'SAS Classic'],
+  ].map(([kort, navn, paSiden]) => ({
+    id: `${kort}-invitasjon`,
+    land: 'NO',
+    program: kort,
+    partner: navn,
+    url: 'https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/',
+    finn(side) {
+      const m = side.match(new RegExp(`${paSiden.replace(/ /g, '\\s+')}\\s+Din venn får\\s+(\\d[\\d .]*\\d)\\s+EuroBonus[- ]Bonuspoeng`, 'i'));
+      if (!m) return null;
+      return { tittel: `${navn} med invitasjon`, tekst: 'Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.', verdi: tall(m[1]), enhet: 'poeng' };
+    },
+  })),
+
   // Klarna: EuroBonus-bonus for nye medlemmer på medlemskapssidene.
   ...[
     ['klarna', 'NO', 'https://www.klarna.com/no/medlemskap/'],

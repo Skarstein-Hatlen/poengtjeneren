@@ -470,6 +470,32 @@
       "logo": "/logos/partnere/lunar.webp"
     },
     {
+      "id": "sas-amex-classic-invitasjon",
+      "land": "NO",
+      "program": "sas-amex-classic",
+      "partner": "SAS Amex Classic",
+      "tittel": "SAS Amex Classic med invitasjon",
+      "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
+      "verdi": 7500,
+      "enhet": "poeng",
+      "slutt": "2026-11-03",
+      "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
+      "logo": "/logos/partnere/amex.webp"
+    },
+    {
+      "id": "sas-amex-elite-invitasjon",
+      "land": "NO",
+      "program": "sas-amex-elite",
+      "partner": "SAS Amex Elite",
+      "tittel": "SAS Amex Elite med invitasjon",
+      "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
+      "verdi": 90000,
+      "enhet": "poeng",
+      "slutt": "2026-11-03",
+      "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
+      "logo": "/logos/partnere/amex.webp"
+    },
+    {
       "id": "sas-amex-elite-velkomst",
       "land": "NO",
       "program": "sas-amex-elite",
@@ -480,6 +506,19 @@
       "enhet": "poeng",
       "slutt": "2026-11-03",
       "url": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
+      "logo": "/logos/partnere/amex.webp"
+    },
+    {
+      "id": "sas-amex-premium-invitasjon",
+      "land": "NO",
+      "program": "sas-amex-premium",
+      "partner": "SAS Amex Premium",
+      "tittel": "SAS Amex Premium med invitasjon",
+      "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
+      "verdi": 45000,
+      "enhet": "poeng",
+      "slutt": "2026-11-03",
+      "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
       "logo": "/logos/partnere/amex.webp"
     },
     {

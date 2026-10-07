@@ -469,7 +469,7 @@ const poster = [];
       '',
       t1 ? `Flest poeng nå: ${t1.navn} gir ${per100Tekst(t1.per100)} poeng per 100 kr via ${programNavn(t1.program)}.` : null,
       o1 ? `Gikk opp: ${o1.navn} hos ${o1.program}, fra ${v(o1.fra, o1.program)} til ${v(o1.til, o1.program)}.` : null,
-      b1 ? `Største velkomstbonus: ${b1.partner}, ${tall(Math.round(b1.poeng))} poeng.` : null,
+      b1 ? `Største velkomstbonus: ${b1.tittel ?? b1.partner}, ${tall(Math.round(b1.poeng))} poeng.` : null,
       '',
       'Sveip for hele lista 👉 Sjekk din butikk på pointmaxing.no (lenke i bio)',
       '',
