@@ -19,6 +19,7 @@ const historikk = await les('../src/data/history.json');
 const { kampanjer: partnerkampanjer } = await les('../src/data/kampanjer.json');
 const flyforsinkelse = await les('../src/data/flyforsinkelse.json');
 const utvidelseInfo = await les('../src/data/utvidelse.json');
+const blackFriday = await les('../src/data/blackfriday.json');
 
 const SPRAK = {
   NO: {
@@ -60,6 +61,15 @@ const SPRAK = {
     endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
     forsteMaling: (prog, sats) => `${prog}: ${sats} (første måling)`,
     landFeed: 'Satsendringer siste 30 dager',
+    bfTittel: (ar) => `Black Friday ${ar}: flest EuroBonus-poeng | Pointmaxing`,
+    bfH1: (ar) => `Black Friday ${ar}: flest EuroBonus-poeng`,
+    bfTekst: 'Hvor gir Black Friday-handelen flest SAS EuroBonus-poeng? De beste butikkene i hver kategori via Trumf, Klarna og SAS Online Shopping, oppdatert hver natt.',
+    bfDatoer: (bf, cm) => `Black Friday er ${bf}, Cyber Monday ${cm}.`,
+    bfTips: 'Slik får du mest',
+    bfTipsSjekk: 'Satsene oppdateres hver natt. Sjekk butikken rett før du handler.',
+    bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
+    bfTipsKort: (liste) => `Via ${liste} gir betalingskortet poeng i tillegg. Via Klarna gjør det ikke.`,
+    og: 'og',
   },
   SE: {
     sti: 'se',
@@ -95,6 +105,15 @@ const SPRAK = {
     endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
     forsteMaling: (prog, sats) => `${prog}: ${sats} (första mätningen)`,
     landFeed: 'Ändrade satser senaste 30 dagarna',
+    bfTittel: (ar) => `Black Friday ${ar}: flest EuroBonus-poäng | Pointmaxing`,
+    bfH1: (ar) => `Black Friday ${ar}: flest EuroBonus-poäng`,
+    bfTekst: 'Var ger Black Friday-handeln flest SAS EuroBonus-poäng? De bästa butikerna i varje kategori via Klarna och SAS Online Shopping, uppdaterat varje natt.',
+    bfDatoer: (bf, cm) => `Black Friday är ${bf}, Cyber Monday ${cm}.`,
+    bfTips: 'Så får du mest',
+    bfTipsSjekk: 'Satserna uppdateras varje natt. Kolla butiken precis innan du handlar.',
+    bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikens sats × ${faktor} + ${ekstra} %.`,
+    bfTipsKort: (liste) => `Via ${liste} ger betalkortet poäng också. Via Klarna gör det inte.`,
+    og: 'och',
   },
   DK: {
     sti: 'dk',
@@ -130,6 +149,15 @@ const SPRAK = {
     endring: (prog, fra, til) => `${prog}: ${fra} → ${til}`,
     forsteMaling: (prog, sats) => `${prog}: ${sats} (første måling)`,
     landFeed: 'Satsændringer de seneste 30 dage',
+    bfTittel: (ar) => `Black Friday ${ar}: flest EuroBonus-point | Pointmaxing`,
+    bfH1: (ar) => `Black Friday ${ar}: flest EuroBonus-point`,
+    bfTekst: 'Hvor giver Black Friday-handlen flest SAS EuroBonus-point? De bedste butikker i hver kategori via Klarna og SAS Online Shopping, opdateret hver nat.',
+    bfDatoer: (bf, cm) => `Black Friday er ${bf}, Cyber Monday ${cm}.`,
+    bfTips: 'Sådan får du mest',
+    bfTipsSjekk: 'Satserne opdateres hver nat. Tjek butikken lige før du handler.',
+    bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
+    bfTipsKort: (liste) => `Via ${liste} giver betalingskortet point oveni. Via Klarna gør det ikke.`,
+    og: 'og',
   },
 };
 
@@ -173,14 +201,18 @@ ${innslag
 `;
 }
 
-function side({ lang, tittel, beskrivelse, url, kropp, noindex = false, feed = null, jsonld = null }) {
+// Delingsbildet lages av scripts/lag-delingsbilder.mjs. ?v= gir ny adresse når satsene endres, så Facebook henter det på nytt.
+const LANG_STI = { nb: 'no', sv: 'se', da: 'dk' };
+function side({ lang, tittel, beskrivelse, url, kropp, noindex = false, feed = null, jsonld = null, bilde = `/og/${LANG_STI[lang]}.png` }) {
+  const bildeUrl = `${DOMENE}${bilde}?v=${stores.hentet}`;
   return mal
+    .replace(/\n\s*<meta (?:property="og:[^"]*"|name="twitter:[^"]*") content="[^"]*" \/>/g, '')
     .replace(/<html lang="[^"]*">/, `<html lang="${lang}">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${escape(tittel)}</title>`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escape(beskrivelse)}" />`)
     .replace(
       '</head>',
-      `    <link rel="canonical" href="${url}" />\n${noindex ? '    <meta name="robots" content="noindex" />\n' : ''}${feed ? `    <link rel="alternate" type="application/atom+xml" title="${escape(feed.tittel)}" href="${feed.url}" />\n` : ''}${jsonld ? `    <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n  </head>`,
+      `    <link rel="canonical" href="${url}" />\n${noindex ? '    <meta name="robots" content="noindex" />\n' : ''}${feed ? `    <link rel="alternate" type="application/atom+xml" title="${escape(feed.tittel)}" href="${feed.url}" />\n` : ''}${jsonld ? `    <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}    <meta property="og:title" content="${escape(tittel)}" />\n    <meta property="og:description" content="${escape(beskrivelse)}" />\n    <meta property="og:url" content="${url}" />\n    <meta property="og:site_name" content="Pointmaxing" />\n    <meta property="og:image" content="${bildeUrl}" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="${escape(tittel.replace(/ \| Pointmaxing$/, ''))}" />\n    <meta name="twitter:card" content="summary_large_image" />\n  </head>`,
     )
     .replace('<div id="root"></div>', `<div id="root">${kropp}</div>`);
 }
@@ -193,7 +225,7 @@ async function skriv(sti, innhold) {
 const urler = [`${DOMENE}/`];
 // Til utvidelsen: butikker med grunnsats, og programmene med det som trengs for å regne
 // poeng med brukerens nivå (Klarna Plus/Premium/Max).
-const api = { hentet: stores.hentet, land: {}, programmer: {}, ukens: {} };
+const api = { hentet: stores.hentet, land: {}, programmer: {}, ukens: {}, blackfriday: {} };
 const dagerMellom = (fra, til) => (new Date(til).getTime() - new Date(fra).getTime()) / 86_400_000;
 for (const p of programmer) {
   api.programmer[p.id] = {
@@ -324,6 +356,51 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   );
   urler.push(ukensUrl);
 
+  // Black Friday: flest poeng i hver kategori med standardvalg, kampanjer som gjelder nå, og tips.
+  const bfAr = blackFriday.dato.slice(0, 4);
+  const datoFmt = new Intl.DateTimeFormat(sprak.locale, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+  // Kjente nettbutikker per kategori (src/data/blackfriday.json), sortert etter poeng. Kampanjer tas med uansett butikk.
+  const bfKategorier = Object.entries(blackFriday.butikker[land] ?? {})
+    .map(([katId, ider]) => ({
+      id: katId,
+      navn: kategorier[katId]?.[sprak.lang] ?? katId,
+      topp: ider
+        .map((id) => butikker.get(id))
+        .filter(Boolean)
+        .map(besteFor)
+        .filter(Boolean)
+        .sort((a, b) => b.per100 - a.per100)
+        .slice(0, blackFriday.perKategori),
+    }))
+    .filter((k) => k.topp.length);
+  const bfKampanjer = liste
+    .map(besteFor)
+    .filter((r) => r && r.b.satser[r.p.id].kampanje && r.b.satser[r.p.id].kampanje.slutt >= idag)
+    .sort((a, c) => c.per100 - a.per100)
+    .slice(0, 10);
+  const klarnaP = prog.find((p) => p.nivaer.some((n) => n.id === 'max'));
+  const maxNiva = klarnaP?.nivaer.find((n) => n.id === 'max');
+  const kortProg = prog.filter((p) => p.kortlag).map((p) => p.kortnavn);
+  const bfTips = [
+    sprak.bfTipsSjekk,
+    ...(maxNiva ? [sprak.bfTipsKlarna(klarnaP.kortnavn, fmt.format(maxNiva.butikkFaktor), fmt.format(maxNiva.ekstraProsent))] : []),
+    ...(kortProg.length ? [sprak.bfTipsKort(kortProg.length > 1 ? `${kortProg.slice(0, -1).join(', ')} ${sprak.og} ${kortProg.at(-1)}` : kortProg[0])] : []),
+  ];
+  api.blackfriday[land] = bfKategorier.map((k) => ({ id: k.id, navn: k.navn, butikker: k.topp.map(({ b, p, per100: v }) => ({ id: b.id, navn: b.navn, program: p.nivaer.some((n) => n.id === 'max') ? `${p.kortnavn} Max` : p.kortnavn, per100: Math.round(v * 10) / 10, opptil: Boolean(b.satser[p.id].opptil) })) }));
+  const bfUrl = `${DOMENE}/${sprak.sti}/black-friday`;
+  await skriv(
+    `${sprak.sti}/black-friday`,
+    side({
+      lang: sprak.lang,
+      tittel: sprak.bfTittel(bfAr),
+      beskrivelse: sprak.bfTekst,
+      url: bfUrl,
+      bilde: `/og/${sprak.sti}/black-friday.png`,
+      kropp: `<main><h1>${escape(sprak.bfH1(bfAr))}</h1><p>${escape(sprak.bfDatoer(datoFmt.format(new Date(blackFriday.dato)), datoFmt.format(new Date(blackFriday.cyberMonday))))}</p>${bfKampanjer.length ? `<h2>${escape(sprak.kampanjerNaa)}</h2><ul>${bfKampanjer.map(({ b, p }) => rad(b, `${p.kortnavn} ${satsTekst(p, b.satser[p.id])}`)).join('')}</ul>` : ''}${bfKategorier.map((k) => `<h2>${escape(k.navn)}</h2><ul>${k.topp.map(({ b, p, per100: v }) => rad(b, `${p.kortnavn} ${satsTekst(p, b.satser[p.id])} = ${fmt.format(v)} ${sprak.poeng}/100 kr`)).join('')}</ul>`).join('')}<h2>${escape(sprak.bfTips)}</h2><ul>${bfTips.map((t) => `<li>${escape(t)}</li>`).join('')}</ul></main>`,
+    }),
+  );
+  urler.push(bfUrl);
+
   // Atom-strøm for landet: alle satsendringer siste 30 dager.
   await writeFile(
     new URL(`${sprak.sti}/feed.xml`, dist),
@@ -375,6 +452,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
         url,
         feed,
         jsonld,
+        bilde: `/og/${sprak.sti}/${b.id}.png`,
         kropp: `<main><h1>${escape(b.navn)}</h1><p>${escape(sprak.intro(b.navn))}</p><ul>${linjer.join('')}</ul>${tabell}${medSats.map((p) => `<h2>${escape(sprak.slikFar(p.kortnavn))}</h2><ol>${p.vilkar.map((v) => `<li>${escape(v)}</li>`).join('')}</ol>`).join('')}<p>${escape(sprak.hentet(stores.hentet))}</p><p><a href="/${sprak.sti}/butikker">${escape(sprak.alleButikker)}</a> · <a href="${feed.url}">RSS</a></p></main>`,
       }),
     );
@@ -434,11 +512,12 @@ await copyFile(new URL('index.html', dist), new URL('404.html', dist));
 await mkdir(new URL('api/', dist), { recursive: true });
 await writeFile(new URL('api/butikker.json', dist), JSON.stringify({ hentet: api.hentet, land: api.land, programmer: api.programmer }));
 await writeFile(new URL('api/ukens.json', dist), JSON.stringify({ hentet: api.hentet, land: api.ukens }));
+await writeFile(new URL('api/blackfriday.json', dist), JSON.stringify({ hentet: api.hentet, dato: blackFriday.dato, cyberMonday: blackFriday.cyberMonday, land: api.blackfriday }));
 await writeFile(
   new URL('sitemap.xml', dist),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urler
     .map((u) => `  <url><loc>${u}</loc><lastmod>${stores.hentet}</lastmod></url>`)
     .join('\n')}\n</urlset>\n`,
 );
-await writeFile(new URL('robots.txt', dist), `User-agent: *\nAllow: /\nDisallow: /some/\nSitemap: ${DOMENE}/sitemap.xml\n`);
+await writeFile(new URL('robots.txt', dist), `User-agent: *\nAllow: /\nAllow: /some/*.jpg\nDisallow: /some/\nSitemap: ${DOMENE}/sitemap.xml\n`);
 console.log(`Butikksider: ${antall}, sitemap med ${urler.length} adresser, api/butikker.json`);

@@ -6,7 +6,8 @@ import historikkJson from './history.json';
 import kampanjerJson from './kampanjer.json';
 import flyJson from './flyforsinkelse.json';
 import samarbeidJson from './samarbeid.json';
-import type { Butikk, Butikkfil, Datasett, Historikk, Kort, Land, LandInfo, Partnerkampanje, Program, Flyforsinkelse, Samarbeidspartner } from './types';
+import blackfridayJson from './blackfriday.json';
+import type { BlackFriday, Butikk, Butikkfil, Datasett, Historikk, Kort, Land, LandInfo, Partnerkampanje, Program, Flyforsinkelse, Samarbeidspartner } from './types';
 
 export const LAND: Land[] = ['NO', 'SE', 'DK'];
 
@@ -46,5 +47,6 @@ export function hentData(): Datasett {
     kampanjer: (kampanjerJson as { kampanjer: Partnerkampanje[] }).kampanjer,
     fly: flyJson as Flyforsinkelse,
     samarbeid: samarbeidJson as Samarbeidspartner,
+    blackfriday: blackfridayJson as BlackFriday,
   };
 }

@@ -55,9 +55,9 @@ jobs:
           git commit -m "Oppdaterte butikksatser $(date -u +%d.%m.%Y)"
           git push
           echo "endret=true" >> "$GITHUB_OUTPUT"
-      # Push med GITHUB_TOKEN starter ikke deploy-workflowen av seg selv, så vi starter den her.
+      # Push med GITHUB_TOKEN starter ikke deploy-workflowen av seg selv, så vi starter den her – hver dag, også uten nye
+      # satser, så ukens SoMe-poster (scripts/publiser-some.mjs) og datoene på sidene følger kalenderen.
       - name: Deploy
-        if: steps.commit.outputs.endret == 'true'
         run: gh workflow run deploy.yml --ref main
         env:
           GH_TOKEN: ${{ github.token }}

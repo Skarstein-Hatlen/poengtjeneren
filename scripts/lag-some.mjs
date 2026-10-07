@@ -1,29 +1,16 @@
 // Lager ukens poster til Instagram (4:5) og TikTok (9:16) fra dagens tall – ukens beste (karusell), butikkduellen, kortduellen
 // og Amex eller Klarna Max (roterer etter src/data/some.json) – med tekst til hver post, og en enkel side på /some der alt kan
 // lagres fra mobilen. Kjøres etter bygg-butikksider.mjs (leser dist/api/ukens.json).
-// Skriften er Barlow fra scripts/fonter (gjort om til vektorer med opentype.js), så bildene ser like ut overalt.
+// Tegneverktøyet (Barlow som vektorer, farger, logoer) ligger i tegning.mjs.
 
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import opentype from 'opentype.js';
 import sharp from 'sharp';
+import { F, flis, fly, hake, linjer, logo, mål, pil, rot, S, tekst } from './tegning.mjs';
 
-const rot = new URL('../', import.meta.url);
 const dist = new URL('dist/', rot);
 const UT = new URL('some/', dist);
 const les = async (sti) => JSON.parse(await readFile(new URL(sti, rot), 'utf8'));
-const skrift = (fil) => opentype.loadSync(fileURLToPath(new URL(`scripts/fonter/${fil}`, rot)));
-const S = {
-  regular: skrift('Barlow-Regular.ttf'),
-  medium: skrift('Barlow-Medium.ttf'),
-  semibold: skrift('Barlow-SemiBold.ttf'),
-  smalHalv: skrift('BarlowCondensed-SemiBold.ttf'),
-  smalFet: skrift('BarlowCondensed-Bold.ttf'),
-};
-
-// Fargene fra nettsiden (styles.css).
-const F = { navy: '#0b1f4b', navy2: '#163a7a', papir: '#faf7f0', papir2: '#f1ece0', blekk: '#13203d', dempet: '#6d7385', strek: '#d8d1c0', gull: '#a5780b', gullfyll: '#f0c14b', lys: '#8ea0c4', krem: '#faf7f0' };
-const FLY = 'M50 4 Q58 8 58 26 L58 40 L94 62 L94 71 L58 59 L58 78 L74 91 L74 97 L57 92 L50 95 L43 92 L26 97 L26 91 L42 78 L42 59 L6 71 L6 62 L42 40 L42 26 Q42 8 50 4 Z';
 const FORMATER = {
   instagram: { B: 1080, H: 1350, toppY: 104, kortY: 160, kortH: 1040, bunnY: 1292, kortX: 60, kortB: 960 },
   // TikTok legger knapper langs høyre kant og teksten nederst – innholdet holdes unna begge.
@@ -41,64 +28,6 @@ const uke = (() => {
 const tall = (n, des = 0) => n.toLocaleString('nb-NO', { maximumFractionDigits: des }).replace(/[  ]/g, ' ');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
-// ---------- tekst som vektorer ----------
-
-function glyfer(t, font, str, sperring) {
-  const g = font.stringToGlyphs(t);
-  const skala = str / font.unitsPerEm;
-  let x = 0;
-  const pos = [];
-  for (let i = 0; i < g.length; i++) {
-    pos.push(x);
-    x += g[i].advanceWidth * skala;
-    if (i < g.length - 1) x += font.getKerningValue(g[i], g[i + 1]) * skala + sperring;
-  }
-  return { g, pos, bredde: x };
-}
-const mål = (t, font, str, sperring = 0) => glyfer(t, font, str, sperring).bredde;
-
-/** Tekst som <path>. `maks` korter av med … så teksten aldri renner over. */
-function tekst(t, { x, y, str, font = S.regular, farge = F.blekk, anker = 'start', sperring = 0, maks = Infinity }) {
-  let s = String(t);
-  if (mål(s, font, str, sperring) > maks) {
-    while (s.length > 1 && mål(`${s}…`, font, str, sperring) > maks) s = s.slice(0, -1).trimEnd();
-    s = `${s}…`;
-  }
-  const { g, pos, bredde } = glyfer(s, font, str, sperring);
-  const x0 = anker === 'end' ? x - bredde : anker === 'middle' ? x - bredde / 2 : x;
-  const d = g.map((gl, i) => gl.getPath(x0 + pos[i], y, str).toPathData(1)).join('');
-  return `<path d="${d}" fill="${farge}"/>`;
-}
-
-/** Bryter teksten i linjer som får plass i `maks`. */
-function linjer(t, font, str, maks) {
-  const ut = [];
-  let linje = '';
-  for (const ord of String(t).split(/\s+/)) {
-    const prøv = linje ? `${linje} ${ord}` : ord;
-    if (mål(prøv, font, str) > maks && linje) {
-      ut.push(linje);
-      linje = ord;
-    } else linje = prøv;
-  }
-  if (linje) ut.push(linje);
-  return ut;
-}
-
-/** Pil mot høyre, like høy som en versal i `str`. */
-function pil(x, y, str, farge) {
-  const h = str * 0.62;
-  const b = str * 0.78;
-  const t = Math.max(2.5, str * 0.085);
-  return `<path d="M${x} ${y - h / 2}H${x + b}M${x + b - h * 0.45} ${y - h * 0.95}L${x + b} ${y - h / 2}L${x + b - h * 0.45} ${y - h * 0.05}" fill="none" stroke="${farge}" stroke-width="${t}" stroke-linecap="round" stroke-linejoin="round"/>`;
-}
-
-/** Hake, tegnet. */
-function hake(x, y, str, farge) {
-  const t = Math.max(3, str * 0.12);
-  return `<path d="M${x} ${y - str * 0.32}L${x + str * 0.3} ${y - str * 0.04}L${x + str * 0.8} ${y - str * 0.66}" fill="none" stroke="${farge}" stroke-width="${t}" stroke-linecap="round" stroke-linejoin="round"/>`;
-}
-
 // ---------- data ----------
 
 const ukens = JSON.parse(await readFile(new URL('api/ukens.json', dist), 'utf8')).land.NO;
@@ -112,21 +41,6 @@ const farge = (kortnavn) => PROG[kortnavn]?.farge ?? F.navy;
 const programNavn = (kortnavn) => (kortnavn === 'Klarna' ? 'Klarna Max' : kortnavn);
 const trumfKurs = PROG.Trumf?.konverteringer[0]?.poengPerKrone ?? 0;
 
-const logoer = new Map();
-async function logo(sti) {
-  if (!sti || !sti.startsWith('/')) return null;
-  if (!logoer.has(sti)) {
-    logoer.set(
-      sti,
-      sharp(fileURLToPath(new URL(`public${sti}`, rot)))
-        .png()
-        .toBuffer()
-        .then((b) => `data:image/png;base64,${b.toString('base64')}`)
-        .catch(() => null),
-    );
-  }
-  return logoer.get(sti);
-}
 const butikkLogo = (id) => logo(butikker.find((b) => b.id === id)?.logo);
 
 const topp = ukens.topp.slice(0, 5);
@@ -146,7 +60,7 @@ const per100Tekst = (v) => tall(v, v >= 100 ? 0 : 1);
 function ramme(f, innhold, { sveip = true } = {}) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${f.B}" height="${f.H}" viewBox="0 0 ${f.B} ${f.H}">
 <rect width="${f.B}" height="${f.H}" fill="${F.navy}"/>
-<path d="${FLY}" fill="${F.krem}" transform="translate(${f.kortX} ${f.toppY - 40}) scale(0.48) translate(50 50) rotate(45) translate(-50 -50)"/>
+${fly(f.kortX, f.toppY - 40, 0.48, F.krem)}
 ${tekst('POINTMAXING', { x: f.kortX + 62, y: f.toppY, str: 46, font: S.smalHalv, farge: F.krem, sperring: 5 })}
 ${tekst(`UKE ${uke}`, { x: f.kortX + f.kortB, y: f.toppY - 6, str: 26, font: S.semibold, farge: F.lys, anker: 'end', sperring: 4 })}
 ${innhold}
@@ -164,12 +78,6 @@ ${innhold}`;
 
 function etikett(t, x, y, farge = F.dempet) {
   return tekst(t.toUpperCase(), { x, y, str: 26, font: S.semibold, farge, sperring: 4 });
-}
-
-async function flis(x, y, b, h, bilde, navn) {
-  const kant = `<rect x="${x}" y="${y}" width="${b}" height="${h}" rx="14" fill="#ffffff" stroke="#e4ddcc" stroke-width="2"/>`;
-  if (bilde) return `${kant}<image href="${bilde}" x="${x + 12}" y="${y + 9}" width="${b - 24}" height="${h - 18}" preserveAspectRatio="xMidYMid meet"/>`;
-  return `${kant}${tekst(navn.charAt(0).toUpperCase(), { x: x + b / 2, y: y + h / 2 + 15, str: 42, font: S.smalFet, farge: F.blekk, anker: 'middle' })}`;
 }
 
 /** Fem rader i et kort: logo, navn, linje under, stort tall til høyre. */
@@ -630,12 +538,22 @@ for (const post of poster) {
     for (let i = 0; i < post.slides.length; i++) {
       const svg = await post.slides[i](f);
       const fil = `${post.id}-${navn}-${i + 1}.png`;
-      await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toFile(fileURLToPath(new URL(fil, UT)));
+      const bilde = sharp(Buffer.from(svg));
+      await bilde.clone().png({ compressionLevel: 9 }).toFile(fileURLToPath(new URL(fil, UT)));
+      // Instagram-API-et tar bare JPEG.
+      if (navn === 'instagram') await bilde.clone().jpeg({ quality: 92, mozjpeg: true }).toFile(fileURLToPath(new URL(fil.replace(/\.png$/, '.jpg'), UT)));
       post.filer[navn].push(fil);
     }
   }
   await writeFile(new URL(`${post.id}.txt`, UT), `${post.tekst}\n`);
 }
+
+// Til scripts/publiser-some.mjs: hvilken post som hører til hvilken dag, med tekst og bildeadresser.
+const DOMENE = 'https://pointmaxing.no';
+await writeFile(
+  new URL('poster.json', UT),
+  JSON.stringify({ uke, laget: idag, poster: poster.map((p) => ({ id: p.id, dag: p.dag, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
+);
 
 const bilder = (post, navn) => post.filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="${esc(post.tittel)} – bilde ${i + 1}" loading="lazy"></a>`).join('');
 const seksjon = (post, i) => `<section>

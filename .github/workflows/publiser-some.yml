@@ -1,0 +1,49 @@
+name: Publiser SoMe
+
+# Legger ut dagens post fra pointmaxing.no/some på Instagram (mandag, onsdag, fredag og søndag – dagene står i
+# scripts/lag-some.mjs). Krever secreten IG_TOKEN; uten den gjør jobben ingenting. Se README for oppsett.
+on:
+  schedule:
+    - cron: '0 17 * * *' # hver dag 17:00 UTC (18:00 vinter / 19:00 sommer i Norge)
+  workflow_dispatch:
+    inputs:
+      post:
+        description: 'Post-id (ukens, butikkduell, kortduell, amexklarna). Tom = dagens post.'
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publiser-some
+
+jobs:
+  publiser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Publiser på Instagram
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          POST_ID: ${{ inputs.post }}
+          NY_TOKEN_FIL: ${{ runner.temp }}/ig-token
+        run: node scripts/publiser-some.mjs
+      # Fornyet token med ny verdi lagres som secret når SECRETS_PAT (fine-grained token med «Secrets: Read and write»
+      # på repoet) finnes. Uten den kommer en advarsel, og tokenet må lages på nytt i Meta-appen innen 60 dager.
+      - name: Lagre fornyet token
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+        run: |
+          fil="$RUNNER_TEMP/ig-token"
+          [ -s "$fil" ] || exit 0
+          if [ -n "$GH_TOKEN" ]; then
+            gh secret set IG_TOKEN --repo "$GITHUB_REPOSITORY" < "$fil"
+            echo "IG_TOKEN er oppdatert."
+          else
+            echo "::warning::Instagram ga et nytt token, men SECRETS_PAT mangler. Lag et nytt token i Meta-appen innen 60 dager."
+          fi
+          rm -f "$fil"

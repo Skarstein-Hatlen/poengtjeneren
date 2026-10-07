@@ -1,0 +1,31 @@
+{
+  "dato": "2026-11-27",
+  "cyberMonday": "2026-11-30",
+  "perKategori": 5,
+  "butikker": {
+    "NO": {
+      "elektronikk": ["samsung", "apple", "elon", "proshop", "philipshue", "dyson", "sonos", "acer", "lenovo", "jbl", "steelseries", "sharkninja"],
+      "mote": ["ginatricot", "arket", "cos", "ecco", "hunkemoller", "bubbleroom", "lindex", "ellos", "bikbok", "weekday", "miinto", "ralphlauren", "tigerofsweden", "danielwellington", "dressmann"],
+      "skjonnhet": ["lyko", "kicks", "sephora", "vita", "lensway", "farmasiet", "apotekhjem", "nordicfeel", "blivakker", "iherb"],
+      "sport": ["outnorth", "stormberg", "adidas", "nike", "puma", "newbalance", "haglofs", "hellyhansen", "sportmann", "asics"],
+      "hjem": ["kitchn", "skeidar", "tilbords", "royaldesign", "nordicnest", "lampegiganten", "vidaxl", "dyson"],
+      "barn": ["lego", "polarnopyret", "lindex"]
+    },
+    "SE": {
+      "elektronikk": ["samsung", "komplett", "jbl", "sonos", "hp", "sony", "sharkninja", "razer", "steelseries", "philipshue"],
+      "mote": ["ginatricot", "arket", "cos", "bikbok", "hugoboss", "ecco", "aboutyou", "sneakersnstuff", "miinto", "bubbleroom", "hunkemoller", "ellos", "lindex", "nelly", "tommyhilfiger", "calvinklein", "ralphlauren", "bjornborg"],
+      "skjonnhet": ["lyko", "kicks", "apoteket", "lensway", "notino", "cocopanda", "nordicfeel", "iherb", "synoptik", "foreo"],
+      "sport": ["outnorth", "adidas", "nike", "puma", "haglofs", "newbalance"],
+      "hjem": ["dyson", "royaldesign", "zwilling", "elon", "vidaxl", "kitchenaid", "nordicnest", "lampemesteren"],
+      "barn": ["lego", "polarnopyret", "babysam"]
+    },
+    "DK": {
+      "elektronikk": ["samsung", "philipshue", "sonos", "sony", "acer", "steelseries", "jbl"],
+      "mote": ["hm", "arket", "cos", "hugoboss", "ecco", "aboutyou", "sneakersnstuff", "miinto", "wakakuu", "levis", "tommyhilfiger", "calvinklein", "ralphlauren", "ginatricot", "hunkemoller", "newbalance", "magasin"],
+      "skjonnhet": ["matas", "sephora", "notino", "lensway", "iherb", "lyko"],
+      "sport": ["outnorth", "adidas", "nike", "puma", "haglofs", "asics", "intersport"],
+      "hjem": ["dyson", "shark", "zwilling", "vidaxl", "lampemesteren", "kitchenaid", "royaldesign"],
+      "barn": ["lego", "babysam"]
+    }
+  }
+}

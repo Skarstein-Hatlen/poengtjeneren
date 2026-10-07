@@ -161,6 +161,14 @@ export interface Butikkfil {
 export type Maling = [string, number];
 export type Historikk = Partial<Record<Land, Record<string, Record<string, Maling[]>>>>;
 
+/** Black Friday-guiden (src/data/blackfriday.json): kjente nettbutikker per land og kategori. */
+export interface BlackFriday {
+  dato: string;
+  cyberMonday: string;
+  perKategori: number;
+  butikker: Partial<Record<Land, Record<string, string[]>>>;
+}
+
 export interface Datasett {
   sistOppdatert: string;
   /** Når butikksatsene sist ble hentet. */
@@ -174,6 +182,7 @@ export interface Datasett {
   kampanjer: Partnerkampanje[];
   fly: Flyforsinkelse;
   samarbeid: Samarbeidspartner;
+  blackfriday: BlackFriday;
 }
 
 /** Samarbeidspartner med lenker på siden (src/data/samarbeid.json). Lenkene har UTM-parametre, så partneren ser trafikken. */

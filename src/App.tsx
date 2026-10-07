@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import BlackFriday from './components/BlackFriday';
 import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
@@ -32,14 +33,15 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'kort' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'blackfriday' | 'kort' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
 const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', flymedpoeng: 'flymedpoeng', personvern: 'personvern', utvidelse: 'utvidelse' };
-const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', kort: 'kort', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', 'black-friday': 'blackfriday', kort: 'kort', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
   { visning: 'butikker', nokkel: 'navButikker' },
   { visning: 'nytt', nokkel: 'navNytt' },
+  { visning: 'blackfriday', nokkel: 'navBlackFriday' },
   { visning: 'kort', nokkel: 'navKort' },
   { visning: 'flyforsinkelse', nokkel: 'navFly' },
 ];
@@ -97,6 +99,7 @@ function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
   const s = `/${SPRAK[land].sti}`;
   if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
   if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
+  if (rute.visning === 'blackfriday') return `${s}/black-friday`;
   return `${s}/${rute.visning}`;
 }
 
@@ -446,8 +449,8 @@ export default function App() {
     }
   }
 
-  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste.
-  const navSider = NAV.filter((n) => n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]);
+  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste, Black Friday bare frem til Cyber Monday.
+  const navSider = NAV.filter((n) => (n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]) && (n.visning !== 'blackfriday' || IDAG <= data.blackfriday.cyberMonday));
 
   const bunnlenker = (
     <p className="bunnlenker">
@@ -653,6 +656,26 @@ export default function App() {
           {bunnlenker}
           <p className="signatur">{T('signatur')}</p>
         </footer>
+      </div>
+    );
+  }
+
+  if (rute.visning === 'blackfriday') {
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <BlackFriday
+            land={t.land}
+            oppsett={data.blackfriday}
+            butikker={butikker}
+            programmer={programmer}
+            idag={IDAG}
+            per100={per100ForSats}
+            onVelg={velgButikk}
+            kampanjerHref={stiFor(t.land, { visning: 'nytt', kategori: null }, null)}
+          />
+        </div>
       </div>
     );
   }

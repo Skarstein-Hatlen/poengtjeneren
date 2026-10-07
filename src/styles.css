@@ -254,6 +254,46 @@ input::placeholder {
   color: var(--stempel);
 }
 
+/* Black Friday-guiden */
+.bf h1 {
+  margin: 4px 0 0;
+  font-family: var(--font-tall);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.bf .ingress {
+  max-width: 58ch;
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+.bf .nedtelling {
+  color: var(--gold);
+}
+
+.bf-mer {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.bf-tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bf-tips li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
 /* Kortlisten */
 .kortliste-intro {
   margin: 4px 0 14px;
