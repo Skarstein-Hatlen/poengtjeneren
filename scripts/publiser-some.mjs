@@ -1,4 +1,4 @@
-// Publiserer dagens SoMe-post på Instagram med Instagram API (innlogging med Instagram, Meta).
+// Publiserer dagens SoMe-post på Instagram med Metas Instagram API.
 // Kjøres av .github/workflows/publiser-some.yml. Leser postene fra den publiserte siden (pointmaxing.no/some/poster.json),
 // så bildene ligger på en offentlig adresse når Meta henter dem. Uten IG_TOKEN gjør skriptet ingenting.
 // Tokenet skrives aldri ut: feilmeldinger viser bare stien som ble kalt.
@@ -6,7 +6,10 @@
 import { appendFile, writeFile } from 'node:fs/promises';
 
 const TOKEN = process.env.IG_TOKEN;
-const API = 'https://graph.instagram.com';
+// To slags token: fra Instagram-innlogging (begynner med «IG», graph.instagram.com, varer 60 dager og fornyes her)
+// eller fra Facebook-innlogging (sidetoken fra Graph API Explorer, graph.facebook.com, utløper ikke).
+const INSTAGRAM_LOGIN = TOKEN?.startsWith('IG');
+const API = INSTAGRAM_LOGIN ? 'https://graph.instagram.com' : 'https://graph.facebook.com';
 const POSTER = 'https://pointmaxing.no/some/poster.json';
 
 if (!TOKEN) {
@@ -39,7 +42,7 @@ async function kall(sti, data = {}, metode = 'GET') {
 
 // Langtidstokenet varer i 60 dager og kan fornyes når det er minst ett døgn gammelt. Får vi en ny verdi,
 // lagres den for neste steg i workflowen (som oppdaterer secreten hvis SECRETS_PAT finnes).
-try {
+if (INSTAGRAM_LOGIN) try {
   const nytt = await kall('refresh_access_token', { grant_type: 'ig_refresh_token' });
   if (nytt.access_token && nytt.access_token !== TOKEN) {
     console.log(`::add-mask::${nytt.access_token}`);
@@ -62,9 +65,21 @@ if (!post) {
 // Gamle bilder skal ikke ut: siden bygges hver natt.
 if ((Date.parse(idag) - Date.parse(laget)) / 864e5 > 2) throw new Error(`poster.json er laget ${laget} – for gammel. Sjekk deploy.`);
 
-const meg = await kall('me', { fields: 'user_id,username' });
-const ig = meg.user_id ?? meg.id;
-const { username } = meg;
+let ig;
+let username;
+if (INSTAGRAM_LOGIN) {
+  const meg = await kall('me', { fields: 'user_id,username' });
+  ig = meg.user_id ?? meg.id;
+  username = meg.username;
+} else {
+  // Sidetoken: /me er siden. Brukertoken: første side med en Instagram-konto koblet til.
+  const side = await kall('me', { fields: 'instagram_business_account{id,username}' }).catch(() => ({}));
+  const konto =
+    side.instagram_business_account ??
+    (await kall('me/accounts', { fields: 'instagram_business_account{id,username}' })).data?.find((x) => x.instagram_business_account)?.instagram_business_account;
+  if (!konto) throw new Error('Fant ingen Instagram-konto koblet til en Facebook-side for dette tokenet.');
+  ({ id: ig, username } = konto);
+}
 
 // Ikke publiser samme post to ganger (ny kjøring, manuell start): se etter samme første linje siste tre døgn.
 const forsteLinje = post.tekst.split('\n')[0];
