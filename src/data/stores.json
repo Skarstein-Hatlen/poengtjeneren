@@ -38,6 +38,11 @@
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/acer-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -85,6 +90,11 @@
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/aeg-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -92,6 +102,21 @@
           }
         },
         "logo": "/logos/NO/aeg.webp"
+      },
+      {
+        "id": "aegreservedelerogtilbeh248r",
+        "navn": "AEG Reservedeler og Tilbeh&#248;r",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/aeg-reservedeler-og-tilbehor-trumf"
+          }
+        },
+        "logo": "/logos/NO/aegreservedelerogtilbeh248r.webp"
       },
       {
         "id": "agoda",
@@ -123,6 +148,37 @@
         },
         "domene": "agv.com",
         "logo": "/logos/NO/agv.webp"
+      },
+      {
+        "id": "aimn",
+        "navn": "AIM'N",
+        "kategorier": [
+          "mote",
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/aimn-trumf"
+          }
+        },
+        "logo": "/logos/NO/aimn.webp"
+      },
+      {
+        "id": "amisol",
+        "navn": "Amisol",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/amisol-trumfs"
+          }
+        },
+        "logo": "/logos/NO/amisol.webp"
       },
       {
         "id": "antonioli",
@@ -192,6 +248,36 @@
         "logo": "/logos/NO/arket.webp"
       },
       {
+        "id": "asics",
+        "navn": "ASICS",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/asics-trumf"
+          }
+        },
+        "logo": "/logos/NO/asics.webp"
+      },
+      {
+        "id": "asicsoutlet",
+        "navn": "ASICS Outlet",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/asics-outlet-trumf"
+          }
+        },
+        "logo": "/logos/NO/asicsoutlet.webp"
+      },
+      {
         "id": "askeladdennavnelapper",
         "navn": "Askeladden Navnelapper",
         "kategorier": [
@@ -224,12 +310,48 @@
         "logo": "/logos/NO/asos.webp"
       },
       {
+        "id": "autoeurope",
+        "navn": "Auto Europe no",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/auto-europe-notrumf"
+          }
+        },
+        "logo": "/logos/NO/autoeurope.webp"
+      },
+      {
+        "id": "autodeler",
+        "navn": "Autodeler",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/autodeler-trumf"
+          }
+        },
+        "logo": "/logos/NO/autodeler.webp"
+      },
+      {
         "id": "autodoc",
         "navn": "Autodoc",
         "kategorier": [
+          "hjem",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/autodoc-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -248,9 +370,15 @@
         "id": "autodude",
         "navn": "Autodude",
         "kategorier": [
+          "hjem",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/autodude-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -258,6 +386,36 @@
           }
         },
         "logo": "/logos/NO/autodude.webp"
+      },
+      {
+        "id": "avastsoftware",
+        "navn": "AVAST Software",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 23.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/avast-software-trumf"
+          }
+        },
+        "logo": "/logos/NO/avastsoftware.webp"
+      },
+      {
+        "id": "avg",
+        "navn": "AVG",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 23.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/avg-trumf"
+          }
+        },
+        "logo": "/logos/NO/avg.webp"
       },
       {
         "id": "avis",
@@ -277,14 +435,23 @@
       {
         "id": "babybanden",
         "navn": "Babybanden",
-        "kategorier": [],
+        "kategorier": [
+          "mote",
+          "barn"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/babybanden-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/babybanden/019fb246-096a-73ea-826f-90c50a2c9402"
           }
-        }
+        },
+        "logo": "/logos/NO/babybanden.webp"
       },
       {
         "id": "babyland",
@@ -305,9 +472,15 @@
         "id": "babyshop",
         "navn": "Babyshop",
         "kategorier": [
+          "mote",
           "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/babyshop-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -317,10 +490,47 @@
         "logo": "/logos/NO/babyshop.webp"
       },
       {
+        "id": "babysjarm",
+        "navn": "Babysjarm",
+        "kategorier": [
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 15.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/babysjarm-trumf"
+          }
+        },
+        "logo": "/logos/NO/babysjarm.webp"
+      },
+      {
+        "id": "backeigrensen",
+        "navn": "Backe i Grensen",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/backe-i-grensen-trumf"
+          }
+        },
+        "logo": "/logos/NO/backeigrensen.webp"
+      },
+      {
         "id": "badstil",
         "navn": "Bad & Stil",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bad-and-stil-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -336,12 +546,33 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bad-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/badno/019ea661-c4a1-73ab-b30f-241205d56b6e"
           }
-        }
+        },
+        "logo": "/logos/NO/bad.webp"
+      },
+      {
+        "id": "bagbrokers",
+        "navn": "BagBrokers",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bagbrokers-trumf"
+          }
+        },
+        "logo": "/logos/NO/bagbrokers.webp"
       },
       {
         "id": "bakerenogkokken",
@@ -365,11 +596,16 @@
       },
       {
         "id": "barbershop",
-        "navn": "Barbershop.no",
+        "navn": "Barbershop",
         "kategorier": [
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 1.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/barbershop-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -380,11 +616,17 @@
       },
       {
         "id": "batteriexperten",
-        "navn": "batteriexperten.com",
+        "navn": "Batteriexperten",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/batteriexperten-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -394,12 +636,32 @@
         "logo": "/logos/NO/batteriexperten.webp"
       },
       {
+        "id": "beautymall",
+        "navn": "Beauty Mall",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/beauty-mall"
+          }
+        },
+        "logo": "/logos/NO/beautymall.webp"
+      },
+      {
         "id": "beautycos",
         "navn": "Beautycos",
         "kategorier": [
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/beautycos-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -409,10 +671,33 @@
         "logo": "/logos/NO/beautycos.webp"
       },
       {
+        "id": "beckmann",
+        "navn": "Beckmann",
+        "kategorier": [
+          "mote",
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/beckmann-trumf"
+          }
+        },
+        "logo": "/logos/NO/beckmann.webp"
+      },
+      {
         "id": "bemz",
         "navn": "Bemz",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bemz-trumf"
+          },
           "klarna": {
             "verdi": 3,
             "opptil": false,
@@ -421,6 +706,21 @@
         },
         "domene": "bemz.com",
         "logo": "/logos/NO/bemz.webp"
+      },
+      {
+        "id": "bergwatches",
+        "navn": "Berg Watches",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 15,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/berg-watches-trumf"
+          }
+        },
+        "logo": "/logos/NO/bergwatches.webp"
       },
       {
         "id": "bikbok",
@@ -438,10 +738,32 @@
         "logo": "/logos/NO/bikbok.webp"
       },
       {
+        "id": "bildeler",
+        "navn": "Bildeler",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bildeler-trumf"
+          }
+        },
+        "logo": "/logos/NO/bildeler.webp"
+      },
+      {
         "id": "bilxtra",
         "navn": "Bilxtra",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bilxtra-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -449,6 +771,22 @@
           }
         },
         "logo": "/logos/NO/bilxtra.webp"
+      },
+      {
+        "id": "bj246rnborg",
+        "navn": "Bj&#246;rn Borg",
+        "kategorier": [
+          "mote",
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfbj%C3%B6rn-borg"
+          }
+        },
+        "logo": "/logos/NO/bj246rnborg.webp"
       },
       {
         "id": "bjornborg",
@@ -467,11 +805,16 @@
       },
       {
         "id": "bladkongen",
-        "navn": "Bladkongen.no",
+        "navn": "Bladkongen",
         "kategorier": [
           "underholdning"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfbladkongen"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -515,9 +858,15 @@
         "id": "bodystore",
         "navn": "Bodystore",
         "kategorier": [
+          "sport",
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bodystore-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -529,14 +878,37 @@
       {
         "id": "bokia",
         "navn": "Bokia",
-        "kategorier": [],
+        "kategorier": [
+          "underholdning"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 11.7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bokia-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bokia/019f4b4d-3fc9-7184-a233-bc63156570b5"
           }
-        }
+        },
+        "logo": "/logos/NO/bokia.webp"
+      },
+      {
+        "id": "bonprix",
+        "navn": "Bonprix",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bonprix-trumf"
+          }
+        },
+        "logo": "/logos/NO/bonprix.webp"
       },
       {
         "id": "boohoo",
@@ -552,6 +924,21 @@
           }
         },
         "logo": "/logos/NO/boohoo.webp"
+      },
+      {
+        "id": "bosch",
+        "navn": "Bosch",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/bosch-trumf1"
+          }
+        },
+        "logo": "/logos/NO/bosch.webp"
       },
       {
         "id": "boschhome",
@@ -575,6 +962,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/brilleland-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -590,6 +982,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfbubbleroom"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -597,6 +994,21 @@
           }
         },
         "logo": "/logos/NO/bubbleroom.webp"
+      },
+      {
+        "id": "budget",
+        "navn": "Budget",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 10.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/budget-trumf"
+          }
+        },
+        "logo": "/logos/NO/budget.webp"
       },
       {
         "id": "bymalenebirger",
@@ -656,6 +1068,21 @@
         }
       },
       {
+        "id": "campanyon",
+        "navn": "Campanyon",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/campanyon-trumf"
+          }
+        },
+        "logo": "/logos/NO/campanyon.webp"
+      },
+      {
         "id": "casadei",
         "navn": "Casadei",
         "kategorier": [
@@ -699,6 +1126,21 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/charlies-hus/0189630b-0027-70f4-92db-63aaa285c05a"
           }
         }
+      },
+      {
+        "id": "chicastore",
+        "navn": "Chicastore",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/chicastore-trumf"
+          }
+        },
+        "logo": "/logos/NO/chicastore.webp"
       },
       {
         "id": "christianiaglasmagasin",
@@ -751,6 +1193,11 @@
           "reise"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/click-and-boat-trumf"
+          },
           "klarna": {
             "verdi": 2,
             "opptil": true,
@@ -767,6 +1214,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 15.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/comforth-scandinavia-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -859,6 +1311,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 12.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/daniel-wellington-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -871,9 +1328,15 @@
         "id": "db",
         "navn": "Db",
         "kategorier": [
+          "mote",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
+          },
           "klarna": {
             "verdi": 4,
             "opptil": false,
@@ -919,12 +1382,33 @@
         "logo": "/logos/NO/dekk.webp"
       },
       {
+        "id": "dekkeu",
+        "navn": "Dekk.eu",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/dekkeu-trumf"
+          }
+        },
+        "logo": "/logos/NO/dekkeu.webp"
+      },
+      {
         "id": "dekkonline",
         "navn": "dekkonline.com",
         "kategorier": [
+          "hjem",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfdekkonline"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -944,13 +1428,18 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 19.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/dentaworks"
+          },
           "sas-online-shopping": {
             "verdi": 150,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dentaworks/01896308-ec70-713b-93a1-a86df35f3921"
           }
         },
-        "logo": "/logos/SE/dentaworks.webp"
+        "logo": "/logos/NO/dentaworks.webp"
       },
       {
         "id": "dentway",
@@ -980,6 +1469,36 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/detailshop/0189630f-c446-7254-951e-207449a52f43"
           }
         }
+      },
+      {
+        "id": "devold",
+        "navn": "Devold",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/devold-trumf"
+          }
+        },
+        "logo": "/logos/NO/devold.webp"
+      },
+      {
+        "id": "directferries",
+        "navn": "Direct Ferries",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/direct-ferries-trumf"
+          }
+        },
+        "logo": "/logos/NO/directferries.webp"
       },
       {
         "id": "disney",
@@ -1012,6 +1531,21 @@
         },
         "domene": "dolcegabbana.com",
         "logo": "/logos/NO/dolcegabbana.webp"
+      },
+      {
+        "id": "dr248mmerom",
+        "navn": "Dr&#248;mmerom",
+        "kategorier": [
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/drommerom-trumf"
+          }
+        },
+        "logo": "/logos/NO/dr248mmerom.webp"
       },
       {
         "id": "dressmann",
@@ -1050,6 +1584,11 @@
           "dyr"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/dyrekassen-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -1062,9 +1601,15 @@
         "id": "dyson",
         "navn": "Dyson",
         "kategorier": [
+          "elektronikk",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/dyson-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1083,9 +1628,15 @@
         "id": "ewheels",
         "navn": "E-Wheels",
         "kategorier": [
+          "hjem",
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/e-wheels-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1117,6 +1668,11 @@
           "tjenester"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/ebay-trumfno"
+          },
           "klarna": {
             "verdi": 3.5,
             "opptil": true,
@@ -1143,12 +1699,48 @@
         "logo": "/logos/NO/ecco.webp"
       },
       {
-        "id": "electrolux",
-        "navn": "Electrolux",
+        "id": "edblad",
+        "navn": "Edblad",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/edblad-trumf"
+          }
+        },
+        "logo": "/logos/NO/edblad.webp"
+      },
+      {
+        "id": "ekstralys",
+        "navn": "Ekstralys",
         "kategorier": [
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfekstralys"
+          }
+        },
+        "logo": "/logos/NO/ekstralys.webp"
+      },
+      {
+        "id": "electrolux",
+        "navn": "Electrolux",
+        "kategorier": [
+          "elektronikk",
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/electrolux-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -1156,6 +1748,21 @@
           }
         },
         "logo": "/logos/NO/electrolux.webp"
+      },
+      {
+        "id": "electroluxreservedelerogtilbeh248r",
+        "navn": "Electrolux Reservedeler og Tilbeh&#248;r",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/electrolux-reservedeler-og-tilbehor-trumf"
+          }
+        },
+        "logo": "/logos/NO/electroluxreservedelerogtilbeh248r.webp"
       },
       {
         "id": "electroluxsparesaccessories",
@@ -1202,6 +1809,21 @@
           }
         },
         "logo": "/logos/partnere/elektroimportoren.webp"
+      },
+      {
+        "id": "elitehotelsofsweden",
+        "navn": "Elite Hotels of Sweden",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/elite-hotels-of-sweden-trumf"
+          }
+        },
+        "logo": "/logos/NO/elitehotelsofsweden.webp"
       },
       {
         "id": "ellos",
@@ -1272,6 +1894,21 @@
         "logo": "/logos/NO/emiratesairlines.webp"
       },
       {
+        "id": "emp",
+        "navn": "EMP",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/emp-trumf"
+          }
+        },
+        "logo": "/logos/NO/emp.webp"
+      },
+      {
         "id": "empshop",
         "navn": "EMP Shop",
         "kategorier": [
@@ -1288,10 +1925,32 @@
         "logo": "/logos/NO/empshop.webp"
       },
       {
+        "id": "engrospris",
+        "navn": "Engrospris",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 15.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/engrospris-trumf"
+          }
+        },
+        "logo": "/logos/NO/engrospris.webp"
+      },
+      {
         "id": "estore",
         "navn": "eStore",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/estore-trumf"
+          },
           "klarna": {
             "verdi": 2,
             "opptil": false,
@@ -1353,6 +2012,21 @@
         "logo": "/logos/NO/eurotoys.webp"
       },
       {
+        "id": "evoride",
+        "navn": "Evoride",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/evoride-trumf"
+          }
+        },
+        "logo": "/logos/NO/evoride.webp"
+      },
+      {
         "id": "expedia",
         "navn": "Expedia",
         "kategorier": [
@@ -1366,6 +2040,21 @@
           }
         },
         "logo": "/logos/NO/expedia.webp"
+      },
+      {
+        "id": "farfetch",
+        "navn": "Farfetch",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/farfetch-trumf"
+          }
+        },
+        "logo": "/logos/NO/farfetch.webp"
       },
       {
         "id": "farmasiet",
@@ -1464,11 +2153,17 @@
       },
       {
         "id": "fjordline",
-        "navn": "Fjordline",
+        "navn": "Fjord Line",
         "kategorier": [
+          "reise",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/fjord-line-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1534,6 +2229,21 @@
         "logo": "/logos/NO/follestad.webp"
       },
       {
+        "id": "foodstuff",
+        "navn": "Foodstuff",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/foodstuff-trumf"
+          }
+        },
+        "logo": "/logos/NO/foodstuff.webp"
+      },
+      {
         "id": "footballtravel",
         "navn": "Football Travel",
         "kategorier": [
@@ -1564,12 +2274,32 @@
         "logo": "/logos/partnere/footshop.webp"
       },
       {
+        "id": "fosssport",
+        "navn": "Foss Sport",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/foss-sport-trumf"
+          }
+        },
+        "logo": "/logos/NO/fosssport.webp"
+      },
+      {
         "id": "foto",
         "navn": "Foto.no",
         "kategorier": [
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/fotono-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -1657,19 +2387,39 @@
         "logo": "/logos/NO/fredriklouisa.webp"
       },
       {
+        "id": "fyrkl246vern",
+        "navn": "Fyrkl&#246;vern",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/fyrklovern-trumf"
+          }
+        },
+        "logo": "/logos/NO/fyrkl246vern.webp"
+      },
+      {
         "id": "gstar",
         "navn": "G-Star",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/g-star-raw-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/g-star/018ce8ef-9005-73b2-9eab-aa62d65c537a"
           }
         },
-        "logo": "/logos/SE/gstar.webp"
+        "logo": "/logos/NO/gstar.webp"
       },
       {
         "id": "gameseal",
@@ -1752,18 +2502,70 @@
         "logo": "/logos/NO/ginatricot.webp"
       },
       {
+        "id": "glowid",
+        "navn": "GlowID",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/glowid-trumf"
+          }
+        },
+        "logo": "/logos/NO/glowid.webp"
+      },
+      {
+        "id": "gocity",
+        "navn": "Go City",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/go-city-trumf"
+          }
+        },
+        "logo": "/logos/NO/gocity.webp"
+      },
+      {
         "id": "gonordiccruiseline",
         "navn": "Go Nordic Cruiseline",
         "kategorier": [
+          "reise",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/go-nordic-cruiseline-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/go-nordic-cruiseline/019ea65a-1842-727b-9ed2-0e4088e7259b"
           }
-        }
+        },
+        "logo": "/logos/NO/gonordiccruiseline.webp"
+      },
+      {
+        "id": "gr248ntfokus",
+        "navn": "Gr&#248;nt Fokus",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 1.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/gront-fokus-trumf"
+          }
+        },
+        "logo": "/logos/NO/gr248ntfokus.webp"
       },
       {
         "id": "greatlife",
@@ -1787,6 +2589,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/gullfunn-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -1805,9 +2612,15 @@
         "id": "guttelus",
         "navn": "Guttelus",
         "kategorier": [
+          "mote",
           "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/guttelus-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -1916,9 +2729,15 @@
         "id": "harmankardon",
         "navn": "Harman Kardon",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/harman-kardon-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1928,12 +2747,48 @@
         "logo": "/logos/NO/harmankardon.webp"
       },
       {
-        "id": "hellyhansen",
-        "navn": "Helly Hansen",
+        "id": "hattehuset",
+        "navn": "Hattehuset",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/hattehuset-trumf"
+          }
+        },
+        "logo": "/logos/NO/hattehuset.webp"
+      },
+      {
+        "id": "havilakystruten",
+        "navn": "Havila Kystruten",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/havila-voyages-trumf"
+          }
+        },
+        "logo": "/logos/NO/havilakystruten.webp"
+      },
+      {
+        "id": "hellyhansen",
+        "navn": "Helly Hansen",
+        "kategorier": [
+          "mote",
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/helly-hansen-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -1972,12 +2827,47 @@
         "logo": "/logos/NO/holdit.webp"
       },
       {
+        "id": "holidu",
+        "navn": "Holidu",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/holidu-trumf"
+          }
+        },
+        "logo": "/logos/NO/holidu.webp"
+      },
+      {
+        "id": "holzweiler",
+        "navn": "Holzweiler",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/holzweiler-trumf"
+          }
+        },
+        "logo": "/logos/NO/holzweiler.webp"
+      },
+      {
         "id": "homeroom",
-        "navn": "Homeroom",
+        "navn": "homeroom",
         "kategorier": [
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/homeroom-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1985,6 +2875,51 @@
           }
         },
         "logo": "/logos/NO/homeroom.webp"
+      },
+      {
+        "id": "hotels",
+        "navn": "Hotels.com",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
+          }
+        },
+        "logo": "/logos/NO/hotels.webp"
+      },
+      {
+        "id": "hudprodukter",
+        "navn": "Hudprodukter",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/hudprodukter"
+          }
+        },
+        "logo": "/logos/NO/hudprodukter.webp"
+      },
+      {
+        "id": "hult233ns",
+        "navn": "Hult&#233;ns",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/hultens-trumf"
+          }
+        },
+        "logo": "/logos/NO/hult233ns.webp"
       },
       {
         "id": "hultens",
@@ -2003,11 +2938,16 @@
       },
       {
         "id": "hunkemoller",
-        "navn": "Hunkemøller",
+        "navn": "Hunkemoller",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/hunkemoller-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2029,6 +2969,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/husqvarna-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2045,11 +2990,16 @@
       },
       {
         "id": "ilovedogs",
-        "navn": "I love dogs",
+        "navn": "I Love Dogs",
         "kategorier": [
           "dyr"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/i-love-dogs-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -2065,6 +3015,21 @@
         "logo": "/logos/NO/ilovedogs.webp"
       },
       {
+        "id": "iberostarhotelsandresorts",
+        "navn": "Iberostar Hotels and Resorts",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/iberostar-trumf"
+          }
+        },
+        "logo": "/logos/NO/iberostarhotelsandresorts.webp"
+      },
+      {
         "id": "idealofsweden",
         "navn": "Ideal of Sweden",
         "kategorier": [
@@ -2072,6 +3037,11 @@
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/ideal-of-sweden-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2138,6 +3108,11 @@
           "mat"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/inkmann-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -2171,9 +3146,15 @@
         "id": "interhome",
         "navn": "Interhome",
         "kategorier": [
+          "reise",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/interhome-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2189,6 +3170,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/interoptik-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2196,6 +3182,21 @@
           }
         },
         "logo": "/logos/NO/interoptik.webp"
+      },
+      {
+        "id": "inzpero",
+        "navn": "Inzpero",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/inzpero-trumf"
+          }
+        },
+        "logo": "/logos/NO/inzpero.webp"
       },
       {
         "id": "iphonehuset",
@@ -2213,6 +3214,21 @@
         "logo": "/logos/NO/iphonehuset.webp"
       },
       {
+        "id": "jlindeberg",
+        "navn": "J.Lindeberg",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/jlindeberg-trumf"
+          }
+        },
+        "logo": "/logos/NO/jlindeberg.webp"
+      },
+      {
         "id": "jaktfriluft",
         "navn": "Jakt & Friluft",
         "kategorier": [
@@ -2228,12 +3244,32 @@
         "logo": "/logos/NO/jaktfriluft.webp"
       },
       {
+        "id": "jaktogfriluft",
+        "navn": "Jakt og Friluft",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/jakt-og-friluft"
+          }
+        },
+        "logo": "/logos/NO/jaktogfriluft.webp"
+      },
+      {
         "id": "jbl",
         "navn": "JBL.com",
         "kategorier": [
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/jbl-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2249,6 +3285,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/jotex-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2258,16 +3299,85 @@
         "logo": "/logos/NO/jotex.webp"
       },
       {
+        "id": "junkyard",
+        "navn": "Junkyard",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/junkyard-trumf"
+          }
+        },
+        "logo": "/logos/NO/junkyard.webp"
+      },
+      {
+        "id": "k228rcher",
+        "navn": "K&#228;rcher",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 8.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/karcher-trumf"
+          }
+        },
+        "logo": "/logos/NO/k228rcher.webp"
+      },
+      {
         "id": "kajakkogfritid",
         "navn": "Kajakk og Fritid",
-        "kategorier": [],
+        "kategorier": [
+          "sport"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kajakk-og-fritid-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kajakk-og-fritid/0192e744-9c9e-713b-abd2-3982d9fba326"
           }
-        }
+        },
+        "logo": "/logos/NO/kajakkogfritid.webp"
+      },
+      {
+        "id": "karma",
+        "navn": "Karma",
+        "kategorier": [
+          "skjonnhet",
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/karma-trumf"
+          }
+        },
+        "logo": "/logos/NO/karma.webp"
+      },
+      {
+        "id": "kayani",
+        "navn": "Kayani",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 10.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kayani-trumf"
+          }
+        },
+        "logo": "/logos/NO/kayani.webp"
       },
       {
         "id": "kicks",
@@ -2297,17 +3407,24 @@
       },
       {
         "id": "kinogavekort",
-        "navn": "Kinogavekort",
+        "navn": "kinogavekort",
         "kategorier": [
-          "underholdning"
+          "underholdning",
+          "tjenester"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kinogavekort-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kinogavekort/0189630f-e2f4-70f8-9e96-f69763665520"
           }
-        }
+        },
+        "logo": "/logos/NO/kinogavekort.webp"
       },
       {
         "id": "kitchentime",
@@ -2316,6 +3433,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kitchentimetrumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2372,6 +3494,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kokkeglede-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2381,12 +3508,32 @@
         "logo": "/logos/NO/kokkeglede.webp"
       },
       {
+        "id": "kondomeriet",
+        "navn": "Kondomeriet",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 11.7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kondomeriet-trumf"
+          }
+        },
+        "logo": "/logos/NO/kondomeriet.webp"
+      },
+      {
         "id": "kost1",
         "navn": "Kost1",
         "kategorier": [
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kost1-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2394,6 +3541,21 @@
           }
         },
         "logo": "/logos/NO/kost1.webp"
+      },
+      {
+        "id": "kouture",
+        "navn": "Kouture",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kouture-trumf"
+          }
+        },
+        "logo": "/logos/NO/kouture.webp"
       },
       {
         "id": "karcher",
@@ -2424,6 +3586,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/loccitane-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -2474,6 +3641,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lampemesteren-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2484,7 +3656,7 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lampemesteren/01896308-b758-703a-8f2a-7d8ab49b690e"
           }
         },
-        "logo": "/logos/DK/lampemesteren.webp"
+        "logo": "/logos/NO/lampemesteren.webp"
       },
       {
         "id": "lappeliten",
@@ -2493,6 +3665,11 @@
           "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 12.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lappeliten-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2500,6 +3677,21 @@
           }
         },
         "logo": "/logos/NO/lappeliten.webp"
+      },
+      {
+        "id": "lastminute",
+        "navn": "lastminute.com",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lastminute-trumf"
+          }
+        },
+        "logo": "/logos/NO/lastminute.webp"
       },
       {
         "id": "layered",
@@ -2518,12 +3710,33 @@
         "logo": "/logos/NO/layered.webp"
       },
       {
+        "id": "ledlyskilder",
+        "navn": "Ledlyskilder",
+        "kategorier": [
+          "hjem",
+          "underholdning"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/ledlyskilder-trumf"
+          }
+        },
+        "logo": "/logos/NO/ledlyskilder.webp"
+      },
+      {
         "id": "lego",
         "navn": "LEGO",
         "kategorier": [
           "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lego-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2559,6 +3772,11 @@
           "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumflekmer"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2574,6 +3792,11 @@
           "elektronikk"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lenovo-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -2633,6 +3856,37 @@
         },
         "domene": "lensway.no",
         "logo": "/logos/NO/lensway.webp"
+      },
+      {
+        "id": "lexington",
+        "navn": "Lexington",
+        "kategorier": [
+          "mote",
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lexington"
+          }
+        },
+        "logo": "/logos/NO/lexington.webp"
+      },
+      {
+        "id": "libresse",
+        "navn": "Libresse",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/libresse-trumf"
+          }
+        },
+        "logo": "/logos/NO/libresse.webp"
       },
       {
         "id": "liffner",
@@ -2706,12 +3960,32 @@
         "logo": "/logos/NO/logitech.webp"
       },
       {
+        "id": "lufthansa",
+        "navn": "Lufthansa",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 1.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lufthansa-trumf1"
+          }
+        },
+        "logo": "/logos/NO/lufthansa.webp"
+      },
+      {
         "id": "lunehjem",
-        "navn": "Lunehjem.no",
+        "navn": "Lunehjem",
         "kategorier": [
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/lunehjem-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2863,6 +4137,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/makeup-mekka-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -2951,6 +4230,37 @@
         "logo": "/logos/partnere/marshall.webp"
       },
       {
+        "id": "match",
+        "navn": "Match.com",
+        "kategorier": [
+          "skjonnhet",
+          "tjenester"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 15.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/match-trumf"
+          }
+        },
+        "logo": "/logos/NO/match.webp"
+      },
+      {
+        "id": "maxa",
+        "navn": "MAXA",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/maxa-trumf"
+          }
+        },
+        "logo": "/logos/NO/maxa.webp"
+      },
+      {
         "id": "meta",
         "navn": "Meta",
         "kategorier": [
@@ -3018,6 +4328,51 @@
         "logo": "/logos/NO/mimmis.webp"
       },
       {
+        "id": "minifinder",
+        "navn": "MiniFinder",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/minifinder-trumf"
+          }
+        },
+        "logo": "/logos/NO/minifinder.webp"
+      },
+      {
+        "id": "moniker",
+        "navn": "Moniker",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/moniker-trumf"
+          }
+        },
+        "logo": "/logos/NO/moniker.webp"
+      },
+      {
+        "id": "monikerman",
+        "navn": "Moniker Man",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/moniker-man-trumf"
+          }
+        },
+        "logo": "/logos/NO/monikerman.webp"
+      },
+      {
         "id": "mulberry",
         "navn": "Mulberry",
         "kategorier": [
@@ -3034,11 +4389,17 @@
       },
       {
         "id": "myprotein",
-        "navn": "MyProtein",
+        "navn": "Myprotein",
         "kategorier": [
+          "sport",
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/myprotein-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3092,6 +4453,21 @@
         }
       },
       {
+        "id": "nazar",
+        "navn": "Nazar",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 1.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/nazar-trumf"
+          }
+        },
+        "logo": "/logos/NO/nazar.webp"
+      },
+      {
         "id": "nespresso",
         "navn": "Nespresso",
         "kategorier": [
@@ -3110,9 +4486,15 @@
         "id": "newbalance",
         "navn": "New Balance",
         "kategorier": [
+          "sport",
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/new-balance-trumf"
+          },
           "klarna": {
             "verdi": 2,
             "opptil": false,
@@ -3144,13 +4526,18 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/newport-home-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/newport/0189630d-4e7a-7014-9943-41d6625a52b9"
           }
         },
-        "logo": "/logos/SE/newport.webp"
+        "logo": "/logos/NO/newport.webp"
       },
       {
         "id": "nicebeauty",
@@ -3159,6 +4546,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/nicebeauty-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3255,6 +4647,11 @@
           "mat"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 15.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/nordic-print-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -3332,6 +4729,21 @@
         "logo": "/logos/NO/norli.webp"
       },
       {
+        "id": "northtrampoline",
+        "navn": "North Trampoline",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/north-trampoline-trumf"
+          }
+        },
+        "logo": "/logos/NO/northtrampoline.webp"
+      },
+      {
         "id": "nortvi",
         "navn": "NORTVI",
         "kategorier": [
@@ -3366,16 +4778,23 @@
         "id": "oakley",
         "navn": "Oakley",
         "kategorier": [
+          "sport",
+          "skjonnhet",
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/oakley-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/oakley/019d0b3a-53d6-73e2-9bb6-1136e90eaa28"
           }
         },
-        "logo": "/logos/SE/oakley.webp"
+        "logo": "/logos/NO/oakley.webp"
       },
       {
         "id": "object",
@@ -3428,6 +4847,11 @@
           "reise"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/omio-trumf"
+          },
           "klarna": {
             "verdi": 2,
             "opptil": true,
@@ -3471,11 +4895,16 @@
       },
       {
         "id": "onyxcookware",
-        "navn": "Onyx Cookware",
+        "navn": "ONYX Cookware",
         "kategorier": [
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/onyx-cookware-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3483,6 +4912,21 @@
           }
         },
         "logo": "/logos/NO/onyxcookware.webp"
+      },
+      {
+        "id": "osloskinlab",
+        "navn": "Oslo Skin Lab",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/oslo-skin-lab"
+          }
+        },
+        "logo": "/logos/NO/osloskinlab.webp"
       },
       {
         "id": "outdoorexperten",
@@ -3529,6 +4973,21 @@
         },
         "domene": "outnorth.com",
         "logo": "/logos/NO/outnorth.webp"
+      },
+      {
+        "id": "plindberg",
+        "navn": "P.Lindberg",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/p-lindberg-trumf"
+          }
+        },
+        "logo": "/logos/NO/plindberg.webp"
       },
       {
         "id": "pace",
@@ -3627,6 +5086,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/pergolux-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3646,6 +5110,11 @@
           "dyr"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/petxl-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3674,6 +5143,22 @@
         "logo": "/logos/NO/philips.webp"
       },
       {
+        "id": "philipshomeappliances",
+        "navn": "Philips Home Appliances",
+        "kategorier": [
+          "elektronikk",
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/philips-home-applicances-trumf"
+          }
+        },
+        "logo": "/logos/NO/philipshomeappliances.webp"
+      },
+      {
         "id": "philipshue",
         "navn": "Philips Hue",
         "kategorier": [
@@ -3681,6 +5166,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/philips-hue-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3722,13 +5212,18 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/pilgrim-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/DK/pilgrim.webp"
+        "logo": "/logos/NO/pilgrim.webp"
       },
       {
         "id": "pinkorblue",
@@ -3791,9 +5286,15 @@
         "id": "proteinfabrikken",
         "navn": "Proteinfabrikken",
         "kategorier": [
-          "sport"
+          "sport",
+          "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfproteinfabrikken"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3821,9 +5322,15 @@
         "id": "puma",
         "navn": "Puma",
         "kategorier": [
+          "sport",
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/puma-trumf"
+          },
           "klarna": {
             "verdi": 3.5,
             "opptil": false,
@@ -3832,6 +5339,36 @@
         },
         "domene": "puma.com",
         "logo": "/logos/NO/puma.webp"
+      },
+      {
+        "id": "pyretogsn228ckan",
+        "navn": "Pyret og Sn&#228;ckan",
+        "kategorier": [
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/pyret-and-snackan-trumf"
+          }
+        },
+        "logo": "/logos/NO/pyretogsn228ckan.webp"
+      },
+      {
+        "id": "qatarairways",
+        "navn": "Qatar Airways",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 1.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/qatar-airways-notrumf"
+          }
+        },
+        "logo": "/logos/NO/qatarairways.webp"
       },
       {
         "id": "racketspecialisten",
@@ -3847,6 +5384,21 @@
           }
         },
         "logo": "/logos/NO/racketspecialisten.webp"
+      },
+      {
+        "id": "racketspesialisten",
+        "navn": "Racketspesialisten",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/racketspesialisten"
+          }
+        },
+        "logo": "/logos/NO/racketspesialisten.webp"
       },
       {
         "id": "radissonhotels",
@@ -3940,6 +5492,21 @@
         "logo": "/logos/SE/revolutionrace.webp"
       },
       {
+        "id": "risskovbilferie",
+        "navn": "Risskov Bilferie",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/risskov-bilferietrumf"
+          }
+        },
+        "logo": "/logos/NO/risskovbilferie.webp"
+      },
+      {
         "id": "rito",
         "navn": "RITO",
         "kategorier": [
@@ -4002,17 +5569,40 @@
         "logo": "/logos/SE/royaldesign.webp"
       },
       {
+        "id": "sackit",
+        "navn": "SACKit",
+        "kategorier": [
+          "elektronikk",
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/sackit-trumf"
+          }
+        },
+        "logo": "/logos/NO/sackit.webp"
+      },
+      {
         "id": "safira",
         "navn": "Safira",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/safira-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/safira/0192958a-3d0c-73f6-8808-283b59ffe62b"
           }
         },
-        "logo": "/logos/SE/safira.webp"
+        "logo": "/logos/NO/safira.webp"
       },
       {
         "id": "sailracing",
@@ -4031,7 +5621,7 @@
       },
       {
         "id": "samsung",
-        "navn": "Samsung",
+        "navn": "SAMSUNG",
         "kategorier": [
           "elektronikk"
         ],
@@ -4040,14 +5630,8 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/samsung/018f3367-2401-704c-900c-526d7eecfc51"
-          },
-          "klarna": {
-            "verdi": 3,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/7470d769-5711-4a72-8af5-2b01f52cecde/samsung/pay-with-klarna/"
           }
         },
-        "domene": "samsung.com",
         "logo": "/logos/NO/samsung.webp"
       },
       {
@@ -4112,6 +5696,21 @@
         },
         "domene": "selected.com",
         "logo": "/logos/NO/selected.webp"
+      },
+      {
+        "id": "sembo",
+        "navn": "Sembo",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/sembo-trumf"
+          }
+        },
+        "logo": "/logos/NO/sembo.webp"
       },
       {
         "id": "senzeofjoy",
@@ -4180,15 +5779,23 @@
       {
         "id": "sharkninja",
         "navn": "SharkNinja",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk",
+          "hjem"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/sharkninja-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/sharkninja/019e4465-abe2-7069-a495-477ebb1168ba"
           }
         },
-        "logo": "/logos/SE/sharkninja.webp"
+        "logo": "/logos/NO/sharkninja.webp"
       },
       {
         "id": "shopping4net",
@@ -4209,9 +5816,15 @@
         "id": "siemenshome",
         "navn": "Siemens Home",
         "kategorier": [
+          "elektronikk",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/siemens-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4219,6 +5832,21 @@
           }
         },
         "logo": "/logos/NO/siemenshome.webp"
+      },
+      {
+        "id": "sillysanta",
+        "navn": "SillySanta",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/sillysanta-trumf"
+          }
+        },
+        "logo": "/logos/NO/sillysanta.webp"
       },
       {
         "id": "sistie",
@@ -4274,9 +5902,15 @@
         "id": "skogstadsport",
         "navn": "Skogstad Sport",
         "kategorier": [
-          "sport"
+          "sport",
+          "barn"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/skogstad-sport-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4328,6 +5962,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/slikkepott-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4335,6 +5974,36 @@
           }
         },
         "logo": "/logos/NO/slikkepott.webp"
+      },
+      {
+        "id": "sm229ungene",
+        "navn": "Sm&#229;ungene",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/smaungene-trumf"
+          }
+        },
+        "logo": "/logos/NO/sm229ungene.webp"
+      },
+      {
+        "id": "smartasaker",
+        "navn": "SmartaSaker",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/smartasaker-trumf"
+          }
+        },
+        "logo": "/logos/NO/smartasaker.webp"
       },
       {
         "id": "smartbuyglasses",
@@ -4355,16 +6024,22 @@
         "id": "smartphoto",
         "navn": "Smartphoto",
         "kategorier": [
+          "tjenester",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/smartphoto-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/smartphoto-se/0189630d-6184-73b8-af87-07c88542f28c"
           }
         },
-        "logo": "/logos/SE/smartphoto.webp"
+        "logo": "/logos/NO/smartphoto.webp"
       },
       {
         "id": "sofasmore",
@@ -4378,6 +6053,21 @@
           }
         },
         "logo": "/logos/NO/sofasmore.webp"
+      },
+      {
+        "id": "sofasandmore",
+        "navn": "Sofas and More",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/sofas-and-more-trumf"
+          }
+        },
+        "logo": "/logos/NO/sofasandmore.webp"
       },
       {
         "id": "soma",
@@ -4513,6 +6203,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/staypro-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 20,
             "opptil": false,
@@ -4573,18 +6268,40 @@
         "logo": "/logos/NO/stellamccartney.webp"
       },
       {
+        "id": "stigasports",
+        "navn": "STIGA Sports",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/stiga-sports-trumf"
+          }
+        },
+        "logo": "/logos/NO/stigasports.webp"
+      },
+      {
         "id": "stille",
         "navn": "Stille",
         "kategorier": [
+          "mote",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/stille-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/stille/01a0626b-0766-7033-9d44-671023ec93f5"
           }
-        }
+        },
+        "logo": "/logos/NO/stille.webp"
       },
       {
         "id": "stockx",
@@ -4643,6 +6360,19 @@
         "logo": "/logos/NO/strawberry.webp"
       },
       {
+        "id": "strikkia",
+        "navn": "Strikkia",
+        "kategorier": [],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/strikkia-trumf"
+          }
+        },
+        "logo": "/logos/NO/strikkia.webp"
+      },
+      {
         "id": "suitable",
         "navn": "Suitable",
         "kategorier": [
@@ -4658,10 +6388,45 @@
         "logo": "/logos/NO/suitable.webp"
       },
       {
-        "id": "swims",
-        "navn": "SWIMS",
+        "id": "superdry",
+        "navn": "Superdry",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfsuperdry-no"
+          }
+        },
+        "logo": "/logos/NO/superdry.webp"
+      },
+      {
+        "id": "superkul",
+        "navn": "Superkul",
         "kategorier": [],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfsuperkul"
+          }
+        },
+        "logo": "/logos/NO/superkul.webp"
+      },
+      {
+        "id": "swims",
+        "navn": "SWIMS",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/swims-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4669,6 +6434,36 @@
           }
         },
         "logo": "/logos/NO/swims.webp"
+      },
+      {
+        "id": "t248nnesen",
+        "navn": "T&#248;nnesen",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tonnesen-trumf"
+          }
+        },
+        "logo": "/logos/NO/t248nnesen.webp"
+      },
+      {
+        "id": "tempur",
+        "navn": "Tempur",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tempur-trumf"
+          }
+        },
+        "logo": "/logos/NO/tempur.webp"
       },
       {
         "id": "thechef",
@@ -4691,6 +6486,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tiger-of-sweden-trumf"
+          },
           "klarna": {
             "verdi": 4,
             "opptil": false,
@@ -4727,19 +6527,31 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/timarcotrumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/timarco/01896308-7f87-71ee-b3bc-53cb7efe268f"
           }
         },
-        "logo": "/logos/SE/timarco.webp"
+        "logo": "/logos/NO/timarco.webp"
       },
       {
         "id": "tirendo",
         "navn": "Tirendo",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tirendo-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4770,13 +6582,34 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trendcarpet-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/trendcarpet/0197c10c-695d-734a-80cb-afa6b257734f"
           }
         },
-        "logo": "/logos/SE/trendcarpet.webp"
+        "logo": "/logos/NO/trendcarpet.webp"
+      },
+      {
+        "id": "treningspartner",
+        "navn": "Treningspartner",
+        "kategorier": [
+          "sport",
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumftreningspartner"
+          }
+        },
+        "logo": "/logos/NO/treningspartner.webp"
       },
       {
         "id": "trip",
@@ -4792,6 +6625,21 @@
           }
         },
         "logo": "/logos/NO/trip.webp"
+      },
+      {
+        "id": "tripx",
+        "navn": "TripX",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tripx-trumf"
+          }
+        },
+        "logo": "/logos/NO/tripx.webp"
       },
       {
         "id": "truestory",
@@ -4853,6 +6701,51 @@
         "logo": "/logos/NO/understatement.webp"
       },
       {
+        "id": "uppababy",
+        "navn": "Uppababy",
+        "kategorier": [
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 14,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/uppababy-trumf"
+          }
+        },
+        "logo": "/logos/NO/uppababy.webp"
+      },
+      {
+        "id": "urbanpioneers",
+        "navn": "Urban Pioneers",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/urban-pioneers-trumf"
+          }
+        },
+        "logo": "/logos/NO/urbanpioneers.webp"
+      },
+      {
+        "id": "urbanpioneersconceptstore",
+        "navn": "Urban Pioneers Concept Store",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/urban-pioneers-concept-store-trumf"
+          }
+        },
+        "logo": "/logos/NO/urbanpioneersconceptstore.webp"
+      },
+      {
         "id": "urbantrend",
         "navn": "Urban Trend",
         "kategorier": [
@@ -4868,11 +6761,16 @@
       },
       {
         "id": "urverket",
-        "navn": "Urverket.no",
+        "navn": "Urverket",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/urverket-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 20,
             "opptil": false,
@@ -4967,16 +6865,22 @@
         "id": "viator",
         "navn": "Viator",
         "kategorier": [
+          "reise",
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/viator-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/viator/0189630e-3cfe-7166-9125-0e412743ab2c"
           }
         },
-        "logo": "/logos/SE/viator.webp"
+        "logo": "/logos/NO/viator.webp"
       },
       {
         "id": "vidaxl",
@@ -4985,6 +6889,11 @@
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/vidaxl-trumf2"
+          },
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
@@ -5014,6 +6923,22 @@
         },
         "domene": "vievebeauty.com",
         "logo": "/logos/NO/vieve.webp"
+      },
+      {
+        "id": "vikingfootwear",
+        "navn": "Viking Footwear",
+        "kategorier": [
+          "mote",
+          "barn"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/viking-footwear"
+          }
+        },
+        "logo": "/logos/NO/vikingfootwear.webp"
       },
       {
         "id": "vila",
@@ -5048,11 +6973,16 @@
       },
       {
         "id": "vistaprint",
-        "navn": "vistaprint",
+        "navn": "Vistaprint",
         "kategorier": [
           "tjenester"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfvistaprint"
+          },
           "klarna": {
             "verdi": 3,
             "opptil": true,
@@ -5083,6 +7013,21 @@
         "logo": "/logos/NO/vita.webp"
       },
       {
+        "id": "vivara",
+        "navn": "Vivara",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/vivara-trumf"
+          }
+        },
+        "logo": "/logos/NO/vivara.webp"
+      },
+      {
         "id": "volt",
         "navn": "VOLT",
         "kategorier": [
@@ -5103,6 +7048,11 @@
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/vpg-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5110,6 +7060,21 @@
           }
         },
         "logo": "/logos/NO/vpg.webp"
+      },
+      {
+        "id": "vrbo",
+        "navn": "Vrbo",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/vrbo-trumf"
+          }
+        },
+        "logo": "/logos/NO/vrbo.webp"
       },
       {
         "id": "vybuss",
@@ -5143,11 +7108,16 @@
       },
       {
         "id": "wakakuu",
-        "navn": "WAKAKUU",
+        "navn": "Wakakuu",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/wakakuu-trumf"
+          },
           "klarna": {
             "verdi": 5.5,
             "opptil": false,
@@ -5164,6 +7134,11 @@
           "sport"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 9.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/watery-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5174,11 +7149,16 @@
       },
       {
         "id": "weekday",
-        "navn": "WEEKDAY",
+        "navn": "Weekday",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/weekday-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5189,7 +7169,7 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/weekday/0189630f-1164-724e-add9-82aae07ee93f"
           }
         },
-        "logo": "/logos/DK/weekday.webp"
+        "logo": "/logos/NO/weekday.webp"
       },
       {
         "id": "weloveholidays",
@@ -5198,6 +7178,11 @@
           "reise"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/weloveholidays-trumf"
+          },
           "klarna": {
             "verdi": 1.5,
             "opptil": false,
@@ -5297,12 +7282,35 @@
         "logo": "/logos/NO/yas.webp"
       },
       {
+        "id": "yoursurprise",
+        "navn": "YourSurprise",
+        "kategorier": [
+          "tjenester"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/yoursurprise-trumf"
+          }
+        },
+        "logo": "/logos/NO/yoursurprise.webp"
+      },
+      {
         "id": "youwish",
         "navn": "YouWish",
         "kategorier": [
+          "reise",
+          "skjonnhet",
+          "underholdning",
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/youwish"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -5318,6 +7326,11 @@
           "dyr"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/zoo-trumfs"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5520,7 +7533,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/aeg/01896311-3b0c-733b-898b-c6563e0538bc"
           }
         },
-        "logo": "/logos/SE/aeg.webp"
+        "logo": "/logos/NO/aeg.webp"
       },
       {
         "id": "ag1",
@@ -5914,7 +7927,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/autodude/018f57d7-5ba2-735f-97f3-c511b00c38bb"
           }
         },
-        "logo": "/logos/SE/autodude.webp"
+        "logo": "/logos/NO/autodude.webp"
       },
       {
         "id": "axkid",
@@ -6015,7 +8028,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bad-stil/019c7b32-49d5-70b2-b1c1-a7ba8153a087"
           }
         },
-        "logo": "/logos/SE/badstil.webp"
+        "logo": "/logos/NO/badstil.webp"
       },
       {
         "id": "badmintonshoppen",
@@ -6105,7 +8118,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/batteriexperten/01896308-01a2-7058-a537-bb687b41c4b4"
           }
         },
-        "logo": "/logos/SE/batteriexperten.webp"
+        "logo": "/logos/NO/batteriexperten.webp"
       },
       {
         "id": "bazta",
@@ -8255,7 +10268,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/glowid/019fcd29-9ce6-7071-9fba-2e9c939d55fb"
           }
         },
-        "logo": "/logos/SE/glowid.webp"
+        "logo": "/logos/NO/glowid.webp"
       },
       {
         "id": "gococo",
@@ -8564,7 +10577,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/SE/harmankardon.webp"
+        "logo": "/logos/NO/harmankardon.webp"
       },
       {
         "id": "hatstore",
@@ -8615,7 +10628,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/helly-hansen/018d5538-6322-73d4-bba1-fead8cf1eb29"
           }
         },
-        "logo": "/logos/SE/hellyhansen.webp"
+        "logo": "/logos/NO/hellyhansen.webp"
       },
       {
         "id": "hemsyd",
@@ -9173,7 +11186,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/junkyard/019c7b2a-0892-7181-9c77-ba7dee8b3d9f"
           }
         },
-        "logo": "/logos/SE/junkyard.webp"
+        "logo": "/logos/NO/junkyard.webp"
       },
       {
         "id": "kaffepro",
@@ -9310,7 +11323,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/kitchentime/01896309-8d97-726b-baed-35342a0d0149"
           }
         },
-        "logo": "/logos/SE/kitchentime.webp"
+        "logo": "/logos/NO/kitchentime.webp"
       },
       {
         "id": "kiwi",
@@ -9521,7 +11534,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lampemesteren/01896308-b758-703a-8f2a-7d8ab49b690e"
           }
         },
-        "logo": "/logos/DK/lampemesteren.webp"
+        "logo": "/logos/NO/lampemesteren.webp"
       },
       {
         "id": "lamporochljus",
@@ -9551,7 +11564,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lappeliten/01896312-2e1b-73b3-ac23-db4b5803a8ad"
           }
         },
-        "logo": "/logos/SE/lappeliten.webp"
+        "logo": "/logos/NO/lappeliten.webp"
       },
       {
         "id": "lastminute",
@@ -9711,7 +11724,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lexington/018ce8f7-77f7-70b7-b578-41395c215f4d"
           }
         },
-        "logo": "/logos/SE/lexington.webp"
+        "logo": "/logos/NO/lexington.webp"
       },
       {
         "id": "lg",
@@ -10648,7 +12661,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nicebeauty/01896311-cd52-7367-8aae-0c4b46a3188e"
           }
         },
-        "logo": "/logos/SE/nicebeauty.webp"
+        "logo": "/logos/NO/nicebeauty.webp"
       },
       {
         "id": "nike",
@@ -10861,7 +12874,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/north-trampoline/019ecab4-f7e9-70cd-8ad1-3206144d5178"
           }
         },
-        "logo": "/logos/SE/northtrampoline.webp"
+        "logo": "/logos/NO/northtrampoline.webp"
       },
       {
         "id": "northmans",
@@ -11039,7 +13052,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/SE/onyxcookware.webp"
+        "logo": "/logos/NO/onyxcookware.webp"
       },
       {
         "id": "ordbok",
@@ -11288,7 +13301,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
           }
         },
-        "logo": "/logos/SE/pergolux.webp"
+        "logo": "/logos/NO/pergolux.webp"
       },
       {
         "id": "petson",
@@ -11376,7 +13389,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/DK/pilgrim.webp"
+        "logo": "/logos/NO/pilgrim.webp"
       },
       {
         "id": "pinko",
@@ -12176,7 +14189,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
-        "logo": "/logos/SE/siemenshome.webp"
+        "logo": "/logos/NO/siemenshome.webp"
       },
       {
         "id": "sifjakobs",
@@ -12846,7 +14859,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/superdry/018f4dd5-ade1-71fb-9c3d-04b800194ef7"
           }
         },
-        "logo": "/logos/SE/superdry.webp"
+        "logo": "/logos/NO/superdry.webp"
       },
       {
         "id": "supsport",
@@ -13046,7 +15059,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/tempur/0189630a-48b2-739f-8a99-02b1c54808a4"
           }
         },
-        "logo": "/logos/SE/tempur.webp"
+        "logo": "/logos/NO/tempur.webp"
       },
       {
         "id": "tennisshoppen",
@@ -13166,7 +15179,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/tirendo/01896308-e17a-7082-8889-9601fc9f7211"
           }
         },
-        "logo": "/logos/SE/tirendo.webp"
+        "logo": "/logos/NO/tirendo.webp"
       },
       {
         "id": "tommyhilfiger",
@@ -13763,7 +15776,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/weekday/0189630f-1164-724e-add9-82aae07ee93f"
           }
         },
-        "logo": "/logos/DK/weekday.webp"
+        "logo": "/logos/NO/weekday.webp"
       },
       {
         "id": "weibulls",
@@ -14037,7 +16050,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/yoursurprise/01896309-0119-707e-b06d-dfcdc7e8200b"
           }
         },
-        "logo": "/logos/SE/yoursurprise.webp"
+        "logo": "/logos/NO/yoursurprise.webp"
       },
       {
         "id": "zoo",
@@ -14052,7 +16065,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zoo.se-1/01896312-b5e6-7274-8e4a-7eb11e4ab5a9"
           }
         },
-        "logo": "/logos/SE/zoo.webp"
+        "logo": "/logos/NO/zoo.webp"
       },
       {
         "id": "zooplus",
@@ -14269,7 +16282,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/aeg/01896311-3b0c-733b-898b-c6563e0538bc"
           }
         },
-        "logo": "/logos/DK/aeg.webp"
+        "logo": "/logos/NO/aeg.webp"
       },
       {
         "id": "agoda",
@@ -15736,7 +17749,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/g-star/018ce8ef-9005-73b2-9eab-aa62d65c537a"
           }
         },
-        "logo": "/logos/SE/gstar.webp"
+        "logo": "/logos/NO/gstar.webp"
       },
       {
         "id": "gameseal",
@@ -16035,7 +18048,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/DK/harmankardon.webp"
+        "logo": "/logos/NO/harmankardon.webp"
       },
       {
         "id": "haveglad",
@@ -16511,7 +18524,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/kitchentime/01896309-8d97-726b-baed-35342a0d0149"
           }
         },
-        "logo": "/logos/DK/kitchentime.webp"
+        "logo": "/logos/NO/kitchentime.webp"
       },
       {
         "id": "klubklub",
@@ -17402,7 +19415,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/newport/0189630d-4e7a-7014-9943-41d6625a52b9"
           }
         },
-        "logo": "/logos/SE/newport.webp"
+        "logo": "/logos/NO/newport.webp"
       },
       {
         "id": "nicehair",
@@ -17569,7 +19582,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/oakley/019d0b3a-53d6-73e2-9bb6-1136e90eaa28"
           }
         },
-        "logo": "/logos/SE/oakley.webp"
+        "logo": "/logos/NO/oakley.webp"
       },
       {
         "id": "obaku",
@@ -17687,7 +19700,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/DK/onyxcookware.webp"
+        "logo": "/logos/NO/onyxcookware.webp"
       },
       {
         "id": "organicbasics",
@@ -18307,7 +20320,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sackit/0189630f-ddfb-7229-b484-9d9d4e6f6cb8"
           }
         },
-        "logo": "/logos/DK/sackit.webp"
+        "logo": "/logos/NO/sackit.webp"
       },
       {
         "id": "sailracing",
@@ -18517,7 +20530,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sharkninja/019e4465-abe2-7069-a495-477ebb1168ba"
           }
         },
-        "logo": "/logos/SE/sharkninja.webp"
+        "logo": "/logos/NO/sharkninja.webp"
       },
       {
         "id": "siemenshome",
@@ -18532,7 +20545,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
-        "logo": "/logos/DK/siemenshome.webp"
+        "logo": "/logos/NO/siemenshome.webp"
       },
       {
         "id": "sifjakobs",
@@ -19085,7 +21098,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/timarco/01896308-7f87-71ee-b3bc-53cb7efe268f"
           }
         },
-        "logo": "/logos/SE/timarco.webp"
+        "logo": "/logos/NO/timarco.webp"
       },
       {
         "id": "timberland",
@@ -19114,7 +21127,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/tirendo/01896308-e17a-7082-8889-9601fc9f7211"
           }
         },
-        "logo": "/logos/DK/tirendo.webp"
+        "logo": "/logos/NO/tirendo.webp"
       },
       {
         "id": "tommyhilfiger",
