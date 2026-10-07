@@ -772,12 +772,13 @@ if (bfAktiv) {
       tekst: avsnitt(['Cyber Monday – siste sjanse ⏳', '', 'Flest EuroBonus-poeng akkurat nå:', ...bfListe().map(linjeFor), '', 'Sjekk din butikk på pointmaxing.no (lenke i bio)', '', `${EMNER} #cybermonday #blackfriday${bfAr}`]),
     },
   ].filter(Boolean);
-  for (const post of serie) poster.push({ ...post, dag: datoTekst(post.dato) });
+  for (const post of serie) poster.push({ ...post, dag: datoTekst(post.dato), gruppe: 'Black Friday' });
 }
 
 if (histButikk && histRader.length >= 2) {
   poster.push({
     id: 'historie',
+    gruppe: 'Profil',
     tittel: 'Om Pointmaxing (historie)',
     dag: 'én gang – lagre som høydepunkt',
     formater: { historie: HISTORIE },
@@ -819,8 +820,8 @@ await writeFile(
 
 const FORMATNAVN = { instagram: 'Instagram · 4:5', tiktok: 'TikTok · 9:16', historie: 'Instagram-historie · 9:16', omslag: 'Omslag til høydepunktet' };
 const bilder = (post, navn) => post.filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="${esc(post.tittel)} – bilde ${i + 1}" loading="lazy"></a>`).join('');
-const seksjon = (post, i) => `<section>
-<h2>${i + 1}. ${esc(post.tittel)} <span>· post på ${post.dag}</span></h2>
+const seksjon = (post) => `<section id="post-${post.id}" data-dag="${esc(post.dag)}" data-dato="${post.dato ?? ''}">
+<h2>${esc(post.tittel)} <span>· post på ${post.dag}</span></h2>
 <textarea id="tekst-${post.id}" readonly>${esc(post.tekst)}</textarea>
 <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('tekst-${post.id}').value).then(()=>{this.textContent='Kopiert ✓'})">Kopier teksten</button>
 ${Object.keys(post.filer)
@@ -836,7 +837,8 @@ await writeFile(
 :root{--navy:#0b1f4b;--krem:#faf7f0;--lys:#8ea0c4;--gull:#f0c14b}
 *{box-sizing:border-box}body{margin:0;background:var(--navy);color:var(--krem);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;padding:24px 16px 48px}
 main{max-width:980px;margin:0 auto}h1{font-size:22px;margin:0 0 4px}p{color:var(--lys);margin:0 0 8px}
-section{margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15)}
+section{margin-top:22px}
+select{width:100%;margin-top:14px;padding:12px;border:0;border-radius:10px;font:16px system-ui,sans-serif;background:var(--krem);color:#13203d}
 h2{font-size:18px;margin:0 0 10px}h2 span{color:var(--lys);font-weight:400;font-size:15px}
 h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gull);margin:22px 0 10px}
 .rutenett{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
@@ -845,10 +847,35 @@ textarea{width:100%;min-height:200px;border-radius:10px;border:0;padding:12px;fo
 button{margin-top:8px;padding:10px 16px;border:0;border-radius:999px;background:var(--gull);color:#13203d;font-weight:700;font-size:15px;cursor:pointer}
 </style></head><body><main>
 <h1>Innhold til Instagram og TikTok · uke ${uke}</h1>
-<p>Laget ${idag} fra dagens tall. Trykk på et bilde og hold inne for å lagre det.</p>
-<p>Forslag: ukens beste på mandag, butikkduellen på onsdag, kortduellen på fredag og Amex eller Klarna Max på søndag.</p>
-${bfAktiv ? '<p>Black Friday-serien har egne datoer. Tallene oppdateres hver natt, så lagre bildene samme dag som du poster.</p>' : ''}
+<p>Laget ${idag} fra dagens tall, så lagre bildene samme dag som du poster. Trykk på et bilde og hold inne for å lagre det.</p>
+<select id="velg" aria-label="Velg post">
+${[...new Set(poster.map((p) => p.gruppe ?? 'Hver uke'))]
+  .map((g) => `<optgroup label="${g}">${poster
+    .filter((p) => (p.gruppe ?? 'Hver uke') === g)
+    .map((p) => `<option value="${p.id}">${esc(p.tittel)}${p.gruppe === 'Profil' ? '' : ` · ${p.dag}`}</option>`)
+    .join('')}</optgroup>`)
+  .join('\n')}
+</select>
 ${poster.map(seksjon).join('\n')}
+<script>
+// Én post om gangen: den i adressen (#id), ellers dagens post, ellers den første.
+const velg = document.getElementById('velg');
+const deler = [...document.querySelectorAll('section[id^="post-"]')];
+const idag = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Oslo' }).format(new Date());
+const ukedag = new Intl.DateTimeFormat('nb-NO', { weekday: 'long', timeZone: 'Europe/Oslo' }).format(new Date());
+const iDag = deler.find((d) => d.dataset.dato === idag) || deler.find((d) => !d.dataset.dato && d.dataset.dag === ukedag);
+if (iDag) velg.querySelector('option[value="' + iDag.id.slice(5) + '"]').textContent += ' (i dag)';
+function vis(id) {
+  for (const d of deler) d.hidden = d.id !== 'post-' + id;
+  velg.value = id;
+}
+const fraAdresse = decodeURIComponent(location.hash.slice(1));
+vis(deler.some((d) => d.id === 'post-' + fraAdresse) ? fraAdresse : (iDag || deler[0]).id.slice(5));
+velg.addEventListener('change', () => {
+  vis(velg.value);
+  history.replaceState(null, '', '#' + velg.value);
+});
+</script>
 </main></body></html>
 `,
 );
