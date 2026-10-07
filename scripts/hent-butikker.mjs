@@ -315,14 +315,28 @@ async function parallelt(oppgaver, antall) {
   await Promise.all(arbeidere);
 }
 
+// Vakt mot halve hentinger (en blokkert eller tom side midt i listen): færre enn 70 % av butikkene fra forrige kjøring
+// gir to nye forsøk med ett minutts pause, og deretter stopp – da blir gårsdagens satser stående i stores.json.
+const forrige = (await finnes(UT)) ? JSON.parse(await readFile(UT, 'utf8')) : null;
+async function hentSikkert(land, programId, hentFn) {
+  const sist = (forrige?.land?.[land] ?? []).filter((b) => b.satser?.[programId]).length;
+  for (let forsok = 1; ; forsok++) {
+    const rader = await hentFn();
+    if (rader.length >= sist * 0.7) return rader;
+    if (forsok === 3) throw new Error(`${programId} (${land}) ga ${rader.length} butikker mot ${sist} sist – avbryter, gårsdagens satser blir stående.`);
+    console.warn(`${programId} (${land}): ${rader.length} butikker mot ${sist} sist – prøver igjen om ett minutt.`);
+    await vent(60_000);
+  }
+}
+
 const resultat = {};
 const logg = [];
 for (const [land, oppsett] of Object.entries(LAND)) {
   // Rekkefølgen avgjør hvilken logo som brukes når flere programmer har butikken.
   const kilder = [];
-  if (oppsett.trumf) kilder.push([oppsett.trumf, await hentTrumf()]);
-  kilder.push([oppsett.sas.programId, await hentSas(oppsett.sas)]);
-  kilder.push([oppsett.klarna.programId, await hentKlarna(oppsett.klarna)]);
+  if (oppsett.trumf) kilder.push([oppsett.trumf, await hentSikkert(land, oppsett.trumf, hentTrumf)]);
+  kilder.push([oppsett.sas.programId, await hentSikkert(land, oppsett.sas.programId, () => hentSas(oppsett.sas))]);
+  kilder.push([oppsett.klarna.programId, await hentSikkert(land, oppsett.klarna.programId, () => hentKlarna(oppsett.klarna))]);
   resultat[land] = slaSammen(kilder);
   logg.push(`${land}: ${kilder.map(([id, rader]) => `${id} ${rader.length}`).join(', ')} → ${resultat[land].length} butikker`);
 }

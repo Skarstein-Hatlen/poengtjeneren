@@ -20,7 +20,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run hent
+      # Stopper henting av butikksatser (halv henting fra et program), står gårsdagens satser, og resten av jobben kjører videre.
+      - id: hent
+        run: npm run hent
+        continue-on-error: true
+      - name: Varsle om stoppet satshenting
+        if: steps.hent.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create satssjekk --color D93F0B --description "Henting av butikksatser stoppet" 2>/dev/null || true
+          gh issue create --title "Satshenting stoppet $(date -u +%d.%m.%Y)" --label satssjekk --body "npm run hent stoppet, så gårsdagens butikksatser står. Logg: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       # Klarnas vekslingskurs til EuroBonus står på medlemskapssidene – hentes hver dag.
       - run: node scripts/hent-klarna-kurs.mjs
       # Partner-, kort- og medlemskapskampanjer fra offisielle sider.

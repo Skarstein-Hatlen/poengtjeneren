@@ -33,7 +33,9 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const ukens = JSON.parse(await readFile(new URL('api/ukens.json', dist), 'utf8')).land.NO;
 const alleButikker = (await les('src/data/stores.json')).land;
 const butikker = alleButikker.NO;
-const butikkerTotalt = Object.values(alleButikker).reduce((n, liste) => n + liste.length, 0);
+// Samme tall som butikksidene: butikker og partnere, hver butikk én gang per land.
+const partnere = (await les('src/data/partners.json')).land;
+const butikkerTotalt = Object.entries(alleButikker).reduce((n, [land, liste]) => n + new Set([...liste, ...(partnere[land] ?? [])].map((b) => b.id)).size, 0);
 const { programmer } = await les('src/data/programs.json');
 const { kampanjer } = await les('src/data/kampanjer.json');
 const PROG = Object.fromEntries(programmer.filter((p) => p.land === 'NO').map((p) => [p.kortnavn, p]));
@@ -62,10 +64,10 @@ function ramme(f, innhold, { sveip = true } = {}) {
 <rect width="${f.B}" height="${f.H}" fill="${F.navy}"/>
 ${fly(f.kortX, f.toppY - 40, 0.48, F.krem)}
 ${tekst('POINTMAXING', { x: f.kortX + 62, y: f.toppY, str: 46, font: S.smalHalv, farge: F.krem, sperring: 5 })}
-${tekst(`UKE ${uke}`, { x: f.kortX + f.kortB, y: f.toppY - 6, str: 26, font: S.semibold, farge: F.lys, anker: 'end', sperring: 4 })}
+${f.historie ? '' : tekst(`UKE ${uke}`, { x: f.kortX + f.kortB, y: f.toppY - 6, str: 26, font: S.semibold, farge: F.lys, anker: 'end', sperring: 4 })}
 ${innhold}
 ${tekst('pointmaxing.no', { x: f.kortX, y: f.bunnY, str: 44, font: S.smalHalv, farge: F.gullfyll, sperring: 1 })}
-${sveip ? `${tekst('Sveip', { x: f.kortX + f.kortB - 38, y: f.bunnY - 4, str: 30, font: S.medium, farge: F.lys, anker: 'end' })}${pil(f.kortX + f.kortB - 26, f.bunnY - 14, 30, F.lys)}` : ''}
+${sveip && !f.historie ? `${tekst('Sveip', { x: f.kortX + f.kortB - 38, y: f.bunnY - 4, str: 30, font: S.medium, farge: F.lys, anker: 'end' })}${pil(f.kortX + f.kortB - 26, f.bunnY - 14, 30, F.lys)}` : ''}
 </svg>`;
 }
 
@@ -536,6 +538,83 @@ const bfListeSlide = (overskrift) => async (f) => {
   return ramme(f, kort(f, 'bfliste', await rader(f, overskrift, liste)), { sveip: false });
 };
 
+// ---------- Om Pointmaxing (historie) ----------
+// Fem bilder i 9:16 til en Instagram-historie som lagres som høydepunkt på profilen: hva vi gjør, et eksempel med
+// dagens tall, slik bruker du det, hva mer som finnes og avslutningen. Innholdet holdes unna toppen og bunnen,
+// der Instagram legger navn og svarfelt.
+
+const HISTORIE = { B: 1080, H: 1920, toppY: 230, kortY: 296, kortH: 1210, bunnY: 1600, kortX: 60, kortB: 960, historie: true };
+const histButikk = butikker.find((b) => b.id === (oppsett.historie?.butikk ?? 'lyko'));
+const histRader = histButikk ? raderFor(histButikk) : [];
+
+async function histForside(f) {
+  const x = f.kortX;
+  const y = 700;
+  let svg = etikett('Hei! Vi er Pointmaxing', x, y - 170, F.gullfyll);
+  ['Hvor gir kjøpet', 'flest poeng?'].forEach((l, i) => (svg += tekst(l, { x, y: y + i * 140, str: 140, font: S.smalFet, farge: i ? F.gullfyll : F.krem, maks: f.kortB })));
+  linjer('Vi sammenligner Trumf, Klarna og SAS Shopping i hver nettbutikk, så du får flest EuroBonus-poeng for pengene.', S.regular, 46, f.kortB).forEach(
+    (l, i) => (svg += tekst(l, { x, y: y + 300 + i * 62, str: 46, font: S.regular, farge: F.lys })),
+  );
+  return ramme(f, svg, { sveip: false });
+}
+
+const histEksempel = (f) =>
+  butikkSlide(f, { id: 'histeks', etikettTekst: `Eksempel: 1 000 kr hos ${histButikk.navn}`, linje1: 'Samme kjøp,', linje2: 'tre svar', b: histButikk, liste: histRader, belop: 1000 });
+
+/** Kort med punkter: stor tittel over, ett punkt per rad med tall eller hake foran. */
+async function punktSlide(f, { id, etikettTekst, tittel, punkter, nummerert = false }) {
+  const x = f.kortX;
+  const y0 = 560;
+  let svg = etikett(etikettTekst, x, y0 - 170, F.gullfyll);
+  svg += tekst(tittel, { x, y: y0, str: 132, font: S.smalFet, farge: F.krem, maks: f.kortB });
+  const ky = y0 + 70;
+  let innhold = '';
+  let y = ky + 40;
+  punkter.forEach(([hoved, under], i) => {
+    if (i) innhold += `<rect x="${x + 40}" y="${y}" width="${f.kortB - 80}" height="2" fill="${F.strek}"/>`;
+    const tx = x + (nummerert ? 150 : 110);
+    const hovedLinjer = linjer(hoved, S.semibold, 44, f.kortB - (tx - x) - 40);
+    const underLinjer = under ? linjer(under, S.regular, 32, f.kortB - (tx - x) - 40) : [];
+    const h = 40 + hovedLinjer.length * 54 + underLinjer.length * 42 + 30;
+    if (nummerert) innhold += tekst(String(i + 1), { x: x + 48, y: y + 40 + 92, str: 110, font: S.smalFet, farge: F.gull });
+    else innhold += hake(x + 48, y + 40 + 40, 40, F.gull);
+    hovedLinjer.forEach((l, j) => (innhold += tekst(l, { x: tx, y: y + 40 + 40 + j * 54, str: 44, font: S.semibold, farge: F.blekk })));
+    underLinjer.forEach((l, j) => (innhold += tekst(l, { x: tx, y: y + 40 + 40 + hovedLinjer.length * 54 + 4 + j * 42, str: 32, font: S.regular, farge: F.dempet })));
+    y += h;
+  });
+  svg += kort(f, id, innhold, ky, y - ky + 20);
+  return ramme(f, svg, { sveip: false });
+}
+
+const histSlik = (f) =>
+  punktSlide(f, {
+    id: 'histslik',
+    etikettTekst: 'Slik gjør du',
+    tittel: 'Tre steg',
+    nummerert: true,
+    punkter: [
+      ['Søk opp butikken', 'På pointmaxing.no eller med Chrome-utvidelsen'],
+      ['Se hvor du får flest poeng', 'Trumf, Klarna og SAS Shopping side om side'],
+      ['Handle via det programmet', 'Lenken tar deg rett til riktig side'],
+    ],
+  });
+
+const histMer = (f) =>
+  punktSlide(f, {
+    id: 'histmer',
+    etikettTekst: 'Og litt til',
+    tittel: 'Mer enn butikker',
+    punkter: [
+      ['Kortene som gir mest', 'Poeng i året og pris per poeng'],
+      ['Velkomstbonuser og kampanjer', 'Oppdatert hver natt'],
+      ['Chrome-utvidelse', 'Viser poengene rett i Google-søket'],
+      ['Norge, Sverige og Danmark', `${tall(Math.floor(butikkerTotalt / 100) * 100)}+ nettbutikker`],
+    ],
+  });
+
+/** Omslag til høydepunktet: flyet midt på, så det ser riktig ut i sirkelen på profilen. */
+const histOmslag = (f) => `<svg xmlns="http://www.w3.org/2000/svg" width="${f.B}" height="${f.H}" viewBox="0 0 ${f.B} ${f.H}"><rect width="${f.B}" height="${f.H}" fill="${F.navy}"/>${fly(f.B / 2 - 210, f.H / 2 - 210, 4.2, F.gullfyll)}</svg>`;
+
 // ---------- skriv ----------
 
 const EMNER = '#eurobonus #saseurobonus #sas #trumf #klarna #bonuspoeng #flypoeng #reisemedpoeng #poengjakt #reisetips';
@@ -696,10 +775,23 @@ if (bfAktiv) {
   for (const post of serie) poster.push({ ...post, dag: datoTekst(post.dato) });
 }
 
+if (histButikk && histRader.length >= 2) {
+  poster.push({
+    id: 'historie',
+    tittel: 'Om Pointmaxing (historie)',
+    dag: 'én gang – lagre som høydepunkt',
+    formater: { historie: HISTORIE },
+    slides: [histForside, histEksempel, histSlik, histMer, slutt],
+    omslag: histOmslag,
+    tekst: 'Legg ut bildene som historie i denne rekkefølgen. Legg til et lenke-klistremerke til pointmaxing.no på første og siste bilde. Lagre historien som høydepunkt («Om oss») med omslaget under.',
+  });
+}
+
 await mkdir(UT, { recursive: true });
 for (const post of poster) {
-  post.filer = { instagram: [], tiktok: [] };
-  for (const [navn, f] of Object.entries(FORMATER)) {
+  post.filer = {};
+  for (const [navn, f] of Object.entries(post.formater ?? FORMATER)) {
+    post.filer[navn] = [];
     for (let i = 0; i < post.slides.length; i++) {
       const svg = await post.slides[i](f);
       const fil = `${post.id}-${navn}-${i + 1}.png`;
@@ -710,6 +802,11 @@ for (const post of poster) {
       post.filer[navn].push(fil);
     }
   }
+  if (post.omslag) {
+    const fil = `${post.id}-omslag.png`;
+    await sharp(Buffer.from(post.omslag(HISTORIE))).png({ compressionLevel: 9 }).toFile(fileURLToPath(new URL(fil, UT)));
+    post.filer.omslag = [fil];
+  }
   await writeFile(new URL(`${post.id}.txt`, UT), `${post.tekst}\n`);
 }
 
@@ -717,18 +814,18 @@ for (const post of poster) {
 const DOMENE = 'https://pointmaxing.no';
 await writeFile(
   new URL('poster.json', UT),
-  JSON.stringify({ uke, laget: idag, poster: poster.map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
+  JSON.stringify({ uke, laget: idag, poster: poster.filter((p) => p.filer.instagram).map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
 );
 
+const FORMATNAVN = { instagram: 'Instagram · 4:5', tiktok: 'TikTok · 9:16', historie: 'Instagram-historie · 9:16', omslag: 'Omslag til høydepunktet' };
 const bilder = (post, navn) => post.filer[navn].map((fil, i) => `<a href="${fil}" target="_blank"><img src="${fil}" alt="${esc(post.tittel)} – bilde ${i + 1}" loading="lazy"></a>`).join('');
 const seksjon = (post, i) => `<section>
 <h2>${i + 1}. ${esc(post.tittel)} <span>· post på ${post.dag}</span></h2>
 <textarea id="tekst-${post.id}" readonly>${esc(post.tekst)}</textarea>
 <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('tekst-${post.id}').value).then(()=>{this.textContent='Kopiert ✓'})">Kopier teksten</button>
-<h3>Instagram · 4:5</h3>
-<div class="rutenett">${bilder(post, 'instagram')}</div>
-<h3>TikTok · 9:16</h3>
-<div class="rutenett">${bilder(post, 'tiktok')}</div>
+${Object.keys(post.filer)
+  .map((navn) => `<h3>${FORMATNAVN[navn]}</h3>\n<div class="rutenett">${bilder(post, navn)}</div>`)
+  .join('\n')}
 </section>`;
 await writeFile(
   new URL('index.html', UT),
