@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-07",
+  "hentet": "2026-10-08",
   "land": {
     "NO": [
       {
@@ -991,8 +991,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
+          },
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/8563d4e8-d090-493e-bac6-a41fbf1125bd/bubbleroom/pay-with-klarna/"
           }
         },
+        "domene": "bubbleroom.no",
         "logo": "/logos/NO/bubbleroom.webp"
       },
       {
@@ -5658,7 +5664,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/scandic-hotels-trumf"
           }
@@ -7679,7 +7685,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 7,
+            "verdi": 1.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/5832b076-0249-47ed-bcc8-0fbd38fdc9cd/aliexpress/pay-with-klarna/"
           }
@@ -7697,10 +7703,6 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
-            "kampanje": {
-              "verdi": 100,
-              "slutt": "2026-10-07"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/amazon/018ead91-a62a-71c0-b877-9faf0d120af4"
           }
         },
@@ -10266,9 +10268,15 @@
             "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/glowid/019fcd29-9ce6-7071-9fba-2e9c939d55fb"
+          },
+          "klarna-se": {
+            "verdi": 4,
+            "opptil": false,
+            "kilde": "https://www.klarna.comnull"
           }
         },
-        "logo": "/logos/NO/glowid.webp"
+        "domene": "glowid.se",
+        "logo": "/logos/SE/glowid.webp"
       },
       {
         "id": "gococo",
@@ -14485,7 +14493,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sony/0199b943-21ab-70fd-9417-c4e79b1b4446"
           },
           "klarna-se": {
-            "verdi": 1,
+            "verdi": 2.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/0ae68868-0e5a-467b-b5b6-fd812f0746e6/sony/pay-with-klarna/"
           }
@@ -15184,7 +15192,9 @@
       {
         "id": "tommyhilfiger",
         "navn": "Tommy Hilfiger",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -16150,22 +16160,6 @@
     ],
     "DK": [
       {
-        "id": "otherstories",
-        "navn": "& Other Stories",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2.5,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/23f45e51-350f-4aa4-9a12-d43af905f848/-other-stories/pay-with-klarna/"
-          }
-        },
-        "domene": "stories.com",
-        "logo": "/logos/DK/otherstories.webp"
-      },
-      {
         "id": "24mx",
         "navn": "24MX",
         "kategorier": [],
@@ -16339,7 +16333,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 7,
+            "verdi": 1.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/fe5c2390-80ac-4dee-8542-722d6c8aea85/aliexpress/pay-with-klarna/"
           }
@@ -19989,22 +19983,6 @@
         "logo": "/logos/DK/pilgrim.webp"
       },
       {
-        "id": "pixizoo",
-        "navn": "Pixizoo",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/a598ee2a-cb0f-4f79-9695-acbea3f747d9/pixizoo/pay-with-klarna/"
-          }
-        },
-        "domene": "pixizoo.dk",
-        "logo": "/logos/DK/pixizoo.webp"
-      },
-      {
         "id": "plaza",
         "navn": "PLAZA",
         "kategorier": [
@@ -20769,7 +20747,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sony/0199b943-21ab-70fd-9417-c4e79b1b4446"
           },
           "klarna-dk": {
-            "verdi": 1,
+            "verdi": 2.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/5078010a-955e-4e8d-b3bf-04c59e743331/sony/pay-with-klarna/"
           }
