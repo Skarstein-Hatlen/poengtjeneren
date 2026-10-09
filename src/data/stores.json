@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-08",
+  "hentet": "2026-10-09",
   "land": {
     "NO": [
       {
@@ -382,6 +382,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/autodude/018f57d7-5ba2-735f-97f3-c511b00c38bb"
           }
         },
@@ -448,25 +452,14 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/babybanden/019fb246-096a-73ea-826f-90c50a2c9402"
           }
         },
         "logo": "/logos/NO/babybanden.webp"
-      },
-      {
-        "id": "babyland",
-        "navn": "Babyland",
-        "kategorier": [
-          "barn"
-        ],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/babyland/018ec731-40cb-735f-8f7f-e6011f9828f1"
-          }
-        },
-        "logo": "/logos/NO/babyland.webp"
       },
       {
         "id": "babyshop",
@@ -1173,6 +1166,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/christiania-glasmagasin/01896309-850a-71db-86b3-69229f093274"
           }
         }
@@ -1339,7 +1336,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
           },
@@ -2166,7 +2163,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/fjord-line-trumf"
           },
@@ -2309,6 +2306,10 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/fotono/019f1dc6-1a6f-712c-9f9d-8b832b053cc4"
           }
         },
@@ -2468,7 +2469,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/getyourguide-trumf"
           },
@@ -2546,7 +2547,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.5,
+            "verdi": 3.7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/go-nordic-cruiseline-trumf"
           },
@@ -3230,6 +3231,11 @@
             "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/jlindeberg-trumf"
+          },
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/j-lindeberg/019363db-290f-7080-8385-8759d1562ff1"
           }
         },
         "logo": "/logos/NO/jlindeberg.webp"
@@ -3349,6 +3355,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kajakk-og-fritid/0192e744-9c9e-713b-abd2-3982d9fba326"
           }
         },
@@ -3482,6 +3492,10 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kjell-co-no/0189630d-b8f2-71cc-9d1f-3070ccc4c33a"
           },
           "klarna": {
@@ -4958,7 +4972,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfoutnorth"
           },
@@ -5605,6 +5619,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/safira/0192958a-3d0c-73f6-8808-283b59ffe62b"
           }
         },
@@ -5711,7 +5729,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/sembo-trumf"
           }
@@ -5743,14 +5761,8 @@
             "verdi": 14,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/sephora-trumf"
-          },
-          "klarna": {
-            "verdi": 6.5,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/75156233-1905-4a50-b4f2-cd7c2a586745/sephora/pay-with-klarna/"
           }
         },
-        "domene": "sephora.se",
         "logo": "/logos/NO/sephora.webp"
       },
       {
@@ -12836,8 +12848,12 @@
         ],
         "satser": {
           "sas-online-shopping-se": {
-            "verdi": 50,
+            "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordiska-kompaniet/019bc659-063f-7135-b5e6-2b3c841e9626"
           }
         },
@@ -19216,6 +19232,20 @@
           }
         },
         "logo": "/logos/DK/moonboon.webp"
+      },
+      {
+        "id": "motatos",
+        "navn": "Motatos",
+        "kategorier": [],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/f66691f1-ad35-4a07-89e0-eeb3171791cc/motatos/pay-with-klarna/"
+          }
+        },
+        "domene": "matsmart.se",
+        "logo": "/logos/DK/motatos.webp"
       },
       {
         "id": "mulberry",

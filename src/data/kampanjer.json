@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-07",
+  "hentet": "2026-10-09",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -319,10 +319,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Skagenfood",
       "tittel": "Skagenfood",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 1000,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 1.000",
+      "verdi": 2000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/skagenfood/0195c822-fa45-739f-bb70-98d57db79ff0",
       "logo": "/logos/partnere/skagenfood.webp"
     },
@@ -839,10 +839,10 @@
       "program": "sas-online-shopping",
       "partner": "Strim",
       "tittel": "Strim",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 2000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/strim/018abc11-7a28-71e0-bc8a-9e9617c71d80",
       "logo": "/logos/partnere/strim.webp"
     },
