@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-09",
+  "hentet": "2026-10-10",
   "land": {
     "NO": [
       {
@@ -13155,7 +13155,7 @@
           },
           "klarna-se": {
             "verdi": 3.5,
-            "opptil": true,
+            "opptil": false,
             "kilde": "https://www.klarna.com/se/store/9f6268fb-4787-48de-9074-b2c15002767d/outnorth/pay-with-klarna/"
           }
         },
@@ -20295,6 +20295,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/royal-design/01896307-a666-701a-8245-ad7183712454"
           }
         },

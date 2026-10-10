@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-09",
+  "hentet": "2026-10-10",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -306,10 +306,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Saxo Premium",
       "tittel": "Saxo Premium",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 1000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/saxo-premium/01967b86-7869-7008-b00b-fbfc7b989001",
       "logo": "/logos/partnere/saxo.webp"
     },
@@ -1125,10 +1125,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Dagens Industri",
       "tittel": "Dagens Industri",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 750,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-10-31",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/dagens-industri/0189630c-352a-734f-8d20-f3f041c6ab64",
       "logo": "/logos/partnere/di.webp"
     },
