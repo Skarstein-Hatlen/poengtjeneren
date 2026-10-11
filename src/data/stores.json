@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-10",
+  "hentet": "2026-10-11",
   "land": {
     "NO": [
       {
@@ -429,7 +429,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 10.1,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/avis-trumf-1"
           }
@@ -896,7 +896,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/bonprix-trumf"
           }
@@ -1002,7 +1002,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 10.1,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/budget-trumf"
           }
@@ -1149,7 +1149,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/christiania-glasmagasintrumf"
           }
@@ -1821,7 +1821,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/elite-hotels-of-sweden-trumf"
           }
@@ -2037,7 +2037,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfexpedia-eu"
           }
@@ -2345,7 +2345,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/framsport-trumf"
           },
@@ -2381,7 +2381,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 2.3,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/fredrik-and-louisa-trumf"
           },
@@ -2416,7 +2416,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/g-star-raw-trumf"
           },
@@ -2945,16 +2945,11 @@
       },
       {
         "id": "hunkemoller",
-        "navn": "Hunkemoller",
+        "navn": "Hunkemøller",
         "kategorier": [
           "mote"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 5.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/hunkemoller-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3045,7 +3040,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/ideal-of-sweden-trumf"
           },
@@ -3642,7 +3637,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumflampegiganten"
           },
@@ -3706,7 +3701,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lastminute-trumf"
           }
@@ -4052,7 +4047,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lyko-trumf"
           },
@@ -5428,7 +5423,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfradissonhotels"
           }
@@ -5925,7 +5920,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/skogstad-sport-trumf"
           },
@@ -7087,7 +7082,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 2.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/vrbo-trumf"
           }
