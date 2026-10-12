@@ -6,5 +6,6 @@ dist
 kampanjesjekk.txt
 video/node_modules
 video/out
-video/public/logoer
-video/src/data.json
+video/public/logos
+video/public/kort
+video/src/video.json
