@@ -5,7 +5,8 @@ import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 import { fileURLToPath } from 'node:url';
 
-const CHROME = process.env.CHROME ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+// Installert Chrome: CHROME, ellers standardstien på Windows. Uten den laster Remotion ned sin egen.
+const CHROME = process.env.CHROME || (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : undefined);
 const args = process.argv.slice(2);
 const stillbilder = args.find((a) => a.startsWith('--still='))?.slice(8).split(',').map(Number);
 const valgte = args.filter((a) => !a.startsWith('--'));
@@ -23,6 +24,11 @@ for (const c of alle.filter((x) => !valgte.length || valgte.includes(x.id))) {
     continue;
   }
   const output = fileURLToPath(new URL(`out/${c.id}.mp4`, import.meta.url));
-  await renderMedia({ composition, serveUrl, codec: 'h264', crf: 18, outputLocation: output, browserExecutable: CHROME });
-  console.log(`${c.id}: ${output}`);
+  try {
+    await renderMedia({ composition, serveUrl, codec: 'h264', crf: 18, outputLocation: output, browserExecutable: CHROME });
+    console.log(`${c.id}: ${output}`);
+  } catch (e) {
+    console.error(`${c.id} feilet: ${e.message}`);
+    process.exitCode = 1;
+  }
 }

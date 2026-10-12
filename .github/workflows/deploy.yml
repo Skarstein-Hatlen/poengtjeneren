@@ -26,6 +26,35 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      # Ukens videoer (video/) med de samme tallene som bildene på /some. De rendres bare når tallene eller videokoden
+      # er endret (nøkkelen ser bort fra datoen i video.json), ellers kommer de fra cachen. Feiler renderingen, publiseres
+      # siden uten videoer.
+      - name: Videonøkkel
+        id: video
+        run: |
+          data=$(node -e "const v=require('./dist/some/video.json');delete v.laget;process.stdout.write(require('crypto').createHash('sha1').update(JSON.stringify(v)).digest('hex'))")
+          echo "nokkel=videoer-$data-${{ hashFiles('video/src/**', 'video/public/fonter/**', 'video/package-lock.json', 'video/hent-data.mjs', 'video/render.mjs') }}" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v4
+        id: videocache
+        with:
+          path: video/out
+          key: ${{ steps.video.outputs.nokkel }}
+      - name: Lag videoene
+        if: steps.videocache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        working-directory: video
+        env:
+          CHROME: /usr/bin/google-chrome
+        run: |
+          npm ci
+          node hent-data.mjs --lokal
+          node render.mjs UkensBeste Butikkduell Kortduell AmexKlarna
+      - uses: actions/cache/save@v4
+        if: steps.videocache.outputs.cache-hit != 'true' && hashFiles('video/out/*.mp4') != ''
+        with:
+          path: video/out
+          key: ${{ steps.video.outputs.nokkel }}
+      - run: node scripts/legg-inn-videoer.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

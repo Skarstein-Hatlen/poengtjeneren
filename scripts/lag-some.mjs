@@ -630,6 +630,7 @@ const poster = [];
   const b1 = bonuser[0];
   poster.push({
     id: 'ukens',
+    video: 'UkensBeste',
     tittel: 'Ukens beste',
     dag: 'mandag',
     slides: [forside, flestPoeng, ...(opp.length ? [gikkOpp] : []), ...(bonuser.length ? [velkomst] : []), ...(ut.length ? [sisteSjanse] : []), slutt],
@@ -653,6 +654,7 @@ if (butikkDuell) {
   const emne = `#${b.navn.toLowerCase().replace(/[^a-z0-9æøå]+/g, '')}`;
   poster.push({
     id: 'butikkduell',
+    video: 'Butikkduell',
     tittel: `Butikkduellen: ${b.navn}`,
     dag: 'onsdag',
     slides: [butikkduell],
@@ -673,6 +675,7 @@ if (kortDuell) {
   const linje = (k) => `${k.navn}: ${tall(Math.round(k.poeng))} poeng i året, ${k.ore === null ? '–' : k.ore === 0 ? 'gratis' : `${tall(k.ore, 1)} øre per poeng`}`;
   poster.push({
     id: 'kortduell',
+    video: 'Kortduell',
     tittel: `Kortduellen: ${a.navn} mot ${c.navn}`,
     dag: 'fredag',
     slides: [kortduell],
@@ -697,6 +700,7 @@ if (amexDuell) {
   const opplisting = (l) => (l.length === 1 ? l[0] : `${l.slice(0, -1).join(', ')} og ${l.at(-1)}`);
   poster.push({
     id: 'amexklarna',
+    video: 'AmexKlarna',
     tittel: 'Amex eller Klarna Max?',
     dag: 'søndag',
     slides: [amexKlarna],
@@ -818,7 +822,7 @@ for (const post of poster) {
 const DOMENE = 'https://pointmaxing.no';
 await writeFile(
   new URL('poster.json', UT),
-  JSON.stringify({ uke, laget: idag, poster: poster.filter((p) => p.filer.instagram).map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
+  JSON.stringify({ uke, laget: idag, poster: poster.filter((p) => p.filer.instagram).map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`), video: p.video ? `${DOMENE}/some/video/${p.video}.mp4` : null })) }, null, 2),
 );
 
 // Til reklamevideoene (video/): de samme tallene som bildene denne uken, med stier til logoer og kortbilder.
@@ -867,7 +871,9 @@ const seksjon = (post) => `<section id="post-${post.id}" data-dag="${esc(post.da
 <h2>${esc(post.tittel)} <span>· post på ${post.dag}</span></h2>
 <textarea id="tekst-${post.id}" readonly>${esc(post.tekst)}</textarea>
 <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('tekst-${post.id}').value).then(()=>{this.textContent='Kopiert ✓'})">Kopier teksten</button>
-${Object.keys(post.filer)
+${post.video ? `<!--video:${post.video}--><h3>Video · 9:16</h3>
+<div class="video"><video src="video/${post.video}.mp4" controls playsinline preload="metadata"></video><a href="video/${post.video}.mp4" download="pointmaxing-${post.id}.mp4">Last ned videoen</a></div><!--/video-->
+` : ''}${Object.keys(post.filer)
   .map((navn) => `<h3>${FORMATNAVN[navn]}</h3>\n<div class="rutenett">${bilder(post, navn)}</div>`)
   .join('\n')}
 </section>`;
@@ -886,6 +892,7 @@ h2{font-size:18px;margin:0 0 10px}h2 span{color:var(--lys);font-weight:400;font-
 h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gull);margin:22px 0 10px}
 .rutenett{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .rutenett img{width:100%;display:block;border-radius:10px}
+.video{display:flex;flex-direction:column;gap:10px;max-width:300px}.video video{width:100%;border-radius:10px;background:#000}.video a{color:var(--gull)}
 textarea{width:100%;min-height:200px;border-radius:10px;border:0;padding:12px;font:15px/1.5 system-ui,sans-serif;background:var(--krem);color:#13203d}
 button{margin-top:8px;padding:10px 16px;border:0;border-radius:999px;background:var(--gull);color:#13203d;font-weight:700;font-size:15px;cursor:pointer}
 </style></head><body><main>
