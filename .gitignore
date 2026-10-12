@@ -4,3 +4,7 @@ dist
 *.local
 .claude/
 kampanjesjekk.txt
+video/node_modules
+video/out
+video/public/logoer
+video/src/data.json
