@@ -162,21 +162,22 @@
     "land": [
       "NO"
     ],
-    "navn": "Amex Platinum + Points Plus",
+    "navn": "Amex Platinum Points Plus",
     "utsteder": "American Express",
     "poengPer100": 20,
-    "prisPerMnd": 1400,
+    "prisPerMnd": 750,
     "prisPerMndFra": {
       "dato": "2026-11-01",
-      "kr": 1500
+      "kr": 850
     },
     "status": "verifisert",
-    "kilde": "https://www.americanexpress.com/nb-no/fordeler/oppdag-fordelene/poeng/membership-rewards/",
-    "sistVerifisert": "2026-09-24",
-    "merknad": "Points Plus koster 750 kr/mnd i tillegg til Platinum (650 kr/mnd). 4 Amex-poeng per krone = 20 EuroBonus-poeng per 100 kr.",
-    "lenke": "https://www.americanexpress.com/nb-no/kredittkort/",
+    "kilde": "https://www.americanexpress.com/nb-no/kredittkort/platinum-points-plus-card/",
+    "sistVerifisert": "2026-10-12",
+    "merknad": "Eget kort, ikke et tillegg til Platinum. 4 Amex-poeng per krone = 20 EuroBonus-poeng per 100 kr. Veksles manuelt.",
     "annonse": false,
-    "sjekk": null
+    "sjekk": [
+      "Medlemsavgift: 750 kr/mnd"
+    ]
   },
   {
     "id": "revolut-standard",
