@@ -1,36 +1,53 @@
-// Henter dagens tall til videoene fra den publiserte siden (pointmaxing.no/api/butikker.json) og kopierer
-// butikklogoen, så videoen alltid viser de samme tallene som siden. Bruk: node hent-data.mjs [butikk-id]
+// Henter tallene til videoene og skriver src/video.json:
+// - ukens poster fra pointmaxing.no/some/video.json (samme tall som bildene; --lokal leser ../dist/some/video.json)
+// - eksempelet «Samme kjøp» for én butikk fra pointmaxing.no/api/butikker.json (--butikk=lyko)
+// Logoer og kortbilder kopieres fra ../public (eller lastes ned fra siden) til public/, med samme sti.
 
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const id = process.argv[2] ?? 'lyko';
-const api = await (await fetch('https://pointmaxing.no/api/butikker.json')).json();
+const DOMENE = 'https://pointmaxing.no';
+const lokal = process.argv.includes('--lokal');
+const id = process.argv.find((a) => a.startsWith('--butikk='))?.slice(9) ?? 'lyko';
+const her = (sti) => new URL(sti, import.meta.url);
+
+const uke = lokal ? JSON.parse(await readFile(her('../dist/some/video.json'), 'utf8')) : await (await fetch(`${DOMENE}/some/video.json?t=${Date.now()}`)).json();
+const api = await (await fetch(`${DOMENE}/api/butikker.json`)).json();
+
+// Eksempelet: én butikk, flest poeng sist.
 const b = api.land.NO.find((x) => x.id === id);
 if (!b) throw new Error(`Fant ikke ${id} i Norge`);
-
 const navnFor = (pid) => {
   const p = api.programmer[pid];
   return p.nivaer.some((n) => n.id === 'max') ? `${p.navn} Max` : p.navn;
 };
-// Flest poeng sist, så vinneren kommer til slutt.
-const rader = Object.entries(b.satser)
-  .filter(([, s]) => s.per100 !== null)
-  .map(([pid, s]) => ({ navn: navnFor(pid), farge: api.programmer[pid].farge, poeng: Math.round(s.per100 * 10), opptil: s.tekst.startsWith('≤') }))
-  .sort((a, c) => a.poeng - c.poeng);
-if (rader.length < 2) throw new Error(`${b.navn} har bare ${rader.length} program`);
+const stores = JSON.parse(await readFile(her('../src/data/stores.json'), 'utf8'));
+const eksempel = {
+  butikk: { id, navn: b.navn.replace(/\s+(NO|SE|DK)$/i, ''), logo: stores.land.NO.find((x) => x.id === id)?.logo ?? null },
+  rader: Object.entries(b.satser)
+    .filter(([, s]) => s.per100 !== null)
+    .map(([pid, s]) => ({ navn: navnFor(pid), farge: api.programmer[pid].farge, poeng: Math.round(s.per100 * 10), opptil: s.tekst.startsWith('≤') }))
+    .sort((a, c) => a.poeng - c.poeng),
+  belop: 1000,
+};
 
-const stores = JSON.parse(await readFile(new URL('../src/data/stores.json', import.meta.url), 'utf8'));
-const logo = stores.land.NO.find((x) => x.id === id)?.logo;
-let logoFil = null;
-if (logo) {
-  await mkdir(new URL('public/logoer/', import.meta.url), { recursive: true });
-  logoFil = `logoer/${id}${logo.slice(logo.lastIndexOf('.'))}`;
-  await copyFile(new URL(`../public${logo}`, import.meta.url), new URL(`public/${logoFil}`, import.meta.url));
+// Alle bildestier i dataene → kopier dem til public/.
+const stier = new Set();
+JSON.stringify({ uke, eksempel }, (k, v) => {
+  if ((k === 'logo' || k === 'bilde') && typeof v === 'string' && v.startsWith('/')) stier.add(v);
+  return v;
+});
+const finnes = (u) => access(u).then(() => true, () => false);
+for (const sti of stier) {
+  const mål = her(`public${sti}`);
+  await mkdir(dirname(fileURLToPath(mål)), { recursive: true });
+  if (await finnes(her(`../public${sti}`))) await copyFile(her(`../public${sti}`), mål);
+  else {
+    const svar = await fetch(`${DOMENE}${sti}`);
+    if (svar.ok) await writeFile(mål, Buffer.from(await svar.arrayBuffer()));
+  }
 }
 
-const butikkerTotalt = Object.values(api.land).reduce((n, l) => n + l.length, 0);
-await writeFile(
-  new URL('src/data.json', import.meta.url),
-  `${JSON.stringify({ hentet: api.hentet, butikk: { id, navn: b.navn, logo: logoFil }, belop: 1000, rader, butikkerTotalt }, null, 2)}\n`,
-);
-console.log(`${b.navn}: ${rader.map((r) => `${r.navn} ${r.poeng}`).join(', ')} (hentet ${api.hentet})`);
+await writeFile(her('src/video.json'), `${JSON.stringify({ ...uke, eksempel }, null, 2)}\n`);
+console.log(`Uke ${uke.uke} (laget ${uke.laget}), ${stier.size} bilder. Eksempel: ${eksempel.butikk.navn} ${eksempel.rader.map((r) => `${r.navn} ${r.poeng}`).join(', ')}`);

@@ -43,6 +43,8 @@ const farge = (kortnavn) => PROG[kortnavn]?.farge ?? F.navy;
 const programNavn = (kortnavn) => (kortnavn === 'Klarna' ? 'Klarna Max' : kortnavn);
 const trumfKurs = PROG.Trumf?.konverteringer[0]?.poengPerKrone ?? 0;
 
+// «Ellos NO» → «Ellos»: landkoden i butikknavnet hører ikke hjemme i en post.
+const pent = (navn) => navn.replace(/\s+(NO|SE|DK)$/i, '');
 const butikkLogo = (id) => logo(butikker.find((b) => b.id === id)?.logo);
 
 const topp = ukens.topp.slice(0, 5);
@@ -328,7 +330,7 @@ async function butikkSlide(f, { id, etikettTekst, linje1, linje2, b, liste, belo
   return ramme(f, svg, { sveip: false });
 }
 const butikkduell = (f) =>
-  butikkSlide(f, { id: 'bduell', etikettTekst: 'Butikkduellen', linje1: 'Handler du på', linje2: `${butikkDuell.b.navn}?`, b: butikkDuell.b, liste: butikkDuell.rader });
+  butikkSlide(f, { id: 'bduell', etikettTekst: 'Butikkduellen', linje1: 'Handler du på', linje2: `${pent(butikkDuell.b.navn)}?`, b: butikkDuell.b, liste: butikkDuell.rader });
 
 async function kortduell(f) {
   const { a, c, vinner } = kortDuell;
@@ -645,7 +647,8 @@ const poster = [];
   });
 }
 if (butikkDuell) {
-  const { b, rader: liste } = butikkDuell;
+  const { rader: liste } = butikkDuell;
+  const b = { ...butikkDuell.b, navn: pent(butikkDuell.b.navn) };
   const forskjell = Math.round((liste[0].per100 - liste[1].per100) * 10);
   const emne = `#${b.navn.toLowerCase().replace(/[^a-z0-9æøå]+/g, '')}`;
   poster.push({
@@ -816,6 +819,46 @@ const DOMENE = 'https://pointmaxing.no';
 await writeFile(
   new URL('poster.json', UT),
   JSON.stringify({ uke, laget: idag, poster: poster.filter((p) => p.filer.instagram).map((p) => ({ id: p.id, dag: p.dag, dato: p.dato ?? null, tittel: p.tittel, tekst: p.tekst, instagram: p.filer.instagram.map((f) => `${DOMENE}/some/${f.replace(/\.png$/, '.jpg')}`), tiktok: p.filer.tiktok.map((f) => `${DOMENE}/some/${f}`) })) }, null, 2),
+);
+
+// Til reklamevideoene (video/): de samme tallene som bildene denne uken, med stier til logoer og kortbilder.
+const avrund = (v) => Math.round(v * 10) / 10;
+const butikkInfo = (id) => {
+  const b = butikker.find((x) => x.id === id);
+  return { id, navn: pent(b?.navn ?? id), logo: b?.logo ?? null };
+};
+await writeFile(
+  new URL('video.json', UT),
+  JSON.stringify(
+    {
+      uke,
+      laget: idag,
+      butikkerTotalt,
+      ukens: {
+        topp: topp.map((t) => ({ ...butikkInfo(t.id), program: programNavn(t.program), farge: farge(t.program), per100: t.per100 })),
+        opp: opp.map((o) => ({ ...butikkInfo(o.id), program: o.program, farge: farge(o.program), fra: o.fra, til: o.til, enhet: enhet(o.program) })),
+        bonuser: bonuser.map((k) => ({ navn: k.partner, tekst: k.tekst, poeng: Math.round(k.poeng), logo: k.logo ?? null })),
+      },
+      butikkduell: butikkDuell && {
+        butikk: butikkInfo(butikkDuell.b.id),
+        rader: [...butikkDuell.rader].reverse().map((r) => ({ navn: r.navn, farge: r.p.farge, poeng: Math.round(r.per100 * 10), opptil: r.opptil })),
+      },
+      kortduell: kortDuell && {
+        kortbruk: oppsett.kortbruk,
+        vinner: kortDuell.vinner.id,
+        kort: [kortDuell.a, kortDuell.c].map((k) => ({ id: k.id, navn: k.navn, per100: k.per100, prisPerMnd: k.prisPerMnd, poeng: Math.round(k.poeng), ore: k.ore === null ? null : avrund(k.ore), bilde: kortbilder[k.id] ?? null })),
+      },
+      amexklarna: amexDuell && {
+        kort: { id: amexDuell.amex.id, navn: amexDuell.amex.navn, per100: amexDuell.amex.per100 },
+        rader: amexDuell.rader.map((r) => ({ ...butikkInfo(r.b.id), amex: avrund(r.amex), klarna: avrund(r.klarna) })),
+        seire: { amex: amexDuell.amexSeire.length, klarna: amexDuell.klarnaSeire.length },
+        alle: amexDuell.alle.length,
+        unntak: (amexDuell.amexSeire.length <= amexDuell.klarnaSeire.length ? amexDuell.amexSeire : amexDuell.klarnaSeire).map((r) => r.b.navn),
+      },
+    },
+    null,
+    2,
+  ),
 );
 
 const FORMATNAVN = { instagram: 'Instagram · 4:5', tiktok: 'TikTok · 9:16', historie: 'Instagram-historie · 9:16', omslag: 'Omslag til høydepunktet' };

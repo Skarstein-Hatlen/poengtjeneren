@@ -5,11 +5,13 @@
   "scripts": {
     "data": "node hent-data.mjs",
     "studio": "remotion studio",
-    "render": "node hent-data.mjs && remotion render SammeKjop out/samme-kjop.mp4 --codec=h264 --crf=18"
+    "render": "node hent-data.mjs && node render.mjs"
   },
   "dependencies": {
+    "@remotion/bundler": "^4.0.535",
     "@remotion/cli": "^4.0.535",
     "@remotion/fonts": "^4.0.535",
+    "@remotion/renderer": "^4.0.535",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "remotion": "^4.0.535"
