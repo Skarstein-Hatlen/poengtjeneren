@@ -449,8 +449,10 @@ export default function App() {
     }
   }
 
-  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste, Black Friday bare frem til Cyber Monday.
-  const navSider = NAV.filter((n) => (n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]) && (n.visning !== 'blackfriday' || IDAG <= data.blackfriday.cyberMonday));
+  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste, Black Friday fra 1. november til og med Cyber Monday.
+  const navSider = NAV.filter(
+    (n) => (n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]) && (n.visning !== 'blackfriday' || (IDAG >= data.blackfriday.visFra && IDAG <= data.blackfriday.cyberMonday)),
+  );
 
   const bunnlenker = (
     <p className="bunnlenker">

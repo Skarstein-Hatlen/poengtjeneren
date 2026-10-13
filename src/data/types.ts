@@ -165,6 +165,8 @@ export type Historikk = Partial<Record<Land, Record<string, Record<string, Malin
 export interface BlackFriday {
   dato: string;
   cyberMonday: string;
+  /** Første dag menyvalget vises. Siden finnes hele tiden. */
+  visFra: string;
   perKategori: number;
   butikker: Partial<Record<Land, Record<string, string[]>>>;
 }
