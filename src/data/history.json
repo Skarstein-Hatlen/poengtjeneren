@@ -242,7 +242,7 @@
   "maxa": {"trumf":[["2026-09-21",3.1]]},
   "meta": {"klarna":[["2026-09-21",2.5]]},
   "miamily": {"klarna":[["2026-09-21",4]]},
-  "miinto": {"trumf":[["2026-09-21",6.2]],"sas-online-shopping":[["2026-09-21",25],["2026-09-28",50],["2026-10-05",25]]},
+  "miinto": {"trumf":[["2026-09-21",6.2],["2026-10-13",10.1]],"sas-online-shopping":[["2026-09-21",25],["2026-09-28",50],["2026-10-05",25]]},
   "mimmis": {"trumf":[["2026-09-21",3.1]]},
   "minifinder": {"trumf":[["2026-09-21",6.2]]},
   "moniker": {"trumf":[["2026-09-21",6.2]]},
@@ -331,7 +331,7 @@
   "shampoohuset": {"sas-online-shopping":[["2026-09-21",50]]},
   "sharkninja": {"trumf":[["2026-09-21",6.2],["2026-09-28",3.9]],"sas-online-shopping":[["2026-09-21",50],["2026-09-28",25]]},
   "shopping4net": {"sas-online-shopping":[["2026-09-21",25]]},
-  "siemenshome": {"trumf":[["2026-09-21",9.3]],"sas-online-shopping":[["2026-09-21",25]]},
+  "siemenshome": {"trumf":[["2026-09-21",9.3]],"sas-online-shopping":[["2026-09-21",25],["2026-10-13",75]]},
   "sillysanta": {"trumf":[["2026-09-21",9.3]]},
   "sistie": {"sas-online-shopping":[["2026-09-21",50]]},
   "skeidar": {"trumf":[["2026-09-21",3.7],["2026-09-27",3.1]],"sas-online-shopping":[["2026-09-21",25]]},
@@ -1323,6 +1323,7 @@
   "gameseal": {"klarna-dk":[["2026-09-24",2]]},
   "partyking": {"sas-online-shopping-dk":[["2026-09-26",25]]},
   "bubliq": {"sas-online-shopping-dk":[["2026-10-01",50]]},
-  "motatos": {"klarna-dk":[["2026-10-09",2]]}
+  "motatos": {"klarna-dk":[["2026-10-09",2]]},
+  "eneba": {"klarna-dk":[["2026-10-13",2.5]]}
  }
 }

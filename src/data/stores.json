@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-12",
+  "hentet": "2026-10-13",
   "land": {
     "NO": [
       {
@@ -2570,9 +2570,7 @@
       {
         "id": "gr248ntfokus",
         "navn": "Gr&#248;nt Fokus",
-        "kategorier": [
-          "hjem"
-        ],
+        "kategorier": [],
         "satser": {
           "trumf": {
             "verdi": 1.5,
@@ -2961,11 +2959,16 @@
       },
       {
         "id": "hunkemoller",
-        "navn": "Hunkemøller",
+        "navn": "Hunkemoller",
         "kategorier": [
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/hunkemoller-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4331,7 +4334,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 10.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfsmiinto"
           },
@@ -5845,6 +5848,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
@@ -6141,22 +6148,6 @@
         "logo": "/logos/NO/sportgymbutikken.webp"
       },
       {
-        "id": "sportmann",
-        "navn": "Sportmann",
-        "kategorier": [
-          "mote",
-          "sport"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 6.2,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/sportmann-trumf"
-          }
-        },
-        "logo": "/logos/NO/sportmann.webp"
-      },
-      {
         "id": "sportshopen",
         "navn": "Sportshopen",
         "kategorier": [
@@ -6170,22 +6161,6 @@
           }
         },
         "logo": "/logos/NO/sportshopen.webp"
-      },
-      {
-        "id": "sportsmagasinet",
-        "navn": "Sportsmagasinet",
-        "kategorier": [
-          "mote",
-          "sport"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 9.3,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/sportsmagasinet-trumf"
-          }
-        },
-        "logo": "/logos/NO/sportsmagasinet.webp"
       },
       {
         "id": "sporttema",
@@ -17522,6 +17497,22 @@
         },
         "domene": "armani.com/en-dk/emporio-armani/experience",
         "logo": "/logos/DK/emporioarmani.webp"
+      },
+      {
+        "id": "eneba",
+        "navn": "Eneba",
+        "kategorier": [
+          "underholdning"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2.5,
+            "opptil": true,
+            "kilde": "https://www.klarna.com/dk/store/4324998a-920a-467f-ae83-6a3415e6a1d1/eneba/pay-with-klarna/"
+          }
+        },
+        "domene": "eneba.com",
+        "logo": "/logos/DK/eneba.webp"
       },
       {
         "id": "etsy",
