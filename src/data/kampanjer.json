@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-13",
+  "hentet": "2026-10-14",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -917,10 +917,10 @@
       "program": "trumf",
       "partner": "Talkmore",
       "tittel": "Talkmore",
-      "tekst": "Velkomstgave til nye kunder: 1 500 kr i Trumf-bonus.",
-      "verdi": 1500,
+      "tekst": "Velkomstgave til nye kunder: 500 kr i Trumf-bonus.",
+      "verdi": 500,
       "enhet": "kr",
-      "slutt": "2026-10-13",
+      "slutt": null,
       "url": "https://www.trumf.no/fordeler/talkmore",
       "logo": "/logos/partnere/talkmore.webp"
     },

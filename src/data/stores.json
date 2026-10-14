@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-13",
+  "hentet": "2026-10-14",
   "land": {
     "NO": [
       {
@@ -2570,7 +2570,9 @@
       {
         "id": "gr248ntfokus",
         "navn": "Gr&#248;nt Fokus",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
           "trumf": {
             "verdi": 1.5,
@@ -2746,8 +2748,7 @@
         "id": "harmankardon",
         "navn": "Harman Kardon",
         "kategorier": [
-          "elektronikk",
-          "hjem"
+          "elektronikk"
         ],
         "satser": {
           "trumf": {
@@ -3564,6 +3565,7 @@
         "id": "kost1",
         "navn": "Kost1",
         "kategorier": [
+          "sport",
           "skjonnhet"
         ],
         "satser": {
@@ -5690,22 +5692,6 @@
           }
         },
         "logo": "/logos/NO/scandichotels.webp"
-      },
-      {
-        "id": "scarosso",
-        "navn": "Scarosso",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/1ef30411-3642-470a-8ad1-aefbd27a9e85/scarosso/pay-with-klarna/"
-          }
-        },
-        "domene": "scarosso.com",
-        "logo": "/logos/NO/scarosso.webp"
       },
       {
         "id": "selected",
@@ -9180,7 +9166,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/c6346a5a-6954-4322-9334-24d5a0eaebce/diesel/pay-with-klarna/"
           }
@@ -15099,21 +15085,6 @@
           }
         },
         "logo": "/logos/SE/theperfumebrand.webp"
-      },
-      {
-        "id": "themobilestore",
-        "navn": "TheMobileStore.se",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/themobilestore.se/0189630d-7763-72ef-9465-0504889af58f"
-          }
-        },
-        "logo": "/logos/partnere/themobilestore.webp"
       },
       {
         "id": "tigerofsweden",
