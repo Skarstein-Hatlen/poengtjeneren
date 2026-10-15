@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-14",
+  "hentet": "2026-10-15",
   "land": {
     "NO": [
       {
@@ -359,15 +359,13 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/autodoc/01896310-e823-72b0-8d74-6b3da56a30e3"
-          },
-          "klarna": {
-            "verdi": 3,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/bf972b20-8626-40ff-a655-3c9eef18c359/autodoc/pay-with-klarna/"
           }
         },
-        "domene": "autodoc.co.no",
         "logo": "/logos/NO/autodoc.webp"
       },
       {
@@ -1244,6 +1242,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna": {
@@ -2424,7 +2426,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/g-star-raw-trumf"
           },
@@ -2748,7 +2750,8 @@
         "id": "harmankardon",
         "navn": "Harman Kardon",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
           "trumf": {
@@ -5692,6 +5695,22 @@
           }
         },
         "logo": "/logos/NO/scandichotels.webp"
+      },
+      {
+        "id": "scarosso",
+        "navn": "Scarosso",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/1ef30411-3642-470a-8ad1-aefbd27a9e85/scarosso/pay-with-klarna/"
+          }
+        },
+        "domene": "scarosso.com",
+        "logo": "/logos/NO/scarosso.webp"
       },
       {
         "id": "selected",
@@ -8890,6 +8909,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna-se": {
@@ -16474,6 +16497,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/autodoc--webgains/01896310-e823-72b0-8d74-6b3da56a30e3"
           }
         },
@@ -17008,6 +17035,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna-dk": {
@@ -20002,21 +20033,6 @@
           }
         },
         "logo": "/logos/DK/plusled.webp"
-      },
-      {
-        "id": "plaenerobot",
-        "navn": "Plænerobot",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/plænerobot/0189630d-898e-7124-b25d-05186095f9a9"
-          }
-        },
-        "logo": "/logos/DK/plaenerobot.webp"
       },
       {
         "id": "postersbyus",
