@@ -4,6 +4,7 @@ dist
 *.local
 .claude/
 kampanjesjekk.txt
+nyekampanjer.txt
 video/node_modules
 video/out
 video/public/logos

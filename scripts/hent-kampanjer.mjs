@@ -589,6 +589,36 @@ if (JSON.stringify(gammel.kampanjer) !== JSON.stringify(ut)) {
 for (const land of ['NO', 'SE', 'DK']) console.log(`- ${land}: ${ut.filter((k) => k.land === land).length}`);
 if (beholdt.length) console.log(`Beholdt fra i går fordi kilden ikke svarte: ${beholdt.join(', ')}`);
 
+// Nye og økte kampanjer siden i går, så de kan deles samme dag: den daglige jobben gjør fila om til et issue
+// (etiketten «nye-kampanjer»). Bare når Norge har noe nytt – det er der postene går – men Sverige og Danmark tas med.
+// Tilbud som bare ble beholdt fordi kilden ikke svarte, teller ikke.
+const NYE = new URL('../nyekampanjer.txt', import.meta.url);
+const { programmer } = JSON.parse(await readFile(new URL('../src/data/programs.json', import.meta.url), 'utf8'));
+const trumfKurs = programmer.find((p) => p.id === 'trumf')?.konverteringer[0]?.poengPerKrone ?? null;
+const nyheter = ut
+  .filter((k) => (!k.slutt || k.slutt >= idag) && !beholdt.includes(k.id))
+  .map((k) => {
+    const g = iGar.get(k.id);
+    if (!g || (g.slutt && g.slutt < idag)) return { k, fra: null };
+    return g.enhet === k.enhet && k.verdi > g.verdi ? { k, fra: g.verdi } : null;
+  })
+  .filter(Boolean);
+const verdiTekst = (k, v) =>
+  k.enhet === 'kr' ? `${fmt(k.land, v)} kr i Trumf-bonus${trumfKurs ? ` (≈ ${fmt(k.land, Math.round(v * trumfKurs))} EuroBonus-poeng)` : ''}` : `${fmt(k.land, v)} ${k.enhet}`;
+const linje = ({ k, fra }) =>
+  `- **${k.tittel ?? k.partner}**: ${verdiTekst(k, k.verdi)}${fra === null ? ' (ny)' : `, var ${fmt(k.land, fra)}${k.enhet === 'kr' ? ' kr' : ''}`}${k.slutt ? ` · til ${k.slutt.slice(8, 10)}.${k.slutt.slice(5, 7)}` : ''} · ${k.url}`;
+const norske = nyheter.filter(({ k }) => k.land === 'NO');
+if (norske.length) {
+  const andre = nyheter.filter(({ k }) => k.land !== 'NO');
+  await writeFile(
+    NYE,
+    `Nye og økte kampanjer ${idag} – klare til å deles.\n\n${norske.map(linje).join('\n')}\n${andre.length ? `\n<details><summary>Sverige og Danmark (${andre.length})</summary>\n\n${andre.map(linje).join('\n')}\n</details>\n` : ''}`,
+  );
+  console.log(`Nye/økte kampanjer: ${nyheter.length} (Norge ${norske.length})`);
+} else {
+  await unlink(NYE).catch(() => {});
+}
+
 // Kampanjer vi ikke klarte å lese: den daglige jobben gjør fila om til et issue (etiketten «kampanjesjekk»).
 const SJEKK = new URL('../kampanjesjekk.txt', import.meta.url);
 if (varsler.length) {
