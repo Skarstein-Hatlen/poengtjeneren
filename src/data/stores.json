@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-15",
+  "hentet": "2026-10-16",
   "land": {
     "NO": [
       {
@@ -1044,19 +1044,6 @@
         "logo": "/logos/NO/byttdekk.webp"
       },
       {
-        "id": "caiacosmetics",
-        "navn": "CAIA Cosmetics",
-        "kategorier": [],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/caia-cosmetics/019b939e-7e05-71c0-a5c6-2fb15815f053"
-          }
-        },
-        "logo": "/logos/NO/caiacosmetics.webp"
-      },
-      {
         "id": "camillaphil",
         "navn": "Camilla Phil",
         "kategorier": [],
@@ -1216,6 +1203,7 @@
         "id": "comforthscandinavia",
         "navn": "Comforth Scandinavia",
         "kategorier": [
+          "elektronikk",
           "skjonnhet"
         ],
         "satser": {
@@ -1489,6 +1477,21 @@
           }
         },
         "logo": "/logos/NO/devold.webp"
+      },
+      {
+        "id": "didriksons",
+        "navn": "Didriksons",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/didriksons-trumf"
+          }
+        },
+        "logo": "/logos/NO/didriksons.webp"
       },
       {
         "id": "directferries",
@@ -3239,6 +3242,25 @@
         "logo": "/logos/NO/iphonehuset.webp"
       },
       {
+        "id": "irobot",
+        "navn": "iRobot",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/irobot/01a13f7b-f1a0-7345-8750-1411c32e7f85"
+          }
+        },
+        "logo": "/logos/NO/irobot.webp"
+      },
+      {
         "id": "jlindeberg",
         "navn": "J.Lindeberg",
         "kategorier": [
@@ -3963,8 +3985,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lindex/0189630a-9780-71c1-a269-e72cab65f2a4"
+          },
+          "klarna": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/58eaff47-9d79-4a80-8886-c97e29a35218/lindex/pay-with-klarna/"
           }
         },
+        "domene": "lindex.com",
         "logo": "/logos/NO/lindex.webp"
       },
       {
@@ -4507,6 +4535,21 @@
         "logo": "/logos/NO/nazar.webp"
       },
       {
+        "id": "nelly",
+        "navn": "Nelly",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfnelly-no"
+          }
+        },
+        "logo": "/logos/NO/nelly.webp"
+      },
+      {
         "id": "nespresso",
         "navn": "Nespresso",
         "kategorier": [
@@ -4533,6 +4576,11 @@
             "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/new-balance-trumf"
+          },
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/new-balance/018ec799-772e-72ea-9d9f-2eaba3974874"
           },
           "klarna": {
             "verdi": 2,
@@ -4994,6 +5042,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
           "klarna": {
@@ -5514,9 +5566,15 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/revolution-race/019a5e2b-866b-702d-b295-e28101b5ba41"
+          },
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/8591cf50-596e-43fd-af3b-dfd3a82242bf/revolutionrace/pay-with-klarna/"
           }
         },
-        "logo": "/logos/SE/revolutionrace.webp"
+        "domene": "revolutionrace.no",
+        "logo": "/logos/NO/revolutionrace.webp"
       },
       {
         "id": "risskovbilferie",
@@ -5719,6 +5777,11 @@
           "mote"
         ],
         "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
+          },
           "klarna": {
             "verdi": 3,
             "opptil": false,
@@ -8829,9 +8892,7 @@
       {
         "id": "clickboat",
         "navn": "Click&Boat",
-        "kategorier": [
-          "reise"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 3,
@@ -9179,7 +9240,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/didriksons/019fcccd-7981-73f3-bcce-4925466241ab"
           }
         },
-        "logo": "/logos/SE/didriksons.webp"
+        "logo": "/logos/NO/didriksons.webp"
       },
       {
         "id": "diesel",
@@ -11826,9 +11887,15 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lindex/0189630a-9780-71c1-a269-e72cab65f2a4"
+          },
+          "klarna-se": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/24b02564-938b-4ee6-8a9e-c44cf2c35e81/lindex/pay-with-klarna/"
           }
         },
-        "logo": "/logos/NO/lindex.webp"
+        "domene": "lindex.com",
+        "logo": "/logos/SE/lindex.webp"
       },
       {
         "id": "lindskrogparkeringarlanda",
@@ -12596,7 +12663,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nelly.com/01896307-c614-73bf-be00-aed08d7bb87d"
           }
         },
-        "logo": "/logos/SE/nelly.webp"
+        "logo": "/logos/NO/nelly.webp"
       },
       {
         "id": "nespresso",
@@ -13138,6 +13205,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
           "klarna-se": {
@@ -14084,6 +14155,21 @@
           }
         },
         "logo": "/logos/SE/mattor.webp"
+      },
+      {
+        "id": "selected",
+        "navn": "Selected",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
+          }
+        },
+        "logo": "/logos/NO/selected.webp"
       },
       {
         "id": "senetic",
@@ -19780,6 +19866,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-18"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
           "klarna-dk": {
@@ -20425,8 +20515,15 @@
       {
         "id": "selected",
         "navn": "Selected",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
+          },
           "klarna-dk": {
             "verdi": 3,
             "opptil": false,
