@@ -4663,6 +4663,21 @@
         "logo": "/logos/NO/nike.webp"
       },
       {
+        "id": "nlyman",
+        "navn": "NLY MAN",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/trumfnly-man"
+          }
+        },
+        "logo": "/logos/NO/nlyman.webp"
+      },
+      {
         "id": "noisymay",
         "navn": "Noisy May",
         "kategorier": [
@@ -5044,7 +5059,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 50,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
@@ -5780,6 +5795,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           },
           "klarna": {
@@ -6071,7 +6090,8 @@
         "id": "sm229ungene",
         "navn": "Sm&#229;ungene",
         "kategorier": [
-          "mote"
+          "mote",
+          "barn"
         ],
         "satser": {
           "trumf": {
@@ -12802,7 +12822,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nly-man/01896308-4663-73e3-8cc3-29f29f166566"
           }
         },
-        "logo": "/logos/SE/nlyman.webp"
+        "logo": "/logos/NO/nlyman.webp"
       },
       {
         "id": "noisymay",
@@ -13207,7 +13227,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 50,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
@@ -14166,6 +14186,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           }
         },
@@ -19868,7 +19892,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 50,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/outnorth/01896307-cb70-7078-96e6-9379b454803c"
           },
@@ -20308,6 +20332,21 @@
         "logo": "/logos/DK/refurbed.webp"
       },
       {
+        "id": "revolutionrace",
+        "navn": "RevolutionRace",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/revolutionrace/019a5e2b-866b-702d-b295-e28101b5ba41"
+          }
+        },
+        "logo": "/logos/NO/revolutionrace.webp"
+      },
+      {
         "id": "risskov",
         "navn": "Risskov",
         "kategorier": [
@@ -20522,6 +20561,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           },
           "klarna-dk": {

@@ -324,7 +324,7 @@
   "scandic": {"klarna":[["2026-09-21",1.5]]},
   "scandichotels": {"trumf":[["2026-09-21",3.1],["2026-10-02",4.6],["2026-10-08",3.1]]},
   "scarosso": {"klarna":[["2026-09-21",3]]},
-  "selected": {"klarna":[["2026-09-21",3]],"sas-online-shopping":[["2026-10-16",25]]},
+  "selected": {"klarna":[["2026-09-21",3]],"sas-online-shopping":[["2026-10-16",25],["2026-10-16",50]]},
   "sembo": {"trumf":[["2026-09-21",5.4],["2026-10-02",7],["2026-10-09",5.4]]},
   "senzeofjoy": {"sas-online-shopping":[["2026-09-21",25]]},
   "sephora": {"trumf":[["2026-09-21",14]],"klarna":[["2026-09-21",6.5]]},
@@ -429,7 +429,8 @@
   "sharkgaming": {"sas-online-shopping":[["2026-09-29",20]]},
   "didriksons": {"trumf":[["2026-10-16",4.6]]},
   "irobot": {"sas-online-shopping":[["2026-10-16",50]]},
-  "nelly": {"trumf":[["2026-10-16",2.3]]}
+  "nelly": {"trumf":[["2026-10-16",2.3]]},
+  "nlyman": {"trumf":[["2026-10-16",2.3]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},
@@ -970,7 +971,7 @@
   "steamery": {"sas-online-shopping-se":[["2026-09-24",50],["2026-10-05",25]]},
   "aarke": {"sas-online-shopping-se":[["2026-09-24",50],["2026-10-05",25],["2026-10-07",50]]},
   "partykungen": {"sas-online-shopping-se":[["2026-09-26",25]]},
-  "selected": {"sas-online-shopping-se":[["2026-10-16",25]]}
+  "selected": {"sas-online-shopping-se":[["2026-10-16",25],["2026-10-16",50]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},
@@ -1244,7 +1245,7 @@
   "scandic": {"klarna-dk":[["2026-09-21",1.5]]},
   "scandihillscampingoutdoor": {"sas-online-shopping-dk":[["2026-09-21",15]]},
   "scarosso": {"klarna-dk":[["2026-09-21",3]]},
-  "selected": {"klarna-dk":[["2026-09-21",3]],"sas-online-shopping-dk":[["2026-10-16",25]]},
+  "selected": {"klarna-dk":[["2026-09-21",3]],"sas-online-shopping-dk":[["2026-10-16",25],["2026-10-16",50]]},
   "sephora": {"sas-online-shopping-dk":[["2026-09-21",25],["2026-10-07",50]],"klarna-dk":[["2026-09-21",6.5]]},
   "shark": {"klarna-dk":[["2026-09-21",3.5]]},
   "sharkgaming": {"sas-online-shopping-dk":[["2026-09-21",10]]},
@@ -1328,6 +1329,7 @@
   "partyking": {"sas-online-shopping-dk":[["2026-09-26",25]]},
   "bubliq": {"sas-online-shopping-dk":[["2026-10-01",50]]},
   "motatos": {"klarna-dk":[["2026-10-09",2]]},
-  "eneba": {"klarna-dk":[["2026-10-13",2.5]]}
+  "eneba": {"klarna-dk":[["2026-10-13",2.5]]},
+  "revolutionrace": {"sas-online-shopping-dk":[["2026-10-16",25]]}
  }
 }
