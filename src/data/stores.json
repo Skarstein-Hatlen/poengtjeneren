@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-16",
+  "hentet": "2026-10-17",
   "land": {
     "NO": [
       {
@@ -312,6 +312,23 @@
         },
         "domene": "asos.com",
         "logo": "/logos/NO/asos.webp"
+      },
+      {
+        "id": "authenticeurope",
+        "navn": "Authentic Europe",
+        "kategorier": [],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/authentic-europe/01a1447d-94dd-7090-a4ae-22c7b348afe1"
+          }
+        },
+        "logo": "/logos/NO/authenticeurope.webp"
       },
       {
         "id": "autoeurope",
@@ -7984,6 +8001,23 @@
           }
         },
         "logo": "/logos/DK/australianbodycare.webp"
+      },
+      {
+        "id": "authenticeurope",
+        "navn": "Authentic Europe",
+        "kategorier": [],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/authentic-europe/01a1447d-94dd-7090-a4ae-22c7b348afe1"
+          }
+        },
+        "logo": "/logos/SE/authenticeurope.webp"
       },
       {
         "id": "autodoc",
@@ -16596,6 +16630,23 @@
           }
         },
         "logo": "/logos/DK/australianbodycare.webp"
+      },
+      {
+        "id": "authenticeurope",
+        "navn": "Authentic Europe",
+        "kategorier": [],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/authentic-europe/01a1447d-94dd-7090-a4ae-22c7b348afe1"
+          }
+        },
+        "logo": "/logos/DK/authenticeurope.webp"
       },
       {
         "id": "autodoc",

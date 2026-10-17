@@ -430,7 +430,8 @@
   "didriksons": {"trumf":[["2026-10-16",4.6]]},
   "irobot": {"sas-online-shopping":[["2026-10-16",50]]},
   "nelly": {"trumf":[["2026-10-16",2.3]]},
-  "nlyman": {"trumf":[["2026-10-16",2.3]]}
+  "nlyman": {"trumf":[["2026-10-16",2.3]]},
+  "authenticeurope": {"sas-online-shopping":[["2026-10-17",50]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5]]},
@@ -971,7 +972,8 @@
   "steamery": {"sas-online-shopping-se":[["2026-09-24",50],["2026-10-05",25]]},
   "aarke": {"sas-online-shopping-se":[["2026-09-24",50],["2026-10-05",25],["2026-10-07",50]]},
   "partykungen": {"sas-online-shopping-se":[["2026-09-26",25]]},
-  "selected": {"sas-online-shopping-se":[["2026-10-16",25],["2026-10-16",50]]}
+  "selected": {"sas-online-shopping-se":[["2026-10-16",25],["2026-10-16",50]]},
+  "authenticeurope": {"sas-online-shopping-se":[["2026-10-17",50]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5]]},
@@ -1330,6 +1332,7 @@
   "bubliq": {"sas-online-shopping-dk":[["2026-10-01",50]]},
   "motatos": {"klarna-dk":[["2026-10-09",2]]},
   "eneba": {"klarna-dk":[["2026-10-13",2.5]]},
-  "revolutionrace": {"sas-online-shopping-dk":[["2026-10-16",25]]}
+  "revolutionrace": {"sas-online-shopping-dk":[["2026-10-16",25]]},
+  "authenticeurope": {"sas-online-shopping-dk":[["2026-10-17",50]]}
  }
 }
