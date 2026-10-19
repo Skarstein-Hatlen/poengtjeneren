@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-18",
+  "hentet": "2026-10-19",
   "land": {
     "NO": [
       {
@@ -128,10 +128,6 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/agoda/018e3812-d948-725c-b796-8c3e17bf12d4"
           }
         },
@@ -376,10 +372,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/autodoc/01896310-e823-72b0-8d74-6b3da56a30e3"
           }
         },
@@ -471,10 +463,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/babybanden/019fb246-096a-73ea-826f-90c50a2c9402"
           }
         },
@@ -1002,6 +990,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
           },
           "klarna": {
@@ -1172,10 +1164,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/christiania-glasmagasin/01896309-850a-71db-86b3-69229f093274"
           }
         }
@@ -1208,7 +1196,7 @@
             "kilde": "https://trumfnetthandel.no/cashback/click-and-boat-trumf"
           },
           "klarna": {
-            "verdi": 3,
+            "verdi": 2,
             "opptil": true,
             "kilde": "https://www.klarna.com/no/store/2056a8f0-1867-421d-9185-cc853a38f8dc/click-boat/pay-with-klarna/"
           }
@@ -1247,10 +1235,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna": {
@@ -1292,6 +1276,10 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/computersalg/0189630e-21d9-70b4-9f7a-92a6704964ac"
           },
           "klarna": {
@@ -1370,6 +1358,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/db-journey/01896310-78d4-7290-bebb-ae80a7cd6ef1"
           }
         },
@@ -1438,18 +1430,13 @@
           "skjonnhet"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 19.5,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/dentaworks"
-          },
           "sas-online-shopping": {
             "verdi": 150,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dentaworks/01896308-ec70-713b-93a1-a86df35f3921"
           }
         },
-        "logo": "/logos/NO/dentaworks.webp"
+        "logo": "/logos/SE/dentaworks.webp"
       },
       {
         "id": "dentway",
@@ -1597,10 +1584,6 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
-            "kampanje": {
-              "verdi": 20,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dustin-1/0189630b-a1fd-7133-b07a-084f91874cd8"
           }
         },
@@ -1642,10 +1625,6 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dyson/01896310-bb05-734c-87c7-a0d8eadfe399"
           },
           "klarna": {
@@ -2020,10 +1999,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/euroflorist/01896308-d5a1-70c8-84eb-a07e4bcd0d2c"
           }
         },
@@ -2336,10 +2311,6 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
-            "kampanje": {
-              "verdi": 20,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/fotono/019f1dc6-1a6f-712c-9f9d-8b832b053cc4"
           }
         },
@@ -2523,10 +2494,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
           },
           "klarna": {
@@ -2696,10 +2663,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/gymgrossisten/01896307-c0a0-73c3-bb34-1854292ab161"
           }
         },
@@ -2770,15 +2733,9 @@
         "id": "harmankardon",
         "navn": "Harman Kardon",
         "kategorier": [
-          "elektronikk",
-          "hjem"
+          "elektronikk"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 3.1,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/harman-kardon-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -2912,10 +2869,6 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/homeroom/0189630c-993e-7061-bb1a-d41d2272a9bf"
           }
         },
@@ -3090,6 +3043,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/ideal-of-sweden/0189630f-4b89-721d-88e7-5b4e2b299f5f"
           },
           "klarna": {
@@ -3135,6 +3092,10 @@
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
           },
           "klarna": {
@@ -3231,9 +3192,7 @@
       {
         "id": "inzpero",
         "navn": "Inzpero",
-        "kategorier": [
-          "hjem"
-        ],
+        "kategorier": [],
         "satser": {
           "trumf": {
             "verdi": 9.3,
@@ -3268,10 +3227,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/irobot/01a13f7b-f1a0-7345-8750-1411c32e7f85"
           }
         },
@@ -3292,10 +3247,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/j-lindeberg/019363db-290f-7080-8385-8759d1562ff1"
           }
         },
@@ -3471,6 +3422,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kicks/01932f75-1211-7244-b60c-0fe79fd03b46"
           },
           "klarna": {
@@ -3553,10 +3508,6 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
-            "kampanje": {
-              "verdi": 20,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kjell-co-no/0189630d-b8f2-71cc-9d1f-3070ccc4c33a"
           },
           "klarna": {
@@ -3650,10 +3601,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/karcher/0191bc56-6ced-715e-abb2-cb27acc9aa66"
           },
           "klarna": {
@@ -3680,10 +3627,6 @@
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/loccitane/019600e6-28a1-717b-aa0b-efdf752d8702"
           }
         },
@@ -3928,6 +3871,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lensway/01896307-db4b-7046-b660-cca58f3d53f2"
           },
           "klarna": {
@@ -4073,10 +4020,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lunehjem.no/0189630a-a9bd-73fa-b304-a9602d7d424d"
           }
         },
@@ -4514,7 +4457,7 @@
         ],
         "satser": {
           "klarna": {
-            "verdi": 4,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/no/store/6067c624-4a3b-4b2d-8cc8-9d6c9dc54381/name-it/pay-with-klarna/"
           }
@@ -4834,10 +4777,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/norli/0189630a-a084-73fb-a865-8fda2d897a29"
           }
         },
@@ -5158,6 +5097,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/partyking/019b11f5-2adc-72f3-96b1-3428a999ce72"
           }
         },
@@ -5209,10 +5152,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
           }
         },
@@ -5233,10 +5172,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/petxl/019c7b24-6555-7109-9f9b-b6675d9f3abb"
           }
         },
@@ -5597,6 +5532,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/revolution-race/019a5e2b-866b-702d-b295-e28101b5ba41"
           },
           "klarna": {
@@ -5716,10 +5655,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/safira/0192958a-3d0c-73f6-8808-283b59ffe62b"
           }
         },
@@ -5952,10 +5887,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
@@ -6222,10 +6153,6 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
           },
           "klarna": {
@@ -6277,10 +6204,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/sporttema/01896308-f18d-71b5-9064-ffc3c373972f"
           }
         },
@@ -7435,10 +7358,6 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/zoo.se-1/01896312-b5e6-7274-8e4a-7eb11e4ab5a9"
           }
         },
@@ -7666,10 +7585,6 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/agoda/018e3812-d948-725c-b796-8c3e17bf12d4"
           },
           "klarna-se": {
@@ -7693,7 +7608,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 100,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/agood-company/01896311-c762-72e7-8110-9489cd35dfb2"
           },
@@ -7753,10 +7668,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/albrekts-guld/0189630b-85b9-7042-9563-61fe0949c835"
           },
           "klarna-se": {
@@ -8739,10 +8650,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bright-1-2-3/018abc11-d400-7191-966d-c882cc05726f"
           }
         }
@@ -8949,7 +8856,7 @@
         "kategorier": [],
         "satser": {
           "klarna-se": {
-            "verdi": 3,
+            "verdi": 2,
             "opptil": true,
             "kilde": "https://www.klarna.com/se/store/22fe74ae-75ac-4b81-a12e-69f281a6113a/click-boat/pay-with-klarna/"
           }
@@ -9024,10 +8931,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna-se": {
@@ -9079,6 +8982,10 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/computersalg/0189630e-21d9-70b4-9f7a-92a6704964ac"
           },
           "klarna-se": {
@@ -9177,6 +9084,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/db-journey/01896310-78d4-7290-bebb-ae80a7cd6ef1"
           }
         },
@@ -9436,10 +9347,6 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
-            "kampanje": {
-              "verdi": 20,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/dustin-1/0189630b-a1fd-7133-b07a-084f91874cd8"
           }
         },
@@ -9455,10 +9362,6 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/dyson/01896310-bb05-734c-87c7-a0d8eadfe399"
           },
           "klarna-se": {
@@ -9642,6 +9545,10 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/elon-/0189630d-2d48-7330-b48c-4658f8ebb237"
           },
           "klarna-se": {
@@ -9709,10 +9616,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/epic-travelgear/0199b95a-142f-73a9-90e9-d6dbaecdc935"
           }
         },
@@ -9817,10 +9720,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/euroflorist/01896308-d5a1-70c8-84eb-a07e4bcd0d2c"
           }
         },
@@ -10238,10 +10137,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gant-3/01896312-beb2-7051-a0a1-ff2121e0dee9"
           }
         },
@@ -10317,10 +10212,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
           },
           "klarna-se": {
@@ -10553,10 +10444,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gymgrossisten/01896307-c0a0-73c3-bb34-1854292ab161"
           }
         },
@@ -10572,10 +10459,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gymkompaniet/0191c697-0a7d-7061-81d0-bb2f29b2167c"
           }
         },
@@ -10707,7 +10590,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/NO/harmankardon.webp"
+        "logo": "/logos/SE/harmankardon.webp"
       },
       {
         "id": "hatstore",
@@ -10860,10 +10743,6 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/homeroom/0189630c-993e-7061-bb1a-d41d2272a9bf"
           }
         },
@@ -10939,10 +10818,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/hudoteket/01896309-aa2d-71e5-9c48-248f03c79b6f"
           },
           "klarna-se": {
@@ -11048,6 +10923,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/ideal-of-sweden/0189630f-4b89-721d-88e7-5b4e2b299f5f"
           },
           "klarna-se": {
@@ -11086,6 +10965,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
           },
           "klarna-se": {
@@ -11325,6 +11208,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/junkyard/019c7b2a-0892-7181-9c77-ba7dee8b3d9f"
           }
         },
@@ -11396,6 +11283,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/kicks/01932f75-1211-7244-b60c-0fe79fd03b46"
           },
           "klarna-se": {
@@ -11493,6 +11384,10 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/kjell-company/0189630d-b8f2-71cc-9d1f-3070ccc4c33a"
           },
           "klarna-se": {
@@ -11529,6 +11424,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/kockums-jernverk/01961ab7-0954-7171-851c-584c6c6052e7"
           }
         },
@@ -11819,6 +11718,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lensway/01896307-db4b-7046-b660-cca58f3d53f2"
           },
           "klarna-se": {
@@ -11961,10 +11864,6 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lindskrog-parkering-arlanda/0199710b-f1ca-707f-b9b0-6e55f41c1f81"
           }
         }
@@ -12417,10 +12316,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/mekonomen/018ec72b-d288-7262-acbe-3b258b4b7862"
           }
         },
@@ -12545,6 +12440,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/mq/01896309-644a-73ec-898e-0b73ec63e4f9"
           },
           "klarna-se": {
@@ -12696,7 +12595,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 4,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/59fb3925-a8d8-4e59-88be-111c1f2a1771/name-it/pay-with-klarna/"
           }
@@ -12714,6 +12613,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nelly.com/01896307-c614-73bf-be00-aed08d7bb87d"
           }
         },
@@ -12853,6 +12756,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nly-man/01896308-4663-73e3-8cc3-29f29f166566"
           }
         },
@@ -12966,10 +12873,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordiska-kompaniet/019bc659-063f-7135-b5e6-2b3c841e9626"
           }
         },
@@ -13430,10 +13333,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
           }
         },
@@ -13563,6 +13462,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/polarnopyret/0189630a-4f00-71b4-b13a-6a93082439a9"
           },
           "klarna-se": {
@@ -13901,6 +13804,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/repeats/01a0c33c-1dff-7304-9155-5b575df8fc46"
           }
         },
@@ -13931,6 +13838,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/revolutionrace/019a5e2b-866b-702d-b295-e28101b5ba41"
           },
           "klarna-se": {
@@ -14254,7 +14165,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 50,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sephora/0189630c-5cf0-73e4-8bad-757898565730"
           }
@@ -14520,6 +14431,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/smartphoto-se/0189630d-6184-73b8-af87-07c88542f28c"
           },
           "klarna-se": {
@@ -14608,10 +14523,6 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
           },
           "klarna-se": {
@@ -16192,10 +16103,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zoo.se-1/01896312-b5e6-7274-8e4a-7eb11e4ab5a9"
           }
         },
@@ -16412,10 +16319,6 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/agoda/018e3812-d948-725c-b796-8c3e17bf12d4"
           }
         },
@@ -16658,10 +16561,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/autodoc--webgains/01896310-e823-72b0-8d74-6b3da56a30e3"
           }
         },
@@ -16754,7 +16653,7 @@
         "kategorier": [],
         "satser": {
           "klarna-dk": {
-            "verdi": 4,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/d1364cae-5e21-49db-b45d-446277f67ade/bianco/pay-with-klarna/"
           }
@@ -16838,10 +16737,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bodystore.dk/01896307-a48e-7282-a8f3-2508750f0b14"
           }
         },
@@ -16915,10 +16810,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bottle-hero/019a112d-87ab-730e-9bb7-101330a28267"
           }
         },
@@ -17118,7 +17009,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 3,
+            "verdi": 2,
             "opptil": true,
             "kilde": "https://www.klarna.com/dk/store/6cb6027c-1233-426c-9fcd-0b3f41feda4c/click-boat/pay-with-klarna/"
           }
@@ -17196,10 +17087,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
           },
           "klarna-dk": {
@@ -17268,6 +17155,10 @@
           "sas-online-shopping-dk": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/computersalg/0189630e-21d9-70b4-9f7a-92a6704964ac"
           },
           "klarna-dk": {
@@ -17447,10 +17338,6 @@
           "sas-online-shopping-dk": {
             "verdi": 10,
             "opptil": false,
-            "kampanje": {
-              "verdi": 20,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/dustin-1/0189630b-a1fd-7133-b07a-084f91874cd8"
           }
         },
@@ -17466,10 +17353,6 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/dyson/01896310-bb05-734c-87c7-a0d8eadfe399"
           },
           "klarna-dk": {
@@ -17703,10 +17586,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/euroflorist/01896308-d5a1-70c8-84eb-a07e4bcd0d2c"
           }
         },
@@ -17946,10 +17825,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/gant-3/01896312-beb2-7051-a0a1-ff2121e0dee9"
           }
         },
@@ -18010,10 +17885,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
           },
           "klarna-dk": {
@@ -18223,7 +18094,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/NO/harmankardon.webp"
+        "logo": "/logos/DK/harmankardon.webp"
       },
       {
         "id": "haveglad",
@@ -18290,10 +18161,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 75,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/helsegrossisten/0189630f-a5eb-73e6-9be7-41a7fb921f47"
           }
         },
@@ -18366,10 +18233,6 @@
           "sas-online-shopping-dk": {
             "verdi": 14,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/homeroom/0189630c-993e-7061-bb1a-d41d2272a9bf"
           }
         },
@@ -18479,6 +18342,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/ideal-of-sweden/0189630f-4b89-721d-88e7-5b4e2b299f5f"
           },
           "klarna-dk": {
@@ -18531,6 +18398,10 @@
           "sas-online-shopping-dk": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
           }
         },
@@ -18925,6 +18796,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/lensway/01896307-db4b-7046-b660-cca58f3d53f2"
           },
           "klarna-dk": {
@@ -19240,6 +19115,10 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/matas/019c9982-a557-7050-963f-ed75c89bc565"
           },
           "klarna-dk": {
@@ -19507,7 +19386,7 @@
         "kategorier": [],
         "satser": {
           "klarna-dk": {
-            "verdi": 4,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/59401a3a-d58f-48bf-8a62-3e3a2d40868b/name-it/pay-with-klarna/"
           }
@@ -19645,7 +19524,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 4,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/117a4ee8-5c10-42e0-9c0a-afe2ca7b507a/noisy-may/pay-with-klarna/"
           }
@@ -19786,7 +19665,7 @@
         "kategorier": [],
         "satser": {
           "klarna-dk": {
-            "verdi": 4,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/2edfa115-6b40-42da-9ce5-fd21ea3e0221/object/pay-with-klarna/"
           }
@@ -19876,7 +19755,7 @@
         ],
         "satser": {
           "sas-online-shopping-dk": {
-            "verdi": 25,
+            "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
@@ -19908,10 +19787,6 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 50,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/otto-suenson/01a061f3-cf1c-72ff-b6a6-d838f5ed65ed"
           }
         }
@@ -20392,6 +20267,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/revolutionrace/019a5e2b-866b-702d-b295-e28101b5ba41"
           }
         },
@@ -20639,7 +20518,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 50,
-              "slutt": "2026-10-18"
+              "slutt": "2026-10-25"
             },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sephora/0189630c-5cf0-73e4-8bad-757898565730"
           },
@@ -20925,10 +20804,6 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
-            "kampanje": {
-              "verdi": 30,
-              "slutt": "2026-10-18"
-            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
           },
           "klarna-dk": {
