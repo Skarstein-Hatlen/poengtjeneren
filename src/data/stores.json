@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-19",
+  "hentet": "2026-10-20",
   "land": {
     "NO": [
       {
@@ -26,6 +26,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/a-retro-tale/019716f7-b841-708c-94f7-aa0db57db557"
           }
         },
@@ -325,6 +329,25 @@
           }
         },
         "logo": "/logos/NO/authenticeurope.webp"
+      },
+      {
+        "id": "authenticscandinavia",
+        "navn": "Authentic Scandinavia",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/authentic-scandinavia/01a15438-70cb-7210-8da5-737a9df69135"
+          }
+        },
+        "logo": "/logos/NO/authenticscandinavia.webp"
       },
       {
         "id": "autoeurope",
@@ -798,6 +821,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bjorn-borg/01896308-503c-73a5-9ec8-382fd13dc580"
           }
         },
@@ -1430,13 +1457,18 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 19.5,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/dentaworks"
+          },
           "sas-online-shopping": {
             "verdi": 150,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dentaworks/01896308-ec70-713b-93a1-a86df35f3921"
           }
         },
-        "logo": "/logos/SE/dentaworks.webp"
+        "logo": "/logos/NO/dentaworks.webp"
       },
       {
         "id": "dentway",
@@ -1604,6 +1636,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/dyrekassen/019eb5c9-49c4-701b-826f-3e4d45f62b43"
           }
         },
@@ -2733,9 +2769,15 @@
         "id": "harmankardon",
         "navn": "Harman Kardon",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/harman-kardon-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -2936,16 +2978,11 @@
       },
       {
         "id": "hunkemoller",
-        "navn": "Hunkemoller",
+        "navn": "Hunkemøller",
         "kategorier": [
           "mote"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 5.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/hunkemoller-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -3192,7 +3229,9 @@
       {
         "id": "inzpero",
         "navn": "Inzpero",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
           "trumf": {
             "verdi": 9.3,
@@ -3526,11 +3565,6 @@
           "hjem"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 7.8,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/kokkeglede-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4505,6 +4539,15 @@
             "verdi": 2.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfnelly-no"
+          },
+          "sas-online-shopping": {
+            "verdi": 15,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/nelly.com/01896307-c614-73bf-be00-aed08d7bb87d"
           }
         },
         "logo": "/logos/NO/nelly.webp"
@@ -4624,7 +4667,7 @@
       },
       {
         "id": "nlyman",
-        "navn": "NLY MAN",
+        "navn": "NLY Man",
         "kategorier": [
           "mote"
         ],
@@ -4633,6 +4676,11 @@
             "verdi": 2.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfnly-man"
+          },
+          "sas-online-shopping": {
+            "verdi": 15,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/nly-man/01896308-4663-73e3-8cc3-29f29f166566"
           }
         },
         "logo": "/logos/NO/nlyman.webp"
@@ -4690,7 +4738,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 2.3,
+            "verdi": 1.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/nordic-nest-trumf"
           },
@@ -4960,8 +5008,12 @@
             "kilde": "https://trumfnetthandel.no/cashback/onyx-cookware-trumf"
           },
           "sas-online-shopping": {
-            "verdi": 25,
+            "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
@@ -5930,7 +5982,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/skeidar-trumf"
           },
@@ -7430,6 +7482,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/a-retro-tale/019716f7-b841-708c-94f7-aa0db57db557"
           }
         },
@@ -7931,6 +7987,25 @@
         "logo": "/logos/SE/authenticeurope.webp"
       },
       {
+        "id": "authenticscandinavia",
+        "navn": "Authentic Scandinavia",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/authentic-scandinavia/01a15438-70cb-7210-8da5-737a9df69135"
+          }
+        },
+        "logo": "/logos/SE/authenticscandinavia.webp"
+      },
+      {
         "id": "autodoc",
         "navn": "Autodoc",
         "kategorier": [
@@ -8394,6 +8469,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bjorn-borg/01896308-503c-73a5-9ec8-382fd13dc580"
           },
           "klarna-se": {
@@ -8917,8 +8996,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/conrad/0189630d-326b-7293-9226-29b2931fc26f"
+          },
+          "klarna-se": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/0eaaaa61-06aa-4c0a-b433-edc2efbf5af8/conrad/pay-with-klarna/"
           }
         },
+        "domene": "conrad.se",
         "logo": "/logos/SE/conrad.webp"
       },
       {
@@ -9962,6 +10047,10 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/flygbussarna/01896312-6607-711b-a79c-23479d58722a"
           },
           "klarna-se": {
@@ -10468,9 +10557,15 @@
         "id": "haglofs",
         "navn": "Haglöfs",
         "kategorier": [
+          "mote",
           "sport"
         ],
         "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/haglofs/018f1a0b-1749-708d-bbec-9aa03594b3b0"
+          },
           "klarna-se": {
             "verdi": 3,
             "opptil": false,
@@ -10590,7 +10685,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/SE/harmankardon.webp"
+        "logo": "/logos/NO/harmankardon.webp"
       },
       {
         "id": "hatstore",
@@ -13086,8 +13181,12 @@
         ],
         "satser": {
           "sas-online-shopping-se": {
-            "verdi": 25,
+            "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
@@ -13121,6 +13220,24 @@
           }
         },
         "logo": "/logos/SE/organicbasics.webp"
+      },
+      {
+        "id": "ottosuenson",
+        "navn": "Otto Suenson",
+        "kategorier": [
+          "mat"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/otto-suenson/01a061f3-cf1c-72ff-b6a6-d838f5ed65ed"
+          }
+        }
       },
       {
         "id": "outdoorexperten",
@@ -15515,6 +15632,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/valostore/01a056d7-23a7-73fa-a86a-adb8af1a51ac"
           }
         },
@@ -16552,6 +16673,25 @@
         "logo": "/logos/DK/authenticeurope.webp"
       },
       {
+        "id": "authenticscandinavia",
+        "navn": "Authentic Scandinavia",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/authentic-scandinavia/01a15438-70cb-7210-8da5-737a9df69135"
+          }
+        },
+        "logo": "/logos/DK/authenticscandinavia.webp"
+      },
+      {
         "id": "autodoc",
         "navn": "Autodoc",
         "kategorier": [
@@ -16686,6 +16826,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bjorn-borg/01896308-503c-73a5-9ec8-382fd13dc580"
           }
         },
@@ -17073,8 +17217,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/conrad/0189630d-326b-7293-9226-29b2931fc26f"
+          },
+          "klarna-dk": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/558bb2fa-2ba0-4ce5-85dc-1193a7518dce/conrad/pay-with-klarna/"
           }
         },
+        "domene": "conradelektronik.dk",
         "logo": "/logos/DK/conrad.webp"
       },
       {
@@ -18094,7 +18244,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/harman-kardon/0189630e-44e6-7162-ae73-4bfd5722176c"
           }
         },
-        "logo": "/logos/DK/harmankardon.webp"
+        "logo": "/logos/NO/harmankardon.webp"
       },
       {
         "id": "haveglad",
@@ -19395,6 +19545,25 @@
         "logo": "/logos/DK/nameit.webp"
       },
       {
+        "id": "nelly",
+        "navn": "Nelly.com",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 15,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-10-25"
+            },
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/nelly.com/01896307-c614-73bf-be00-aed08d7bb87d"
+          }
+        },
+        "logo": "/logos/DK/nelly.webp"
+      },
+      {
         "id": "nemmegaver",
         "navn": "Nemmegaver.dk",
         "kategorier": [
@@ -19757,6 +19926,10 @@
           "sas-online-shopping-dk": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
@@ -19942,6 +20115,21 @@
         },
         "domene": "paulandshark.com",
         "logo": "/logos/DK/paulshark.webp"
+      },
+      {
+        "id": "pergolux",
+        "navn": "Pergolux",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/pergolux/01a0b396-bcad-7228-b050-cc49a5084adb"
+          }
+        },
+        "logo": "/logos/NO/pergolux.webp"
       },
       {
         "id": "peterhahn",
@@ -21705,22 +21893,6 @@
         },
         "domene": "zwilling.com",
         "logo": "/logos/DK/zwilling.webp"
-      },
-      {
-        "id": "aarstiderne",
-        "navn": "Aarstiderne",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/0ab20335-e558-446d-9d08-a5c3a511c277/aarstiderne/pay-with-klarna/"
-          }
-        },
-        "domene": "aarstiderne.com",
-        "logo": "/logos/DK/aarstiderne.webp"
       }
     ]
   }

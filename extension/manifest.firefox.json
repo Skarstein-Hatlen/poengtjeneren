@@ -63,7 +63,6 @@
       "matches": [
         "*://*.24mx.com/*",
         "*://*.24s.com/*",
-        "*://*.aarstiderne.com/*",
         "*://*.aboutyou.dk/*",
         "*://*.aboutyou.se/*",
         "*://*.acer.com/*",
@@ -117,6 +116,8 @@
         "*://*.clickandboat.com/*",
         "*://*.cocopanda.se/*",
         "*://*.coffeefriend.se/*",
+        "*://*.conrad.se/*",
+        "*://*.conradelektronik.dk/*",
         "*://*.cos.com/*",
         "*://*.crocs.eu/*",
         "*://*.csmegastore.dk/*",
