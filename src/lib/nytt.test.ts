@@ -27,6 +27,11 @@ describe('finnEndringer', () => {
     expect(e[0]).toMatchObject({ fra: 4.6, til: 6.2, dato: '2026-09-15' });
   });
 
+  it('regner ikke slutt-markører som endringer', () => {
+    const historikk = { kicks: { trumf: [['2026-09-01', 6.2], ['2026-09-15', null]] as [string, number | null][] } };
+    expect(finnEndringer([kicks], [trumf], historikk, '2026-09-22')).toHaveLength(0);
+  });
+
   it('hopper over gamle endringer', () => {
     const historikk = { kicks: { trumf: [['2026-01-01', 4.6], ['2026-02-01', 6.2]] as [string, number][] } };
     expect(finnEndringer([kicks], [trumf], historikk, '2026-09-22')).toHaveLength(0);

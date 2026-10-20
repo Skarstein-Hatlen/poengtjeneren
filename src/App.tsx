@@ -6,6 +6,7 @@ import Del from './components/Del';
 import Flagg from './components/Flagg';
 import FlyMedPoengSide from './components/FlyMedPoengSide';
 import Flyforsinkelse from './components/Flyforsinkelse';
+import Historikkgraf from './components/Historikkgraf';
 import Hverdag from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
 import Kortliste, { prisPerMnd } from './components/Kortliste';
@@ -965,6 +966,7 @@ export default function App() {
         )}
         {belop <= 0 && <p className="tom">{T('skrivBelop')}</p>}
         {belop > 0 && resultater.length === 0 && <p className="tom">{T('skrivSats')}</p>}
+        {butikk && <Historikkgraf land={t.land} programmer={programmer} historikk={data.historikk[t.land]?.[butikk.id]} idag={IDAG} per100={per100ForSats} />}
       </div>
 
       <footer>

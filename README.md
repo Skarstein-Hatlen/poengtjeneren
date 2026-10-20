@@ -26,7 +26,7 @@ npm run dev
 ## Butikksider, historikk og språk
 
 - `npm run build` lager i tillegg én statisk side per butikk (`dist/no/kicks/index.html` osv.), landsider, `404.html`, `sitemap.xml` og `robots.txt` via `scripts/bygg-butikksider.mjs`. Adressen `/se/kicks` åpner Kicks i Sverige direkte.
-- `src/data/history.json` fylles av `npm run hent` med `[dato, sats]` hver gang en sats endrer seg; kalkulatoren viser en liten kurve og «høyeste sats siden …» per program når en butikk er valgt.
+- `src/data/history.json` fylles av `npm run hent` med `[dato, sats]` hver gang en sats endrer seg; kalkulatoren viser en liten kurve og «høyeste sats siden …» per program når en butikk er valgt. Når et program slutter med en butikk, får serien en slutt-markør `[dato, null]` (datert første dag den manglet, men satt først etter to kjøringer på rad uten butikken – én dags fravær er som regel en glipp); en ny måling betyr at den er tilbake. Historikken fra 21.09.2026 ble bygget på nytt fra de daglige versjonene av `stores.json` i git for å få med slutt-markørene. Butikkvisningen har en historikkgraf (`Historikkgraf.tsx`, som prishistorikken på Prisjakt): trappelinjer per program i EuroBonus-poeng per 100 kr med brukerens oppsett, krysshår med verdi og sats for hver dag (også med piltastene), høyeste i perioden, 3 mnd / 1 år / Alt når historikken er lang nok, og alle endringer bak «Endringer». Fargene er egne for grafen (validert for fargeblindhet mot billetten), fordi Trumf og SAS er begge mørkeblå.
 - Språk og tallformat følger flagget (norsk, svensk, dansk). Tekstene ligger i `src/i18n.ts`; svenske og danske programtekster ligger i `programs.json`.
 - Poengverdi (øre per poeng) kan justeres i kalkulatoren og gir «≈ kr» ved siden av poengene.
 

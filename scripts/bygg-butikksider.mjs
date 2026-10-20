@@ -328,6 +328,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
       if (!p || m.length < 2) continue;
       const [dato, til] = m[m.length - 1];
       const fra = m[m.length - 2][1];
+      if (til === null || fra === null) continue; // slutt-markør, ikke en satsendring
       if (dagerMellom(dato, idag) <= 30) endringer30.push({ b, p, fra, til, dato });
       if (til > fra && dagerMellom(dato, idag) <= 7) okninger.push({ b, p, fra, til, dato });
     }
@@ -464,6 +465,7 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
       const sats = (v) => (p.satsEnhet === 'prosent' ? `${fmt.format(v)} %` : `${fmt.format(v)} ${sprak.poeng}/100 kr`);
       if (m.length === 1) innslag.push({ id: `${p.id}-${m[0][0]}`, dato: m[0][0], url, tittel: sprak.forsteMaling(p.kortnavn, sats(m[0][1])), tekst: sprak.forsteMaling(p.kortnavn, sats(m[0][1])) });
       for (let i = 1; i < m.length; i++) {
+        if (m[i - 1][1] === null || m[i][1] === null) continue;
         const tekst = sprak.endring(p.kortnavn, sats(m[i - 1][1]), sats(m[i][1]));
         innslag.push({ id: `${p.id}-${m[i][0]}`, dato: m[i][0], url, tittel: tekst, tekst });
       }

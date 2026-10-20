@@ -41,8 +41,10 @@ const TILLATT = /^[\d\s.,]*$/;
 function historikkTekst(land: Land, program: Program, malinger: Maling[]): string {
   const forste = fmtDato(malinger[0][0]);
   if (malinger.length === 1) return tekst(land, 'forsteMaling', { dato: forste });
+  const verdier = malinger.map((m) => m[1]).filter((v): v is number => v !== null);
   const naa = malinger[malinger.length - 1][1];
-  const topp = Math.max(...malinger.map((m) => m[1]));
+  const topp = Math.max(...verdier);
+  if (naa === null) return '';
   if (naa >= topp) return tekst(land, 'hoyesteSiden', { dato: forste });
   const enhet = program.satsEnhet === 'prosent' ? ' %' : ' p';
   return tekst(land, 'lavereEnnTopp', { verdi: `${fmtTall(topp)}${enhet}` });

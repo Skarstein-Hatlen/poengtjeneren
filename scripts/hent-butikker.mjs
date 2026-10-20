@@ -409,6 +409,22 @@ for (const [land, butikker] of Object.entries(resultat)) {
     }
   }
 }
+// Program som ikke lenger har butikken: slutt-markør [dato, null], datert første dag den manglet. Settes først når
+// butikken har manglet to kjøringer på rad – én dags fravær er som regel en glipp i hentingen.
+const iGar = new Set();
+for (const [land, bs] of Object.entries(forrige?.land ?? {})) for (const b of bs) for (const pid of Object.keys(b.satser)) iGar.add(`${land}|${b.id}|${pid}`);
+let sluttMarkorer = 0;
+for (const [land, butikker] of Object.entries(historikk)) {
+  const naa = new Map((resultat[land] ?? []).map((b) => [b.id, b]));
+  for (const [id, serier] of Object.entries(butikker)) {
+    for (const [pid, serie] of Object.entries(serier)) {
+      if (naa.get(id)?.satser[pid] || iGar.has(`${land}|${id}|${pid}`) || serie[serie.length - 1][1] === null) continue;
+      serie.push([forrige?.hentet ?? idag, null]);
+      sluttMarkorer++;
+    }
+  }
+}
+
 const histLinjer = ['{'];
 Object.entries(historikk).forEach(([land, butikker], li, alleLand) => {
   histLinjer.push(` ${JSON.stringify(land)}: {`);
@@ -421,4 +437,4 @@ await writeFile(HIST, histLinjer.join('\n'));
 
 await writeFile(UT, JSON.stringify({ hentet: idag, land: resultat }, null, 2) + '\n');
 console.log(logg.join('\n'));
-console.log(`Logoer: ${lokale} lokale, ${uten} uten logo (forbokstav). Historikk: ${nyeMalinger} nye målinger.`);
+console.log(`Logoer: ${lokale} lokale, ${uten} uten logo (forbokstav). Historikk: ${nyeMalinger} nye målinger, ${sluttMarkorer} slutt-markører.`);

@@ -60,8 +60,10 @@ export function finnEndringer(
       const program = perProgram.get(programId);
       if (!program || malinger.length < 2) continue;
       const [dato, til] = malinger[malinger.length - 1];
-      if (dager(dato, idag) > antallDager) continue;
-      ut.push({ butikk, program, fra: malinger[malinger.length - 2][1], til, dato });
+      const fra = malinger[malinger.length - 2][1];
+      // Slutt-markører (null) er ikke satsendringer.
+      if (til === null || fra === null || dager(dato, idag) > antallDager) continue;
+      ut.push({ butikk, program, fra, til, dato });
     }
   }
   return ut.sort((a, b) => b.dato.localeCompare(a.dato) || Math.abs(b.til - b.fra) - Math.abs(a.til - a.fra));

@@ -158,7 +158,8 @@ export interface Butikkfil {
 }
 
 /** Satsens historikk: [dato, verdi] hver gang satsen endret seg. Fylles av hentescriptet. */
-export type Maling = [string, number];
+/** [dato, sats]. null: programmet sluttet med butikken fra denne datoen (en ny måling betyr at den er tilbake). */
+export type Maling = [string, number | null];
 export type Historikk = Partial<Record<Land, Record<string, Record<string, Maling[]>>>>;
 
 /** Black Friday-guiden (src/data/blackfriday.json): kjente nettbutikker per land og kategori. */
