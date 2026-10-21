@@ -34,13 +34,12 @@ const GLIDER: Partial<Record<Felt, { maks: number; steg: number }>> = {
   dagligvare: { maks: 15_000, steg: 500 },
   kortbruk: { maks: 60_000, steg: 1_000 },
 };
-// Hvor poengene kommer fra, i stolpene. Programfargene er de samme som i historikkgrafen; Kortet (teal) står aldri
-// ved siden av Klarna i en stolpe (med Klarna-kortet er kortpoengene Klarna), og er validert mot Trumf og SAS Shopping.
+// Hvor poengene kommer fra, i stolpene. De tre fargene er validert sammen mot billetten. SAS Shopping er ikke med:
+// den gir like mange poeng uansett kort.
 const DELER = [
   { id: 'trumf', farge: '#2a5bb8', nokkel: 'planDel_trumf' },
   { id: 'klarna', farge: '#d6457f', nokkel: 'planDel_klarna' },
-  { id: 'sas', farge: '#a86a00', nokkel: 'planDel_sas' },
-  { id: 'kort', farge: '#1a9a76', nokkel: 'planDel_kort' },
+  { id: 'kort', farge: '#a86a00', nokkel: 'planDel_kort' },
 ] as const;
 
 function lesLagret(): Record<Felt, string> {

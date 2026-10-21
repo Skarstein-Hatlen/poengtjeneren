@@ -60,6 +60,13 @@ describe('beregnOppsett', () => {
     expect(elite.deler.klarna).toBe(0);
   });
 
+  it('holder SAS Shopping utenfor – den gir like mange poeng uansett kort', () => {
+    const sas = { id: 'sas', kortnavn: 'SAS Shopping', satsEnhet: 'poengPer100', kortlag: true, konverteringer: [], nivaer: [] } as unknown as Program;
+    const bareSas: Butikk = { id: 's', navn: 'S', satser: { sas: { verdi: 30, kilde: '' } } };
+    const elite = beregnOppsett({ ...data, programmer: [klarna, trumf, sas], butikker: [bareSas] }, { netthandel: 1000, dagligvare: 0, kortbruk: 0 }).find((o) => o.id === 'ingen|elite')!;
+    expect(elite.poengAr).toBeCloseTo(12000 * 0.2);
+  });
+
   it('sorterer med flest poeng først og regner øre per poeng', () => {
     expect(alle[0].poengAr).toBeGreaterThanOrEqual(alle[1].poengAr);
     const o = finn('ingen|elite');

@@ -42,11 +42,11 @@ export interface Oppsett {
   deler: Deler;
 }
 
-export type Kilde = 'trumf' | 'klarna' | 'sas' | 'kort';
+export type Kilde = 'trumf' | 'klarna' | 'kort';
 export type Deler = Record<Kilde, number>;
-const KILDER: Kilde[] = ['trumf', 'klarna', 'sas', 'kort'];
-const ingenDeler = (): Deler => ({ trumf: 0, klarna: 0, sas: 0, kort: 0 });
-const sum = (x: Deler) => x.trumf + x.klarna + x.sas + x.kort;
+const KILDER: Kilde[] = ['trumf', 'klarna', 'kort'];
+const ingenDeler = (): Deler => ({ trumf: 0, klarna: 0, kort: 0 });
+const sum = (x: Deler) => x.trumf + x.klarna + x.kort;
 
 type Kortvalg = { type: 'ingen' } | { type: 'kort'; kort: Kort } | { type: 'klarna'; per100: number } | { type: 'trumf'; kort: Trumfkort };
 
@@ -58,11 +58,11 @@ const prisFremover = (k: Kort, idag: string) => {
 const gjeldende = (s: ButikkSats, idag: string) => (s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
 const kurs = (p: Program) => p.konverteringer[0]?.poengPerKrone ?? 0;
 const harNivaer = (p: Program) => p.nivaer.some((n) => n.id === 'max');
-const kildeFor = (p: Program): Kilde => (harNivaer(p) ? 'klarna' : p.id === 'trumf' ? 'trumf' : 'sas');
 
 /**
  * EuroBonus-poeng per 100 kr i én butikk via beste vei, fordelt på kilde. Å betale rett med kortet gir alltid kortpoeng;
- * Trumf og SAS Shopping gir kortpoeng i tillegg. Kjøp i Klarna-appen betales med Klarna og gir ingen kortpoeng.
+ * Trumf gir kortpoeng i tillegg. Kjøp i Klarna-appen betales med Klarna og gir ingen kortpoeng. SAS Shopping er ikke
+ * med: den gir like mange poeng uansett kort, så den skiller ikke løsningene.
  */
 function bestVei(b: Butikk, d: PlanData, niva: Niva | null, kortPer100: number, kortKilde: Kilde): Deler {
   let best = ingenDeler();
@@ -75,9 +75,11 @@ function bestVei(b: Butikk, d: PlanData, niva: Niva | null, kortPer100: number, 
     if (harNivaer(p)) {
       if (!niva || niva.kanVeksle === false) continue;
       vei.klarna = (v * niva.butikkFaktor + niva.ekstraProsent) * kurs(p);
-    } else {
-      vei[kildeFor(p)] = p.satsEnhet === 'prosent' ? v * kurs(p) : v;
+    } else if (p.id === 'trumf') {
+      vei.trumf = v * kurs(p);
       if (p.kortlag) vei[kortKilde] += kortPer100;
+    } else {
+      continue;
     }
     if (sum(vei) > sum(best)) best = vei;
   }
