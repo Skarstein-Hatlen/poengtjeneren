@@ -70,6 +70,9 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} gir betalingskortet poeng i tillegg. Via Klarna gjør det ikke.`,
     og: 'og',
+    planTittel: 'Hvilket EuroBonus-kort og Klarna-nivå passer deg? | Pointmaxing',
+    planTekst: 'Skriv inn forbruket ditt og se hvilket kort og Klarna-nivå som gir flest EuroBonus-poeng for pengene, hvor fort du når målet og hva poengene er verdt.',
+    planH1: 'Hvilket oppsett gir deg mest?',
   },
   SE: {
     sti: 'se',
@@ -114,6 +117,9 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} ger betalkortet poäng också. Via Klarna gör det inte.`,
     og: 'och',
+    planTittel: 'Vilket EuroBonus-kort och Klarna-nivå passar dig? | Pointmaxing',
+    planTekst: 'Skriv in dina utgifter och se vilket kort och Klarna-nivå som ger flest EuroBonus-poäng för pengarna, hur snabbt du når målet och vad poängen är värda.',
+    planH1: 'Vilket upplägg ger dig mest?',
   },
   DK: {
     sti: 'dk',
@@ -158,6 +164,9 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} giver betalingskortet point oveni. Via Klarna gør det ikke.`,
     og: 'og',
+    planTittel: 'Hvilket EuroBonus-kort og Klarna-niveau passer dig? | Pointmaxing',
+    planTekst: 'Skriv dit forbrug og se, hvilket kort og Klarna-niveau der giver flest EuroBonus-point for pengene, hvor hurtigt du når målet, og hvad pointene er værd.',
+    planH1: 'Hvilken opsætning giver dig mest?',
   },
 };
 
@@ -287,6 +296,9 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   const kortILand = kort.filter((k) => k.land.includes(land));
   await skriv(`${sprak.sti}/kort`, side({ lang: sprak.lang, tittel: sprak.kortTittel, beskrivelse: sprak.kortTekst, url: kortUrl, kropp: `<main><h1>${escape(sprak.kortTittel.split(' | ')[0])}</h1><ul>${kortILand.map((k) => `<li>${escape(k.navn)}: ${fmt.format(k.poengPer100)} ${sprak.poeng}/100 kr – ${fmt.format(k.prisPerMnd)} kr/${sprak.lang === 'sv' ? 'mån' : 'mnd'}</li>`).join('')}</ul></main>` }));
   urler.push(kortUrl);
+  const planUrl = `${DOMENE}/${sprak.sti}/plan`;
+  await skriv(`${sprak.sti}/plan`, side({ lang: sprak.lang, tittel: sprak.planTittel, beskrivelse: sprak.planTekst, url: planUrl, kropp: `<main><h1>${escape(sprak.planH1)}</h1><p>${escape(sprak.planTekst)}</p></main>` }));
+  urler.push(planUrl);
   // Forsinket fly: bare i land der vi har en avtale med en tjeneste.
   const fly = flyforsinkelse.tjeneste[land];
   if (fly && sprak.flyTittel) {

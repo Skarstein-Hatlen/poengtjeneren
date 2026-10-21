@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { prisPerMnd } from '../lib/kort';
 import kortbilder from '../data/kortbilder.json';
 import type { Kort, Land } from '../data/types';
 import { tekst } from '../i18n';
@@ -19,10 +20,7 @@ const BILDER = kortbilder as Record<string, string>;
 type Sortering = 'poeng' | 'ore' | 'pris';
 
 /** Månedsprisen som gjelder i dag (kort som prises per år deles på tolv). */
-export function prisPerMnd(k: Kort, idag: string): number {
-  if (k.prisPerMndFra && idag >= k.prisPerMndFra.dato) return k.prisPerMndFra.kr;
-  return k.prisPerMnd;
-}
+export { prisPerMnd } from '../lib/kort';
 
 /** Poeng per år ved et kortforbruk, og hva de koster i øre per poeng. */
 function regn(k: Kort, kortbruk: number, idag: string) {

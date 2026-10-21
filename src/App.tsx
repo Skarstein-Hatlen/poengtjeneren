@@ -14,6 +14,7 @@ import Kortvelger from './components/Kortvelger';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
 import Personvern from './components/Personvern';
+import Plan from './components/Plan';
 import Sidevelger from './components/Sidevelger';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
@@ -35,16 +36,17 @@ const ANNET = 'annet';
 const TILLATT = /^[\d\s.,]*$/;
 const IDAG = new Date().toISOString().slice(0, 10);
 
-type Visning = 'kalk' | 'butikker' | 'nytt' | 'blackfriday' | 'kort' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
+type Visning = 'kalk' | 'butikker' | 'nytt' | 'blackfriday' | 'kort' | 'plan' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
 const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', flymedpoeng: 'flymedpoeng', personvern: 'personvern', utvidelse: 'utvidelse' };
-const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', 'black-friday': 'blackfriday', kort: 'kort', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
+const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', 'black-friday': 'blackfriday', kort: 'kort', plan: 'plan', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
   { visning: 'butikker', nokkel: 'navButikker' },
   { visning: 'nytt', nokkel: 'navNytt' },
   { visning: 'blackfriday', nokkel: 'navBlackFriday' },
   { visning: 'kort', nokkel: 'navKort' },
+  { visning: 'plan', nokkel: 'navPlan' },
   { visning: 'flyforsinkelse', nokkel: 'navFly' },
 ];
 
@@ -695,6 +697,29 @@ export default function App() {
     );
   }
 
+  if (rute.visning === 'plan') {
+    const klarnaP = programmer.find((p) => p.nivaer.some((n) => n.id === 'max'));
+    return (
+      <div className="app">
+        {topp}
+        <div className="billett">
+          <Plan
+            land={t.land}
+            programmer={programmer}
+            butikker={butikker}
+            kort={kortListe}
+            folger={folger[t.land] ?? []}
+            kjente={Object.values(data.blackfriday.butikker[t.land] ?? {}).flat()}
+            idag={IDAG}
+            mittKortId={t.kortId}
+            mittNivaId={klarnaP ? t.rader[klarnaP.id].valgId : null}
+            samarbeid={samarbeid}
+          />
+        </div>
+      </div>
+    );
+  }
+
   if (rute.visning === 'kort') {
     // På kortsiden vises Klarna Plus, Premium og Max hver for seg – de gir ulik opptjening.
     const klarnaKort = programmer.flatMap((p) =>
@@ -716,6 +741,17 @@ export default function App() {
             onKortbruk={(kortbruk) => setT((s) => ({ ...s, kortbruk }))}
             idag={IDAG}
           />
+          <p className="tips">
+            <a
+              href={stiFor(t.land, { visning: 'plan', kategori: null }, null)}
+              onClick={(e) => {
+                e.preventDefault();
+                gaaTil('plan');
+              }}
+            >
+              {T('planFinn')} <span aria-hidden="true">→</span>
+            </a>
+          </p>
           {samarbeid && (
             <p className="samarbeid">
               <a href={samarbeid.kortveiledning} target="_blank" rel="sponsored noopener">
