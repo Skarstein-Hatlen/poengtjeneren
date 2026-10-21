@@ -136,19 +136,26 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
 
 /**
  * Stigen som svarer på «hvilket oppsett passer meg?»: flest poeng, nesten like mange for langt mindre (billigst med
- * minst 95 % av toppen og høyst 80 % av prisen), best verdi (billigst per poeng blant dem med minst 60 % av toppen) og
- * beste gratis. Samme oppsett kan fylle flere roller.
+ * minst 95 % av toppen og høyst 80 % av prisen), best verdi (billigst per poeng blant dem med minst 60 % av toppen),
+ * beste gratis og flest nivåpoeng (nivået er en fordel i seg selv). Samme oppsett kan fylle flere roller.
  */
-export function velgOppsett(alle: Oppsett[]): { flest: Oppsett | null; nesten: Oppsett | null; verdi: Oppsett | null; gratis: Oppsett | null } {
+export function velgOppsett(alle: Oppsett[]): {
+  flest: Oppsett | null;
+  nesten: Oppsett | null;
+  verdi: Oppsett | null;
+  gratis: Oppsett | null;
+  nivapoeng: Oppsett | null;
+} {
   const flest = alle[0] ?? null;
-  if (!flest) return { flest: null, nesten: null, verdi: null, gratis: null };
+  if (!flest) return { flest: null, nesten: null, verdi: null, gratis: null, nivapoeng: null };
   const nesten = alle
     .filter((o) => o.poengAr >= flest.poengAr * 0.95 && o.kostnadAr < flest.kostnadAr && o.kostnadAr <= flest.kostnadAr * 0.8)
     .reduce<Oppsett | null>((best, o) => (!best || o.kostnadAr < best.kostnadAr || (o.kostnadAr === best.kostnadAr && o.poengAr > best.poengAr) ? o : best), null);
   const sterke = alle.filter((o) => o.poengAr >= flest.poengAr * 0.6 && o.ore !== null);
   const verdi = sterke.reduce<Oppsett | null>((best, o) => (!best || (o.ore ?? Infinity) < (best.ore ?? Infinity) ? o : best), null);
   const gratis = alle.find((o) => o.kostnadAr === 0 && o.poengAr > 0) ?? null;
-  return { flest, nesten, verdi, gratis };
+  const nivapoeng = alle.reduce<Oppsett | null>((best, o) => (o.nivapoengAr > (best?.nivapoengAr ?? 0) ? o : best), null);
+  return { flest, nesten, verdi, gratis, nivapoeng };
 }
 
 /** Måneder til målet med et gitt antall poeng i året. null når det ikke kommer poeng. */

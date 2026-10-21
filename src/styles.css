@@ -516,6 +516,11 @@ input::placeholder {
   color: var(--gold);
 }
 
+.plan-nivapoeng {
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .plan-dato {
   white-space: nowrap;
   font-weight: 600;

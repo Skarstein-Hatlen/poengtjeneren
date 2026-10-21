@@ -200,16 +200,17 @@ function Poeng({
       ),
     [programmer, kurv, kort, idag, harTrumf, hverdag, netthandel, dagligvare, kortbruk],
   );
-  const { flest, nesten, verdi, gratis } = velgOppsett(alle);
+  const { flest, nesten, verdi, gratis, nivapoeng } = velgOppsett(alle);
   const navn = (o: Oppsett) => o.navn ?? T('planUtenKort');
 
-  // Stigen: flest poeng, nesten like mange for langt mindre, mest for pengene og gratis. Samme løsning i flere roller blir én rad.
+  // Stigen: flest poeng, nesten like mange for langt mindre, mest for pengene, gratis og flest nivåpoeng. Samme løsning i flere roller blir én rad.
   const rader: { roller: string[]; o: Oppsett }[] = [];
   for (const [rolle, o] of [
     [T('planFlest'), flest],
     [T('planNesten'), nesten],
     [T('planVerdi'), verdi],
     [T('planGratisBest'), gratis],
+    [T('planNivaRolle'), nivapoeng],
   ] as const) {
     if (!o) continue;
     const rad = rader.find((r) => r.o.id === o.id);
@@ -315,7 +316,12 @@ function Poeng({
               <p className="plan-rad-info">
                 <span className="plan-rolle">{roller.join(' · ')}</span>
                 {o.kostnadAr > 0 && ` · ${kostnad(o)}`}
-                {o.nivapoengAr > 0 && ` · ${T('planNivapoeng', { n: fmtPoeng(o.nivapoengAr) })}`}
+                {o.nivapoengAr > 0 && (
+                  <>
+                    {' · '}
+                    <span className="plan-nivapoeng">{T('planNivapoeng', { n: fmtPoeng(o.nivapoengAr) })}</span>
+                  </>
+                )}
                 {dato && (
                   <>
                     {' · '}

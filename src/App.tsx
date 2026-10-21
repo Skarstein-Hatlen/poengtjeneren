@@ -51,7 +51,6 @@ const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'blackfriday', nokkel: 'navBlackFriday' },
   { visning: 'kort', nokkel: 'navKort' },
   { visning: 'plan', nokkel: 'navPlan' },
-  { visning: 'flyforsinkelse', nokkel: 'navFly' },
 ];
 
 interface Rute {
@@ -467,10 +466,8 @@ export default function App() {
     }
   }
 
-  // Forsinket fly vises bare i land der vi har en avtale med en tjeneste, Black Friday fra 1. november til og med Cyber Monday.
-  const navSider = NAV.filter(
-    (n) => (n.visning !== 'flyforsinkelse' || data.fly.tjeneste[t.land]) && (n.visning !== 'blackfriday' || (IDAG >= data.blackfriday.visFra && IDAG <= data.blackfriday.cyberMonday)),
-  );
+  // Black Friday vises fra 1. november til og med Cyber Monday. Forsinket fly er skjult fra fanene, men siden finnes fortsatt.
+  const navSider = NAV.filter((n) => n.visning !== 'blackfriday' || (IDAG >= data.blackfriday.visFra && IDAG <= data.blackfriday.cyberMonday));
 
   const bunnlenker = (
     <p className="bunnlenker">

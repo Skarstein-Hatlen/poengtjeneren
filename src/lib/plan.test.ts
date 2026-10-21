@@ -79,6 +79,12 @@ describe('beregnOppsett', () => {
     // Sparer for lite: ingen egen rad.
     expect(velgOppsett([o('a', 100_000, 10_000), o('b', 96_000, 9_000)]).nesten).toBeNull();
   });
+
+  it('viser kortet med flest nivåpoeng som egen fordel', () => {
+    const o = (id: string, poengAr: number, nivapoengAr: number) => ({ id, poengAr, kostnadAr: 1000, ore: 1, nivapoengAr }) as Oppsett;
+    expect(velgOppsett([o('klarna', 100_000, 0), o('elite', 90_000, 13_000), o('mc', 80_000, 8_000)]).nivapoeng?.id).toBe('elite');
+    expect(velgOppsett([o('klarna', 100_000, 0)]).nivapoeng).toBeNull();
+  });
 });
 
 describe('manederTil og oreVerdi', () => {
