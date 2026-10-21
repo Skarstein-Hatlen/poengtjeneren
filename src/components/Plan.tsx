@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactElement } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type InputHTMLAttributes, type ReactElement } from 'react';
 import hverdagJson from '../data/hverdag.json';
 import type { Butikk, Kort, Land, Program, Samarbeidspartner } from '../data/types';
 import { SPRAK, tekst } from '../i18n';
 import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
 import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type Oppsett } from '../lib/plan';
+import Kortbilde from './Kortbilde';
 
 export type PlanDel = 'poeng' | 'penger';
 
@@ -96,6 +97,42 @@ function GlidendeTall({ verdi }: { verdi: number }) {
   return <>{fmtPoeng(useGlid(verdi))}</>;
 }
 
+/** Tallfelt med mellomrom i tusenene som holder markøren på plass mens du skriver. Lagrer bare sifrene. */
+function TallInput({ verdi, onEndre, ...rest }: { verdi: string; onEndre: (v: string) => void } & Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>) {
+  const ref = useRef<HTMLInputElement>(null);
+  const siffer = useRef<number | null>(null);
+  const vist = verdi ? fmtTall(parseTall(verdi)) : '';
+  // Etter formateringen: sett markøren etter like mange sifre som før.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (siffer.current === null || !el) return;
+    let igjen = siffer.current;
+    let pos = 0;
+    while (pos < vist.length && igjen > 0) {
+      if (/\d/.test(vist[pos])) igjen--;
+      pos++;
+    }
+    el.setSelectionRange(pos, pos);
+    siffer.current = null;
+  }, [vist]);
+  return (
+    <input
+      ref={ref}
+      type="text"
+      inputMode="numeric"
+      autoComplete="off"
+      placeholder="0"
+      {...rest}
+      value={vist}
+      onChange={(e) => {
+        if (!TILLATT.test(e.target.value)) return;
+        siffer.current = e.target.value.slice(0, e.target.selectionStart ?? e.target.value.length).replace(/\D/g, '').length;
+        onEndre(e.target.value.replace(/\D/g, ''));
+      }}
+    />
+  );
+}
+
 const HVERDAG = hverdagJson as Partial<Record<Land, { rader: { id: string; prosent: number }[]; kort?: { navn: string; prisPerMnd: number; dagligvare: number } }>>;
 const FLY = 'M50 4 Q58 8 58 26 L58 40 L94 62 L94 71 L58 59 L58 78 L74 91 L74 97 L57 92 L50 95 L43 92 L26 97 L26 91 L42 78 L42 59 L6 71 L6 62 L42 40 L42 26 Q42 8 50 4 Z';
 const enDesimal = (n: number) => fmtTall(Math.round(n * 10) / 10);
@@ -121,17 +158,7 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
     <label className="plan-tallfelt" key={f}>
       <span className="etikett">{etikett}</span>
       <span className="tall">
-        <input
-          id={`plan-${f}`}
-          type="text"
-          inputMode="decimal"
-          autoComplete="off"
-          placeholder="0"
-          value={felt[f] ? fmtTall(parseTall(felt[f])) : ''}
-          onChange={(e) => {
-            if (TILLATT.test(e.target.value)) sett(f, e.target.value.replace(/\s/g, ''));
-          }}
-        />
+        <TallInput id={`plan-${f}`} verdi={felt[f]} onEndre={(v) => sett(f, v)} />
         <span className="enhet">{enhet}</span>
       </span>
     </label>
@@ -157,7 +184,7 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
       {del === 'poeng' ? (
         <Poeng land={land} programmer={programmer} butikker={butikker} kort={kort} folger={folger} kjente={kjente} idag={idag} T={T} tall={tall} sett={sett} tallfelt={tallfelt} />
       ) : (
-        <Penger programmer={programmer} samarbeid={samarbeid} T={T} tall={tall} tallfelt={tallfelt} />
+        <Penger programmer={programmer} samarbeid={samarbeid} T={T} tall={tall} tallfelt={tallfelt} felt={felt} sett={sett} />
       )}
     </section>
   );
@@ -318,53 +345,56 @@ function Poeng({
           const dato = reiseDato(o);
           return (
             <li key={o.id}>
-              <div className="plan-rad-topp">
-                <span className="plan-navn">{navn(o)}</span>
-                <span className="plan-rad-tall">
-                  <GlidendeTall verdi={o.poengAr} />
-                </span>
-              </div>
-              {o.poengAr > 0 && (
-                <div
-                  className="plan-stabel"
-                  style={{ width: `${(o.poengAr / maks) * 100}%` }}
-                  role="img"
-                  aria-label={deler.map((d) => `${T(d.nokkel)} ${fmtPoeng(o.deler[d.id])}`).join(', ')}
-                >
-                  {deler
-                    .filter((d) => o.deler[d.id] > 0)
-                    .map((d) => (
-                      <span key={d.id} style={{ flexGrow: o.deler[d.id], background: d.farge }} />
-                    ))}
+              <Kortbilde kortId={o.kortId} />
+              <div className="plan-rad">
+                <div className="plan-rad-topp">
+                  <span className="plan-navn">{navn(o)}</span>
+                  <span className="plan-rad-tall">
+                    <GlidendeTall verdi={o.poengAr} />
+                  </span>
                 </div>
-              )}
-              <p className="plan-rad-info">
-                <span className="plan-rolle">{roller.join(' · ')}</span>
-                {o.kostnadAr > 0 && ` · ${kostnad(o)}`}
-                {o.nivapoengAr > 0 && (
-                  <>
-                    {' · '}
-                    <span className="plan-nivapoeng">{T('planNivapoeng', { n: fmtPoeng(o.nivapoengAr) })}</span>
-                  </>
+                {o.poengAr > 0 && (
+                  <div
+                    className="plan-stabel"
+                    style={{ width: `${(o.poengAr / maks) * 100}%` }}
+                    role="img"
+                    aria-label={deler.map((d) => `${T(d.nokkel)} ${fmtPoeng(o.deler[d.id])}`).join(', ')}
+                  >
+                    {deler
+                      .filter((d) => o.deler[d.id] > 0)
+                      .map((d) => (
+                        <span key={d.id} style={{ flexGrow: o.deler[d.id], background: d.farge }} />
+                      ))}
+                  </div>
                 )}
-                {o.toForEn > 0 && (
-                  <>
-                    {' · '}
-                    <span className="plan-nivapoeng">{toForEn(o)}</span>
-                  </>
-                )}
-                {dato && (
-                  <>
-                    {' · '}
-                    <span className="plan-dato">
-                      <svg className="plan-fly-ikon" viewBox="0 0 100 100" aria-hidden="true">
-                        <path d={FLY} transform="rotate(90 50 50)" />
-                      </svg>
-                      {dato}
-                    </span>
-                  </>
-                )}
-              </p>
+                <p className="plan-rad-info">
+                  <span className="plan-rolle">{roller.join(' · ')}</span>
+                  {o.kostnadAr > 0 && ` · ${kostnad(o)}`}
+                  {o.nivapoengAr > 0 && (
+                    <>
+                      {' · '}
+                      <span className="plan-nivapoeng">{T('planNivapoeng', { n: fmtPoeng(o.nivapoengAr) })}</span>
+                    </>
+                  )}
+                  {o.toForEn > 0 && (
+                    <>
+                      {' · '}
+                      <span className="plan-nivapoeng">{toForEn(o)}</span>
+                    </>
+                  )}
+                  {dato && (
+                    <>
+                      {' · '}
+                      <span className="plan-dato">
+                        <svg className="plan-fly-ikon" viewBox="0 0 100 100" aria-hidden="true">
+                          <path d={FLY} transform="rotate(90 50 50)" />
+                        </svg>
+                        {dato}
+                      </span>
+                    </>
+                  )}
+                </p>
+              </div>
             </li>
           );
         })}
@@ -375,6 +405,7 @@ function Poeng({
         <ul className="plan-alle-liste">
           {alle.map((o) => (
             <li key={o.id}>
+              <Kortbilde kortId={o.kortId} liten />
               <span>
                 {navn(o)}
                 <span className="muted">
@@ -407,7 +438,14 @@ function Poeng({
  * klarna.com/se/kundservice/hur-tar-jag-ut-pengar-fran-min-klarna-saldo, klarna.com/dk/klarna-saldo); vekslingen som
  * gir flest poeng per krone setter prisen på et poeng.
  */
-function Penger({ programmer, samarbeid, T, tall, tallfelt }: Felles & Pick<Props, 'programmer' | 'samarbeid'>) {
+function Penger({
+  programmer,
+  samarbeid,
+  T,
+  tall,
+  felt,
+  sett,
+}: Felles & Pick<Props, 'programmer' | 'samarbeid'> & { felt: Record<Felt, string>; sett: (f: Felt, v: string) => void }) {
   const kilde =
     programmer
       .filter((p) => p.satsEnhet === 'prosent')
@@ -424,10 +462,31 @@ function Penger({ programmer, samarbeid, T, tall, tallfelt }: Felles & Pick<Prop
   return (
     <>
       <h1>{T('pengerTittel')}</h1>
-      <div className="plan-billett">
-        {tallfelt('kontant', T('planKontant'), 'kr')}
-        {tallfelt('poeng', T('planPoeng'), T('planPoengEnhet'))}
-        {tallfelt('avgifter', T('planAvgifter'), 'kr')}
+      {/* Samme reise på to måter, slik flyselskapet viser den: prisen i kroner, eller poeng pluss skatter og avgifter. */}
+      <div className="penger-valg">
+        <div className="penger-side">
+          <span className="etikett" id="penger-med-penger">
+            {T('pengerMedPenger')}
+          </span>
+          <label className="penger-belop">
+            <TallInput id="plan-kontant" aria-labelledby="penger-med-penger" verdi={felt.kontant} onEndre={(v) => sett('kontant', v)} />
+            <span>kr</span>
+          </label>
+        </div>
+        <div className="penger-side">
+          <span className="etikett" id="penger-med-poeng">
+            {T('pengerMedPoeng')}
+          </span>
+          <label className="penger-belop">
+            <TallInput id="plan-poeng" aria-labelledby="penger-med-poeng" verdi={felt.poeng} onEndre={(v) => sett('poeng', v)} />
+            <span>{T('planPoengEnhet')}</span>
+          </label>
+          <label className="penger-tillegg">
+            <span aria-hidden="true">+</span>
+            <TallInput id="plan-avgifter" aria-label={T('planAvgifter')} verdi={felt.avgifter} onEndre={(v) => sett('avgifter', v)} />
+            <span>{T('pengerSkatter')}</span>
+          </label>
+        </div>
       </div>
       {kilde && verdiOre !== null && somPenger !== null && (
         <div className="penger-svar" aria-live="polite">
