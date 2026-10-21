@@ -254,6 +254,18 @@ input::placeholder {
   color: var(--stempel);
 }
 
+/* Er dette en god sats nå? */
+.vurdering {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+.vurdering.topp {
+  color: var(--gold);
+  font-weight: 600;
+}
+
 /* Historikk per butikk: trappelinjer per program, krysshår med verdier, endringsliste */
 .graf {
   margin-top: 26px;

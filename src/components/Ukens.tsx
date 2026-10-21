@@ -3,6 +3,7 @@ import { dagerTekst, tekst } from '../i18n';
 import { fmtDato, fmtPer100, fmtTall } from '../lib/format';
 import { dagerIgjen } from '../lib/nytt';
 import { finnUkens } from '../lib/ukens';
+import { vurderSats } from '../lib/vurdering';
 import { ButikkLogo } from './Butikkliste';
 
 interface Props {
@@ -41,7 +42,12 @@ export default function Ukens({ land, butikker, programmer, historikk, idag, per
     <section className="nytt">
       <h2 className="etikett">{tekst(land, 'toppNaa')}</h2>
       <ul className="nytt-liste">
-        {topp.map((r) => rad(`t-${r.butikk.id}`, r.butikk, r.program, `${fmtPer100(r.per100)} p/100`, sats(r.program, r.butikk.satser[r.program.id].kampanje && r.butikk.satser[r.program.id].kampanje!.slutt >= idag ? r.butikk.satser[r.program.id].kampanje!.verdi : r.butikk.satser[r.program.id].verdi)))}
+        {topp.map((r) => {
+          const s = r.butikk.satser[r.program.id];
+          const v = vurderSats(historikk?.[r.butikk.id]?.[r.program.id], idag);
+          const under = sats(r.program, s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
+          return rad(`t-${r.butikk.id}`, r.butikk, r.program, `${fmtPer100(r.per100)} p/100`, v?.type === 'topp' ? `${under} · ${tekst(land, 'hoyesteSiden2', { dato: fmtDato(v.fra) })}` : under);
+        })}
       </ul>
 
       <h2 className="etikett">{tekst(land, 'oktSiste7')}</h2>

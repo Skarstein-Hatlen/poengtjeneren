@@ -25,6 +25,7 @@ import { SPRAK, tekst, type Nokkel } from './i18n';
 import { gjeldendeSats, sokButikker } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { lesFolger, skrivFolger, vekslFolg, type Folger } from './lib/folger';
+import { vurderSats } from './lib/vurdering';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
 
 const data = hentData();
@@ -916,6 +917,27 @@ export default function App() {
         </section>
 
         {apent && <p className="detaljer">{utregning(t.land, apent, kort)}</p>}
+
+        {/* Er dette en god sats nå? Programmet med flest poeng, målt mot satsene siste 90 dager. */}
+        {(() => {
+          if (!butikk) return null;
+          let best: { p: Program; v: number } | null = null;
+          for (const p of programmer) {
+            const s = butikk.satser[p.id];
+            const v = s ? per100ForSats(p, s) : null;
+            if (v !== null && (!best || v > best.v)) best = { p, v };
+          }
+          const v = best ? vurderSats(data.historikk[t.land]?.[butikk.id]?.[best.p.id], IDAG) : null;
+          if (!best || !v || (v.type !== 'topp' && v.type !== 'lav')) return null;
+          const sats = (x: number) => (best.p.satsEnhet === 'prosent' ? `${fmtTall(x)} %` : `${fmtTall(x)} p/100`);
+          return (
+            <p className={`vurdering ${v.type}`}>
+              {v.type === 'topp'
+                ? T('vurderingTopp', { program: best.p.kortnavn, dato: fmtDato(v.fra), sats: sats(v.naa) })
+                : T('vurderingLav', { program: best.p.kortnavn, dato: fmtDato(v.fra), maks: sats(v.maks), naa: sats(v.naa) })}
+            </p>
+          );
+        })()}
 
         {belop > 0 && beste && nest && (
           <p className="konklusjon">
