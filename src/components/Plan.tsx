@@ -466,11 +466,12 @@ function Penger({
       .filter((x) => x.kurs > 0)
       .sort((a, b) => b.kurs - a.kurs)[0] ?? null;
   const bonus = kilde ? (kilde.p.id.startsWith('klarna') ? 'Klarna-cashback' : `${kilde.p.kortnavn}-bonus`) : '';
+  // Hva hvert poeng gir på denne reisen, mot hva et poeng koster å skaffe (Trumf-bonus eller Klarna-cashback vekslet).
   const verdiOre = oreVerdi(tall('kontant'), tall('poeng'), tall('avgifter'));
   const sparer = Math.max(0, tall('kontant') - tall('avgifter'));
-  const somPenger = kilde ? tall('poeng') / kilde.kurs : null;
-  const bruk = somPenger !== null && sparer > somPenger;
-  const skala = Math.max(1, sparer, somPenger ?? 0);
+  const poengOre = kilde ? 100 / kilde.kurs : null;
+  const bruk = verdiOre !== null && poengOre !== null && verdiOre > poengOre;
+  const skala = Math.max(0.1, verdiOre ?? 0, poengOre ?? 0);
 
   return (
     <>
@@ -501,26 +502,30 @@ function Penger({
           </label>
         </div>
       </div>
-      {kilde && verdiOre !== null && somPenger !== null && (
+      {kilde && verdiOre !== null && poengOre !== null && (
         <div className="penger-svar" aria-live="polite">
           <p className={`plan-dom${bruk ? ' god' : ''}`}>{bruk ? T('pengerBruk') : T('pengerBetal')}</p>
           {(
             [
-              [T('pengerSparer'), sparer, bruk],
-              [T('pengerSomPenger', { bonus }), somPenger, !bruk],
+              [T('pengerDenneReisen'), verdiOre, bruk],
+              [T('pengerPoengKoster'), poengOre, !bruk],
             ] as const
-          ).map(([etikett, kr, vinner]) => (
+          ).map(([etikett, ore, vinner]) => (
             <div className="penger-rad" key={etikett}>
               <div className="plan-rad-topp">
                 <span>{etikett}</span>
-                <span className="plan-rad-tall">{fmtTall(Math.round(kr))} kr</span>
+                <span className="plan-rad-tall">
+                  {enDesimal(ore)} <small>{T('pengerOrePerPoeng')}</small>
+                </span>
               </div>
               <div className="penger-bar">
-                <span className={vinner ? 'vinner' : undefined} style={{ width: `${(kr / skala) * 100}%` }} />
+                <span className={vinner ? 'vinner' : undefined} style={{ width: `${(ore / skala) * 100}%` }} />
               </div>
             </div>
           ))}
-          <p className="muted plan-tekst">{T('pengerForklaring', { v: enDesimal(verdiOre), bonus, kurs: fmtTall(kilde.kurs), ore: enDesimal(100 / kilde.kurs) })}</p>
+          <p className="muted plan-tekst">
+            {T('pengerForklaring', { kr: fmtTall(Math.round(sparer)), poeng: fmtTall(tall('poeng')), ore: enDesimal(poengOre), bonus, kurs: fmtTall(kilde.kurs) })}
+          </p>
         </div>
       )}
       {samarbeid && (

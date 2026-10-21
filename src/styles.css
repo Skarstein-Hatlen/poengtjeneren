@@ -831,6 +831,13 @@ input::placeholder {
   border-top: 1px solid var(--line);
 }
 
+.penger-rad .plan-rad-tall small {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
 .penger-bar {
   height: 12px;
 }
