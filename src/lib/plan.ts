@@ -38,8 +38,15 @@ export interface Oppsett {
   /** Øre per poeng: årskostnad delt på poeng. null uten poeng. */
   ore: number | null;
   nivapoengAr: number;
-  deler: { netthandel: number; dagligvare: number; kort: number };
+  /** Poengene fordelt på hvor de kommer fra. «kort» er kredittkortets egne poeng; med Klarna-kortet er de Klarna-cashback. */
+  deler: Deler;
 }
+
+export type Kilde = 'trumf' | 'klarna' | 'sas' | 'kort';
+export type Deler = Record<Kilde, number>;
+const KILDER: Kilde[] = ['trumf', 'klarna', 'sas', 'kort'];
+const ingenDeler = (): Deler => ({ trumf: 0, klarna: 0, sas: 0, kort: 0 });
+const sum = (x: Deler) => x.trumf + x.klarna + x.sas + x.kort;
 
 type Kortvalg = { type: 'ingen' } | { type: 'kort'; kort: Kort } | { type: 'klarna'; per100: number } | { type: 'trumf'; kort: Trumfkort };
 
@@ -51,25 +58,28 @@ const prisFremover = (k: Kort, idag: string) => {
 const gjeldende = (s: ButikkSats, idag: string) => (s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
 const kurs = (p: Program) => p.konverteringer[0]?.poengPerKrone ?? 0;
 const harNivaer = (p: Program) => p.nivaer.some((n) => n.id === 'max');
+const kildeFor = (p: Program): Kilde => (harNivaer(p) ? 'klarna' : p.id === 'trumf' ? 'trumf' : 'sas');
 
 /**
- * EuroBonus-poeng per 100 kr i én butikk via beste vei, med gitt Klarna-nivå og kort. Å betale rett med kortet gir alltid
- * kortpoeng; Trumf og SAS Shopping gir kortpoeng i tillegg. Kjøp i Klarna-appen betales med Klarna og gir ingen kortpoeng.
+ * EuroBonus-poeng per 100 kr i én butikk via beste vei, fordelt på kilde. Å betale rett med kortet gir alltid kortpoeng;
+ * Trumf og SAS Shopping gir kortpoeng i tillegg. Kjøp i Klarna-appen betales med Klarna og gir ingen kortpoeng.
  */
-function bestePer100(b: Butikk, d: PlanData, niva: Niva | null, kortPer100: number): number {
-  let best = kortPer100;
+function bestVei(b: Butikk, d: PlanData, niva: Niva | null, kortPer100: number, kortKilde: Kilde): Deler {
+  let best = ingenDeler();
+  best[kortKilde] = kortPer100;
   for (const p of d.programmer) {
     const s = b.satser[p.id];
     if (!s) continue;
     const v = gjeldende(s, d.idag);
-    let per100: number;
+    const vei = ingenDeler();
     if (harNivaer(p)) {
       if (!niva || niva.kanVeksle === false) continue;
-      per100 = (v * niva.butikkFaktor + niva.ekstraProsent) * kurs(p);
+      vei.klarna = (v * niva.butikkFaktor + niva.ekstraProsent) * kurs(p);
     } else {
-      per100 = (p.satsEnhet === 'prosent' ? v * kurs(p) : v) + (p.kortlag ? kortPer100 : 0);
+      vei[kildeFor(p)] = p.satsEnhet === 'prosent' ? v * kurs(p) : v;
+      if (p.kortlag) vei[kortKilde] += kortPer100;
     }
-    if (per100 > best) best = per100;
+    if (sum(vei) > sum(best)) best = vei;
   }
   return best;
 }
@@ -98,26 +108,33 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
   return losninger
     .map(({ niva, v }): Oppsett => {
       const kortPer100 = v.type === 'kort' ? v.kort.poengPer100 : v.type === 'klarna' ? v.per100 : 0;
+      // Med Klarna-kortet er kortpoengene Klarna-cashback.
+      const kortKilde: Kilde = v.type === 'klarna' ? 'klarna' : 'kort';
+      const deler = ingenDeler();
       // Netthandel: snittet av beste vei i hver butikk.
-      const snitt = butikker.length ? butikker.reduce((sum, b) => sum + bestePer100(b, d, niva, kortPer100), 0) / butikker.length : 0;
-      const netthandel = (f.netthandel * 12 * snitt) / 100;
-      // Dagligvare og annen kortbruk betales med kortet.
+      const nett = f.netthandel * 12;
+      for (const b of butikker) {
+        const vei = bestVei(b, d, niva, kortPer100, kortKilde);
+        for (const k of KILDER) deler[k] += (nett * vei[k]) / 100 / butikker.length;
+      }
+      // Dagligvare og annen kortbruk betales med kortet. Med et vanlig kort betales netthandelen også med kortet,
+      // så den teller mot taket og gir nivåpoeng.
       const kortForbruk = (f.dagligvare + f.kortbruk) * 12;
-      let kortPoeng = 0;
       let nivapoengAr = 0;
       if (v.type === 'kort') {
-        const medPoeng = Math.min(kortForbruk, v.kort.tak ?? Infinity);
-        kortPoeng = (medPoeng * v.kort.poengPer100) / 100;
-        nivapoengAr = ((v.kort.nivaapoengPer100 ?? 0) * medPoeng) / 100 + (v.kort.nivaapoengAndel ?? 0) * kortPoeng;
+        const tak = v.kort.tak ?? Infinity;
+        const medPoeng = Math.max(0, Math.min(kortForbruk, tak - nett));
+        deler.kort += (medPoeng * v.kort.poengPer100) / 100;
+        nivapoengAr = ((v.kort.nivaapoengPer100 ?? 0) * Math.min(nett + kortForbruk, tak)) / 100 + (v.kort.nivaapoengAndel ?? 0) * deler.kort;
       } else if (v.type === 'klarna') {
-        kortPoeng = (kortForbruk * v.per100) / 100;
+        deler.klarna += (kortForbruk * v.per100) / 100;
       }
       // Trumf-bonus på dagligvare (alle medlemmer), høyere med Trumf Kredittkort.
       const trumfProsent = v.type === 'trumf' ? v.kort.dagligvare : (d.dagligvareProsent ?? 0);
-      const dagligvare = trumf ? ((f.dagligvare * 12 * trumfProsent) / 100) * trumfKurs : 0;
+      if (trumf) deler.trumf += ((f.dagligvare * 12 * trumfProsent) / 100) * trumfKurs;
 
       const kostnadAr = (niva?.prisPerMnd ?? 0) * 12 + (v.type === 'kort' ? prisFremover(v.kort, d.idag) * 12 : v.type === 'trumf' ? v.kort.prisPerMnd * 12 : 0);
-      const poengAr = netthandel + dagligvare + kortPoeng;
+      const poengAr = sum(deler);
       const kortId = v.type === 'kort' ? v.kort.id : v.type === 'klarna' ? `${klarna?.id}-kort-${niva?.id}` : v.type === 'trumf' ? 'trumf-kredittkort' : null;
       return {
         id: `${niva?.id ?? 'ingen'}|${kortId ?? 'ingen'}`,
@@ -128,7 +145,7 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
         kostnadAr,
         ore: poengAr > 0 ? (kostnadAr * 100) / poengAr : null,
         nivapoengAr,
-        deler: { netthandel, dagligvare, kort: kortPoeng },
+        deler,
       };
     })
     .sort((a, c) => c.poengAr - a.poengAr || a.kostnadAr - c.kostnadAr);
