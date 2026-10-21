@@ -129,17 +129,24 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
       });
     }
   }
-  return ut.sort((a, c) => c.poengAr - a.poengAr);
+  return ut.sort((a, c) => c.poengAr - a.poengAr || a.kostnadAr - c.kostnadAr);
 }
 
-/** De tre som svarer på «hvilket oppsett passer meg?»: flest poeng, best verdi (billigst per poeng blant de sterke) og beste gratis. */
-export function velgOppsett(alle: Oppsett[]): { flest: Oppsett | null; verdi: Oppsett | null; gratis: Oppsett | null } {
+/**
+ * Stigen som svarer på «hvilket oppsett passer meg?»: flest poeng, nesten like mange for langt mindre (billigst med
+ * minst 95 % av toppen og høyst 80 % av prisen), best verdi (billigst per poeng blant dem med minst 60 % av toppen) og
+ * beste gratis. Samme oppsett kan fylle flere roller.
+ */
+export function velgOppsett(alle: Oppsett[]): { flest: Oppsett | null; nesten: Oppsett | null; verdi: Oppsett | null; gratis: Oppsett | null } {
   const flest = alle[0] ?? null;
-  if (!flest) return { flest: null, verdi: null, gratis: null };
+  if (!flest) return { flest: null, nesten: null, verdi: null, gratis: null };
+  const nesten = alle
+    .filter((o) => o.poengAr >= flest.poengAr * 0.95 && o.kostnadAr < flest.kostnadAr && o.kostnadAr <= flest.kostnadAr * 0.8)
+    .reduce<Oppsett | null>((best, o) => (!best || o.kostnadAr < best.kostnadAr || (o.kostnadAr === best.kostnadAr && o.poengAr > best.poengAr) ? o : best), null);
   const sterke = alle.filter((o) => o.poengAr >= flest.poengAr * 0.6 && o.ore !== null);
   const verdi = sterke.reduce<Oppsett | null>((best, o) => (!best || (o.ore ?? Infinity) < (best.ore ?? Infinity) ? o : best), null);
   const gratis = alle.find((o) => o.kostnadAr === 0 && o.poengAr > 0) ?? null;
-  return { flest, verdi: verdi && verdi.id !== flest.id ? verdi : null, gratis: gratis && gratis.id !== flest.id && gratis.id !== verdi?.id ? gratis : null };
+  return { flest, nesten, verdi, gratis };
 }
 
 /** Måneder til målet med et gitt antall poeng i året. null når det ikke kommer poeng. */

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Butikk, Kort, Program } from '../data/types';
-import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type PlanData } from './plan';
+import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type Oppsett, type PlanData } from './plan';
 
 const klarna = {
   id: 'klarna',
@@ -57,6 +57,17 @@ describe('beregnOppsett', () => {
     const { flest, gratis } = velgOppsett(alle);
     expect(flest?.id).toBe(alle[0].id);
     expect(gratis?.kostnadAr).toBe(0);
+  });
+
+  it('finner nesten like mange poeng for langt mindre penger', () => {
+    const o = (id: string, poengAr: number, kostnadAr: number) => ({ id, poengAr, kostnadAr, ore: (kostnadAr * 100) / poengAr }) as Oppsett;
+    const valg = velgOppsett([o('topp', 100_000, 12_000), o('nesten', 97_000, 6_000), o('dyr', 96_000, 11_000), o('billig', 60_000, 1_500), o('gratis', 40_000, 0)]);
+    expect(valg.flest?.id).toBe('topp');
+    expect(valg.nesten?.id).toBe('nesten');
+    expect(valg.verdi?.id).toBe('billig');
+    expect(valg.gratis?.id).toBe('gratis');
+    // Sparer for lite: ingen egen rad.
+    expect(velgOppsett([o('a', 100_000, 10_000), o('b', 96_000, 9_000)]).nesten).toBeNull();
   });
 });
 

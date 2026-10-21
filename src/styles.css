@@ -254,9 +254,9 @@ input::placeholder {
   color: var(--stempel);
 }
 
-/* Plan: stort tall, poengene fordelt, målet som flyrute, glidere, oppsett som stolper og poengbilletten på en skala */
+/* Plan: forbruket som glidere, målet, og stigen (flest poeng, mest for pengene, gratis) med poengene fordelt i stolpene */
 .plan h1 {
-  margin: 4px 0 0;
+  margin: 0;
   font-family: var(--font-tall);
   font-size: 34px;
   font-weight: 700;
@@ -264,219 +264,8 @@ input::placeholder {
   text-wrap: balance;
 }
 
-.plan h2.etikett {
-  margin: 32px 0 10px;
-}
-
-.plan-hero {
-  margin-top: 18px;
-}
-
-.plan-stort {
-  font-family: var(--font-tall);
-  font-size: 76px;
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-
-.plan-stort-under {
-  margin-top: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-.plan-oppsett {
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.plan-oppsett .muted {
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.plan-stabel {
-  display: flex;
-  gap: 2px;
-  height: 12px;
-  margin-top: 14px;
-}
-
-.plan-stabel span {
-  height: 100%;
-  transition: width 0.3s ease;
-}
-
-.plan-stabel span:first-child {
-  border-radius: 4px 0 0 4px;
-}
-
-.plan-stabel span:last-child {
-  border-radius: 0 4px 4px 0;
-}
-
-.plan-stabel span:only-child {
-  border-radius: 4px;
-}
-
-.plan-forklaring {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 13px;
-}
-
-.plan-forklaring li {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.plan-forklaring i {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.plan-forklaring span {
-  color: var(--mute);
-}
-
-.plan-reise {
-  margin-top: 26px;
-}
-
-.plan-rute {
-  position: relative;
-  height: 30px;
-  margin: 0 14px;
-}
-
-.plan-rute::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  border-top: 2px dashed var(--line);
-}
-
-.plan-rute-fylt {
-  position: absolute;
-  left: 0;
-  top: calc(50% - 1px);
-  height: 2px;
-  background: var(--gold);
-  transition: width 0.4s ease;
-}
-
-.plan-fly {
-  position: absolute;
-  top: 50%;
-  width: 30px;
-  height: 30px;
-  transform: translate(-50%, -50%);
-  fill: var(--ink);
-  transition: left 0.4s ease;
-}
-
-.plan-rute-mal {
-  position: absolute;
-  right: -7px;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  transform: translateY(-50%);
-  background: var(--paper);
-  border: 2px solid var(--gold);
-}
-
-.plan-rute-ender {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.plan-rute-ender .plan-tallfelt:last-child {
-  align-items: flex-end;
-  text-align: right;
-}
-
-.plan-tallfelt {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.plan-tallfelt .tall {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.plan-tallfelt .tall input {
-  width: 8ch;
-  text-align: left;
-  padding: 2px 0;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  font-family: var(--font-tall);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.plan-rute-ender .plan-tallfelt:last-child input {
-  text-align: right;
-}
-
-.plan-tallfelt .tall input:focus {
-  outline: none;
-  border-bottom-color: var(--gold);
-}
-
-.plan-tallfelt .enhet {
-  font-size: 12px;
-  color: var(--mute);
-}
-
-.plan-landing {
-  margin: 14px 0 0;
-  font-family: var(--font-tall);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--gold);
-}
-
-.plan-landing.muted {
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--mute);
-}
-
-.plan-niva {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 8px 16px;
-  margin-top: 16px;
-  font-size: 13px;
+.plan-forbruk {
+  margin-top: 20px;
 }
 
 .plan-glider {
@@ -540,44 +329,99 @@ input::placeholder {
   box-shadow: 0 0 0 4px var(--gold-fill);
 }
 
-.plan-sammenlign {
+.plan-mal {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.plan-tallfelt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plan-tallfelt .tall {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.plan-tallfelt .tall input {
+  width: 8ch;
+  text-align: left;
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-tall);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.plan-tallfelt .tall input:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+.plan-tallfelt .enhet {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.plan-nok {
+  margin: 10px 0 0;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.plan-stige-topp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-top: 32px;
+  font-size: 12px;
+}
+
+.plan-forklaring {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.plan-sammenlign li {
-  border-top: 1px solid var(--line);
+.plan-forklaring li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.plan-sammenlign button {
+.plan-forklaring i {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.plan-stige {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-stige li {
   display: grid;
-  gap: 5px;
-  width: 100%;
-  padding: 12px 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.plan-sammenlign button:focus-visible {
-  outline: 2px solid var(--gold-fill);
-  outline-offset: 2px;
-}
-
-.plan-merke {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-.plan-sammenlign button.aktiv .plan-merke {
-  color: var(--gold);
+  gap: 7px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
 }
 
 .plan-rad-topp {
@@ -593,45 +437,107 @@ input::placeholder {
 
 .plan-rad-tall {
   font-family: var(--font-tall);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 
-.plan-bar {
-  display: block;
-  height: 10px;
-}
-
-.plan-bar span {
-  display: block;
-  height: 100%;
-  border-radius: 0 4px 4px 0;
-  background: #c3cbdb;
+.plan-stabel {
+  display: flex;
+  gap: 2px;
+  min-width: 8px;
+  height: 12px;
   transition: width 0.3s ease;
 }
 
-.plan-sammenlign button.aktiv .plan-bar span {
-  background: var(--gold-fill);
+.plan-stabel span {
+  flex: 1 1 0;
+  height: 100%;
+  transition: flex-grow 0.3s ease;
 }
 
-.plan-sammenlign .muted {
+.plan-stabel span:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.plan-stabel span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.plan-stabel span:only-child {
+  border-radius: 4px;
+}
+
+.plan-rad-info {
+  margin: 0;
   font-size: 13px;
-}
-
-.plan-sammenlign.kompakt .plan-rad-tall {
-  font-size: 18px;
-}
-
-.plan-alle {
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.plan-alle summary {
   color: var(--mute);
+}
+
+.plan-rolle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.plan-dato {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.plan-fly-ikon {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  vertical-align: -2px;
+  fill: currentColor;
+}
+
+.plan-mer {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.plan-stige + .plan-mer {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.plan-mer summary {
+  font-weight: 600;
   cursor: pointer;
+}
+
+.plan-mer[open] summary {
+  margin-bottom: 14px;
+}
+
+.plan-alle-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.plan-alle-liste li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 0;
+}
+
+.plan-alle-liste b {
+  font-family: var(--font-tall);
+  font-size: 17px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .plan-billett {
@@ -647,7 +553,7 @@ input::placeholder {
 .plan-dom {
   margin: 0 0 34px;
   font-family: var(--font-tall);
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
 }
 
@@ -719,19 +625,14 @@ input::placeholder {
 }
 
 @media (max-width: 479px) {
-  .plan-stort {
-    font-size: 64px;
-  }
   .plan-billett {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .plan-stabel,
   .plan-stabel span,
-  .plan-rute-fylt,
-  .plan-fly,
-  .plan-bar span,
   .plan-merke-ref,
   .plan-merke-verdi {
     transition: none;

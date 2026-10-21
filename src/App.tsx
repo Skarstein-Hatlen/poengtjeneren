@@ -709,7 +709,6 @@ export default function App() {
   }
 
   if (rute.visning === 'plan') {
-    const klarnaP = programmer.find((p) => p.nivaer.some((n) => n.id === 'max'));
     return (
       <div className="app">
         {topp}
@@ -722,8 +721,6 @@ export default function App() {
             folger={folger[t.land] ?? []}
             kjente={Object.values(data.blackfriday.butikker[t.land] ?? {}).flat()}
             idag={IDAG}
-            mittKortId={t.kortId}
-            mittNivaId={klarnaP ? t.rader[klarnaP.id].valgId : null}
             samarbeid={samarbeid}
           />
         </div>
