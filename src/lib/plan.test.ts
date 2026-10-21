@@ -60,6 +60,14 @@ describe('beregnOppsett', () => {
     expect(elite.deler.klarna).toBe(0);
   });
 
+  it('teller 2 for 1-kuponger etter kortforbruket i året', () => {
+    const medKupong = { ...kort, toForEn: { grense: 150_000, antall: 2, omrade: 'verden' as const } };
+    const kuponger = (perMnd: number) => beregnOppsett({ ...data, kort: [medKupong] }, { netthandel: 0, dagligvare: 0, kortbruk: perMnd }).find((o) => o.id === 'ingen|elite')!.toForEn;
+    expect(kuponger(10_000)).toBe(0);
+    expect(kuponger(12_500)).toBe(1);
+    expect(kuponger(30_000)).toBe(2);
+  });
+
   it('holder SAS Shopping utenfor – den gir like mange poeng uansett kort', () => {
     const sas = { id: 'sas', kortnavn: 'SAS Shopping', satsEnhet: 'poengPer100', kortlag: true, konverteringer: [], nivaer: [] } as unknown as Program;
     const bareSas: Butikk = { id: 's', navn: 'S', satser: { sas: { verdi: 30, kilde: '' } } };

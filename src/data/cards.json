@@ -14,12 +14,18 @@
     },
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-classic/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "annonse": false,
     "sjekk": [
       "Medlemsavgift: 0 kr/mnd",
-      "10 Bonuspoeng per 100 kr"
-    ]
+      "10 Bonuspoeng per 100 kr",
+      "minst 100 000 kr med SAS Amex Classic"
+    ],
+    "toForEn": {
+      "grense": 100000,
+      "antall": 1,
+      "omrade": "europa"
+    }
   },
   {
     "id": "sas-amex-premium",
@@ -32,12 +38,18 @@
     "prisPerMnd": 150,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-premium/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "annonse": false,
     "sjekk": [
       "Medlemsavgift: 150 kr/mnd",
-      "15 Bonuspoeng per 100 kr"
-    ]
+      "15 Bonuspoeng per 100 kr",
+      "bruker 150 000 kr på SAS Amex Premium"
+    ],
+    "toForEn": {
+      "grense": 150000,
+      "antall": 1,
+      "omrade": "verden"
+    }
   },
   {
     "id": "sas-amex-elite",
@@ -50,14 +62,21 @@
     "prisPerMnd": 575,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/nb-no/kredittkort/sas-elite/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "nivaapoengPer100": 6,
     "annonse": false,
     "sjekk": [
       "Medlemsavgift: 575 kr/mnd",
       "20 Bonuspoeng per 100 kr",
-      "6 EuroBonus Nivåpoeng per 100 NOK"
-    ]
+      "6 EuroBonus Nivåpoeng per 100 NOK",
+      "bruker 150 000 kr på SAS Amex Elite",
+      "ytterligere 150 000 kr"
+    ],
+    "toForEn": {
+      "grense": 150000,
+      "antall": 2,
+      "omrade": "verden"
+    }
   },
   {
     "id": "sas-mastercard-world",
@@ -321,12 +340,18 @@
     },
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-classic/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "annonse": false,
     "sjekk": [
       "Medlemsavgift: 0kr/månad",
-      "10 EuroBonus Bonuspoäng/100kr"
-    ]
+      "10 EuroBonus Bonuspoäng/100kr",
+      "minst 100 000 kr per kalenderår med ditt SAS Amex Classic"
+    ],
+    "toForEn": {
+      "grense": 100000,
+      "antall": 1,
+      "omrade": "europa"
+    }
   },
   {
     "id": "se-sas-amex-premium",
@@ -339,12 +364,18 @@
     "prisPerMnd": 150,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-premium/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "annonse": false,
     "sjekk": [
       "150 kr/mån",
-      "15 Bonuspoäng per 100 kr"
-    ]
+      "15 Bonuspoäng per 100 kr",
+      "spenderar 150 000 kr på SAS Amex Premium"
+    ],
+    "toForEn": {
+      "grense": 150000,
+      "antall": 1,
+      "omrade": "verden"
+    }
   },
   {
     "id": "se-sas-amex-elite",
@@ -357,12 +388,21 @@
     "prisPerMnd": 575,
     "status": "verifisert",
     "kilde": "https://www.americanexpress.com/se/kreditkort/sas-eurobonus-elite/",
-    "sistVerifisert": "2026-09-24",
+    "sistVerifisert": "2026-10-21",
     "annonse": false,
     "sjekk": [
       "575 kr/mån",
-      "20 Bonuspoäng per 100 kr"
-    ]
+      "20 Bonuspoäng per 100 kr",
+      "spenderar 150 000 kr på SAS Amex Elite",
+      "ytterligare 150 000 kr",
+      "6 EuroBonus Nivåpoäng per 100 kr"
+    ],
+    "nivaapoengPer100": 6,
+    "toForEn": {
+      "grense": 150000,
+      "antall": 2,
+      "omrade": "verden"
+    }
   },
   {
     "id": "se-sas-mastercard-world",

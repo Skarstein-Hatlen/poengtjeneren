@@ -24,9 +24,9 @@ interface Props {
   onDel: (del: PlanDel) => void;
 }
 
-type Felt = 'netthandel' | 'dagligvare' | 'kortbruk' | 'har' | 'trenger' | 'kontant' | 'poeng' | 'avgifter';
+type Felt = 'netthandel' | 'dagligvare' | 'kortbruk' | 'har' | 'trenger' | 'ct' | 'kontant' | 'poeng' | 'avgifter';
 const NOKKEL = 'pointmaxing.plan';
-const STANDARD: Record<Felt, string> = { netthandel: '3000', dagligvare: '5000', kortbruk: '8000', har: '', trenger: '', kontant: '4500', poeng: '30000', avgifter: '900' };
+const STANDARD: Record<Felt, string> = { netthandel: '3000', dagligvare: '5000', kortbruk: '8000', har: '', trenger: '', ct: '', kontant: '4500', poeng: '30000', avgifter: '900' };
 const TILLATT = /^[\d\s.,]*$/;
 // Skyveknappene: største verdi og steg per felt (kr i måneden).
 const GLIDER: Partial<Record<Felt, { maks: number; steg: number }>> = {
@@ -224,10 +224,12 @@ function Poeng({
 
   const har = tall('har');
   const trenger = tall('trenger');
-  const mangler = Math.max(0, trenger - har);
+  // 2 for 1 (CT): to reiser for poengprisen til én, så reisen koster halvparten.
+  const reisePoeng = tall('ct') === 1 ? trenger / 2 : trenger;
+  const mangler = Math.max(0, reisePoeng - har);
   const manedFmt = new Intl.DateTimeFormat(SPRAK[land].locale, { month: 'long', year: 'numeric' });
   const reiseDato = (o: Oppsett) => {
-    if (trenger <= 0 || mangler === 0) return null;
+    if (reisePoeng <= 0 || mangler === 0) return null;
     const mnd = manederTil(mangler, o.poengAr);
     if (mnd === null) return null;
     const d = new Date(`${idag}T00:00:00Z`);
@@ -235,6 +237,7 @@ function Poeng({
     return manedFmt.format(d);
   };
   const kostnad = (o: Oppsett) => (o.kostnadAr > 0 ? T('planKostnad', { kr: fmtTall(Math.round(o.kostnadAr)) }) : T('planGratis'));
+  const toForEn = (o: Oppsett) => `${T(o.toForEnEuropa ? 'planToForEnEuropa' : 'planToForEn')}${o.toForEn > 1 ? ` ×${o.toForEn}` : ''}`;
 
   const glider = (f: Felt, etikett: string) => {
     const g = GLIDER[f]!;
@@ -274,9 +277,15 @@ function Poeng({
 
       <div className="plan-mal">
         {tallfelt('har', T('planHar'), T('planPoengEnhet'))}
-        {tallfelt('trenger', T('planTrenger'), T('planPoengEnhet'))}
+        <div>
+          {tallfelt('trenger', T('planTrenger'), T('planPoengEnhet'))}
+          <label className="plan-ct">
+            <input type="checkbox" id="plan-ct" checked={tall('ct') === 1} onChange={(e) => sett('ct', e.target.checked ? '1' : '')} />
+            {T('planCt')}
+          </label>
+        </div>
       </div>
-      {trenger > 0 && mangler === 0 && <p className="plan-nok">{T('planNokAllerede')}</p>}
+      {reisePoeng > 0 && mangler === 0 && <p className="plan-nok">{T('planNokAllerede')}</p>}
 
       <div className="plan-stige-topp">
         <ul className="plan-forklaring">
@@ -323,6 +332,12 @@ function Poeng({
                     <span className="plan-nivapoeng">{T('planNivapoeng', { n: fmtPoeng(o.nivapoengAr) })}</span>
                   </>
                 )}
+                {o.toForEn > 0 && (
+                  <>
+                    {' · '}
+                    <span className="plan-nivapoeng">{toForEn(o)}</span>
+                  </>
+                )}
                 {dato && (
                   <>
                     {' · '}
@@ -351,6 +366,7 @@ function Poeng({
                   {' · '}
                   {kostnad(o)}
                   {o.ore !== null && o.kostnadAr > 0 ? ` · ${T('planOre', { ore: enDesimal(o.ore) })}` : ''}
+                  {o.toForEn > 0 ? ` · ${toForEn(o)}` : ''}
                 </span>
               </span>
               <b>{fmtPoeng(o.poengAr)}</b>
@@ -363,7 +379,7 @@ function Poeng({
         <summary>{T('planSlikTittel')}</summary>
         <p className="graf-merknad">
           {T('planSlik', { butikker: folger.length ? T('planFulgte', { n: kurv.length }) : T('planKjente', { n: kurv.length }) })}
-          {harTrumf ? ` ${T('planSlikTrumf')}` : ''} {T('planAmex')}
+          {harTrumf ? ` ${T('planSlikTrumf')}` : ''} {T('planSlikCt')} {T('planAmex')}
         </p>
       </details>
     </>

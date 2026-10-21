@@ -38,6 +38,9 @@ export interface Oppsett {
   /** Øre per poeng: årskostnad delt på poeng. null uten poeng. */
   ore: number | null;
   nivapoengAr: number;
+  /** 2 for 1-kuponger i året med dette forbruket, og om de bare gjelder i Europa. */
+  toForEn: number;
+  toForEnEuropa: boolean;
   /** Poengene fordelt på hvor de kommer fra. «kort» er kredittkortets egne poeng; med Klarna-kortet er de Klarna-cashback. */
   deler: Deler;
 }
@@ -123,11 +126,14 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
       // så den teller mot taket og gir nivåpoeng.
       const kortForbruk = (f.dagligvare + f.kortbruk) * 12;
       let nivapoengAr = 0;
+      let toForEn = 0;
       if (v.type === 'kort') {
         const tak = v.kort.tak ?? Infinity;
         const medPoeng = Math.max(0, Math.min(kortForbruk, tak - nett));
         deler.kort += (medPoeng * v.kort.poengPer100) / 100;
         nivapoengAr = ((v.kort.nivaapoengPer100 ?? 0) * Math.min(nett + kortForbruk, tak)) / 100 + (v.kort.nivaapoengAndel ?? 0) * deler.kort;
+        // 2 for 1: alt som betales med kortet i løpet av året teller mot grensen.
+        if (v.kort.toForEn) toForEn = Math.min(v.kort.toForEn.antall, Math.floor((nett + kortForbruk) / v.kort.toForEn.grense));
       } else if (v.type === 'klarna') {
         deler.klarna += (kortForbruk * v.per100) / 100;
       }
@@ -147,6 +153,8 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
         kostnadAr,
         ore: poengAr > 0 ? (kostnadAr * 100) / poengAr : null,
         nivapoengAr,
+        toForEn,
+        toForEnEuropa: v.type === 'kort' && v.kort.toForEn?.omrade === 'europa',
         deler,
       };
     })

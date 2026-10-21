@@ -106,6 +106,11 @@ export interface Kort {
   nivaapoengPer100?: number;
   /** Nivåpoeng som andel av kortets bonuspoeng (SAS Mastercard Premium: 0,25). */
   nivaapoengAndel?: number;
+  /**
+   * 2 for 1: en kupong med halv poengpris for opptil to personer når kortforbruket i et kalenderår når `grense`,
+   * inntil `antall` kuponger (SAS Amex Elite: én til ved 2 × 150 000 kr). Classic gjelder bare i Europa.
+   */
+  toForEn?: { grense: number; antall: number; omrade: 'verden' | 'europa' };
 }
 
 /** Én butikks sats i ett program, hentet automatisk av scripts/hent-butikker.mjs. */

@@ -405,6 +405,23 @@ input::placeholder {
   color: var(--mute);
 }
 
+.plan-ct {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.plan-ct input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  color-scheme: light;
+  accent-color: var(--gold);
+}
+
 .plan-nok {
   margin: 10px 0 0;
   font-weight: 600;
@@ -517,6 +534,7 @@ input::placeholder {
 }
 
 .plan-nivapoeng {
+  white-space: nowrap;
   font-weight: 600;
   color: var(--ink);
 }
