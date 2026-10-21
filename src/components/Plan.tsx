@@ -133,7 +133,9 @@ function TallInput({ verdi, onEndre, ...rest }: { verdi: string; onEndre: (v: st
   );
 }
 
-const HVERDAG = hverdagJson as Partial<Record<Land, { rader: { id: string; prosent: number }[]; kort?: { navn: string; prisPerMnd: number; dagligvare: number } }>>;
+const HVERDAG = hverdagJson as Partial<
+  Record<Land, { rader: { id: string; prosent: number }[]; kort?: { navn: string; prisPerMnd: number; dagligvare: number; dagligvareMedTrumfPay?: number } }>
+>;
 const FLY = 'M50 4 Q58 8 58 26 L58 40 L94 62 L94 71 L58 59 L58 78 L74 91 L74 97 L57 92 L50 95 L43 92 L26 97 L26 91 L42 78 L42 59 L6 71 L6 62 L42 40 L42 26 Q42 8 50 4 Z';
 const enDesimal = (n: number) => fmtTall(Math.round(n * 10) / 10);
 
@@ -227,7 +229,11 @@ function Poeng({
           butikker: kurv,
           kort,
           dagligvareProsent: harTrumf ? (hverdag?.rader.find((r) => r.id === 'dagligvare')?.prosent ?? null) : null,
-          trumfKort: harTrumf && hverdag?.kort ? hverdag.kort : null,
+          // De som har Trumf Kredittkort, betaler med det i Trumf Pay: 1 % ekstra på dagligvare (trumf.no).
+          trumfKort:
+            harTrumf && hverdag?.kort
+              ? { ...hverdag.kort, navn: `${hverdag.kort.navn} med Trumf Pay`, dagligvare: hverdag.kort.dagligvareMedTrumfPay ?? hverdag.kort.dagligvare }
+              : null,
           idag,
         },
         { netthandel, dagligvare, kortbruk },
@@ -322,7 +328,8 @@ function Poeng({
         <div>
           {tallfelt('trenger', T('planTrenger'), T('planPoengEnhet'))}
           <label className="plan-ct">
-            <input type="checkbox" id="plan-ct" checked={tall('ct') === 1} onChange={(e) => sett('ct', e.target.checked ? '1' : '')} />
+            <input type="checkbox" role="switch" id="plan-ct" checked={tall('ct') === 1} onChange={(e) => sett('ct', e.target.checked ? '1' : '')} />
+            <span className="plan-bryter" aria-hidden="true" />
             {T('planCt')}
           </label>
         </div>
@@ -433,7 +440,7 @@ function Poeng({
 }
 
 /**
- * «Kjøp for penger eller poeng?»: det poengbilletten sparer deg i kroner, mot hva poengene er verdt som penger.
+ * «Book med penger eller poeng?»: det poengbilletten sparer deg i kroner, mot hva poengene er verdt som penger.
  * Trumf-bonus og Klarna-cashback kan tas ut som penger (trumf.no/automatisk-overforing-til-bankkonto,
  * klarna.com/se/kundservice/hur-tar-jag-ut-pengar-fran-min-klarna-saldo, klarna.com/dk/klarna-saldo); vekslingen som
  * gir flest poeng per krone setter prisen på et poeng.
