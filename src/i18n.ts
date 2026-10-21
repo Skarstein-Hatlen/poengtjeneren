@@ -56,7 +56,7 @@ export const TEKSTER = {
   planAmex: { nb: 'Amex tas ikke overalt – der bruker du et annet kort.', sv: 'Amex tas inte överallt – där använder du ett annat kort.', da: 'Amex tages ikke alle steder – der bruger du et andet kort.' },
   planAlle: { nb: "Alle oppsett (topp {n})", sv: "Alla upplägg (topp {n})", da: "Alle opsætninger (top {n})" },
   planSlik: { nb: "Slik regner vi: netthandelen fordeles likt på {butikker}, med beste program i hver. Kortet gir poeng på dagligvare og annen kortbruk, og på netthandel via programmer der du betaler med kortet. Velkomstbonuser og kampanjer er ikke med.", sv: "Så räknar vi: näthandeln fördelas lika på {butikker}, med bästa program i varje. Kortet ger poäng på övriga köp, och på näthandel via program där du betalar med kortet. Välkomstbonusar och kampanjer är inte med.", da: "Sådan regner vi: netkøbene fordeles ligeligt på {butikker}, med bedste program i hver. Kortet giver point på andet forbrug, og på netkøb via programmer, hvor du betaler med kortet. Velkomstbonusser og kampagner er ikke med." },
-  planSlikTrumf: { nb: "Dagligvare gir Trumf-bonus i tillegg (høyere med Trumf Kredittkort).", sv: "", da: "" },
+  planSlikTrumf: { nb: "Dagligvare gir Trumf-bonus i tillegg (høyere med Trumf Kredittkort).", sv: "Dagligvaror ger Trumf-bonus också (högre med Trumf Kredittkort).", da: "Dagligvarer giver Trumf-bonus oveni (højere med Trumf Kredittkort)." },
   planFulgte: { nb: "butikkene du følger ({n})", sv: "butikerna du följer ({n})", da: "butikkerne du følger ({n})" },
   planKjente: { nb: "{n} kjente nettbutikker", sv: "{n} kända nätbutiker", da: "{n} kendte netbutikker" },
   planBruk: { nb: "Er poengbilletten verdt det?", sv: "Är poängbiljetten värd det?", da: "Er pointbilletten det værd?" },
