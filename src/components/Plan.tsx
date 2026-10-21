@@ -138,6 +138,9 @@ const HVERDAG = hverdagJson as Partial<
 >;
 const FLY = 'M50 4 Q58 8 58 26 L58 40 L94 62 L94 71 L58 59 L58 78 L74 91 L74 97 L57 92 L50 95 L43 92 L26 97 L26 91 L42 78 L42 59 L6 71 L6 62 L42 40 L42 26 Q42 8 50 4 Z';
 const enDesimal = (n: number) => fmtTall(Math.round(n * 10) / 10);
+// «Penger eller poeng?»: over 10 øre per poeng regnes som god bruk; skalaen går til 20 øre (reiser over det står i enden).
+const GOD_ORE = 10;
+const SKALA_ORE = 20;
 
 /**
  * Planen i to sider. «Hvor mange poeng?»: forbruket gir poeng med ett kort til alt – flest, nesten like mange for
@@ -466,14 +469,16 @@ function Penger({
       .filter((x) => x.kurs > 0)
       .sort((a, b) => b.kurs - a.kurs)[0] ?? null;
   const bonus = kilde ? (kilde.p.id.startsWith('klarna') ? 'Klarna-cashback' : `${kilde.p.kortnavn}-bonus`) : '';
-  // Det poengene sparer deg i kroner, mot hva de samme poengene er verdt i kroner (et poeng = det du gir opp når
-  // Trumf-bonus eller Klarna-cashback, som kan tas ut som penger, veksles til poeng).
+  // Tre trinn for øre per poeng på denne reisen. Gulvet er det et poeng koster når Trumf-bonus eller Klarna-cashback,
+  // som kan tas ut som penger, veksles til poeng – under det er penger bedre. Over 10 øre er god bruk (tommelfingerregel
+  // hos Smarte Penger og Bytt.no).
   const verdiOre = oreVerdi(tall('kontant'), tall('poeng'), tall('avgifter'));
   const sparer = Math.max(0, tall('kontant') - tall('avgifter'));
-  const poengOre = kilde ? 100 / kilde.kurs : null;
-  const verdt = poengOre !== null ? (tall('poeng') * poengOre) / 100 : null;
-  const bruk = verdt !== null && sparer > verdt;
-  const skala = Math.max(1, sparer, verdt ?? 0);
+  const gulv = kilde ? 100 / kilde.kurs : null;
+  const god = Math.max(GOD_ORE, gulv ?? 0);
+  const trinn = verdiOre === null || gulv === null ? null : verdiOre < gulv ? 'betal' : verdiOre < god ? 'greit' : 'bruk';
+  const pos = (ore: number) => Math.min(100, (ore / SKALA_ORE) * 100);
+  const prikk = verdiOre !== null ? pos(verdiOre) : 0;
 
   return (
     <>
@@ -504,26 +509,32 @@ function Penger({
           </label>
         </div>
       </div>
-      {kilde && verdiOre !== null && poengOre !== null && verdt !== null && (
+      {kilde && verdiOre !== null && gulv !== null && trinn && (
         <div className="penger-svar" aria-live="polite">
-          <p className={`plan-dom${bruk ? ' god' : ''}`}>{bruk ? T('pengerBruk') : T('pengerBetal')}</p>
-          {(
-            [
-              [T('pengerSparer'), sparer, bruk],
-              [T('pengerVerdt', { poeng: fmtTall(tall('poeng')) }), verdt, !bruk],
-            ] as const
-          ).map(([etikett, kr, vinner]) => (
-            <div className="penger-rad" key={etikett}>
-              <div className="plan-rad-topp">
-                <span>{etikett}</span>
-                <span className="plan-rad-tall">{fmtTall(Math.round(kr))} kr</span>
-              </div>
-              <div className="penger-bar">
-                <span className={vinner ? 'vinner' : undefined} style={{ width: `${(kr / skala) * 100}%` }} />
-              </div>
+          <p className={`plan-dom ${trinn}`}>{T(trinn === 'bruk' ? 'pengerBruk' : trinn === 'greit' ? 'pengerGreit' : 'pengerBetal')}</p>
+          <div className="penger-rad">
+            <div className="plan-rad-topp">
+              <span>{T('pengerSparer')}</span>
+              <span className="plan-rad-tall">{fmtTall(Math.round(sparer))} kr</span>
             </div>
-          ))}
-          <p className="muted plan-tekst">{T('pengerForklaring', { ore: enDesimal(poengOre), bonus, kurs: fmtTall(kilde.kurs), v: enDesimal(verdiOre) })}</p>
+          </div>
+          {/* Skalaen: penger lønner seg (grå), greit (lys gull), bruk poengene (gull), og reisen som en prikk. */}
+          <div className="penger-skala" role="img" aria-label={T('pengerDenneReisen', { ore: enDesimal(verdiOre) })}>
+            <div className="penger-skala-linje">
+              <span className="sone betal" style={{ width: `${pos(gulv)}%` }} />
+              <span className="sone greit" style={{ left: `${pos(gulv)}%`, width: `${pos(god) - pos(gulv)}%` }} />
+              <span className="sone bruk" style={{ left: `${pos(god)}%` }} />
+              <span className={`penger-prikk${prikk < 20 ? ' venstre' : prikk > 80 ? ' hoyre' : ''}`} style={{ left: `${prikk}%` }}>
+                <span>{T('pengerDenneReisen', { ore: enDesimal(verdiOre) })}</span>
+              </span>
+            </div>
+            <div className="penger-skala-merker" aria-hidden="true">
+              <span style={{ left: `${pos(gulv)}%` }}>{enDesimal(gulv)}</span>
+              <span style={{ left: `${pos(god)}%` }}>{fmtTall(god)}</span>
+              <span className="slutt">{T('pengerOreEnhet', { n: SKALA_ORE })}</span>
+            </div>
+          </div>
+          <p className="muted plan-tekst">{T('pengerForklaring', { ore: enDesimal(gulv), bonus, kurs: fmtTall(kilde.kurs), god: fmtTall(god) })}</p>
         </div>
       )}
       {samarbeid && (
