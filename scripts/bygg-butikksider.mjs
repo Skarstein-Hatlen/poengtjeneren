@@ -72,7 +72,7 @@ const SPRAK = {
     og: 'og',
     planTittel: 'Hvilket EuroBonus-kort og Klarna-nivå passer deg? | Pointmaxing',
     planTekst: 'Skriv inn forbruket ditt og se hvilket kort og Klarna-nivå som gir flest EuroBonus-poeng for pengene, hvor fort du når målet og hva poengene er verdt.',
-    planH1: 'Hvilket oppsett gir deg mest?',
+    planH1: 'Hvor mange poeng kan du få?',
   },
   SE: {
     sti: 'se',
@@ -119,7 +119,7 @@ const SPRAK = {
     og: 'och',
     planTittel: 'Vilket EuroBonus-kort och Klarna-nivå passar dig? | Pointmaxing',
     planTekst: 'Skriv in dina utgifter och se vilket kort och Klarna-nivå som ger flest EuroBonus-poäng för pengarna, hur snabbt du når målet och vad poängen är värda.',
-    planH1: 'Vilket upplägg ger dig mest?',
+    planH1: 'Hur många poäng kan du få?',
   },
   DK: {
     sti: 'dk',
@@ -166,7 +166,7 @@ const SPRAK = {
     og: 'og',
     planTittel: 'Hvilket EuroBonus-kort og Klarna-niveau passer dig? | Pointmaxing',
     planTekst: 'Skriv dit forbrug og se, hvilket kort og Klarna-niveau der giver flest EuroBonus-point for pengene, hvor hurtigt du når målet, og hvad pointene er værd.',
-    planH1: 'Hvilken opsætning giver dig mest?',
+    planH1: 'Hvor mange point kan du få?',
   },
 };
 
