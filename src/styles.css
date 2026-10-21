@@ -254,7 +254,7 @@ input::placeholder {
   color: var(--stempel);
 }
 
-/* Plan: beste oppsett for forbruket, tid til målet og verdien av poengene */
+/* Plan: stort tall, poengene fordelt, målet som flyrute, glidere, oppsett som stolper og poengbilletten på en skala */
 .plan h1 {
   margin: 4px 0 0;
   font-family: var(--font-tall);
@@ -264,44 +264,311 @@ input::placeholder {
   text-wrap: balance;
 }
 
-.plan .ingress {
-  max-width: 58ch;
-  margin: 8px 0 0;
+.plan h2.etikett {
+  margin: 32px 0 10px;
+}
+
+.plan-hero {
+  margin-top: 18px;
+}
+
+.plan-stort {
+  font-family: var(--font-tall);
+  font-size: 76px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.plan-stort-under {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.plan-oppsett {
+  margin-top: 10px;
   font-size: 15px;
-  line-height: 1.5;
+  font-weight: 600;
+}
+
+.plan-oppsett .muted {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.plan-stabel {
+  display: flex;
+  gap: 2px;
+  height: 12px;
+  margin-top: 14px;
+}
+
+.plan-stabel span {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.plan-stabel span:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.plan-stabel span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.plan-stabel span:only-child {
+  border-radius: 4px;
+}
+
+.plan-forklaring {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.plan-forklaring li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plan-forklaring i {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.plan-forklaring span {
   color: var(--mute);
 }
 
-.plan h2.etikett {
-  margin: 28px 0 6px;
+.plan-reise {
+  margin-top: 26px;
 }
 
-.plan-hint {
-  margin: 4px 0 0;
+.plan-rute {
+  position: relative;
+  height: 30px;
+  margin: 0 14px;
+}
+
+.plan-rute::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px dashed var(--line);
+}
+
+.plan-rute-fylt {
+  position: absolute;
+  left: 0;
+  top: calc(50% - 1px);
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+.plan-fly {
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  fill: var(--ink);
+  transition: left 0.4s ease;
+}
+
+.plan-rute-mal {
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--paper);
+  border: 2px solid var(--gold);
+}
+
+.plan-rute-ender {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.plan-rute-ender .plan-tallfelt:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.plan-tallfelt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plan-tallfelt .tall {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.plan-tallfelt .tall input {
+  width: 8ch;
+  text-align: left;
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-tall);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.plan-rute-ender .plan-tallfelt:last-child input {
+  text-align: right;
+}
+
+.plan-tallfelt .tall input:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+.plan-tallfelt .enhet {
   font-size: 12px;
+  color: var(--mute);
 }
 
-/* Plan-feltene har lengre navn enn kalkulatoren: bredere kolonne, så de holder seg på én linje. */
-.plan .valg-rad.rad-kort {
-  grid-template-columns: minmax(0, 190px) auto minmax(0, 1fr);
+.plan-landing {
+  margin: 14px 0 0;
+  font-family: var(--font-tall);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
 }
 
-.plan-liste {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.plan-landing.muted {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--mute);
 }
 
-.plan-liste li {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2px 16px;
-  padding: 12px 0;
+.plan-niva {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px 16px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.plan-glider {
+  padding: 12px 0 14px;
   border-top: 1px solid var(--line);
 }
 
+.plan-glider label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plan-glider-verdi {
+  font-family: var(--font-tall);
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.plan-glider-verdi small {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.plan-glider input[type='range'] {
+  width: 100%;
+  height: 4px;
+  margin: 12px 0 0;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--gold) var(--fyll), var(--line) var(--fyll));
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.plan-glider input[type='range']::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.plan-glider input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.plan-glider input[type='range']:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--gold-fill);
+}
+
+.plan-sammenlign {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-sammenlign li {
+  border-top: 1px solid var(--line);
+}
+
+.plan-sammenlign button {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plan-sammenlign button:focus-visible {
+  outline: 2px solid var(--gold-fill);
+  outline-offset: 2px;
+}
+
 .plan-merke {
-  grid-column: 1 / -1;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -309,80 +576,166 @@ input::placeholder {
   color: var(--mute);
 }
 
-.plan-liste li.fremhevet .plan-merke {
+.plan-sammenlign button.aktiv .plan-merke {
   color: var(--gold);
+}
+
+.plan-rad-topp {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .plan-navn {
   font-weight: 600;
 }
 
-.plan-tall {
-  grid-row: 2 / span 2;
-  grid-column: 2;
-  text-align: right;
+.plan-rad-tall {
   font-family: var(--font-tall);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-.plan-tall small {
+.plan-bar {
   display: block;
-  margin-top: 2px;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--mute);
+  height: 10px;
 }
 
-.plan-liste .muted {
+.plan-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: #c3cbdb;
+  transition: width 0.3s ease;
+}
+
+.plan-sammenlign button.aktiv .plan-bar span {
+  background: var(--gold-fill);
+}
+
+.plan-sammenlign .muted {
   font-size: 13px;
 }
 
-.plan-mal {
-  grid-column: 1 / -1;
-  font-size: 13px;
-}
-
-.plan-liste.kompakt li {
-  padding: 8px 0;
-}
-
-.plan-liste.kompakt .plan-tall {
-  font-size: 20px;
+.plan-sammenlign.kompakt .plan-rad-tall {
+  font-size: 18px;
 }
 
 .plan-alle {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 13px;
 }
 
 .plan-alle summary {
+  color: var(--mute);
   cursor: pointer;
+}
+
+.plan-billett {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.plan-skala {
+  margin-top: 18px;
+}
+
+.plan-dom {
+  margin: 0 0 34px;
+  font-family: var(--font-tall);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.plan-dom.god {
+  color: var(--gold);
+}
+
+.plan-skala-linje {
+  position: relative;
+  height: 4px;
+  margin: 0 10px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.plan-merke-ref,
+.plan-merke-verdi {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.3s ease;
+}
+
+.plan-merke-ref {
+  border: 2px solid var(--mute);
+  background: var(--paper);
+}
+
+.plan-merke-verdi {
+  border: 2px solid var(--paper);
+  background: var(--gold-fill);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.plan-merke-ref span,
+.plan-merke-verdi span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.plan-merke-verdi span {
+  bottom: 20px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.plan-merke-ref span {
+  top: 20px;
+  color: var(--mute);
+}
+
+.plan-skala-ender {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 0;
+  font-size: 11px;
   color: var(--mute);
 }
 
 .plan-tekst {
-  margin: 0 0 6px;
-  font-size: 14px;
-}
-
-.plan-svar {
   margin: 10px 0 0;
-  font-size: 14px;
-  color: var(--mute);
-}
-
-.plan-svar strong {
-  color: var(--ink);
-}
-
-/* Av/på for push-varsler */
-.varsel {
-  margin: 8px 0 0;
   font-size: 13px;
+}
+
+@media (max-width: 479px) {
+  .plan-stort {
+    font-size: 64px;
+  }
+  .plan-billett {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-stabel span,
+  .plan-rute-fylt,
+  .plan-fly,
+  .plan-bar span,
+  .plan-merke-ref,
+  .plan-merke-verdi {
+    transition: none;
+  }
 }
 
 /* Er dette en god sats nå? */
