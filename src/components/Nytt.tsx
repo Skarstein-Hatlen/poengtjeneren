@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useState } from 'react';
 import type { Butikk, ButikkSats, Land, Maling, Partnerkampanje, Program } from '../data/types';
 import { dagerTekst, tekst } from '../i18n';
@@ -19,6 +20,8 @@ interface Props {
   per100: (program: Program, sats: ButikkSats) => number | null;
   onVelg: (butikk: Butikk) => void;
   onUkens: () => void;
+  /** Av/på for push-varsler, under «Dine butikker». */
+  varsel?: ReactNode;
 }
 
 const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(v)} %` : `${fmtTall(v)} p`);
@@ -27,7 +30,7 @@ const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(
 const ANDRE_SYNLIGE = 8;
 
 /** Kampanjer som pågår og satser som nylig endret seg – grunnen til å komme tilbake. */
-export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, onUkens }: Props) {
+export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, onUkens, varsel }: Props) {
   const [alleAndre, setAlleAndre] = useState(false);
   const kampanjer = finnKampanjer(butikker, programmer, idag);
   const endringer = finnEndringer(butikker, programmer, historikk, idag);
@@ -96,6 +99,7 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
       {dine.length > 0 && (
         <>
           <h2 className="etikett">{tekst(land, 'dineButikker')}</h2>
+          {varsel}
           <ul className="nytt-liste">
             {dine.map(({ b, best }) =>
               best

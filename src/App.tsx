@@ -19,6 +19,7 @@ import Sidevelger from './components/Sidevelger';
 import ProgramKolonne, { type RadTilstand } from './components/ProgramKolonne';
 import Ukens from './components/Ukens';
 import Utvidelse from './components/Utvidelse';
+import Varselknapp from './components/Varselknapp';
 import { hentData, LAND } from './data';
 import utvidelseInfo from './data/utvidelse.json';
 import type { Butikk, ButikkSats, Kort, Land, Niva, Program } from './data/types';
@@ -26,6 +27,7 @@ import { SPRAK, tekst, type Nokkel } from './i18n';
 import { gjeldendeSats, sokButikker } from './lib/butikker';
 import { beregnAlle, beregnProgram, butikkProsent, effektivProsent, type ProgramValg, type Resultat } from './lib/calc';
 import { lesFolger, skrivFolger, vekslFolg, type Folger } from './lib/folger';
+import { erAbonnert, oppdaterAbonnement, varslerKonfigurert } from './lib/varsler';
 import { vurderSats } from './lib/vurdering';
 import { fmtDato, fmtKr, fmtPoeng, fmtProsent, fmtTall, parseTall, settLocale } from './lib/format';
 
@@ -369,12 +371,20 @@ export default function App() {
   const velgLand = (land: Land) => setT((s) => medLand(s, land));
   const gaaTil = (visning: Visning) => setRute({ visning, kategori: null });
   const folgerHer = folger[t.land] ?? [];
-  const toggleFolg = (id: string) =>
+  const [visVarselTips, setVisVarselTips] = useState(false);
+  const toggleFolg = (id: string) => {
+    // Første stjerne uten varsler: tilby varsel på mobilen rett under.
+    if (!folgerHer.includes(id) && varslerKonfigurert && !erAbonnert()) setVisVarselTips(true);
     setFolger((f) => {
       const ny = vekslFolg(f, t.land, id);
       skrivFolger(ny);
       return ny;
     });
+  };
+  // Varslene følger stjernene: ny butikkliste til abonnementet når den endres.
+  useEffect(() => {
+    oppdaterAbonnement(folger).catch(() => undefined);
+  }, [folger]);
 
   /** Poeng per 100 kr for en butikksats med dagens valg (abonnement, overføring), uten kort. */
   const per100ForSats = (p: Program, sats: ButikkSats): number | null => {
@@ -644,6 +654,7 @@ export default function App() {
             per100={per100ForSats}
             onVelg={velgButikk}
             onUkens={() => gaaTil('ukens')}
+            varsel={<Varselknapp land={t.land} folger={folger} />}
           />
         </div>
       </div>
@@ -826,6 +837,7 @@ export default function App() {
               </button>
             </span>
           </div>
+          {visVarselTips && butikk && folgerHer.includes(butikk.id) && <Varselknapp land={t.land} folger={folger} />}
           <div className="valg-rad rad-kort">
             <label className="etikett" htmlFor="kort">
               {T('kort')}

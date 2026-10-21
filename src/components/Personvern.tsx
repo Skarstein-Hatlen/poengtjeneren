@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import analyse from '../data/analyse.json';
+import { varslerKonfigurert } from '../lib/varsler';
 
 const KONTAKT = 'kjetil@inora.no';
-const DATO = '24.09.2026';
+const DATO = varslerKonfigurert ? '21.10.2026' : '24.09.2026';
 
 /** Personvern for nettsiden og utvidelsen. Kort, fordi det er lite å fortelle: vi samler ikke inn noe. */
 export default function Personvern() {
@@ -13,13 +14,22 @@ export default function Personvern() {
   return (
     <section className="personvern">
       <h2 className="etikett">Personvern</h2>
-      <p className="ingress">Pointmaxing samler ikke inn personopplysninger, verken på nettsiden eller i utvidelsen. Sist oppdatert {DATO}.</p>
+      <p className="ingress">
+        Pointmaxing samler ikke inn personopplysninger, verken på nettsiden eller i utvidelsen{varslerKonfigurert ? ' – bortsett fra en anonym push-adresse hvis du selv slår på varsler' : ''}. Sist oppdatert {DATO}.
+      </p>
 
       <h3>Nettsiden pointmaxing.no</h3>
       <ul>
         <li>Nettsiden setter ingen informasjonskapsler og sporer deg ikke.</li>
         <li>Valgene dine (beløp, kort, Klarna-nivå, butikker du følger) lagres bare i nettleseren din (localStorage) og sendes ingen steder.</li>
         <li>Siden ligger på GitHub Pages og henter skrifttyper fra Google Fonts. Disse tjenestene ser IP-adressen din når siden lastes, slik alle nettsider gjør.</li>
+        {varslerKonfigurert && (
+          <li>
+            Varsler er valgfrie. Slår du dem på, lagrer vi push-adressen nettleseren din gir oss og hvilke butikker du følger, hos Supabase i EU, for å sende deg en melding
+            når satsen går opp. Ingen navn, e-post eller annet om deg. Meldingene går gjennom nettleserens egen push-tjeneste (Google, Apple eller Mozilla). Slår du av
+            varslene, slettes adressen hos oss.
+          </li>
+        )}
         {analyse.cloudflareToken && (
           <li>Besøkstall telles uten informasjonskapsler med Cloudflare Web Analytics: antall besøk og hvilke sider, ingen personopplysninger.</li>
         )}

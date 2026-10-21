@@ -56,6 +56,13 @@ jobs:
         run: |
           gh label create nye-kampanjer --color 0E8A16 --description "Nye eller økte kampanjer – klare til å deles" 2>/dev/null || true
           gh issue create --title "Nye kampanjer $(date -u +%d.%m.%Y)" --label nye-kampanjer --body-file nyekampanjer.txt
+      # Push-varsler til dem som følger butikker der satsen gikk opp i dag (gjør ingenting før Supabase og VAPID er satt opp).
+      - name: Send push-varsler
+        continue-on-error: true
+        env:
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          VAPID_PRIVAT: ${{ secrets.VAPID_PRIVAT }}
+        run: node scripts/send-varsler.mjs
       - run: npm run utvidelse
       - run: npm test
       - name: Commit og push hvis satsene endret seg

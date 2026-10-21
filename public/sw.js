@@ -46,3 +46,34 @@ self.addEventListener('fetch', (e) => {
     );
   }
 });
+
+// Push-varsler (scripts/send-varsler.mjs): vis meldingen, og åpne butikken når den trykkes.
+self.addEventListener('push', (e) => {
+  let d = {};
+  try {
+    d = e.data ? e.data.json() : {};
+  } catch {
+    d = { tekst: e.data ? e.data.text() : '' };
+  }
+  e.waitUntil(
+    self.registration.showNotification(d.tittel || 'Pointmaxing', {
+      body: d.tekst || '',
+      icon: '/favicon-192.png',
+      badge: '/favicon-192.png',
+      tag: d.tag,
+      data: { url: d.url || '/' },
+    }),
+  );
+});
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  const url = new URL(e.notification.data?.url || '/', self.location.origin).href;
+  e.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((vinduer) => {
+      const apent = vinduer.find((v) => v.url.startsWith(self.location.origin));
+      if (apent) return apent.navigate(url).then((v) => (v ?? apent).focus());
+      return self.clients.openWindow(url);
+    }),
+  );
+});

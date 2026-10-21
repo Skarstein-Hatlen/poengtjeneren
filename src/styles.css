@@ -379,6 +379,12 @@ input::placeholder {
   color: var(--ink);
 }
 
+/* Av/på for push-varsler */
+.varsel {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
 /* Er dette en god sats nå? */
 .vurdering {
   margin: 12px 0 0;
