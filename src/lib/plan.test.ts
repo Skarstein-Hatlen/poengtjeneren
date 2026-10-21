@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Butikk, Kort, Program } from '../data/types';
-import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type Oppsett, type PlanData } from './plan';
+import { beregnOppsett, manederTil, manederTilToForEn, oreVerdi, velgOppsett, type Oppsett, type PlanData } from './plan';
 
 const klarna = {
   id: 'klarna',
@@ -102,6 +102,17 @@ describe('beregnOppsett', () => {
     const o = (id: string, poengAr: number, nivapoengAr: number) => ({ id, poengAr, kostnadAr: 1000, ore: 1, nivapoengAr }) as Oppsett;
     expect(velgOppsett([o('klarna', 100_000, 0), o('elite', 90_000, 13_000), o('mc', 80_000, 8_000)]).nivapoeng?.id).toBe('elite');
     expect(velgOppsett([o('klarna', 100_000, 0)]).nivapoeng).toBeNull();
+  });
+});
+
+describe('manederTilToForEn', () => {
+  it('teller forbruket i kalenderåret og nullstiller 1. januar', () => {
+    // Fra oktober med 50 000 kr i måneden: oktober, november, desember = 150 000.
+    expect(manederTilToForEn(150_000, 50_000, '2026-10-21')).toBe(3);
+    // 22 000 kr i måneden rekker ikke før nyttår, og starter på nytt i januar: juli = 7 × 22 000.
+    expect(manederTilToForEn(150_000, 22_000, '2026-10-21')).toBe(10);
+    // Et helt år er ikke nok.
+    expect(manederTilToForEn(150_000, 10_000, '2026-10-21')).toBeNull();
   });
 });
 

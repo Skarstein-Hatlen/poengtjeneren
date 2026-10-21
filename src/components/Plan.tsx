@@ -28,11 +28,17 @@ type Felt = 'netthandel' | 'dagligvare' | 'kortbruk' | 'har' | 'trenger' | 'ct' 
 const NOKKEL = 'pointmaxing.plan';
 const STANDARD: Record<Felt, string> = { netthandel: '3000', dagligvare: '5000', kortbruk: '8000', har: '', trenger: '', ct: '', kontant: '4500', poeng: '30000', avgifter: '900' };
 const TILLATT = /^[\d\s.,]*$/;
-// Skyveknappene: største verdi og steg per felt (kr i måneden).
-const GLIDER: Partial<Record<Felt, { maks: number; steg: number }>> = {
-  netthandel: { maks: 20_000, steg: 500 },
-  dagligvare: { maks: 15_000, steg: 500 },
-  kortbruk: { maks: 60_000, steg: 1_000 },
+// Skyveknappene (kr i måneden): fine steg der folk flest er, grovere steg opp mot de store beløpene.
+// Hvert trinn er [opp til, steg]; hvert hakk på glideren er ett steg, også med piltastene.
+const trinn = (...deler: [number, number][]) => {
+  const verdier = [0];
+  for (const [til, steg] of deler) while (verdier[verdier.length - 1] < til) verdier.push(verdier[verdier.length - 1] + steg);
+  return verdier;
+};
+const GLIDER: Partial<Record<Felt, number[]>> = {
+  netthandel: trinn([20_000, 500]),
+  dagligvare: trinn([15_000, 500], [40_000, 1_000]),
+  kortbruk: trinn([20_000, 1_000], [100_000, 2_500], [250_000, 10_000]),
 };
 // Hvor poengene kommer fra, i stolpene. De tre fargene er validert sammen mot billetten. SAS Shopping er ikke med:
 // den gir like mange poeng uansett kort.
@@ -224,24 +230,33 @@ function Poeng({
 
   const har = tall('har');
   const trenger = tall('trenger');
-  // 2 for 1 (CT): to reiser for poengprisen til én, så reisen koster halvparten.
-  const reisePoeng = tall('ct') === 1 ? trenger / 2 : trenger;
-  const mangler = Math.max(0, reisePoeng - har);
+  const nokAllerede = trenger > 0 && har >= trenger;
   const manedFmt = new Intl.DateTimeFormat(SPRAK[land].locale, { month: 'long', year: 'numeric' });
   const reiseDato = (o: Oppsett) => {
-    if (reisePoeng <= 0 || mangler === 0) return null;
-    const mnd = manederTil(mangler, o.poengAr);
+    if (trenger <= 0 || nokAllerede) return null;
+    const mndTil = (poeng: number) => (poeng > har ? manederTil(poeng - har, o.poengAr) : 0);
+    let mnd = mndTil(trenger);
+    let ct = false;
+    // 2 for 1 (CT) bare med kort som gir det: halve poengene, men tidligst fra måneden kupongen kommer – og bare når
+    // det er før du har nok til full pris.
+    const halv = tall('ct') === 1 && o.toForEnMnd !== null ? mndTil(trenger / 2) : null;
+    if (halv !== null && o.toForEnMnd !== null) {
+      const medCt = Math.max(halv, o.toForEnMnd);
+      if (mnd === null || medCt < mnd) [mnd, ct] = [medCt, true];
+    }
     if (mnd === null) return null;
     const d = new Date(`${idag}T00:00:00Z`);
     d.setUTCMonth(d.getUTCMonth() + mnd);
-    return manedFmt.format(d);
+    return T(ct ? 'planReisCt' : 'planReis', { dato: manedFmt.format(d) });
   };
   const kostnad = (o: Oppsett) => (o.kostnadAr > 0 ? T('planKostnad', { kr: fmtTall(Math.round(o.kostnadAr)) }) : T('planGratis'));
   const toForEn = (o: Oppsett) => `${T(o.toForEnEuropa ? 'planToForEnEuropa' : 'planToForEn')}${o.toForEn > 1 ? ` ×${o.toForEn}` : ''}`;
 
   const glider = (f: Felt, etikett: string) => {
-    const g = GLIDER[f]!;
-    const v = Math.min(g.maks, tall(f));
+    const verdier = GLIDER[f]!;
+    // Nærmeste trinn til det som er lagret (også fra før glideren fikk trinn).
+    const hakk = verdier.reduce((best, x, i) => (Math.abs(x - tall(f)) < Math.abs(verdier[best] - tall(f)) ? i : best), 0);
+    const v = verdier[hakk];
     return (
       <div className="plan-glider" key={f}>
         <label htmlFor={`plan-${f}`}>
@@ -254,12 +269,12 @@ function Poeng({
           id={`plan-${f}`}
           type="range"
           min={0}
-          max={g.maks}
-          step={g.steg}
-          value={v}
+          max={verdier.length - 1}
+          step={1}
+          value={hakk}
           aria-valuetext={`${fmtTall(v)} kr`}
-          style={{ '--fyll': `${(v / g.maks) * 100}%` } as CSSProperties}
-          onChange={(e) => sett(f, e.target.value)}
+          style={{ '--fyll': `${(hakk / (verdier.length - 1)) * 100}%` } as CSSProperties}
+          onChange={(e) => sett(f, String(verdier[Number(e.target.value)]))}
         />
       </div>
     );
@@ -285,7 +300,7 @@ function Poeng({
           </label>
         </div>
       </div>
-      {reisePoeng > 0 && mangler === 0 && <p className="plan-nok">{T('planNokAllerede')}</p>}
+      {nokAllerede && <p className="plan-nok">{T('planNokAllerede')}</p>}
 
       <div className="plan-stige-topp">
         <ul className="plan-forklaring">
@@ -345,7 +360,7 @@ function Poeng({
                       <svg className="plan-fly-ikon" viewBox="0 0 100 100" aria-hidden="true">
                         <path d={FLY} transform="rotate(90 50 50)" />
                       </svg>
-                      {T('planReis', { dato })}
+                      {dato}
                     </span>
                   </>
                 )}

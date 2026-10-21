@@ -41,6 +41,8 @@ export interface Oppsett {
   /** 2 for 1-kuponger i året med dette forbruket, og om de bare gjelder i Europa. */
   toForEn: number;
   toForEnEuropa: boolean;
+  /** Måneder fra nå til den første 2 for 1-kupongen, eller null når kortet ikke gir en med dette forbruket. */
+  toForEnMnd: number | null;
   /** Poengene fordelt på hvor de kommer fra. «kort» er kredittkortets egne poeng; med Klarna-kortet er de Klarna-cashback. */
   deler: Deler;
 }
@@ -127,13 +129,17 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
       const kortForbruk = (f.dagligvare + f.kortbruk) * 12;
       let nivapoengAr = 0;
       let toForEn = 0;
+      let toForEnMnd: number | null = null;
       if (v.type === 'kort') {
         const tak = v.kort.tak ?? Infinity;
         const medPoeng = Math.max(0, Math.min(kortForbruk, tak - nett));
         deler.kort += (medPoeng * v.kort.poengPer100) / 100;
         nivapoengAr = ((v.kort.nivaapoengPer100 ?? 0) * Math.min(nett + kortForbruk, tak)) / 100 + (v.kort.nivaapoengAndel ?? 0) * deler.kort;
         // 2 for 1: alt som betales med kortet i løpet av året teller mot grensen.
-        if (v.kort.toForEn) toForEn = Math.min(v.kort.toForEn.antall, Math.floor((nett + kortForbruk) / v.kort.toForEn.grense));
+        if (v.kort.toForEn) {
+          toForEn = Math.min(v.kort.toForEn.antall, Math.floor((nett + kortForbruk) / v.kort.toForEn.grense));
+          toForEnMnd = manederTilToForEn(v.kort.toForEn.grense, (nett + kortForbruk) / 12, d.idag);
+        }
       } else if (v.type === 'klarna') {
         deler.klarna += (kortForbruk * v.per100) / 100;
       }
@@ -155,6 +161,7 @@ export function beregnOppsett(d: PlanData, f: Forbruk): Oppsett[] {
         nivapoengAr,
         toForEn,
         toForEnEuropa: v.type === 'kort' && v.kort.toForEn?.omrade === 'europa',
+        toForEnMnd,
         deler,
       };
     })
@@ -183,6 +190,23 @@ export function velgOppsett(alle: Oppsett[]): {
   const gratis = alle.find((o) => o.kostnadAr === 0 && o.poengAr > 0) ?? null;
   const nivapoeng = alle.reduce<Oppsett | null>((best, o) => (o.nivapoengAr > (best?.nivapoengAr ?? 0) ? o : best), null);
   return { flest, nesten, verdi, gratis, nivapoeng };
+}
+
+/**
+ * Måneder fra nå til kortforbruket i ett kalenderår når 2 for 1-grensen, med samme forbruk hver måned fra og med
+ * denne. Forbruket teller fra 1. januar, så det som er brukt før nyttår, teller ikke. null når et helt år ikke er nok.
+ */
+export function manederTilToForEn(grense: number, perMnd: number, idag: string): number | null {
+  if (perMnd <= 0 || perMnd * 12 < grense) return null;
+  let maned = Number(idag.slice(5, 7));
+  let sum = 0;
+  for (let n = 1; n <= 24; n++) {
+    sum += perMnd;
+    if (sum >= grense) return n;
+    maned = maned === 12 ? 1 : maned + 1;
+    if (maned === 1) sum = 0;
+  }
+  return null;
 }
 
 /** Måneder til målet med et gitt antall poeng i året. null når det ikke kommer poeng. */
