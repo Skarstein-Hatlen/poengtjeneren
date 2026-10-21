@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactElement } from 'react';
 import hverdagJson from '../data/hverdag.json';
 import type { Butikk, Kort, Land, Program, Samarbeidspartner } from '../data/types';
 import { SPRAK, tekst } from '../i18n';
 import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
 import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type Oppsett } from '../lib/plan';
+
+export type PlanDel = 'poeng' | 'penger';
 
 interface Props {
   land: Land;
@@ -16,11 +18,15 @@ interface Props {
   kjente: string[];
   idag: string;
   samarbeid: Samarbeidspartner | null;
+  /** Hvilken av de to sidene: «Hvor mange poeng?» eller «Penger eller poeng?». */
+  del: PlanDel;
+  sti: (del: PlanDel) => string;
+  onDel: (del: PlanDel) => void;
 }
 
 type Felt = 'netthandel' | 'dagligvare' | 'kortbruk' | 'har' | 'trenger' | 'kontant' | 'poeng' | 'avgifter';
 const NOKKEL = 'pointmaxing.plan';
-const STANDARD: Record<Felt, string> = { netthandel: '3000', dagligvare: '5000', kortbruk: '8000', har: '', trenger: '', kontant: '', poeng: '', avgifter: '' };
+const STANDARD: Record<Felt, string> = { netthandel: '3000', dagligvare: '5000', kortbruk: '8000', har: '', trenger: '', kontant: '4500', poeng: '30000', avgifter: '900' };
 const TILLATT = /^[\d\s.,]*$/;
 // Skyveknappene: største verdi og steg per felt (kr i måneden).
 const GLIDER: Partial<Record<Felt, { maks: number; steg: number }>> = {
@@ -85,9 +91,13 @@ function GlidendeTall({ verdi }: { verdi: number }) {
 
 const HVERDAG = hverdagJson as Partial<Record<Land, { rader: { id: string; prosent: number }[]; kort?: { navn: string; prisPerMnd: number; dagligvare: number } }>>;
 const FLY = 'M50 4 Q58 8 58 26 L58 40 L94 62 L94 71 L58 59 L58 78 L74 91 L74 97 L57 92 L50 95 L43 92 L26 97 L26 91 L42 78 L42 59 L6 71 L6 62 L42 40 L42 26 Q42 8 50 4 Z';
+const enDesimal = (n: number) => fmtTall(Math.round(n * 10) / 10);
 
-/** Planen: hva forbruket ditt gir av poeng på det meste, nesten like mye for mindre, mest for pengene og gratis – og når du har nok til reisen. */
-export default function Plan({ land, programmer, butikker, kort, folger, kjente, idag, samarbeid }: Props) {
+/**
+ * Planen i to sider. «Hvor mange poeng?»: forbruket gir poeng med ett kort til alt – flest, nesten like mange for
+ * mindre, mest for pengene og gratis – og når du kan reise. «Penger eller poeng?»: er poengbilletten verdt poengene?
+ */
+export default function Plan({ land, programmer, butikker, kort, folger, kjente, idag, samarbeid, del, sti, onDel }: Props) {
   const [felt, setFelt] = useState(lesLagret);
   useEffect(() => {
     try {
@@ -99,14 +109,82 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
   const T = (n: Parameters<typeof tekst>[1], v?: Record<string, string | number>) => tekst(land, n, v);
   const tall = (f: Felt) => parseTall(felt[f]);
   const sett = (f: Felt, v: string) => setFelt((s) => ({ ...s, [f]: v }));
+
+  const tallfelt = (f: Felt, etikett: string, enhet: string) => (
+    <label className="plan-tallfelt" key={f}>
+      <span className="etikett">{etikett}</span>
+      <span className="tall">
+        <input
+          id={`plan-${f}`}
+          type="text"
+          inputMode="decimal"
+          autoComplete="off"
+          placeholder="0"
+          value={felt[f] ? fmtTall(parseTall(felt[f])) : ''}
+          onChange={(e) => {
+            if (TILLATT.test(e.target.value)) sett(f, e.target.value.replace(/\s/g, ''));
+          }}
+        />
+        <span className="enhet">{enhet}</span>
+      </span>
+    </label>
+  );
+
+  return (
+    <section className="plan">
+      <nav className="plan-faner" aria-label={T('navPlan')}>
+        {(['poeng', 'penger'] as const).map((d) => (
+          <a
+            key={d}
+            href={sti(d)}
+            aria-current={d === del ? 'page' : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              onDel(d);
+            }}
+          >
+            {T(d === 'poeng' ? 'planFanePoeng' : 'planFanePenger')}
+          </a>
+        ))}
+      </nav>
+      {del === 'poeng' ? (
+        <Poeng land={land} programmer={programmer} butikker={butikker} kort={kort} folger={folger} kjente={kjente} idag={idag} T={T} tall={tall} sett={sett} tallfelt={tallfelt} />
+      ) : (
+        <Penger programmer={programmer} samarbeid={samarbeid} T={T} tall={tall} tallfelt={tallfelt} />
+      )}
+    </section>
+  );
+}
+
+interface Felles {
+  T: (n: Parameters<typeof tekst>[1], v?: Record<string, string | number>) => string;
+  tall: (f: Felt) => number;
+  tallfelt: (f: Felt, etikett: string, enhet: string) => ReactElement;
+}
+
+/** «Hvor mange poeng kan du få?»: glidere for forbruket, målet, og stigen med én løsning per rad. */
+function Poeng({
+  land,
+  programmer,
+  butikker,
+  kort,
+  folger,
+  kjente,
+  idag,
+  T,
+  tall,
+  sett,
+  tallfelt,
+}: Felles & Pick<Props, 'land' | 'programmer' | 'butikker' | 'kort' | 'folger' | 'kjente' | 'idag'> & { sett: (f: Felt, v: string) => void }) {
   const hverdag = HVERDAG[land];
   const harTrumf = programmer.some((p) => p.id === 'trumf') && Boolean(hverdag);
-
   const kurv = useMemo(() => {
     const ider = folger.length ? folger : kjente;
     return butikker.filter((b) => ider.includes(b.id));
   }, [butikker, folger, kjente]);
-
+  const netthandel = tall('netthandel');
+  const dagligvare = harTrumf ? tall('dagligvare') : 0;
+  const kortbruk = tall('kortbruk');
   const alle = useMemo(
     () =>
       beregnOppsett(
@@ -118,15 +196,14 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
           trumfKort: harTrumf && hverdag?.kort ? hverdag.kort : null,
           idag,
         },
-        { netthandel: tall('netthandel'), dagligvare: harTrumf ? tall('dagligvare') : 0, kortbruk: tall('kortbruk') },
+        { netthandel, dagligvare, kortbruk },
       ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [programmer, kurv, kort, idag, felt.netthandel, felt.dagligvare, felt.kortbruk, harTrumf],
+    [programmer, kurv, kort, idag, harTrumf, hverdag, netthandel, dagligvare, kortbruk],
   );
   const { flest, nesten, verdi, gratis } = velgOppsett(alle);
-  const navn = (o: Oppsett) => [o.kortNavn, o.nivaNavn].filter(Boolean).join(' + ') || T('planUtenKort');
+  const navn = (o: Oppsett) => o.navn ?? T('planUtenKort');
 
-  // Stigen: flest poeng, nesten like mange for langt mindre, mest for pengene og gratis. Samme oppsett i flere roller blir én rad.
+  // Stigen: flest poeng, nesten like mange for langt mindre, mest for pengene og gratis. Samme løsning i flere roller blir én rad.
   const rader: { roller: string[]; o: Oppsett }[] = [];
   for (const [rolle, o] of [
     [T('planFlest'), flest],
@@ -155,6 +232,7 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
     d.setUTCMonth(d.getUTCMonth() + mnd);
     return manedFmt.format(d);
   };
+  const kostnad = (o: Oppsett) => (o.kostnadAr > 0 ? T('planKostnad', { kr: fmtTall(Math.round(o.kostnadAr)) }) : T('planGratis'));
 
   const glider = (f: Felt, etikett: string) => {
     const g = GLIDER[f]!;
@@ -182,34 +260,8 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
     );
   };
 
-  const tallfelt = (f: Felt, etikett: string, enhet: string) => (
-    <label className="plan-tallfelt" key={f}>
-      <span className="etikett">{etikett}</span>
-      <span className="tall">
-        <input
-          id={`plan-${f}`}
-          type="text"
-          inputMode="decimal"
-          autoComplete="off"
-          placeholder="0"
-          value={felt[f] ? fmtTall(parseTall(felt[f])) : ''}
-          onChange={(e) => {
-            if (TILLATT.test(e.target.value)) sett(f, e.target.value.replace(/\s/g, ''));
-          }}
-        />
-        <span className="enhet">{enhet}</span>
-      </span>
-    </label>
-  );
-
-  const kostnad = (o: Oppsett) => (o.kostnadAr > 0 ? T('planKostnad', { kr: fmtTall(Math.round(o.kostnadAr)) }) : T('planGratis'));
-  const verdiOre = oreVerdi(tall('kontant'), tall('poeng'), tall('avgifter'));
-  const referanse = verdi ?? flest;
-  const refOre = referanse && referanse.kostnadAr > 0 ? referanse.ore : 0;
-  const skalaMaks = Math.max(20, Math.ceil(((verdiOre ?? 0) * 1.25) / 5) * 5, Math.ceil(((refOre ?? 0) * 1.25) / 5) * 5);
-
   return (
-    <section className="plan">
+    <>
       <h1>{T('planTittel')}</h1>
 
       <div className="plan-forbruk">
@@ -282,57 +334,16 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
       </ol>
 
       <details className="plan-mer">
-        <summary>{T('planBruk')}</summary>
-        <div className="plan-billett">
-          {tallfelt('kontant', T('planKontant'), 'kr')}
-          {tallfelt('poeng', T('planPoeng'), T('planPoengEnhet'))}
-          {tallfelt('avgifter', T('planAvgifter'), 'kr')}
-        </div>
-        {verdiOre !== null && (
-          <div className="plan-skala">
-            <p className={`plan-dom ${refOre !== null && verdiOre >= refOre ? 'god' : 'darlig'}`}>
-              {refOre !== null && verdiOre >= refOre ? T('planDomGod') : T('planDomDarlig')}
-            </p>
-            <div className="plan-skala-linje" aria-hidden="true">
-              {refOre !== null && refOre > 0 && (
-                <span className="plan-merke-ref" style={{ left: `${(refOre / skalaMaks) * 100}%` }}>
-                  <span>{T('planKosterDeg', { ore: fmtTall(Math.round(refOre * 10) / 10) })}</span>
-                </span>
-              )}
-              <span className="plan-merke-verdi" style={{ left: `${Math.min(1, verdiOre / skalaMaks) * 100}%` }}>
-                <span>{T('planDenneBilletten', { ore: fmtTall(Math.round(verdiOre * 10) / 10) })}</span>
-              </span>
-            </div>
-            <div className="plan-skala-ender">
-              <span>0 øre</span>
-              <span>{skalaMaks} øre</span>
-            </div>
-            <p className="muted plan-tekst">
-              {T('planVerdiPer', { v: fmtTall(Math.round(verdiOre * 10) / 10) })}{' '}
-              {refOre ? T(verdiOre >= refOre ? 'planGodBruk' : 'planDarligBruk', { ore: fmtTall(Math.round(refOre * 10) / 10) }) : T('planGratisPoeng')}
-            </p>
-          </div>
-        )}
-        {samarbeid && (
-          <p className="samarbeid">
-            <a href={samarbeid.booking} target="_blank" rel="sponsored noopener">
-              {T('brukPoengene', { navn: samarbeid.navn })} <span aria-hidden="true">→</span>
-            </a>
-          </p>
-        )}
-      </details>
-
-      <details className="plan-mer">
-        <summary>{T('planAlle', { n: Math.min(alle.length, 15) })}</summary>
+        <summary>{T('planAlle', { n: alle.length })}</summary>
         <ul className="plan-alle-liste">
-          {alle.slice(0, 15).map((o) => (
+          {alle.map((o) => (
             <li key={o.id}>
               <span>
                 {navn(o)}
                 <span className="muted">
                   {' · '}
                   {kostnad(o)}
-                  {o.ore !== null && o.kostnadAr > 0 ? ` · ${T('planOre', { ore: fmtTall(Math.round(o.ore * 10) / 10) })}` : ''}
+                  {o.ore !== null && o.kostnadAr > 0 ? ` · ${T('planOre', { ore: enDesimal(o.ore) })}` : ''}
                 </span>
               </span>
               <b>{fmtPoeng(o.poengAr)}</b>
@@ -348,6 +359,67 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
           {harTrumf ? ` ${T('planSlikTrumf')}` : ''} {T('planAmex')}
         </p>
       </details>
-    </section>
+    </>
+  );
+}
+
+/**
+ * «Kjøp for penger eller poeng?»: det poengbilletten sparer deg i kroner, mot hva poengene er verdt som penger.
+ * Trumf-bonus og Klarna-cashback kan tas ut som penger (trumf.no/automatisk-overforing-til-bankkonto,
+ * klarna.com/se/kundservice/hur-tar-jag-ut-pengar-fran-min-klarna-saldo, klarna.com/dk/klarna-saldo); vekslingen som
+ * gir flest poeng per krone setter prisen på et poeng.
+ */
+function Penger({ programmer, samarbeid, T, tall, tallfelt }: Felles & Pick<Props, 'programmer' | 'samarbeid'>) {
+  const kilde =
+    programmer
+      .filter((p) => p.satsEnhet === 'prosent')
+      .map((p) => ({ p, kurs: Math.max(0, ...p.konverteringer.map((k) => k.poengPerKrone ?? 0)) }))
+      .filter((x) => x.kurs > 0)
+      .sort((a, b) => b.kurs - a.kurs)[0] ?? null;
+  const bonus = kilde ? (kilde.p.id.startsWith('klarna') ? 'Klarna-cashback' : `${kilde.p.kortnavn}-bonus`) : '';
+  const verdiOre = oreVerdi(tall('kontant'), tall('poeng'), tall('avgifter'));
+  const sparer = Math.max(0, tall('kontant') - tall('avgifter'));
+  const somPenger = kilde ? tall('poeng') / kilde.kurs : null;
+  const bruk = somPenger !== null && sparer > somPenger;
+  const skala = Math.max(1, sparer, somPenger ?? 0);
+
+  return (
+    <>
+      <h1>{T('pengerTittel')}</h1>
+      <div className="plan-billett">
+        {tallfelt('kontant', T('planKontant'), 'kr')}
+        {tallfelt('poeng', T('planPoeng'), T('planPoengEnhet'))}
+        {tallfelt('avgifter', T('planAvgifter'), 'kr')}
+      </div>
+      {kilde && verdiOre !== null && somPenger !== null && (
+        <div className="penger-svar" aria-live="polite">
+          <p className={`plan-dom${bruk ? ' god' : ''}`}>{bruk ? T('pengerBruk') : T('pengerBetal')}</p>
+          {(
+            [
+              [T('pengerSparer'), sparer, bruk],
+              [T('pengerSomPenger', { bonus }), somPenger, !bruk],
+            ] as const
+          ).map(([etikett, kr, vinner]) => (
+            <div className="penger-rad" key={etikett}>
+              <div className="plan-rad-topp">
+                <span>{etikett}</span>
+                <span className="plan-rad-tall">{fmtTall(Math.round(kr))} kr</span>
+              </div>
+              <div className="penger-bar">
+                <span className={vinner ? 'vinner' : undefined} style={{ width: `${(kr / skala) * 100}%` }} />
+              </div>
+            </div>
+          ))}
+          <p className="muted plan-tekst">{T('pengerForklaring', { v: enDesimal(verdiOre), bonus, kurs: fmtTall(kilde.kurs), ore: enDesimal(100 / kilde.kurs) })}</p>
+        </div>
+      )}
+      {samarbeid && (
+        <p className="samarbeid">
+          <a href={samarbeid.booking} target="_blank" rel="sponsored noopener">
+            {T('brukPoengene', { navn: samarbeid.navn })} <span aria-hidden="true">→</span>
+          </a>
+        </p>
+      )}
+    </>
   );
 }

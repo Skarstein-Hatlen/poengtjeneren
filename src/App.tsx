@@ -41,6 +41,8 @@ const IDAG = new Date().toISOString().slice(0, 10);
 type Visning = 'kalk' | 'butikker' | 'nytt' | 'blackfriday' | 'kort' | 'plan' | 'flyforsinkelse' | 'klarna' | 'flymedpoeng' | 'ukens' | 'personvern' | 'utvidelse';
 /** Sider uten land i adressen. */
 const TOPPSIDER: Record<string, Visning> = { klarna: 'klarna', flymedpoeng: 'flymedpoeng', personvern: 'personvern', utvidelse: 'utvidelse' };
+/** Plan-siden «Penger eller poeng?» ligger under /plan med en adresse på landets språk. */
+const PENGER_STI: Record<Land, string> = { NO: 'penger-eller-poeng', SE: 'pengar-eller-poang', DK: 'penge-eller-point' };
 const VISNINGER: Record<string, Visning> = { butikker: 'butikker', nytt: 'nytt', 'black-friday': 'blackfriday', kort: 'kort', plan: 'plan', flyforsinkelse: 'flyforsinkelse', ukens: 'ukens' };
 const NAV: { visning: Visning; nokkel: Nokkel }[] = [
   { visning: 'kalk', nokkel: 'navKalkulator' },
@@ -96,6 +98,7 @@ function lesSti(): { land?: Land; butikkId?: string; rute: Rute } {
   if (sti && TOPPSIDER[sti]) return { land: 'NO', rute: { visning: TOPPSIDER[sti], kategori: null } };
   const land = LAND.find((l) => SPRAK[l].sti === sti);
   if (!land) return { rute: { visning: 'kalk', kategori: null } };
+  if (a === 'plan') return { land, rute: { visning: 'plan', kategori: b && Object.values(PENGER_STI).includes(b) ? 'penger' : null } };
   if (a && VISNINGER[a]) return { land, rute: { visning: VISNINGER[a], kategori: a === 'butikker' ? (b ?? null) : null } };
   return { land, butikkId: a, rute: { visning: 'kalk', kategori: null } };
 }
@@ -106,6 +109,7 @@ function stiFor(land: Land, rute: Rute, butikkId: string | null): string {
   if (rute.visning === 'butikker') return `${s}/butikker${rute.kategori ? `/${rute.kategori}` : ''}`;
   if (rute.visning === 'kalk') return butikkId ? `${s}/${butikkId}` : s;
   if (rute.visning === 'blackfriday') return `${s}/black-friday`;
+  if (rute.visning === 'plan') return `${s}/plan${rute.kategori === 'penger' ? `/${PENGER_STI[land]}` : ''}`;
   return `${s}/${rute.visning}`;
 }
 
@@ -722,6 +726,9 @@ export default function App() {
             kjente={Object.values(data.blackfriday.butikker[t.land] ?? {}).flat()}
             idag={IDAG}
             samarbeid={samarbeid}
+            del={rute.kategori === 'penger' ? 'penger' : 'poeng'}
+            sti={(del) => stiFor(t.land, { visning: 'plan', kategori: del === 'penger' ? 'penger' : null }, null)}
+            onDel={(del) => setRute({ visning: 'plan', kategori: del === 'penger' ? 'penger' : null })}
           />
         </div>
       </div>

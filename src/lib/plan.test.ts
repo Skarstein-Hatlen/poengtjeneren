@@ -37,14 +37,24 @@ describe('beregnOppsett', () => {
     expect(medKort.kostnadAr).toBe(6000);
   });
 
-  it('bruker Klarna Max når det gir mest, og regner med medlemskapet i kostnaden', () => {
-    // Klarna Max: (2 × 4 + 1,5) × 12 = 114 p/100, mer enn Trumf.
-    const max = finn('max|ingen');
+  it('regner Klarna Max som én løsning med Klarna-kortet, og medlemskapet i kostnaden', () => {
+    // I Klarna-appen: (2 × 4 + 1,5) × 12 = 114 p/100, mer enn Trumf med Klarna-kortet (50 + 18).
+    const max = finn('max|klarna-kort-max');
+    expect(max.navn).toBe('Klarna Max');
     expect(max.deler.netthandel).toBeCloseTo(12000 * 1.14);
     expect(max.kostnadAr).toBe(6000);
     // Klarna-kortet gir 1,5 % × 12 = 18 p/100 på kortbruk.
-    const maxKort = finn('max|klarna-kort-max');
-    expect(maxKort.deler.kort).toBeCloseTo(120000 * 0.18);
+    expect(max.deler.kort).toBeCloseTo(120000 * 0.18);
+  });
+
+  it('blander ikke et kort med et Klarna-medlemskap', () => {
+    expect(alle.map((o) => o.id).sort()).toEqual(['ingen|elite', 'ingen|ingen', 'max|klarna-kort-max']);
+  });
+
+  it('gir kortpoeng når kjøpet betales rett med kortet, også der bare Klarna gir bonus', () => {
+    const bareKlarna: Butikk = { id: 'k', navn: 'K', satser: { klarna: { verdi: 2, kilde: '' } } };
+    const elite = beregnOppsett({ ...data, butikker: [bareKlarna] }, { netthandel: 1000, dagligvare: 0, kortbruk: 0 }).find((o) => o.id === 'ingen|elite')!;
+    expect(elite.deler.netthandel).toBeCloseTo(12000 * 0.2);
   });
 
   it('sorterer med flest poeng først og regner øre per poeng', () => {

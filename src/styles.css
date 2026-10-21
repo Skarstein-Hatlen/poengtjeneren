@@ -254,7 +254,39 @@ input::placeholder {
   color: var(--stempel);
 }
 
-/* Plan: forbruket som glidere, målet, og stigen (flest poeng, mest for pengene, gratis) med poengene fordelt i stolpene */
+/* Plan: to faner. «Hvor mange poeng?»: glidere, målet og stigen med én løsning per rad. «Penger eller poeng?»: det billetten sparer mot poengene som penger */
+.plan-faner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.plan-faner a {
+  margin-bottom: -1px;
+  padding: 2px 0 10px;
+  border-bottom: 2px solid transparent;
+  color: var(--mute);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plan-faner a:hover {
+  color: var(--ink);
+}
+
+.plan-faner a[aria-current='page'] {
+  border-bottom-color: var(--gold);
+  color: var(--ink);
+}
+
+.plan-faner a:focus-visible {
+  outline: 2px solid var(--gold-fill);
+  outline-offset: 2px;
+}
+
 .plan h1 {
   margin: 0;
   font-family: var(--font-tall);
@@ -544,79 +576,47 @@ input::placeholder {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  margin-top: 20px;
 }
 
-.plan-skala {
-  margin-top: 18px;
+.penger-svar {
+  margin-top: 28px;
 }
 
 .plan-dom {
-  margin: 0 0 34px;
+  margin: 0 0 14px;
   font-family: var(--font-tall);
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 700;
+  line-height: 1.05;
 }
 
 .plan-dom.god {
   color: var(--gold);
 }
 
-.plan-skala-linje {
-  position: relative;
-  height: 4px;
-  margin: 0 10px;
-  border-radius: 2px;
-  background: var(--line);
+.penger-rad {
+  display: grid;
+  gap: 7px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
 }
 
-.plan-merke-ref,
-.plan-merke-verdi {
-  position: absolute;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: left 0.3s ease;
+.penger-bar {
+  height: 12px;
 }
 
-.plan-merke-ref {
-  border: 2px solid var(--mute);
-  background: var(--paper);
+.penger-bar span {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  border-radius: 4px;
+  background: #c3cbdb;
+  transition: width 0.3s ease;
 }
 
-.plan-merke-verdi {
-  border: 2px solid var(--paper);
+.penger-bar span.vinner {
   background: var(--gold-fill);
-  box-shadow: 0 0 0 1px var(--gold);
-}
-
-.plan-merke-ref span,
-.plan-merke-verdi span {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 12px;
-}
-
-.plan-merke-verdi span {
-  bottom: 20px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.plan-merke-ref span {
-  top: 20px;
-  color: var(--mute);
-}
-
-.plan-skala-ender {
-  display: flex;
-  justify-content: space-between;
-  margin: 30px 0 0;
-  font-size: 11px;
-  color: var(--mute);
 }
 
 .plan-tekst {
@@ -633,8 +633,7 @@ input::placeholder {
 @media (prefers-reduced-motion: reduce) {
   .plan-stabel,
   .plan-stabel span,
-  .plan-merke-ref,
-  .plan-merke-verdi {
+  .penger-bar span {
     transition: none;
   }
 }

@@ -70,9 +70,13 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} gir betalingskortet poeng i tillegg. Via Klarna gjør det ikke.`,
     og: 'og',
-    planTittel: 'Hvilket EuroBonus-kort og Klarna-nivå passer deg? | Pointmaxing',
-    planTekst: 'Skriv inn forbruket ditt og se hvilket kort og Klarna-nivå som gir flest EuroBonus-poeng for pengene, hvor fort du når målet og hva poengene er verdt.',
+    planTittel: 'Hvilket EuroBonus-kort gir deg flest poeng? | Pointmaxing',
+    planTekst: 'Dra forbruket ditt og se hvilket kort som gir flest EuroBonus-poeng, hva som gir mest for pengene, og når du kan reise.',
     planH1: 'Hvor mange poeng kan du få?',
+    pengerTittel: 'Kjøp for penger eller poeng? | Pointmaxing',
+    pengerTekst: 'Skriv inn prisen i kroner og i poeng, og se om poengbilletten er verdt poengene – sammenlignet med hva de er verdt som Trumf-bonus.',
+    pengerH1: 'Kjøp for penger eller poeng?',
+    pengerSti: 'penger-eller-poeng',
   },
   SE: {
     sti: 'se',
@@ -117,9 +121,13 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} ger betalkortet poäng också. Via Klarna gör det inte.`,
     og: 'och',
-    planTittel: 'Vilket EuroBonus-kort och Klarna-nivå passar dig? | Pointmaxing',
-    planTekst: 'Skriv in dina utgifter och se vilket kort och Klarna-nivå som ger flest EuroBonus-poäng för pengarna, hur snabbt du når målet och vad poängen är värda.',
+    planTittel: 'Vilket EuroBonus-kort ger dig flest poäng? | Pointmaxing',
+    planTekst: 'Dra dina utgifter och se vilket kort som ger flest EuroBonus-poäng, vad som ger mest för pengarna och när du kan resa.',
     planH1: 'Hur många poäng kan du få?',
+    pengerTittel: 'Köp för pengar eller poäng? | Pointmaxing',
+    pengerTekst: 'Skriv in priset i kronor och i poäng, och se om poängbiljetten är värd poängen – jämfört med vad de är värda som Klarna-cashback.',
+    pengerH1: 'Köp för pengar eller poäng?',
+    pengerSti: 'pengar-eller-poang',
   },
   DK: {
     sti: 'dk',
@@ -164,9 +172,13 @@ const SPRAK = {
     bfTipsKlarna: (navn, faktor, ekstra) => `${navn} Max: butikkens sats × ${faktor} + ${ekstra} %.`,
     bfTipsKort: (liste) => `Via ${liste} giver betalingskortet point oveni. Via Klarna gør det ikke.`,
     og: 'og',
-    planTittel: 'Hvilket EuroBonus-kort og Klarna-niveau passer dig? | Pointmaxing',
-    planTekst: 'Skriv dit forbrug og se, hvilket kort og Klarna-niveau der giver flest EuroBonus-point for pengene, hvor hurtigt du når målet, og hvad pointene er værd.',
+    planTittel: 'Hvilket EuroBonus-kort giver dig flest point? | Pointmaxing',
+    planTekst: 'Træk dit forbrug og se, hvilket kort der giver flest EuroBonus-point, hvad der giver mest for pengene, og hvornår du kan rejse.',
     planH1: 'Hvor mange point kan du få?',
+    pengerTittel: 'Køb for penge eller point? | Pointmaxing',
+    pengerTekst: 'Skriv prisen i kroner og i point, og se, om pointbilletten er pointene værd – sammenlignet med, hvad de er værd som Klarna-cashback.',
+    pengerH1: 'Køb for penge eller point?',
+    pengerSti: 'penge-eller-point',
   },
 };
 
@@ -299,6 +311,9 @@ for (const [land, sprak] of Object.entries(SPRAK)) {
   const planUrl = `${DOMENE}/${sprak.sti}/plan`;
   await skriv(`${sprak.sti}/plan`, side({ lang: sprak.lang, tittel: sprak.planTittel, beskrivelse: sprak.planTekst, url: planUrl, kropp: `<main><h1>${escape(sprak.planH1)}</h1><p>${escape(sprak.planTekst)}</p></main>` }));
   urler.push(planUrl);
+  const pengerUrl = `${DOMENE}/${sprak.sti}/plan/${sprak.pengerSti}`;
+  await skriv(`${sprak.sti}/plan/${sprak.pengerSti}`, side({ lang: sprak.lang, tittel: sprak.pengerTittel, beskrivelse: sprak.pengerTekst, url: pengerUrl, kropp: `<main><h1>${escape(sprak.pengerH1)}</h1><p>${escape(sprak.pengerTekst)}</p></main>` }));
+  urler.push(pengerUrl);
   // Forsinket fly: bare i land der vi har en avtale med en tjeneste.
   const fly = flyforsinkelse.tjeneste[land];
   if (fly && sprak.flyTittel) {
