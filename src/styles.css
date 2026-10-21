@@ -405,6 +405,29 @@ input::placeholder {
   color: var(--mute);
 }
 
+/* 2 for 1 på: prisen strekes over, halvparten står under (slik SAS viser det) */
+.plan-tallfelt.halvert .tall input:not(:focus) {
+  color: var(--mute);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.plan-halv {
+  margin: 4px 0 0;
+  font-family: var(--font-tall);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gold);
+}
+
+.plan-halv small {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
 /* 2 for 1 (CT): en liten bryter i billettens farger */
 .plan-ct {
   position: relative;

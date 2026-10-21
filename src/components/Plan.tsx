@@ -156,8 +156,8 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
   const tall = (f: Felt) => parseTall(felt[f]);
   const sett = (f: Felt, v: string) => setFelt((s) => ({ ...s, [f]: v }));
 
-  const tallfelt = (f: Felt, etikett: string, enhet: string) => (
-    <label className="plan-tallfelt" key={f}>
+  const tallfelt = (f: Felt, etikett: string, enhet: string, klasse = '') => (
+    <label className={`plan-tallfelt ${klasse}`.trim()} key={f}>
       <span className="etikett">{etikett}</span>
       <span className="tall">
         <TallInput id={`plan-${f}`} verdi={felt[f]} onEndre={(v) => sett(f, v)} />
@@ -195,7 +195,7 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
 interface Felles {
   T: (n: Parameters<typeof tekst>[1], v?: Record<string, string | number>) => string;
   tall: (f: Felt) => number;
-  tallfelt: (f: Felt, etikett: string, enhet: string) => ReactElement;
+  tallfelt: (f: Felt, etikett: string, enhet: string, klasse?: string) => ReactElement;
 }
 
 /** «Hvor mange poeng kan du få?»: glidere for forbruket, målet, og stigen med én løsning per rad. */
@@ -326,7 +326,13 @@ function Poeng({
       <div className="plan-mal">
         {tallfelt('har', T('planHar'), T('planPoengEnhet'))}
         <div>
-          {tallfelt('trenger', T('planTrenger'), T('planPoengEnhet'))}
+          {/* Med 2 for 1: strek over prisen og halvparten under, slik SAS viser det. */}
+          {tallfelt('trenger', T('planTrenger'), T('planPoengEnhet'), tall('ct') === 1 && trenger > 0 ? 'halvert' : '')}
+          {tall('ct') === 1 && trenger > 0 && (
+            <p className="plan-halv" aria-live="polite">
+              {fmtTall(Math.round(trenger / 2))} <small>{T('planPoengEnhet')}</small>
+            </p>
+          )}
           <label className="plan-ct">
             <input type="checkbox" role="switch" id="plan-ct" checked={tall('ct') === 1} onChange={(e) => sett('ct', e.target.checked ? '1' : '')} />
             <span className="plan-bryter" aria-hidden="true" />
