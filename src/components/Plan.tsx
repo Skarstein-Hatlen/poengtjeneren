@@ -37,7 +37,7 @@ const trinn = (...deler: [number, number][]) => {
   return verdier;
 };
 const GLIDER: Partial<Record<Felt, number[]>> = {
-  netthandel: trinn([20_000, 500]),
+  netthandel: trinn([20_000, 500], [100_000, 2_500]),
   dagligvare: trinn([15_000, 500], [40_000, 1_000]),
   kortbruk: trinn([20_000, 1_000], [100_000, 2_500], [250_000, 10_000]),
 };
