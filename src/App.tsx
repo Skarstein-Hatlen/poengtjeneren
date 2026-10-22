@@ -474,6 +474,8 @@ export default function App() {
       <a href="/utvidelse" onClick={(e) => { e.preventDefault(); gaaTil('utvidelse'); }}>{T('utvidelseLenke')}</a>
       {' · '}
       <a href="/personvern" onClick={(e) => { e.preventDefault(); gaaTil('personvern'); }}>{T('personvern')}</a>
+      {' · '}
+      <a href={T('lunatwinUrl')} target="_blank" rel="noopener">{T('lunatwinLenke')}</a>
     </p>
   );
 

@@ -222,6 +222,9 @@ export const TEKSTER = {
   personvern: { nb: 'Personvern', sv: 'Integritet', da: 'Privatliv' },
   omTallene: { nb: 'Om tallene', sv: 'Om siffrorna', da: 'Om tallene' },
   utvidelseLenke: { nb: 'Chrome-utvidelse', sv: 'Chrome-tillägg', da: 'Chrome-udvidelse' },
+  // Kjetils andre app, Lunatwin (Inora AS), på riktig språk.
+  lunatwinLenke: { nb: 'Lunatwin: syklusapp for par', sv: 'Lunatwin: menscykelapp för par', da: 'Lunatwin: cyklusapp for par' },
+  lunatwinUrl: { nb: 'https://www.lunatwin.app/nb', sv: 'https://www.lunatwin.app/sv', da: 'https://www.lunatwin.app/da' },
   utvidelseCta: {
     nb: 'Chrome-utvidelsen viser poengene rett i Google-søk og i nettbutikken.',
     sv: 'Chrome-tillägget visar poängen direkt i Google-sökningen och i butiken.',
