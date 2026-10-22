@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-20",
+  "hentet": "2026-10-22",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -403,19 +403,6 @@
       "slutt": null,
       "url": "https://www.3.dk/kampagner/eurobonus-point/",
       "logo": "/logos/partnere/tre.webp"
-    },
-    {
-      "id": "tryg-dk-eurobonus",
-      "land": "DK",
-      "program": "eurobonus",
-      "partner": "Tryg",
-      "tittel": "Tryg",
-      "tekst": "Nye kunder. Flere forsikringer giver flere point.",
-      "verdi": 25000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://tryg.dk/partner/eurobonus",
-      "logo": "/logos/partnere/tryg.webp"
     },
     {
       "id": "verisure-dk-eurobonus",
@@ -1399,7 +1386,7 @@
       "partner": "Singular Society",
       "tittel": "Singular Society",
       "tekst": "Via SAS Shopping",
-      "verdi": 2000,
+      "verdi": 1500,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/singular-society/019ad964-5fce-7380-ba91-5c4007d5ebbd",

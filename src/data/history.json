@@ -54,7 +54,7 @@
   "bonprix": {"trumf":[["2026-09-21",3.1],["2026-09-25",4.6],["2026-09-27",6.2],["2026-10-04",4.6],["2026-10-11",6.2],["2026-10-18",4.6]]},
   "boohoo": {"sas-online-shopping":[["2026-09-21",25]]},
   "bosch": {"trumf":[["2026-09-21",3.9],["2026-09-30",9.3]]},
-  "boschhome": {"sas-online-shopping":[["2026-09-21",25]]},
+  "boschhome": {"sas-online-shopping":[["2026-09-21",25],["2026-10-22",100]]},
   "brilleland": {"trumf":[["2026-09-21",4.6]],"sas-online-shopping":[["2026-09-21",25]]},
   "bubbleroom": {"trumf":[["2026-09-21",3.1],["2026-09-27",4.6],["2026-10-04",3.1]],"sas-online-shopping":[["2026-09-21",30],["2026-09-28",15],["2026-10-19",30]],"klarna":[["2026-09-21",3],["2026-10-08",2]]},
   "budget": {"trumf":[["2026-09-21",9.3],["2026-10-02",10.1],["2026-10-11",9.3]]},
@@ -432,7 +432,8 @@
   "nelly": {"trumf":[["2026-10-16",2.3]],"sas-online-shopping":[["2026-10-20",30]]},
   "nlyman": {"trumf":[["2026-10-16",2.3]],"sas-online-shopping":[["2026-10-20",15]]},
   "authenticeurope": {"sas-online-shopping":[["2026-10-17",50]]},
-  "authenticscandinavia": {"sas-online-shopping":[["2026-10-20",50]]}
+  "authenticscandinavia": {"sas-online-shopping":[["2026-10-20",50]]},
+  "aktivvinter": {"sas-online-shopping":[["2026-10-22",25]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5],["2026-09-29",null]]},
@@ -812,7 +813,7 @@
   "pyretsnackan": {"sas-online-shopping-se":[["2026-09-21",15]],"klarna-se":[["2026-09-21",1.5]]},
   "quicksilver": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "racketspecialisten": {"sas-online-shopping-se":[["2026-09-21",10]]},
-  "rains": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3.5]]},
+  "rains": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",3.5],["2026-10-22",4]]},
   "ralphlauren": {"klarna-se":[["2026-09-21",3]]},
   "rayban": {"sas-online-shopping-se":[["2026-09-21",25]],"klarna-se":[["2026-09-21",4.5]]},
   "razer": {"sas-online-shopping-se":[["2026-09-21",10]],"klarna-se":[["2026-09-21",3.5]]},
@@ -977,7 +978,8 @@
   "authenticeurope": {"sas-online-shopping-se":[["2026-10-17",50]]},
   "authenticscandinavia": {"sas-online-shopping-se":[["2026-10-20",50]]},
   "ottosuenson": {"sas-online-shopping-se":[["2026-10-20",50]]},
-  "eneba": {"klarna-se":[["2026-10-21",2.5]]}
+  "eneba": {"klarna-se":[["2026-10-21",2.5]]},
+  "aktivvinter": {"sas-online-shopping-se":[["2026-10-22",25]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5],["2026-10-08",null]]},
@@ -1157,7 +1159,7 @@
   "luxplus": {"sas-online-shopping-dk":[["2026-09-21",25],["2026-10-21",50]]},
   "lyko": {"sas-online-shopping-dk":[["2026-09-21",25]]},
   "lyshygge": {"sas-online-shopping-dk":[["2026-09-21",75]]},
-  "magasin": {"sas-online-shopping-dk":[["2026-09-21",50],["2026-10-05",25]]},
+  "magasin": {"sas-online-shopping-dk":[["2026-09-21",50],["2026-10-05",25],["2026-10-22",50]]},
   "mainlinemenswear": {"klarna-dk":[["2026-09-21",2]]},
   "makeupmekka": {"sas-online-shopping-dk":[["2026-09-21",25]]},
   "mammut": {"klarna-dk":[["2026-09-21",1.5]]},

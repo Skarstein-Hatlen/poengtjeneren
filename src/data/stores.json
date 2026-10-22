@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-21",
+  "hentet": "2026-10-22",
   "land": {
     "NO": [
       {
@@ -168,6 +168,21 @@
           }
         },
         "logo": "/logos/NO/aimn.webp"
+      },
+      {
+        "id": "aktivvinter",
+        "navn": "Aktivvinter.no",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/aktivvinterno/01a16286-1d6b-7005-8fd7-a4c11e525a76"
+          }
+        },
+        "logo": "/logos/NO/aktivvinter.webp"
       },
       {
         "id": "amisol",
@@ -977,6 +992,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bosch-home/018e3827-6f29-71e6-beae-2be3af85c068"
           }
         },
@@ -1150,6 +1169,21 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/charlies-hus/0189630b-0027-70f4-92db-63aaa285c05a"
           }
         }
+      },
+      {
+        "id": "chicastore",
+        "navn": "Chicastore",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/chicastore-trumf"
+          }
+        },
+        "logo": "/logos/NO/chicastore.webp"
       },
       {
         "id": "christianiaglasmagasin",
@@ -3121,7 +3155,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 100,
-              "slutt": "2026-10-25"
+              "slutt": "2026-10-31"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
           },
@@ -4626,11 +4660,6 @@
           "skjonnhet"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 5.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/nicebeauty-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -6593,6 +6622,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/tiger-of-sweden-trumf"
+          },
           "klarna": {
             "verdi": 4,
             "opptil": false,
@@ -7735,6 +7769,21 @@
         },
         "domene": "akademibokhandeln.se",
         "logo": "/logos/SE/akademibokhandeln.webp"
+      },
+      {
+        "id": "aktivvinter",
+        "navn": "Aktivvinter.se",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/aktivvinterse/01a16286-1d6b-7005-8fd7-a4c11e525a76"
+          }
+        },
+        "logo": "/logos/SE/aktivvinter.webp"
       },
       {
         "id": "albrektsguld",
@@ -9805,7 +9854,7 @@
       },
       {
         "id": "etro",
-        "navn": "Etro",
+        "navn": "ETRO",
         "kategorier": [],
         "satser": {
           "klarna-se": {
@@ -11113,7 +11162,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 100,
-              "slutt": "2026-10-25"
+              "slutt": "2026-10-31"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
           },
@@ -12855,7 +12904,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nicebeauty/01896311-cd52-7367-8aae-0c4b46a3188e"
           }
         },
-        "logo": "/logos/NO/nicebeauty.webp"
+        "logo": "/logos/SE/nicebeauty.webp"
       },
       {
         "id": "nike",
@@ -13819,7 +13868,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/rains/0189630e-e559-73fb-8554-d9a161d6ff4e"
           },
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 4,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/4b6469cf-7cd7-4341-bb25-83e67e05cc15/rains/pay-with-klarna/"
           }
@@ -19244,6 +19293,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/magasin-1/01896310-cff7-730e-a0e8-c319ca656c74"
           }
         },
