@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-22",
+  "hentet": "2026-10-23",
   "land": {
     "NO": [
       {
@@ -390,6 +390,11 @@
             "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/autodeler-trumf"
+          },
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/autodeler/01a163d8-2fe4-72a7-8c0c-ba042bc82dd0"
           }
         },
         "logo": "/logos/NO/autodeler.webp"
@@ -634,16 +639,11 @@
       },
       {
         "id": "barbershop",
-        "navn": "Barbershop",
+        "navn": "Barbershop.no",
         "kategorier": [
           "skjonnhet"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 1.9,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/barbershop-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -1673,7 +1673,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/dyson-trumf"
           },
@@ -2923,7 +2923,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/homeroom-trumf"
           },
@@ -4353,7 +4353,7 @@
         ],
         "satser": {
           "klarna": {
-            "verdi": 2.5,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/no/store/2f973b12-fca8-4173-89dd-98990d1a4ea0/meta/pay-with-klarna/"
           }
@@ -4660,6 +4660,11 @@
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/nicebeauty-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -6351,15 +6356,22 @@
         "id": "steamery",
         "navn": "Steamery",
         "kategorier": [
-          "hjem"
+          "hjem",
+          "elektronikk"
         ],
         "satser": {
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/steamery/01a0d331-5c4e-716e-8bb1-57f2cb9a47d7"
+          },
+          "klarna": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/61275837-c751-4846-b112-7128dd0baf67/steamery/pay-with-klarna/"
           }
         },
+        "domene": "steamerystockholm.com",
         "logo": "/logos/NO/steamery.webp"
       },
       {
@@ -8955,22 +8967,6 @@
         "logo": "/logos/SE/careofbeds.webp"
       },
       {
-        "id": "casadei",
-        "navn": "Casadei",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/dd27ab7d-2fec-4f46-95dc-43e2b9c574bb/casadei/pay-with-klarna/"
-          }
-        },
-        "domene": "casadei.com",
-        "logo": "/logos/SE/casadei.webp"
-      },
-      {
         "id": "casall",
         "navn": "Casall",
         "kategorier": [
@@ -9319,7 +9315,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/designtorget/0189630c-6a02-7059-a1f6-518e48aa33e9"
           },
           "klarna-se": {
-            "verdi": 3,
+            "verdi": 2,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/471ccbb9-3e5b-4f2a-9201-cd45e5229591/designtorget/pay-with-klarna/"
           }
@@ -12539,7 +12535,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/meta/01994d80-8d64-7163-8399-70ec17118475"
           },
           "klarna-se": {
-            "verdi": 2.5,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/63528b7a-1a1e-4b6d-b248-52a9a98ca536/meta/pay-with-klarna/"
           }
@@ -12904,7 +12900,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nicebeauty/01896311-cd52-7367-8aae-0c4b46a3188e"
           }
         },
-        "logo": "/logos/SE/nicebeauty.webp"
+        "logo": "/logos/NO/nicebeauty.webp"
       },
       {
         "id": "nike",
@@ -14967,8 +14963,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/steamery/01a0d331-5c4e-716e-8bb1-57f2cb9a47d7"
+          },
+          "klarna-se": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/af031793-283f-45bb-98b1-b23eafc78802/steamery/pay-with-klarna/"
           }
         },
+        "domene": "steamerystockholm.com",
         "logo": "/logos/SE/steamery.webp"
       },
       {
@@ -19446,7 +19448,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/meta/01994d80-8d64-7163-8399-70ec17118475"
           },
           "klarna-dk": {
-            "verdi": 2.5,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/4184e397-7611-481b-88e1-e6c3f1cde087/meta/pay-with-klarna/"
           }
@@ -21253,6 +21255,22 @@
         "logo": "/logos/DK/stayinplace.webp"
       },
       {
+        "id": "steamery",
+        "navn": "Steamery",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.comnull"
+          }
+        },
+        "domene": "steamerystockholm.com",
+        "logo": "/logos/DK/steamery.webp"
+      },
+      {
         "id": "steelseries",
         "navn": "Steelseries",
         "kategorier": [
@@ -22031,6 +22049,25 @@
         },
         "domene": "zwilling.com",
         "logo": "/logos/DK/zwilling.webp"
+      },
+      {
+        "id": "aarke",
+        "navn": "Aarke",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-31"
+            },
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/aarke/01a0d2cd-44b6-70e0-9d09-7fa13f871050"
+          }
+        },
+        "logo": "/logos/DK/aarke.webp"
       }
     ]
   }

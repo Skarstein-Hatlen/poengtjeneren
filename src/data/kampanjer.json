@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-22",
+  "hentet": "2026-10-23",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -403,6 +403,19 @@
       "slutt": null,
       "url": "https://www.3.dk/kampagner/eurobonus-point/",
       "logo": "/logos/partnere/tre.webp"
+    },
+    {
+      "id": "tryg-dk-eurobonus",
+      "land": "DK",
+      "program": "eurobonus",
+      "partner": "Tryg",
+      "tittel": "Tryg",
+      "tekst": "Nye kunder. Flere forsikringer giver flere point.",
+      "verdi": 25000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://tryg.dk/partner/eurobonus",
+      "logo": "/logos/partnere/tryg.webp"
     },
     {
       "id": "verisure-dk-eurobonus",

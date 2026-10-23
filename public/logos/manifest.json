@@ -34,7 +34,7 @@
   "NO/bagbrokers": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/badbrokers_logo_198x75_22042021.png",
   "NO/bakerenogkokken": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/bakeren_kokken_large_16072024.png",
   "NO/batteriexperten": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/batteriexperten_large_logo_02042025.png",
-  "NO/barbershop": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/barber_logo_29102018.png",
+  "NO/barbershop": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/320ac8de-83d9-4c5f-b388-512c0436f4c4/1e2ca2834eedcb00ef29aa8c7300df21",
   "NO/babyland": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/360a30bd-6771-4d58-8b6b-f36ec41a2622/611f1793d3fef0b7aff575596d4984df",
   "NO/beckmann": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/beckmann_large.png",
   "NO/beautycos": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/beautycos_logo_05092019.png",
@@ -254,7 +254,7 @@
   "NO/newport": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/newport_logo_large_06052022.png",
   "NO/nazar": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/nazar_large_17062025.png",
   "NO/newbalance": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/newbalance_large_logo_02042025.png",
-  "NO/nicebeauty": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a71918f9-b6b7-4471-aa22-240cfec22f6b/a4623f27d9d0fd4a94cb96fab29b22d8",
+  "NO/nicebeauty": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/nicebeautylargelogo_198x75.png",
   "NO/nike": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/0c42f0d9-e2f0-4811-b021-22f2bfbbfcec/5b958bb7d97be7182580f903f6fd09cc",
   "NO/newchic": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/6300a343-1be6-4f58-8a18-8142d8cb140a/834ff013e5671cecfa37a4283c0e0d9e",
   "NO/nespresso": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/li3XBpqclZdeWStrXoSXNxBCLpdoRY4ulFxWeJvR.png",
@@ -2130,5 +2130,8 @@
   "sok:NO/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/9dce6848-b8f2-4083-8030-9f5262fcbbcd/7cb81f98b98d856f73806cbccc8834df",
   "NO/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/9dce6848-b8f2-4083-8030-9f5262fcbbcd/7cb81f98b98d856f73806cbccc8834df",
   "sok:SE/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d448e61e-1139-4f76-b3f0-fe6103cdd7a0/86898d7d15a98e2f2d6d7058773326b4",
-  "SE/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d448e61e-1139-4f76-b3f0-fe6103cdd7a0/86898d7d15a98e2f2d6d7058773326b4"
+  "SE/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d448e61e-1139-4f76-b3f0-fe6103cdd7a0/86898d7d15a98e2f2d6d7058773326b4",
+  "DK/steamery": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/ebeb6092-15a6-478d-a12d-42b05af6fcb9/8d644dfbf41e1ebaa9e47cdfa0c6109a",
+  "sok:DK/aarke": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fb306ee5-f770-494c-823e-2cbedc4f16a0/b47f15c5ba6799ceb923ab95b6c91012",
+  "DK/aarke": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fb306ee5-f770-494c-823e-2cbedc4f16a0/b47f15c5ba6799ceb923ab95b6c91012"
 }
