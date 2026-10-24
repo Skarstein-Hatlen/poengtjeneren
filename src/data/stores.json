@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-23",
+  "hentet": "2026-10-24",
   "land": {
     "NO": [
       {
@@ -639,11 +639,16 @@
       },
       {
         "id": "barbershop",
-        "navn": "Barbershop.no",
+        "navn": "Barbershop",
         "kategorier": [
           "skjonnhet"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 1.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/barbershop-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
@@ -4392,6 +4397,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-10-25"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/miinto/01896308-a975-7164-aa9c-41b2ec9d89e2"
           }
         },
@@ -6217,7 +6226,8 @@
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/soma/0189630c-8c9e-72bb-af35-0a7fb3c11d3b"
           }
-        }
+        },
+        "logo": "/logos/NO/soma.webp"
       },
       {
         "id": "sonos",
@@ -7962,7 +7972,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 1.5,
+            "verdi": 1,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/d66d9a60-fd9b-4b74-b005-38add2c7b41a/asos/pay-with-klarna/"
           }
@@ -8045,7 +8055,7 @@
         ],
         "satser": {
           "sas-online-shopping-se": {
-            "verdi": 100,
+            "verdi": 50,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/australian-bodycare/0189630f-53a2-70ae-9335-2e13d199108f"
           }
@@ -8965,6 +8975,22 @@
           }
         },
         "logo": "/logos/SE/careofbeds.webp"
+      },
+      {
+        "id": "casadei",
+        "navn": "Casadei",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/dd27ab7d-2fec-4f46-95dc-43e2b9c574bb/casadei/pay-with-klarna/"
+          }
+        },
+        "domene": "casadei.com",
+        "logo": "/logos/SE/casadei.webp"
       },
       {
         "id": "casall",
@@ -13092,7 +13118,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordvpn/0189630e-2ae5-7184-adab-1a84e70c6254"
           },
           "klarna-se": {
-            "verdi": 14,
+            "verdi": 20,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/ff3709e9-af0e-48ad-a65e-01b90dc08c01/nordvpn/pay-with-klarna/"
           }
