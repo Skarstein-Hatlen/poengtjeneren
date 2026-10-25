@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-24",
+  "hentet": "2026-10-25",
   "land": {
     "NO": [
       {
@@ -43,7 +43,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/acer-trumf"
           },
@@ -320,7 +320,7 @@
         ],
         "satser": {
           "klarna": {
-            "verdi": 1.5,
+            "verdi": 1,
             "opptil": false,
             "kilde": "https://www.klarna.com/no/store/ed98d943-154b-4523-ae5f-d71a97b1dd14/asos/pay-with-klarna/"
           }
@@ -408,7 +408,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/autodoc-trumf"
           },
@@ -483,7 +483,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 10.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/avis-trumf-1"
           }
@@ -590,7 +590,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/bad-trumf"
           },
@@ -1064,7 +1064,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 10.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/budget-trumf"
           }
@@ -1198,7 +1198,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/christiania-glasmagasintrumf"
           }
@@ -1264,7 +1264,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 17.1,
+            "verdi": 15.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/comforth-scandinavia-trumf"
           },
@@ -1386,7 +1386,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
           },
@@ -1561,7 +1561,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 3.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/direct-ferries-trumf"
           }
@@ -1608,7 +1608,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/drommerom-trumf"
           }
@@ -1890,7 +1890,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/elite-hotels-of-sweden-trumf"
           }
@@ -2102,7 +2102,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfexpedia-eu"
           }
@@ -2228,7 +2228,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/fjord-line-trumf"
           },
@@ -2526,7 +2526,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/getyourguide-trumf"
           },
@@ -2604,7 +2604,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.7,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/go-nordic-cruiseline-trumf"
           },
@@ -2898,7 +2898,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/holidu-trumf"
           }
@@ -2948,7 +2948,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
           }
@@ -3778,7 +3778,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lastminute-trumf"
           }
@@ -4076,7 +4076,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lunehjem-trumf"
           },
@@ -4554,7 +4554,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 1.5,
+            "verdi": 2.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/nazar-trumf"
           }
@@ -5091,7 +5091,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfoutnorth"
           },
@@ -5302,7 +5302,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/philips-hue-trumf"
           },
@@ -5539,7 +5539,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfradissonhotels"
           }
@@ -5799,7 +5799,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/scandic-hotels-trumf"
           }
@@ -5855,7 +5855,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/sembo-trumf"
           }
@@ -5965,7 +5965,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 11.7,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/siemens-trumf"
           },
@@ -6444,7 +6444,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/stille-trumf"
           },
@@ -6539,21 +6539,6 @@
           }
         },
         "logo": "/logos/NO/suitable.webp"
-      },
-      {
-        "id": "superdry",
-        "navn": "Superdry",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 4.6,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/trumfsuperdry-no"
-          }
-        },
-        "logo": "/logos/NO/superdry.webp"
       },
       {
         "id": "superkul",
@@ -7227,7 +7212,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 2.3,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/vrbo-trumf"
           }
@@ -13684,7 +13669,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/7df6f2a3-b28f-4288-8125-ec9f479b85ac/pinko/pay-with-klarna/"
           }
@@ -15181,7 +15166,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/superdry/018f4dd5-ade1-71fb-9c3d-04b800194ef7"
           }
         },
-        "logo": "/logos/NO/superdry.webp"
+        "logo": "/logos/SE/superdry.webp"
       },
       {
         "id": "supsport",
@@ -15648,7 +15633,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/d84efa32-ed98-4732-90c9-2bc00a20969d/twinset/pay-with-klarna/"
           }
