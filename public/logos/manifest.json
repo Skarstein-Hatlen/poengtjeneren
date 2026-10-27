@@ -634,7 +634,7 @@
   "SE/hunkemoller": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/5e276e88-af63-43bc-ab71-0ce89b513b21/291265fd063b21a3db1b9fbd85ab07bd",
   "SE/hudoteket": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/c701a5bf-d9f5-4b4b-8f93-5d3d00eeb1c8/69e10134403ccf7446cd721ca154635d",
   "SE/iherb": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/dc9d66be-845a-497c-991d-7ba6501c459e/151f850ffea44962ab3736c66035e263",
-  "SE/idealofsweden": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/f02faccb-109d-4dce-a201-8f618ed7e229/796355f556c58473ee6409a5e86f1161",
+  "SE/idealofsweden": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/539dfa3f-3655-4dd9-a51a-62b0ffa33ddd/fbdb4311c579a923334beba239083318",
   "SE/inkclub": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/0d08c97b-afd3-4ae0-9307-b1dffefe46a6/89fd62e2ea5eb267e26cc7ab44fc17de",
   "SE/interflora": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/770ad01d-3e0c-4863-b5aa-c67b763af830/cc413dc690c5681ae422f690b02727ce",
   "SE/iphonebutiken": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a57098d1-4abb-46e5-8478-8d132658d2e4/7856e9362540cc39e17c8b45e539d1e5",
@@ -1087,7 +1087,7 @@
   "DK/hugoboss": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/5fc67e5d-2241-4942-9387-d03dd5125046/6449f519c55d0d51729c7400c96a543e",
   "DK/husqvarna": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/6a58e5a1-d9ef-4a96-a015-e8e337f42fbc/53e1080c52ff8501c3d9026dcc26ba1c",
   "DK/hultens": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/0EsRS9ZGp3hpsmMSaVp7r4WSTxSLqLyfdNouKU7t.png",
-  "DK/idealofsweden": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/75c12260-b55b-4dd8-bff1-bc45562d47aa/23bf399a3683f524a0347a80e8e3ef09",
+  "DK/idealofsweden": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/539dfa3f-3655-4dd9-a51a-62b0ffa33ddd/fbdb4311c579a923334beba239083318",
   "DK/hunkemoller": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/5e276e88-af63-43bc-ab71-0ce89b513b21/291265fd063b21a3db1b9fbd85ab07bd",
   "DK/homeshop": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/m8vU1g0jzmJTrSMPogMFm9lGpY32UQeedDU25PXR.png",
   "DK/ihero": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/UPnpPgvOynm4RAHPDyu3U1hXAYacX35LEt1uRWo0.png",
@@ -2133,5 +2133,8 @@
   "SE/aktivvinter": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d448e61e-1139-4f76-b3f0-fe6103cdd7a0/86898d7d15a98e2f2d6d7058773326b4",
   "DK/steamery": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/ebeb6092-15a6-478d-a12d-42b05af6fcb9/8d644dfbf41e1ebaa9e47cdfa0c6109a",
   "sok:DK/aarke": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fb306ee5-f770-494c-823e-2cbedc4f16a0/b47f15c5ba6799ceb923ab95b6c91012",
-  "DK/aarke": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fb306ee5-f770-494c-823e-2cbedc4f16a0/b47f15c5ba6799ceb923ab95b6c91012"
+  "DK/aarke": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fb306ee5-f770-494c-823e-2cbedc4f16a0/b47f15c5ba6799ceb923ab95b6c91012",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/eS25FD0M1dNBsms5ilZpk68w9ZqaI5cCL1VkyVnM.png": "nei",
+  "sok:SE/parfym": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a0fd3a85-2630-45e1-9d4b-45cc60c755fb/a285e6783f50b9e590b37ceb94a0298e",
+  "SE/parfym": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a0fd3a85-2630-45e1-9d4b-45cc60c755fb/a285e6783f50b9e590b37ceb94a0298e"
 }
