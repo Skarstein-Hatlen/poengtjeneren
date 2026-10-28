@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-27",
+  "hentet": "2026-10-28",
   "land": {
     "NO": [
       {
@@ -4611,11 +4611,6 @@
           "mote"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 3.9,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/new-balance-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5399,14 +5394,8 @@
               "slutt": "2026-11-01"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/polarnopyret/0189630a-4f00-71b4-b13a-6a93082439a9"
-          },
-          "klarna": {
-            "verdi": 4.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/1076e274-9742-4315-862e-b8fc0a199840/polarn-o.-pyret/pay-with-klarna/"
           }
         },
-        "domene": "polarnopyret.no",
         "logo": "/logos/NO/polarnopyret.webp"
       },
       {
@@ -5773,7 +5762,7 @@
       },
       {
         "id": "samsung",
-        "navn": "SAMSUNG",
+        "navn": "Samsung",
         "kategorier": [
           "elektronikk"
         ],
@@ -5782,8 +5771,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/samsung/018f3367-2401-704c-900c-526d7eecfc51"
+          },
+          "klarna": {
+            "verdi": 1.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/7470d769-5711-4a72-8af5-2b01f52cecde/samsung/pay-with-klarna/"
           }
         },
+        "domene": "samsung.com",
         "logo": "/logos/NO/samsung.webp"
       },
       {
@@ -9011,6 +9006,22 @@
           }
         },
         "logo": "/logos/SE/careofbeds.webp"
+      },
+      {
+        "id": "casadei",
+        "navn": "Casadei",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/dd27ab7d-2fec-4f46-95dc-43e2b9c574bb/casadei/pay-with-klarna/"
+          }
+        },
+        "domene": "casadei.com",
+        "logo": "/logos/SE/casadei.webp"
       },
       {
         "id": "casall",
@@ -13740,15 +13751,9 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/polarnopyret/0189630a-4f00-71b4-b13a-6a93082439a9"
-          },
-          "klarna-se": {
-            "verdi": 4.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/2bf08c54-d099-4dd4-892e-ecbf1b409d29/polarn-o.-pyret/pay-with-klarna/"
           }
         },
-        "domene": "polarnopyret.se",
-        "logo": "/logos/SE/polarnopyret.webp"
+        "logo": "/logos/NO/polarnopyret.webp"
       },
       {
         "id": "primebeds",
@@ -14318,8 +14323,8 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/samsung/018f3367-2401-704c-900c-526d7eecfc51"
           },
           "klarna-se": {
-            "verdi": 3,
-            "opptil": true,
+            "verdi": 1.5,
+            "opptil": false,
             "kilde": "https://www.klarna.com/se/store/94976059-3a78-4e22-8226-325af1e95c25/samsung/pay-with-klarna/"
           }
         },
@@ -20783,8 +20788,8 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/samsung/018f3367-2401-704c-900c-526d7eecfc51"
           },
           "klarna-dk": {
-            "verdi": 3,
-            "opptil": true,
+            "verdi": 1.5,
+            "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/b805b78e-6114-4d4f-894a-71033ee7e768/samsung/pay-with-klarna/"
           }
         },
