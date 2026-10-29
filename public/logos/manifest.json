@@ -253,7 +253,7 @@
   "NO/mulberry": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/79b04b77-779c-4eda-b02f-2ca79a6758f3/08b90b290ee879da3cda37fe92d55b8e",
   "NO/newport": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/newport_logo_large_06052022.png",
   "NO/nazar": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/nazar_large_17062025.png",
-  "NO/newbalance": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/9218d7a8-422b-4a69-8e03-ff9f729c039e/81a4292068d920b9e02bf94eacc8a3df",
+  "NO/newbalance": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/newbalance_large_logo_02042025.png",
   "NO/nicebeauty": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/nicebeautylargelogo_198x75.png",
   "NO/nike": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/0c42f0d9-e2f0-4811-b021-22f2bfbbfcec/5b958bb7d97be7182580f903f6fd09cc",
   "NO/newchic": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/6300a343-1be6-4f58-8a18-8142d8cb140a/834ff013e5671cecfa37a4283c0e0d9e",
@@ -592,7 +592,7 @@
   "SE/getyourguide": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b564fce9-85a9-482d-acff-9a3f7123e330/46dc78bf10203ec111877b73556173ce",
   "SE/ginza": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/63667834-625b-4c15-b3c9-3747be47a5e1/40b96fdaca01df7fcb933be0d67bc52f",
   "SE/glasscandinavia": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/GLAS_Scandinavia_AB-1689584249.jpg",
-  "SE/ginatricot": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d6acc7de-cd13-4a7d-ba1c-34047bad7f01/3e6ec89e9e8d4a8e87ae66bd8ee0a2a5",
+  "SE/ginatricot": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/ttn7G3e5YhIEotx3thPOnUn69rnUb9sLop5hd1m5.png",
   "SE/geggamoja": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/9a5725b6-049f-4b7b-9c0d-1ee0616731cf/6e4c98dcf8faffa9e1cc84b165458617",
   "SE/gococo": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/e8c58878-e425-4fff-9749-5f3d514fffd5/39b2e9e4f1450e97dab5265de118088c",
   "SE/golvpoolen": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/20b9e7df-b519-46d1-a99c-ab189652412d/1de47f37ff265297bd52cd565b331850",
@@ -604,7 +604,7 @@
   "SE/glowid": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/5fdefdc9-6646-44d2-941b-4cdf53ac7a3f/21036a07c58047f91a00d90560bdf2ff",
   "SE/greenfee365": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/HQcbrbI4nLrNcxd882Rbz39bicaQ3s2F8mXjmtKV.png",
   "SE/guzzini": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/60613c0f-dd28-4d24-acd8-7b1304e6f95c/9389ac04ceb0f83cf96a6f99ebc18cd1",
-  "SE/haglofs": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b433caba-e8a7-4d5c-851f-688d4a469838/ece61aead93edfe4ca228f17ad132898",
+  "SE/haglofs": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/EUzvakb76kUZDLW5zPqPaYQt9ojc0zEeA8tMKzUa.png",
   "SE/gymgrossisten": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Gymgrossisten-1689583599.jpg",
   "SE/gymkompaniet": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/3b68d7be-2102-420f-865e-afcc21125e47/80ac4f973f54d7e1b6459704165b78bb",
   "SE/guldfynd": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/bc8b8dc0-65bd-4166-9d32-b0607c68ec74/eb0473acbacf92dc24548fd641cf6f42",
@@ -2137,5 +2137,10 @@
   "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/eS25FD0M1dNBsms5ilZpk68w9ZqaI5cCL1VkyVnM.png": "nei",
   "sok:SE/parfym": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a0fd3a85-2630-45e1-9d4b-45cc60c755fb/a285e6783f50b9e590b37ceb94a0298e",
   "SE/parfym": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a0fd3a85-2630-45e1-9d4b-45cc60c755fb/a285e6783f50b9e590b37ceb94a0298e",
-  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/DaePnVSIuhPkiqAMphkb9E4Xb3QEQjC6ud6qWyT2.png": "nei"
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/DaePnVSIuhPkiqAMphkb9E4Xb3QEQjC6ud6qWyT2.png": "nei",
+  "SE/tennispoint": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/149f1d93-16cb-4cd9-bc9d-54c85db9551f/65d5253d4b537ee19a83c60daefe33b7",
+  "DK/tennispoint": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fa6ff731-303b-4704-aa99-f43156d5e990/45648159ff72530e7a2e09a47cb6f91f",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/ttn7G3e5YhIEotx3thPOnUn69rnUb9sLop5hd1m5.png": "ja",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/EUzvakb76kUZDLW5zPqPaYQt9ojc0zEeA8tMKzUa.png": "ja",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/0VCFIwk4lpfkgJbZCr4zPxMJ3lI6feizrv70ylgo.png": "nei"
 }

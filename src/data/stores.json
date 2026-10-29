@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-28",
+  "hentet": "2026-10-29",
   "land": {
     "NO": [
       {
@@ -732,9 +732,7 @@
       {
         "id": "bemz",
         "navn": "Bemz",
-        "kategorier": [
-          "hjem"
-        ],
+        "kategorier": [],
         "satser": {
           "trumf": {
             "verdi": 6.2,
@@ -1040,7 +1038,7 @@
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
           },
           "klarna": {
-            "verdi": 2,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/no/store/8563d4e8-d090-493e-bac6-a41fbf1125bd/bubbleroom/pay-with-klarna/"
           }
@@ -1930,22 +1928,6 @@
         "logo": "/logos/NO/elon.webp"
       },
       {
-        "id": "emiratesairlines",
-        "navn": "Emirates Airlines",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/8024464b-2dd0-418a-a4b7-bd408317652d/emirates-airlines/pay-with-klarna/"
-          }
-        },
-        "domene": "emirates.com",
-        "logo": "/logos/NO/emiratesairlines.webp"
-      },
-      {
         "id": "emp",
         "navn": "EMP",
         "kategorier": [
@@ -2755,22 +2737,6 @@
         "logo": "/logos/NO/h248ie.webp"
       },
       {
-        "id": "haglofs",
-        "navn": "Haglöfs",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/76a706c9-4205-41c1-90c8-a7d06b49cb3a/hagloefs/pay-with-klarna/"
-          }
-        },
-        "domene": "haglofs.com",
-        "logo": "/logos/NO/haglofs.webp"
-      },
-      {
         "id": "hairlust",
         "navn": "HairLust",
         "kategorier": [
@@ -3498,7 +3464,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/kicks-trumf"
           },
@@ -4611,6 +4577,11 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 3.9,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/new-balance-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -4932,20 +4903,6 @@
           }
         },
         "logo": "/logos/NO/oakley.webp"
-      },
-      {
-        "id": "object",
-        "navn": "Object",
-        "kategorier": [],
-        "satser": {
-          "klarna": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/dc968b8d-6d12-4a1a-9e3a-ed5999237976/object/pay-with-klarna/"
-          }
-        },
-        "domene": "objectci.com",
-        "logo": "/logos/NO/object.webp"
       },
       {
         "id": "offwhite",
@@ -5805,7 +5762,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/scandic-hotels-trumf"
           }
@@ -7527,6 +7484,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/zooplus/01896311-78a2-734c-aec3-9f2c9fdb7339"
           },
           "klarna": {
@@ -7959,7 +7920,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/apoteket/0189630b-9850-7399-84a6-b1b735256b79"
           },
           "klarna-se": {
-            "verdi": 2.5,
+            "verdi": 2,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/b13876e8-7dfe-41bb-9591-a6b572b4e2ac/apoteket/pay-with-klarna/"
           }
@@ -8132,15 +8093,9 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/autodoc--webgains/01896310-e823-72b0-8d74-6b3da56a30e3"
-          },
-          "klarna-se": {
-            "verdi": 3.5,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/371cd01c-c73a-4c02-a007-5a6407431466/autodoc.se/pay-with-klarna/"
           }
         },
-        "domene": "autodoc.se",
-        "logo": "/logos/SE/autodoc.webp"
+        "logo": "/logos/NO/autodoc.webp"
       },
       {
         "id": "autodude",
@@ -9762,22 +9717,6 @@
         "logo": "/logos/SE/elon.webp"
       },
       {
-        "id": "emiratesairlines",
-        "navn": "Emirates Airlines",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/840f4677-ea12-40f8-a6b5-8be33db17313/emirates-airlines/pay-with-klarna/"
-          }
-        },
-        "domene": "emirates.com",
-        "logo": "/logos/SE/emiratesairlines.webp"
-      },
-      {
         "id": "empshop",
         "navn": "EMP Shop",
         "kategorier": [],
@@ -10340,22 +10279,6 @@
         "logo": "/logos/SE/gstar.webp"
       },
       {
-        "id": "gad",
-        "navn": "G.A.D",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/db26f709-29fc-4eed-ad57-c4f9d37a768a/g.a.d/pay-with-klarna/"
-          }
-        },
-        "domene": "gad.se",
-        "logo": "/logos/SE/gad.webp"
-      },
-      {
         "id": "gameseal",
         "navn": "GameSeal",
         "kategorier": [],
@@ -10455,14 +10378,8 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
-          },
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a254a369-dc78-4c77-b894-45f109fdaf45/gina-tricot/pay-with-klarna/"
           }
         },
-        "domene": "ginatricot.com",
         "logo": "/logos/SE/ginatricot.webp"
       },
       {
@@ -10714,22 +10631,15 @@
         "id": "haglofs",
         "navn": "Haglöfs",
         "kategorier": [
-          "mote",
-          "sport"
+          "mote"
         ],
         "satser": {
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/haglofs/018f1a0b-1749-708d-bbec-9aa03594b3b0"
-          },
-          "klarna-se": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/b6b6170a-1d48-446d-a158-44ab7f81654e/hagloefs/pay-with-klarna/"
           }
         },
-        "domene": "haglofs.com",
         "logo": "/logos/SE/haglofs.webp"
       },
       {
@@ -11028,22 +10938,6 @@
         },
         "domene": "hotels.com",
         "logo": "/logos/SE/hotels.webp"
-      },
-      {
-        "id": "hp",
-        "navn": "HP",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/22845f04-7a89-40f7-8ff6-4941e5134e34/hp/pay-with-klarna/"
-          }
-        },
-        "domene": "hp.com",
-        "logo": "/logos/partnere/hp.webp"
       },
       {
         "id": "hponlinestore",
@@ -11353,7 +11247,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/jd-sports-dk/0189630b-4546-7250-8897-ffc1dfc5b8b1"
           },
           "klarna-se": {
-            "verdi": 2,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/62f705e7-0da4-4171-9c4f-fdfd2c9e2d05/jd-sports/pay-with-klarna/"
           }
@@ -12208,6 +12102,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-se": {
@@ -13129,7 +13027,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordvpn/0189630e-2ae5-7184-adab-1a84e70c6254"
           },
           "klarna-se": {
-            "verdi": 20,
+            "verdi": 14,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/ff3709e9-af0e-48ad-a65e-01b90dc08c01/nordvpn/pay-with-klarna/"
           }
@@ -14810,15 +14708,9 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
-          },
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/14084e91-9272-447c-a597-629fbb6efde7/sonos/pay-with-klarna/"
           }
         },
-        "domene": "sonos.com",
-        "logo": "/logos/SE/sonos.webp"
+        "logo": "/logos/NO/sonos.webp"
       },
       {
         "id": "sony",
@@ -15418,6 +15310,22 @@
           }
         },
         "logo": "/logos/NO/tempur.webp"
+      },
+      {
+        "id": "tennispoint",
+        "navn": "Tennis Point",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/b516881b-dd34-4c45-baa3-8aa432e6950f/tennis-point/pay-with-klarna/"
+          }
+        },
+        "domene": "tennis-point.se",
+        "logo": "/logos/SE/tennispoint.webp"
       },
       {
         "id": "tennisshoppen",
@@ -16422,6 +16330,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zooplus/01896311-78a2-734c-aec3-9f2c9fdb7339"
           },
           "klarna-se": {
@@ -17831,22 +17743,6 @@
         "logo": "/logos/DK/ellos.webp"
       },
       {
-        "id": "emiratesairlines",
-        "navn": "Emirates Airlines",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/3012a757-ba67-470e-ad15-0768f58a599c/emirates-airlines/pay-with-klarna/"
-          }
-        },
-        "domene": "emirates.com",
-        "logo": "/logos/DK/emiratesairlines.webp"
-      },
-      {
         "id": "empshop",
         "navn": "EMP-Shop",
         "kategorier": [
@@ -18392,22 +18288,6 @@
         "logo": "/logos/DK/hm.webp"
       },
       {
-        "id": "haglofs",
-        "navn": "Haglöfs",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/e6c7eaf7-00f0-4947-83d1-9f0610144382/hagloefs/pay-with-klarna/"
-          }
-        },
-        "domene": "haglofs.com",
-        "logo": "/logos/DK/haglofs.webp"
-      },
-      {
         "id": "hairlust",
         "navn": "Hairlust",
         "kategorier": [
@@ -18847,7 +18727,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/jd-sports-dk/0189630b-4546-7250-8897-ffc1dfc5b8b1"
           },
           "klarna-dk": {
-            "verdi": 2,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/bc4859c2-7b1c-4301-801f-fa2cca6de646/jd-sports/pay-with-klarna/"
           }
@@ -19181,6 +19061,11 @@
           "mote"
         ],
         "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/levi's/01896310-b765-730e-9a38-ce195de8cb82"
+          },
           "klarna-dk": {
             "verdi": 2,
             "opptil": true,
@@ -19276,6 +19161,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-dk": {
@@ -20029,20 +19918,6 @@
           }
         },
         "logo": "/logos/DK/obaku.webp"
-      },
-      {
-        "id": "object",
-        "navn": "Object",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 3.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/2edfa115-6b40-42da-9ce5-fd21ea3e0221/object/pay-with-klarna/"
-          }
-        },
-        "domene": "objectci.com",
-        "logo": "/logos/DK/object.webp"
       },
       {
         "id": "offwhite",
@@ -21489,6 +21364,22 @@
         }
       },
       {
+        "id": "tennispoint",
+        "navn": "Tennis Point",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/f71bb60b-ea1e-46fb-9327-1b7d71f43268/tennis-point/pay-with-klarna/"
+          }
+        },
+        "domene": "tennis-point.dk",
+        "logo": "/logos/DK/tennispoint.webp"
+      },
+      {
         "id": "thebodyfactory",
         "navn": "The Body Factory",
         "kategorier": [
@@ -22087,6 +21978,10 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/zooplus/01896311-78a2-734c-aec3-9f2c9fdb7339"
           },
           "klarna-dk": {
