@@ -150,7 +150,7 @@
   "NO/gymgrossisten": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/gymgrossisten_large_black.png",
   "NO/gents": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/K1Bg7gkdm6oEQRo8vcxC9PrnOwx6WlgwOQaa6Zzj.png",
   "NO/guzzini": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/60613c0f-dd28-4d24-acd8-7b1304e6f95c/9389ac04ceb0f83cf96a6f99ebc18cd1",
-  "NO/haglofs": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b433caba-e8a7-4d5c-851f-688d4a469838/ece61aead93edfe4ca228f17ad132898",
+  "NO/haglofs": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/EUzvakb76kUZDLW5zPqPaYQt9ojc0zEeA8tMKzUa.png",
   "NO/greatlife": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/69e94f7d-e93d-4124-8f9f-b24718a0bea7/aa4b7fa653d637f8a86a1b4817d1e7bf",
   "NO/harmankardon": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/harman_large_logo_28052026.png",
   "NO/hellyhansen": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/helyhanson_logo_198x75.png",
@@ -275,7 +275,7 @@
   "NO/omio": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/omio_logo_trumf_250252019.png",
   "NO/olivieri1882": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/8331b674-47ef-496d-86e8-6bb5286218c7/339e50e55bf10bd8f948792c18b20e52",
   "NO/offwhite": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/6a850230-3ee5-43f3-a7a2-a97843bd2aa2/c7e7c69df4ef465362a156492d3dd476",
-  "NO/onyxcookware": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/onyx_large_logo_28082025.png",
+  "NO/onyxcookware": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/onyxcookware_198x75_white_202610291348.png",
   "NO/osloskinlab": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/olsoskinlab_large_logo.png",
   "NO/outdoorexperten": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b3d57ee3-2a22-43bf-9499-ed4f51a32fc0/8b7a744e6e7c09e64fcce7a076ebcaef",
   "NO/plindberg": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/plindberg_large_logo_07102025.png",
@@ -2142,5 +2142,11 @@
   "DK/tennispoint": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fa6ff731-303b-4704-aa99-f43156d5e990/45648159ff72530e7a2e09a47cb6f91f",
   "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/ttn7G3e5YhIEotx3thPOnUn69rnUb9sLop5hd1m5.png": "ja",
   "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/EUzvakb76kUZDLW5zPqPaYQt9ojc0zEeA8tMKzUa.png": "ja",
-  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/0VCFIwk4lpfkgJbZCr4zPxMJ3lI6feizrv70ylgo.png": "nei"
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/0VCFIwk4lpfkgJbZCr4zPxMJ3lI6feizrv70ylgo.png": "nei",
+  "DK/uniqlo": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/c39deb01-116c-4979-8e1e-a4c4e7cda15c/12bd30b9e04774df95caa7a6017a688d",
+  "SE/uniqlo": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/3e14cabe-55e3-48fb-a6ce-0651f7697568/8d243a123683b716c90dc233a83ac59e",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/es1W2G6mrsrylxtO9melLyrbeDWa67Eg0oK0SwkP.png": "nei",
+  "sok:NO/expressvpn": "ingen:2026-10-30",
+  "sok:SE/expressvpn": "ingen:2026-10-30",
+  "sok:DK/expressvpn": "ingen:2026-10-30"
 }

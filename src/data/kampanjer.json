@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-27",
+  "hentet": "2026-10-30",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -1599,19 +1599,6 @@
       "slutt": null,
       "url": "https://www.trygghansa.se/samarbeten/sas-eurobonus",
       "logo": "/logos/partnere/trygghansa.webp"
-    },
-    {
-      "id": "verisure-se-eurobonus",
-      "land": "SE",
-      "program": "eurobonus",
-      "partner": "Verisure",
-      "tittel": "Verisure",
-      "tekst": "Nya kunder som beställer hemlarm, plus 2 000 kr rabatt.",
-      "verdi": 35000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.verisure.se/funnel/standalone/sas/",
-      "logo": "/logos/partnere/verisure.webp"
     }
   ]
 }

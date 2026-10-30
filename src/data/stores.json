@@ -1,7 +1,23 @@
 {
-  "hentet": "2026-10-29",
+  "hentet": "2026-10-30",
   "land": {
     "NO": [
+      {
+        "id": "otherstories",
+        "navn": "& Other Stories",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna": {
+            "verdi": 2.5,
+            "opptil": true,
+            "kilde": "https://www.klarna.com/no/store/e80bf510-29ee-4c43-8c38-ed106a9c879f/-other-stories/pay-with-klarna/"
+          }
+        },
+        "domene": "stories.com",
+        "logo": "/logos/NO/otherstories.webp"
+      },
       {
         "id": "24mx",
         "navn": "24mx",
@@ -732,7 +748,9 @@
       {
         "id": "bemz",
         "navn": "Bemz",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
           "trumf": {
             "verdi": 6.2,
@@ -2080,6 +2098,20 @@
         "logo": "/logos/NO/expedia.webp"
       },
       {
+        "id": "expressvpn",
+        "navn": "ExpressVPN",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 100,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/expressvpn/01a18c1f-d202-7305-88b0-0e4bcb96725c"
+          }
+        }
+      },
+      {
         "id": "farfetch",
         "navn": "Farfetch",
         "kategorier": [
@@ -2735,6 +2767,21 @@
           }
         },
         "logo": "/logos/NO/h248ie.webp"
+      },
+      {
+        "id": "haglofs",
+        "navn": "Haglöfs",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/haglofs/018f1a0b-1749-708d-bbec-9aa03594b3b0"
+          }
+        },
+        "logo": "/logos/NO/haglofs.webp"
       },
       {
         "id": "hairlust",
@@ -7521,6 +7568,22 @@
     ],
     "SE": [
       {
+        "id": "otherstories",
+        "navn": "& Other Stories",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 2.5,
+            "opptil": true,
+            "kilde": "https://www.klarna.com/se/store/fe585dee-8eac-44be-aaba-d65a8ad344ca/-other-stories/pay-with-klarna/"
+          }
+        },
+        "domene": "stories.com",
+        "logo": "/logos/SE/otherstories.webp"
+      },
+      {
         "id": "24mx",
         "navn": "24MX",
         "kategorier": [],
@@ -7970,6 +8033,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/astrosweden/018abc11-c737-72a5-9183-f13cd99b8a8f"
           },
           "klarna-se": {
@@ -9926,6 +9993,20 @@
         },
         "domene": "expedia.se",
         "logo": "/logos/SE/expedia.webp"
+      },
+      {
+        "id": "expressvpn",
+        "navn": "ExpressVPN",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 100,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/expressvpn/01a18c1f-d202-7305-88b0-0e4bcb96725c"
+          }
+        }
       },
       {
         "id": "factor",
@@ -15653,6 +15734,22 @@
         "logo": "/logos/SE/understatement.webp"
       },
       {
+        "id": "uniqlo",
+        "navn": "Uniqlo",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/f1a56022-a84a-462c-97ac-dba56a1ca2bf/uniqlo/pay-with-klarna/"
+          }
+        },
+        "domene": "uniqlo.com",
+        "logo": "/logos/SE/uniqlo.webp"
+      },
+      {
         "id": "uppercut",
         "navn": "Uppercut",
         "kategorier": [
@@ -16406,6 +16503,22 @@
       }
     ],
     "DK": [
+      {
+        "id": "otherstories",
+        "navn": "& Other Stories",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2.5,
+            "opptil": true,
+            "kilde": "https://www.klarna.com/dk/store/23f45e51-350f-4aa4-9a12-d43af905f848/-other-stories/pay-with-klarna/"
+          }
+        },
+        "domene": "stories.com",
+        "logo": "/logos/DK/otherstories.webp"
+      },
       {
         "id": "24mx",
         "navn": "24MX",
@@ -17601,7 +17714,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/dyson/01896310-bb05-734c-87c7-a0d8eadfe399"
           },
           "klarna-dk": {
-            "verdi": 1.5,
+            "verdi": 2.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/8b19a17a-ecf0-42c8-9c73-78542ba9b528/dyson/pay-with-klarna/"
           }
@@ -17851,6 +17964,20 @@
           }
         },
         "logo": "/logos/DK/everlast.webp"
+      },
+      {
+        "id": "expressvpn",
+        "navn": "ExpressVPN",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 100,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/expressvpn/01a18c1f-d202-7305-88b0-0e4bcb96725c"
+          }
+        }
       },
       {
         "id": "farnell",
@@ -20119,22 +20246,6 @@
         "logo": "/logos/DK/palmangels.webp"
       },
       {
-        "id": "pandasia",
-        "navn": "Pandasia",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/faf4088e-7750-49fa-82a9-8a4902d19bc7/pandasia/pay-with-klarna/"
-          }
-        },
-        "domene": "pandasia.dk",
-        "logo": "/logos/DK/pandasia.webp"
-      },
-      {
         "id": "paradoux",
         "navn": "Paradoux",
         "kategorier": [
@@ -21582,6 +21693,22 @@
           }
         },
         "logo": "/logos/DK/understatement.webp"
+      },
+      {
+        "id": "uniqlo",
+        "navn": "Uniqlo",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/6c70891b-ab0d-49a3-a065-cb3a98ca89be/uniqlo/pay-with-klarna/"
+          }
+        },
+        "domene": "uniqlo.com",
+        "logo": "/logos/DK/uniqlo.webp"
       },
       {
         "id": "urvaerket",
