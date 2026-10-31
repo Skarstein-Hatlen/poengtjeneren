@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-30",
+  "hentet": "2026-10-31",
   "land": {
     "NO": [
       {
@@ -21,7 +21,9 @@
       {
         "id": "24mx",
         "navn": "24mx",
-        "kategorier": [],
+        "kategorier": [
+          "sport"
+        ],
         "satser": {
           "klarna": {
             "verdi": 2.5,
@@ -475,21 +477,6 @@
           }
         },
         "logo": "/logos/NO/avastsoftware.webp"
-      },
-      {
-        "id": "avg",
-        "navn": "AVG",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 23.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/avg-trumf"
-          }
-        },
-        "logo": "/logos/NO/avg.webp"
       },
       {
         "id": "avis",
@@ -1295,14 +1282,8 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
-          },
-          "klarna": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/3f9b7733-f87d-4aa7-9433-a28a5e248c75/cos/pay-with-klarna/"
           }
         },
-        "domene": "cos.com",
         "logo": "/logos/NO/cos.webp"
       },
       {
@@ -3323,6 +3304,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/irobot/01a13f7b-f1a0-7345-8750-1411c32e7f85"
           }
         },
@@ -3912,6 +3897,10 @@
           "sas-online-shopping": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lenovo-2/01896311-859b-70f9-876a-a52c61ec5e5a"
           }
         },
@@ -4319,7 +4308,9 @@
       {
         "id": "marianila",
         "navn": "Maria Nila",
-        "kategorier": [],
+        "kategorier": [
+          "skjonnhet"
+        ],
         "satser": {
           "klarna": {
             "verdi": 3.5,
@@ -5163,20 +5154,6 @@
         },
         "domene": "palmangels.com",
         "logo": "/logos/NO/palmangels.webp"
-      },
-      {
-        "id": "paradoux",
-        "navn": "Paradoux",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/paradoux/01896312-a60c-719b-bad6-c0a2fb5633d3"
-          }
-        }
       },
       {
         "id": "partyking",
@@ -6926,20 +6903,6 @@
         "logo": "/logos/NO/urbanpioneersconceptstore.webp"
       },
       {
-        "id": "urbantrend",
-        "navn": "Urban Trend",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/urban-trend/0189630d-fb5b-7045-9d21-b6efc2c4643d"
-          }
-        }
-      },
-      {
         "id": "urverket",
         "navn": "Urverket",
         "kategorier": [
@@ -7586,7 +7549,9 @@
       {
         "id": "24mx",
         "navn": "24MX",
-        "kategorier": [],
+        "kategorier": [
+          "sport"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2.5,
@@ -7704,7 +7669,8 @@
         "id": "adlibris",
         "navn": "Adlibris",
         "kategorier": [
-          "underholdning"
+          "underholdning",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -7980,6 +7946,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/apoteket/0189630b-9850-7399-84a6-b1b735256b79"
           },
           "klarna-se": {
@@ -8027,7 +7997,8 @@
         "id": "astrosweden",
         "navn": "AstroSweden",
         "kategorier": [
-          "sport"
+          "sport",
+          "elektronikk"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -8202,7 +8173,8 @@
         "id": "babyv",
         "navn": "Baby V",
         "kategorier": [
-          "barn"
+          "barn",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -8441,7 +8413,9 @@
       {
         "id": "bemz",
         "navn": "Bemz",
-        "kategorier": [],
+        "kategorier": [
+          "hjem"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 4,
@@ -8675,7 +8649,8 @@
         "id": "bokus",
         "navn": "Bokus",
         "kategorier": [
-          "underholdning"
+          "underholdning",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -8882,7 +8857,9 @@
       {
         "id": "bshhomeappliancesab",
         "navn": "BSH Home Appliances AB",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -9003,7 +8980,9 @@
       {
         "id": "calvinklein",
         "navn": "Calvin Klein",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -9078,7 +9057,9 @@
       {
         "id": "clickboat",
         "navn": "Click&Boat",
-        "kategorier": [],
+        "kategorier": [
+          "reise"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -9163,14 +9144,8 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
-          },
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/0965de10-b3cb-4384-adfc-e689d1b79269/cos/pay-with-klarna/"
           }
         },
-        "domene": "cos.com",
         "logo": "/logos/SE/cos.webp"
       },
       {
@@ -9786,7 +9761,9 @@
       {
         "id": "empshop",
         "navn": "EMP Shop",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 4.5,
@@ -9906,7 +9883,9 @@
       {
         "id": "etro",
         "navn": "ETRO",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -9920,7 +9899,9 @@
       {
         "id": "etsy",
         "navn": "Etsy",
-        "kategorier": [],
+        "kategorier": [
+          "tjenester"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -9983,7 +9964,9 @@
       {
         "id": "expedia",
         "navn": "Expedia",
-        "kategorier": [],
+        "kategorier": [
+          "reise"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 1.5,
@@ -10011,7 +9994,9 @@
       {
         "id": "factor",
         "navn": "Factor",
-        "kategorier": [],
+        "kategorier": [
+          "mat"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 5.5,
@@ -10025,7 +10010,9 @@
       {
         "id": "farfetch",
         "navn": "Farfetch",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 1,
@@ -10130,7 +10117,8 @@
         "id": "firstvet",
         "navn": "FirstVet",
         "kategorier": [
-          "dyr"
+          "dyr",
+          "skjonnhet"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -10362,7 +10350,9 @@
       {
         "id": "gameseal",
         "navn": "GameSeal",
-        "kategorier": [],
+        "kategorier": [
+          "underholdning"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -10459,8 +10449,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
+          },
+          "klarna-se": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/a254a369-dc78-4c77-b894-45f109fdaf45/gina-tricot/pay-with-klarna/"
           }
         },
+        "domene": "ginatricot.com",
         "logo": "/logos/SE/ginatricot.webp"
       },
       {
@@ -10526,22 +10522,6 @@
         },
         "domene": "glowid.se",
         "logo": "/logos/SE/glowid.webp"
-      },
-      {
-        "id": "gococo",
-        "navn": "GoCoCo",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 7,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/058cec6c-f7b3-4730-9c91-576b1a6ad448/gococo/pay-with-klarna/"
-          }
-        },
-        "domene": "gococo.se",
-        "logo": "/logos/SE/gococo.webp"
       },
       {
         "id": "golvpoolen",
@@ -11009,7 +10989,9 @@
       {
         "id": "hotels",
         "navn": "Hotels.com",
-        "kategorier": [],
+        "kategorier": [
+          "reise"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 1.5,
@@ -11889,6 +11871,10 @@
           "sas-online-shopping-se": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lenovo-2/01896311-859b-70f9-876a-a52c61ec5e5a"
           }
         },
@@ -12243,6 +12229,10 @@
           "sas-online-shopping-se": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lux-case/01896308-35e5-7100-9665-4122177f0b78"
           }
         },
@@ -12607,7 +12597,9 @@
       {
         "id": "minifinder",
         "navn": "Minifinder",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -12640,11 +12632,6 @@
           "hjem"
         ],
         "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/mjuk/018abc11-c0a4-726a-b1dd-06d7e37a9f17"
-          },
           "klarna-se": {
             "verdi": 2,
             "opptil": false,
@@ -12892,7 +12879,9 @@
       {
         "id": "next",
         "navn": "Next",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -13375,7 +13364,8 @@
         "id": "outl1",
         "navn": "outl1",
         "kategorier": [
-          "hjem"
+          "hjem",
+          "sport"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -13904,7 +13894,9 @@
       {
         "id": "ralphlauren",
         "navn": "Ralph Lauren",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3,
@@ -13991,7 +13983,9 @@
       {
         "id": "refurbed",
         "navn": "refurbed",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 1,
@@ -14113,7 +14107,9 @@
       {
         "id": "revolve",
         "navn": "Revolve",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 7,
@@ -14172,7 +14168,9 @@
       {
         "id": "robertocavalli",
         "navn": "Roberto Cavalli",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2.5,
@@ -15489,7 +15487,9 @@
       {
         "id": "timberland",
         "navn": "Timberland",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -15568,7 +15568,9 @@
       {
         "id": "trip",
         "navn": "Trip.com",
-        "kategorier": [],
+        "kategorier": [
+          "reise"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -15853,7 +15855,9 @@
       {
         "id": "vetapotek",
         "navn": "Vetapotek",
-        "kategorier": [],
+        "kategorier": [
+          "dyr"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 2.5,
@@ -15903,7 +15907,8 @@
         "id": "viator",
         "navn": "Viator",
         "kategorier": [
-          "sport"
+          "sport",
+          "reise"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -16193,7 +16198,8 @@
         "id": "widforss",
         "navn": "Widforss",
         "kategorier": [
-          "hjem"
+          "hjem",
+          "mote"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -16522,7 +16528,9 @@
       {
         "id": "24mx",
         "navn": "24MX",
-        "kategorier": [],
+        "kategorier": [
+          "sport"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 2.5,
@@ -16784,6 +16792,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/apopro/0192e872-2c1c-719e-b17a-40069c2aef26"
           }
         },
@@ -17113,20 +17125,6 @@
         }
       },
       {
-        "id": "bonzo",
-        "navn": "Bonzo",
-        "kategorier": [
-          "mat"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bonzo/0189630e-432b-72c2-a6a7-a71a1a48a70e"
-          }
-        }
-      },
-      {
         "id": "boohoo",
         "navn": "Boohoo",
         "kategorier": [
@@ -17240,7 +17238,9 @@
       {
         "id": "calvinklein",
         "navn": "Calvin Klein",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 2,
@@ -17450,14 +17450,8 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/cos/0189630e-0bd3-72c2-a84d-9bc1f40f4a70"
-          },
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/19e96bc1-1cb8-4c90-a003-2caa81ccd0f4/cos/pay-with-klarna/"
           }
         },
-        "domene": "cos.com",
         "logo": "/logos/DK/cos.webp"
       },
       {
@@ -19140,6 +19134,10 @@
           "sas-online-shopping-dk": {
             "verdi": 10,
             "opptil": false,
+            "kampanje": {
+              "verdi": 20,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/lenovo-2/01896311-859b-70f9-876a-a52c61ec5e5a"
           }
         },
@@ -19389,7 +19387,9 @@
       {
         "id": "mainlinemenswear",
         "navn": "Mainline Menswear",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 2,
@@ -19497,20 +19497,6 @@
         },
         "domene": "matas.dk",
         "logo": "/logos/DK/matas.webp"
-      },
-      {
-        "id": "menscare",
-        "navn": "Menscare",
-        "kategorier": [
-          "skjonnhet"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/menscare/0189630d-cd2f-709a-b2af-242ea0628e65"
-          }
-        }
       },
       {
         "id": "meta",
@@ -20246,20 +20232,6 @@
         "logo": "/logos/DK/palmangels.webp"
       },
       {
-        "id": "paradoux",
-        "navn": "Paradoux",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 50,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/paradoux/01896312-a60c-719b-bad6-c0a2fb5633d3"
-          }
-        }
-      },
-      {
         "id": "parfumdreams",
         "navn": "parfumdreams",
         "kategorier": [],
@@ -20353,7 +20325,8 @@
         "id": "philipshue",
         "navn": "Philips Hue",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-dk": {
@@ -20561,7 +20534,9 @@
       {
         "id": "ralphlauren",
         "navn": "Ralph Lauren",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 3,
@@ -21126,20 +21101,6 @@
         "logo": "/logos/DK/smartbuyglasses.webp"
       },
       {
-        "id": "smykkegave",
-        "navn": "Smykkegave.dk",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 100,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/smykkegave.dk/0189630d-d0f2-738b-b2e1-8f0d7db8babe"
-          }
-        }
-      },
-      {
         "id": "sneakersnstuff",
         "navn": "Sneakersnstuff",
         "kategorier": [
@@ -21595,7 +21556,9 @@
       {
         "id": "tommyhilfiger",
         "navn": "Tommy Hilfiger",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 2,
@@ -21844,7 +21807,9 @@
       {
         "id": "vogels",
         "navn": "vogel's",
-        "kategorier": [],
+        "kategorier": [
+          "elektronikk"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 5.5,

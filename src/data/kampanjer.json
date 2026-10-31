@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-10-30",
+  "hentet": "2026-10-31",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -221,6 +221,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/factor/01932560-06e4-7378-846c-17fc077c77eb",
       "logo": "/logos/SE/factor.webp"
+    },
+    {
+      "id": "sas-dk-fyndiq",
+      "land": "DK",
+      "program": "sas-online-shopping-dk",
+      "partner": "Fyndiq",
+      "tittel": "Fyndiq",
+      "tekst": "Via SAS Shopping · normalt 100",
+      "verdi": 200,
+      "enhet": "poeng",
+      "slutt": "2026-11-08",
+      "url": "https://onlineshopping.flysas.com/da-DK/butikker/fyndiq/0189630a-3059-73d7-9526-637d8af50232",
+      "logo": "/logos/kampanjer/sas-dk-fyndiq.webp"
     },
     {
       "id": "sas-dk-hellofresh",
@@ -676,6 +689,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/fortum-strom/019e3b10-50e5-7328-907c-a44723c5beb0",
       "logo": "/logos/partnere/fortum.webp"
+    },
+    {
+      "id": "sas-no-fyndiq",
+      "land": "NO",
+      "program": "sas-online-shopping",
+      "partner": "Fyndiq",
+      "tittel": "Fyndiq",
+      "tekst": "Via SAS Shopping · normalt 50",
+      "verdi": 100,
+      "enhet": "poeng",
+      "slutt": "2026-11-08",
+      "url": "https://onlineshopping.flysas.com/nb-NO/butikker/fyndiq/0189630a-3059-73d7-9526-637d8af50232",
+      "logo": "/logos/kampanjer/sas-no-fyndiq.webp"
     },
     {
       "id": "sas-no-hellofresh",
@@ -1242,10 +1268,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Fyndiq",
       "tittel": "Fyndiq",
-      "tekst": "Via SAS Shopping",
-      "verdi": 50,
+      "tekst": "Via SAS Shopping · normalt 50",
+      "verdi": 100,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-08",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/fyndiq/0189630a-3059-73d7-9526-637d8af50232",
       "logo": "/logos/kampanjer/sas-se-fyndiq.webp"
     },
@@ -1313,6 +1339,18 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/memira-1/01896310-a12c-72d3-94cf-a00f63cc73ed",
       "logo": "/logos/partnere/memira.webp"
+    },
+    {
+      "id": "sas-se-miss-hosting",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Miss Hosting",
+      "tittel": "Miss Hosting",
+      "tekst": "Via SAS Shopping · normalt 1 000",
+      "verdi": 2000,
+      "enhet": "poeng",
+      "slutt": "2026-11-08",
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/miss-hosting/019dafb9-e034-7101-acb5-862c125d8cf3"
     },
     {
       "id": "sas-se-molndal-energi",
