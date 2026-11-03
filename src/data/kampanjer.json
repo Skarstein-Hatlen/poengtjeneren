@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-02",
+  "hentet": "2026-11-03",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -1216,10 +1216,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Elskling",
       "tittel": "Elskling",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 2500,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-08",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/elskling.se/0189630f-5536-7329-883b-ceffb426d426",
       "logo": "/logos/kampanjer/sas-se-elskling.se.webp"
     },

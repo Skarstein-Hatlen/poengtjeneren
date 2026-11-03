@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-02",
+  "hentet": "2026-11-03",
   "land": {
     "NO": [
       {
@@ -912,6 +912,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/bodystore.com/01896307-a48e-7282-a8f3-2508750f0b14"
           }
         },
@@ -4617,7 +4621,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/new-balance-trumf"
           },
@@ -6581,6 +6585,22 @@
         "logo": "/logos/NO/t248nnesen.webp"
       },
       {
+        "id": "teknikmagasinet",
+        "navn": "Teknikmagasinet",
+        "kategorier": [
+          "elektronikk",
+          "underholdning"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 2.3,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/teknikmagasinet-trumf"
+          }
+        },
+        "logo": "/logos/NO/teknikmagasinet.webp"
+      },
+      {
         "id": "tempur",
         "navn": "Tempur",
         "kategorier": [
@@ -6663,7 +6683,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 8.5,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/timarcotrumf"
           },
@@ -8606,6 +8626,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bodystore.com/01896307-a48e-7282-a8f3-2508750f0b14"
           }
         },
@@ -9173,22 +9197,6 @@
           }
         },
         "logo": "/logos/partnere/cyberghost.webp"
-      },
-      {
-        "id": "dackonline",
-        "navn": "Dack-Online",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/5fd531b5-b5a4-49ac-92e6-ae9f09c53e00/dack-online/pay-with-klarna/"
-          }
-        },
-        "domene": "dack-online.com",
-        "logo": "/logos/SE/dackonline.webp"
       },
       {
         "id": "danielwellington",
@@ -11036,14 +11044,8 @@
               "slutt": "2026-11-08"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/hudoteket/01896309-aa2d-71e5-9c48-248f03c79b6f"
-          },
-          "klarna-se": {
-            "verdi": 5.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/2ece0d78-1f48-4960-9030-f1b79e24f811/hudoteket/pay-with-klarna/"
           }
         },
-        "domene": "hudoteket.se",
         "logo": "/logos/SE/hudoteket.webp"
       },
       {
@@ -12934,20 +12936,6 @@
         }
       },
       {
-        "id": "nk",
-        "navn": "NK",
-        "kategorier": [],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a8958880-7150-4c7d-abed-28f50aa4aa64/nk/pay-with-klarna/"
-          }
-        },
-        "domene": "nk.se",
-        "logo": "/logos/partnere/nk.webp"
-      },
-      {
         "id": "nlyman",
         "navn": "NLY Man",
         "kategorier": [
@@ -13343,6 +13331,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/outl1/019e9785-274b-7017-8bd8-61fb7372192e"
           },
           "klarna-se": {
@@ -15565,6 +15557,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/traningspartner/01896309-e045-7007-a420-f96ef113a52e"
           },
           "klarna-se": {
@@ -15914,6 +15910,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/vinkylen-1/018abc11-d276-70ea-b149-50ae4e0bd6bb"
           }
         },
@@ -18209,7 +18209,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/gina-tricot-ab/0189630a-28d0-70b3-bbe0-1867fcea0f9d"
           },
           "klarna-dk": {
-            "verdi": 2,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/63882e46-70e9-4a7c-8c94-a0e735935e0b/gina-tricot/pay-with-klarna/"
           }
@@ -18466,6 +18466,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/helsegrossisten/0189630f-a5eb-73e6-9be7-41a7fb921f47"
           }
         },
