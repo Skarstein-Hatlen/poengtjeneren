@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-03",
+  "hentet": "2026-11-04",
   "land": {
     "NO": [
       {
@@ -1860,21 +1860,6 @@
         "logo": "/logos/partnere/elektroimportoren.webp"
       },
       {
-        "id": "elitehotelsofsweden",
-        "navn": "Elite Hotels of Sweden",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 5.4,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/elite-hotels-of-sweden-trumf"
-          }
-        },
-        "logo": "/logos/NO/elitehotelsofsweden.webp"
-      },
-      {
         "id": "ellos",
         "navn": "Ellos NO",
         "kategorier": [
@@ -3644,13 +3629,17 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/kost1-trumf"
           },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/kost1/019f374b-74f0-73aa-82f5-e11c748d36c2"
           }
         },
@@ -6007,6 +5996,23 @@
         "logo": "/logos/NO/skeidar.webp"
       },
       {
+        "id": "skinome",
+        "navn": "Skinome",
+        "kategorier": [],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/skinome/019f4b3f-c264-712d-b3c2-63e1ad0270f2"
+          }
+        },
+        "logo": "/logos/NO/skinome.webp"
+      },
+      {
         "id": "skistart",
         "navn": "Skistart.com",
         "kategorier": [
@@ -6059,7 +6065,7 @@
             "opptil": false,
             "kampanje": {
               "verdi": 30,
-              "slutt": "2026-11-08"
+              "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/skruvat/01896309-8695-729b-af3d-7858d358e60a"
           }
@@ -6226,16 +6232,14 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
-          },
-          "klarna": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/20fd09da-1b42-419c-9cb3-c4756be22e8d/sonos/pay-with-klarna/"
           }
         },
-        "domene": "sonos.com",
-        "logo": "/logos/NO/sonos.webp"
+        "logo": "/logos/DK/sonos.webp"
       },
       {
         "id": "sportgymbutikken",
@@ -6564,6 +6568,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/swims/01932555-abce-7312-9a6d-1a06f2713634"
           }
         },
@@ -13033,21 +13041,6 @@
         "logo": "/logos/SE/nordiskagalleriet.webp"
       },
       {
-        "id": "nordiskakompaniet",
-        "navn": "Nordiska Kompaniet",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordiska-kompaniet/019bc659-063f-7135-b5e6-2b3c841e9626"
-          }
-        },
-        "logo": "/logos/partnere/nk.webp"
-      },
-      {
         "id": "nordvpn",
         "navn": "NordVPN",
         "kategorier": [
@@ -14726,10 +14719,14 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
           }
         },
-        "logo": "/logos/NO/sonos.webp"
+        "logo": "/logos/DK/sonos.webp"
       },
       {
         "id": "sony",
@@ -16758,22 +16755,6 @@
         "logo": "/logos/DK/arket.webp"
       },
       {
-        "id": "asics",
-        "navn": "Asics",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/8fb4b187-f234-42a9-9d5f-417851cf3b7a/asics/pay-with-klarna/"
-          }
-        },
-        "domene": "asics.com",
-        "logo": "/logos/DK/asics.webp"
-      },
-      {
         "id": "asos",
         "navn": "asos",
         "kategorier": [
@@ -18320,20 +18301,6 @@
           }
         },
         "logo": "/logos/DK/gulvfliseeksperten.webp"
-      },
-      {
-        "id": "guzzini",
-        "navn": "Guzzini",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/94353545-6980-408a-b4b4-5a81ed3bd51a/guzzini/pay-with-klarna/"
-          }
-        },
-        "domene": "guzzini.com",
-        "logo": "/logos/DK/guzzini.webp"
       },
       {
         "id": "hm",
@@ -21053,6 +21020,10 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-11-08"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/sonos/0189630e-a751-7311-930d-de861b1a0c5d"
           },
           "klarna-dk": {
