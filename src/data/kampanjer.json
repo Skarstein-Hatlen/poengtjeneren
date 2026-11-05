@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-04",
+  "hentet": "2026-11-05",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -502,9 +502,9 @@
       "partner": "SAS Amex Classic",
       "tittel": "SAS Amex Classic med invitasjon",
       "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
-      "verdi": 7500,
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": "2026-11-03",
+      "slutt": null,
       "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
       "logo": "/logos/partnere/amex.webp"
     },
@@ -515,9 +515,9 @@
       "partner": "SAS Amex Elite",
       "tittel": "SAS Amex Elite med invitasjon",
       "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
-      "verdi": 90000,
+      "verdi": 60000,
       "enhet": "poeng",
-      "slutt": "2026-11-03",
+      "slutt": null,
       "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
       "logo": "/logos/partnere/amex.webp"
     },
@@ -541,9 +541,9 @@
       "partner": "SAS Amex Premium",
       "tittel": "SAS Amex Premium med invitasjon",
       "tekst": "Med invitasjon fra en Amex-kunde du kjenner. Bare den nye kunden får poengene.",
-      "verdi": 45000,
+      "verdi": 30000,
       "enhet": "poeng",
-      "slutt": "2026-11-03",
+      "slutt": null,
       "url": "https://www.americanexpress.com/nb-no/credit-cards/apply/inviteafriend/",
       "logo": "/logos/partnere/amex.webp"
     },
@@ -1540,10 +1540,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Allente",
       "tittel": "Allente",
-      "tekst": "Via SAS Shopping",
-      "verdi": 1500,
+      "tekst": "Via SAS Shopping · normalt 1 500",
+      "verdi": 3000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-15",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/viasat/0189630c-d887-72b0-889d-aec1f78825e4",
       "logo": "/logos/kampanjer/sas-se-viasat.webp"
     },

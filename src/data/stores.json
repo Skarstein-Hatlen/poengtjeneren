@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-04",
+  "hentet": "2026-11-05",
   "land": {
     "NO": [
       {
@@ -1367,7 +1367,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
           },
@@ -1673,6 +1673,7 @@
         "id": "ewheels",
         "navn": "E-Wheels",
         "kategorier": [
+          "sport",
           "hjem",
           "elektronikk"
         ],
@@ -1858,6 +1859,21 @@
           }
         },
         "logo": "/logos/partnere/elektroimportoren.webp"
+      },
+      {
+        "id": "elitehotelsofsweden",
+        "navn": "Elite Hotels of Sweden",
+        "kategorier": [
+          "reise"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 5.4,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/elite-hotels-of-sweden-trumf"
+          }
+        },
+        "logo": "/logos/NO/elitehotelsofsweden.webp"
       },
       {
         "id": "ellos",
@@ -3809,22 +3825,6 @@
         "logo": "/logos/NO/layered.webp"
       },
       {
-        "id": "ledlyskilder",
-        "navn": "Ledlyskilder",
-        "kategorier": [
-          "hjem",
-          "underholdning"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 9.3,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/ledlyskilder-trumf"
-          }
-        },
-        "logo": "/logos/NO/ledlyskilder.webp"
-      },
-      {
         "id": "lego",
         "navn": "LEGO",
         "kategorier": [
@@ -5058,7 +5058,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfoutnorth"
           },
@@ -10574,6 +10574,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/granit/0189630c-f6bf-7140-aeca-3dbbb3cc88e6"
           },
           "klarna-se": {
@@ -12082,6 +12086,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/live-it/01896307-f57d-71f6-aa8f-f07920c18bb9"
           },
           "klarna-se": {
@@ -14195,6 +14203,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/safira/0192958a-3d0c-73f6-8808-283b59ffe62b"
           },
           "klarna-se": {
@@ -15671,22 +15683,6 @@
           }
         },
         "logo": "/logos/SE/understatement.webp"
-      },
-      {
-        "id": "uniqlo",
-        "navn": "Uniqlo",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/f1a56022-a84a-462c-97ac-dba56a1ca2bf/uniqlo/pay-with-klarna/"
-          }
-        },
-        "domene": "uniqlo.com",
-        "logo": "/logos/SE/uniqlo.webp"
       },
       {
         "id": "uppercut",
@@ -18301,6 +18297,20 @@
           }
         },
         "logo": "/logos/DK/gulvfliseeksperten.webp"
+      },
+      {
+        "id": "guzzini",
+        "navn": "Guzzini",
+        "kategorier": [],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": true,
+            "kilde": "https://www.klarna.com/dk/store/94353545-6980-408a-b4b4-5a81ed3bd51a/guzzini/pay-with-klarna/"
+          }
+        },
+        "domene": "guzzini.com",
+        "logo": "/logos/DK/guzzini.webp"
       },
       {
         "id": "hm",
@@ -21321,14 +21331,12 @@
       {
         "id": "tennispoint",
         "navn": "Tennis Point",
-        "kategorier": [
-          "sport"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-dk": {
             "verdi": 3,
             "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/f71bb60b-ea1e-46fb-9327-1b7d71f43268/tennis-point/pay-with-klarna/"
+            "kilde": "https://www.klarna.comnull"
           }
         },
         "domene": "tennis-point.dk",
@@ -21539,22 +21547,6 @@
           }
         },
         "logo": "/logos/DK/understatement.webp"
-      },
-      {
-        "id": "uniqlo",
-        "navn": "Uniqlo",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/6c70891b-ab0d-49a3-a065-cb3a98ca89be/uniqlo/pay-with-klarna/"
-          }
-        },
-        "domene": "uniqlo.com",
-        "logo": "/logos/DK/uniqlo.webp"
       },
       {
         "id": "urvaerket",
