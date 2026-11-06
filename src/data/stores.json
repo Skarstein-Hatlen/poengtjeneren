@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-05",
+  "hentet": "2026-11-06",
   "land": {
     "NO": [
       {
@@ -2772,6 +2772,22 @@
         "logo": "/logos/NO/h248ie.webp"
       },
       {
+        "id": "hagl246fs",
+        "navn": "Hagl&#246;fs",
+        "kategorier": [
+          "mote",
+          "sport"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 6.2,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/haglofs-trumf"
+          }
+        },
+        "logo": "/logos/NO/hagl246fs.webp"
+      },
+      {
         "id": "haglofs",
         "navn": "Haglöfs",
         "kategorier": [
@@ -3584,6 +3600,21 @@
           }
         },
         "logo": "/logos/NO/kitchn.webp"
+      },
+      {
+        "id": "kjellco",
+        "navn": "Kjell & Co",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "trumf": {
+            "verdi": 3.1,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/kjell-and-co-trumf"
+          }
+        },
+        "logo": "/logos/NO/kjellco.webp"
       },
       {
         "id": "kjellcompany",
@@ -11811,22 +11842,6 @@
         "logo": "/logos/NO/lappeliten.webp"
       },
       {
-        "id": "lastminute",
-        "navn": "lastminute.com",
-        "kategorier": [
-          "reise"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 1,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/b4fb776b-c566-4c8a-b518-14578715caeb/lastminute.com/pay-with-klarna/"
-          }
-        },
-        "domene": "lastminute.com",
-        "logo": "/logos/SE/lastminute.webp"
-      },
-      {
         "id": "layered",
         "navn": "Layered",
         "kategorier": [
@@ -14820,22 +14835,6 @@
         "logo": "/logos/SE/sportgymbutiken.webp"
       },
       {
-        "id": "sportics",
-        "navn": "Sportics",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/d8468ce8-4e7b-485e-9e4e-d6163ad5de94/sportics/pay-with-klarna/"
-          }
-        },
-        "domene": "sportics.se",
-        "logo": "/logos/SE/sportics.webp"
-      },
-      {
         "id": "sportkost",
         "navn": "Sportkost.se",
         "kategorier": [
@@ -15301,8 +15300,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/teknikdelar/0199f128-133f-7374-94b1-8df80e9804b0"
+          },
+          "klarna-se": {
+            "verdi": 2.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/a1d33313-2dbe-4a2e-a9bb-153f6d1ab857/teknikdelar/pay-with-klarna/"
           }
         },
+        "domene": "teknikdelar.se",
         "logo": "/logos/SE/teknikdelar.webp"
       },
       {
