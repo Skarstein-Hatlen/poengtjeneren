@@ -438,7 +438,8 @@
   "teknikmagasinet": {"trumf":[["2026-11-03",2.3]]},
   "skinome": {"sas-online-shopping":[["2026-11-04",50]]},
   "hagl246fs": {"trumf":[["2026-11-06",6.2]]},
-  "kjellco": {"trumf":[["2026-11-06",3.1]]}
+  "kjellco": {"trumf":[["2026-11-06",3.1]]},
+  "etsy": {"sas-online-shopping":[["2026-11-07",25]]}
  },
  "SE": {
   "otherstories": {"klarna-se":[["2026-09-21",2.5],["2026-09-29",null],["2026-10-30",2.5]]},
@@ -573,13 +574,13 @@
   "emiratesairlines": {"klarna-se":[["2026-09-21",1],["2026-10-29",null],["2026-11-02",2]]},
   "empshop": {"klarna-se":[["2026-09-21",4.5]]},
   "emporioarmani": {"klarna-se":[["2026-09-21",4]]},
-  "epictravelgear": {"sas-online-shopping-se":[["2026-09-21",25],["2026-10-03",50],["2026-10-19",25]]},
+  "epictravelgear": {"sas-online-shopping-se":[["2026-09-21",25],["2026-10-03",50],["2026-10-19",25],["2026-11-07",50]]},
   "eraldo": {"klarna-se":[["2026-09-21",3.5]]},
   "estorenu": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "estrid": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "etanolkaminshop": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "etro": {"klarna-se":[["2026-09-21",3.5]]},
-  "etsy": {"klarna-se":[["2026-09-21",2]]},
+  "etsy": {"klarna-se":[["2026-09-21",2]],"sas-online-shopping-se":[["2026-11-07",25]]},
   "euroflorist": {"sas-online-shopping-se":[["2026-09-21",25],["2026-10-12",50],["2026-10-19",25],["2026-10-26",50]]},
   "europeiskaerv": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "eurotoys": {"sas-online-shopping-se":[["2026-09-21",25]]},
@@ -695,7 +696,7 @@
   "lampemesteren": {"sas-online-shopping-se":[["2026-09-21",25],["2026-10-05",50],["2026-10-12",25]]},
   "lamporochljus": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "lappeliten": {"sas-online-shopping-se":[["2026-09-21",25]]},
-  "lastminute": {"klarna-se":[["2026-09-21",1]]},
+  "lastminute": {"klarna-se":[["2026-09-21",1],["2026-11-06",null]]},
   "layered": {"klarna-se":[["2026-09-21",3.5]]},
   "lego": {"sas-online-shopping-se":[["2026-09-21",25],["2026-10-05",50],["2026-10-12",25]],"klarna-se":[["2026-09-21",3.5]]},
   "lekmer": {"sas-online-shopping-se":[["2026-09-21",25]]},
@@ -876,7 +877,7 @@
   "sova": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "spartoo": {"sas-online-shopping-se":[["2026-09-21",50]]},
   "sportgymbutiken": {"sas-online-shopping-se":[["2026-09-21",25]]},
-  "sportics": {"klarna-se":[["2026-09-21",2]]},
+  "sportics": {"klarna-se":[["2026-09-21",2],["2026-11-06",null]]},
   "sportkost": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "sportshopen": {"sas-online-shopping-se":[["2026-09-21",25]]},
   "sportsmart": {"sas-online-shopping-se":[["2026-09-21",50]]},
@@ -988,7 +989,8 @@
   "parfym": {"sas-online-shopping-se":[["2026-10-27",50],["2026-11-02",25]]},
   "tennispoint": {"klarna-se":[["2026-10-29",3]]},
   "expressvpn": {"sas-online-shopping-se":[["2026-10-30",100],["2026-11-01",300]]},
-  "uniqlo": {"klarna-se":[["2026-10-30",1],["2026-11-05",null]]}
+  "uniqlo": {"klarna-se":[["2026-10-30",1],["2026-11-05",null]]},
+  "sellpy": {"sas-online-shopping-se":[["2026-11-07",25]]}
  },
  "DK": {
   "otherstories": {"klarna-dk":[["2026-09-21",2.5],["2026-10-08",null],["2026-10-30",2.5]]},
@@ -1076,7 +1078,7 @@
   "emiratesairlines": {"klarna-dk":[["2026-09-21",1],["2026-10-29",null],["2026-11-02",2]]},
   "empshop": {"sas-online-shopping-dk":[["2026-09-21",25]]},
   "emporioarmani": {"klarna-dk":[["2026-09-21",4]]},
-  "etsy": {"klarna-dk":[["2026-09-21",2]]},
+  "etsy": {"klarna-dk":[["2026-09-21",2]],"sas-online-shopping-dk":[["2026-11-07",25]]},
   "euroflorist": {"sas-online-shopping-dk":[["2026-09-21",25],["2026-10-12",50],["2026-10-19",25],["2026-10-26",50]]},
   "eurotoys": {"sas-online-shopping-dk":[["2026-09-21",50]]},
   "everlast": {"sas-online-shopping-dk":[["2026-09-21",25]]},

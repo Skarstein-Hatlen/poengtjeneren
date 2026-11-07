@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-06",
+  "hentet": "2026-11-07",
   "land": {
     "NO": [
       {
@@ -2005,6 +2005,21 @@
         },
         "domene": "estore.no",
         "logo": "/logos/NO/estore.webp"
+      },
+      {
+        "id": "etsy",
+        "navn": "Etsy",
+        "kategorier": [
+          "hjem"
+        ],
+        "satser": {
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/etsy/01a1b0e6-f166-7385-90d7-fdede72c2d83"
+          }
+        },
+        "logo": "/logos/SE/etsy.webp"
       },
       {
         "id": "eurodel",
@@ -4374,21 +4389,6 @@
           }
         },
         "logo": "/logos/NO/match.webp"
-      },
-      {
-        "id": "maxa",
-        "navn": "MAXA",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 3.1,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/maxa-trumf"
-          }
-        },
-        "logo": "/logos/NO/maxa.webp"
       },
       {
         "id": "meta",
@@ -9841,6 +9841,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/epic-travelgear/0199b95a-142f-73a9-90e9-d6dbaecdc935"
           }
         },
@@ -9927,9 +9931,15 @@
         "id": "etsy",
         "navn": "Etsy",
         "kategorier": [
+          "hjem",
           "tjenester"
         ],
         "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/etsy/01a1b0e6-f166-7385-90d7-fdede72c2d83"
+          },
           "klarna-se": {
             "verdi": 2,
             "opptil": true,
@@ -14372,6 +14382,21 @@
         "logo": "/logos/NO/selected.webp"
       },
       {
+        "id": "sellpy",
+        "navn": "Sellpy",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sellpy/01a1b0f6-2de0-7357-8df7-d4105b6bc7e8"
+          }
+        },
+        "logo": "/logos/SE/sellpy.webp"
+      },
+      {
         "id": "senetic",
         "navn": "Senetic",
         "kategorier": [],
@@ -17830,9 +17855,15 @@
         "id": "etsy",
         "navn": "Etsy",
         "kategorier": [
+          "hjem",
           "tjenester"
         ],
         "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/etsy/01a1b0e6-f166-7385-90d7-fdede72c2d83"
+          },
           "klarna-dk": {
             "verdi": 2,
             "opptil": true,
@@ -19128,7 +19159,7 @@
           "klarna-dk": {
             "verdi": 2,
             "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/1bd55b11-6b83-41d7-af84-58cee195bc02/levi-s/pay-with-klarna/"
+            "kilde": "https://www.klarna.com/dk/store/1bd55b11-6b83-41d7-af84-58cee195bc02/levi-s%C2%AE/pay-with-klarna/"
           }
         },
         "domene": "levi.com",
