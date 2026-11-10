@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-09",
+  "hentet": "2026-11-10",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -905,7 +905,7 @@
       "partner": "Tibber",
       "tittel": "Tibber",
       "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 1000,
+      "verdi": 2000,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/tibber/018abc11-cf42-731d-a74c-99b0c7398eef",
@@ -1541,7 +1541,7 @@
       "partner": "Allente",
       "tittel": "Allente",
       "tekst": "Via SAS Shopping · normalt 1 500",
-      "verdi": 3000,
+      "verdi": 5000,
       "enhet": "poeng",
       "slutt": "2026-11-15",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/viasat/0189630c-d887-72b0-889d-aec1f78825e4",
@@ -1553,10 +1553,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Zmarta försäkring",
       "tittel": "Zmarta försäkring",
-      "tekst": "Via SAS Shopping · nya kunder",
-      "verdi": 1500,
+      "tekst": "Via SAS Shopping · nya kunder · normalt 1 500",
+      "verdi": 2500,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-22",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/zmarta-forsakring/0198511f-cddd-705e-8f63-7df64aa4f3af",
       "logo": "/logos/partnere/zmarta.webp"
     },

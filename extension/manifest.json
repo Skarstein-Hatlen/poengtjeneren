@@ -59,6 +59,7 @@
     {
       "matches": [
         "*://*.24mx.com/*",
+        "*://*.24s.com/*",
         "*://*.aboutyou.dk/*",
         "*://*.aboutyou.se/*",
         "*://*.acer.com/*",
@@ -80,6 +81,7 @@
         "*://*.aretrotale.com/*",
         "*://*.arket.com/*",
         "*://*.asos.com/*",
+        "*://*.astrosweden.se/*",
         "*://*.asus.com/*",
         "*://*.babysam.dk/*",
         "*://*.babysam.se/*",
@@ -103,8 +105,6 @@
         "*://*.bymalenebirger.com/*",
         "*://*.bythjul.com/*",
         "*://*.byttdekk.com/*",
-        "*://*.calvinklein.dk/*",
-        "*://*.calvinklein.se/*",
         "*://*.casadei.com/*",
         "*://*.clickandboat.com/*",
         "*://*.cocopanda.se/*",
@@ -228,6 +228,7 @@
         "*://*.meta.com/*",
         "*://*.miamily.com/*",
         "*://*.miinto.dk/*",
+        "*://*.miinto.no/*",
         "*://*.miinto.se/*",
         "*://*.minifinder.com/*",
         "*://*.mjuk.com/*",

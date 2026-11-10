@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-09",
+  "hentet": "2026-11-10",
   "land": {
     "NO": [
       {
@@ -869,7 +869,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/blivakker-trumf"
           }
@@ -4457,8 +4457,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/miinto/01896308-a975-7164-aa9c-41b2ec9d89e2"
+          },
+          "klarna": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/dbbba398-3853-47e2-b3af-5d98c6df6ddf/miinto/pay-with-klarna/"
           }
         },
+        "domene": "miinto.no",
         "logo": "/logos/NO/miinto.webp"
       },
       {
@@ -5258,21 +5264,6 @@
         "logo": "/logos/NO/petxl.webp"
       },
       {
-        "id": "philips",
-        "navn": "Philips",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/philips/01896307-ce95-73ec-b705-8d5a7c4410b2"
-          }
-        },
-        "logo": "/logos/NO/philips.webp"
-      },
-      {
         "id": "philipshomeappliances",
         "navn": "Philips Home Appliances",
         "kategorier": [
@@ -5284,6 +5275,11 @@
             "verdi": 2.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/philips-home-applicances-trumf"
+          },
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/philips/01896307-ce95-73ec-b705-8d5a7c4410b2"
           }
         },
         "logo": "/logos/NO/philipshomeappliances.webp"
@@ -8035,7 +8031,8 @@
         "id": "astrosweden",
         "navn": "AstroSweden",
         "kategorier": [
-          "sport"
+          "sport",
+          "elektronikk"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -8046,8 +8043,14 @@
               "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/astrosweden/018abc11-c737-72a5-9183-f13cd99b8a8f"
+          },
+          "klarna-se": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/a0ef8a01-e3b9-441c-a707-f5fc56b5c18a/astro-sweden/pay-with-klarna/"
           }
         },
+        "domene": "astrosweden.se",
         "logo": "/logos/SE/astrosweden.webp"
       },
       {
@@ -8997,22 +9000,6 @@
         "logo": "/logos/SE/bythjul.webp"
       },
       {
-        "id": "calvinklein",
-        "navn": "Calvin Klein",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/9c4818d4-dfc3-4b13-b26a-9f7586abf421/calvin-klein/pay-with-klarna/"
-          }
-        },
-        "domene": "calvinklein.se",
-        "logo": "/logos/SE/calvinklein.webp"
-      },
-      {
         "id": "careofbeds",
         "navn": "Care of Beds",
         "kategorier": [
@@ -9030,7 +9017,9 @@
       {
         "id": "casadei",
         "navn": "Casadei",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-se": {
             "verdi": 3,
@@ -11088,6 +11077,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/hudoteket/01896309-aa2d-71e5-9c48-248f03c79b6f"
           },
           "klarna-se": {
@@ -13584,8 +13577,8 @@
         "logo": "/logos/partnere/petson.webp"
       },
       {
-        "id": "philips",
-        "navn": "Philips",
+        "id": "philipshomeappliances",
+        "navn": "Philips Home Appliances",
         "kategorier": [
           "hjem"
         ],
@@ -13596,7 +13589,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/philips/01896307-ce95-73ec-b705-8d5a7c4410b2"
           }
         },
-        "logo": "/logos/SE/philips.webp"
+        "logo": "/logos/NO/philipshomeappliances.webp"
       },
       {
         "id": "philipshue",
@@ -15551,9 +15544,7 @@
       {
         "id": "trip",
         "navn": "Trip.com",
-        "kategorier": [
-          "reise"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -16505,6 +16496,22 @@
         "logo": "/logos/DK/24mx.webp"
       },
       {
+        "id": "24s",
+        "navn": "24S",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
+          }
+        },
+        "domene": "24s.com",
+        "logo": "/logos/DK/24s.webp"
+      },
+      {
         "id": "aretrotale",
         "navn": "A Retro Tale",
         "kategorier": [
@@ -17145,22 +17152,6 @@
           }
         },
         "logo": "/logos/DK/bornibalance.webp"
-      },
-      {
-        "id": "calvinklein",
-        "navn": "Calvin Klein",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/8c0365c5-c02d-44a0-92ca-5351483594fe/calvin-klein/pay-with-klarna/"
-          }
-        },
-        "domene": "calvinklein.dk",
-        "logo": "/logos/DK/calvinklein.webp"
       },
       {
         "id": "carecopenhagen",
@@ -19320,7 +19311,9 @@
       {
         "id": "mainlinemenswear",
         "navn": "Mainline Menswear",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 2,
@@ -20214,8 +20207,8 @@
         "logo": "/logos/DK/peterhahn.webp"
       },
       {
-        "id": "philips",
-        "navn": "Philips",
+        "id": "philipshomeappliances",
+        "navn": "Philips Home Appliances",
         "kategorier": [
           "hjem"
         ],
@@ -20226,7 +20219,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/philips/01896307-ce95-73ec-b705-8d5a7c4410b2"
           }
         },
-        "logo": "/logos/DK/philips.webp"
+        "logo": "/logos/NO/philipshomeappliances.webp"
       },
       {
         "id": "philipshue",
@@ -21327,7 +21320,9 @@
       {
         "id": "tennispoint",
         "navn": "Tennis Point",
-        "kategorier": [],
+        "kategorier": [
+          "sport"
+        ],
         "satser": {
           "klarna-dk": {
             "verdi": 3,
