@@ -239,7 +239,7 @@
   "NO/miamily": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/5db76b17-8409-4870-b7ed-003c3c9b9fda/d23fd355e5785d3d95fe047c6aadde05",
   "NO/maxa": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/maxa_large_logo_02092025.png",
   "NO/marianila": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/50fa7b19-8080-4c39-ad4a-9049d731ba03/7864d15a33926e3624f5211ffd242074",
-  "NO/miinto": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/miinto_largel_logo_25102021.png",
+  "NO/miinto": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/miinto_198x75_white.png",
   "NO/meta": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/58f67906-dc4a-42b9-8cf2-ade94d97ac50/d334296fdb96148378f4d5041d45eb8c",
   "NO/mimmis": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/mimmis_trumf_large[1].png",
   "NO/marshall": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Marshall-1689583809.jpg",
@@ -989,7 +989,7 @@
   "DK/bluemoon": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/87b53469-9602-457e-8929-c498d13aab33/0a957880c8ec98129f8bfd77ef0bdb75",
   "DK/bond": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Bond-1689583842.jpg",
   "DK/bodystore": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/bOk1YepuNavjQKyYRKIZ6q6Vo4w6UuZv6m50e9us.png",
-  "DK/bubbleroom": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/TN8iWo5qviLi18YbNNhzk1Wwq1xNXdJGf7fa91E2.png",
+  "DK/bubbleroom": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/14b6619a-7b96-442d-8e9d-a70c3d7f204b/3be6cf3f47a5afba18b2274c0e83e634",
   "DK/boschhome": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Ma4zmEr8cYfuOSWHRWBVelr4QQdjimm16clm9mrX.png",
   "DK/bonzo": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Bonzo-1689584026.jpg",
   "DK/boohoo": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/wmlEqMIcQBe7rVG9FP7ugliOOsc0tDK2quBkALOq.png",
@@ -2167,5 +2167,6 @@
   "sok:SE/delitea": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a6ac950f-5419-4191-a740-1855728afea8/c68d18be922524ac028e76f9535f549b",
   "sok:SE/sonos": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/0f762e81-8370-4f08-abdd-f0bf21875527/d4bda8780f4921825a6a0d2e88c5f965",
   "sok:DK/sonos": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/0f762e81-8370-4f08-abdd-f0bf21875527/d4bda8780f4921825a6a0d2e88c5f965",
-  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Ahhkk6UPdVy3axj1vo5oH125OzmUMf4fz1OR20AO.png": "nei"
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Ahhkk6UPdVy3axj1vo5oH125OzmUMf4fz1OR20AO.png": "nei",
+  "sok:SE/adlibris": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b35f595d-a499-41a5-b1dc-ffd8f27dbd45/c0fdc3074e5aead260a974e3783775dd"
 }

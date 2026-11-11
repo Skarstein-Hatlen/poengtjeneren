@@ -59,14 +59,12 @@
     {
       "matches": [
         "*://*.24mx.com/*",
-        "*://*.24s.com/*",
         "*://*.aboutyou.dk/*",
         "*://*.aboutyou.se/*",
         "*://*.acer.com/*",
         "*://*.adidas.dk/*",
         "*://*.adidas.no/*",
         "*://*.adidas.se/*",
-        "*://*.adlibris.com/*",
         "*://*.agoda.com/*",
         "*://*.agood.com/*",
         "*://*.agv.com/*",
@@ -99,6 +97,7 @@
         "*://*.boohooman.com/*",
         "*://*.bosch-home.se/*",
         "*://*.bravekid.com/*",
+        "*://*.bubbleroom.dk/*",
         "*://*.bubbleroom.no/*",
         "*://*.bubbleroom.se/*",
         "*://*.bugaboo.com/*",

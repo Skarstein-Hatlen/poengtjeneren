@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-10",
+  "hentet": "2026-11-11",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -865,10 +865,10 @@
       "program": "sas-online-shopping",
       "partner": "Storytel",
       "tittel": "Storytel",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 250,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 250",
+      "verdi": 500,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/storytel-no/0189630c-97b2-70fc-b190-002eaed90291",
       "logo": "/logos/kampanjer/sas-no-storytel-no.webp"
     },
@@ -1099,10 +1099,10 @@
       "program": "sas-online-shopping-se",
       "partner": "BookBeat",
       "tittel": "BookBeat",
-      "tekst": "Via SAS Shopping",
-      "verdi": 400,
+      "tekst": "Via SAS Shopping · normalt 400",
+      "verdi": 800,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-22",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/bookbeat/0189630d-af8b-717b-b0cb-1f385bd015f5",
       "logo": "/logos/kampanjer/sas-se-bookbeat.webp"
     },
@@ -1274,6 +1274,19 @@
       "slutt": "2026-11-15",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/fyndiq/0189630a-3059-73d7-9526-637d8af50232",
       "logo": "/logos/kampanjer/sas-se-fyndiq.webp"
+    },
+    {
+      "id": "sas-se-gardssallskapet",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Gårdssällskapet",
+      "tittel": "Gårdssällskapet",
+      "tekst": "Via SAS Shopping · nya kunder",
+      "verdi": 500,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/gardssallskapet/01a1c5c9-c855-71e3-8dc0-81b2954fd269",
+      "logo": "/logos/kampanjer/sas-se-gardssallskapet.webp"
     },
     {
       "id": "sas-se-greenely",
@@ -1488,10 +1501,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Svenska Gummihuset",
       "tittel": "Svenska Gummihuset",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 1000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-30",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/svenska-gummihuset/0189630d-cf20-7172-9143-c46a1a6970e6",
       "logo": "/logos/kampanjer/sas-se-svenska-gummihuset.webp"
     },

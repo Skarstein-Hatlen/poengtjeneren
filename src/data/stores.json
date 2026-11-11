@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-10",
+  "hentet": "2026-11-11",
   "land": {
     "NO": [
       {
@@ -3040,7 +3040,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 5.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/hultens-trumf"
           }
@@ -3889,6 +3889,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lego/01896310-5de4-71af-9cfa-190c9eebec97"
           }
         },
@@ -4566,8 +4570,15 @@
       {
         "id": "mytheresa",
         "navn": "Mytheresa",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
+          "sas-online-shopping": {
+            "verdi": 15,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/mytheresa/019edad6-5e38-7178-ae89-d222ff519417"
+          },
           "klarna": {
             "verdi": 3,
             "opptil": true,
@@ -5980,6 +5991,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 100,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
@@ -7711,22 +7726,15 @@
         "id": "adlibris",
         "navn": "Adlibris",
         "kategorier": [
-          "underholdning",
-          "hjem"
+          "underholdning"
         ],
         "satser": {
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/adlibris/01896308-9039-7038-9636-e81e01693162"
-          },
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/5eaee0a2-74e7-430d-9a9c-945396799723/adlibris.se/pay-with-klarna/"
           }
         },
-        "domene": "adlibris.com",
         "logo": "/logos/SE/adlibris.webp"
       },
       {
@@ -7899,7 +7907,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 7,
+            "verdi": 9,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/5832b076-0249-47ed-bcc8-0fbd38fdc9cd/aliexpress/pay-with-klarna/"
           }
@@ -11881,6 +11889,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lego/01896310-5de4-71af-9cfa-190c9eebec97"
           },
           "klarna-se": {
@@ -12367,9 +12379,7 @@
       {
         "id": "mainlinemenswear",
         "navn": "Mainline Menswear",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 2,
@@ -12512,7 +12522,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 1.5,
+            "verdi": 2.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/545e0b70-82e2-412c-9b04-47ce718c93df/matsmart/pay-with-klarna/"
           }
@@ -14489,10 +14499,6 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
-            "kampanje": {
-              "verdi": 100,
-              "slutt": "2026-11-30"
-            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/siemens/0199c3f9-87a4-73df-9412-b69270133dab"
           }
         },
@@ -16496,22 +16502,6 @@
         "logo": "/logos/DK/24mx.webp"
       },
       {
-        "id": "24s",
-        "navn": "24S",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
-          }
-        },
-        "domene": "24s.com",
-        "logo": "/logos/DK/24s.webp"
-      },
-      {
         "id": "aretrotale",
         "navn": "A Retro Tale",
         "kategorier": [
@@ -16655,7 +16645,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 7,
+            "verdi": 9,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/fe5c2390-80ac-4dee-8542-722d6c8aea85/aliexpress/pay-with-klarna/"
           }
@@ -17098,8 +17088,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
+          },
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/06bfe452-0ce1-4a24-8108-7e1f55dd8185/bubbleroom/pay-with-klarna/"
           }
         },
+        "domene": "bubbleroom.dk",
         "logo": "/logos/DK/bubbleroom.webp"
       },
       {
@@ -19034,6 +19030,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/lego/01896310-5de4-71af-9cfa-190c9eebec97"
           },
           "klarna-dk": {
@@ -19565,7 +19565,7 @@
         "kategorier": [],
         "satser": {
           "klarna-dk": {
-            "verdi": 2,
+            "verdi": 3,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/f66691f1-ad35-4a07-89e0-eeb3171791cc/motatos/pay-with-klarna/"
           }
@@ -19636,8 +19636,15 @@
       {
         "id": "mytheresa",
         "navn": "Mytheresa",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 15,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/mytheresa/019edad6-5e38-7178-ae89-d222ff519417"
+          },
           "klarna-dk": {
             "verdi": 3,
             "opptil": true,
