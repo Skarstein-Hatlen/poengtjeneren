@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-11",
+  "hentet": "2026-11-12",
   "land": {
     "NO": [
       {
@@ -1501,21 +1501,6 @@
         }
       },
       {
-        "id": "devold",
-        "navn": "Devold",
-        "kategorier": [
-          "sport"
-        ],
-        "satser": {
-          "trumf": {
-            "verdi": 6.2,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/devold-trumf"
-          }
-        },
-        "logo": "/logos/NO/devold.webp"
-      },
-      {
         "id": "didriksons",
         "navn": "Didriksons",
         "kategorier": [
@@ -2733,20 +2718,6 @@
         "logo": "/logos/NO/guttelus.webp"
       },
       {
-        "id": "guzzini",
-        "navn": "Guzzini",
-        "kategorier": [],
-        "satser": {
-          "klarna": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/no/store/615c8f7a-0daf-4298-a80d-5993ded07358/guzzini/pay-with-klarna/"
-          }
-        },
-        "domene": "guzzini.com",
-        "logo": "/logos/NO/guzzini.webp"
-      },
-      {
         "id": "gymgrossisten",
         "navn": "Gymgrossisten",
         "kategorier": [
@@ -3799,8 +3770,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lampegiganten/01896309-a6d3-70f0-b920-314a0de651aa"
+          },
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/cb263422-41cb-4fe3-80b7-b1e7912723d2/lampegiganten/pay-with-klarna/"
           }
         },
+        "domene": "lampegiganten.no",
         "logo": "/logos/NO/lampegiganten.webp"
       },
       {
@@ -3819,8 +3796,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lampemesteren/01896308-b758-703a-8f2a-7d8ab49b690e"
+          },
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/caa0e8bf-834b-496d-adb9-6e5a3da8f3dd/lampemesteren/pay-with-klarna/"
           }
         },
+        "domene": "lampemesteren.no",
         "logo": "/logos/NO/lampemesteren.webp"
       },
       {
@@ -4965,39 +4948,16 @@
         "id": "oakley",
         "navn": "Oakley",
         "kategorier": [
-          "sport",
-          "skjonnhet",
           "mote"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 6.2,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/oakley-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/oakley/019d0b3a-53d6-73e2-9bb6-1136e90eaa28"
           }
         },
-        "logo": "/logos/NO/oakley.webp"
-      },
-      {
-        "id": "offwhite",
-        "navn": "Off-White",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/6f81c3e6-70b8-4ec3-9f47-6657bbfa872d/off-white/pay-with-klarna/"
-          }
-        },
-        "domene": "off---white.com",
-        "logo": "/logos/NO/offwhite.webp"
+        "logo": "/logos/SE/oakley.webp"
       },
       {
         "id": "olivieri1882",
@@ -5068,16 +5028,11 @@
       },
       {
         "id": "onyxcookware",
-        "navn": "ONYX Cookware",
+        "navn": "Onyx Cookware",
         "kategorier": [
           "hjem"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 4.6,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/onyx-cookware-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -5841,6 +5796,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           },
           "klarna": {
@@ -6705,6 +6664,11 @@
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/tiger-of-sweden-trumf"
           },
+          "sas-online-shopping": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/tiger-of-sweden/01a1b100-4c8c-7358-8d63-3a43843e3d2c"
+          },
           "klarna": {
             "verdi": 4,
             "opptil": false,
@@ -7174,6 +7138,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/vinlagringskompaniet/018abc11-d276-70ea-b149-50ae4e0bd6bb"
           }
         },
@@ -7580,6 +7548,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/aarke/01a0d2cd-44b6-70e0-9d09-7fa13f871050"
           }
         },
@@ -7656,6 +7628,22 @@
         "logo": "/logos/SE/aboutyou.webp"
       },
       {
+        "id": "acmilan",
+        "navn": "AC Milan",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/60d4532b-4112-4114-bccd-dd1454596c7d/ac-milan/pay-with-klarna/"
+          }
+        },
+        "domene": "acmilan.com",
+        "logo": "/logos/SE/acmilan.webp"
+      },
+      {
         "id": "acer",
         "navn": "Acer",
         "kategorier": [
@@ -7726,15 +7714,22 @@
         "id": "adlibris",
         "navn": "Adlibris",
         "kategorier": [
-          "underholdning"
+          "underholdning",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/adlibris/01896308-9039-7038-9636-e81e01693162"
+          },
+          "klarna-se": {
+            "verdi": 1.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/5eaee0a2-74e7-430d-9a9c-945396799723/adlibris.se/pay-with-klarna/"
           }
         },
+        "domene": "adlibris.com",
         "logo": "/logos/SE/adlibris.webp"
       },
       {
@@ -7907,7 +7902,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 9,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/5832b076-0249-47ed-bcc8-0fbd38fdc9cd/aliexpress/pay-with-klarna/"
           }
@@ -8005,10 +8000,8 @@
       },
       {
         "id": "arket",
-        "navn": "Arket",
-        "kategorier": [
-          "mote"
-        ],
+        "navn": "ARKET",
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -8361,7 +8354,8 @@
         "id": "batteriexperten",
         "navn": "Batteriexperten",
         "kategorier": [
-          "elektronikk"
+          "elektronikk",
+          "hjem"
         ],
         "satser": {
           "sas-online-shopping-se": {
@@ -8372,9 +8366,15 @@
               "slutt": "2026-11-15"
             },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/batteriexperten/01896308-01a2-7058-a537-bb687b41c4b4"
+          },
+          "klarna-se": {
+            "verdi": 2.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/650d8b60-7fcd-49cb-bc31-2ee67bcb6854/batteriexperten/pay-with-klarna/"
           }
         },
-        "logo": "/logos/NO/batteriexperten.webp"
+        "domene": "batteriexperten.com",
+        "logo": "/logos/SE/batteriexperten.webp"
       },
       {
         "id": "bazta",
@@ -8641,9 +8641,15 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/blue-tomato/01896308-675b-726c-a654-a06bd3f5bdd8"
+          },
+          "klarna-se": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/166ea80f-9ff2-481f-a44f-e105853380ce/blue-tomato/pay-with-klarna/"
           }
         },
-        "logo": "/logos/NO/bluetomato.webp"
+        "domene": "blue-tomato.com",
+        "logo": "/logos/SE/bluetomato.webp"
       },
       {
         "id": "bobo",
@@ -9006,6 +9012,22 @@
         },
         "domene": "bythjul.com",
         "logo": "/logos/SE/bythjul.webp"
+      },
+      {
+        "id": "calvinklein",
+        "navn": "Calvin Klein",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 4,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/9c4818d4-dfc3-4b13-b26a-9f7586abf421/calvin-klein/pay-with-klarna/"
+          }
+        },
+        "domene": "calvinklein.se",
+        "logo": "/logos/SE/calvinklein.webp"
       },
       {
         "id": "careofbeds",
@@ -10675,20 +10697,6 @@
         "logo": "/logos/SE/guldfynd.webp"
       },
       {
-        "id": "guzzini",
-        "navn": "Guzzini",
-        "kategorier": [],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/se/store/89c9128c-5dc3-4cd7-aaf0-8ce1224cc235/guzzini/pay-with-klarna/"
-          }
-        },
-        "domene": "guzzini.com",
-        "logo": "/logos/SE/guzzini.webp"
-      },
-      {
         "id": "gymgrossisten",
         "navn": "Gymgrossisten",
         "kategorier": [
@@ -12223,6 +12231,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-se": {
@@ -13218,22 +13230,6 @@
         "logo": "/logos/SE/oakley.webp"
       },
       {
-        "id": "offwhite",
-        "navn": "Off-White",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/9d816df8-6ed4-4a8f-939d-7d78476e9ed7/off-white/pay-with-klarna/"
-          }
-        },
-        "domene": "off---white.com",
-        "logo": "/logos/SE/offwhite.webp"
-      },
-      {
         "id": "officestore",
         "navn": "Officestore",
         "kategorier": [
@@ -13291,7 +13287,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/NO/onyxcookware.webp"
+        "logo": "/logos/SE/onyxcookware.webp"
       },
       {
         "id": "ordbok",
@@ -14220,9 +14216,7 @@
       {
         "id": "safira",
         "navn": "Safira",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "sas-online-shopping-se": {
             "verdi": 25,
@@ -14236,7 +14230,7 @@
           "klarna-se": {
             "verdi": 7.5,
             "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/7bace9cb-3657-4e4f-beb5-f224a28c799e/safira.com/pay-with-klarna/"
+            "kilde": "https://www.klarna.com/se/store/7bace9cb-3657-4e4f-beb5-f224a28c799e/safira/pay-with-klarna/"
           }
         },
         "domene": "safira.com",
@@ -14371,6 +14365,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           }
         },
@@ -14594,7 +14592,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/skruvat/01896309-8695-729b-af3d-7858d358e60a"
           },
           "klarna-se": {
-            "verdi": 3,
+            "verdi": 6,
             "opptil": true,
             "kilde": "https://www.klarna.com/se/store/81fbc822-e802-469b-b51e-6fcd89e7a0d1/skruvat/pay-with-klarna/"
           }
@@ -15432,6 +15430,11 @@
           "mote"
         ],
         "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/tiger-of-sweden/01a1b100-4c8c-7358-8d63-3a43843e3d2c"
+          },
           "klarna-se": {
             "verdi": 4,
             "opptil": false,
@@ -15819,6 +15822,22 @@
           }
         },
         "logo": "/logos/SE/velosophy.webp"
+      },
+      {
+        "id": "veromoda",
+        "navn": "Vero Moda",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/19610bbd-c78a-4260-a529-f036e9a2f66e/vero-moda/pay-with-klarna/"
+          }
+        },
+        "domene": "veromoda.com",
+        "logo": "/logos/SE/veromoda.webp"
       },
       {
         "id": "vetapotek",
@@ -16462,6 +16481,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/aarke/01a0d2cd-44b6-70e0-9d09-7fa13f871050"
           }
         },
@@ -16500,6 +16523,22 @@
         },
         "domene": "24mx.com",
         "logo": "/logos/DK/24mx.webp"
+      },
+      {
+        "id": "24s",
+        "navn": "24S",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/7e21c413-7c86-4fc1-ab69-9ce859975309/24s/pay-with-klarna/"
+          }
+        },
+        "domene": "24s.com",
+        "logo": "/logos/DK/24s.webp"
       },
       {
         "id": "aretrotale",
@@ -16645,7 +16684,7 @@
         ],
         "satser": {
           "klarna-dk": {
-            "verdi": 9,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/fe5c2390-80ac-4dee-8542-722d6c8aea85/aliexpress/pay-with-klarna/"
           }
@@ -17148,6 +17187,22 @@
           }
         },
         "logo": "/logos/DK/bornibalance.webp"
+      },
+      {
+        "id": "calvinklein",
+        "navn": "Calvin Klein",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 4,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/8c0365c5-c02d-44a0-92ca-5351483594fe/calvin-klein/pay-with-klarna/"
+          }
+        },
+        "domene": "calvinklein.dk",
+        "logo": "/logos/DK/calvinklein.webp"
       },
       {
         "id": "carecopenhagen",
@@ -18306,20 +18361,6 @@
         "logo": "/logos/DK/gulvfliseeksperten.webp"
       },
       {
-        "id": "guzzini",
-        "navn": "Guzzini",
-        "kategorier": [],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": true,
-            "kilde": "https://www.klarna.com/dk/store/94353545-6980-408a-b4b4-5a81ed3bd51a/guzzini/pay-with-klarna/"
-          }
-        },
-        "domene": "guzzini.com",
-        "logo": "/logos/DK/guzzini.webp"
-      },
-      {
         "id": "hm",
         "navn": "H&M",
         "kategorier": [
@@ -18892,6 +18933,25 @@
         "logo": "/logos/DK/klaedeskabet.webp"
       },
       {
+        "id": "komplett",
+        "navn": "Komplett",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 15,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-12-01"
+            },
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/komplett-1/01896310-4cf5-73e3-ba30-14f26f67ddb9"
+          }
+        },
+        "logo": "/logos/SE/komplett.webp"
+      },
+      {
         "id": "kvalitetskokkenet",
         "navn": "Kvalitetskøkkenet",
         "kategorier": [
@@ -18932,8 +18992,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/lampegiganten/01896309-a6d3-70f0-b920-314a0de651aa"
+          },
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/00a364e3-3311-499c-a3b6-97141bfbb06f/lampegiganten/pay-with-klarna/"
           }
         },
+        "domene": "lampegiganten.dk",
         "logo": "/logos/DK/lampegiganten.webp"
       },
       {
@@ -19218,6 +19284,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-dk": {
@@ -19930,7 +20000,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/oakley/019d0b3a-53d6-73e2-9bb6-1136e90eaa28"
           }
         },
-        "logo": "/logos/NO/oakley.webp"
+        "logo": "/logos/SE/oakley.webp"
       },
       {
         "id": "obaku",
@@ -19946,22 +20016,6 @@
           }
         },
         "logo": "/logos/DK/obaku.webp"
-      },
-      {
-        "id": "offwhite",
-        "navn": "Off-White",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 3,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/7f84a475-875b-4d4b-81fc-5f53c42b0afc/off-white/pay-with-klarna/"
-          }
-        },
-        "domene": "off---white.com",
-        "logo": "/logos/DK/offwhite.webp"
       },
       {
         "id": "olivercph",
@@ -20034,7 +20088,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/NO/onyxcookware.webp"
+        "logo": "/logos/DK/onyxcookware.webp"
       },
       {
         "id": "organicbasics",
@@ -20061,6 +20115,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/otto-suenson/01a061f3-cf1c-72ff-b6a6-d838f5ed65ed"
           }
         }
@@ -20737,6 +20795,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/selected/01a13f61-6ad4-72e9-ac4e-524ced9b934a"
           },
           "klarna-dk": {
@@ -21387,8 +21449,15 @@
       {
         "id": "tigerofsweden",
         "navn": "Tiger of Sweden",
-        "kategorier": [],
+        "kategorier": [
+          "mote"
+        ],
         "satser": {
+          "sas-online-shopping-dk": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/tiger-of-sweden/01a1b100-4c8c-7358-8d63-3a43843e3d2c"
+          },
           "klarna-dk": {
             "verdi": 4,
             "opptil": false,
@@ -21595,6 +21664,22 @@
         "logo": "/logos/DK/velosophy.webp"
       },
       {
+        "id": "veromoda",
+        "navn": "Vero Moda",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 3.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/c14b816f-5bf6-4b84-9033-7ca9a2edb253/vero-moda/pay-with-klarna/"
+          }
+        },
+        "domene": "veromoda.com",
+        "logo": "/logos/DK/veromoda.webp"
+      },
+      {
         "id": "viator",
         "navn": "Viator",
         "kategorier": [
@@ -21680,9 +21765,7 @@
       {
         "id": "vogels",
         "navn": "vogel's",
-        "kategorier": [
-          "elektronikk"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-dk": {
             "verdi": 5.5,
@@ -21985,6 +22068,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-15"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/aarke/01a0d2cd-44b6-70e0-9d09-7fa13f871050"
           }
         },

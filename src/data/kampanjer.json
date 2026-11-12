@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-11",
+  "hentet": "2026-11-12",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -49,7 +49,7 @@
       "tekst": "Nye kunder, efter fjerde levering. Derefter 250 point per måltidskasse.",
       "verdi": 10000,
       "enhet": "poeng",
-      "slutt": "2026-12-31",
+      "slutt": "2027-05-30",
       "url": "https://www.retnemt.dk/kampagne/sas-eurobonus",
       "logo": "/logos/partnere/retnemt.webp"
     },
@@ -189,10 +189,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "eesy 5G internet",
       "tittel": "eesy 5G internet",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 3000,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 3.000",
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/eesy-5g-internetddd/01947398-11de-7335-9cb6-dd340f9e023b",
       "logo": "/logos/kampanjer/sas-dk-eesy-5g-internetddd.webp"
     },
@@ -478,7 +478,7 @@
       "tekst": "Nye kunder, etter fjerde levering. Deretter 250 poeng per matkasse.",
       "verdi": 10000,
       "enhet": "poeng",
-      "slutt": "2026-12-31",
+      "slutt": "2027-05-30",
       "url": "https://www.godtlevert.no/kampanje/eurobonus",
       "logo": "/logos/partnere/godtlevert.webp"
     },
@@ -1011,7 +1011,7 @@
       "tekst": "Nya kunder, efter fjärde leveransen. Därefter 250 poäng per matkasse.",
       "verdi": 10000,
       "enhet": "poeng",
-      "slutt": "2026-12-31",
+      "slutt": "2027-05-30",
       "url": "https://www.linasmatkasse.se/kampanj/eurobonus",
       "logo": "/logos/partnere/linas.webp"
     },
@@ -1507,6 +1507,18 @@
       "slutt": "2026-11-30",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/svenska-gummihuset/0189630d-cf20-7172-9143-c46a1a6970e6",
       "logo": "/logos/kampanjer/sas-se-svenska-gummihuset.webp"
+    },
+    {
+      "id": "sas-se-telia",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Telia Bredband",
+      "tittel": "Telia Bredband",
+      "tekst": "Via SAS Shopping · nya kunder",
+      "verdi": 1500,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/telia/0189630b-94d9-73d6-9d65-2f31fd21738c"
     },
     {
       "id": "sas-se-telinet",
