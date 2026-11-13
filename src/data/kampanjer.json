@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-12",
+  "hentet": "2026-11-13",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -254,10 +254,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Hiper",
       "tittel": "Hiper",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 1500,
+      "tekst": "Via SAS Shopping · nye kunder · normalt 1.500",
+      "verdi": 5000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/hiper.dk/0189630b-928d-72ed-abed-3920407b316d",
       "logo": "/logos/kampanjer/sas-dk-hiper.dk.webp"
     },
@@ -273,6 +273,19 @@
       "slutt": "2026-12-04",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/krifa/019a538d-c10c-7270-9bbb-c2304ec7d8d2",
       "logo": "/logos/kampanjer/sas-dk-krifa.webp"
+    },
+    {
+      "id": "sas-dk-lie-studio",
+      "land": "DK",
+      "program": "sas-online-shopping-dk",
+      "partner": "Lié Studio",
+      "tittel": "Lié Studio",
+      "tekst": "Via SAS Shopping · normalt 25",
+      "verdi": 50,
+      "enhet": "poeng",
+      "slutt": "2026-11-19",
+      "url": "https://onlineshopping.flysas.com/da-DK/butikker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
+      "logo": "/logos/kampanjer/sas-dk-lie-studio.webp"
     },
     {
       "id": "sas-dk-mofibo",
@@ -754,6 +767,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/kinoklubb/0189630f-6485-7344-8ba0-244ec2bc7db7",
       "logo": "/logos/partnere/kinoklubb.webp"
+    },
+    {
+      "id": "sas-no-lie-studio",
+      "land": "NO",
+      "program": "sas-online-shopping",
+      "partner": "Lié Studio",
+      "tittel": "Lié Studio",
+      "tekst": "Via SAS Shopping · normalt 25",
+      "verdi": 50,
+      "enhet": "poeng",
+      "slutt": "2026-11-19",
+      "url": "https://onlineshopping.flysas.com/nb-NO/butikker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
+      "logo": "/logos/kampanjer/sas-no-lie-studio.webp"
     },
     {
       "id": "sas-no-maxulin",
@@ -1313,6 +1339,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/hellofresh/0189630e-0077-7365-979b-baa2f08a1bc7",
       "logo": "/logos/kampanjer/sas-se-hellofresh.webp"
+    },
+    {
+      "id": "sas-se-lie-studio",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Lié Studio",
+      "tittel": "Lié Studio",
+      "tekst": "Via SAS Shopping · normalt 25",
+      "verdi": 50,
+      "enhet": "poeng",
+      "slutt": "2026-11-19",
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
+      "logo": "/logos/kampanjer/sas-se-lie-studio.webp"
     },
     {
       "id": "sas-se-matkomfort",
