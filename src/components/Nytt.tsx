@@ -19,7 +19,6 @@ interface Props {
   partnerkampanjer: Partnerkampanje[];
   per100: (program: Program, sats: ButikkSats) => number | null;
   onVelg: (butikk: Butikk) => void;
-  onUkens: () => void;
   /** Av/på for push-varsler, under «Dine butikker». */
   varsel?: ReactNode;
 }
@@ -30,7 +29,7 @@ const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(
 const ANDRE_SYNLIGE = 8;
 
 /** Kampanjer som pågår og satser som nylig endret seg – grunnen til å komme tilbake. */
-export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, onUkens, varsel }: Props) {
+export default function Nytt({ land, butikker, programmer, historikk, idag, folger, partnerkampanjer, per100, onVelg, varsel }: Props) {
   const [alleAndre, setAlleAndre] = useState(false);
   const kampanjer = finnKampanjer(butikker, programmer, idag);
   const endringer = finnEndringer(butikker, programmer, historikk, idag);
@@ -52,7 +51,7 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
       return { b, best };
     });
 
-  const rad = (nokkel: string, b: Butikk, p: Program, hoved: string, under: string, opp?: boolean) => (
+  const rad = (nokkel: string, b: Butikk, p: Program, hoved: ReactNode, under: string, opp?: boolean) => (
     <li key={nokkel}>
       <button type="button" onClick={() => onVelg(b)}>
         <ButikkLogo butikk={b} />
@@ -90,12 +89,6 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
 
   return (
     <section className="nytt">
-      <p className="ukens-lenke">
-        <button type="button" className="lenke" onClick={onUkens}>
-          {tekst(land, 'ukensLenke')}
-        </button>
-      </p>
-
       {dine.length > 0 && (
         <>
           <h2 className="etikett">{tekst(land, 'dineButikker')}</h2>
@@ -103,7 +96,15 @@ export default function Nytt({ land, butikker, programmer, historikk, idag, folg
           <ul className="nytt-liste">
             {dine.map(({ b, best }) =>
               best
-                ? rad(`d-${b.id}`, b, best.p, `${fmtPer100(best.per100)} p/100`, sats(best.p, gjeldendeSats(b.satser[best.p.id], idag).verdi))
+                ? rad(
+                    `d-${b.id}`,
+                    b,
+                    best.p,
+                    <>
+                      {fmtPer100(best.per100)} <small>p/100</small>
+                    </>,
+                    sats(best.p, gjeldendeSats(b.satser[best.p.id], idag).verdi),
+                  )
                 : rad(`d-${b.id}`, b, programmer[0], '–', ''),
             )}
           </ul>

@@ -4,6 +4,7 @@ import type { Butikk, Kort, Land, Program, Samarbeidspartner } from '../data/typ
 import { SPRAK, tekst } from '../i18n';
 import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
 import { beregnOppsett, manederTil, oreVerdi, velgOppsett, type Oppsett } from '../lib/plan';
+import Faner from './Faner';
 import Kortbilde from './Kortbilde';
 
 export type PlanDel = 'poeng' | 'penger';
@@ -171,21 +172,16 @@ export default function Plan({ land, programmer, butikker, kort, folger, kjente,
 
   return (
     <section className="plan">
-      <nav className="plan-faner" aria-label={T('navPlan')}>
-        {(['poeng', 'penger'] as const).map((d) => (
-          <a
-            key={d}
-            href={sti(d)}
-            aria-current={d === del ? 'page' : undefined}
-            onClick={(e) => {
-              e.preventDefault();
-              onDel(d);
-            }}
-          >
-            {T(d === 'poeng' ? 'planFanePoeng' : 'planFanePenger')}
-          </a>
-        ))}
-      </nav>
+      <Faner
+        navn={T('navPlan')}
+        faner={(['poeng', 'penger'] as const).map((d) => ({
+          id: d,
+          tekst: T(d === 'poeng' ? 'planFanePoeng' : 'planFanePenger'),
+          href: sti(d),
+          aktiv: d === del,
+          velg: () => onDel(d),
+        }))}
+      />
       {del === 'poeng' ? (
         <Poeng land={land} programmer={programmer} butikker={butikker} kort={kort} folger={folger} kjente={kjente} idag={idag} T={T} tall={tall} sett={sett} tallfelt={tallfelt} />
       ) : (
@@ -416,7 +412,7 @@ function Poeng({
         })}
       </ol>
 
-      <details className="plan-mer">
+      <details className="mer">
         <summary>{T('planAlle', { n: alle.length })}</summary>
         <ul className="plan-alle-liste">
           {alle.map((o) => (
@@ -437,7 +433,7 @@ function Poeng({
         </ul>
       </details>
 
-      <details className="plan-mer">
+      <details className="mer">
         <summary>{T('planSlikTittel')}</summary>
         <p className="graf-merknad">
           {T('planSlik', { butikker: folger.length ? T('planFulgte', { n: kurv.length }) : T('planKjente', { n: kurv.length }) })}

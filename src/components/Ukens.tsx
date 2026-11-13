@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Butikk, ButikkSats, Land, Maling, Program } from '../data/types';
 import { dagerTekst, tekst } from '../i18n';
 import { fmtDato, fmtPer100, fmtTall } from '../lib/format';
@@ -22,7 +23,7 @@ const sats = (p: Program, v: number) => (p.satsEnhet === 'prosent' ? `${fmtTall(
 export default function Ukens({ land, butikker, programmer, historikk, idag, per100, onVelg }: Props) {
   const { topp, okninger, utloper } = finnUkens(butikker, programmer, historikk, idag, per100);
 
-  const rad = (nokkel: string, b: Butikk, p: Program, hoved: string, under: string, klasse = '') => (
+  const rad = (nokkel: string, b: Butikk, p: Program, hoved: ReactNode, under: string, klasse = '') => (
     <li key={nokkel}>
       <button type="button" onClick={() => onVelg(b)}>
         <ButikkLogo butikk={b} />
@@ -46,7 +47,12 @@ export default function Ukens({ land, butikker, programmer, historikk, idag, per
           const s = r.butikk.satser[r.program.id];
           const v = vurderSats(historikk?.[r.butikk.id]?.[r.program.id], idag);
           const under = sats(r.program, s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
-          return rad(`t-${r.butikk.id}`, r.butikk, r.program, `${fmtPer100(r.per100)} p/100`, v?.type === 'topp' ? `${under} · ${tekst(land, 'hoyesteSiden2', { dato: fmtDato(v.fra) })}` : under);
+          const per100Tall = (
+            <>
+              {fmtPer100(r.per100)} <small>p/100</small>
+            </>
+          );
+          return rad(`t-${r.butikk.id}`, r.butikk, r.program, per100Tall, v?.type === 'topp' ? `${under} · ${tekst(land, 'hoyesteSiden2', { dato: fmtDato(v.fra) })}` : under);
         })}
       </ul>
 

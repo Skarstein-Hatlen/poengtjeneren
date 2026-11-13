@@ -1,10 +1,9 @@
-import type { Land, Maling, Program } from '../data/types';
+import type { Land, Niva, Program } from '../data/types';
 import { dagerTekst, tekst } from '../i18n';
 import type { Resultat } from '../lib/calc';
-import { fmtDato, fmtPer100, fmtPoeng, fmtTall } from '../lib/format';
+import { fmtPer100, fmtPoeng } from '../lib/format';
 import { dagerIgjen } from '../lib/nytt';
 import Monogram from './Monogram';
-import Sparkline from './Sparkline';
 
 export interface RadTilstand {
   /** Butikkens sats som tekst, ferdig regnet med nivået der programmet har nivåer. */
@@ -17,14 +16,13 @@ interface Props {
   land: Land;
   program: Program;
   tilstand: RadTilstand;
-  /** Nivået som gjelder, vist ved siden av navnet (f.eks. «Max»). */
-  nivaNavn: string | null;
+  /** Nivåene programmet har (Klarna: Ingen, Plus, Premium, Max) – velges i kolonnens tittel. */
+  nivaer: Niva[];
+  onNiva: (valgId: string) => void;
   onSats: (sats: string) => void;
   resultat: Resultat | null;
   /** Butikkens side hos programmet – der kjøpet må starte for å få satsen. */
   lenke: string | null;
-  /** Satsens historikk for valgt butikk. */
-  historikk: Maling[] | null;
   /** Sluttdato når satsen i feltet er en kampanjesats. */
   kampanjeSlutt: string | null;
   /** Nivåpoeng kjøpet gir i tillegg (program og kort), 0 når ingen. */
@@ -37,32 +35,27 @@ interface Props {
 
 const TILLATT = /^[\d\s.,]*$/;
 
-/** Kort dom over satsen: første måling, høyeste siden start, eller under toppen. */
-function historikkTekst(land: Land, program: Program, malinger: Maling[]): string {
-  const forste = fmtDato(malinger[0][0]);
-  if (malinger.length === 1) return tekst(land, 'forsteMaling', { dato: forste });
-  const verdier = malinger.map((m) => m[1]).filter((v): v is number => v !== null);
-  const naa = malinger[malinger.length - 1][1];
-  const topp = Math.max(...verdier);
-  if (naa === null) return '';
-  if (naa >= topp) return tekst(land, 'hoyesteSiden', { dato: forste });
-  const enhet = program.satsEnhet === 'prosent' ? ' %' : ' p';
-  return tekst(land, 'lavereEnnTopp', { verdi: `${fmtTall(topp)}${enhet}` });
-}
-
-/** Én kolonne per program: logo, butikkens sats og resultat. */
-export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSats, resultat, lenke, historikk, kampanjeSlutt, nivaapoeng, idag, erBest, apen, onToggle }: Props) {
+/** Én kolonne per program: navn (og nivå), butikkens sats, poengene og veien til butikken. */
+export default function ProgramKolonne({ land, program, tilstand, nivaer, onNiva, onSats, resultat, lenke, kampanjeSlutt, nivaapoeng, idag, erBest, apen, onToggle }: Props) {
   const satsId = `${program.id}-sats`;
 
   return (
     <div className={`kolonne${erBest ? ' best' : ''}${resultat ? '' : ' inaktiv'}`}>
-      <label className="kolonne-topp" htmlFor={satsId}>
-        <Monogram program={program} />
-        <span>
-          {program.kortnavn}
-          {nivaNavn && <span className="niva"> {nivaNavn}</span>}
-        </span>
-      </label>
+      <div className="kolonne-topp">
+        <label htmlFor={satsId}>
+          <Monogram program={program} />
+          <span>{program.kortnavn}</span>
+        </label>
+        {nivaer.length > 0 && (
+          <select className="kolonne-niva" aria-label={tekst(land, 'nivaFor', { program: program.kortnavn })} value={tilstand.valgId} onChange={(e) => onNiva(e.target.value)}>
+            {nivaer.map((n) => (
+              <option key={n.id} value={n.id}>
+                {n.navn}
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
 
       <span className="tall">
         <input
@@ -85,22 +78,16 @@ export default function ProgramKolonne({ land, program, tilstand, nivaNavn, onSa
           {resultat ? fmtPoeng(resultat.total) : '–'}
           {resultat?.status === 'uverifisert' && <sup>*</sup>}
         </span>
-        <span className="per100">{resultat ? tekst(land, 'perHundre', { n: fmtPer100(resultat.per100) }) : ' '}</span>
+        <span className="per100">{resultat ? tekst(land, 'perHundre', { n: fmtPer100(resultat.per100) }) : ' '}</span>
       </button>
 
-      {(nivaapoeng > 0 || kampanjeSlutt || (historikk && historikk.length > 0) || lenke) && (
+      {((resultat && nivaapoeng > 0) || kampanjeSlutt || lenke) && (
         <div className="kolonne-ekstra">
-          {resultat && nivaapoeng > 0 && <span className="nivaa">{tekst(land, 'nivaapoengLinje', { n: fmtPoeng(nivaapoeng) })}</span>}
           {kampanjeSlutt && <span className="igjen">{dagerTekst(land, dagerIgjen(idag, kampanjeSlutt))}</span>}
-          {historikk && historikk.length > 0 && (
-            <div className="historikk" title={tekst(land, 'historikk')}>
-              <Sparkline malinger={historikk} idag={idag} farge="currentColor" />
-              <span className="historikk-tekst">{historikkTekst(land, program, historikk)}</span>
-            </div>
-          )}
+          {resultat && nivaapoeng > 0 && <span className="nivaa">{tekst(land, 'nivaapoengLinje', { n: fmtPoeng(nivaapoeng) })}</span>}
           {lenke && (
-            <a className="lenke kolonne-lenke" href={lenke} target="_blank" rel="noreferrer">
-              {tekst(land, 'handleVia', { program: program.kortnavn })} ↗
+            <a className="kolonne-lenke" href={lenke} target="_blank" rel="noreferrer">
+              {tekst(land, 'handleVia', { program: program.kortnavn })} <span aria-hidden="true">↗</span>
             </a>
           )}
         </div>

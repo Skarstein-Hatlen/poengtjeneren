@@ -255,37 +255,6 @@ input::placeholder {
 }
 
 /* Plan: to faner. «Hvor mange poeng?»: glidere, målet og stigen med én løsning per rad. «Penger eller poeng?»: det billetten sparer mot poengene som penger */
-.plan-faner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 22px;
-  margin: 0 0 22px;
-  border-bottom: 1px solid var(--line);
-}
-
-.plan-faner a {
-  margin-bottom: -1px;
-  padding: 2px 0 10px;
-  border-bottom: 2px solid transparent;
-  color: var(--mute);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.plan-faner a:hover {
-  color: var(--ink);
-}
-
-.plan-faner a[aria-current='page'] {
-  border-bottom-color: var(--gold);
-  color: var(--ink);
-}
-
-.plan-faner a:focus-visible {
-  outline: 2px solid var(--gold-fill);
-  outline-offset: 2px;
-}
 
 .plan h1 {
   margin: 0;
@@ -683,26 +652,6 @@ input::placeholder {
   fill: currentColor;
 }
 
-.plan-mer {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
-}
-
-.plan-stige + .plan-mer {
-  margin-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.plan-mer summary {
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.plan-mer[open] summary {
-  margin-bottom: 14px;
-}
-
 .plan-alle-liste {
   margin: 0;
   padding: 0;
@@ -991,12 +940,6 @@ input::placeholder {
   text-underline-offset: 4px;
 }
 
-.graf-sammendrag {
-  margin: 4px 0 10px;
-  font-size: 13px;
-  color: var(--mute);
-}
-
 .graf-flate {
   position: relative;
 }
@@ -1138,12 +1081,6 @@ input::placeholder {
   color: var(--gold);
 }
 
-.bf-mer {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 13px;
-}
-
 .bf-tips {
   list-style: none;
   margin: 0;
@@ -1233,15 +1170,6 @@ input::placeholder {
     grid-column: 2;
     justify-self: start;
   }
-}
-
-.kategorifilter {
-  margin-top: 10px;
-}
-
-.kategorifilter .programknapp {
-  padding: 6px 11px;
-  font-size: 13px;
 }
 
 /* Billetten */
@@ -1507,34 +1435,6 @@ select option {
 }
 
 /* Kortlenke og tips */
-.kortlenke {
-  margin: 0;
-  padding: 8px 0 2px 88px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 10px;
-}
-
-.kortlenke a,
-.tips a {
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  white-space: nowrap;
-  transition: border-color 0.15s;
-}
-
-.kortlenke a:hover,
-.tips a:hover,
-.kortlenke a:focus-visible,
-.tips a:focus-visible {
-  border-bottom-color: var(--ink);
-  outline: none;
-}
 
 .annonse {
   display: inline-block;
@@ -1547,22 +1447,6 @@ select option {
   text-transform: uppercase;
   color: var(--mute);
   vertical-align: 1px;
-}
-
-.tips {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-  margin: 16px 0 0;
-  font-size: 14px;
-  color: var(--mute);
-}
-
-@media (max-width: 479px) {
-  .kortlenke {
-    padding-left: 0;
-  }
 }
 
 /* Perforering – rivekanten på billetten */
@@ -1702,25 +1586,6 @@ select option {
 }
 
 /* Satsens historikk – liten trappekurve med én setning */
-.historikk {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  color: var(--ink);
-}
-
-.sparkline {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  opacity: 0.8;
-}
-
-.historikk-tekst {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--mute);
-}
 
 
 /* Stempelet på vinneren – sitter som et klistremerke på rivekanten */
@@ -1827,12 +1692,6 @@ footer ul {
   margin-top: 0;
 }
 
-.katalog-topp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .programfilter {
   display: flex;
   flex-wrap: wrap;
@@ -1874,30 +1733,6 @@ footer ul {
 .programknapp:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
-}
-
-.katalog-verktoy {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 8px;
-  border-bottom: 1px solid var(--line);
-}
-
-.katalog-verktoy:focus-within {
-  border-color: var(--ink);
-}
-
-.katalog-verktoy input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 12px 0;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .sortering {
@@ -1988,23 +1823,6 @@ footer ul {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 10px;
-  font-size: 11px;
-  color: var(--mute);
-}
-
-.chip i {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  margin-right: 4px;
-  vertical-align: 1px;
 }
 
 @media (max-width: 479px) {
@@ -2502,21 +2320,6 @@ footer ul {
 }
 
 /* Mitt oppsett – én linje over katalogen og Nytt */
-.oppsett {
-  margin: -4px 4px 14px;
-  font-size: 13px;
-  color: var(--page-mute);
-}
-
-.oppsett .lenke {
-  color: var(--page-mute);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.oppsett .lenke:hover {
-  color: var(--page-fg);
-}
 
 /* Rabattkode legges til ved behov */
 .legg-til {
@@ -2524,9 +2327,6 @@ footer ul {
 }
 
 /* Under konklusjonen: kopier, nivå, rabattkode og «slik får du poengene» */
-.handlinger {
-  margin: 8px 0 0;
-}
 
 .nivalinje {
   margin: 12px 0 0;
@@ -2564,70 +2364,7 @@ footer ul {
   color: var(--gold);
 }
 
-.folg {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px 0;
-  font-size: 13px;
-}
-
-.ukens-lenke {
-  margin: 0 0 16px;
-}
-
 /* Kort-siden: kortforbruk, kostnad per poeng og hverdag */
-.kortbruk {
-  margin: 4px 0 6px;
-}
-
-.kortliste-netto {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--ink);
-}
-
-.hverdag {
-  margin-top: 30px;
-}
-
-.hverdag-liste {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.hverdag-liste li {
-  display: grid;
-  grid-template-columns: 84px minmax(0, 1fr);
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-}
-
-.hverdag-liste .kortliste-poeng small {
-  display: block;
-  margin-top: 4px;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--mute);
-}
-
-.hverdag .fotnote {
-  margin: 10px 0 0;
-  font-size: 12px;
-  color: var(--mute);
-}
-
-.hverdag .fotnote a {
-  color: inherit;
-}
-
-.kortbruk .tall input {
-  width: 7ch;
-}
 
 /* Merket: flyet ved siden av ordmerket */
 .merke-rad {
@@ -2799,18 +2536,6 @@ footer .bunnlenker a:hover {
 }
 
 /* Under konklusjonen: én rad med handlinger, og vilkårene når de bes om */
-.handlinger {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin: 10px 0 0;
-  font-size: 13px;
-}
-
-.handlinger .skille {
-  color: var(--line);
-}
 
 ol.slik {
   margin: 8px 0 0;
@@ -2934,10 +2659,6 @@ footer .bunnlenker {
     margin-top: 2px;
   }
 
-  .kolonne .historikk .sparkline {
-    display: none;
-  }
-
   .kolonne .stempel {
     top: -9px;
     left: 0;
@@ -2950,10 +2671,6 @@ footer .bunnlenker {
   /* Ingen dobbel strek under rivekanten, og historikken venter til stor skjerm */
   .kolonne:first-child:not(.best) {
     border-top-color: transparent;
-  }
-
-  .kolonne .historikk {
-    display: none;
   }
 }
 
@@ -2978,31 +2695,12 @@ footer .bunnlenker {
 }
 
 /* Kortsiden: sortering i samme rad som kortbruket */
-.kortbruk .sortering {
-  justify-self: end;
-  font-size: 13px;
-}
-
-@media (max-width: 479px) {
-  .kortbruk {
-    grid-template-columns: 64px auto minmax(0, 1fr);
-  }
-  .kortbruk .sortering {
-    grid-column: 1 / -1;
-    justify-self: start;
-    padding-bottom: 8px;
-  }
-}
 
 /* Kortvalg ytterst til høyre i sideraden */
 .nav {
   align-items: center;
   flex-wrap: wrap;
   row-gap: 8px;
-}
-
-.nav-velg {
-  margin-left: auto;
 }
 
 /* Logoene fyller de små flisene (Nytt, Ukens, søk, Klarna-siden) */
@@ -3190,42 +2888,6 @@ footer .bunnlenker {
 }
 
 /* Kortsiden: kortbildet først i hver rad (partnersiden /klarna bruker samme liste uten bilder) */
-.kortliste ul.med-bilde li {
-  grid-template-columns: 72px 80px minmax(0, 1fr) auto;
-}
-
-.kortliste-bilde {
-  display: block;
-  width: 72px;
-  aspect-ratio: 856 / 540;
-}
-
-.kortliste-bilde img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(4, 12, 40, 0.18));
-}
-
-@media (max-width: 479px) {
-  .kortliste ul.med-bilde li {
-    grid-template-columns: 48px 64px minmax(0, 1fr);
-    column-gap: 10px;
-  }
-
-  .kortliste ul.med-bilde .kortliste-bilde {
-    width: 48px;
-  }
-
-  .kortliste ul.med-bilde .kortliste-poeng {
-    font-size: 26px;
-  }
-
-  .kortliste ul.med-bilde a {
-    grid-column: 3;
-  }
-}
 
 /* Nytt: «Alle N →» under Andre kampanjer */
 .nytt-mer {
@@ -3234,14 +2896,6 @@ footer .bunnlenker {
 }
 
 /* Hverdag: Trumf Kredittkort – navnet lenker til søknaden */
-.hverdag-liste .kortliste-navn a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.hverdag-liste .kortliste-navn a:hover {
-  text-decoration: underline;
-}
 
 /* Forsinket fly: beløpene etter distanse og tjenesten som fører saken – samme rader som kortlisten, med logo først */
 .kortliste ul.med-logo li {
@@ -3471,5 +3125,408 @@ footer .bunnlenker {
 
   .sidevelger {
     display: block;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────────────────────────
+   Opprydding (november 2026): roligere sider. Én måte å gjøre hver ting på, og ingen løse tekster –
+   alt som står på skjermen hører til en rad, et felt eller en knapp.
+   ─────────────────────────────────────────────────────────────────────────────────────────────── */
+
+/* Toppen: kortet ditt står ved flaggene på store skjermer, i sideraden på mobil */
+.kun-liten {
+  display: none;
+  margin-left: auto;
+}
+
+.topp-hoyre .kortvelger-knapp {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .kun-stor {
+    display: none;
+  }
+  .kun-liten {
+    display: block;
+  }
+}
+
+@media (max-width: 760px) {
+  .knapp-chrome {
+    display: none;
+  }
+}
+
+/* Kolonnens tittel: programmet, og nivået som et lite valg der programmet har nivåer (Klarna) */
+.kolonne-topp {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  cursor: default;
+}
+
+.kolonne-topp label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.kolonne-topp label > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kolonne-niva {
+  flex: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 2px 15px 2px 4px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%236d7385' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 3px center / 8px 5px;
+  font: inherit;
+  font-weight: 500;
+  color: var(--mute);
+  cursor: pointer;
+}
+
+.kolonne-niva:hover,
+.kolonne-niva:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+/* Under tallet: dager igjen, nivåpoeng og veien til butikken. Vinnerens knapp er fylt. */
+.kolonne-ekstra {
+  gap: 6px;
+}
+
+.kolonne-lenke {
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.kolonne-lenke:hover,
+.kolonne-lenke:focus-visible {
+  border-color: var(--ink);
+  text-decoration: none;
+  outline: none;
+}
+
+.kolonne.best .kolonne-lenke {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+@media (max-width: 559px) {
+  .kolonne .kolonne-ekstra {
+    gap: 4px 12px;
+  }
+  .kolonne-lenke {
+    margin: 4px 0 0 auto;
+  }
+}
+
+/* Historikken: enheten står ved tittelen, forklaringen er bare navnene */
+.graf-enhet {
+  margin-left: 6px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+@supports (field-sizing: content) {
+  .kolonne-niva {
+    field-sizing: content;
+  }
+}
+
+/* «Handle via …» står på samme linje i alle kolonnene */
+@media (min-width: 560px) {
+  .kolonne-ekstra {
+    flex: 1;
+  }
+  .kolonne-lenke {
+    margin-top: auto;
+  }
+}
+
+/* Svaret under kolonnene: konklusjonen, med «Kopier» til høyre */
+.svar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 28px;
+}
+
+.svar .konklusjon {
+  margin: 0;
+}
+
+.svar .del {
+  flex: none;
+  margin-left: auto;
+}
+
+.svar + .vurdering {
+  margin-top: 6px;
+}
+
+/* Rader som kan åpnes («Slik får du poengene», «Alle kort», «Slik regner vi»): samme rad overalt */
+.mer {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+:not(.mer) + .mer {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.mer summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mer[open] summary {
+  margin-bottom: 12px;
+}
+
+.mer ol.slik {
+  margin: 0;
+}
+
+/* Faner øverst på sider med flere deler (Kampanjer, Kort, Planlegger) */
+.faner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.faner a,
+.faner button {
+  margin-bottom: -1px;
+  padding: 2px 0 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--mute);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.faner a:hover,
+.faner button:hover {
+  color: var(--ink);
+}
+
+.faner a[aria-current='page'],
+.faner button[aria-pressed='true'] {
+  border-bottom-color: var(--gold);
+  color: var(--ink);
+}
+
+.faner a:focus-visible,
+.faner button:focus-visible {
+  outline: 2px solid var(--gold-fill);
+  outline-offset: 2px;
+}
+
+/* Butikker: søket først (stort, som kjøpesummen), så kategori, program og sortering på én rad */
+.katalog-sok {
+  border-bottom: 2px solid var(--line);
+}
+
+.katalog-sok:focus-within {
+  border-color: var(--ink);
+}
+
+.katalog-sok input {
+  width: 100%;
+  padding: 2px 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-family: var(--font-tall);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.katalog-sok input::placeholder {
+  color: #b5ae9c;
+  opacity: 1;
+}
+
+.katalog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+
+.katalog-filter .velg select {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.katalog-filter .programfilter {
+  gap: 6px;
+  margin-top: 0;
+}
+
+.katalog-filter .programknapp {
+  padding: 5px 11px;
+  font-size: 13px;
+}
+
+.katalog-filter .sortering {
+  margin-left: auto;
+  font-size: 13px;
+}
+
+.katalog .tom {
+  margin-top: 22px;
+}
+
+@media (max-width: 479px) {
+  .katalog-sok input {
+    font-size: 26px;
+  }
+}
+
+/* Lister med tittel til venstre og sortering til høyre (Kort) */
+.liste-topp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+  margin-bottom: 8px;
+}
+
+.nytt .liste-topp .etikett {
+  margin: 0;
+}
+
+.liste-topp .sortering {
+  font-size: 13px;
+}
+
+/* Kort og hverdag: samme rad som kampanjene – bilde, navn med pris under, og poengene til høyre */
+.kortrad-bilde {
+  flex: none;
+  display: block;
+  width: 64px;
+  aspect-ratio: 856 / 540;
+}
+
+.kortrad-bilde img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(4, 12, 40, 0.18));
+}
+
+.nytt-sats small {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.nytt-sats sup {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mute);
+}
+
+.kortsiden .nytt-liste {
+  border-bottom: 1px solid var(--line);
+}
+
+.kortsiden .fotnote {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.kortsiden .fotnote a {
+  color: inherit;
+}
+
+/* «Alle N →» under en liste: en rolig rad, ikke en løs lenke */
+.nytt-mer {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.nytt-mer .lenke {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  text-align: left;
+}
+
+/* Planleggeren og «Alle kort»: kortbildet der vi har det */
+.kortbilde.bilde {
+  background: none;
+  box-shadow: none;
+}
+
+.kortbilde.bilde::before {
+  display: none;
+}
+
+.kortbilde.bilde img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(4, 12, 40, 0.22));
+}
+
+/* Black Friday: datoene på én rolig linje */
+.bf .ingress {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* Listeradene på mobil: litt mindre tall, så navnet får plass */
+@media (max-width: 479px) {
+  .nytt-sats {
+    font-size: 17px;
   }
 }

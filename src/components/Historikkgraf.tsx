@@ -121,15 +121,6 @@ export default function Historikkgraf({ land, programmer, historikk, idag, per10
     return d;
   };
 
-  // Høyeste i perioden, med program og dato.
-  let hoyeste: { s: Serie; pt: Punkt } | null = null;
-  for (const s of serier) {
-    for (const pt of s.punkter) {
-      const gjelder = pt.t >= t0 || vedTid(s, t0) === pt;
-      if (gjelder && pt.verdi !== null && (!hoyeste || pt.verdi > (hoyeste.pt.verdi ?? 0))) hoyeste = { s, pt };
-    }
-  }
-
   const fraPeker = (klientX: number, rect: DOMRect) => {
     if (!rect.width) return null;
     const px = ((klientX - rect.left) / rect.width) * bredde;
@@ -158,7 +149,9 @@ export default function Historikkgraf({ land, programmer, historikk, idag, per10
   return (
     <section className="graf" ref={ref}>
       <div className="graf-topp">
-        <h2 className="etikett">{tekst(land, 'historikkTittel')}</h2>
+        <h2 className="etikett">
+          {tekst(land, 'historikkTittel')} <span className="graf-enhet">{tekst(land, 'pPer100kr')}</span>
+        </h2>
         {valg.length > 0 && (
           <div className="graf-perioder">
             {valg.map((v) => (
@@ -172,12 +165,6 @@ export default function Historikkgraf({ land, programmer, historikk, idag, per10
           </div>
         )}
       </div>
-      {hoyeste && (
-        <p className="graf-sammendrag">
-          {tekst(land, 'hoyesteSidenDato', { dato: kortDato(t0), verdi: fmtPer100(hoyeste.pt.verdi ?? 0), program: hoyeste.s.p.kortnavn, naar: hoyeste.pt.t > t0 ? ` (${kortDato(hoyeste.pt.t)})` : '' })}
-        </p>
-      )}
-
       <div className="graf-flate">
         <svg
           viewBox={`0 0 ${bredde} ${H}`}
@@ -256,18 +243,13 @@ export default function Historikkgraf({ land, programmer, historikk, idag, per10
       </div>
 
       <ul className="graf-forklaring">
-        {serier.map((s) => {
-          const siste = s.punkter[s.punkter.length - 1];
-          return (
-            <li key={s.p.id}>
-              <i style={{ background: s.farge }} />
-              {s.p.kortnavn}
-              <span>{siste.verdi === null ? tekst(land, 'ikkeMed') : `${fmtPer100(siste.verdi)} p/100 · ${satsTekst(s.p, siste.sats!)}`}</span>
-            </li>
-          );
-        })}
+        {serier.map((s) => (
+          <li key={s.p.id}>
+            <i style={{ background: s.farge }} />
+            {s.p.kortnavn}
+          </li>
+        ))}
       </ul>
-      <p className="graf-merknad">{tekst(land, 'grafEnhet')}</p>
 
       {endringer.length > 0 && (
         <details className="graf-endringer">

@@ -43,11 +43,13 @@ const hent = async (url) => {
 };
 const vent = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// HTML-entiteter i butikknavn: «Bj&#246;rn Borg» skal bli «Björn Borg» (ellers får butikken eget navn og egen id).
+const ENTITETER = { amp: '&', quot: '"', apos: "'", nbsp: ' ', aring: 'å', Aring: 'Å', oslash: 'ø', Oslash: 'Ø', aelig: 'æ', AElig: 'Æ', ouml: 'ö', Ouml: 'Ö', auml: 'ä', Auml: 'Ä', eacute: 'é', Eacute: 'É', uuml: 'ü', Uuml: 'Ü' };
 const dekod = (s) =>
   s
-    .replace(/&amp;/g, '&')
-    .replace(/&#39;|&#x27;|&apos;/g, "'")
-    .replace(/&quot;/g, '"')
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&([a-z]+);/gi, (m, navn) => ENTITETER[navn] ?? m)
     .trim();
 
 /** «Kicks.no», «KICKS» og «Kicks» skal bli samme butikk. */

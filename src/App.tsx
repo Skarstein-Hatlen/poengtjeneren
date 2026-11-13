@@ -3,13 +3,14 @@ import BlackFriday from './components/BlackFriday';
 import Butikkliste from './components/Butikkliste';
 import ButikkSok from './components/ButikkSok';
 import Del from './components/Del';
+import Faner from './components/Faner';
 import Flagg from './components/Flagg';
 import FlyMedPoengSide from './components/FlyMedPoengSide';
 import Flyforsinkelse from './components/Flyforsinkelse';
 import Historikkgraf from './components/Historikkgraf';
-import Hverdag from './components/Hverdag';
+import Hverdag, { harHverdag } from './components/Hverdag';
 import KlarnaSide from './components/KlarnaSide';
-import Kortliste, { prisPerMnd } from './components/Kortliste';
+import Kortliste from './components/Kortliste';
 import Kortvelger from './components/Kortvelger';
 import Logo from './components/Logo';
 import Nytt from './components/Nytt';
@@ -278,7 +279,7 @@ export default function App() {
   const [rute, setRute] = useState<Rute>(() => lesSti().rute);
   const [apen, setApen] = useState<string | null>(null);
   const [visRabatt, setVisRabatt] = useState(false);
-  const [visSlik, setVisSlik] = useState(false);
+  const [kortFane, setKortFane] = useState<'kort' | 'hverdag'>('kort');
   const [folger, setFolger] = useState<Folger>(lesFolger);
   const forsteSti = useRef(true);
 
@@ -435,16 +436,6 @@ export default function App() {
     return url.startsWith('http') ? url : null;
   };
 
-  // Kortet som hadde gitt mest på dette kjøpet, til én diskret tipslinje. Gjelder bare
-  // programmer der kortet gir poeng i tillegg (Trumf, SAS Shopping).
-  const besteKort = kortListe.filter(kortLenke).reduce<Kort | null>((b, k) => (b === null || k.poengPer100 > b.poengPer100 ? k : b), null);
-  const medKortlag = belop > 0 ? resultater.find((r) => r.program.kortlag) : undefined;
-  const ekstraMedBesteKort = besteKort ? (belop / 100) * (besteKort.poengPer100 - (kort?.poengPer100 ?? 0)) : 0;
-  // Vises bare når forskjellen er verdt å nevne (minst 50 poeng).
-  const kortTips =
-    besteKort && medKortlag && besteKort.id !== kort?.id && ekstraMedBesteKort >= 50
-      ? { kort: besteKort, program: medKortlag.program, ekstra: ekstraMedBesteKort }
-      : null;
   const harAnnonse = kortListe.some((k) => k.annonse);
   // Samarbeidspartneren (FlyMedPoeng) lenkes bare i landene avtalen gjelder.
   const samarbeid = data.samarbeid.aktiv && data.samarbeid.land.includes(t.land) ? data.samarbeid : null;
@@ -469,6 +460,21 @@ export default function App() {
   // Black Friday vises fra 1. november til og med Cyber Monday. Forsinket fly er skjult fra fanene, men siden finnes fortsatt.
   const navSider = NAV.filter((n) => n.visning !== 'blackfriday' || (IDAG >= data.blackfriday.visFra && IDAG <= data.blackfriday.cyberMonday));
 
+  // Ukens beste er en fane under Kampanjer, så Kampanjer er valgt i menyen på begge.
+  const navAktiv: Visning = rute.visning === 'ukens' ? 'nytt' : rute.visning;
+  const kampanjeFaner = (
+    <Faner
+      navn={T('navNytt')}
+      faner={(['nytt', 'ukens'] as const).map((v) => ({
+        id: v,
+        tekst: T(v === 'nytt' ? 'navNytt' : 'ukensFane'),
+        href: stiFor(t.land, { visning: v, kategori: null }, null),
+        aktiv: rute.visning === v,
+        velg: () => gaaTil(v),
+      }))}
+    />
+  );
+
   const bunnlenker = (
     <p className="bunnlenker">
       <a href="/utvidelse" onClick={(e) => { e.preventDefault(); gaaTil('utvidelse'); }}>{T('utvidelseLenke')}</a>
@@ -478,31 +484,8 @@ export default function App() {
       <a href={T('lunatwinUrl')} target="_blank" rel="noopener">{T('lunatwinLenke')}</a>
     </p>
   );
+  const bunn = <footer>{bunnlenker}</footer>;
 
-
-  // Lønner nivået seg? Samme kjøp regnet med nivået over (eller under, for det høyeste).
-  const nivaLinje = (() => {
-    const p = programmer.find((x) => x.nivaer.length > 0);
-    if (!p || belop <= 0) return null;
-    const konv = p.konverteringer[0];
-    if (!konv || konv.poengPerKrone === null) return null;
-    const rad = t.rader[p.id];
-    const valgt = nivaFor(p, rad.valgId);
-    if (!valgt) return null;
-    const vekslbare = p.nivaer.filter((n) => n.kanVeksle !== false);
-    const grunn = rad.sats.trim() === '' ? 0 : valgt.kanVeksle === false ? parseTall(rad.sats) : butikkProsent(parseTall(rad.sats), valgt);
-    const poeng = (n: Niva) => beregnProgram(p, { programId: p.id, aktiv: true, sats: grunn, nivaId: n.id }, belop, null).total;
-    if (valgt.kanVeksle === false) {
-      const forste = vekslbare[0];
-      return forste ? T('nivaFraIngen', { niva: forste.navn, n: fmtPoeng(poeng(forste)), kr: forste.prisPerMnd }) : null;
-    }
-    const i = vekslbare.findIndex((n) => n.id === valgt.id);
-    const opp = vekslbare[i + 1];
-    const ned = vekslbare[i - 1];
-    if (opp) return T('nivaOpp', { niva: opp.navn, n: fmtPoeng(poeng(opp) - poeng(valgt)), kr: opp.prisPerMnd - valgt.prisPerMnd });
-    if (ned) return T('nivaNed', { niva: ned.navn, n: fmtPoeng(poeng(valgt) - poeng(ned)), kr: valgt.prisPerMnd - ned.prisPerMnd });
-    return null;
-  })();
 
   // Rabattkode eller poeng: begge tallene, så valget blir enkelt.
   const rabatt = parseTall(t.rabatt);
@@ -521,6 +504,19 @@ export default function App() {
     return `${butikk ? `${butikk.navn}, ` : ''}${fmtKr(belop)}\n${linjer.join('\n')}\n${u.toString()}`;
   };
 
+  // Kortet og Klarna-nivået kan byttes fra alle sider – alle tall følger med.
+  const kortvelger = (
+    <Kortvelger
+      land={t.land}
+      kortId={t.kortId}
+      kortListe={kortListe}
+      programmer={programmer}
+      nivaFor={(p) => t.rader[p.id].valgId}
+      onKort={(id) => setT((s) => ({ ...s, kortId: id }))}
+      onNiva={(p, valgId) => setT((s) => endreRad({ ...s, kortId: `${p.id}-kort` }, p, { valgId }))}
+    />
+  );
+
   const topp = (
     <>
       <header className="topp">
@@ -532,6 +528,7 @@ export default function App() {
           <span className="slagord">{T('slagord')}</span>
         </div>
         <div className="topp-hoyre">
+          <div className="kun-stor">{kortvelger}</div>
           <a
             className="knapp-chrome"
             href={utvidelseInfo.chromeWebStoreUrl || '/utvidelse'}
@@ -572,7 +569,7 @@ export default function App() {
             id: n.visning,
             tekst: T(n.nokkel),
             href: stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null),
-            aktiv: rute.visning === n.visning,
+            aktiv: navAktiv === n.visning,
             velg: () => gaaTil(n.visning),
           }))}
         />
@@ -580,8 +577,8 @@ export default function App() {
           <a
             key={n.visning}
             href={stiFor(t.land, { visning: n.visning, kategori: null }, n.visning === 'kalk' ? t.butikkId : null)}
-            className={rute.visning === n.visning ? 'aktiv' : undefined}
-            aria-current={rute.visning === n.visning ? 'page' : undefined}
+            className={navAktiv === n.visning ? 'aktiv' : undefined}
+            aria-current={navAktiv === n.visning ? 'page' : undefined}
             onClick={(e) => {
               e.preventDefault();
               gaaTil(n.visning);
@@ -590,16 +587,7 @@ export default function App() {
             {T(n.nokkel)}
           </a>
         ))}
-        {/* Kortet og Klarna-nivået kan byttes herfra på alle sider – alle tall følger med. */}
-        <Kortvelger
-          land={t.land}
-          kortId={t.kortId}
-          kortListe={kortListe}
-          programmer={programmer}
-          nivaFor={(p) => t.rader[p.id].valgId}
-          onKort={(id) => setT((s) => ({ ...s, kortId: id }))}
-          onNiva={(p, valgId) => setT((s) => endreRad({ ...s, kortId: `${p.id}-kort` }, p, { valgId }))}
-        />
+        <div className="kun-liten">{kortvelger}</div>
       </nav>
     </>
   );
@@ -629,14 +617,13 @@ export default function App() {
             land={t.land}
             liste={butikker}
             programmer={programmer}
-            idag={IDAG}
             per100={per100ForSats}
             kategori={rute.kategori}
             onKategori={(kategori) => setRute({ visning: 'butikker', kategori })}
             onVelg={velgButikk}
-            onLukk={() => gaaTil('kalk')}
           />
         </div>
+        {bunn}
       </div>
     );
   }
@@ -646,6 +633,7 @@ export default function App() {
       <div className="app">
         {topp}
         <div className="billett">
+          {kampanjeFaner}
           <Nytt
             land={t.land}
             butikker={butikker}
@@ -656,10 +644,10 @@ export default function App() {
             partnerkampanjer={data.kampanjer.filter((k) => k.land === t.land && (!k.slutt || k.slutt >= IDAG))}
             per100={per100ForSats}
             onVelg={velgButikk}
-            onUkens={() => gaaTil('ukens')}
             varsel={<Varselknapp land={t.land} folger={folger} />}
           />
         </div>
+        {bunn}
       </div>
     );
   }
@@ -693,9 +681,9 @@ export default function App() {
             idag={IDAG}
             per100={per100ForSats}
             onVelg={velgButikk}
-            kampanjerHref={stiFor(t.land, { visning: 'nytt', kategori: null }, null)}
           />
         </div>
+        {bunn}
       </div>
     );
   }
@@ -705,8 +693,10 @@ export default function App() {
       <div className="app">
         {topp}
         <div className="billett">
+          {kampanjeFaner}
           <Ukens land={t.land} butikker={butikker} programmer={programmer} historikk={data.historikk[t.land]} idag={IDAG} per100={per100ForSats} onVelg={velgButikk} />
         </div>
+        {bunn}
       </div>
     );
   }
@@ -730,6 +720,7 @@ export default function App() {
             onDel={(del) => setRute({ visning: 'plan', kategori: del === 'penger' ? 'penger' : null })}
           />
         </div>
+        {bunn}
       </div>
     );
   }
@@ -747,25 +738,17 @@ export default function App() {
       <div className="app">
         {topp}
         <div className="billett">
-          <Kortliste
-            land={t.land}
-            kort={[...klarnaKort, ...kortListe]}
-            lenke={kortLenke}
-            kortbruk={t.kortbruk}
-            onKortbruk={(kortbruk) => setT((s) => ({ ...s, kortbruk }))}
-            idag={IDAG}
-          />
-          <p className="tips">
-            <a
-              href={stiFor(t.land, { visning: 'plan', kategori: null }, null)}
-              onClick={(e) => {
-                e.preventDefault();
-                gaaTil('plan');
-              }}
-            >
-              {T('planFinn')} <span aria-hidden="true">→</span>
-            </a>
-          </p>
+          {harHverdag(t.land) && (
+            <Faner
+              navn={T('navKort')}
+              faner={(['kort', 'hverdag'] as const).map((v) => ({ id: v, tekst: T(v === 'kort' ? 'navKort' : 'hverdag'), aktiv: kortFane === v, velg: () => setKortFane(v) }))}
+            />
+          )}
+          {kortFane === 'hverdag' && harHverdag(t.land) ? (
+            <Hverdag land={t.land} programmer={programmer} />
+          ) : (
+            <Kortliste land={t.land} kort={[...klarnaKort, ...kortListe]} lenke={kortLenke} idag={IDAG} />
+          )}
           {samarbeid && (
             <p className="samarbeid">
               <a href={samarbeid.kortveiledning} target="_blank" rel="sponsored noopener">
@@ -773,7 +756,6 @@ export default function App() {
               </a>
             </p>
           )}
-          <Hverdag land={t.land} programmer={programmer} kort={kort && kort.id !== ANNET ? kort : null} matPerMnd={t.matPerMnd} onMatPerMnd={(matPerMnd) => setT((s) => ({ ...s, matPerMnd }))} />
         </div>
         <footer>
           {harAnnonse && <p>{T('annonseForklaring')}</p>}
@@ -841,13 +823,15 @@ export default function App() {
             </span>
           </div>
           {visVarselTips && butikk && folgerHer.includes(butikk.id) && <Varselknapp land={t.land} folger={folger} />}
-          <div className="valg-rad rad-kort">
-            <label className="etikett" htmlFor="kort">
-              {T('kort')}
-            </label>
-            {t.kortId === ANNET ? (
+          {/* Kortet velges øverst på siden. Bare «Annet kort» trenger et felt her: poengene kortet gir. */}
+          {t.kortId === ANNET && (
+            <div className="valg-rad rad-kort">
+              <label className="etikett" htmlFor="egetkort">
+                {T('kort')}
+              </label>
               <span className="tall">
                 <input
+                  id="egetkort"
                   aria-label={T('egetKortPoeng')}
                   type="text"
                   inputMode="decimal"
@@ -859,54 +843,9 @@ export default function App() {
                 />
                 <span className="enhet">p/100</span>
               </span>
-            ) : (
               <span />
-            )}
-            <span className="velg">
-              <select id="kort" value={t.kortId} onChange={(e) => setT((s) => ({ ...s, kortId: e.target.value }))}>
-                <option value={INGEN}>{T('ingen')}</option>
-                {programKortListe.map((k) => (
-                  <option key={k.id} value={k.id}>
-                    {k.navn}
-                  </option>
-                ))}
-                {kortListe.map((k) => (
-                  <option key={k.id} value={k.id}>
-                    {k.navn}
-                  </option>
-                ))}
-                <option value={ANNET}>{T('annet')}</option>
-              </select>
-            </span>
-          </div>
-          {kort && kort.id !== ANNET && kortLenke(kort) && (
-            <p className="kortlenke">
-              <a href={kortLenke(kort)!} target="_blank" rel={kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
-                {T('sokOm', { kort: kort.navn })} <span aria-hidden="true">→</span>
-              </a>
-              {kort.annonse && <span className="annonse">{T('annonse')}</span>}
-              <span className="muted">{T('krPerMnd', { n: fmtTall(prisPerMnd(kort, IDAG)) })}</span>
-            </p>
+            </div>
           )}
-          {programmer
-            .filter((p) => p.nivaer.length > 0)
-            .map((p) => (
-              <div className="valg-rad rad-kort" key={p.id}>
-                <label className="etikett" htmlFor={`${p.id}-niva`}>
-                  {p.kortnavn}
-                </label>
-                <span />
-                <span className="velg">
-                  <select id={`${p.id}-niva`} value={t.rader[p.id].valgId} onChange={(e) => setT((s) => endreRad(s, p, { valgId: e.target.value }))}>
-                    {p.nivaer.map((n) => (
-                      <option key={n.id} value={n.id}>
-                        {n.navn}
-                      </option>
-                    ))}
-                  </select>
-                </span>
-              </div>
-            ))}
           {t.rabatt !== '' || visRabatt ? (
             <div className="valg-rad rad-kort">
               <label className="etikett" htmlFor="rabatt">
@@ -948,11 +887,11 @@ export default function App() {
                 land={t.land}
                 program={p}
                 tilstand={t.rader[p.id]}
-                nivaNavn={p.kort ? (nivaFor(p, t.rader[p.id].valgId)?.kanVeksle === false ? null : (nivaFor(p, t.rader[p.id].valgId)?.navn ?? null)) : null}
+                nivaer={p.nivaer}
+                onNiva={(valgId) => setT((s) => endreRad(s, p, { valgId }))}
                 onSats={(sats) => setT((s) => endreRad(s, p, { sats }))}
                 resultat={r}
                 lenke={butikk?.satser[p.id] ? (butikk.satser[p.id].lenke ?? butikk.satser[p.id].kilde) : null}
-                historikk={butikk ? (data.historikk[t.land]?.[butikk.id]?.[p.id] ?? null) : null}
                 kampanjeSlutt={(() => {
                   const s = butikk?.satser[p.id];
                   return s?.kampanje && gjeldendeSats(s, IDAG).kampanje ? s.kampanje.slutt : null;
@@ -969,7 +908,19 @@ export default function App() {
 
         {apent && <p className="detaljer">{utregning(t.land, apent, kort)}</p>}
 
-        {/* Er dette en god sats nå? Programmet med flest poeng, målt mot satsene siste 90 dager. */}
+        {/* Svaret: hvem som gir mest, og om satsen er god akkurat nå (målt mot de siste 90 dagene). */}
+        {belop > 0 && resultater.length > 0 && (
+          <div className="svar">
+            {beste && nest && (
+              <p className="konklusjon">
+                {diff > 0
+                  ? T('konklusjonMer', { a: beste.program.kortnavn, n: fmtPoeng(diff), b: nest.program.kortnavn })
+                  : T('konklusjonLikt', { a: beste.program.kortnavn, b: nest.program.kortnavn })}
+              </p>
+            )}
+            <Del land={t.land} lag={delTekst} />
+          </div>
+        )}
         {(() => {
           if (!butikk) return null;
           let best: { p: Program; v: number } | null = null;
@@ -989,46 +940,16 @@ export default function App() {
             </p>
           );
         })()}
-
-        {belop > 0 && beste && nest && (
-          <p className="konklusjon">
-            {diff > 0
-              ? T('konklusjonMer', { a: beste.program.kortnavn, n: fmtPoeng(diff), b: nest.program.kortnavn })
-              : T('konklusjonLikt', { a: beste.program.kortnavn, b: nest.program.kortnavn })}
-          </p>
-        )}
-        {belop > 0 && resultater.length > 0 && (
-          <p className="handlinger">
-            <Del land={t.land} lag={delTekst} />
-            {beste && (
-              <>
-                <span className="skille" aria-hidden="true">
-                  ·
-                </span>
-                <button type="button" className="lenke" aria-expanded={visSlik} onClick={() => setVisSlik((v) => !v)}>
-                  {T('slikFar', { program: beste.program.kortnavn })} {visSlik ? '▾' : '▸'}
-                </button>
-              </>
-            )}
-          </p>
-        )}
-        {visSlik && belop > 0 && beste && (
-          <ol className="slik">
-            {beste.program.vilkar.map((v) => (
-              <li key={v}>{v}</li>
-            ))}
-          </ol>
-        )}
-        {nivaLinje && <p className="nivalinje">{nivaLinje}</p>}
         {rabattLinje && <p className="nivalinje">{rabattLinje}</p>}
-        {kortTips && (
-          <p className="tips">
-            <span>{T('tips', { kort: kortTips.kort.navn, program: kortTips.program.kortnavn, n: fmtPoeng(kortTips.ekstra) })}</span>
-            <a href={kortLenke(kortTips.kort)!} target="_blank" rel={kortTips.kort.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
-              {T('sokOmKortet')} <span aria-hidden="true">→</span>
-            </a>
-            {kortTips.kort.annonse && <span className="annonse">{T('annonse')}</span>}
-          </p>
+        {belop > 0 && beste && beste.program.vilkar.length > 0 && (
+          <details className="mer">
+            <summary>{T('slikFar', { program: beste.program.kortnavn })}</summary>
+            <ol className="slik">
+              {beste.program.vilkar.map((v) => (
+                <li key={v}>{v}</li>
+              ))}
+            </ol>
+          </details>
         )}
         {samarbeid && belop > 0 && resultater.length > 0 && (
           <p className="samarbeid">

@@ -1,7 +1,7 @@
 import hverdagJson from '../data/hverdag.json';
-import type { Kort, Land, Program } from '../data/types';
+import type { Land, Program } from '../data/types';
 import { tekst } from '../i18n';
-import { fmtDato, fmtPer100, fmtPoeng, fmtTall, parseTall } from '../lib/format';
+import { fmtDato, fmtPer100, fmtTall } from '../lib/format';
 
 interface Rad {
   id: string;
@@ -38,109 +38,71 @@ interface Hverdagsdata {
 interface Props {
   land: Land;
   programmer: Program[];
-  /** Kortet brukeren har valgt – poengene kommer i tillegg til Trumf-bonusen. */
-  kort: Kort | null;
-  matPerMnd: string;
-  onMatPerMnd: (verdi: string) => void;
 }
 
-const TILLATT = /^[\d\s.,]*$/;
 const DATA = hverdagJson as Partial<Record<Land, Hverdagsdata>>;
 
-/** Hverdagen utenfor netthandel: dagligvare, strøm og mobil via Trumf, vekslet til EuroBonus. */
-export default function Hverdag({ land, programmer, kort, matPerMnd, onMatPerMnd }: Props) {
+/** Finnes hverdagssiden i landet? (Trumf i Norge.) */
+export const harHverdag = (land: Land) => Boolean(DATA[land]);
+
+/** Hverdagen utenfor netthandel: dagligvare, strøm og mobil via Trumf, vekslet til EuroBonus. Én rad per måte å tjene på. */
+export default function Hverdag({ land, programmer }: Props) {
   const data = DATA[land];
   const program = data ? programmer.find((p) => p.id === data.program) : undefined;
   const konv = program?.konverteringer[0];
   if (!data || !program || !konv || konv.poengPerKrone === null) return null;
   const perKrone = konv.poengPerKrone;
-  const per100 = (prosent: number) => prosent * perKrone;
-  const mat = parseTall(matPerMnd);
-  const kortPoeng = kort && kort.poengPer100 > 0 ? (mat * 12 * kort.poengPer100) / 100 : 0;
-  // Det Trumf Kredittkort gir i tillegg på maten i året, målt mot vanlig Trumf-bonus.
-  const basisMat = data.rader.find((r) => r.id === 'dagligvare')?.prosent ?? 0;
-  const ekstraMedKort = data.kort ? ((mat * 12 * (data.kort.dagligvare - basisMat)) / 100) * perKrone : 0;
+  const kort = data.kort;
+
+  // Hver måte å tjene på som egen rad, så tallene kan leses rett ned.
+  const rader: { id: string; navn: string; under: string; prosent: number; lenke?: string }[] = [];
+  for (const r of data.rader) {
+    rader.push({ id: r.id, navn: r.navn, under: r.hvor, prosent: r.prosent });
+    if (r.medTrumfPay !== undefined) rader.push({ id: `${r.id}-pay`, navn: tekst(land, 'hverdagMedPay', { navn: r.navn }), under: r.hvor, prosent: r.medTrumfPay });
+    if (kort && r.id === 'dagligvare') {
+      rader.push({
+        id: `${r.id}-kort`,
+        navn: tekst(land, 'hverdagMedKort', { navn: r.navn, kort: kort.navn }),
+        under: tekst(land, 'hverdagKortUnder', { kr: fmtTall(kort.prisPerMnd) }),
+        prosent: kort.dagligvareMedTrumfPay,
+        lenke: kort.lenke,
+      });
+    }
+    if (kort && r.id === 'mobil') rader.push({ id: `${r.id}-kort`, navn: tekst(land, 'hverdagMedKort', { navn: r.navn, kort: kort.navn }), under: r.hvor, prosent: kort.mobil, lenke: kort.lenke });
+  }
 
   return (
-    <section className="hverdag">
-      <h2 className="etikett">{tekst(land, 'hverdag')}</h2>
-      <p className="muted kortliste-intro">{tekst(land, 'hverdagForklaring', { program: program.kortnavn, n: fmtTall(perKrone) })}</p>
-      <div className="valg-rad rad-kort kortbruk">
-        <label className="etikett" htmlFor="mat">
-          {tekst(land, 'matPerMnd')}
-        </label>
-        <span className="tall">
-          <input
-            id="mat"
-            type="text"
-            inputMode="decimal"
-            autoComplete="off"
-            placeholder="0"
-            value={matPerMnd}
-            onChange={(e) => {
-              if (TILLATT.test(e.target.value)) onMatPerMnd(e.target.value);
-            }}
-          />
-          <span className="enhet">kr</span>
-        </span>
-        <span />
+    <section className="nytt kortsiden">
+      <div className="liste-topp">
+        <h2 className="etikett">{tekst(land, 'hverdagTittel', { program: program.kortnavn })}</h2>
       </div>
-      <ul className="hverdag-liste">
-        {data.rader.map((r) => {
-          const erMat = r.id === 'dagligvare';
-          const arBasis = erMat ? (mat * 12 * r.prosent) / 100 : 0;
-          const arPay = erMat && r.medTrumfPay ? (mat * 12 * r.medTrumfPay) / 100 : 0;
+      <ul className="nytt-liste">
+        {rader.map((r) => {
+          const innhold = (
+            <>
+              <span className="nytt-tekst">
+                <span className="nytt-navn">{r.navn}</span>
+                <span className="nytt-under">
+                  {tekst(land, 'prosentBonus', { p: fmtTall(r.prosent), program: program.kortnavn })} · {r.under}
+                </span>
+              </span>
+              <span className="nytt-sats">
+                {fmtPer100(r.prosent * perKrone)} <small>p/100</small>
+              </span>
+            </>
+          );
           return (
             <li key={r.id}>
-              <span className="kortliste-poeng">
-                {fmtPer100(per100(r.prosent))}
-                <small>p/100 kr</small>
-              </span>
-              <span className="kortliste-tekst">
-                <span className="kortliste-navn">
-                  {r.navn} <span className="muted">· {r.hvor}</span>
-                </span>
-                <span className="muted">
-                  {tekst(land, 'prosentBonus', { p: fmtTall(r.prosent), program: program.kortnavn })}
-                  {r.medTrumfPay !== undefined && ` · ${tekst(land, 'medTrumfPay', { p: fmtTall(r.medTrumfPay), n: fmtPer100(per100(r.medTrumfPay)) })}`}
-                  {r.merknad ? ` · ${r.merknad}` : ''}
-                </span>
-                {erMat && mat > 0 && (
-                  <span className="kortliste-netto">
-                    {tekst(land, 'poengPerAr', { n: fmtPoeng(arBasis * perKrone) })}
-                    {kortPoeng > 0 && kort && ` ${tekst(land, 'plussKort', { n: fmtPoeng(kortPoeng), kort: kort.navn })}`}
-                    {arPay > 0 && ` · ${tekst(land, 'medTrumfPayAr', { n: fmtPoeng(arPay * perKrone) })}`}
-                  </span>
-                )}
-              </span>
+              {r.lenke ? (
+                <a className="nytt-lenke" href={r.lenke} target="_blank" rel="noreferrer">
+                  {innhold}
+                </a>
+              ) : (
+                <div className="nytt-lenke">{innhold}</div>
+              )}
             </li>
           );
         })}
-        {data.kort && (
-          <li key="trumf-kredittkort">
-            <span className="kortliste-poeng">
-              {fmtPer100(per100(data.kort.dagligvare))}
-              <small>p/100 kr</small>
-            </span>
-            <span className="kortliste-tekst">
-              <span className="kortliste-navn">
-                <a href={data.kort.lenke} target="_blank" rel="noreferrer">
-                  {data.kort.navn}
-                </a>{' '}
-                <span className="muted">· {tekst(land, 'krPerMnd', { n: fmtTall(data.kort.prisPerMnd) })}</span>
-              </span>
-              <span className="muted">
-                {tekst(land, 'trumfKortLinje', {
-                  p: fmtTall(data.kort.dagligvare),
-                  pay: fmtTall(data.kort.dagligvareMedTrumfPay),
-                  n: fmtPer100(per100(data.kort.dagligvareMedTrumfPay)),
-                  mobil: fmtTall(data.kort.mobil),
-                })}
-              </span>
-              {mat > 0 && ekstraMedKort > 0 && <span className="kortliste-netto">{tekst(land, 'ekstraMedKortet', { n: fmtPoeng(ekstraMedKort) })}</span>}
-            </span>
-          </li>
-        )}
       </ul>
       <p className="fotnote">
         <a href={data.kilde} target="_blank" rel="noreferrer">

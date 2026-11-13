@@ -83,10 +83,12 @@ export default function Kortvelger({ land, kortId, kortListe, programmer, nivaFo
   for (const k of kortListe) {
     valg.push({ id: k.id, navn: k.navn, under: `${fmtTall(k.poengPer100)} p/100 kr`, bilde: BILDER[k.id], aktiv: kortId === k.id, velg: () => onKort(k.id) });
   }
+  // Et kort vi ikke har i listen: brukeren skriver poengene selv i kalkulatoren.
+  valg.push({ id: ANNET, navn: tekst(land, 'annetKort'), under: tekst(land, 'annetKortUnder'), tom: true, aktiv: kortId === ANNET, velg: () => onKort(ANNET) });
   valg.push({ id: INGEN, navn: tekst(land, 'ingenKort'), tom: true, aktiv: kortId === INGEN, velg: () => onKort(INGEN) });
 
   const gjeldende = valg.find((v) => v.aktiv) ?? null;
-  const navn = gjeldende?.navn ?? (kortId === ANNET ? tekst(land, 'annet') : tekst(land, 'ingenKort'));
+  const navn = gjeldende?.navn ?? tekst(land, 'ingenKort');
 
   return (
     <div className={`kortvelger${apen ? ' apen' : ''}`} ref={rot}>

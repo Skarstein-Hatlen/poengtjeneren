@@ -11,6 +11,9 @@ import type { BlackFriday, Butikk, Butikkfil, Datasett, Historikk, Kort, Land, L
 
 export const LAND: Land[] = ['NO', 'SE', 'DK'];
 
+/** Butikknavn kan komme med HTML-entiteter fra kildene («Bj&#246;rn Borg») – vis dem som vanlige bokstaver. */
+const dekod = (navn: string) => navn.replace(/&#(d+);/g, (_, d: string) => String.fromCodePoint(Number(d)));
+
 /** Slår butikklistene sammen på id; satser fra begge, logo fra den første som har. */
 function slaSammen(...lister: Butikk[][]): Butikk[] {
   const map = new Map<string, Butikk>();
@@ -21,7 +24,7 @@ function slaSammen(...lister: Butikk[][]): Butikk[] {
         Object.assign(e.satser, b.satser);
         if (!e.logo && b.logo) e.logo = b.logo;
       } else {
-        map.set(b.id, { ...b, satser: { ...b.satser } });
+        map.set(b.id, { ...b, navn: dekod(b.navn), satser: { ...b.satser } });
       }
     }
   }

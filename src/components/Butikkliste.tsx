@@ -1,30 +1,22 @@
 import { useState } from 'react';
 import type { Butikk, ButikkSats, Land, Program } from '../data/types';
 import { KATEGORIER, kategoriNavn, tekst } from '../i18n';
-import { gjeldendeSats, sokButikker } from '../lib/butikker';
-import { fmtPer100, fmtTall } from '../lib/format';
+import { sokButikker } from '../lib/butikker';
+import { fmtPer100 } from '../lib/format';
 
 interface Props {
   land: Land;
   liste: Butikk[];
   programmer: Program[];
-  idag: string;
   /** EuroBonus-poeng per 100 kr for en butikksats, med brukerens valg (abonnement o.l.). null = kan ikke veksles. */
   per100: (program: Program, sats: ButikkSats) => number | null;
   /** Valgt kategori (styres av adressen: /no/butikker/mote). */
   kategori: string | null;
   onKategori: (kategori: string | null) => void;
   onVelg: (butikk: Butikk) => void;
-  onLukk: () => void;
 }
 
 type Sortering = 'navn' | 'poeng';
-
-function satsTekst(program: Program, sats: ButikkSats, idag: string): string {
-  const g = gjeldendeSats(sats, idag);
-  const tall = fmtTall(g.verdi);
-  return program.satsEnhet === 'prosent' ? `${sats.opptil ? '≤' : ''}${tall} %` : `${tall} p`;
-}
 
 /** Logo slik programmet viser den; forbokstav hvis bildet mangler eller ikke laster. */
 export function ButikkLogo({ butikk }: { butikk: Butikk }) {
@@ -43,8 +35,8 @@ export function ButikkLogo({ butikk }: { butikk: Butikk }) {
   );
 }
 
-/** Alle butikkene vi har satser på, med logo og satsene per program. */
-export default function Butikkliste({ land, liste, programmer, idag, per100, kategori, onKategori, onVelg, onLukk }: Props) {
+/** Alle butikkene vi har satser på: søk, kategori og program, og programmet som gir mest i hver butikk. */
+export default function Butikkliste({ land, liste, programmer, per100, kategori, onKategori, onVelg }: Props) {
   const [filter, setFilter] = useState('');
   const [sortering, setSortering] = useState<Sortering>('navn');
   // Avhukede programmer: butikken må finnes i alle dem (og kan i tillegg finnes i flere).
@@ -77,35 +69,39 @@ export default function Butikkliste({ land, liste, programmer, idag, per100, kat
 
   return (
     <section className="katalog">
-      <div className="katalog-topp">
-        <button type="button" className="lenke" onClick={onLukk}>
-          {tekst(land, 'tilbake')}
-        </button>
-        <span className="etikett">{tekst(land, 'antallButikker', { n: treff.length })}</span>
+      {/* Søket først: det er slik de fleste finner butikken sin. */}
+      <div className="katalog-sok">
+        <input
+          type="search"
+          aria-label={tekst(land, 'sokIButikker', { n: liste.length })}
+          placeholder={tekst(land, 'sokIButikker', { n: liste.length })}
+          autoComplete="off"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
       </div>
-      <div className="programfilter" role="group" aria-label={tekst(land, 'visButikkerHos')}>
-        {programmer.map((p) => {
-          const aktiv = valgte.includes(p.id);
-          return (
-            <button key={p.id} type="button" className={`programknapp${aktiv ? ' aktiv' : ''}`} aria-pressed={aktiv} onClick={() => veksle(p.id)}>
-              <i style={{ background: p.farge }} />
-              {p.kortnavn}
-            </button>
-          );
-        })}
-      </div>
-      <div className="programfilter kategorifilter" role="group" aria-label={tekst(land, 'kategori')}>
-        <button type="button" className={`programknapp${kategori === null ? ' aktiv' : ''}`} aria-pressed={kategori === null} onClick={() => onKategori(null)}>
-          {tekst(land, 'alleKategorier')}
-        </button>
-        {kategorier.map((k) => (
-          <button key={k} type="button" className={`programknapp${kategori === k ? ' aktiv' : ''}`} aria-pressed={kategori === k} onClick={() => onKategori(k)}>
-            {kategoriNavn(land, k)}
-          </button>
-        ))}
-      </div>
-      <div className="katalog-verktoy">
-        <input type="search" placeholder={tekst(land, 'filtrer')} autoComplete="off" value={filter} onChange={(e) => setFilter(e.target.value)} />
+      <div className="katalog-filter">
+        <span className="velg">
+          <select aria-label={tekst(land, 'kategori')} value={kategori ?? ''} onChange={(e) => onKategori(e.target.value || null)}>
+            <option value="">{tekst(land, 'alleKategorier')}</option>
+            {kategorier.map((k) => (
+              <option key={k} value={k}>
+                {kategoriNavn(land, k)}
+              </option>
+            ))}
+          </select>
+        </span>
+        <div className="programfilter" role="group" aria-label={tekst(land, 'visButikkerHos')}>
+          {programmer.map((p) => {
+            const aktiv = valgte.includes(p.id);
+            return (
+              <button key={p.id} type="button" className={`programknapp${aktiv ? ' aktiv' : ''}`} aria-pressed={aktiv} onClick={() => veksle(p.id)}>
+                <i style={{ background: p.farge }} />
+                {p.kortnavn}
+              </button>
+            );
+          })}
+        </div>
         <div className="sortering" role="group" aria-label={tekst(land, 'sortering')}>
           <button type="button" className={`lenke${sortering === 'navn' ? ' aktiv' : ''}`} aria-pressed={sortering === 'navn'} onClick={() => setSortering('navn')}>
             {tekst(land, 'alfabetisk')}
@@ -115,32 +111,26 @@ export default function Butikkliste({ land, liste, programmer, idag, per100, kat
           </button>
         </div>
       </div>
-      <ul className="fliser">
-        {treff.map(({ b, beste }) => (
-          <li key={b.id}>
-            <button type="button" onClick={() => onVelg(b)}>
-              <ButikkLogo butikk={b} />
-              <span className="flis-navn">{b.navn}</span>
-              {beste && (
-                <span className="flis-beste">
-                  <i style={{ background: beste.program.farge }} />
-                  {fmtPer100(beste.per100)} {tekst(land, 'pPer100kr')}
-                </span>
-              )}
-              <span className="chips">
-                {programmer
-                  .filter((p) => b.satser[p.id])
-                  .map((p) => (
-                    <span key={p.id} className="chip" title={p.kortnavn}>
-                      <i style={{ background: p.farge }} />
-                      {satsTekst(p, b.satser[p.id], idag)}
-                    </span>
-                  ))}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
+      {treff.length === 0 ? (
+        <p className="tom">{tekst(land, 'ingenButikker')}</p>
+      ) : (
+        <ul className="fliser">
+          {treff.map(({ b, beste }) => (
+            <li key={b.id}>
+              <button type="button" onClick={() => onVelg(b)}>
+                <ButikkLogo butikk={b} />
+                <span className="flis-navn">{b.navn}</span>
+                {beste && (
+                  <span className="flis-beste">
+                    <i style={{ background: beste.program.farge }} />
+                    {fmtPer100(beste.per100)} {tekst(land, 'pPer100kr')}
+                  </span>
+                )}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

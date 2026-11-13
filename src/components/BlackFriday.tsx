@@ -13,7 +13,6 @@ interface Props {
   idag: string;
   per100: (program: Program, sats: ButikkSats) => number | null;
   onVelg: (butikk: Butikk) => void;
-  kampanjerHref: string;
 }
 
 interface Rad {
@@ -23,7 +22,7 @@ interface Rad {
 }
 
 /** Black Friday-guiden: kjente nettbutikker per kategori med flest poeng først, kampanjer nå og tre tips. */
-export default function BlackFriday({ land, oppsett, butikker, programmer, idag, per100, onVelg, kampanjerHref }: Props) {
+export default function BlackFriday({ land, oppsett, butikker, programmer, idag, per100, onVelg }: Props) {
   const gjeldende = (s: ButikkSats) => (s.kampanje && s.kampanje.slutt >= idag ? s.kampanje.verdi : s.verdi);
   const sats = (p: Program, s: ButikkSats) => (p.satsEnhet === 'prosent' ? `${s.opptil ? '≤' : ''}${fmtTall(gjeldende(s))} %` : `${fmtTall(gjeldende(s))} p`);
   const beste = (b: Butikk): Rad | null => {
@@ -80,7 +79,9 @@ export default function BlackFriday({ land, oppsett, butikker, programmer, idag,
             {p.kortnavn} · {under}
           </span>
         </span>
-        <span className={`nytt-sats${klasse}`}>{fmtPer100(v)} p/100</span>
+        <span className={`nytt-sats${klasse}`}>
+          {fmtPer100(v)} <small>p/100</small>
+        </span>
       </button>
     </li>
   );
@@ -89,17 +90,12 @@ export default function BlackFriday({ land, oppsett, butikker, programmer, idag,
     <section className="nytt bf">
       {nedtelling && <span className="etikett nedtelling">{nedtelling}</span>}
       <h1>Black Friday</h1>
-      <p className="ingress">
-        {tekst(land, 'bfDatoer', { bf: dato.format(new Date(oppsett.dato)), cm: dato.format(new Date(oppsett.cyberMonday)) })} {tekst(land, 'bfIngress')}
-      </p>
+      <p className="ingress">{tekst(land, 'bfDatoer', { bf: dato.format(new Date(oppsett.dato)), cm: dato.format(new Date(oppsett.cyberMonday)) })}</p>
 
       {kampanjer.length > 0 && (
         <>
           <h2 className="etikett">{tekst(land, 'kampanjerNaa')}</h2>
           <ul className="nytt-liste">{kampanjer.map((r) => rad(`k-${r.b.id}-${r.p.id}`, r, `${sats(r.p, r.b.satser[r.p.id])} · ${dagerTekst(land, dagerIgjen(idag, r.b.satser[r.p.id].kampanje!.slutt))}`, ' opp'))}</ul>
-          <a className="bf-mer" href={kampanjerHref}>
-            {tekst(land, 'navNytt')} →
-          </a>
         </>
       )}
 

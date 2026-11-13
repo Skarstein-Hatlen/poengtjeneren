@@ -3,71 +3,38 @@ import { prisPerMnd } from '../lib/kort';
 import kortbilder from '../data/kortbilder.json';
 import type { Kort, Land } from '../data/types';
 import { tekst } from '../i18n';
-import { fmtPoeng, fmtTall, parseTall } from '../lib/format';
+import { fmtTall } from '../lib/format';
 
 interface Props {
   land: Land;
   kort: Kort[];
   lenke: (k: Kort) => string | null;
-  /** Kortforbruk per år som tekst – styrer poeng per år og øre per poeng. */
-  kortbruk: string;
-  onKortbruk: (verdi: string) => void;
   idag: string;
 }
 
-const TILLATT = /^[\d\s.,]*$/;
 const BILDER = kortbilder as Record<string, string>;
-type Sortering = 'poeng' | 'ore' | 'pris';
+type Sortering = 'poeng' | 'pris';
 
 /** Månedsprisen som gjelder i dag (kort som prises per år deles på tolv). */
 export { prisPerMnd } from '../lib/kort';
 
-/** Poeng per år ved et kortforbruk, og hva de koster i øre per poeng. */
-function regn(k: Kort, kortbruk: number, idag: string) {
-  const poengAr = (Math.min(kortbruk, k.tak ?? Infinity) * k.poengPer100) / 100;
-  const ore = poengAr > 0 ? (prisPerMnd(k, idag) * 12 * 100) / poengAr : null;
-  return { poengAr, ore };
-}
-
-/** Alle kort og medlemskap i landet som gir EuroBonus-poeng: samme tre tall for hvert, så de kan sammenlignes. */
-export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, idag }: Props) {
-  const bruk = parseTall(kortbruk);
-  const [sortering, setSortering] = useState<Sortering>('ore');
-  const rader = kort.map((k) => ({ k, ...regn(k, bruk, idag) }));
-  // Flest poeng uansett pris, billigste poeng (trenger et kortforbruk), eller billigste kort.
-  const poengForst = (a: (typeof rader)[number], b: (typeof rader)[number]) => b.k.poengPer100 - a.k.poengPer100 || prisPerMnd(a.k, idag) - prisPerMnd(b.k, idag);
-  rader.sort((a, b) => {
-    if (sortering === 'pris') return prisPerMnd(a.k, idag) - prisPerMnd(b.k, idag) || b.k.poengPer100 - a.k.poengPer100;
-    if (sortering === 'ore' && bruk > 0 && a.ore !== null && b.ore !== null) return a.ore - b.ore || poengForst(a, b);
-    return poengForst(a, b);
-  });
-  const valg: { id: Sortering; nokkel: 'flestPoeng' | 'orePoengSort' | 'pris' }[] = [
+/** Alle kort og medlemskap i landet som gir EuroBonus-poeng: bilde, navn, pris og poeng per 100 kr. Raden går til utstederen. */
+export default function Kortliste({ land, kort, lenke, idag }: Props) {
+  const [sortering, setSortering] = useState<Sortering>('poeng');
+  const rader = [...kort].sort((a, b) =>
+    sortering === 'pris'
+      ? prisPerMnd(a, idag) - prisPerMnd(b, idag) || b.poengPer100 - a.poengPer100
+      : b.poengPer100 - a.poengPer100 || prisPerMnd(a, idag) - prisPerMnd(b, idag),
+  );
+  const valg: { id: Sortering; nokkel: 'flestPoeng' | 'pris' }[] = [
     { id: 'poeng', nokkel: 'flestPoeng' },
-    { id: 'ore', nokkel: 'orePoengSort' },
     { id: 'pris', nokkel: 'pris' },
   ];
 
   return (
-    <section className="kortliste">
-      <h2 className="etikett">{tekst(land, 'kortTittel')}</h2>
-      <div className="valg-rad rad-kort kortbruk">
-        <label className="etikett" htmlFor="kortbruk">
-          {tekst(land, 'kortbrukPerAr')}
-        </label>
-        <span className="tall">
-          <input
-            id="kortbruk"
-            type="text"
-            inputMode="decimal"
-            autoComplete="off"
-            placeholder="0"
-            value={kortbruk}
-            onChange={(e) => {
-              if (TILLATT.test(e.target.value)) onKortbruk(e.target.value);
-            }}
-          />
-          <span className="enhet">kr</span>
-        </span>
+    <section className="nytt kortsiden">
+      <div className="liste-topp">
+        <h2 className="etikett">{tekst(land, 'kortTittel')}</h2>
         <div className="sortering" role="group" aria-label={tekst(land, 'sortering')}>
           {valg.map((v) => (
             <button key={v.id} type="button" className={`lenke${sortering === v.id ? ' aktiv' : ''}`} aria-pressed={sortering === v.id} onClick={() => setSortering(v.id)}>
@@ -76,35 +43,35 @@ export default function Kortliste({ land, kort, lenke, kortbruk, onKortbruk, ida
           ))}
         </div>
       </div>
-      <ul className="med-bilde">
-        {rader.map(({ k, poengAr, ore }) => {
+      <ul className="nytt-liste">
+        {rader.map((k) => {
           const url = lenke(k);
-          const pris = prisPerMnd(k, idag);
-          return (
-            <li key={k.id}>
-              <span className="kortliste-bilde" aria-hidden="true">
+          const innhold = (
+            <>
+              <span className="kortrad-bilde" aria-hidden="true">
                 {BILDER[k.id] && <img src={BILDER[k.id]} alt="" loading="lazy" />}
               </span>
-              <span className="kortliste-poeng">
-                {fmtTall(k.poengPer100)}
-                {k.status === 'uverifisert' && <sup>*</sup>}
-                <small>p/100 kr</small>
-              </span>
-              <span className="kortliste-tekst">
-                <span className="kortliste-navn">{k.navn}</span>
-                <span className="muted">{tekst(land, 'krPerMnd', { n: fmtTall(pris) })}</span>
-                {bruk > 0 && (
-                  <span className="kortliste-netto">
-                    {tekst(land, 'poengPerAr', { n: fmtPoeng(poengAr) })}
-                    {ore !== null && ` · ${tekst(land, 'orePerPoeng', { n: fmtTall(ore) })}`}
-                  </span>
-                )}
-              </span>
-              {url && (
-                <a href={url} target="_blank" rel={k.annonse ? 'sponsored noreferrer' : 'noreferrer'}>
-                  {tekst(land, 'sokOmKortet')} <span aria-hidden="true">→</span>
+              <span className="nytt-tekst">
+                <span className="nytt-navn">
+                  {k.navn}
                   {k.annonse && <span className="annonse">{tekst(land, 'annonse')}</span>}
+                </span>
+                <span className="nytt-under">{tekst(land, 'krPerMnd', { n: fmtTall(prisPerMnd(k, idag)) })}</span>
+              </span>
+              <span className="nytt-sats">
+                {fmtTall(k.poengPer100)}
+                {k.status === 'uverifisert' && <sup>*</sup>} <small>p/100</small>
+              </span>
+            </>
+          );
+          return (
+            <li key={k.id}>
+              {url ? (
+                <a className="nytt-lenke" href={url} target="_blank" rel={k.annonse ? 'sponsored noreferrer' : 'noreferrer'} title={tekst(land, 'sokOmKortet')}>
+                  {innhold}
                 </a>
+              ) : (
+                <div className="nytt-lenke">{innhold}</div>
               )}
             </li>
           );
