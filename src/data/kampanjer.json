@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-16",
+  "hentet": "2026-11-17",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -150,10 +150,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "CDON.COM",
       "tittel": "CDON.COM",
-      "tekst": "Via SAS Shopping",
-      "verdi": 100,
+      "tekst": "Via SAS Shopping · normalt 100",
+      "verdi": 200,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/cdon.com/01896307-9887-73f5-9de4-b4d03486a38e",
       "logo": "/logos/partnere/cdon.webp"
     },
@@ -644,10 +644,10 @@
       "program": "sas-online-shopping",
       "partner": "CDON.COM",
       "tittel": "CDON.COM",
-      "tekst": "Via SAS Shopping",
-      "verdi": 100,
+      "tekst": "Via SAS Shopping · normalt 100",
+      "verdi": 200,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/cdon.com/01896307-9887-73f5-9de4-b4d03486a38e",
       "logo": "/logos/partnere/cdon.webp"
     },
@@ -1016,19 +1016,6 @@
       "logo": "/logos/partnere/verisure.webp"
     },
     {
-      "id": "fortum-se-eurobonus",
-      "land": "SE",
-      "program": "eurobonus",
-      "partner": "Fortum",
-      "tittel": "Fortum",
-      "tekst": "Första året med nytt elavtal. Därefter 250 poäng per månad.",
-      "verdi": 10000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://www.fortum.com/se/el/teckna-elavtal/kampanj/elavtal-med-extra-sas-eurobonus-poang",
-      "logo": "/logos/partnere/fortum.webp"
-    },
-    {
       "id": "linas-eurobonus",
       "land": "SE",
       "program": "eurobonus",
@@ -1164,10 +1151,10 @@
       "program": "sas-online-shopping-se",
       "partner": "CDON.COM",
       "tittel": "CDON.COM",
-      "tekst": "Via SAS Shopping",
-      "verdi": 100,
+      "tekst": "Via SAS Shopping · normalt 100",
+      "verdi": 200,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/cdon.com/01896307-9887-73f5-9de4-b4d03486a38e",
       "logo": "/logos/partnere/cdon.webp"
     },
@@ -1514,10 +1501,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Storytel",
       "tittel": "Storytel",
-      "tekst": "Via SAS Shopping",
-      "verdi": 250,
+      "tekst": "Via SAS Shopping · normalt 250",
+      "verdi": 500,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/storytel/0189630c-97b2-70fc-b190-002eaed90291",
       "logo": "/logos/kampanjer/sas-se-storytel.webp"
     },

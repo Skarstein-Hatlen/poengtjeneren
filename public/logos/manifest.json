@@ -1194,7 +1194,7 @@
   "DK/pieces": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/a055d159-8527-434f-bab5-5f644b3e805b/e60bdbbe069df0dee0f14fd9788ccc76",
   "DK/philips": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/e2e143e2-f319-4081-bd5d-d30b5a7d50fc/b372968c7638c732b1fc83a1b86406b5",
   "DK/picment": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/afd54022-9e8d-49be-88f7-d7491c90c842/5f0cd532ecddcb32245946ae6cd9d620",
-  "DK/philipshue": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/1f61332f-e0c5-4f81-a83d-b84ebb894d6f/447a0fa5a542f8c40a3bda10ee90fde9",
+  "DK/philipshue": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Ttwz1Al1zvPCvaCU53ZksWBxmSzCxfdYIgkP8Zqt.png",
   "DK/plaza": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/651da5fe-7b7f-48b9-ab0c-6409a3a660ab/51f1faf3b2bc17d428e00a53ff080cfd",
   "DK/pilgrim": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/gaUAWOAHoR87dzE7P5w45u7BELheIgIUaHA23pr9.png",
   "DK/postersbyus": "https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/PostersbyUS-1689584038.jpg",
@@ -2191,5 +2191,10 @@
   "sok:DK/kidsworld": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/dd6d50d3-2d89-482f-b36f-76e7d32b5342/7f895570fcee616cdb6cb49ca1f1c603",
   "DK/kidsworld": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/dd6d50d3-2d89-482f-b36f-76e7d32b5342/7f895570fcee616cdb6cb49ca1f1c603",
   "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/zYjNrvXTyX1pMOf70RBBIxcI7YMhM79RVD4U4pMK.png": "ja",
-  "sok:SE/markslojd": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fabe42a9-13de-42ba-b406-a1ceb91a09f8/2bd9aed64d133dce9a0c4aefddd1ea22"
+  "sok:SE/markslojd": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/fabe42a9-13de-42ba-b406-a1ceb91a09f8/2bd9aed64d133dce9a0c4aefddd1ea22",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Kx6l14cDjuph3QgyPLshxdHcW7kiz72czrcRA7oj.png": "nei",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Ttwz1Al1zvPCvaCU53ZksWBxmSzCxfdYIgkP8Zqt.png": "ja",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Y8p2GNZXOIZyMnV2WSe7SQdR6NGIRUmk597uKUgF.png": "nei",
+  "sok:SE/vyflygbussarna": "ingen:2026-11-17",
+  "sok:DK/bilbuster": "ingen:2026-11-17"
 }
