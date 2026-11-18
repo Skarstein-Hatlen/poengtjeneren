@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-17",
+  "hentet": "2026-11-18",
   "land": {
     "NO": [
       {
@@ -1062,6 +1062,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/by-malene-birger/0198add9-2376-7149-8893-70d89ef702a6"
           },
           "klarna": {
@@ -4897,6 +4901,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/norli/0189630a-a084-73fb-a865-8fda2d897a29"
           }
         },
@@ -4969,6 +4977,22 @@
           }
         },
         "logo": "/logos/NO/oakley.webp"
+      },
+      {
+        "id": "object",
+        "navn": "Object",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/dc968b8d-6d12-4a1a-9e3a-ed5999237976/object/pay-with-klarna/"
+          }
+        },
+        "domene": "objectci.com",
+        "logo": "/logos/NO/object.webp"
       },
       {
         "id": "offwhite",
@@ -5340,18 +5364,13 @@
           "mote"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 7.8,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/pilgrim-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/NO/pilgrim.webp"
+        "logo": "/logos/DK/pilgrim.webp"
       },
       {
         "id": "pinkorblue",
@@ -7095,6 +7114,10 @@
           "sas-online-shopping": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/viator/0189630e-3cfe-7166-9125-0e412743ab2c"
           }
         },
@@ -8862,6 +8885,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bottle-hero/019a112d-87ab-730e-9bb7-101330a28267"
           }
         },
@@ -9003,6 +9030,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/by-malene-birger/0198add9-2376-7149-8893-70d89ef702a6"
           },
           "klarna-se": {
@@ -9042,7 +9073,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/bythjul/0189630c-9632-7149-b9c1-41a24d6c98db"
           },
           "klarna-se": {
-            "verdi": 1.5,
+            "verdi": 1,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/8feb6251-4fe2-41d2-baae-e41a6eed3f6d/bythjul/pay-with-klarna/"
           }
@@ -12181,21 +12212,6 @@
         "logo": "/logos/SE/liveit.webp"
       },
       {
-        "id": "ljusgrossisten",
-        "navn": "Ljusgrossisten",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/ljusgrossisten/018abc11-c3d8-70bb-846f-fb0153faf0f1"
-          }
-        },
-        "logo": "/logos/SE/ljusgrossisten.webp"
-      },
-      {
         "id": "lloydshoes",
         "navn": "Lloyd shoes",
         "kategorier": [
@@ -12557,7 +12573,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 2.5,
+            "verdi": 1.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/545e0b70-82e2-412c-9b04-47ce718c93df/matsmart/pay-with-klarna/"
           }
@@ -13695,7 +13711,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/NO/pilgrim.webp"
+        "logo": "/logos/DK/pilgrim.webp"
       },
       {
         "id": "pinko",
@@ -14818,6 +14834,20 @@
         },
         "domene": "soffadirekt.se",
         "logo": "/logos/SE/soffadirekt.webp"
+      },
+      {
+        "id": "sologstrand",
+        "navn": "Sologstrand.se",
+        "kategorier": [
+          "sport"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/sologstrandse/01a1edd4-c558-766a-815c-59aa443a1b64"
+          }
+        }
       },
       {
         "id": "sonos",
@@ -16491,6 +16521,21 @@
         "logo": "/logos/NO/yoursurprise.webp"
       },
       {
+        "id": "yvesrocher",
+        "navn": "Yves Rocher",
+        "kategorier": [
+          "skjonnhet"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 25,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/yves-rocher/01a1eda8-51c1-7045-9007-13c2319e2aef"
+          }
+        },
+        "logo": "/logos/SE/yvesrocher.webp"
+      },
+      {
         "id": "zoo",
         "navn": "ZOO.se",
         "kategorier": [
@@ -17231,6 +17276,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bottle-hero/019a112d-87ab-730e-9bb7-101330a28267"
           }
         },
@@ -19758,7 +19807,7 @@
         "kategorier": [],
         "satser": {
           "klarna-dk": {
-            "verdi": 3,
+            "verdi": 2,
             "opptil": false,
             "kilde": "https://www.klarna.com/dk/store/f66691f1-ad35-4a07-89e0-eeb3171791cc/motatos/pay-with-klarna/"
           }
@@ -20147,6 +20196,20 @@
           }
         },
         "logo": "/logos/DK/obaku.webp"
+      },
+      {
+        "id": "object",
+        "navn": "Object",
+        "kategorier": [],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 3,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/2edfa115-6b40-42da-9ce5-fd21ea3e0221/object/pay-with-klarna/"
+          }
+        },
+        "domene": "objectci.com",
+        "logo": "/logos/DK/object.webp"
       },
       {
         "id": "offwhite",
