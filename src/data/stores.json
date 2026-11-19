@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-18",
+  "hentet": "2026-11-19",
   "land": {
     "NO": [
       {
@@ -3816,11 +3816,6 @@
             "verdi": 12.4,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lappeliten-trumf"
-          },
-          "sas-online-shopping": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/lappeliten/01896312-2e1b-73b3-ac23-db4b5803a8ad"
           }
         },
         "logo": "/logos/NO/lappeliten.webp"
@@ -5364,13 +5359,18 @@
           "mote"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 7.8,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/pilgrim-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/DK/pilgrim.webp"
+        "logo": "/logos/NO/pilgrim.webp"
       },
       {
         "id": "pinkorblue",
@@ -11027,21 +11027,6 @@
         "logo": "/logos/SE/holdit.webp"
       },
       {
-        "id": "hometex",
-        "navn": "Home-Tex",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/home-tex-1/0189630f-3ad3-72cf-9292-513db790fab6"
-          }
-        },
-        "logo": "/logos/SE/hometex.webp"
-      },
-      {
         "id": "homeroom",
         "navn": "Homeroom",
         "kategorier": [
@@ -11263,6 +11248,25 @@
         },
         "domene": "iherb.com",
         "logo": "/logos/SE/iherb.webp"
+      },
+      {
+        "id": "ihero",
+        "navn": "iHero",
+        "kategorier": [
+          "elektronikk"
+        ],
+        "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 50,
+            "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-12-01"
+            },
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/ihero/0192dd9e-dd06-7289-9591-6d065b667294"
+          }
+        },
+        "logo": "/logos/SE/ihero.webp"
       },
       {
         "id": "inkclub",
@@ -11896,21 +11900,6 @@
           }
         },
         "logo": "/logos/SE/lamporochljus.webp"
-      },
-      {
-        "id": "lappeliten",
-        "navn": "Lappeliten",
-        "kategorier": [
-          "barn"
-        ],
-        "satser": {
-          "sas-online-shopping-se": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lappeliten/01896312-2e1b-73b3-ac23-db4b5803a8ad"
-          }
-        },
-        "logo": "/logos/NO/lappeliten.webp"
       },
       {
         "id": "lastminute",
@@ -13711,7 +13700,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/pilgrim/0196b513-2638-7036-83ce-676479acc9ff"
           }
         },
-        "logo": "/logos/DK/pilgrim.webp"
+        "logo": "/logos/NO/pilgrim.webp"
       },
       {
         "id": "pinko",
@@ -13946,6 +13935,11 @@
           "mote"
         ],
         "satser": {
+          "sas-online-shopping-se": {
+            "verdi": 15,
+            "opptil": false,
+            "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/ralph-lauren/0199f1fa-f8bb-7378-836f-71ce4fb5d01c"
+          },
           "klarna-se": {
             "verdi": 3,
             "opptil": true,
@@ -16004,6 +15998,10 @@
           "sas-online-shopping-se": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/viator/0189630e-3cfe-7166-9125-0e412743ab2c"
           },
           "klarna-se": {
@@ -17331,6 +17329,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/by-malene-birger/0198add9-2376-7149-8893-70d89ef702a6"
           },
           "klarna-dk": {
@@ -18698,21 +18700,6 @@
           }
         },
         "logo": "/logos/DK/holdit.webp"
-      },
-      {
-        "id": "hometex",
-        "navn": "Home-Tex",
-        "kategorier": [
-          "hjem"
-        ],
-        "satser": {
-          "sas-online-shopping-dk": {
-            "verdi": 25,
-            "opptil": false,
-            "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/home-tex-1/0189630f-3ad3-72cf-9292-513db790fab6"
-          }
-        },
-        "logo": "/logos/DK/hometex.webp"
       },
       {
         "id": "homeroom",
@@ -21933,6 +21920,10 @@
           "sas-online-shopping-dk": {
             "verdi": 15,
             "opptil": false,
+            "kampanje": {
+              "verdi": 30,
+              "slutt": "2026-12-01"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/viator/0189630e-3cfe-7166-9125-0e412743ab2c"
           }
         },

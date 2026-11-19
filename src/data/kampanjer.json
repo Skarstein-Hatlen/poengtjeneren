@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-17",
+  "hentet": "2026-11-19",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -1198,6 +1198,19 @@
       "logo": "/logos/partnere/dalakraft.webp"
     },
     {
+      "id": "sas-se-dentme",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Dentme",
+      "tittel": "Dentme",
+      "tekst": "Via SAS Shopping · nya kunder",
+      "verdi": 1000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/dentme/01a1f2d7-4799-7e9f-b1fb-a26121b86db8",
+      "logo": "/logos/kampanjer/sas-se-dentme.webp"
+    },
+    {
       "id": "sas-se-dina-forsakringar",
       "land": "SE",
       "program": "sas-online-shopping-se",
@@ -1308,11 +1321,24 @@
       "partner": "Greenely",
       "tittel": "Greenely",
       "tekst": "Via SAS Shopping",
-      "verdi": 5000,
+      "verdi": 2500,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/greenely/0189630f-7ec0-700c-a845-e5d23790c75c",
       "logo": "/logos/kampanjer/sas-se-greenely.webp"
+    },
+    {
+      "id": "sas-se-hallon",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Hallon",
+      "tittel": "Hallon",
+      "tekst": "Via SAS Shopping",
+      "verdi": 1000,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/hallon/0189630a-ad3f-7107-ac1e-84ed55603ca0",
+      "logo": "/logos/kampanjer/sas-se-hallon.webp"
     },
     {
       "id": "sas-se-hellofresh",
@@ -1553,7 +1579,7 @@
       "partner": "Tibber",
       "tittel": "Tibber",
       "tekst": "Via SAS Shopping",
-      "verdi": 750,
+      "verdi": 2500,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/tibber/018abc11-cf42-731d-a74c-99b0c7398eef",
@@ -1571,6 +1597,18 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/trippel/0198eb3d-2cb1-719e-ac4c-9b8eb484a72a",
       "logo": "/logos/kampanjer/sas-se-trippel.webp"
+    },
+    {
+      "id": "sas-se-vattenfall",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Vattenfall",
+      "tittel": "Vattenfall",
+      "tekst": "Via SAS Shopping · normalt 4 000",
+      "verdi": 6000,
+      "enhet": "poeng",
+      "slutt": "2026-12-01",
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/vattenfall/01a1f33b-c423-76fd-a232-a31101c7c5de"
     },
     {
       "id": "sas-se-viasat",
