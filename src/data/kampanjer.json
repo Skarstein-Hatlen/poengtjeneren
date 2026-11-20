@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-19",
+  "hentet": "2026-11-20",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -65,19 +65,6 @@
       "slutt": null,
       "url": "https://eurobonusbusiness.flysas.com/da",
       "logo": "/logos/partnere/sas.webp"
-    },
-    {
-      "id": "sas-dk-3-internet",
-      "land": "DK",
-      "program": "sas-online-shopping-dk",
-      "partner": "3 Internet",
-      "tittel": "3 Internet",
-      "tekst": "Via SAS Shopping · nye kunder",
-      "verdi": 2000,
-      "enhet": "poeng",
-      "slutt": null,
-      "url": "https://onlineshopping.flysas.com/da-DK/butikker/3-internet/01916acc-a2d2-7262-84cd-9b7d1b90e047",
-      "logo": "/logos/partnere/tre.webp"
     },
     {
       "id": "sas-dk-albert",
@@ -280,10 +267,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Lié Studio",
       "tittel": "Lié Studio",
-      "tekst": "Via SAS Shopping · normalt 25",
-      "verdi": 50,
+      "tekst": "Via SAS Shopping",
+      "verdi": 25,
       "enhet": "poeng",
-      "slutt": "2026-11-19",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
       "logo": "/logos/kampanjer/sas-dk-lie-studio.webp"
     },
@@ -312,6 +299,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/nextory/0189630c-56c3-7074-8394-13e45ce5c745",
       "logo": "/logos/kampanjer/sas-dk-nextory.webp"
+    },
+    {
+      "id": "sas-dk-oister",
+      "land": "DK",
+      "program": "sas-online-shopping-dk",
+      "partner": "OiSTER",
+      "tittel": "OiSTER",
+      "tekst": "Via SAS Shopping · nye kunder · normalt 2.000",
+      "verdi": 4000,
+      "enhet": "poeng",
+      "slutt": "2026-12-31",
+      "url": "https://onlineshopping.flysas.com/da-DK/butikker/oister/0189630b-8de2-7172-adb7-a5eb4bfb4aac",
+      "logo": "/logos/kampanjer/sas-dk-oister.webp"
     },
     {
       "id": "sas-dk-oscar-biludlejning",
@@ -774,10 +774,10 @@
       "program": "sas-online-shopping",
       "partner": "Lié Studio",
       "tittel": "Lié Studio",
-      "tekst": "Via SAS Shopping · normalt 25",
-      "verdi": 50,
+      "tekst": "Via SAS Shopping",
+      "verdi": 25,
       "enhet": "poeng",
-      "slutt": "2026-11-19",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/nb-NO/butikker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
       "logo": "/logos/kampanjer/sas-no-lie-studio.webp"
     },
@@ -1333,10 +1333,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Hallon",
       "tittel": "Hallon",
-      "tekst": "Via SAS Shopping",
-      "verdi": 1000,
+      "tekst": "Via SAS Shopping · normalt 1 000",
+      "verdi": 3000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-11-30",
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/hallon/0189630a-ad3f-7107-ac1e-84ed55603ca0",
       "logo": "/logos/kampanjer/sas-se-hallon.webp"
     },
@@ -1359,10 +1359,10 @@
       "program": "sas-online-shopping-se",
       "partner": "Lié Studio",
       "tittel": "Lié Studio",
-      "tekst": "Via SAS Shopping · normalt 25",
-      "verdi": 50,
+      "tekst": "Via SAS Shopping",
+      "verdi": 25,
       "enhet": "poeng",
-      "slutt": "2026-11-19",
+      "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/lie-studio/01a1d035-3d43-700f-984b-7663abe1c67e",
       "logo": "/logos/kampanjer/sas-se-lie-studio.webp"
     },
@@ -1682,7 +1682,7 @@
       "partner": "SAS EuroBonus World Mastercard",
       "tittel": "SAS EuroBonus World Mastercard",
       "tekst": "Tre köp inom 30 dagar. Gäller inte om du haft kortet de senaste två åren.",
-      "verdi": 5000,
+      "verdi": 3000,
       "enhet": "poeng",
       "slutt": null,
       "url": "https://saseurobonusmastercard.se/korten/mastercard/",
