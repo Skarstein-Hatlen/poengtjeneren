@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-20",
+  "hentet": "2026-11-21",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -247,19 +247,6 @@
       "slutt": "2026-12-01",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/hiper.dk/0189630b-928d-72ed-abed-3920407b316d",
       "logo": "/logos/kampanjer/sas-dk-hiper.dk.webp"
-    },
-    {
-      "id": "sas-dk-krifa",
-      "land": "DK",
-      "program": "sas-online-shopping-dk",
-      "partner": "Krifa",
-      "tittel": "Krifa",
-      "tekst": "Via SAS Shopping · normalt 2.500",
-      "verdi": 5000,
-      "enhet": "poeng",
-      "slutt": "2026-12-04",
-      "url": "https://onlineshopping.flysas.com/da-DK/butikker/krifa/019a538d-c10c-7270-9bbb-c2304ec7d8d2",
-      "logo": "/logos/kampanjer/sas-dk-krifa.webp"
     },
     {
       "id": "sas-dk-lie-studio",

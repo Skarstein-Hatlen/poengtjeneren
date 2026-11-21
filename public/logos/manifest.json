@@ -275,7 +275,7 @@
   "NO/omio": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/omio_logo_trumf_250252019.png",
   "NO/olivieri1882": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/8331b674-47ef-496d-86e8-6bb5286218c7/339e50e55bf10bd8f948792c18b20e52",
   "NO/offwhite": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/6a850230-3ee5-43f3-a7a2-a97843bd2aa2/c7e7c69df4ef465362a156492d3dd476",
-  "NO/onyxcookware": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/onyxcookware_198x75_white_202610291348.png",
+  "NO/onyxcookware": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/2a26c28e-fa63-4f78-ad86-d387af4e7af0/3279160bf9fdf8df9f86c8c782cb8371",
   "NO/osloskinlab": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/olsoskinlab_large_logo.png",
   "NO/outdoorexperten": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/b3d57ee3-2a22-43bf-9499-ed4f51a32fc0/8b7a744e6e7c09e64fcce7a076ebcaef",
   "NO/plindberg": "https://wlp.tcb-cdn.com/images/suppliers/large-logos/plindberg_large_logo_07102025.png",
@@ -2206,5 +2206,8 @@
   "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/Vqg1wGNBNNwjniRpiN7Ecp7bBn8t0WGTSAnQ83DF.png": "nei",
   "sok:NO/kremmerhuset": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d14c79b2-e005-430b-97d3-ee1919d06f18/b25ad5f1d4eaf01439af5673e7062af3",
   "NO/kremmerhuset": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/d14c79b2-e005-430b-97d3-ee1919d06f18/b25ad5f1d4eaf01439af5673e7062af3",
-  "sok:SE/widforss": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/27deb0b2-9679-4c0c-af19-7058003e0811/fefea13064c8dd76df6587d05120ae2c"
+  "sok:SE/widforss": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/27deb0b2-9679-4c0c-af19-7058003e0811/fefea13064c8dd76df6587d05120ae2c",
+  "sjekk:https://storage.onlineshopping.loyaltykey.com/storage/app/public/shops/images/evXaiUk4RsbmSUeWrZRWBPJLEKfSyGLwrDicAdBO.png": "nei",
+  "sok:SE/softgoat": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/ec03a7c1-ec86-4ecd-b1c2-1873cad27920/ad9aa7d5f1b9b8bb3968b2d19d47edd8",
+  "SE/softgoat": "https://assets.klarnacdn.net/rs:fit:200:200:1:1/bg:255:255:255/image/ec03a7c1-ec86-4ecd-b1c2-1873cad27920/ad9aa7d5f1b9b8bb3968b2d19d47edd8"
 }
