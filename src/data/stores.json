@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-21",
+  "hentet": "2026-11-22",
   "land": {
     "NO": [
       {
@@ -418,7 +418,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/autodoc-trumf"
           },
@@ -935,7 +935,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/bonprix-trumf"
           }
@@ -1019,7 +1019,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfbubbleroom"
           },
@@ -1626,7 +1626,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 11.7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/drommerom-trumf"
           }
@@ -2524,7 +2524,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 8.5,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/g-star-raw-trumf"
           },
@@ -2714,7 +2714,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/gullfunn-trumf"
           },
@@ -2766,7 +2766,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfgymgrossisten"
           },
@@ -2938,7 +2938,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 11.7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/holzweiler-trumf"
           }
@@ -2973,7 +2973,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 12,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
           }
@@ -3140,7 +3140,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 12.4,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/ideal-of-sweden-trumf"
           },
@@ -3436,7 +3436,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/junkyard-trumf"
           }
@@ -4199,7 +4199,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 7,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/lyko-trumf"
           },
@@ -5109,11 +5109,16 @@
       },
       {
         "id": "onyxcookware",
-        "navn": "Onyx Cookware",
+        "navn": "ONYX Cookware",
         "kategorier": [
           "hjem"
         ],
         "satser": {
+          "trumf": {
+            "verdi": 4.6,
+            "opptil": false,
+            "kilde": "https://trumfnetthandel.no/cashback/onyx-cookware-trumf"
+          },
           "sas-online-shopping": {
             "verdi": 50,
             "opptil": false,
@@ -5327,7 +5332,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 2.3,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/philips-home-applicances-trumf"
           },
@@ -7034,7 +7039,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.3,
+            "verdi": 3.1,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/urverket-trumf"
           },
@@ -9532,6 +9537,22 @@
           }
         },
         "logo": "/logos/NO/didriksons.webp"
+      },
+      {
+        "id": "diesel",
+        "navn": "Diesel",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 4.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/c6346a5a-6954-4322-9334-24d5a0eaebce/diesel/pay-with-klarna/"
+          }
+        },
+        "domene": "diesel.com",
+        "logo": "/logos/SE/diesel.webp"
       },
       {
         "id": "directferries",
@@ -12455,22 +12476,6 @@
         "logo": "/logos/SE/loparshop.webp"
       },
       {
-        "id": "mainlinemenswear",
-        "navn": "Mainline Menswear",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/a755058b-6fe8-488d-894a-70e17c8919ee/mainline-menswear/pay-with-klarna/"
-          }
-        },
-        "domene": "mainlinemenswear.co.uk",
-        "logo": "/logos/SE/mainlinemenswear.webp"
-      },
-      {
         "id": "makeupmekka",
         "navn": "Makeup Mekka",
         "kategorier": [
@@ -13361,7 +13366,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/SE/onyxcookware.webp"
+        "logo": "/logos/NO/onyxcookware.webp"
       },
       {
         "id": "ordbok",
@@ -15796,7 +15801,7 @@
         ],
         "satser": {
           "klarna-se": {
-            "verdi": 3.5,
+            "verdi": 4.5,
             "opptil": false,
             "kilde": "https://www.klarna.com/se/store/d84efa32-ed98-4732-90c9-2bc00a20969d/twinset/pay-with-klarna/"
           }
@@ -20338,7 +20343,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
-        "logo": "/logos/DK/onyxcookware.webp"
+        "logo": "/logos/NO/onyxcookware.webp"
       },
       {
         "id": "organicbasics",
