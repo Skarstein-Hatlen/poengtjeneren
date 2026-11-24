@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-23",
+  "hentet": "2026-11-24",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -1494,6 +1494,19 @@
       "slutt": null,
       "url": "https://onlineshopping.flysas.com/sv-SE/butiker/readly/019bc664-90ed-7386-a14b-4ee847a35168",
       "logo": "/logos/kampanjer/sas-se-readly.webp"
+    },
+    {
+      "id": "sas-se-refurbly",
+      "land": "SE",
+      "program": "sas-online-shopping-se",
+      "partner": "Refurbly",
+      "tittel": "Refurbly",
+      "tekst": "Via SAS Shopping",
+      "verdi": 1500,
+      "enhet": "poeng",
+      "slutt": null,
+      "url": "https://onlineshopping.flysas.com/sv-SE/butiker/refurbly/01a20df2-af6c-7fd2-8cdb-8020c361d6d3",
+      "logo": "/logos/kampanjer/sas-se-refurbly.webp"
     },
     {
       "id": "sas-se-sejfa",
