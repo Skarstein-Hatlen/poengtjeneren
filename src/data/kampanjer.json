@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-24",
+  "hentet": "2026-11-25",
   "kampanjer": [
     {
       "id": "dk-sas-mastercard-premium-velkomst",
@@ -358,10 +358,10 @@
       "program": "sas-online-shopping-dk",
       "partner": "Saxo Premium",
       "tittel": "Saxo Premium",
-      "tekst": "Via SAS Shopping",
-      "verdi": 500,
+      "tekst": "Via SAS Shopping · normalt 500",
+      "verdi": 1000,
       "enhet": "poeng",
-      "slutt": null,
+      "slutt": "2026-12-31",
       "url": "https://onlineshopping.flysas.com/da-DK/butikker/saxo-premium/01967b86-7869-7008-b00b-fbfc7b989001",
       "logo": "/logos/partnere/saxo.webp"
     },
