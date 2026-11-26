@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-25",
+  "hentet": "2026-11-26",
   "land": {
     "NO": [
       {
@@ -1422,7 +1422,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/db-trumf1"
           },
@@ -3275,14 +3275,8 @@
               "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
-          },
-          "klarna": {
-            "verdi": 5.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/e5c06d55-7483-47c8-94b9-33173fdae68e/inkclub/pay-with-klarna/"
           }
         },
-        "domene": "inkclub.com",
         "logo": "/logos/NO/inkclub.webp"
       },
       {
@@ -4353,22 +4347,6 @@
         "logo": "/logos/NO/lopeshop.webp"
       },
       {
-        "id": "mainlinemenswear",
-        "navn": "Mainline Menswear",
-        "kategorier": [
-          "mote"
-        ],
-        "satser": {
-          "klarna": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/f6dcec49-e1c4-4387-b55a-cdea2fad6610/mainline-menswear/pay-with-klarna/"
-          }
-        },
-        "domene": "mainlinemenswear.co.uk",
-        "logo": "/logos/NO/mainlinemenswear.webp"
-      },
-      {
         "id": "makeupmekka",
         "navn": "Makeup Mekka",
         "kategorier": [
@@ -4551,6 +4529,10 @@
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/miinto/01896308-a975-7164-aa9c-41b2ec9d89e2"
           },
           "klarna": {
@@ -5529,14 +5511,8 @@
               "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/polarnopyret/0189630a-4f00-71b4-b13a-6a93082439a9"
-          },
-          "klarna": {
-            "verdi": 5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/no/store/1076e274-9742-4315-862e-b8fc0a199840/polarn-o.-pyret/pay-with-klarna/"
           }
         },
-        "domene": "polarnopyret.no",
         "logo": "/logos/NO/polarnopyret.webp"
       },
       {
@@ -8130,22 +8106,6 @@
         "logo": "/logos/SE/alibaba.webp"
       },
       {
-        "id": "aliexpress",
-        "navn": "AliExpress",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 7,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/5832b076-0249-47ed-bcc8-0fbd38fdc9cd/aliexpress/pay-with-klarna/"
-          }
-        },
-        "domene": "aliexpress.com",
-        "logo": "/logos/SE/aliexpress.webp"
-      },
-      {
         "id": "amazon",
         "navn": "Amazon",
         "kategorier": [
@@ -8699,6 +8659,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-29"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/beijer-byggmaterial/01896309-f68e-71c7-b004-d82b22e6debb"
           }
         },
@@ -11132,6 +11096,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/guldfynd/01896309-d275-7391-aeb2-fdf08b9140e4"
           }
         },
@@ -11236,22 +11204,6 @@
         },
         "domene": "hallbergsguld.se",
         "logo": "/logos/SE/hallbergsguld.webp"
-      },
-      {
-        "id": "hansenracing",
-        "navn": "Hansen Racing",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 6.5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/4c174745-ccf0-499b-b676-01d28dd22624/hansen-racing/pay-with-klarna/"
-          }
-        },
-        "domene": "hansenracing.se",
-        "logo": "/logos/SE/hansenracing.webp"
       },
       {
         "id": "happygreen",
@@ -11485,22 +11437,6 @@
         },
         "domene": "hotels.com",
         "logo": "/logos/SE/hotels.webp"
-      },
-      {
-        "id": "hp",
-        "navn": "HP",
-        "kategorier": [
-          "elektronikk"
-        ],
-        "satser": {
-          "klarna-se": {
-            "verdi": 5,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/se/store/22845f04-7a89-40f7-8ff6-4941e5134e34/hp/pay-with-klarna/"
-          }
-        },
-        "domene": "hp.com",
-        "logo": "/logos/partnere/hp.webp"
       },
       {
         "id": "hponlinestore",
@@ -12747,6 +12683,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-29"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-se": {
@@ -13151,6 +13091,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/miinto/01896308-a975-7164-aa9c-41b2ec9d89e2"
           },
           "klarna-se": {
@@ -16400,6 +16344,22 @@
         "logo": "/logos/SE/understatement.webp"
       },
       {
+        "id": "uniqlo",
+        "navn": "Uniqlo",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/f1a56022-a84a-462c-97ac-dba56a1ca2bf/uniqlo/pay-with-klarna/"
+          }
+        },
+        "domene": "uniqlo.com",
+        "logo": "/logos/SE/uniqlo.webp"
+      },
+      {
         "id": "uppercut",
         "navn": "Uppercut",
         "kategorier": [
@@ -17426,22 +17386,6 @@
         "logo": "/logos/DK/alibaba.webp"
       },
       {
-        "id": "aliexpress",
-        "navn": "AliExpress",
-        "kategorier": [
-          "tjenester"
-        ],
-        "satser": {
-          "klarna-dk": {
-            "verdi": 7,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/fe5c2390-80ac-4dee-8542-722d6c8aea85/aliexpress/pay-with-klarna/"
-          }
-        },
-        "domene": "aliexpress.com",
-        "logo": "/logos/DK/aliexpress.webp"
-      },
-      {
         "id": "all4golf",
         "navn": "All4golf",
         "kategorier": [],
@@ -17940,14 +17884,8 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
-          },
-          "klarna-dk": {
-            "verdi": 2,
-            "opptil": false,
-            "kilde": "https://www.klarna.com/dk/store/06bfe452-0ce1-4a24-8108-7e1f55dd8185/bubbleroom/pay-with-klarna/"
           }
         },
-        "domene": "bubbleroom.dk",
         "logo": "/logos/DK/bubbleroom.webp"
       },
       {
@@ -20168,6 +20106,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/zalando-lounge/018abc11-7ec7-73a0-bb3a-428c1b239d7d"
           },
           "klarna-dk": {
@@ -20426,6 +20368,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/miinto/01896308-a975-7164-aa9c-41b2ec9d89e2"
           },
           "klarna-dk": {
@@ -22562,6 +22508,22 @@
           }
         },
         "logo": "/logos/DK/understatement.webp"
+      },
+      {
+        "id": "uniqlo",
+        "navn": "Uniqlo",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna-dk": {
+            "verdi": 1,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/6c70891b-ab0d-49a3-a065-cb3a98ca89be/uniqlo/pay-with-klarna/"
+          }
+        },
+        "domene": "uniqlo.com",
+        "logo": "/logos/DK/uniqlo.webp"
       },
       {
         "id": "urvaerket",
