@@ -1,5 +1,5 @@
 {
-  "hentet": "2026-11-26",
+  "hentet": "2026-11-28",
   "land": {
     "NO": [
       {
@@ -20,10 +20,8 @@
       },
       {
         "id": "24mx",
-        "navn": "24mx",
-        "kategorier": [
-          "sport"
-        ],
+        "navn": "24MX",
+        "kategorier": [],
         "satser": {
           "klarna": {
             "verdi": 2.5,
@@ -87,7 +85,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7.8,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/adidas-trumfs"
           },
@@ -599,7 +597,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5,
+            "verdi": 6.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/bad-trumf"
           },
@@ -1232,7 +1230,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.9,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/christiania-glasmagasintrumf"
           }
@@ -1710,7 +1708,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/dyson-trumf"
           },
@@ -2162,7 +2160,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 3.9,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfexpedia-eu"
           }
@@ -2639,7 +2637,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 9.3,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/getyourguide-trumf"
           },
@@ -3047,7 +3045,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 4.6,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfhotels-no"
           }
@@ -3275,8 +3273,14 @@
               "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/nb-NO/butikker/inkclub/01896308-9acc-7096-9b2a-e74389673a4b"
+          },
+          "klarna": {
+            "verdi": 5.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/e5c06d55-7483-47c8-94b9-33173fdae68e/inkclub/pay-with-klarna/"
           }
         },
+        "domene": "inkclub.com",
         "logo": "/logos/NO/inkclub.webp"
       },
       {
@@ -3578,7 +3582,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 5.4,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/kicks-trumf"
           },
@@ -4347,6 +4351,22 @@
         "logo": "/logos/NO/lopeshop.webp"
       },
       {
+        "id": "mainlinemenswear",
+        "navn": "Mainline Menswear",
+        "kategorier": [
+          "mote"
+        ],
+        "satser": {
+          "klarna": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/no/store/f6dcec49-e1c4-4387-b55a-cdea2fad6610/mainline-menswear/pay-with-klarna/"
+          }
+        },
+        "domene": "mainlinemenswear.co.uk",
+        "logo": "/logos/NO/mainlinemenswear.webp"
+      },
+      {
         "id": "makeupmekka",
         "navn": "Makeup Mekka",
         "kategorier": [
@@ -4501,9 +4521,7 @@
       {
         "id": "miamily",
         "navn": "MiaMily",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna": {
             "verdi": 4,
@@ -4907,11 +4925,6 @@
           "hjem"
         ],
         "satser": {
-          "trumf": {
-            "verdi": 1.5,
-            "opptil": false,
-            "kilde": "https://trumfnetthandel.no/cashback/nordic-nest-trumf"
-          },
           "sas-online-shopping": {
             "verdi": 25,
             "opptil": false,
@@ -5661,7 +5674,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 6.2,
+            "verdi": 7.8,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfradissonhotels"
           }
@@ -5939,7 +5952,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 3.1,
+            "verdi": 6.2,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/scandic-hotels-trumf"
           }
@@ -6115,7 +6128,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 9.3,
+            "verdi": 14,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/siemens-trumf"
           },
@@ -6242,7 +6255,7 @@
         ],
         "satser": {
           "trumf": {
-            "verdi": 7,
+            "verdi": 4.6,
             "opptil": false,
             "kilde": "https://trumfnetthandel.no/cashback/trumfskruvat"
           },
@@ -11206,6 +11219,22 @@
         "logo": "/logos/SE/hallbergsguld.webp"
       },
       {
+        "id": "hansenracing",
+        "navn": "Hansen Racing",
+        "kategorier": [
+          "tjenester"
+        ],
+        "satser": {
+          "klarna-se": {
+            "verdi": 4.5,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/4c174745-ccf0-499b-b676-01d28dd22624/hansen-racing/pay-with-klarna/"
+          }
+        },
+        "domene": "hansenracing.se",
+        "logo": "/logos/SE/hansenracing.webp"
+      },
+      {
         "id": "happygreen",
         "navn": "Happy Green",
         "kategorier": [
@@ -11802,8 +11831,14 @@
             "verdi": 25,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/jd-sports-dk/0189630b-4546-7250-8897-ffc1dfc5b8b1"
+          },
+          "klarna-se": {
+            "verdi": 4,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/se/store/62f705e7-0da4-4171-9c4f-fdfd2c9e2d05/jd-sports/pay-with-klarna/"
           }
         },
+        "domene": "jdsports.se",
         "logo": "/logos/SE/jdsports.webp"
       },
       {
@@ -12773,6 +12808,10 @@
           "sas-online-shopping-se": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/lyko/0189630f-41cb-714c-8b2f-cb2c7a900d0b"
           },
           "klarna-se": {
@@ -13108,10 +13147,8 @@
       },
       {
         "id": "minifinder",
-        "navn": "Minifinder",
-        "kategorier": [
-          "elektronikk"
-        ],
+        "navn": "MiniFinder",
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 3.5,
@@ -13516,7 +13553,7 @@
             "kilde": "https://onlineshopping.flysas.com/sv-SE/butiker/nordic-nest/0189630d-9003-7266-84ef-6291db61aa5e"
           }
         },
-        "logo": "/logos/NO/nordicnest.webp"
+        "logo": "/logos/SE/nordicnest.webp"
       },
       {
         "id": "nordicspectra",
@@ -14748,9 +14785,7 @@
       {
         "id": "safira",
         "navn": "Safira",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "sas-online-shopping-se": {
             "verdi": 25,
@@ -15991,10 +16026,8 @@
       },
       {
         "id": "tennispoint",
-        "navn": "Tennis Point",
-        "kategorier": [
-          "sport"
-        ],
+        "navn": "Tennis-Point",
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 3,
@@ -16673,9 +16706,7 @@
       {
         "id": "voghion",
         "navn": "Voghion",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-se": {
             "verdi": 5.5,
@@ -17884,8 +17915,14 @@
             "verdi": 15,
             "opptil": false,
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/bubbleroom/01896309-b8ae-7129-9039-516c2dbedf13"
+          },
+          "klarna-dk": {
+            "verdi": 2,
+            "opptil": false,
+            "kilde": "https://www.klarna.com/dk/store/06bfe452-0ce1-4a24-8108-7e1f55dd8185/bubbleroom/pay-with-klarna/"
           }
         },
+        "domene": "bubbleroom.dk",
         "logo": "/logos/DK/bubbleroom.webp"
       },
       {
@@ -19084,6 +19121,10 @@
           "sas-online-shopping-dk": {
             "verdi": 25,
             "opptil": false,
+            "kampanje": {
+              "verdi": 50,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/go-dream/0189630a-f625-7029-9a93-ed9bbdc2d5eb"
           }
         },
@@ -19171,10 +19212,10 @@
         ],
         "satser": {
           "sas-online-shopping-dk": {
-            "verdi": 15,
+            "verdi": 25,
             "opptil": false,
             "kampanje": {
-              "verdi": 30,
+              "verdi": 50,
               "slutt": "2026-11-30"
             },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/h-m/0189630c-ecb3-72e3-85ad-ca8b587c08df"
@@ -20739,7 +20780,7 @@
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/nordic-nest/0189630d-9003-7266-84ef-6291db61aa5e"
           }
         },
-        "logo": "/logos/NO/nordicnest.webp"
+        "logo": "/logos/DK/nordicnest.webp"
       },
       {
         "id": "nordicfeel",
@@ -20789,9 +20830,7 @@
       {
         "id": "nortvi",
         "navn": "NORTVI",
-        "kategorier": [
-          "mote"
-        ],
+        "kategorier": [],
         "satser": {
           "klarna-dk": {
             "verdi": 4,
@@ -20951,6 +20990,10 @@
           "sas-online-shopping-dk": {
             "verdi": 50,
             "opptil": false,
+            "kampanje": {
+              "verdi": 75,
+              "slutt": "2026-11-30"
+            },
             "kilde": "https://onlineshopping.flysas.com/da-DK/butikker/onyx-cookware/01a04319-8c3e-70f1-80fb-7c2cdc036ea8"
           }
         },
